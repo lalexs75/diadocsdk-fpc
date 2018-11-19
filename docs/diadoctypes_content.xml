@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_Content"><element name="TContent"><short>Структура представляет содержимое некоторого документа.</short>
+      </element><element name="TContent.Size"><short>Size - количество байтов в файле документа. Равно -1, если это значение неизвестно.</short>
+      </element><element name="TContent.Data"><short>Data - байты содержимого.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocAPI"><element name="TDiadocAPI.ProxyData"><short>Данные для работы через Proxy-сервер</short>
+      </element><element name="TDiadocAPI.UserName"><short>Имя пользователя</short>
+      </element><element name="TDiadocAPI.Password"><short>Пароль</short>
+      </element>
+    <element name="TDiadocAPI.GetOrganization"><short>Получить данные организации, зарегистрированной в КОНТУР, по указанным критериям</short>
+      </element><element name="TDiadocAPI.GetOrganization.AOrgId"><short>идентификатор организации (может отсутствовать)</short>
+      </element><element name="TDiadocAPI.GetOrganization.AFNSParticipantId"><short>идентификатор участника электронного документооборота (может отсутствовать).</short>
+      </element><element name="TDiadocAPI.GetOrganization.AINN"><short>ИНН организации (может отсутствовать)</short>
+      </element>
+    <element name="TDiadocAPI.ParseRussianAddress"><descr>В теле ответа содержится сериализованная структура RussianAddress, содержащая части адреса, которые удалось извлечь из входной строки.
+</descr><short>Разбо строки адреса на составные элементы</short>
+      </element>
+    <element name="TDiadocAPI.Authenticate"><short>Авторизация в системе Diadoc</short><descr>Производит авторизацию в системе
+Для большинства случаев не требуется непосредстваенный вызов. Основные команды компоненты сами по необходимости вызывают данный метод
+</descr>
+      </element><element name="TDiadocAPI.Clear"><short>Очищает данные о авторизации в системе Diadoc</short>
+      </element><element name="TDiadocAPI.GetOrganizationsByInnKpp"><short>Метод GetOrganizationsByInnKpp позволяет искать в Диадоке ящики по ИНН и КПП организаций, которым они принадлежат</short><descr>Метод GetOrganizationsByInnKpp возвращает список организаций и ящиков, удовлетворяющих критерию поиска, в виде структуры данных OrganizationList.
+</descr>
+      </element><element name="TDiadocAPI.GetBox"><short>При помощи метода GetBox можно по идентификатору ящика получить информацию об организации, которой он принадлежит.</short><descr>При помощи метода GetBox можно по идентификатору ящика получить информацию об организации, которой он принадлежит.
+</descr>
+      </element><element name="TDiadocAPI.AuthToken"><short>Содержимое авторизационного токена</short>
+      </element><element name="TDiadocAPI.ResultCode"><short>HTTP код ответа сервера</short>
+      </element><element name="TDiadocAPI.ResultText"><short>Расшифровка кода ответа сервера</short>
+      </element><element name="TDiadocAPI.ResultString"><short>Текстовое представление содержимого ответа сервера</short>
+      </element><element name="TDiadocAPI.OnHttpStatus"><short>Событие возникает после получения ответа сервера</short>
+      </element><element name="TDiadocAPI.GetTemplate"><short>Получает шаблон документов.</short><descr>Выдаваемая структура Template включает в себя сущности из всех дополнений, составляющих цепочку документооборота templateId.
+</descr>
+      </element><element name="TDiadocAPI.PostTemplate"><short>Отправляет шаблон документов.</short><descr>В теле ответа содержится отправленное сообщение, сериализованное в протобуфер Template.
+</descr>
+      </element><element name="TDiadocAPI.TransformTemplateToMessage"><short>Создает сообщение с документами на основе шаблона.</short><descr>В теле ответа содержится отправленное сообщение, сериализованное в протобуфер Message.
+</descr>
+      </element><element name="TDiadocAPI.GetDocflows"><short>Метод возвращает список документов по их идентификаторам. Для каждого документа в выдачу попадают данные, характеризующие его текущее состояние, такие как информация о документообороте и метаданные.</short><descr>Метод возвращает список документов по их идентификаторам. Для каждого документа в выдачу попадают данные, характеризующие его текущее состояние, такие как информация о документообороте и метаданные.
+
+Для использования метода текущий пользователь должен иметь доступ ко всем документам организации.
+</descr>
+      </element><element name="TDiadocAPI.GetDocflowsByPacketId"><short>Метод возвращает список документов, находящихся в указанном пакете.</short><descr>Метод возвращает список документов, находящихся в указанном пакете.
+
+Если документов достаточно много, их выгрузку можно осуществлять постранично. Для получения очередной страницы в метод передается специальный ключ, указывающий на начало этой страницы. Максимальный размер страницы можно указать при запросе, однако это число не должно превышать 100 (значение по умолчанию). Метод не гарантирует, что все страницы, кроме последней, будут содержать одинаковое максимальное количество документов. Интеграционное решение должно быть рассчитано на то, что в рамках очередной страницы не будет выгружено ни одного документа.
+
+В выдачу метода попадают только те документы, к которым у текущего пользователя есть доступ.
+</descr>
+      </element><element name="TDiadocAPI.SearchDocflows"><short>Метод позволяет искать документы по произвольной строке запроса. Строка разбивается на токены по пробелам и разделительным символам, и в выдачу попадают те документы, у которых хотя бы один из полученных токенов содержится в номере, дате, имени файла или других данных.</short><descr>Метод позволяет искать документы по произвольной строке запроса. Строка разбивается на токены по пробелам и разделительным символам, и в выдачу попадают те документы, у которых хотя бы один из полученных токенов содержится в номере, дате, имени файла или других данных.
+
+Строка запроса может иметь специальный вид «ключ: значение», в этом случае ее разбор на сервере происходит в соответствии с форматом YAML. В выдачу попадают документы, которые содержат указанную пару «ключ-значение» среди пользовательских данных, привязанных к документу.
+
+Результаты можно выгружать постранично. Для выгрузки очередной страницы в метод передается индекс документа, с которого требуется начать выгрузку. Максимальный размер страницы можно указать при запросе, однако это число не должно превышать 100 (значение по умолчанию). Метод не гарантирует, что все страницы, кроме последней, будут содержать одинаковое максимальное количество документов. Интеграционное решение должно быть рассчитано на то, что в рамках очередной страницы не будет выгружено ни одного документа.
+
+Метод возвращает только те документы, к которым у пользователя есть доступ.
+</descr>
+      </element><element name="TDiadocAPI.GetDocflowEvents"><short>Метод возвращает список событий, произошедших с документами в указанном ящике. Под событием понимается возникновение нового документа, либо изменение уже существующего.</short><descr>Метод возвращает список событий, произошедших с документами в указанном ящике. Под событием понимается возникновение нового документа, либо изменение уже существующего.
+
+Каждое событие в выдаче содержит состояние документа на момент этого события, и, опционально, состояние на момент предыдущего события. Это позволяет сравнивать две версии документа и вычислять произошедшие изменения.
+
+Максимальное количество возвращаемых событий в рамках одного запроса равно 100. Если событий в ящике больше, их можно выгрузить постранично. Для этого в метод передается специальный ключ, служащий индикатором события, с которого нужно начинать очередную выгрузку (см. GetDocflowEventsRequest).
+
+Вся информация, относящаяся к данной цепочке событий (в частности, документы и подписи), по возможности помещаются в протобуфер (информацию о том, в каких случаях возвращаемая цепочка может не содержать бинарного представления документов см. в описании структуры Content).
+
+В тех ситуациях, когда для каких-то документов цепочки документооборота бинарное представление не было выдано (по причине большого размера), его всегда можно получить при помощи метода GetEntityContent.
+
+Для использования метода текущий пользователь должен иметь доступ ко всем документам организации.
+</descr>
+      </element><element name="TDiadocAPI.AcquireCounteragent"><short>Метод позволяет добавить организацию в список контрагентов организации myOrgId.</short>
+      </element><element name="TDiadocAPI.AcquireCounteragentResult"><short>Метод AcquireCounteragentResult позволяет получить идентификатор приглашенной организации.</short>
+      </element><element name="TDiadocAPI.BreakWithCounteragent"><short>Метод позволяет разорвать действующее отношение партнерства между организациями myOrgId и counteragentOrgId. Алгоритм выполнения запроса</short>
+      </element><element name="TDiadocAPI.GetCounteragents"><short>Метод возвращает список контрагентов организации myOrgId, находящихся в статусе counteragentStatus.</short>
+      </element><element name="TDiadocAPI.GetCounteragentCertificates"><short>В ответе содержится информация о сертификатах контрагента counteragentOrgId.</short>
+      </element>
+    <element name="TDiadocAPI.GetDocuments.boxId"><short>Идентификатор ящика, в котором осуществляется поиск документов</short>
+      </element><element name="TDiadocAPI.GetDocuments"><short>В теле ответа содержится список документов из ящика boxId, подходящих под определенный фильтр</short><descr>В теле ответа содержится список документов из ящика boxId, подходящих под определенный фильтр. Список выдается в виде сериализованной структуры данных DocumentList.
+</descr>
+      </element><element name="TDiadocAPI.GetDocuments.filterCategory"><short>статус, по которому требуется отфильтровать список документов</short>
+      </element><element name="TDiadocAPI.GetDocuments.ABoxId"><short>идентификатор ящика, в котором осуществляется поиск документов</short>
+      </element><element name="TDiadocAPI.GetDocuments.AFilterCategory"><short>статус, по которому требуется отфильтровать список документов</short>
+      </element>
+    <element name="TDiadocAPI.GetEntityContent"><short>Получить бинарное представление Entity</short>
+      </element><element name="TDiadocAPI.GetEntityContent.ABoxID"><short>boxId: идентификатор ящика</short>
+      </element><element name="TDiadocAPI.GetEntityContent.AmessageId"><short>messageId: идентификатор сообщения</short>
+      </element><element name="TDiadocAPI.GetEntityContent.AentityId"><short>entityId: идентификатор сущности</short>
+      </element>
+    <element name="TDiadocAPI.GetDocumentTypes"><short>Метод возвращает описание типов документов, доступных в ящике</short><descr>Тело ответа будет содержать структуру GetDocumentTypesResponse с описанием типов документов
+</descr>
+      </element><element name="TDiadocAPI.GetDocumentTypes.ABoxId"><short>boxId – идентификатор ящика</short>
+      </element>
+    <element name="TDiadocAPI.CanSendInvoice"><short>Метод позволяет узнать, был ли переданный сертификат зарегистрирован в ФНС в качестве сертификата, используемого для подписания электронных счетов-фактур, отправляемых участником ЭДО, которому принадлежит ящик boxId.</short><descr>То есть данный метод отвечает на вопрос, может ли указанный сертификат ЭП использоваться для подписания ЭСФ, отправляемых из ящика boxId.
+</descr>
+      </element><element name="TDiadocAPI.CanSendInvoice.ABoxId"><short>идентификатор ящика</short>
+      </element><element name="TDiadocAPI.CanSendInvoice.ACertBytes"><short>содержаться X.509 сертификат пользователя, сериализованный в DER.
+
+</short>
+      </element><element name="TDiadocAPI.GetMessage.AInjectEntityContent"><short>injectEntityContent: параметр, указывающий следует ли возвращать содержимое сущностей.</short><descr> Если передано значение true то содержимое сущностей будет добавлено к ответу. Будьте осторожны, если вам не требуется содержимое сущностей, следует передавать false, так как это существенно влияет на производительность (приблизительно в 2-3 раза). Если параметр не передан, будет установлено значение по умолчанию false.
+</descr>
+      </element><element name="TDiadocAPI.GetMessage.AOriginalSignature"><short>originalSignature: параметр, указывающий тип возвращаемой подписи (если присутствует, то возвращается оригинальная подпись</short><descr>Если параметр не передан, то возвращается подпись в формате CADES-T, в этом случае, в качестве родительской сущности будет указана оригинальная подпись).
+</descr>
+      </element><element name="TDiadocAPI.GetMessage.AEntityId"><short>entityId: идентификатор документа из сообщения (может отсутствовать, если указан, то возвращаются не все сущности, а только связанные с данным документом);</short>
+      </element><element name="TDiadocAPI.GetMessage.AmessageId"><short>messageId: идентификатор сообщения;</short>
+      </element><element name="TDiadocAPI.GetMessage.ABoxID"><short>boxId: идентификатор ящика;</short>
+      </element><element name="TDiadocAPI.GetMessage"><short>В теле ответа содержится сообщение (цепочка документооборота) с идентификатором messageId из ящика boxId, сериализованное в протобуфер Message.</short>
+      </element>
+    <element name="TDiadocAPI.GetExternalServiceAuthInfo"><short>Метод позволяет по ранее выданному ключу получить аутентификационную информацию о пользователе.</short>
+      </element><element name="TDiadocAPI.Delete"><short>Метод позволяет помечать документы как удаленные. Если параметр documentId не задан, то сообщение messageId удаляется целиком, и все документы в нем автоматически помечаются как удаленные. Когда из сообщения удаляется последний документ, само сообщение также помечается как удаленное.</short>
+      </element><element name="TDiadocAPI.Delete.ABoxId"><short>boxId - идентификатор ящика;</short>
+      </element><element name="TDiadocAPI.Delete.AMessageId"><short>messageId - идентификатор сообщения;</short>
+      </element><element name="TDiadocAPI.Delete.ADocumentId"><short>documentId - идентификатор документа в сообщении (может отсутствовать).</short>
+      </element><element name="TDiadocAPI.GenerateDocumentZip"><short>Метод позволяет сформировать zip-архив, содержащий документ и относящиеся к нему подписи, а также (опционально) все файлы документооборота по данному документу.</short>
+      </element><element name="TDiadocAPI.GenerateInvoiceDocumentReceiptXml"><short>В теле ответа содержится XML-файл с извещением о получении документа attachmentId из сообщения messageId в ящике boxId.</short>
+      </element>
+    <element name="TDiadocAPI.MoveDocuments"><short>Метод перемещает заданный список документов в заданное подразделение организации.</short><descr>Для использования этого метода текущий пользователь должен иметь доступ ко всем перемещаемым документам.
+</descr>
+      </element><element name="TDiadocAPI.GetForwardedEntityContent"><short>В теле ответа содержится бинарное представление сущности с идентификатором entityId, относящейся к пересланному в ящик boxId документу, который идентифицируется набором параметров fromBoxId, messageId, documentId, forwardEventId.</short>
+      </element>
+    <element name="TDiadocAPI.GenerateSignatureRejectionXml"><short>Метод генерирует xml файл отказа от подписи документа, либо отказа от предложения об аннулировании документа.</short><descr><p>В теле ответа содержится сформированный XML-файл отказа. Файл изготавливается в соответствии с XML-схемой. Имя файла передается в стандартном HTTP-заголовке Content-Disposition.</p><p>Для вызова этого метода текущий пользователь должен иметь доступ к исходному документу, в противном случае возвращается код ошибки 403 (Forbidden).</p>
+        </descr>
+      </element><element name="TDiadocAPI.GenerateSignatureRejectionXml.ABoxId"><short>boxId: идентификатор ящика;</short>
+      </element><element name="TDiadocAPI.GenerateSignatureRejectionXml.AMessageId"><short>messageId: идентификатор сообщения;</short>
+      </element><element name="TDiadocAPI.GenerateSignatureRejectionXml.AAttachmentId"><short>attachmentId: идентификатор документа, для которого требуется сформировать отказ в подписи, либо идентификатор сущности предложения об аннулировании, для которого требуется сформировать отказ.</short>
+      </element><element name="TDiadocAPI.GenerateSignatureRejectionXml.ASignatureRejectionInfo"><short>В теле запроса должны содержаться данные для изготовления файла отказа, в виде сериализованной структуры SignatureRejectionInfo.</short>
+      </element><element name="TDiadocAPI.Restore"><short>Метод позволяет восстанавливать документы из удаленных. Если параметр documentId не задан, то сообщение messageId восстанавливается целиком, и все документы в нем автоматически помечаются как неудаленные.</short><descr><p>Когда в удаленном сообщении восстанавливается хотя бы один документ, пометка «удален» снимается и с самого сообщения.</p><p>Для вызова этого метода текущий пользователь должен иметь доступ ко всем восстанавливаемым документам, в противном случае возвращается код ошибки 403 (Forbidden).</p>
+        </descr>
+      </element>
+    <element name="TDiadocAPI.GenerateRecipientTitleXml.ADocumentVersion"><short>версия документа</short>
+      </element><element name="TDiadocAPI.GenerateRecipientTitleXml.ABoxId"><short>идентификатор ящика</short>
+      </element><element name="TDiadocAPI.GenerateRecipientTitleXml.ASenderTitleMessageId"/>
+    <element name="TDiadocAPI.GetEmployee"><short>Возвращает информацию о сотруднике организации. Запрос доступен только администраторам организации.</short>
+      </element>
+    <element name="TDiadocAPI.GetSubscriptions"><short>Метод возвращает информацию о подписках сотрудника организации на почтовые уведомления. Запрос доступен только администраторам организации и пользователю, подписки которого запрашиваются.</short>
+      </element><element name="TDiadocAPI.UpdateSubscriptions"><short>Метод изменяет статус подписок сотрудника организации на конкретные почтовые уведомления</short><descr><p>Изменяет статус подписок сотрудника организации на конкретные почтовые уведомления. В запросе достаточно передать значения только для тех уведомлений, на которые требуется подписать пользователя и от которых необходимо отписать.</p><p>Метод возвращает подписки сотрудника после изменения.</p><p>Запрос доступен только администраторам организации и пользователю, подписки которого редактируются.</p>
+        </descr>
+      </element>
+    <element name="TDiadocAPI.GetExternalServiceAuthInfo.AKey"><short>key: строковый идентификатор, по которому запрашивается аутентификационная информация о пользователе</short>
+      </element>
+    <element name="TDiadocAPI.ParseUniversalTransferDocumentBuyerTitleXml" link="http://api-docs.diadoc.ru/ru/latest/http/utd/ParseUniversalTransferDocumentBuyerTitleXml.html"><short>Файл титула покупателя УПД изготавливается в соответствии с XML-схемой, которому должны удовлетворять XML-счета-фактуры, согласно приказу ФНС.</short>
+      </element>
+    <element name="TDiadocAPI.CreateEmployee" link="http://api-docs.diadoc.ru/ru/latest/http/CreateEmployee.html"><short>Добавляет сотрудника с указанными реквизитами в организацию. В случае, если пользователя с указанными реквизитами не существует в Диадоке, создает его. Отправляет пользователю уведомление по электронной почте.</short><descr><p>В ответе будет информация о созданном пользователе.</p><p>Запрос доступен только администраторам организации.</p>
+        </descr>
+      </element><element name="TDiadocAPI.CreateEmployee.ABoxId"><short>boxId – идентификатор ящика</short>
+      </element><element name="TDiadocAPI.CreateEmployee.AEmployeeToCreate"><short>Структура содержит информацию о создаваемом сотруднике организации</short>
+      </element>
+    <element name="TDiadocAPI.UpdateMyUser"><short>UpdateMyUser позволяет отредактировать свои ФИО и email</short><descr>Пользователь может изменить свои ФИО и email только самостоятельно. Другие пользователи, в т.ч. администраторы, не смогут отредактировать эти данные. Поведение одинаково для веб-интерфейса и для API.
+</descr>
+      </element>
+    <element name="TDiadocAPI.UpdateEmployee"><short>Изменяет данные сотрудника организации.</short><descr><p>В ответе будет информация о сотруднике после изменения.</p><p>Запрос доступен только администраторам организации.</p><p>boxId – идентификатор ящика</p><p>userId – идентификатор пользователя</p>
+        </descr>
+      </element><element name="TDiadocAPI.UpdateEmployee.ABoxId"><short>идентификатор ящика</short>
+      </element><element name="TDiadocAPI.UpdateEmployee.AUserId"><short>идентификатор пользователя</short>
+      </element><element name="TDiadocAPI.UpdateEmployee.AEmployeeToUpdate"><short>Структура содержит информацию о данных сотрудника, которые необходимо изменить.</short>
+      </element><element name="TDiadocAPI.DeleteEmployee" link="http://api-docs.diadoc.ru/ru/latest/http/DeleteEmployee.html"><short>Удаляет сотрудника организации. Если сотрудник уже был удален, то действий не выполняется, а запрос завершается успешно.</short><descr>Запрос доступен только администраторам организации.
+
+    boxId – идентификатор ящика
+    userId – идентификатор пользователя
+</descr>
+      </element><element name="TDiadocAPI.DeleteEmployee.ABoxId"><short>boxId – идентификатор ящика</short>
+      </element><element name="TDiadocAPI.DeleteEmployee.AUserId"><short>userId – идентификатор пользователя</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

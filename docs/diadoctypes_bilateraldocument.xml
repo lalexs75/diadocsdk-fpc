@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_BilateralDocument"><element name="TBilateralDocumentStatus"><short>Перечисление BilateralDocumentStatus задает возможные варианты состояний, в которых может находиться двусторонний документ (например, товарная накладная):</short>
+      </element><element name="TBilateralDocumentStatus.UnknownBilateralDocumentStatus"><short>UnknownBilateralDocumentStatus (неизвестное состояние документа, может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать состояние документа, переданное сервером),</short>
+      </element><element name="TBilateralDocumentStatus.OutboundWaitingForRecipientSignature"><short>OutboundWaitingForRecipientSignature (документ исходящий, ответная подпись, либо отказ от ее формирования еще не получены),</short>
+      </element><element name="TBilateralDocumentStatus.OutboundWithRecipientSignature"><short>OutboundWithRecipientSignature (документ исходящий, ответная подпись получена),</short>
+      </element><element name="TBilateralDocumentStatus.OutboundRecipientSignatureRequestRejected"><short>OutboundRecipientSignatureRequestRejected (документ исходящий, получен отказ от формирования ответной подписи),</short>
+      </element><element name="TBilateralDocumentStatus.OutboundWaitingForSenderSignature"><short>OutboundWaitingForSenderSignature (документ исходящий, документ не отправлен, поскольку не подписан отправителем),</short>
+      </element><element name="TBilateralDocumentStatus.OutboundInvalidSenderSignature"><short>OutboundInvalidSenderSignature (документ исходящий, документ не отправлен, поскольку подпись отправителя не является корректной),</short>
+      </element><element name="TBilateralDocumentStatus.InboundWaitingForRecipientSignature"><short>InboundWaitingForRecipientSignature (документ входящий, ответная подпись, либо отказ от ее формирования еще не отправлены),</short>
+      </element><element name="TBilateralDocumentStatus.InboundWithRecipientSignature"><short>InboundWithRecipientSignature (документ входящий, ответная подпись поставлена),</short>
+      </element><element name="TBilateralDocumentStatus.InboundRecipientSignatureRequestRejected"><short>InboundRecipientSignatureRequestRejected (документ входящий, отправлен отказ от формирования ответной подписи),</short>
+      </element><element name="TBilateralDocumentStatus.InboundInvalidRecipientSignature"><short>InboundInvalidRecipientSignature (документ входящий, документооборот не завершен, поскольку подпись получателя не является корректной),</short>
+      </element><element name="TBilateralDocumentStatus.InternalWaitingForRecipientSignature"><short>InternalWaitingForRecipientSignature (документ внутренний, ответная подпись, либо отказ от ее формирования еще не отправлены),</short>
+      </element><element name="TBilateralDocumentStatus.InternalWithRecipientSignature"><short>InternalWithRecipientSignature (документ внутренний, ответная подпись поставлена),</short>
+      </element><element name="TBilateralDocumentStatus.InternalRecipientSignatureRequestRejected"><short>InternalRecipientSignatureRequestRejected (документ внутренний, отправлен отказ от формирования ответной подписи),</short>
+      </element><element name="TBilateralDocumentStatus.InternalWaitingForSenderSignature"><short>InternalWaitingForSenderSignature (документ внутренний, документ не отправлен, поскольку не подписан отправителем),</short>
+      </element><element name="TBilateralDocumentStatus.InternalInvalidSenderSignature"><short>InternalInvalidSenderSignature (документ внутренний, документ не отправлен, поскольку подпись отправителя не является корректной),</short>
+      </element><element name="TBilateralDocumentStatus.InternalInvalidRecipientSignature"><short>InternalInvalidRecipientSignature (документ внутренний, документооборот не завершен, поскольку подпись получателя не является корректной).</short>
+      </element><element name="TBilateralDocumentMetadata"><short>Структура BilateralDocumentMetadata содержит дополнительные атрибуты документа (в структуре Document):</short>
+      </element><element name="TBilateralDocumentMetadata.DocumentStatus"><short>DocumentStatus определяет состояние, в котором находится данный документ; принимает одно из значений перечисления BilateralDocumentStatus.</short>
+      </element><element name="TSupplementaryAgreementMetadata"><short>Структура SupplementaryAgreementMetadata содержит дополнительные атрибуты документа (в структуре Document), специфичные для дополнительного соглашения к договору:</short>
+      </element><element name="TSupplementaryAgreementMetadata.DocumentStatus"><short>DocumentStatus определяет состояние, в котором находится данный документ; принимает одно из значений перечисления BilateralDocumentStatus.</short>
+      </element><element name="TSupplementaryAgreementMetadata.Total"><short>Total - цена дополнительного соглашения к договору.</short>
+      </element><element name="TSupplementaryAgreementMetadata.ContractType"><short>ContractType - тип договора.</short>
+      </element><element name="TSupplementaryAgreementMetadata.ContractNumber"><short>ContractNumber - номер договора.</short>
+      </element><element name="TSupplementaryAgreementMetadata.ContractDate"><short>ContractDate - дата договора.</short>
+      </element><element name="TContractMetadata"><short>Структура ContractMetadata содержит дополнительные атрибуты документа (в структуре Document), специфичные для договоров:</short>
+      </element><element name="TContractMetadata.DocumentStatus"><short>DocumentStatus определяет состояние, в котором находится данный документ; принимает одно из значений перечисления BilateralDocumentStatus.</short>
+      </element><element name="TContractMetadata.ContractType"><short>ContractType - тип договора.</short>
+      </element><element name="TContractMetadata.ContractPrice"><short>ContractPrice - цена, указанная в договоре.</short>
+      </element><element name="TPriceListMetadata"><short>Структура PriceListMetadata содержит дополнительные атрибуты документа (в структуре Document) специфичные для ценовых листов:</short>
+      </element><element name="TPriceListMetadata.DocumentStatus"><short>DocumentStatus определяет состояние, в котором находится данный ценовой лист; принимает одно из значений перечисления BilateralDocumentStatus.</short>
+      </element><element name="TPriceListMetadata.PriceListEffectiveDate"><short>PriceListEffectiveDate - дата вступления в силу ценового листа в формате ДД.ММ.ГГГГ.</short>
+      </element><element name="TPriceListMetadata.ContractDocumentDate"><short>ContractDocumentDate - дата составления договора, к которому относится ценовой лист, в формате ДД.ММ.ГГГГ.</short>
+      </element><element name="TPriceListMetadata.ContractDocumentNumber"><short>ContractDocumentNumber - номер договора, к которому относится ценовой лист.</short>
+      </element><element name="TBasicDocumentMetadata"><short>Структура BasicDocumentMetadata содержит дополнительные атрибуты документа (в структуре Document) специфичные для двусторонних первичных бухгалтерских документов (например, для товарных накладных ТОРГ-12):</short>
+      </element><element name="TBasicDocumentMetadata.DocumentStatus"><short>DocumentStatus определяет состояние, в котором находится данный первичный документ; принимает одно из значений перечисления BilateralDocumentStatus</short>
+      </element><element name="TBasicDocumentMetadata.Total"><short>Total - сумма первичного документа.</short>
+      </element><element name="TBasicDocumentMetadata.Vat"><short>Vat - сумма НДС первичного документа; если поле не заполнено, это значит что первичный документ в Диадоке был создан с отметкой «без НДС».</short>
+      </element><element name="TBasicDocumentMetadata.Grounds"><short>Grounds - основания для первичного документа; представляются в виде неформализованной строки текста, например, «Договор №1234, Заказ №321».</short>
+      </element><element name="TTrustConnectionRequestMetadata"><short>Структура TrustConnectionRequestMetadata содержит дополнительные атрибуты документа (в структуре Document) специфичные для документов типа TrustConnectionRequest:</short>
+      </element><element name="TTrustConnectionRequestMetadata.TrustConnectionRequestStatus"><short>TrustConnectionRequestStatus определяет состояние, в котором находится данный документ; принимает одно из значений перечисления BilateralDocumentStatus.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

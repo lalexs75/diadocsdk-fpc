@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_ReceiptStatus"><element name="TReceiptStatus"><short>Обобщенный статус извещения о получении (ИОП).</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

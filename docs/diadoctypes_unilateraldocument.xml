@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_UnilateralDocument"><element name="TUnilateralDocumentStatus"><short>Перечисление UnilateralDocumentStatus задает возможные варианты состояний, в которых может находиться односторонний документ (например, счет на оплату):</short>
+      </element><element name="TUnilateralDocumentStatus.UnknownUnilateralDocumentStatus"><short>UnknownUnilateralDocumentStatus (неизвестное состояние; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать состояние документа, переданное сервером),</short>
+      </element><element name="TUnilateralDocumentStatus.Outbound"><short>Outbound (документ исходящий),</short>
+      </element><element name="TUnilateralDocumentStatus.OutboundWaitingForSenderSignature"><short>OutboundWaitingForSenderSignature (документ исходящий, документ не отправлен, поскольку не подписан отправителем),</short>
+      </element><element name="TUnilateralDocumentStatus.OutboundInvalidSenderSignature"><short>OutboundInvalidSenderSignature (документ исходящий, документ не отправлен, поскольку подпись отправителя не является корректной),</short>
+      </element><element name="TUnilateralDocumentStatus.Inbound"><short>Inbound (документ входящий).</short>
+      </element><element name="TUnilateralDocumentStatus.Internal"><short>Internal (документ внутренний).</short>
+      </element><element name="TUnilateralDocumentStatus.InternalWaitingForSenderSignature"><short>InternalWaitingForSenderSignature (документ внутренний, документ не отправлен, поскольку не подписан отправителем),</short>
+      </element><element name="TUnilateralDocumentStatus.InternalInvalidSenderSignature"><short>InternalInvalidSenderSignature (документ внутренний, документ не отправлен, поскольку подпись отправителя не является корректной),</short>
+      </element><element name="TServiceDetailsMetadata"><short>Структура ServiceDetailsMetadata содержит дополнительные атрибуты документа (в структуре Document) специфичные для счетов на оплату:</short>
+      </element><element name="TServiceDetailsMetadata.DocumentStatus"><short>DocumentStatus определяет состояние, в котором находится данный документ; принимает одно из значений перечисления UnilateralDocumentStatus.</short>
+      </element><element name="TProformaInvoiceMetadata"><short>Структура ProformaInvoiceMetadata содержит дополнительные атрибуты документа (в структуре Document) специфичные для счетов на оплату:</short>
+      </element><element name="TProformaInvoiceMetadata.DocumentStatus"><short>DocumentStatus определяет состояние, в котором находится данный документ; принимает одно из значений перечисления UnilateralDocumentStatus.</short>
+      </element><element name="TProformaInvoiceMetadata.Total"><short>Total - сумма счета.</short>
+      </element><element name="TProformaInvoiceMetadata.Vat"><short>Vat - сумма НДС счета; если поле не заполнено, это значит что счет был создан с отметкой «без НДС».</short>
+      </element><element name="TProformaInvoiceMetadata.Grounds"><short>Grounds - основания для счета; представляются в виде неформализованной строки текста, например, «Договор №1234, Заказ №321».</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

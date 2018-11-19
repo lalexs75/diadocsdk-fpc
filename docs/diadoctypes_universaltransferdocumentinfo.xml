@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_UniversalTransferDocumentInfo"><element name="TExtendedInvoiceItem.Product"><short>наименование товара</short>
+      </element><element name="TExtendedInvoiceItem.Unt"><short>единицы измерения товара (код)</short>
+      </element><element name="TExtendedInvoiceItem.UnitName"><short>наименование единицы измерения товара. Пользователь заполняет, если ОКЕИ_Тов=’0000’</short>
+      </element><element name="TExtendedInvoiceItem.Quantity"><short>количество единиц товара</short>
+      </element><element name="TExtendedInvoiceItem.Price"><short>цена за единицу товара</short>
+      </element><element name="TExtendedInvoiceItem.Excise"><short>акциз </short>
+      </element><element name="TExtendedInvoiceItem.TaxRate"><short>ставка налога</short>
+      </element><element name="TExtendedInvoiceItem.SubtotalWithVatExcluded"><short>сумма без учета налога</short>
+      </element><element name="TExtendedInvoiceItem.Vat"><short>сумма налога</short>
+      </element><element name="TExtendedInvoiceItem.Subtotal"><short>сумма всего</short>
+      </element><element name="TExtendedInvoiceItem.CustomsDeclarations"><short>номера таможенных деклараций</short>
+      </element><element name="TExtendedInvoiceItem.ItemMark"><short>Признак товар-работа-услуга</short>
+      </element><element name="TExtendedInvoiceItem.AdditionalProperty"><short>Дополнительная информация о признаке</short>
+      </element><element name="TExtendedInvoiceItem.ItemVendorCode"><short>Характеристика/код/артикул/сорт товара</short>
+      </element><element name="TExtendedInvoiceItem.ItemToRelease"><short>Количество надлежит отпустить</short>
+      </element><element name="TExtendedInvoiceItem.ItemAccountDebit"><short>Корреспондирующие счета: дебет</short>
+      </element><element name="TExtendedInvoiceItem.ItemAccountCredit"><short>Корреспондирующие счета: кредит</short>
+      </element><element name="TExtendedInvoiceItem.AdditionalInfo"><short>информационное поле документа</short>
+      </element>
+    <element name="TUniversalTransferDocumentSellerTitleInfo"><short>Структура данных UniversalTransferDocumentSellerTitleInfo представляет исходные данные для формирования файлов в XML-формате при помощи метода GenerateUniversalTransferDocumentXmlForSeller</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.FunctionType"><short>Функция документа</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.DocumentName"><short>Наименование первичного документа, определенное организацией</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.DocumentDate"><short>дата УПД</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.DocumentNumber"><short>номер УПД</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.Seller"><short>продавец</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.Buyer"><short>покупатель</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.Shipper"><short>грузоотправитель</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.Consignee"><short>грузополучатель</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.Signers"><short>подписант</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.PaymentDocuments"><short>платежно-расчетные документы</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.InvoiceTable"><short>Сведения таблицы счета-фактуры</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.Currency"><short>валюта (код)</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.CurrencyRate"><short>Курс валюты</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.RevisionDate"><short>дата ИСФ (обязательно при формировании UniversalTransferDocumentSellerTitleRevision)</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.RevisionNumber"><short>номер ИСФ (обязательно при формировании UniversalTransferDocumentSellerTitleRevision)</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.AdditionalInfoId"><short>информационное поле документа</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.TransferInfo"><short>Сведения о передаче (сдаче)</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.DocumentCreator"><short>Составитель файла обмена счета-фактуры (информации продавца)</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.DocumentCreatorBase"><short>Основание, по которому экономический субъект является составителем файла обмена счета-фактуры</short>
+      </element><element name="TUniversalTransferDocumentSellerTitleInfo.GovernmentContractInfo"><short>ИдГосКон</short>
+      </element><element name="TFunctionType"><short>FunctionType</short>
+      </element><element name="TFunctionType.Invoice"><short>СЧФ</short>
+      </element><element name="TFunctionType.Basic"><short>ДОП</short>
+      </element><element name="TFunctionType.InvoiceAndBasic"><short>СЧФДОП</short>
+      </element><element name="TShipper"><short>грузоотправитель</short>
+      </element><element name="TShipper.SameAsSeller"><short>совпадает с продавцом</short>
+      </element><element name="TShipper.OrgInfo"><short>реквизиты организации</short>
+      </element><element name="TInvoiceTable"><short>Сведения таблицы счета-фактуры</short>
+      </element><element name="TInvoiceTable.Items"><short>информация о товарах</short>
+      </element><element name="TInvoiceTable.TotalWithVatExcluded"><short>Сумма без учета налога</short>
+      </element><element name="TInvoiceTable.Vat"><short>Сумма налога</short>
+      </element><element name="TInvoiceTable.Total"><short>Сумма всего</short>
+      </element><element name="TInvoiceTable.TotalNet"><short>Нетто всего</short>
+      </element><element name="TUniversalTransferDocumentBuyerTitleInfo"><short>Структура данных UniversalTransferDocumentBuyerTitleInfo представляет исходные данные для формирования файлов в XML-формате при помощи метода GenerateUniversalTransferDocumentXmlForBuyer в формате УПД и УКД</short><descr>При заполнении структуры UniversalTransferDocumentBuyerTitleInfo нужно иметь в виду:
+<li>Реквизиты подписанта счета-фактуры UniversalTransferDocumentBuyerTitleInfo.Signers заполняются в виде структуры данных ExtendedSigner.</li><li>Даты документов должны указываться в формате ДД.ММ.ГГГГ.</li><li>Информация о работнике покупателя представляется в виде структуры Employee.</li><li>Информация об ином лице, принявшем товар, представляется в виде структуры OtherIssuer.</li><li>Сведения информационного поля о факте хозяйственной жизни представляется в виде структуры AdditionalInfoId.</li><li>Для формата УКД не заполняются поля OperationCode, OtherIssuer и Employee</li>
+        </descr>
+      </element><element name="TUniversalTransferDocumentBuyerTitleInfo.DocumentCreator"><short>Наименование экономического субъекта - составителя файла обмена информации покупателя</short>
+      </element><element name="TUniversalTransferDocumentBuyerTitleInfo.DocumentCreatorBase"><short>Основание, по которому экономический субъект является составителем файла обмена информации покупателя</short>
+      </element><element name="TUniversalTransferDocumentBuyerTitleInfo.OperationCode"><short>ВидОперации</short>
+      </element><element name="TUniversalTransferDocumentBuyerTitleInfo.OperationContent"><short>Содержание операции</short>
+      </element><element name="TUniversalTransferDocumentBuyerTitleInfo.AcceptanceDate"><short>ата принятия товаров (результатов выполненных работ), имущественных прав (подтверждения факта оказания услуг)</short>
+      </element><element name="TUniversalTransferDocumentBuyerTitleInfo.Employee"><short>работник организации покупателя</short>
+      </element><element name="TUniversalTransferDocumentBuyerTitleInfo.OtherIssuer"><short>Иное Лицо</short>
+      </element><element name="TUniversalTransferDocumentBuyerTitleInfo.AdditionalInfoId"><short>ИнфПолФХЖ4</short>
+      </element><element name="TUniversalTransferDocumentBuyerTitleInfo.Signers"><short>Подписант</short>
+      </element><element name="TTransferInfo.OperationInfo"><short>Содержание операции</short>
+      </element><element name="TTransferInfo.OperationType"><short>Вид операции</short>
+      </element><element name="TTransferInfo.TransferDate"><short>Дата отгрузки</short>
+      </element><element name="TTransferInfo.TransferBase"><short>Основание отгрузки</short>
+      </element><element name="TTransferInfo.TransferTextInfo"><short>Сведения о транспортировке и грузе</short>
+      </element><element name="TTransferInfo.Waybill"><short>Транспортная накладная</short>
+      </element><element name="TTransferInfo.Carrier"><short>Перевозчик</short>
+      </element><element name="TTransferInfo.Employee"><short>Работник организации продавца</short>
+      </element><element name="TTransferInfo.OtherIssuer"><short>Иное лицо</short>
+      </element><element name="TTransferInfo.CreatedThingTransferDate"><short>Дата передачи вещи, изготовленной по договору</short>
+      </element><element name="TTransferInfo.CreatedThingInfo"><short>Сведения о передаче, изготовленной по договору</short>
+      </element><element name="TTransferInfo.AdditionalInfoId"><short>Информационное поле документа </short>
+      </element><element name="TTransferBase.BaseDocumentName"><short>Наименование документа-основания отгрузки</short>
+      </element><element name="TTransferBase.BaseDocumentNumber"><short>Номер документа-основания отгрузки</short>
+      </element><element name="TTransferBase.BaseDocumentDate"><short>Дата документа-основания отгрузки</short>
+      </element><element name="TTransferBase.BaseDocumentInfo"><short>Дополнительные сведения документа-основания отгрузки</short>
+      </element><element name="TWaybill.TransferDocumentNumber"><short>Номер транспортной накладной</short>
+      </element><element name="TWaybill.TransferDocumentDate"><short>Дата транспортной накладной</short>
+      </element><element name="TEmployee.EmployeePosition"><short>Должность</short>
+      </element><element name="TEmployee.EmployeeInfo"><short>Иные сведения, идентифицирующие физическое лицо</short>
+      </element><element name="TEmployee.EmployeeBase"><short>Основание полномочий представителя</short>
+      </element><element name="TEmployee.TransferSurname"><short>Фамилия</short>
+      </element><element name="TEmployee.TransferFirstName"><short>Имя</short>
+      </element><element name="TEmployee.TransferPatronymic"><short>Отчество</short>
+      </element><element name="TOtherIssuer.TransferEmployeePosition"><short>Должность представителя организации</short>
+      </element><element name="TOtherIssuer.TransferEmployeeInfo"><short>Иные сведения, идентифицирующие физическое лицо</short>
+      </element><element name="TOtherIssuer.TransferOrganizationName"><short>Наименование организации, которой доверена передача</short>
+      </element><element name="TOtherIssuer.TransferOrganizationBase"><short>Основание, по которому организации доверена передача</short>
+      </element><element name="TOtherIssuer.TransferEmployeeBase"><short>Основание полномочий представителя</short>
+      </element><element name="TOtherIssuer.TransferSurname"><short>Фамилия</short>
+      </element><element name="TOtherIssuer.TransferFirstName"><short>Имя</short>
+      </element><element name="TOtherIssuer.TransferPatronymic"><short>Отчество</short>
+      </element>
+    <element name="TExtendedInvoiceItems"><short>информация о товарах</short>
+      </element><element name="TExtendedInvoiceItem"><short>информация о товаре</short>
+      </element>
+    <element name="TEmployee"><short>Сотрудник организации</short>
+      </element>
+    <element name="TItemMark"><short>Тип товара/услуги в УПД</short>
+      </element><element name="TItemMark.NotSpecified"><short>не указано</short>
+      </element><element name="TItemMark.Prop"><short>имущество</short>
+      </element><element name="TItemMark.Job"><short>работа</short>
+      </element><element name="TItemMark.Service"><short>услуга</short>
+      </element><element name="TItemMark.PropertyRights"><short>имущественные права</short>
+      </element><element name="TItemMark.Other"><short>иное</short>
+      </element><element name="TExtendedInvoiceCorrectionItem.Product"><short>наименование товара // НаимТов</short>
+      </element><element name="TExtendedInvoiceCorrectionItem.OriginalValues"><short>значения до изменения</short>
+      </element><element name="TExtendedInvoiceCorrectionItem.CorrectedValues"><short>значения после изменения</short>
+      </element><element name="TExtendedInvoiceCorrectionItem.AmountsInc"><short>суммы к увеличению</short>
+      </element><element name="TExtendedInvoiceCorrectionItem.AmountsDec"><short>суммы к уменьшению</short>
+      </element><element name="TExtendedInvoiceCorrectionItem.ItemAccountDebit"><short>Корреспондирующие счета: дебет // КорСчДебет</short>
+      </element><element name="TExtendedInvoiceCorrectionItem.ItemAccountCredit"><short>Корреспондирующие счета: кредит // КорСчКредит</short>
+      </element><element name="TExtendedInvoiceCorrectionItem.AdditionalInfo"><short>информационное поле документа // ИнфПолФХЖ2</short>
+      </element><element name="TInvoiceCorrectionTable"><short>ведения таблицы корректировочного счета-фактуры // ТаблКСчФ</short>
+      </element><element name="TInvoiceCorrectionTable.Items"><short>информация о товарах // СведТов</short>
+      </element><element name="TInvoiceCorrectionTable.TotalsInc"><short>суммы к увеличению // ВсегоУвел</short>
+      </element><element name="TInvoiceCorrectionTable.TotalsDec"><short>суммы к уменьшению // ВсегоУм</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

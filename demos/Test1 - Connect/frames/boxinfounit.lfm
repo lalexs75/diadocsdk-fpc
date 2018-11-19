@@ -1,0 +1,124 @@
+object BoxInfoFrame: TBoxInfoFrame
+  Left = 0
+  Height = 240
+  Top = 0
+  Width = 320
+  ClientHeight = 240
+  ClientWidth = 320
+  TabOrder = 0
+  DesignLeft = 813
+  DesignTop = 436
+  object Label1: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideBottom.Control = edtBoxID
+    AnchorSideBottom.Side = asrBottom
+    Left = 6
+    Height = 15
+    Top = 14
+    Width = 30
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 6
+    Caption = 'BoxID'
+    ParentColor = False
+  end
+  object edtBoxID: TEdit
+    AnchorSideLeft.Control = Label1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 42
+    Height = 23
+    Top = 6
+    Width = 272
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 0
+    Text = 'edtBoxID'
+  end
+  object edtTitle: TEdit
+    AnchorSideLeft.Control = Label1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = edtBoxID
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 42
+    Height = 23
+    Top = 35
+    Width = 272
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 1
+    Text = 'edtTitle'
+  end
+  object Label2: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideBottom.Control = edtTitle
+    AnchorSideBottom.Side = asrBottom
+    Left = 6
+    Height = 15
+    Top = 43
+    Width = 23
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 6
+    Caption = 'Title'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideBottom.Control = edtInvoiceFormatVersion
+    AnchorSideBottom.Side = asrBottom
+    Left = 6
+    Height = 15
+    Top = 72
+    Width = 118
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 6
+    Caption = 'Invoice format version'
+    ParentColor = False
+  end
+  object edtInvoiceFormatVersion: TEdit
+    AnchorSideLeft.Control = Label3
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = edtTitle
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 130
+    Height = 23
+    Top = 64
+    Width = 184
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 2
+  end
+  object chEncryptedDocumentsAllowed: TCheckBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = edtInvoiceFormatVersion
+    AnchorSideTop.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 93
+    Width = 180
+    BorderSpacing.Around = 6
+    Caption = 'Encrypted documents allowed'
+    TabOrder = 3
+  end
+  object GroupBox1: TGroupBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = chEncryptedDocumentsAllowed
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 122
+    Top = 118
+    Width = 320
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = 'Organization'
+    TabOrder = 4
+  end
+end

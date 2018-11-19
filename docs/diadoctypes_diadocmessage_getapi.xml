@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_DiadocMessage_GetApi"><element name="TMessage"><short>Структура данных Message представляет одно сообщение или черновик в Диадоке:</short>
+      </element><element name="TMessage.MessageId"><short>MessageId - уникальный идентификатор сообщения или черновика.</short>
+      </element><element name="TMessage.TimestampTicks"><short>TimestampTicks - метка времени создания сообщения.</short><descr>TimestampTicks - метка времени создания сообщения.
+</descr>
+      </element><element name="TMessage.LastPatchTimestampTicks"><short>LastPatchTimestampTicks - метка времени последнего патча (дополнения), примененного к данному сообщению.</short>
+      </element><element name="TMessage.FromBoxId"><short>FromBoxId - идентификатор ящика отправителя сообщения.</short>
+      </element><element name="TMessage.ToBoxId"><short>ToBoxId - идентификатор ящика получателя сообщения. В случае если данное сообщение является черновиком, данное поле может быть не заполнено.</short>
+      </element><element name="TMessage.FromTitle"><short>FromTitle - человекочитаемое имя ящика отправителя сообщения.</short>
+      </element><element name="TMessage.ToTitle"><short>ToTitle - человекочитаемое имя ящика получателя сообщения. В случае если данное сообщение является черновиком, данное поле может быть не заполнено.</short>
+      </element><element name="TMessage.Entities"><short>Entities - список сущностей, составляющих данное сообщение (включая сущности из дополнений к нему). Каждая сущность представлена структурой типа Entity.</short>
+      </element><element name="TEntity"><short>Структура данных Entity представляет одну сущность, входящую в сообщение или в дополнение к сообщению</short>
+      </element><element name="TEntity.EntityType"><short>EntityType определяет тип сущности</short><descr>возможные варианты:
+<li>Attachment (файл-вложение в сообщении)</li><li>Signature (ЭП под вложением)</li>
+        </descr>
+      </element><element name="TMessage.IsDraft"><short>IsDraft - флаг, показывающий, является ли данное сообщение черновиком</short>
+      </element><element name="TMessage.DraftIsLocked"><short>DraftIsLocked - флаг, показывающий, что данный черновик заблокирован, то есть в него нельзя добавлять, или удалять из него документы</short><descr>Такой черновик можно только либо отправить, превратив в полноценное сообщение, либо удалить. Данное поле заполняется только в структурах Message, представляющих черновики.
+</descr>
+      </element><element name="TMessage.DraftIsRecycled"><short>DraftIsRecycled - флаг, показывающий, что данный черновик утилизирован, то есть он был либо удален, либо на его основе было создано полноценное сообщение и отправлено получателю</short><descr>В последнем случае у этого черновика также заполнено поле DraftIsTransformedToMessageId, а у соответствующего сообщения заполнено поле CreatedFromDraftId. Поле DraftIsRecycled заполняется только в структурах Message, представляющих черновики.
+</descr>
+      </element><element name="TMessage.CreatedFromDraftId"><short>CreatedFromDraftId - идентификатор сообщения-черновика, на основе которого было создано данное сообщение.</short><descr>Данное поле заполняется только у тех сообщений, которые формируются на основе черновиков.
+</descr>
+      </element><element name="TMessage.DraftIsTransformedToMessageIdList"><short>DraftIsTransformedToMessageIdList - идентификатор сообщения, которое было создано на основе данного черновика. Данное поле заполняется только в структурах Message, представляющих черновики.</short>
+      </element><element name="TMessage.IsDeleted"><short>IsDeleted - флаг, показывающий, было ли удалено данное сообщение.</short>
+      </element><element name="TMessage.IsTest"><short>IsTest - флаг, показывающий, что данное сообщение является тестовым и не имеет юридической силы.</short>
+      </element><element name="TMessage.IsInternal"><short>IsInternal - флаг, показывающий, что данное сообщение является внутренним.</short>
+      </element><element name="TMessage.IsProxified"><short>IsProxified - флаг, показывающий отправлен ли документ через промежуточного получателя.</short>
+      </element><element name="TMessage.ProxyBoxId"><short>ProxyBoxId - идентификатор ящика, промежуточного получателя</short><descr>Если указан ящик промежуточного получателя, то документ доставится конечному получателя только после того, как промежуточный получатель поставит подпись под документом. Если промежуточный получатель отклонит документ, то в ящик конечного получателя он не будет доставлен.
+</descr>
+      </element><element name="TMessage.ProxyTitle"><short>ProxyTitle - название организации промежуточного получателя</short>
+      </element><element name="TMessage.PacketIsLocked"><short>PacketIsLocked - признак закрытого пакета</short><descr>В таком пакете операция применяется ко всем документам сразу. Например, при подписании одного документа, подписываются сразу все.
+</descr>
+      </element><element name="TBoxEvent"><short>Структура данных BoxEvent представляет одно событие в ящике Диадока</short>
+      </element><element name="TBoxEvent.EventId"><short>EventId - уникальный идентификатор события</short>
+      </element><element name="TBoxEvent.Message"><short>Message - структура типа Message, содержащая данные о событии, соответствующем появлению в ящике нового сообщения или черновика</short>
+      </element><element name="TBoxEvent.Patch"><short>Patch - структура типа MessagePatch, содержащая данные о событии, соответствующем появлению дополнений к уже существующему в ящике сообщению или черновику</short>
+      </element><element name="TEntity.EntityId"><short>EntityId - уникальный идентификатор сущности</short>
+      </element><element name="TEntity.ParentEntityId"><short>ParentEntityId - идентификатор родительской сущности. Например, для сущности Signature это будет идентификатор соответствующей сущности Attachment</short>
+      </element><element name="TEntity.Content"><short>Content - содержимое сущности (подробнее см. описание структуры Content)</short><descr><li>Поле Content.Size определяет размер содержимого в байтах,</li><li>Поле Content.Data, если присутствует, содержит собственно данные. Этот массив байтов следует интерпретировать в зависимости от типа сущности EntityType и типа вложения AttachmentType:</li><li>Содержимое сущности типа Signature представляет собой ЭП в формате CMS SignedData в DER-кодировке,</li><li>Для сущностей типа Attachment/Nonformalized, Attachment/ProformaInvoice, Attachment/Torg12, Attachment/AcceptanceCertificate, Attachment/StructuredData, Attachment/PriceList - это просто двоичное содержимое исходного файла,</li><li>Сущности типа Attachment с типами вложений Invoice, InvoiceRevision, InvoiceCorrection, InvoiceCorrectionRevision, InvoiceReceipt, InvoiceConfirmation, InvoiceCorrectionRequest представляют собой XML-файлы, которыми продавец и покупатель обмениваются в ходе выставления/получения электронных счетов-фактур согласно порядку, утвержденному Минфином России,</li><li>Сущности типа Attachment с типами вложений XmlTorg12, XmlTorg12BuyerTitle, XmlAcceptanceCertificate, XmlAcceptanceCertificateBuyerTitle представляют собой XML-файлы накладных и актов в формате, утвержденном ФНС России,</li><li>Содержимое сущности типа Attachment/TrustConnectionRequest представляет собой XML-файл в формате TrustConnectionRequestAttachment,</li><li>Содержимое сущности типа Attachment/RevocationRequest представляет собой XML-файл (формат файла),</li><li>Содержимое сущности типа Attachment/XmlSignatureRejection представляет собой XML-файл (формат файла),</li><li>Содержимое сущности типа Attachment/RoamingNotification представляет собой сериализованную в протобуфер структуру RoamingNotification,</li><li>Для сущностей типа Attachment и типов вложений AttachmentComment, SignatureRequestRejection, DeliveryFailureNotification, Resolution, ResolutionRequest, ResolutionRequestDenial, ResolutionRouteAssignment, ResolutionRouteRemoval массив байтов Content.Data следует интерпретировать как строку в кодировке UTF-8,</li><li>Наконец, у сущности типа Attachment/SignatureVerificationReport массив байтов Content.Data представляет собой сериализованную в протобуфер структуру SignatureVerificationResult.</li>
+        </descr>
+      </element><element name="TEntity.AttachmentType"><short>AttachmentType определяет тип вложения (имеет смысл только для сущностей типа Attachment),</short><descr>возможные варианты:&lt;
+<li>UnknownAttachmentType (неизвестный тип документа; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать тип документа, переданный сервером),</li><li>Nonformalized (неформализованный документ),</li><li>Invoice (счет-фактура),</li><li>InvoiceRevision (исправление счета-фактуры),</li><li>InvoiceCorrection (корректировочный счет-фактура),</li><li>InvoiceCorrectionRevision (исправление корректировочного счета-фактуры),</li><li>InvoiceReceipt (извещение о получении счета-фактуры, подтверждения оператора электронного документооборота или уведомления об уточнении счета-фактуры),</li><li>InvoiceConfirmation (подтверждение оператора электронного документооборота),</li><li>InvoiceCorrectionRequest (уведомление об уточнении счета-фактуры),</li><li>AttachmentComment (текстовый комментарий к другой сущности-вложению),</li><li>DeliveryFailureNotification (уведомление о невозможности доставки сообщения),</li><li>SignatureRequestRejection (отказ в формировании запрошенной подписи),</li><li>SignatureVerificationReport (протокол проверки подписи, сформированный Диадоком),</li><li>TrustConnectionRequest (запрос на инициацию канала обмена документами через Диадок),</li><li>ProformaInvoice (счет на оплату),</li><li>Torg12 (товарная накладная ТОРГ-12),</li><li>AcceptanceCertificate (акт о выполнении работ / оказании услуг),</li><li>XmlTorg12 (товарная накладная ТОРГ-12 в XML-формате, титул продавца),</li><li>XmlTorg12BuyerTitle (товарная накладная ТОРГ-12 в XML-формате, титул покупателя),</li><li>XmlAcceptanceCertificate (акт о выполнении работ / оказании услуг в XML-формате, титул исполнителя),</li><li>XmlAcceptanceCertificateBuyerTitle (акт о выполнении работ / оказании услуг в XML-формате, титул заказчика),</li><li>StructuredData (произвольный файл со структурированными данными, описывающими тот или иной документ, представленный в виде печатной формы),</li><li>Resolution (информация о статусе согласования документа),</li><li>ResolutionRequest (запрос согласования документа),</li><li>ResolutionRequestDenial (отказ в запросе подписи документа),</li><li>PriceList (ценовой лист),</li><li>PriceListAgreement (протокол согласования цены),</li><li>CertificateRegistry (реестр сертификатов),</li><li>ReconciliationAct (акт сверки),</li><li>Contract (договор),</li><li>Torg13 (накладная ТОРГ-13),</li><li>ServiceDetails (детализация),</li><li>Receipt (извещение о получении),</li><li>XmlSignatureRejection (формализованный отказ в подписи),</li><li>RevocationRequest (предложение об аннулировании).</li><li>RoamingNotification (роуминговая квитанция).</li><li>SupplementaryAgreement (дополнительное соглашение к договору).</li><li>CustomData (произвольные данные к документу).</li><li>MoveDocument (информация о перемещении документа в подразделение).</li><li>ResolutionRouteAssignment (информация о запуске документа по маршруту согласования).</li><li>ResolutionRouteRemoval (информация о снятии документа с маршрута согласования).</li><li>Cancellation (информация об отмене сущности, которая указана родительской по отношению к данной).</li><li>Edition (информация о редактировании контента документа, который указан родительским по отношению к данной сущности).</li>
+        </descr>
+      </element><element name="TEntity.FileName"><short>FileName - для сущности типа Attachment это исходное имя файла. Для остальных типов сущностей это поле не заполняется</short>
+      </element><element name="TEntity.NeedRecipientSignature"><short>NeedRecipientSignature - флаг, обозначающий запрос подписи получателя под данной сущностью; имеет смысл только для сущностей типа Attachment с типом вложения Nonformalized</short>
+      </element><element name="TEntity.SignerBoxId"><short>SignerBoxId - для сущности типа Signature это идентификатор ящика автора данной подписи. Для остальных типов сущностей это поле не заполняется</short>
+      </element><element name="TEntity.NotDeliveredEventId"><short>NotDeliveredEventId - это идентификатор сообщения или патча, который не удалось доставить (например, из-за некорректности одной или нескольких подписей в нем). Получить недоставленный кусок сообщения можно при помощи метода GetEvent, передав ему в качестве параметра eventId значение NotDeliveredEventId. Данное поле заполняется только у сущности типа Attachment с типом вложения DeliveryFailureNotification.</short>
+      </element><element name="TEntity.DocumentInfo"><short>DocumentInfo - для сущности типа Attachment содержит расширенную информацию о документе, представляемом данной сущностью, в виде структуры данных Document. </short><descr>Заполняется только у сущностей типа Attachment/Nonformalized, Attachment/Invoice, Attachment/InvoiceRevision, Attachment/InvoiceCorrection, Attachment/InvoiceCorrectionRevision, Attachment/TrustConnectionRequest, Attachment/ProformaInvoice, Attachment/Torg12, Attachment/AcceptanceCertificate, Attachment/XmlTorg12, Attachment/XmlAcceptanceCertificate, Attachment/PriceList, Attachment/PriceListAgreement, Attachment/CertificateRegistry, Attachment/ReconciliationAct, Attachment/Contract, Attachment/Torg13, Attachment/ServiceDetails
+</descr>
+      </element><element name="TEntity.RawCreationDate"><short>RawCreationDate - метка времени создания сущности.</short>
+      </element><element name="TEntity.ResolutionInfo"><short>ResolutionInfo - информация о согласовании в виде структуры данных ResolutionInfo.</short>
+      </element><element name="TEntity.SignerDepartmentId"><short>SignerDepartmentId - для сущности типа Signature это идентификатор подразделения в котором лежала сущность в момент подписания. Для остальных типов сущностей это поле не заполняется.</short>
+      </element><element name="TEntity.ResolutionRequestInfo"><short>ResolutionRequestInfo - информация о запросе согласования в виде структуры данных ResolutionRequestInfo.</short>
+      </element><element name="TEntity.ResolutionRequestDenialInfo"><short>ResolutionRequestDenialInfo - информация об отказе в запросе подписи в виде структуры данных ResolutionRequestDenialInfo.</short>
+      </element><element name="TEntity.IsApprovementSignature"><short>IsApprovementSignature - является ли подпись согласующей или обычной; заполняется только для сущностей типа Signature. Подробнее про согласующие подписи см. DocumentSignature.</short>
+      </element><element name="TEntity.IsEncryptedContent"><short>IsEncryptedContent - флаг, указывающий зашифрован ли контент документа.</short>
+      </element><element name="TEntity.AttachmentVersion"><short>AttachmentVersion - информация о версии XSD схемы, в соответствии с которой сформирована данная сущность.</short>
+      </element><element name="TEntity.ResolutionRouteAssignmentInfo"><short>ResolutionRouteAssignmentInfo - информация о запуске документа по маршруту согласования в виде структуры данных ResolutionRouteAssignmentInfo.</short>
+      </element><element name="TEntity.ResolutionRouteRemovalInfo"><short>ResolutionRouteRemovalInfo - информация о снятии документа с маршрута согласования в виде структуры данных ResolutionRouteRemovalInfo.</short>
+      </element><element name="TEntity.CancellationInfo"><short>CancellationInfo - информация об отмене сущности в виде структуры данных CancellationInfo. Отменённой является сущность, которая указана родительской по отношению к данной. Например, это может быть идентификатор запроса на согласование.</short>
+      </element><element name="TEntity.Labels"><short>Labels - метки сущности.</short>
+      </element>
+    <element name="TEntityType"><short>определяет тип сущности</short><descr>возможные варианты:
+
+    Attachment (файл-вложение в сообщении),
+    Signature (ЭП под вложением).
+
+</descr>
+      </element><element name="TEntityType.Attachment"><short>Attachment (файл-вложение в сообщении),</short>
+      </element><element name="TEntityType.Signature"><short>Signature (ЭП под вложением).</short>
+      </element><element name="TAttachmentType"><short>AttachmentType определяет тип вложения (имеет смысл только для сущностей типа Attachment)</short><descr> возможные варианты:
+
+    UnknownAttachmentType (неизвестный тип документа; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать тип документа, переданный сервером),
+    Nonformalized (неформализованный документ),
+    Invoice (счет-фактура),
+    InvoiceRevision (исправление счета-фактуры),
+    InvoiceCorrection (корректировочный счет-фактура),
+    InvoiceCorrectionRevision (исправление корректировочного счета-фактуры),
+    InvoiceReceipt (извещение о получении счета-фактуры, подтверждения оператора электронного документооборота или уведомления об уточнении счета-фактуры),
+    InvoiceConfirmation (подтверждение оператора электронного документооборота),
+    InvoiceCorrectionRequest (уведомление об уточнении счета-фактуры),
+    AttachmentComment (текстовый комментарий к другой сущности-вложению),
+    DeliveryFailureNotification (уведомление о невозможности доставки сообщения),
+    SignatureRequestRejection (отказ в формировании запрошенной подписи),
+    SignatureVerificationReport (протокол проверки подписи, сформированный Диадоком),
+    TrustConnectionRequest (запрос на инициацию канала обмена документами через Диадок),
+    ProformaInvoice (счет на оплату),
+    Torg12 (товарная накладная ТОРГ-12),
+    AcceptanceCertificate (акт о выполнении работ / оказании услуг),
+    XmlTorg12 (товарная накладная ТОРГ-12 в XML-формате, титул продавца),
+    XmlTorg12BuyerTitle (товарная накладная ТОРГ-12 в XML-формате, титул покупателя),
+    XmlAcceptanceCertificate (акт о выполнении работ / оказании услуг в XML-формате, титул исполнителя),
+    XmlAcceptanceCertificateBuyerTitle (акт о выполнении работ / оказании услуг в XML-формате, титул заказчика),
+    StructuredData (произвольный файл со структурированными данными, описывающими тот или иной документ, представленный в виде печатной формы),
+    Resolution (информация о статусе согласования документа),
+    ResolutionRequest (запрос согласования документа),
+    ResolutionRequestDenial (отказ в запросе подписи документа),
+    PriceList (ценовой лист),
+    PriceListAgreement (протокол согласования цены),
+    CertificateRegistry (реестр сертификатов),
+    ReconciliationAct (акт сверки),
+    Contract (договор),
+    Torg13 (накладная ТОРГ-13),
+    ServiceDetails (детализация),
+    Receipt (извещение о получении),
+    XmlSignatureRejection (формализованный отказ в подписи),
+    RevocationRequest (предложение об аннулировании).
+    RoamingNotification (роуминговая квитанция).
+    SupplementaryAgreement (дополнительное соглашение к договору).
+    CustomData (произвольные данные к документу).
+    MoveDocument (информация о перемещении документа в подразделение).
+    ResolutionRouteAssignment (информация о запуске документа по маршруту согласования).
+    ResolutionRouteRemoval (информация о снятии документа с маршрута согласования).
+    Cancellation (информация об отмене сущности, которая указана родительской по отношению к данной).
+    Edition (информация о редактировании контента документа, который указан родительским по отношению к данной сущности).
+
+</descr>
+      </element><element name="TAttachmentType.UnknownAttachmentType"><short>UnknownAttachmentType (неизвестный тип документа; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать тип документа, переданный сервером),</short>
+      </element><element name="TAttachmentType.Nonformalized"><short>Nonformalized (неформализованный документ),</short>
+      </element><element name="TAttachmentType.Invoice"><short>Invoice (счет-фактура),</short>
+      </element><element name="TAttachmentType.InvoiceReceipt"><short>InvoiceRevision (исправление счета-фактуры),</short>
+      </element><element name="TAttachmentType.InvoiceConfirmation"><short>InvoiceConfirmation (подтверждение оператора электронного документооборота),</short>
+      </element><element name="TAttachmentType.InvoiceCorrectionRequest"><short>InvoiceCorrectionRequest (уведомление об уточнении счета-фактуры),</short>
+      </element><element name="TAttachmentType.AttachmentComment"><short>AttachmentComment (текстовый комментарий к другой сущности-вложению),</short>
+      </element><element name="TAttachmentType.DeliveryFailureNotification"><short>DeliveryFailureNotification (уведомление о невозможности доставки сообщения),</short>
+      </element><element name="TAttachmentType.SignatureRequestRejection"><short>SignatureRequestRejection (отказ в формировании запрошенной подписи),</short>
+      </element><element name="TAttachmentType.SignatureVerificationReport"><short>SignatureVerificationReport (протокол проверки подписи, сформированный Диадоком),</short>
+      </element><element name="TAttachmentType.TrustConnectionRequest"><short>TrustConnectionRequest (запрос на инициацию канала обмена документами через Диадок),</short>
+      </element><element name="TAttachmentType.Torg12"><short>Torg12 (товарная накладная ТОРГ-12),</short>
+      </element><element name="TAttachmentType.InvoiceRevision"><short>InvoiceRevision (исправление счета-фактуры),</short>
+      </element><element name="TAttachmentType.InvoiceCorrection"><short>nvoiceCorrection (корректировочный счет-фактура),</short>
+      </element><element name="TAttachmentType.InvoiceCorrectionRevision"><short>InvoiceCorrectionRevision (исправление корректировочного счета-фактуры),</short>
+      </element><element name="TAttachmentType.AcceptanceCertificate"><short>AcceptanceCertificate (акт о выполнении работ / оказании услуг),</short>
+      </element><element name="TAttachmentType.StructuredData"><short>StructuredData (произвольный файл со структурированными данными, описывающими тот или иной документ, представленный в виде печатной формы),</short>
+      </element><element name="TAttachmentType.ProformaInvoice"><short>ProformaInvoice (счет на оплату),</short>
+      </element><element name="TAttachmentType.XmlTorg12"><short>XmlTorg12 (товарная накладная ТОРГ-12 в XML-формате, титул продавца),</short>
+      </element><element name="TAttachmentType.XmlAcceptanceCertificate"><short>XmlAcceptanceCertificate (акт о выполнении работ / оказании услуг в XML-формате, </short>
+      </element><element name="TAttachmentType.XmlTorg12BuyerTitle"><short>XmlTorg12BuyerTitle (товарная накладная ТОРГ-12 в XML-формате, титул покупателя),</short>
+      </element><element name="TAttachmentType.XmlAcceptanceCertificateBuyerTitle"><short>XmlAcceptanceCertificateBuyerTitle (акт о выполнении работ / оказании услуг в XML-формате, титул заказчика),</short>
+      </element><element name="TAttachmentType.Resolution"><short>Resolution (информация о статусе согласования документа),</short>
+      </element><element name="TAttachmentType.ResolutionRequest"><short>ResolutionRequest (запрос согласования документа),</short>
+      </element><element name="TAttachmentType.ResolutionRequestDenial"><short>ResolutionRequestDenial (отказ в запросе подписи документа),</short>
+      </element><element name="TAttachmentType.PriceList"><short>PriceList (ценовой лист),</short>
+      </element><element name="TAttachmentType.Receipt"><short>Receipt (извещение о получении),</short>
+      </element><element name="TAttachmentType.XmlSignatureRejection"><short>XmlSignatureRejection (формализованный отказ в подписи),</short>
+      </element><element name="TAttachmentType.RevocationRequest"><short>RevocationRequest (предложение об аннулировании).</short>
+      </element><element name="TAttachmentType.PriceListAgreement"><short>PriceListAgreement (протокол согласования цены),</short>
+      </element><element name="TAttachmentType.CertificateRegistry"><short>CertificateRegistry (реестр сертификатов),</short>
+      </element><element name="TAttachmentType.ReconciliationAct"><short>ReconciliationAct (акт сверки),</short>
+      </element><element name="TAttachmentType.Contract"><short>Contract (договор),</short>
+      </element><element name="TAttachmentType.Torg13"><short>Torg13 (накладная ТОРГ-13),</short>
+      </element><element name="TAttachmentType.ServiceDetails"><short>Torg13 (накладная ТОРГ-13),</short>
+      </element><element name="TAttachmentType.RoamingNotification"><short>RoamingNotification (роуминговая квитанция).</short>
+      </element><element name="TAttachmentType.SupplementaryAgreement"><short>SupplementaryAgreement (дополнительное соглашение к договору).</short>
+      </element><element name="TAttachmentType.CustomData"><short>CustomData (произвольные данные к документу).</short>
+      </element><element name="TAttachmentType.MoveDocument"><short>MoveDocument (информация о перемещении документа в подразделение).</short>
+      </element><element name="TAttachmentType.Cancellation"><short>Cancellation (информация об отмене сущности, которая указана родительской по отношению к данной).</short>
+      </element><element name="TAttachmentType.Edition"><short>Edition (информация о редактировании контента документа, который указан родительским по отношению к данной сущности).</short>
+      </element><element name="TEntityPatch"><short>Структура данных EntityPatch представляет дополнение (патч) к сущности в Диадоке:
+
+</short>
+      </element><element name="TEntityPatch.EntityId"><short>EntityId - идентификатор сущности, к которой относится данный патч.</short>
+      </element><element name="TEntityPatch.DocumentIsDeleted"><short>DocumentIsDeleted - флаг, показывающий, что документ, к которому относится данный патч, был удален.</short>
+      </element><element name="TEntityPatch.MovedToDepartment"><short>MovedToDepartment - поле заполняется в случае перемещения документа между подразделениями организации и содержит идентификатор подразделения, в которое был перемещен документ.</short>
+      </element><element name="TEntityPatch.DocumentIsRestored"><short>DocumentIsRestored - флаг, показывающий, что документ, к которому относится данный патч, был восстановлен из удаленных.</short>
+      </element><element name="TEntityPatch.ContentIsPatched"><short>ContentIsPatched - флаг, показывающий, что исходящий документ, к которому относится данный патч, был подписан, а к содержимому документа были добавлены данные из сертификата подписанта.</short>
+      </element><element name="TEntityPatch.ForwardedToBoxId"><short>ForwardedToBoxId - идентификатор ящика получателя при пересылке документа третьей стороне.</short>
+      </element><element name="TMessagePatch"><short>Структура данных MessagePatch представляет дополнение (патч) к сообщению в Диадоке:
+
+</short>
+      </element><element name="TMessagePatch.MessageId"><short>MessageId - идентификатор сообщения, к которому относится данный патч.</short>
+      </element><element name="TMessagePatch.TimestampTicks"><short>TimestampTicks - метка времени создания патча.</short>
+      </element><element name="TMessagePatch.Entities"><short>Entities - список сущностей, составляющих данное дополнение к сообщению. Каждая сущность представлена структурой типа Entity.</short>
+      </element><element name="TMessagePatch.ForDraft"><short>ForDraft - флаг, показывающий, является ли сообщение, к которому относится данный патч, черновиком.</short>
+      </element><element name="TMessagePatch.DraftIsRecycled"><short>DraftIsRecycled - флаг, показывающий, что черновик, к которому относится данный патч, был утилизирован, то есть он был либо удален, либо на его основе было создано полноценное сообщение и отправлено получателю. Поле DraftIsRecycled заполняется только в патчах, относящихся к черновикам.</short>
+      </element><element name="TMessagePatch.DraftIsTransformedToMessageIdList"><short>DraftIsTransformedToMessageId - идентификатор сообщения, созданного на основе черновика, к которому относится данный патч. Поле DraftIsTransformedToMessageId заполняется только в патчах, относящихся к черновикам.</short>
+      </element><element name="TMessagePatch.DraftIsLocked"><short>DraftIsLocked - флаг, показывающий, что черновик, к которому относится данный патч, был заблокирован. После этого в этот черновик нельзя добавлять, или удалять из него документы. Такой черновик можно только либо отправить, превратив в полноценное сообщение, либо удалить. Поле DraftIsLocked заполняется только в патчах, относящихся к черновикам.</short>
+      </element><element name="TMessagePatch.MessageIsDeleted"><short>MessageIsDeleted - флаг, показывающий, что сообщение, к которому относится данный патч, было удалено.</short>
+      </element><element name="TMessagePatch.EntityPatches"><short>EntityPatches - список патчей к сущностям сообщения, к которому относится данный патч. Каждый такой патч представлен структурой типа EntityPatch.</short>
+      </element><element name="TMessagePatch.MessageIsRestored"><short>MessageIsRestored - флаг, показывающий, что сообщение, к которому относится данный патч, было восстановлено из удаленных.</short>
+      </element><element name="TMessagePatch.MessageIsDelivered"><short>MessageIsDelivered - флаг, показывающий, что сообщение, к которому относится данный патч, было доставлено получателю.</short>
+      </element><element name="TMessagePatch.DeliveredPatchId"><short>DeliveredPatchId - идентификатор доставленного получателю патча.</short>
+      </element><element name="TMessagePatch.PatchId"><short>PatchId - идентификатор патча.</short>
+      </element><element name="TTemplate"><short>Сообщение, содержащее шаблоны документов.</short>
+      </element><element name="TTemplate.MessageId"><short>MessageId - уникальный идентификатор сообщения с шаблонами.</short>
+      </element><element name="TTemplate.TimestampTicks"><short>TimestampTicks - метка времени создания сообщения.</short>
+      </element><element name="TTemplate.FromBoxId"><short>FromBoxId - идентификатор ящика отправителя сообщения с шаблонами.</short>
+      </element><element name="TTemplate.ToBoxId"><short>ToBoxId - идентификатор ящика получателя сообщения с шаблонами.</short>
+      </element><element name="TTemplate.MessageFromBoxId"><short>MessageFromBoxId - идентификатор ящика отправителя документов, созданных на основе шаблонов.</short>
+      </element><element name="TTemplate.MessageToBoxId"><short>MessageToBoxId - идентификатор ящика получателя документов, созданных на основе шаблонов.</short>
+      </element><element name="TTemplate.Entities"><short>Entities - список сущностей, составляющих данное сообщение. Каждая сущность представлена структурой типа Entity.</short>
+      </element><element name="TTemplate.IsDeleted"><short>IsDeleted - флаг, показывающий, было ли удалено данное сообщение.</short>
+      </element><element name="TTemplate.MessageToDepartmentId"><short>MessageToDepartmentId - идентификатор подразделения получателя сообщения, которое будет создано на основе шаблона.</short>
+      </element><element name="TTemplate.LockMode"><short>LockMode - режим блокировки сообщения с шаблонами. Виды доступных режимы доступны в описании LockMode.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

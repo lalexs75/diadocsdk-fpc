@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_DocumentList"><element name="TDocumentList"><short>Структура данных DocumentList представляет собой список документов, возвращаемый методом GetDocuments.</short>
+      </element><element name="TDocumentList.TotalCount"><short>Поле DocumentList.TotalCount содержит общее количество документов, удовлетворяющих фильтру</short>
+      </element><element name="TDocumentList.Documents"><short>Каждый элемент списка DocumentList.Documents представлен структурой Document.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

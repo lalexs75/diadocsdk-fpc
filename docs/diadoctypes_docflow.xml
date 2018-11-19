@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_Docflow"><element name="TDocflowStatusSeverity"><short>Возможные уровни критичности статуса документа.</short>
+      </element><element name="TDocflowStatusModel"><short>Структура представляет компоненту статуса документооборота.</short>
+      </element><element name="TDocflowStatusModel.Severity"><short>Severity - уровень критичность статуса.</short>
+      </element><element name="TDocflowStatusModel.StatusText"><short>StatusText - основной текст описания статуса.</short>
+      </element><element name="TDocflowStatusModel.StatusHint"><short>StatusHint - дополнительный текст статуса.</short>
+      </element><element name="TDocflowStatus"><short>Структура представляет информацию о статусе документооборота.</short><descr>Статус формируется с точки зрения пользователя, от имени которого был сделан запрос на получение этой информации.
+</descr>
+      </element><element name="TDocflowStatus.PrimaryStatus"><short>PrimaryStatus - основная компонента статуса.</short>
+      </element><element name="TDocflowStatus.SecondaryStatus"><short>SecondaryStatus - второстепенная компонента статуса.</short>
+      </element><element name="TRoamingNotification"><short>Структура данных RoamingNotification описывает статус доставки документа в роуминг:</short>
+      </element><element name="TRoamingNotification.Notification"><short>Notification (может отсутствовать) - описание ошибки доставки.</short>
+      </element><element name="TRoamingNotification.IsSuccess"><short>IsSuccess (всегда заполняется) - флаг, обозначающий успешную доставку.</short>
+      </element><element name="TDocflow"><short>Структура представляет состояние документооборота для одного документа.</short>
+      </element><element name="TDocflow.IsFinished"><short>IsFinished - признак того, что документооборот завершен, т.е. документ не требует дальнейших действий.</short>
+      </element><element name="TDocflow.DocumentAttachment"><short>DocumentAttachment - базовые данные о файле документа и подписи под ним.</short>
+      </element><element name="TDocflow.DepartmentId"><short>DepartmentId - идентификатор подразделения, где в данный момент находится документ.</short>
+      </element><element name="TDocflow.DocumentIsDeleted"><short>DocumentIsDeleted - признак того, что документ удален.</short>
+      </element><element name="TDocflow.DocflowStatus"><short>DocflowStatus - текущий статус документа (в соответствии с тем, на какой стадии находится его документооборот).</short>
+      </element><element name="TDocflow.SendTimestamp"><short>SendTimestamp - метка времени отправки документа.</short>
+      </element><element name="TDocflow.DeliveryTimestamp"><short>DeliveryTimestamp - метка времени доставки документа.</short>
+      </element><element name="TDocflow.InboundInvoiceDocflow"><short>InboundInvoiceDocflow - документооборот входящего счёта-фактуры (для документов типа Invoice, InvoiceRevision, InvoiceCorrection, InvoiceCorrectionRevision).</short>
+      </element><element name="TDocflow.OutboundInvoiceDocflow"><short>OutboundInvoiceDocflow - документооборот исходящего счёта-фактуры (для документов типа Invoice, InvoiceRevision, InvoiceCorrection, InvoiceCorrectionRevision).</short>
+      </element><element name="TDocflow.XmlBilateralDocflow"><short>XmlBilateralDocflow - документооборот двустороннего формализованного документа (для документов типа XmlTorg12 или XmlAcceptanceCertificate).</short>
+      </element><element name="TDocflow.BilateralDocflow"><short>BilateralDocflow - документооборот двустороннего неформализованного документа (для документов типа Nonformalized, Torg12, AcceptanceCertificate, TrustConnectionRequest, PriceList, PriceListAgreement, CertificateRegistry, ReconciliationAct, Contract, Torg13).</short>
+      </element><element name="TDocflow.UnilateralDocflow"><short>UnilateralDocflow - документооборот одностороннего неформализованного документа (для документов типа ProformaInvoice, ServiceDetails).</short>
+      </element><element name="TDocflow.RevocationDocflow"><short>RevocationDocflow - данные об отзыве и аннулировании документа.</short>
+      </element><element name="TDocflow.ResolutionDocflow"><short>ResolutionDocflow - данные о согласовании документа.</short>
+      </element><element name="TDocflow.CanDocumentBeRevokedUnilaterallyBySender"><short>CanDocumentBeRevokedUnilaterallyBySender - признак того, что документ может быть отозван отправителем в одностороннем порядке.</short>
+      </element><element name="TDocflow.PacketId"><short>PacketId - идентификатор пакета, в котором в данный момент находится документ.</short>
+      </element><element name="TDocflow.CustomData"><short>CustomData - пользовательские данные, привязанные к документу.</short>
+      </element><element name="TDocflow.InboundUniversalTransferDocumentDocflow"><short>InboundUniversalTransferDocumentDocflow - документооборот входящего УПД (для документов типа UniversalTransferDocument, UniversalTransferDocumentRevision, UniversalCorrectionDocument, UniversalCorrectionDocumentRevision).</short>
+      </element><element name="TDocflow.OutboundUniversalTransferDocumentDocflow"><short>OutboundUniversalTransferDocumentDocflow - документооборот исходящего УПД (для документов типа UniversalTransferDocument, UniversalTransferDocumentRevision, UniversalCorrectionDocument, UniversalCorrectionDocumentRevision).</short>
+      </element><element name="TDocflow.RoamingNotification"><short>RoamingNotification - данные о доставке документа в роуминг.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

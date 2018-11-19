@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="diadoc_consts"><element name="CtlNotSignatureValid"><short>Specifies that the certificate trust list (CTL) contains an invalid signature.</short>
+      </element><element name="CtlNotTimeValid"><short>Specifies that the certificate trust list (CTL) is not valid because of an invalid time value, such as one that indicates that the CTL has expired.</short>
+      </element><element name="CtlNotValidForUsage"><short>Specifies that the certificate trust list (CTL) is not valid for this use.</short>
+      </element><element name="Cyclic"><short>Specifies that the X509 chain could not be built.</short>
+      </element><element name="ExplicitDistrust"><short>Specifies that the certificate is explicitly distrusted.</short>
+      </element><element name="HasExcludedNameConstraint"><short>Specifies that the X509 chain is invalid because a certificate has excluded a name constraint.</short>
+      </element><element name="HasNotDefinedNameConstraint"><short>Specifies that the certificate has an undefined name constraint.</short>
+      </element><element name="HasNotPermittedNameConstraint"><short>Specifies that the certificate has an impermissible name constraint.</short>
+      </element><element name="HasNotSupportedCriticalExtension"><short>Specifies that the certificate does not support a critical extension.</short>
+      </element><element name="HasNotSupportedNameConstraint"><short>Specifies that the certificate does not have a supported name constraint or has a name constraint that is unsupported.</short>
+      </element><element name="HasWeakSignature"><short>Specifies that the certificate has not been strong signed. Typically, this indicates that the MD2 or MD5 hashing algorithms were used to create a hash of the certificate.</short>
+      </element><element name="InvalidBasicConstraints"><short>Specifies that the X509 chain is invalid due to invalid basic constraints.</short>
+      </element><element name="InvalidExtension"><short>Specifies that the X509 chain is invalid due to an invalid extension.</short>
+      </element><element name="InvalidNameConstraints"><short>Specifies that the X509 chain is invalid due to invalid name constraints.</short>
+      </element><element name="InvalidPolicyConstraints"><short>Specifies that the X509 chain is invalid due to invalid policy constraints.</short>
+      </element><element name="NoError"><short>Specifies that the X509 chain has no errors.</short>
+      </element><element name="NoIssuanceChainPolicy"><short>Specifies that there is no certificate policy extension in the certificate. This error would occur if a group policy has specified that all certificates must have a certificate policy.</short>
+      </element><element name="NotSignatureValid"><short>Specifies that the X509 chain is invalid due to an invalid certificate signature.</short>
+      </element><element name="NotTimeNested"><short>Deprecated. Specifies that the CA (certificate authority) certificate and the issued certificate have validity periods that are not nested. For example, the CA cert can be valid from January 1 to December 1 and the issued certificate from January 2 to December 2, which would mean the validity periods are not nested.</short>
+      </element><element name="NotTimeValid"><short>Specifies that the X509 chain is not valid due to an invalid time value, such as a value that indicates an expired certificate.</short>
+      </element><element name="NotValidForUsage"><short>Specifies that the key usage is not valid.</short>
+      </element><element name="OfflineRevocation"><short>Specifies that the online certificate revocation list (CRL) the X509 chain relies on is currently offline.</short>
+      </element><element name="PartialChain"><short>Specifies that the X509 chain could not be built up to the root certificate.</short>
+      </element><element name="RevocationStatusUnknown"><short>Specifies that it is not possible to determine whether the certificate has been revoked. This can be due to the certificate revocation list (CRL) being offline or unavailable.</short>
+      </element><element name="Revoked"><short>Specifies that the X509 chain is invalid due to a revoked certificate.</short>
+      </element><element name="UntrustedRoot"><short>Specifies that the X509 chain is invalid due to an untrusted root certificate.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

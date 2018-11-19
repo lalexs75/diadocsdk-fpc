@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_Subscription"><element name="TEmployeeSubscriptions"><short>Структура содержит информацию о подписках сотрудника на почтовые уведомления.</short><descr>Возвращается методом GetSubscriptions.
+</descr>
+      </element><element name="TEmployeeSubscriptions.Subscriptions"><short>Subscriptions - статусы подписок на конкретные уведомления</short>
+      </element><element name="TSubscription"><short>Структура содержит информацию о том, подписан ли сотрудник на конкретное почтовое уведомление.</short><descr>Структура содержит информацию о том, подписан ли сотрудник на конкретное почтовое уведомление. Содержится в структурах EmployeeSubscriptions и SubscriptionsToUpdate.
+<li>Id - строковой идентификатор уведомления</li><li>IsSubscribed - подписан ли сотрудник</li>
+        </descr>
+      </element><element name="TSubscription.Id"><short>Id - строковой идентификатор уведомления</short><descr>Почтовые уведомления
+<li><b>CounteragentInvitation</b> &#x9;О приглашениях от контрагентов</li><li><b>CounteragentInvitationResponses</b> &#x9;Об ответах контрагентов на приглашения</li><li><b>NewIncomingDocuments</b> &#x9;О новых входящих документах</li><li><b>CounteragentSignatures</b> &#x9;О положительном результате подписания документа контрагентом</li><li><b>CounteragentSignatureDenials</b> &#x9;Об отрицательном результате подписания документа контрагентом</li><li><b>ResolutionRequests</b> &#x9;О документах, переданных мне на подпись или согласование</li><li><b>ResolutionResults</b> &#x9;О результате согласования документа</li><li><b>EmployeeRequests</b> &#x9;О запросах доступа от новых пользователей</li><li><b>News</b> &#x9;Новости Диадока и законодательства в области электронных документов</li><li><b>ChatMessages</b> &#x9;Новые сообщения</li>
+        </descr>
+      </element><element name="TSubscription.IsSubscribed"><short>IsSubscribed - подписан ли сотрудник</short>
+      </element><element name="TSubscriptionsToUpdate"><short>Структура содержит информацию о тех подписках сотрудника на почтовые уведомления, которые необходимо обновить</short><descr>Принимается методом UpdateSubscriptions.
+</descr>
+      </element><element name="TSubscriptionsToUpdate.Subscriptions"><short>Subscriptions - желаемые статусы подписок на конкретные уведомления</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

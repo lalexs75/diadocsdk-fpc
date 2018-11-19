@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_DocflowApi"><element name="TDocflowEvent"><short>Структура представляет одно событие, возвращаемое методом GetDocflowEvents</short>
+      </element><element name="TDocflowEvent.EventId"><short>EventId - идентификатор события.</short>
+      </element><element name="TDocflowEvent.Timestamp"><short>Timestamp - метка времени возникновения события.</short>
+      </element><element name="TDocflowEvent.DocumentId"><short>DocumentId - идентификатор документа, с которым произошло событие.</short>
+      </element><element name="TDocflowEvent.IndexKey"><short>IndexKey - ключ события. Используется для постраничной выгрузки и позволяет указать, с какого события выгружать очередную страницу.</short>
+      </element><element name="TDocflowEvent.Document"><short>Document - полное состояние документа после возникновения данного события.</short>
+      </element><element name="TDocflowEvent.PreviousEventId"><short>PreviousEventId - идентификатор предыдущего события по данному документу.</short>
+      </element><element name="TDocflowEvent.PreviousDocumentState"><short>PreviousDocumentState - полное состояние документа после возникновения предыдущего события (т.е. до возникновения данного события).</short>
+      </element><element name="TDocflowEvents"><short>Структура представляет одно событие, возвращаемое методом GetDocflowEvents</short>
+      </element><element name="TGetDocflowEventsResponse"><short>Структура представляет результат работы метода GetDocflowEvents.</short>
+      </element><element name="TGetDocflowEventsResponse.TotalCount"><short>TotalCount - количество всех событий, удовлетворяющих запросу.</short>
+      </element><element name="TGetDocflowEventsResponse.Events"><short>Events - список событий.</short>
+      </element><element name="TGetDocflowEventsRequest"><short>Структура представляет запрос, передаваемый методу GetDocflowEvents.</short>
+      </element><element name="TGetDocflowEventsRequest.AfterIndexKey"><short>AfterIndexKey - ключ, используемый для постраничной выгрузки. Указывает на начало очередной выгружаемой страницы.</short>
+      </element><element name="TGetDocflowEventsRequest.PopulateDocuments"><short>PopulateDocuments - признак того, что в выдачу нужно включить полное состояние документа (метаданные и документооборот).</short>
+      </element><element name="TGetDocflowEventsRequest.PopulatePreviousDocumentStates"><short>PopulatePreviousDocumentStates - признак, аналогичный PopulateDocuments, может быть установлен одновременно с ним. Указывает, что в выдачу нужно дополнительно включить полное состояние документа на момент возникновения предыдущего события.</short>
+      </element><element name="TFetchedDocument"><short>Структура представляет один документ из списка, возвращаемого методом GetDocflowsByPacketId.</short>
+      </element><element name="TFetchedDocument.Document"><short>Document - информация о документе: метаданные и состояние документооборота.</short>
+      </element><element name="TFetchedDocument.IndexKey"><short>IndexKey - ключ, используемый для постраничной выгрузки достаточно большого количества документов из одного пакета. При передаче в метод GetDocflowsByPacketId, позволяет пропустить те документы, которые были выгружены ранее, до данного документа включительно.</short>
+      </element><element name="TGetDocflowsByPacketIdResponse"><short>Представляет результат работы метода GetDocflowsByPacketId.</short>
+      </element><element name="TGetDocflowsByPacketIdResponse.Documents"><short>Documents - список документов, содержащихся в пакете.</short>
+      </element><element name="TGetDocflowsByPacketIdResponse.NextPageIndexKey"><short>NextPageIndexKey - ключ, использующийся для постраничной выгрузки. Заполняется в том случае, когда количество документов, соответствующих запросу, превышает допустимый размер страницы.</short>
+      </element><element name="TGetDocflowsByPacketIdRequest"><short>Структура представляет запрос, передаваемый методу GetDocflowsByPacketId.</short>
+      </element><element name="TGetDocflowsByPacketIdRequest.PacketId"><short>PacketId - идентификатор пакета.</short>
+      </element><element name="TGetDocflowsByPacketIdRequest.Count"><short>Count - максимальное количество документов в выдаче, не должно превышать 100.</short>
+      </element><element name="TGetDocflowsByPacketIdRequest.InjectEntityContent"><short>InjectEntityContent - признак того, что в выдачу нужно включить содержимое документа.</short>
+      </element><element name="TGetDocflowsByPacketIdRequest.AfterIndexKey"><short>AfterIndexKey - ключ, использующийся для постраничной выгрузки. Ключу AfterIndexKey соответствует предыдущий документ, который в выдачу не попадает.</short>
+      </element><element name="TSearchDocflowsResponse"><short>Представляет результат работы метода SearchDocflows.</short>
+      </element><element name="TSearchDocflowsResponse.Documents"><short>Documents - список документов.</short>
+      </element><element name="TSearchDocflowsResponse.HaveMoreDocuments"><short>HaveMoreDocuments - признак того, что условиям поиска соответствует больше документов, чем было возвращено. Остальные документы можно выгрузить постранично, передавая в запросе индекс первого документа очередной страницы (см. пример использования SearchDocflows).</short>
+      </element><element name="TSearchDocflowsRequest"><short>Представляет запрос, передаваемый методу SearchDocflows.</short>
+      </element><element name="TSearchDocflowsRequest.QueryString"><short>QueryString - строка запроса. Может иметь либо произвольное значение, либо строку в формате (YAML) «key: value».</short>
+      </element><element name="TSearchDocflowsRequest.Count"><short>Count - максимальное количество документов в выдаче, не должно превышать 100.</short>
+      </element><element name="TSearchDocflowsRequest.FirstIndex"><short>FirstIndex - индекс документа, с которого нужно начинать выгрузку. Используется для постраничной выгрузки документов, когда их общее количество превышает допустимый размер выдачи.</short>
+      </element><element name="TSearchDocflowsRequest.Scope"><short>Scope - область действия поиска.</short>
+      </element><element name="TSearchDocflowsRequest.InjectEntityContent"><short>InjectEntityContent - признак того, что в выдачу нужно включать содержимое документов.</short>
+      </element><element name="TGetDocflowBatchResponse"><short>Структура представляет результат работы метода GetDocflows - список документов с информацией о документообороте по каждому из них.</short>
+      </element><element name="TGetDocflowBatchResponse.Documents"><short>Documents - список документов.</short>
+      </element><element name="TGetDocflowRequest"><short>Структура представляет запрос на выгрузку одного документа вместе с его документооборотом методом GetDocflows.</short>
+      </element><element name="TGetDocflowRequests"><short>Структура представляет запрос на выгрузку одного документа вместе с его документооборотом методом GetDocflows.</short>
+      </element><element name="TGetDocflowRequest.DocumentId"><short>DocumentId - идентификатор документа.</short>
+      </element><element name="TGetDocflowRequest.LastEventId"><short>LastEventId - идентификатор последнего события, которое нужно учесть при формировании результата. Сервер вычисляет состояние документа по цепочке событий, которые с ним происходили. Данный параметр позволяет ограничить эту цепочку некоторым событием.</short>
+      </element><element name="TGetDocflowRequest.InjectEntityContent"><short>InjectEntityContent - признак того, что в выдачу нужно включить содержимое документа.</short>
+      </element><element name="TGetDocflowBatchRequest"><short>Структура представляет список запросов, передаваемых методу GetDocflows.</short>
+      </element><element name="TGetDocflowBatchRequest.Requests"><short>Requests - список запросов, по одному на документ.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_DocumentZip"><element name="TDocumentZipGenerationResult"><short>Структура данных DocumentZipGenerationResult представляет результат формирования zip-архива методом GenerateDocumentZip</short>
+      </element><element name="TDocumentZipGenerationResult.ZipFileNameOnShelf"><short>ZipFileNameOnShelf - полный путь к файлу архива на «полке документов»</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_SignatureVerificationResult"><element name="TSignatureVerificationResult"><short>Структура представляет протокол проверки ЭП, формируемый в процессе доставки документа.</short>
+      </element><element name="TSignatureVerificationResult.IsValid"><short>IsValid - итоговый статус проверки подписи (все ли проверки прошли успешно).</short>
+      </element><element name="TSignatureVerificationResult.CertificateStatus"><short>CertificateStatus - результат проверки сертификата подписанта.</short>
+      </element><element name="TSignatureVerificationResult.SignatureTimestamp"><short>SignatureTimestamp - метка времени из штампа времени, который формируется Диадоком для корректных подписей в момент их проверки.</short>
+      </element><element name="TCertificateChainElement"><short>Структура содержит информацию о результатах проверки для отдельного сертификата в цепочке, выстроенной при проверке конечного сертификата пользователя.</short>
+      </element><element name="TCertificateChainElement.CertificateChainStatusFlags"><short>CertificateChainStatusFlags - статус элемента цепочки сертификатов.</short><descr>Представляет собой комбинацию битовых флагов из .NET-перечисления System.Security.Cryptography.X509Certificates.X509ChainStatusFlags.
+</descr>
+      </element><element name="TCertificateChainElement.DerCertificate"><short>DerCertificate - сам сертификат, сериализованный в массив байтов в DER-кодировке.</short>
+      </element><element name="TCertificateVerificationResult"><short>Структура представляет отчет о проверке сертификата ЭП.</short>
+      </element><element name="TCertificateVerificationResult.IsValid"><short>sValid - общий признак корректности сертификата (все ли проверки прошли успешно).</short>
+      </element><element name="TCertificateVerificationResult.CertificateChain"><short>CertificateChain - информация о цепочке сертификатов, участвовавших в проверке ЭП. Первый элемент в массиве описывает конечный сертификат пользователя, а последний - сертификат корневого УЦ.</short>
+      </element><element name="TCertificateVerificationResult.VerificationTime"><short>VerificationTime - момент времени, в который (и на который) производилась проверка.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

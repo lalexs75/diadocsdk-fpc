@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_Address"><element name="TAddress"><short>Структура данных Address служит для представления адресов организаций</short>
+      </element><element name="TAddress.RussianAddress"><short>Российский адрес</short>
+      </element><element name="TAddress.AddressCode"><short>Код ГАР</short>
+      </element><element name="TAddress.ForeignAddress"><short>Иностранный адрес</short>
+      </element><element name="TForeignAddress"><short>Иностранный адрес</short>
+      </element><element name="TForeignAddress.Country"><short>страна (код) </short>
+      </element><element name="TForeignAddress.Address"><short>текст адреса</short>
+      </element><element name="TRussianAddress"><short>Российский адрес</short>
+      </element><element name="TRussianAddress.ZipCode"><short>индекс</short>
+      </element><element name="TRussianAddress.Region"><short>регион (код)</short>
+      </element><element name="TRussianAddress.Territory"><short>район</short>
+      </element><element name="TRussianAddress.City"><short>город</short>
+      </element><element name="TRussianAddress.Locality"><short>населенный пункт</short>
+      </element><element name="TRussianAddress.Street"><short>улица</short>
+      </element><element name="TRussianAddress.Building"><short>дом</short>
+      </element><element name="TRussianAddress.Block"><short>корпус</short>
+      </element><element name="TRussianAddress.Apartment"><short>квартира</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

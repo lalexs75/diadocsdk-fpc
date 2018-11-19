@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="11"/>
+    <General>
+      <SessionStorage Value="InProjectDir"/>
+      <MainUnit Value="0"/>
+      <AutoCreateForms Value="False"/>
+      <Title Value="Контур ДИАДОК API тест"/>
+      <Scaled Value="True"/>
+      <ResourceType Value="res"/>
+      <UseXPManifest Value="True"/>
+      <XPManifest>
+        <DpiAware Value="True"/>
+      </XPManifest>
+      <Icon Value="0"/>
+    </General>
+    <i18n>
+      <OutDir Value="languages"/>
+    </i18n>
+    <BuildModes Count="1">
+      <Item1 Name="Default" Default="True"/>
+    </BuildModes>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0"/>
+    </RunParams>
+    <RequiredPackages Count="6">
+      <Item1>
+        <PackageName Value="FCL"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="LazControls"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="rxnew"/>
+      </Item3>
+      <Item4>
+        <PackageName Value="diadoc_fpc"/>
+      </Item4>
+      <Item5>
+        <PackageName Value="laz_synapse"/>
+      </Item5>
+      <Item6>
+        <PackageName Value="LCL"/>
+      </Item6>
+    </RequiredPackages>
+    <Units Count="21">
+      <Unit0>
+        <Filename Value="project1.lpr"/>
+        <IsPartOfProject Value="True"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="ddapimainunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DDAPIMainForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="DDAPIMainUnit"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="ssl_openssl.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="ssl_openssl_lib.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="counteragentlistunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="CounteragentListForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="CounteragentListUnit"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="doclistunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DocListForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="DocListUnit"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="boxpropsunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="BoxPropsForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="BoxPropsUnit"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="messagefordocunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="MessageForDocForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="MessageForDocUnit"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="frames/boxinfounit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="BoxInfoFrame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="BoxInfoUnit"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="frames/organizationinfounit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="OrganizationInfoFrame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="OrganizationInfoUnit"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="forms/universaltransferdocumentsellertitleinfounit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="UniversalTransferDocumentSellerTitleInfoForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UniversalTransferDocumentSellerTitleInfoUnit"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="frames/diadocdocumentunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="DiadocDocumentFrame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="DiadocDocumentUnit"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="forms/universaltransferdocumentbuyertitleinfounit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="UniversalTransferDocumentBuyerTitleInfoForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UniversalTransferDocumentBuyerTitleInfoUnit"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="frames/contragentslistunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="ContragentsListFrame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="ContragentsListUnit"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="forms/organizationuserslistunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="OrganizationUsersListForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="OrganizationUsersListUnit"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="forms/boxeventlistunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="BoxEventListForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="BoxEventListUnit"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="forms/userpermissionsunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="UserPermissionsForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UserPermissionsUnit"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="forms/contragentfindunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="ContragentFindForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ContragentFindUnit"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="forms/showboxinfounit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="ShowBoxInfoForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ShowBoxInfoUnit"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="frames/adressinfoframeunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="AdressInfoFrame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="AdressInfoFrameUnit"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="forms/organizationinfoformunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="OrganizationInfoForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="OrganizationInfoFormUnit"/>
+      </Unit20>
+    </Units>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="11"/>
+    <Target>
+      <Filename Value="project1"/>
+    </Target>
+    <SearchPaths>
+      <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="$(LazarusDir)/components/synapse;frames;forms"/>
+      <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+    </SearchPaths>
+    <Linking>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+  </CompilerOptions>
+  <Debugging>
+    <Exceptions Count="4">
+      <Item1>
+        <Name Value="EAbort"/>
+      </Item1>
+      <Item2>
+        <Name Value="ECodetoolError"/>
+      </Item2>
+      <Item3>
+        <Name Value="EFOpenError"/>
+      </Item3>
+      <Item4>
+        <Name Value="EDiadocException"/>
+      </Item4>
+    </Exceptions>
+  </Debugging>
+</CONFIG>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_XmlBilateralDocflow"><element name="TBuyerTitleDocflow"><short>Структура представляет информацию об ответной подписи под двусторонним формализованным документом (титул покупателя). Ответная подпись в этом случае является подписанным формализованным файлом установленного формата.</short>
+      </element><element name="TBuyerTitleDocflow.IsFinished"><short>IsFinished - признак того, что документооборот ответной подписи завершен. Равен true в том случае, когда подпись под титулом покупателя проверена, и он доставлен контрагенту.</short>
+      </element><element name="TBuyerTitleDocflow.BuyerTitleAttachment"><short>BuyerTitleAttachment - информация о файле титула покупателя.</short>
+      </element><element name="TBuyerTitleDocflow.SendTimestamp"><short>SendTimestamp - метка времени отправки титула покупателя.</short>
+      </element><element name="TBuyerTitleDocflow.DeliveryTimestamp"><short>DeliveryTimestamp - метка времени доставки титула покупателя.</short>
+      </element><element name="TXmlBilateralDocflow"><short>Структура представляет информацию о документообороте двустороннего формализованного документа.</short>
+      </element><element name="TXmlBilateralDocflow.IsFinished"><short>IsFinished - признак того, что документооборот завершен, т.е. документ не требует каких-либо действий со стороны отправители или получателя.</short>
+      </element><element name="TXmlBilateralDocflow.ReceiptDocflow"><short>ReceiptDocflow - информация об извещении о получении на данный документ.</short>
+      </element><element name="TXmlBilateralDocflow.BuyerTitleDocflow"><short>BuyerTitleDocflow - информация об ответной подписи под документом. Ответная подпись для формализованных двусторонних документов представляет собой подписанный файл установленного формата (например, титул покупателя для товарной накладной, или титул заказчика для акта).</short>
+      </element><element name="TXmlBilateralDocflow.RecipientSignatureRejectionDocflow"><short>RecipientSignatureRejectionDocflow - информация об отказе в подписании документа получателем. Заполняется только в том случае, когда отказ был.</short>
+      </element><element name="TXmlBilateralDocflow.IsReceiptRequested"><short>IsReceiptRequested - признак того, что по документу было запрошено извещение о получении.</short>
+      </element><element name="TXmlBilateralDocflow.IsDocumentSignedByRecipient"><short>IsDocumentSignedByRecipient - признак того, что документ подписан получателем.</short>
+      </element><element name="TXmlBilateralDocflow.IsDocumentRejectedByRecipient"><short>IsDocumentRejectedByRecipient - признак того, что получатель отказал в подписи документа.</short>
+      </element><element name="TXmlBilateralDocflow.CanDocumentBeReceipted"><short>CanDocumentBeReceipted - признак того, что для документа можно отправить извещение о получении. Равен true для входящих документов, по которым корректные извещения ранее не отправлялись.</short>
+      </element><element name="TXmlBilateralDocflow.CanDocumentBeSignedBySender"><short>CanDocumentBeSignedBySender - признак того, что документ может быть подписан отправителем. Равен true для документов, сохраненных для последующей отправки, либо для исходящих документов с некорректной подписью.</short>
+      </element><element name="TXmlBilateralDocflow.CanDocumentBeSignedOrRejectedByRecipient"><short>CanDocumentBeSignedOrRejectedByRecipient - признак того, что получатель может подписать документ или отказать в подписании.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

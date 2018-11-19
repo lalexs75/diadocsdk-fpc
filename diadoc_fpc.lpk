@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="4">
+    <PathDelim Value="\"/>
+    <Name Value="diadoc_fpc"/>
+    <Type Value="RunAndDesignTime"/>
+    <Author Value="Lagunov Aleksey"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <PathDelim Value="\"/>
+      <SearchPaths>
+        <OtherUnitFiles Value="Docflow;Invoicing;Documents\Types;Events;Documents;Recognition;KeyValueStorage;Forwarding;diadoc_src;Employees;Employees\Subscriptions;Users"/>
+        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+    </CompilerOptions>
+    <Description Value="Компоненты интеграции Контур ДИАДОК-API для FPC и Lazarus"/>
+    <License Value="LGPL"/>
+    <Version Minor="9" Release="3"/>
+    <Files Count="96">
+      <Item1>
+        <Filename Value="diadoc_define.inc"/>
+        <Type Value="Include"/>
+      </Item1>
+      <Item2>
+        <Filename Value="Docflow\diadoctypes_attachment.pas"/>
+        <UnitName Value="DiadocTypes_Attachment"/>
+      </Item2>
+      <Item3>
+        <Filename Value="Docflow\diadoctypes_docflow.pas"/>
+        <UnitName Value="DiadocTypes_Docflow"/>
+      </Item3>
+      <Item4>
+        <Filename Value="Docflow\diadoctypes_documentwithdocflow.pas"/>
+        <UnitName Value="DiadocTypes_DocumentWithDocflow"/>
+      </Item4>
+      <Item5>
+        <Filename Value="Docflow\diadoctypes_invoicedocflow.pas"/>
+        <UnitName Value="DiadocTypes_InvoiceDocflow"/>
+      </Item5>
+      <Item6>
+        <Filename Value="Docflow\diadoctypes_receiptdocflow.pas"/>
+        <UnitName Value="DiadocTypes_ReceiptDocflow"/>
+      </Item6>
+      <Item7>
+        <Filename Value="Docflow\diadoctypes_xmlbilateraldocflow.pas"/>
+        <UnitName Value="DiadocTypes_XmlBilateralDocflow"/>
+      </Item7>
+      <Item8>
+        <Filename Value="Docflow\diadoctypes_recipientsignaturerejectiondocflow.pas"/>
+        <UnitName Value="DiadocTypes_RecipientSignatureRejectionDocflow"/>
+      </Item8>
+      <Item9>
+        <Filename Value="Docflow\diadoctypes_bilateraldocflow.pas"/>
+        <UnitName Value="DiadocTypes_BilateralDocflow"/>
+      </Item9>
+      <Item10>
+        <Filename Value="Docflow\diadoctypes_unilateraldocflow.pas"/>
+        <UnitName Value="DiadocTypes_UnilateralDocflow"/>
+      </Item10>
+      <Item11>
+        <Filename Value="Docflow\diadoctypes_recipientsignaturedocflow.pas"/>
+        <UnitName Value="DiadocTypes_RecipientSignatureDocflow"/>
+      </Item11>
+      <Item12>
+        <Filename Value="Docflow\diadoctypes_revocationdocflow.pas"/>
+        <UnitName Value="DiadocTypes_RevocationDocflow"/>
+      </Item12>
+      <Item13>
+        <Filename Value="Docflow\diadoctypes_resolutiondocflow.pas"/>
+        <UnitName Value="DiadocTypes_ResolutionDocflow"/>
+      </Item13>
+      <Item14>
+        <Filename Value="Docflow\diadoctypes_universaltransferdocumentdocflow.pas"/>
+        <UnitName Value="DiadocTypes_UniversalTransferDocumentDocflow"/>
+      </Item14>
+      <Item15>
+        <Filename Value="Docflow\diadoctypes_documentinfo.pas"/>
+        <UnitName Value="DiadocTypes_DocumentInfo"/>
+      </Item15>
+      <Item16>
+        <Filename Value="Invoicing\diadoctypes_universaltransferdocumentinfo.pas"/>
+        <UnitName Value="DiadocTypes_UniversalTransferDocumentInfo"/>
+      </Item16>
+      <Item17>
+        <Filename Value="Invoicing\diadoctypes_invoiceinfo.pas"/>
+        <UnitName Value="DiadocTypes_InvoiceInfo"/>
+      </Item17>
+      <Item18>
+        <Filename Value="Invoicing\diadoctypes_signer.pas"/>
+        <UnitName Value="DiadocTypes_Signer"/>
+      </Item18>
+      <Item19>
+        <Filename Value="Invoicing\diadoctypes_organizationinfo.pas"/>
+        <UnitName Value="DiadocTypes_OrganizationInfo"/>
+      </Item19>
+      <Item20>
+        <Filename Value="Invoicing\diadoctypes_extendedsigner.pas"/>
+        <UnitName Value="DiadocTypes_ExtendedSigner"/>
+      </Item20>
+      <Item21>
+        <Filename Value="Invoicing\diadoctypes_extendedorganizationinfo.pas"/>
+        <UnitName Value="DiadocTypes_ExtendedOrganizationInfo"/>
+      </Item21>
+      <Item22>
+        <Filename Value="Docflow\diadoctypes_docflowapi.pas"/>
+        <UnitName Value="DiadocTypes_DocflowApi"/>
+      </Item22>
+      <Item23>
+        <Filename Value="Documents\Types\diadoctypes_documenttypedescription.pas"/>
+        <UnitName Value="DiadocTypes_DocumentTypeDescription"/>
+      </Item23>
+      <Item24>
+        <Filename Value="Events\diadoctypes_diadocmessage_postapi.pas"/>
+        <UnitName Value="DiadocTypes_DiadocMessage_PostApi"/>
+      </Item24>
+      <Item25>
+        <Filename Value="Events\diadoctypes_resolutioninfo.pas"/>
+        <UnitName Value="DiadocTypes_ResolutionInfo"/>
+      </Item25>
+      <Item26>
+        <Filename Value="Events\diadoctypes_resolutionrequestinfo.pas"/>
+        <UnitName Value="DiadocTypes_ResolutionRequestInfo"/>
+      </Item26>
+      <Item27>
+        <Filename Value="Events\diadoctypes_cancellationinfo.pas"/>
+        <UnitName Value="DiadocTypes_CancellationInfo"/>
+      </Item27>
+      <Item28>
+        <Filename Value="Events\diadoctypes_resolutionrequestdenialinfo.pas"/>
+        <UnitName Value="DiadocTypes_ResolutionRequestDenialInfo"/>
+      </Item28>
+      <Item29>
+        <Filename Value="Events\diadoctypes_resolutionrouteinfo.pas"/>
+        <UnitName Value="DiadocTypes_ResolutionRouteInfo"/>
+      </Item29>
+      <Item30>
+        <Filename Value="Events\diadoctypes_diadocmessage_getapi.pas"/>
+        <UnitName Value="DiadocTypes_DiadocMessage_GetApi"/>
+      </Item30>
+      <Item31>
+        <Filename Value="Documents\diadoctypes_document.pas"/>
+        <UnitName Value="DiadocTypes_Document"/>
+      </Item31>
+      <Item32>
+        <Filename Value="Documents\diadoctypes_acceptancecertificatedocument.pas"/>
+        <UnitName Value="DiadocTypes_AcceptanceCertificateDocument"/>
+      </Item32>
+      <Item33>
+        <Filename Value="Documents\diadoctypes_receiptstatus.pas"/>
+        <UnitName Value="DiadocTypes_ReceiptStatus"/>
+      </Item33>
+      <Item34>
+        <Filename Value="Documents\diadoctypes_bilateraldocument.pas"/>
+        <UnitName Value="DiadocTypes_BilateralDocument"/>
+      </Item34>
+      <Item35>
+        <Filename Value="Documents\diadoctypes_invoicedocument.pas"/>
+        <UnitName Value="DiadocTypes_InvoiceDocument"/>
+      </Item35>
+      <Item36>
+        <Filename Value="Documents\diadoctypes_nonformalizeddocument.pas"/>
+        <UnitName Value="DiadocTypes_NonformalizedDocument"/>
+      </Item36>
+      <Item37>
+        <Filename Value="Documents\diadoctypes_unilateraldocument.pas"/>
+        <UnitName Value="DiadocTypes_UnilateralDocument"/>
+      </Item37>
+      <Item38>
+        <Filename Value="Documents\diadoctypes_universaltransferdocument.pas"/>
+        <UnitName Value="DiadocTypes_UniversalTransferDocument"/>
+      </Item38>
+      <Item39>
+        <Filename Value="Documents\diadoctypes_documentzip.pas"/>
+        <UnitName Value="DiadocTypes_DocumentZip"/>
+      </Item39>
+      <Item40>
+        <Filename Value="Documents\diadoctypes_documentsmoveoperation.pas"/>
+        <UnitName Value="DiadocTypes_DocumentsMoveOperation"/>
+      </Item40>
+      <Item41>
+        <Filename Value="Documents\diadoctypes_documentprotocol.pas"/>
+        <UnitName Value="DiadocTypes_DocumentProtocol"/>
+      </Item41>
+      <Item42>
+        <Filename Value="Documents\diadoctypes_documentlist.pas"/>
+        <UnitName Value="DiadocTypes_DocumentList"/>
+      </Item42>
+      <Item43>
+        <Filename Value="Recognition\diadoctypes_recognition.pas"/>
+        <UnitName Value="DiadocTypes_Recognition"/>
+      </Item43>
+      <Item44>
+        <Filename Value="KeyValueStorage\diadoctypes_keyvaluestorage.pas"/>
+        <UnitName Value="DiadocTypes_KeyValueStorage"/>
+      </Item44>
+      <Item45>
+        <Filename Value="Forwarding\diadoctypes_forwardeddocument.pas"/>
+        <UnitName Value="DiadocTypes_ForwardedDocument"/>
+      </Item45>
+      <Item46>
+        <Filename Value="Forwarding\diadoctypes_forwardingapi.pas"/>
+        <UnitName Value="DiadocTypes_ForwardingApi"/>
+      </Item46>
+      <Item47>
+        <Filename Value="Invoicing\diadoctypes_acceptancecertificate552info.pas"/>
+        <UnitName Value="DiadocTypes_AcceptanceCertificate552Info"/>
+      </Item47>
+      <Item48>
+        <Filename Value="Invoicing\diadoctypes_acceptancecertificateinfo.pas"/>
+        <UnitName Value="DiadocTypes_AcceptanceCertificateInfo"/>
+      </Item48>
+      <Item49>
+        <Filename Value="Invoicing\diadoctypes_fnsregistrationmessageinfo.pas"/>
+        <UnitName Value="DiadocTypes_FnsRegistrationMessageInfo"/>
+      </Item49>
+      <Item50>
+        <Filename Value="Invoicing\diadoctypes_invoicecorrectionrequestinfo.pas"/>
+        <UnitName Value="DiadocTypes_InvoiceCorrectionRequestInfo"/>
+      </Item50>
+      <Item51>
+        <Filename Value="Invoicing\diadoctypes_official.pas"/>
+        <UnitName Value="DiadocTypes_Official"/>
+      </Item51>
+      <Item52>
+        <Filename Value="Invoicing\diadoctypes_revocationrequestinfo.pas"/>
+        <UnitName Value="DiadocTypes_RevocationRequestInfo"/>
+      </Item52>
+      <Item53>
+        <Filename Value="Invoicing\diadoctypes_signaturerejectioninfo.pas"/>
+        <UnitName Value="DiadocTypes_SignatureRejectionInfo"/>
+      </Item53>
+      <Item54>
+        <Filename Value="Invoicing\diadoctypes_torg12info.pas"/>
+        <UnitName Value="DiadocTypes_Torg12Info"/>
+      </Item54>
+      <Item55>
+        <Filename Value="Invoicing\diadoctypes_tovtorginfo.pas"/>
+        <UnitName Value="DiadocTypes_TovTorgInfo"/>
+      </Item55>
+      <Item56>
+        <Filename Value="diadoc_src\diadocapi.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="DiadocAPI"/>
+      </Item56>
+      <Item57>
+        <Filename Value="diadoc_src\diadoc_base.pas"/>
+        <UnitName Value="Diadoc_Base"/>
+      </Item57>
+      <Item58>
+        <Filename Value="diadoc_src\diadoc_consts.pas"/>
+        <UnitName Value="diadoc_consts"/>
+      </Item58>
+      <Item59>
+        <Filename Value="diadoc_src\diadoc_simple_arrays.pas"/>
+        <UnitName Value="diadoc_simple_arrays"/>
+      </Item59>
+      <Item60>
+        <Filename Value="diadoc_src\diadoctypes.pas"/>
+        <UnitName Value="DiadocTypes"/>
+      </Item60>
+      <Item61>
+        <Filename Value="diadoc_src\diadoctypes_acquirecounteragent.pas"/>
+        <UnitName Value="DiadocTypes_AcquireCounteragent"/>
+      </Item61>
+      <Item62>
+        <Filename Value="diadoc_src\diadoctypes_address.pas"/>
+        <UnitName Value="DiadocTypes_Address"/>
+      </Item62>
+      <Item63>
+        <Filename Value="diadoc_src\diadoctypes_asyncmethodresult.pas"/>
+        <UnitName Value="DiadocTypes_AsyncMethodResult"/>
+      </Item63>
+      <Item64>
+        <Filename Value="diadoc_src\diadoctypes_certificateinfo.pas"/>
+        <UnitName Value="DiadocTypes_CertificateInfo"/>
+      </Item64>
+      <Item65>
+        <Filename Value="diadoc_src\diadoctypes_cloudsign.pas"/>
+        <UnitName Value="DiadocTypes_CloudSign"/>
+      </Item65>
+      <Item66>
+        <Filename Value="diadoc_src\diadoctypes_content.pas"/>
+        <UnitName Value="DiadocTypes_Content"/>
+      </Item66>
+      <Item67>
+        <Filename Value="diadoc_src\diadoctypes_content_v2.pas"/>
+        <UnitName Value="DiadocTypes_Content_v2"/>
+      </Item67>
+      <Item68>
+        <Filename Value="diadoc_src\diadoctypes_counteragent.pas"/>
+        <UnitName Value="DiadocTypes_Counteragent"/>
+      </Item68>
+      <Item69>
+        <Filename Value="diadoc_src\diadoctypes_customdataitem.pas"/>
+        <UnitName Value="DiadocTypes_CustomDataItem"/>
+      </Item69>
+      <Item70>
+        <Filename Value="diadoc_src\diadoctypes_documentdirection.pas"/>
+        <UnitName Value="DiadocTypes_DocumentDirection"/>
+      </Item70>
+      <Item71>
+        <Filename Value="diadoc_src\diadoctypes_documentid.pas"/>
+        <UnitName Value="DiadocTypes_DocumentId"/>
+      </Item71>
+      <Item72>
+        <Filename Value="diadoc_src\diadoctypes_documenttype.pas"/>
+        <UnitName Value="DiadocTypes_DocumentType"/>
+      </Item72>
+      <Item73>
+        <Filename Value="diadoc_src\diadoctypes_externalserviceauthinfo.pas"/>
+        <UnitName Value="DiadocTypes_ExternalServiceAuthInfo"/>
+      </Item73>
+      <Item74>
+        <Filename Value="diadoc_src\diadoctypes_forwarddocumentevent.pas"/>
+        <UnitName Value="DiadocTypes_ForwardDocumentEvent"/>
+      </Item74>
+      <Item75>
+        <Filename Value="diadoc_src\diadoctypes_getorganizationsbyinnlist.pas"/>
+        <UnitName Value="DiadocTypes_GetOrganizationsByInnList"/>
+      </Item75>
+      <Item76>
+        <Filename Value="diadoc_src\diadoctypes_organization.pas"/>
+        <UnitName Value="DiadocTypes_Organization"/>
+      </Item76>
+      <Item77>
+        <Filename Value="diadoc_src\diadoctypes_organizationpropertiestoupdate.pas"/>
+        <UnitName Value="DiadocTypes_OrganizationPropertiesToUpdate"/>
+      </Item77>
+      <Item78>
+        <Filename Value="diadoc_src\diadoctypes_organizationuser.pas"/>
+        <UnitName Value="DiadocTypes_OrganizationUser"/>
+      </Item78>
+      <Item79>
+        <Filename Value="diadoc_src\diadoctypes_organizationuserpermissions.pas"/>
+        <UnitName Value="DiadocTypes_OrganizationUserPermissions"/>
+      </Item79>
+      <Item80>
+        <Filename Value="diadoc_src\diadoctypes_resolutionroutelist.pas"/>
+        <UnitName Value="DiadocTypes_ResolutionRouteList"/>
+      </Item80>
+      <Item81>
+        <Filename Value="diadoc_src\diadoctypes_resolutiontarget.pas"/>
+        <UnitName Value="DiadocTypes_ResolutionTarget"/>
+      </Item81>
+      <Item82>
+        <Filename Value="diadoc_src\diadoctypes_roamingnotification.pas"/>
+        <UnitName Value="DiadocTypes_RoamingNotification"/>
+      </Item82>
+      <Item83>
+        <Filename Value="diadoc_src\diadoctypes_signatureinfo.pas"/>
+        <UnitName Value="DiadocTypes_SignatureInfo"/>
+      </Item83>
+      <Item84>
+        <Filename Value="diadoc_src\diadoctypes_signatureverificationresult.pas"/>
+        <UnitName Value="DiadocTypes_SignatureVerificationResult"/>
+      </Item84>
+      <Item85>
+        <Filename Value="diadoc_src\diadoctypes_timebasedfilter.pas"/>
+        <UnitName Value="DiadocTypes_TimeBasedFilter"/>
+      </Item85>
+      <Item86>
+        <Filename Value="diadoc_src\diadoctypes_timestamp.pas"/>
+        <UnitName Value="DiadocTypes_Timestamp"/>
+      </Item86>
+      <Item87>
+        <Filename Value="diadoc_src\diadoctypes_user.pas"/>
+        <UnitName Value="DiadocTypes_User"/>
+      </Item87>
+      <Item88>
+        <Filename Value="diadoc_src\diadoc_utils.pas"/>
+        <UnitName Value="diadoc_utils"/>
+      </Item88>
+      <Item89>
+        <Filename Value="diadoc_src\diadoctypes_boxlist.pas"/>
+        <UnitName Value="DiadocTypes_BoxList"/>
+      </Item89>
+      <Item90>
+        <Filename Value="diadoc_src\diadoctypes_lockmode.pas"/>
+        <UnitName Value="DiadocTypes_LockMode"/>
+      </Item90>
+      <Item91>
+        <Filename Value="Employees\diadoctypes_employee.pas"/>
+        <UnitName Value="DiadocTypes_Employee"/>
+      </Item91>
+      <Item92>
+        <Filename Value="Employees\Subscriptions\diadoctypes_subscription.pas"/>
+        <UnitName Value="DiadocTypes_Subscription"/>
+      </Item92>
+      <Item93>
+        <Filename Value="Employees\diadoctypes_employeetocreate.pas"/>
+        <UnitName Value="DiadocTypes_EmployeeToCreate"/>
+      </Item93>
+      <Item94>
+        <Filename Value="Users\diadoctypes_usertoupdate.pas"/>
+        <UnitName Value="DiadocTypes_UserToUpdate"/>
+      </Item94>
+      <Item95>
+        <Filename Value="Employees\diadoctypes_employeetoupdate.pas"/>
+        <UnitName Value="diadoctypes_employeetoupdate"/>
+      </Item95>
+      <Item96>
+        <Filename Value="diadoc_src\diadoctypes_documentfilter.pas"/>
+        <UnitName Value="diadoctypes_documentfilter"/>
+      </Item96>
+    </Files>
+    <LazDoc Paths="docs"/>
+    <i18n>
+      <EnableI18N Value="True"/>
+      <OutDir Value="languages"/>
+    </i18n>
+    <RequiredPkgs Count="4">
+      <Item1>
+        <PackageName Value="protobuf"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="rxnew"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="laz_synapse"/>
+      </Item3>
+      <Item4>
+        <PackageName Value="FCL"/>
+      </Item4>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>

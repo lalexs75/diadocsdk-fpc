@@ -1,0 +1,1258 @@
+object DDAPIMainForm: TDDAPIMainForm
+  Left = 362
+  Height = 783
+  Top = 131
+  Width = 1123
+  Caption = 'Контур ДИАДОК API тест'
+  ClientHeight = 783
+  ClientWidth = 1123
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  SessionProperties = 'CheckBox1.Checked;edtINN.Text;edtProxyHost.Text;edtProxyPassword.Text;edtProxyPort.Text;edtProxyUserName.Text;edtUserName.Text;edtUserPwd.Text;edtAPIClientKey.Text'
+  LCLVersion = '1.9.0.0'
+  object Memo1: TMemo
+    Left = 0
+    Height = 192
+    Top = 591
+    Width = 1123
+    Align = alBottom
+    Lines.Strings = (
+      'Memo1'
+    )
+    TabOrder = 0
+  end
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 586
+    Top = 0
+    Width = 1123
+    ActivePage = TabSheet5
+    Align = alClient
+    TabIndex = 1
+    TabOrder = 1
+    object TabSheet1: TTabSheet
+      Caption = 'Параметры'
+      ClientHeight = 552
+      ClientWidth = 1113
+      object Label3: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideRight.Control = Label9
+        AnchorSideBottom.Control = edtUserName
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 20
+        Top = 23
+        Width = 121
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        BorderSpacing.Right = 6
+        Caption = 'Имя пользователя'
+        ParentColor = False
+      end
+      object Label4: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideRight.Control = Label9
+        AnchorSideBottom.Control = edtUserPwd
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 20
+        Top = 66
+        Width = 48
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        BorderSpacing.Right = 6
+        Caption = 'Пароль'
+        ParentColor = False
+      end
+      object edtUserName: TEdit
+        AnchorSideLeft.Control = Label3
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = TabSheet1
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 133
+        Height = 37
+        Top = 6
+        Width = 974
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 0
+      end
+      object edtUserPwd: TEdit
+        AnchorSideLeft.Control = Label3
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtUserName
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 133
+        Height = 37
+        Top = 49
+        Width = 974
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 1
+      end
+      object CheckBox1: TCheckBox
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = DividerBevel1
+        AnchorSideTop.Side = asrBottom
+        Left = 6
+        Height = 24
+        Top = 161
+        Width = 216
+        BorderSpacing.Around = 6
+        Caption = 'Использовать PROXY сервер'
+        OnChange = CheckBox1Change
+        TabOrder = 2
+      end
+      object Label5: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideBottom.Control = edtProxyUserName
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 20
+        Top = 208
+        Width = 106
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Proxy user name'
+        ParentColor = False
+      end
+      object Label6: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideBottom.Control = edtProxyPassword
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 20
+        Top = 251
+        Width = 100
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Proxy password'
+        ParentColor = False
+      end
+      object Label7: TLabel
+        AnchorSideLeft.Control = Label9
+        AnchorSideBottom.Control = edtProxyPort
+        AnchorSideBottom.Side = asrBottom
+        Left = 562
+        Height = 20
+        Top = 208
+        Width = 65
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Proxy Port'
+        ParentColor = False
+      end
+      object DividerBevel1: TDividerBevel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = edtAPIClientKey
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 0
+        Height = 20
+        Top = 135
+        Width = 1113
+        Caption = 'Параметры proxy сервера'
+        Anchors = [akTop, akLeft, akRight]
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label9: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideLeft.Side = asrCenter
+        AnchorSideTop.Control = TabSheet1
+        Left = 556
+        Height = 1
+        Top = 0
+        Width = 1
+        ParentColor = False
+      end
+      object edtProxyUserName: TEdit
+        AnchorSideLeft.Control = Label5
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = CheckBox1
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Label9
+        Left = 118
+        Height = 37
+        Top = 191
+        Width = 432
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 3
+      end
+      object edtProxyPassword: TEdit
+        AnchorSideLeft.Control = Label5
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtProxyUserName
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Label9
+        Left = 118
+        Height = 37
+        Top = 234
+        Width = 432
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 4
+      end
+      object edtProxyPort: TEdit
+        AnchorSideLeft.Control = Label7
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = CheckBox1
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 633
+        Height = 37
+        Top = 191
+        Width = 474
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 5
+      end
+      object Label10: TLabel
+        AnchorSideLeft.Control = Label9
+        AnchorSideBottom.Control = edtProxyHost
+        AnchorSideBottom.Side = asrBottom
+        Left = 556
+        Height = 20
+        Top = 251
+        Width = 70
+        Anchors = [akLeft, akBottom]
+        Caption = 'Proxy Host'
+        ParentColor = False
+      end
+      object edtProxyHost: TEdit
+        AnchorSideLeft.Control = Label7
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtProxyPort
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 633
+        Height = 37
+        Top = 234
+        Width = 474
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 6
+      end
+      object Label8: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideBottom.Control = edtAPIClientKey
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 20
+        Top = 109
+        Width = 88
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'API Client key'
+        ParentColor = False
+      end
+      object edtAPIClientKey: TEdit
+        AnchorSideLeft.Control = Label3
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtUserPwd
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 133
+        Height = 37
+        Top = 92
+        Width = 974
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 7
+      end
+      object Button1: TButton
+        AnchorSideTop.Control = edtProxyHost
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 1057
+        Height = 36
+        Top = 277
+        Width = 50
+        Anchors = [akTop, akRight]
+        AutoSize = True
+        BorderSpacing.Around = 6
+        Caption = 'Login'
+        OnClick = Button1Click
+        TabOrder = 8
+      end
+      object DividerBevel3: TDividerBevel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = Button1
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 0
+        Height = 20
+        Top = 319
+        Width = 1113
+        Caption = 'User info'
+        Anchors = [akTop, akLeft, akRight]
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label23: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = DividerBevel3
+        AnchorSideTop.Side = asrBottom
+        Left = 6
+        Height = 20
+        Top = 345
+        Width = 44
+        BorderSpacing.Around = 6
+        Caption = 'UserID'
+        ParentColor = False
+      end
+      object Label24: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = Edit1
+        AnchorSideTop.Side = asrBottom
+        Left = 6
+        Height = 20
+        Top = 414
+        Width = 81
+        BorderSpacing.Around = 6
+        Caption = 'MiddleName'
+        ParentColor = False
+      end
+      object Label25: TLabel
+        AnchorSideLeft.Control = Label27
+        AnchorSideTop.Control = DividerBevel3
+        AnchorSideTop.Side = asrBottom
+        Left = 562
+        Height = 20
+        Top = 345
+        Width = 66
+        BorderSpacing.Around = 6
+        Caption = 'FirstName'
+        ParentColor = False
+      end
+      object Label26: TLabel
+        AnchorSideLeft.Control = Label27
+        AnchorSideTop.Control = Edit4
+        AnchorSideTop.Side = asrBottom
+        Left = 562
+        Height = 20
+        Top = 414
+        Width = 64
+        BorderSpacing.Around = 6
+        Caption = 'LastName'
+        ParentColor = False
+      end
+      object Edit1: TEdit
+        AnchorSideLeft.Control = Label23
+        AnchorSideTop.Control = Label23
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Label27
+        Left = 12
+        Height = 37
+        Top = 371
+        Width = 538
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 9
+      end
+      object Edit3: TEdit
+        AnchorSideLeft.Control = Label24
+        AnchorSideTop.Control = Label24
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Label27
+        Left = 12
+        Height = 37
+        Top = 440
+        Width = 538
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 10
+      end
+      object Edit4: TEdit
+        AnchorSideLeft.Control = Label25
+        AnchorSideTop.Control = Label25
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 568
+        Height = 37
+        Top = 371
+        Width = 539
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 11
+      end
+      object Edit5: TEdit
+        AnchorSideLeft.Control = Label26
+        AnchorSideTop.Control = Label26
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 568
+        Height = 37
+        Top = 440
+        Width = 539
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 12
+      end
+      object Label27: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideLeft.Side = asrCenter
+        AnchorSideTop.Control = TabSheet1
+        Left = 556
+        Height = 1
+        Top = 0
+        Width = 1
+        ParentColor = False
+      end
+    end
+    object TabSheet5: TTabSheet
+      Caption = 'Почта'
+      ClientHeight = 552
+      ClientWidth = 1113
+      object TreeView1: TTreeView
+        Left = 0
+        Height = 552
+        Top = 0
+        Width = 185
+        Align = alLeft
+        Images = ImageList1
+        PopupMenu = PopupMenu1
+        ReadOnly = True
+        TabOrder = 0
+        OnClick = TreeView1Click
+        Options = [tvoAutoItemHeight, tvoHideSelection, tvoKeepCollapsedNodes, tvoReadOnly, tvoShowButtons, tvoShowLines, tvoShowRoot, tvoToolTips, tvoThemedDraw]
+      end
+      object Splitter2: TSplitter
+        Left = 185
+        Height = 552
+        Top = 0
+        Width = 5
+      end
+      object PageControl2: TPageControl
+        Left = 190
+        Height = 552
+        Top = 0
+        Width = 923
+        ActivePage = TabSheet7
+        Align = alClient
+        TabIndex = 0
+        TabOrder = 2
+        object TabSheet7: TTabSheet
+          Caption = 'Документы'
+        end
+        object TabSheet8: TTabSheet
+          Caption = 'Контрагенты'
+          ClientHeight = 518
+          ClientWidth = 913
+          object Panel1: TPanel
+            Left = 790
+            Height = 530
+            Top = 0
+            Width = 182
+            Align = alRight
+            ClientHeight = 530
+            ClientWidth = 182
+            TabOrder = 0
+            object Button7: TButton
+              Left = 32
+              Height = 25
+              Top = 40
+              Width = 122
+              AutoSize = True
+              Caption = 'GetCounteragents'
+              OnClick = Button7Click
+              TabOrder = 0
+            end
+            object Button8: TButton
+              Left = 32
+              Height = 25
+              Top = 80
+              Width = 105
+              AutoSize = True
+              Caption = 'GetDocuments'
+              OnClick = Button8Click
+              TabOrder = 1
+            end
+            object Button9: TButton
+              Left = 32
+              Height = 25
+              Top = 120
+              Width = 131
+              AutoSize = True
+              Caption = 'GetDocumentTypes'
+              TabOrder = 2
+            end
+            object Button5: TButton
+              Left = 32
+              Height = 25
+              Top = 152
+              Width = 110
+              AutoSize = True
+              Caption = 'Find contragent'
+              OnClick = Button5Click
+              TabOrder = 3
+            end
+            object Button2: TButton
+              Left = 8
+              Height = 25
+              Top = 184
+              Width = 165
+              AutoSize = True
+              Caption = 'GetOrganizationsByInnList'
+              OnClick = Button2Click
+              TabOrder = 4
+            end
+          end
+        end
+      end
+    end
+    object TabSheet6: TTabSheet
+      Caption = 'Organizations'
+      ClientHeight = 552
+      ClientWidth = 1113
+      object Label21: TLabel
+        AnchorSideLeft.Control = TabSheet6
+        AnchorSideBottom.Control = edtFndINN
+        AnchorSideBottom.Side = asrBottom
+        Left = 5
+        Height = 15
+        Top = 14
+        Width = 21
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 5
+        Caption = 'INN'
+        ParentColor = False
+      end
+      object edtFndINN: TEdit
+        AnchorSideLeft.Control = Label21
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = TabSheet6
+        Left = 32
+        Height = 23
+        Top = 6
+        Width = 112
+        BorderSpacing.Around = 6
+        TabOrder = 0
+        Text = '2635024103'
+      end
+      object edtFndKPP: TEdit
+        AnchorSideLeft.Control = Label22
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = TabSheet6
+        Left = 177
+        Height = 23
+        Top = 6
+        Width = 128
+        BorderSpacing.Around = 6
+        TabOrder = 1
+      end
+      object Label22: TLabel
+        AnchorSideLeft.Control = edtFndINN
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideBottom.Control = edtFndKPP
+        AnchorSideBottom.Side = asrBottom
+        Left = 150
+        Height = 15
+        Top = 14
+        Width = 21
+        Anchors = [akLeft, akBottom]
+        Caption = 'KPP'
+        ParentColor = False
+      end
+      object Button10: TButton
+        AnchorSideLeft.Control = edtFndKPP
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = TabSheet6
+        Left = 311
+        Height = 25
+        Top = 6
+        Width = 168
+        AutoSize = True
+        BorderSpacing.Around = 6
+        Caption = 'GetOrganizationsByInnKpp'
+        OnClick = Button10Click
+        TabOrder = 2
+      end
+      object ListBox2: TListBox
+        AnchorSideLeft.Control = TabSheet6
+        AnchorSideTop.Control = Button10
+        AnchorSideTop.Side = asrBottom
+        AnchorSideBottom.Control = TabSheet6
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 515
+        Top = 37
+        Width = 284
+        Anchors = [akTop, akLeft, akBottom]
+        BorderSpacing.Around = 6
+        ItemHeight = 0
+        OnClick = ListBox2Click
+        ScrollWidth = 282
+        TabOrder = 3
+        TopIndex = -1
+      end
+      object Panel3: TPanel
+        AnchorSideLeft.Control = ListBox2
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = Button10
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet6
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = TabSheet6
+        AnchorSideBottom.Side = asrBottom
+        Left = 296
+        Height = 515
+        Top = 37
+        Width = 813
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        BorderSpacing.Around = 6
+        TabOrder = 4
+      end
+    end
+    object TabSheet4: TTabSheet
+      Caption = 'Прочее'
+      ClientHeight = 552
+      ClientWidth = 1113
+      object Button3: TButton
+        AnchorSideLeft.Control = TabSheet4
+        AnchorSideTop.Control = TabSheet4
+        Left = 6
+        Height = 25
+        Top = 6
+        Width = 137
+        AutoSize = True
+        BorderSpacing.Around = 6
+        Caption = 'Parse russian address'
+        OnClick = Button3Click
+        TabOrder = 0
+      end
+      object Edit2: TEdit
+        AnchorSideLeft.Control = Button3
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = TabSheet4
+        AnchorSideRight.Control = TabSheet4
+        AnchorSideRight.Side = asrBottom
+        Left = 149
+        Height = 23
+        Top = 6
+        Width = 960
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 1
+        Text = '620000, Свердловская обл., г. Екатеринбург, ул. Радищева, д. 28'
+      end
+      object Label12: TLabel
+        AnchorSideLeft.Control = TabSheet4
+        AnchorSideBottom.Control = edtZipCode
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 66
+        Width = 40
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Индекс'
+        ParentColor = False
+      end
+      object Label13: TLabel
+        AnchorSideLeft.Control = TabSheet4
+        AnchorSideBottom.Control = edtRegion
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 95
+        Width = 69
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Регион (код)'
+        ParentColor = False
+      end
+      object Label14: TLabel
+        AnchorSideLeft.Control = TabSheet4
+        AnchorSideBottom.Control = edtTerritory
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 124
+        Width = 34
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Район'
+        ParentColor = False
+      end
+      object Label15: TLabel
+        AnchorSideLeft.Control = TabSheet4
+        AnchorSideBottom.Control = edtStreet
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 211
+        Width = 34
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Улица'
+        ParentColor = False
+      end
+      object Label16: TLabel
+        AnchorSideLeft.Control = TabSheet4
+        AnchorSideBottom.Control = edtCity
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 153
+        Width = 33
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Город'
+        ParentColor = False
+      end
+      object Label17: TLabel
+        AnchorSideLeft.Control = TabSheet4
+        AnchorSideBottom.Control = edtLocality
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 182
+        Width = 104
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Населенный пункт'
+        ParentColor = False
+      end
+      object Label18: TLabel
+        AnchorSideLeft.Control = TabSheet4
+        AnchorSideBottom.Control = edtApartment
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 301
+        Width = 51
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Квартира'
+        ParentColor = False
+      end
+      object Label19: TLabel
+        AnchorSideLeft.Control = TabSheet4
+        AnchorSideBottom.Control = edtBuilding
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 240
+        Width = 24
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Дом'
+        ParentColor = False
+      end
+      object Label20: TLabel
+        AnchorSideLeft.Control = TabSheet4
+        AnchorSideBottom.Control = edtBlock
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 272
+        Width = 40
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Корпус'
+        ParentColor = False
+      end
+      object edtZipCode: TEdit
+        AnchorSideLeft.Control = Label17
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = DividerBevel2
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet4
+        AnchorSideRight.Side = asrBottom
+        Left = 116
+        Height = 23
+        Top = 58
+        Width = 993
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 2
+      end
+      object edtRegion: TEdit
+        AnchorSideLeft.Control = Label17
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtZipCode
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet4
+        AnchorSideRight.Side = asrBottom
+        Left = 116
+        Height = 23
+        Top = 87
+        Width = 993
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 3
+      end
+      object edtTerritory: TEdit
+        AnchorSideLeft.Control = Label17
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtRegion
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet4
+        AnchorSideRight.Side = asrBottom
+        Left = 116
+        Height = 23
+        Top = 116
+        Width = 993
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 4
+      end
+      object edtBlock: TEdit
+        AnchorSideLeft.Control = Label17
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet4
+        AnchorSideRight.Side = asrBottom
+        Left = 116
+        Height = 23
+        Top = 264
+        Width = 993
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 5
+      end
+      object edtLocality: TEdit
+        AnchorSideLeft.Control = Label17
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtCity
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet4
+        AnchorSideRight.Side = asrBottom
+        Left = 116
+        Height = 23
+        Top = 174
+        Width = 993
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 6
+      end
+      object edtCity: TEdit
+        AnchorSideLeft.Control = Label17
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtTerritory
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet4
+        AnchorSideRight.Side = asrBottom
+        Left = 116
+        Height = 23
+        Top = 145
+        Width = 993
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 7
+      end
+      object DividerBevel2: TDividerBevel
+        AnchorSideLeft.Control = TabSheet4
+        AnchorSideTop.Control = Button3
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet4
+        AnchorSideRight.Side = asrBottom
+        Left = 0
+        Height = 15
+        Top = 37
+        Width = 1115
+        Caption = 'Результат'
+        Anchors = [akTop, akLeft, akRight]
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object edtApartment: TEdit
+        AnchorSideLeft.Control = Label17
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtBlock
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet4
+        AnchorSideRight.Side = asrBottom
+        Left = 116
+        Height = 23
+        Top = 293
+        Width = 993
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 8
+      end
+      object edtBuilding: TEdit
+        AnchorSideLeft.Control = Label17
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtStreet
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet4
+        AnchorSideRight.Side = asrBottom
+        Left = 116
+        Height = 23
+        Top = 232
+        Width = 993
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 9
+      end
+      object edtStreet: TEdit
+        AnchorSideLeft.Control = Label17
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtLocality
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet4
+        AnchorSideRight.Side = asrBottom
+        Left = 116
+        Height = 23
+        Top = 203
+        Width = 993
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 10
+      end
+    end
+  end
+  object Splitter1: TSplitter
+    Cursor = crVSplit
+    Left = 0
+    Height = 5
+    Top = 586
+    Width = 1123
+    Align = alBottom
+    ResizeAnchor = akBottom
+  end
+  object DiadocAPI1: TDiadocAPI
+    OnHttpStatus = DiadocAPI1HttpStatus
+    Left = 424
+    Top = 8
+  end
+  object RxIniPropStorage1: TRxIniPropStorage
+    StoredValues = <>
+    SeparateFiles = False
+    Left = 160
+    Top = 72
+  end
+  object ImageList1: TImageList
+    Left = 280
+    Top = 56
+    Bitmap = {
+      4C69080000001000000010000000FFFFFF00FFFFFF00FFFFFF00404060FF4060
+      A0FF004060FF004060FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00406060FF00FF
+      FFFF80A0A0FF406060FFFFFFFF00FFFFFF0040A0E0FF40A0E0FF40A0E0FF0000
+      00FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00404060FF4060
+      A0FF004060FF004060FFFFFFFF00FFFFFF0080A0E0FF0060C0FF0060C0FF0000
+      80FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00406060FF00FF
+      FFFF80A0A0FF406060FFFFFFFF00FFFFFF0040A0E0FF000080FF0060C0FF0000
+      80FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00404060FF4060
+      A0FFF0FBFFFFF0FBFFFFF0FBFFFFF0FBFFFFF0FBFFFF0060C0FF0060C0FF0000
+      80FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00406060FF00FF
+      FFFFC0C0C0FF404040FFA4A0A0FF404040FFA4A0A0FF000080FF0060C0FF0000
+      80FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00404060FF4060
+      A0FFF0FBFFFF806060FFA4A0A0FF806060FFA4A0A0FF0060C0FF0060C0FF0000
+      80FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00406060FF40C0
+      E0FFC0C0C0FF404040FFA4A0A0FF404040FFA4A0A0FF000080FF000080FF0000
+      80FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00404060FF4060
+      60FFF0FBFFFF806060FFA4A0A0FF806060FFA4A0A0FF000080FF000080FF0000
+      80FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00404060FF40A0
+      C0FFC0C0C0FF404040FFA4A0A0FF404040FFA4A0A0FF000080FF000080FF0020
+      40FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00000000FF000000FF004020FF4040
+      60FFF0FBFFFF806060FFA4A0A0FF806060FFA4A0A0FF000080FF000080FF0020
+      40FF000000FF000000FFFFFFFF00000000FF40A020FF40A020FF004020FF0040
+      60FFC0C0C0FF404040FFA4A0A0FF404040FFA4A0A0FF000080FF000080FF0020
+      40FF40A020FF406020FF000000FFFFFFFF00000000FF000000FF40C060FF40C0
+      20FFF0FBFFFF806060FFA4A0A0FF806060FFA4A0A0FF004060FF000080FF40A0
+      20FF000000FF000000FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00000000FF0000
+      00FF40C020FF40C020FF40C020FF40C020FF40C020FF40C020FF000000FF0000
+      00FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00000000FF000000FF40C020FF40C020FF000000FF000000FFFFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00000000FF000000FFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00000000000000000000000000000000000000
+      000000000000A67B76FFA67B76FFA67B76FFAE918FFF00000000000000000000
+      000000000000000000000000000000000000000000000000000000000000A67B
+      76FFA37875FF8CB3CCFF6FD0F1FF6FD0F1FF8CB3CCFFA37875FFAE918FFF0000
+      0000000000000000000000000000000000000000000000000000A67B76FF9A97
+      AEFF6FD0F1FF67EAFCFF67EAFCFF67EAFCFF67EAFCFF6FD0F1FF989898FFAE91
+      8FFF0000000000000000000000000000000000000000A67B76FFB0CFB0FF90F3
+      FFFF6FD0F1FF6FD0F1FF6FD0F1FF6FD0F1FF6FD0F1FF6FD0F1FF6DB3E7FF9A97
+      AEFFAE918FFF000000000000000000000000A67B76FFE6DCD7FFF7F7F6FFFBFB
+      FAFFE9F0F5FFD4ECF3FFD4ECF3FFB2CBD4FF8CB3CCFF8CB3CCFF8CB3CCFF6DB3
+      E7FF848382FFAE918FFF00000000B5897AFFB0CFB0FFF4F4F4FFFDFDFDFFFDFD
+      FDFFFDFDFDFFFBFBFAFFFBFBFAFFF7F7F6FFF4F4F4FFE9F0F5FFD4ECF3FFD4EC
+      F3FFCCD1D0FFAE918FFFAE918FFFA67B76FFAA7B75FFC8A8A8FFF4F4F4FFFDFD
+      FDFFFDFDFDFFFBFBFAFFFBFBFAFFF7F7F6FFF7F7F6FFF7F7F6FFF4F4F4FFE4E4
+      E3FFC99897FFAA7B75FFAE918FFFA67B76FFD4C6B5FFBB9A85FFAE918FFFE4E4
+      E3FFECEBEBFFE6DCD7FFE6DCD7FFE6DCD7FFE4E4E3FFE4E4E3FFD4B9B6FFB589
+      7AFFC8AA96FFC8B9B8FFAE918FFFA67B76FFD9D8D7FFFEF9F4FFC8A8A8FFAA7B
+      75FF98665AFF98665AFF98665AFF98665AFF98665AFF98665AFFB5897AFFD8CA
+      C7FFFEF9F4FFD4C6B5FFAE918FFFA67B76FFD8CAC7FFFAECE4FFEBB68DFFB589
+      7AFFE9D8C7FFE9E3DAFFE9E3DAFFE9E3DAFFE6DCD7FFD4C6B5FFBB9A85FFD4C6
+      B5FFFAECE4FFC8B9B8FFAE918FFFA67B76FFD4C6B5FFEBCBA8FFB5897AFFD4B9
+      B6FFE6DCD7FFE9E3DAFFE9E3DAFFE9E3DAFFE9E3DAFFE9D8C7FFD0B3A7FFBB9A
+      85FFE9D8C7FFC8B9B8FFAE918FFFA67B76FFD3B097FFCD9072FFC4A28BFFE9D8
+      C7FFE9D8C7FFE9D8C7FFE9D8C7FFE9D8C7FFE9D8C7FFE9D8C7FFEFCFB5FFC4A2
+      8BFFC4A28BFFC8AA96FFAE918FFFA67B76FFCD9072FFB5897AFFEBCBA8FFEFCF
+      B5FFEFCFB5FFEFCFB5FFEFCFB5FFEFCFB5FFEFCFB5FFEFCFB5FFEBCBA8FFEBB6
+      8DFFCD9072FFB5897AFFAE918FFFB4A894FFAA7B75FFCA9984FFDCA987FFDCA9
+      87FFDCA987FFDCA987FFDCA987FFDCA987FFDCA987FFDCA987FFDCA987FFDCA9
+      87FFCA9984FFA67B76FFC8A8A8FF00000000B4A894FFAE918FFFAE918FFFAE91
+      8FFFAE918FFFAE918FFFAE918FFFAE918FFFAE918FFFAE918FFFAE918FFFAE91
+      8FFFAE918FFFC8A8A8FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000FF000000FF000000FF000000FFFFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00000000FFF0FBFFFFC0A080FF000000FF80A0
+      A0FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00000000FF0000FFFF000080FF000000FF80A0
+      A0FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00000000FF00FFFFFF00A0A0FF000000FF80A0
+      A0FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00000000FFC0A080FF806060FF000000FF80A0
+      A0FFFFFFFF00000000FF000000FFFFFFFF00FFFFFF00000000FF000000FFFFFF
+      FF00FFFFFF00000000FF000000FF000000FFC0A080FF806060FF000000FF80A0
+      A0FF000000FFF0FBFFFF000000FF80A0A0FF000000FFF0FBFFFF000000FF80A0
+      A0FF000000FFF0FBFFFF000000FF000000FFC0A080FF806060FF000000FF0000
+      00FFF0FBFFFFC0A080FF000000FF000000FFF0FBFFFFC0A080FF000000FF0000
+      00FFF0FBFFFF80A0A0FF000000FF000000FF806060FF806060FF000000FFF0FB
+      FFFFC0A080FFC0A080FF000000FFF0FBFFFFC0A080FFC0A080FF000000FFF0FB
+      FFFFC0A080FF80A0A0FF000000FF000000FFF0FBFFFFF0FBFFFFF0FBFFFFC0A0
+      80FFC0A080FFC0A080FFC0A080FFC0A080FFC0A080FFC0A080FFC0A080FFC0A0
+      80FFC0A080FF80A0A0FF000000FF000000FFF0FBFFFFC0A080FF806060FF8060
+      60FF806060FFC0A080FF806060FF806060FF806060FFC0A080FF806060FF8060
+      60FF806060FF80A0A0FF000000FF000000FFF0FBFFFFC0A080FF806060FFC0A0
+      80FFF0FBFFFFC0A080FF806060FFC0A080FFF0FBFFFFC0A080FF806060FFC0A0
+      80FFF0FBFFFF80A0A0FF000000FF000000FFF0FBFFFFC0A080FF806060FFF0FB
+      FFFFF0FBFFFFC0A080FF806060FFF0FBFFFFF0FBFFFFC0A080FF806060FFF0FB
+      FFFFF0FBFFFF80A0A0FF000000FF000000FFF0FBFFFFC0A080FFC0A080FFC0A0
+      80FFC0A080FFC0A080FFC0A080FFC0A080FFC0A080FFC0A080FFC0A080FFC0A0
+      80FFC0A080FF80A0A0FF000000FF000000FF80A0A0FF80A0A0FF80A0A0FF80A0
+      A0FF80A0A0FF80A0A0FF80A0A0FF80A0A0FF80A0A0FF80A0A0FF80A0A0FF80A0
+      A0FF80A0A0FF80A0A0FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00000000000000000000000000000000000000
+      0000AEC6FFFF7783FFFFC1DAFFFFA2B4FFFF7783FFFFC1DAFFFF000000000000
+      00000000000000000000000000000000000000000000000000000000000093A2
+      FEFF4D51F1FF3B45FEFF8793FCFF8793FCFF4D51F1FF3B45FEFFB9C0FAFF0000
+      0000000000000000000000000000000000000000000000000000000000008793
+      FCFF2C30FBFF1C1FFBFF4D51F1FF3B45FEFF1C1FFBFF1F3ADAFF93A2FEFF0000
+      000000000000000000000000000000000000D7D7D7FFD1D1D1FFD7D6C8FFD1D1
+      D1FFA0A6DCFF787DE5FF1F3ADAFF4D51F1FF9197DFFFA9AEDCFFD1D1D1FFD7D7
+      D7FFC6C6C6FFD1D1D1FF0000000000000000CACACAFFF8F8F8FFF8F6F3FFF8F8
+      F8FFFFFFF0FFC2DCF0FF6168FCFF7783FFFFD2EEFFFFFFFFF0FFF8F6F3FFF8F6
+      F3FFEFEDEEFFB8B9B9FF0000000000000000B1B0B0FFA1A2A3FFA1A2A3FFA1A2
+      A3FFB5B19AFF8182CFFF1F3ADAFF3D3FF1FF8897ADFFB5B19AFFA1A2A3FFA6A7
+      A8FFA1A2A3FFB1B0B0FF0000000000000000B2B4B5FFC0C0C0FFBABCBCFFC0C0
+      C0FFC0C0C0FF9A9ACCFF2C30FBFF3B45FEFFA5A5CEFFCCC3BDFFBABCBCFFC0C0
+      C0FFB2B4B5FFB2B4B5FF0000000000000000B1B0B0FFFDFDFDFFFFFFFFFFFDFD
+      FDFFFDFDFDFF9FE0FAFF3B45FEFF6168FCFFD2EEFFFFFDFDFDFFFDFDFDFFFFFF
+      FFFFEFEDEEFFB1B0B0FF0000000000000000A1A2A3FFEFEDEEFFE2E4E2FFE2E4
+      E2FFF4EDDFFFA9AEDCFF2C30FBFF3B45FEFFC2CBE2FFF4EDDFFFE0E0E0FFEFED
+      EEFFD7D7D7FF9D9D9DFF0000000000000000979899FFE4E6E7FFE0E0E0FFE0E0
+      E0FFF4EDDFFF71B5DFFF1C1FFBFF1F3ADAFFC2CBE2FFF4EDDFFFDDDDDDFFE7E8
+      E8FFD7CFCBFF979899FF0000000000000000939494FFDDDDDDFFD7D7D7FFD7D7
+      D7FFFAE4D0FF9197DFFF0A0BFDFF2C30FBFFB6BDD9FFE2E4E2FFD7D6C8FFE0E0
+      E0FFC6C6C6FF939494FF00000000000000008E8689FFD7D7D7FFD7CFCBFFD1D1
+      D1FFE0DDC6FF898CDBFF0A0BFDFF1C1FFBFFAEB5D9FFE0DDC6FFCACACAFFD7D7
+      D7FFC0C0C0FF8E8689FF0000000000000000898080FFCACACAFFC6C6C6FFC6C6
+      C6FFD7D6C8FF8182CFFF0A0BFDFF1C1FFBFFA5A5CEFFD7D6C8FFC0C0C0FFD7CF
+      CBFFB2B4B5FF898080FF0000000000000000777777FFD1D1D1FFD1C7C5FFD7CF
+      CBFFD7D6C8FF787DE5FF0A0BFDFF0A0BFDFFA5A5CEFFE0DDC6FFD1C7C5FFD7D7
+      D7FFB8B9B9FF777777FF00000000000000009D9D9DFF808080FF898080FF8980
+      80FF8A8481FF5F5E9FFF2826D6FF2628A2FF5F5E9FFF948979FF808080FF8A84
+      81FF898080FFA1A2A3FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000808000008080000080800000808000008080
+      0000808000008080000080800000808000008080000080800000808000008080
+      0000808000008080000080800000808000008080000080800000808000008080
+      0000808000008080000080800000808000008080000080800000808000008080
+      0000808000008080000080800000808000008080000080800000808000008080
+      0000808000008080000080800000000000FF000000FF000000FF000000FF0000
+      00FF000000FF80800000800000FF808000008080000080800000808000008080
+      00008080000080800000000000FFC0C0C0FFC0C0C0FFC0C0C0FFC0C0C0FFC0C0
+      C0FFC0C0C0FF000000FF800000FF808000008080000080800000808000008080
+      000080800000000000FFC0C0C0FF000000FFC0C0C0FFC0C0C0FFC0C0C0FFC0C0
+      C0FFC0C0C0FFC0C0C0FF800000FF80800000000000FF000000FF000000FF0000
+      00FF000000FFC0C0C0FF000000FFC0C0C0FF000000FFC0C0C0FFC0C0C0FFC0C0
+      C0FFC0C0C0FFC0C0C0FF800000FF80800000000000FFFFFFFFFFFFFFFFFF0000
+      00FFC0C0C0FF000000FFC0C0C0FF000000FFC0C0C0FF000000FFC0C0C0FFC0C0
+      C0FFC0C0C0FF000000FF800000FF80800000000000FFFFFFFFFF000000FFC0C0
+      C0FF000000FFFFFFFFFF000000FFC0C0C0FF000000FFC0C0C0FF000000FF0000
+      00FF000000FF80800000800000FF80800000000000FFFFFFFFFF000000FF0000
+      00FFFFFFFFFFFFFFFFFFFFFFFFFF000000FFC0C0C0FF000000FFFFFFFFFF0000
+      00FF80800000808000008080000080800000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000FFFFFFFFFFFFFFFFFF0000
+      00FF80800000808000008080000080800000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FF80800000808000008080000080800000000000FFFFFFFFFF800000FF8000
+      00FFFFFFFFFF800000FF800000FF800000FF800000FF800000FFFFFFFFFF0000
+      00FF80800000808000008080000080800000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FF80800000808000008080000080800000000000FFFFFFFFFF800000FF8000
+      00FFFFFFFFFF800000FF800000FF800000FF800000FF800000FFFFFFFFFF0000
+      00FF80800000808000008080000080800000000000FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0000
+      00FF80800000808000008080000080800000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF808000008080000080800000FFFFFF00FFFFFF00FFFFFF00A465341DA769
+      3A9FA76A3ADEA56736F6A76939E5A76A3ABCA4653453A4653405FFFFFF00FFFF
+      FF00FFFFFF00A4653479A4653410FFFFFF00FFFFFF00A4653550A66838F6C090
+      68FAD3B08FFFDFC2A8FFDEC1A8FFD4B193FFB9875FF4A56737F0A4653458FFFF
+      FF00A4663566A46534FFA465340FFFFFFF00A4653429A66939F5D3AD8CFFDCBD
+      9DFFDDBEA1FFE5CBB4FFE9D3BFFFEEDDCCFFF0E2D5FFE7D2BFFFAF774BF5A567
+      36C0AB7143F7A46635FCA465340EFFFFFF00A769399BC09069FDC59872FFA86B
+      3CFFA46635FFA76A3AFCB7855DF3D9BBA1FEF1E4D8FFF2E6DBFFF3E8DDFFCEA7
+      88FDEAD8C8FFA76A3AF9A465340DFFFFFF00A66838F3AB7041FFA96C3CFEA76A
+      3AF5A4653475A4653419A4653445A66938CDB98861F5EBDBCDFFF5EBE2FFF6EE
+      E6FFF6EEE6FFA76A3AFAA465340BFFFFFF00A46535FEA76A3AFBC791689DA567
+      37E6A4653423FFFFFF00FFFFFF00FFFFFF00A4653460A46635FFE9D7C7FFEBD8
+      C6FFF5ECE3FFA66A3AFAA465340AFFFFFF00A46534FCB3794C7ECF9D762BBB83
+      5713A4653402FFFFFF00FFFFFF00A4653404A66838C4D0AC8FFAF6EEE7FFF2E6
+      DBFFF6EEE6FFA66A3AFBA4653409FFFFFF00A465340DFFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00A46534A0A46534FFAD7447F8AF774CF7AF77
+      4CF7AF784CF7A46534FFA4653408FFFFFF00A46534F9A46534FEA46534FEA465
+      34FDA46534FCA46534FBA46534B9A465341DA4653418A4653418A4653418A465
+      3418A4653418A465341CFFFFFF00FFFFFF00A46534FCF5EDE5FFF6EDE5FFF5EC
+      E4FFD7B79CFDA66837E0A4653410FFFFFF00FFFFFF00FFFFFF00FFFFFF00D5A4
+      7E1ACD997239A46534FCA465340CFFFFFF00A46635FCF6EEE6FFEBD7C4FFEAD9
+      C9FFA46534FEA465346AFFFFFF00FFFFFF00FFFFFF00A465340BA56635E9C995
+      6C8DB77F53C2A46534FFA4653405FFFFFF00A56737FDF6EEE6FFF5ECE3FFF5ED
+      E4FFE6D2C1FFB0794DF5A66938CAA4653436FFFFFF00A465346AA96B3CEDB67C
+      4FFFA76A3AFEA56837FAFFFFFF00FFFFFF00A66838FDF1E4D8FFD4B295FEF4E9
+      E0FFF3E8DDFFEDDCCCFFD2AD8FFEB0784CF5A56635FBA66939FFA66939FEA96D
+      3DFFB0784CFFA76A3AA8FFFFFF00FFFFFF00A56737FEB7845BF7A56736D4B17A
+      4EF4E3CAB4FFECDAC9FFE7D1BCFFE3C9B0FFDEBEA0FFD2AB88FFCEA582FFD3AE
+      8EFFA66838F5A465342AFFFFFF00FFFFFF00A46534FFA5673693FFFFFF00A465
+      3454A66737EEB58055F3CEA684FFD8B697FFDBB999FFD3AC8AFFC2946DFCA668
+      38F6A466355BFFFFFF00FFFFFF00FFFFFF00A46534A2A4653401FFFFFF00FFFF
+      FF00A4653405A4653453A76A3ABEA66938E9A46635FAA76A3AE4A76B3BAAA465
+      3424FFFFFF00FFFFFF00FFFFFF00808000008080000080800000808000008080
+      0000808000008080000080800000808000008080000080800000808000008080
+      0000808000008080000080800000808000008080000080800000808000008080
+      0000000000FF000000FF000000FF000000FF8080000080800000808000008080
+      0000808000008080000080800000808000008080000080800000808000000000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF8080000080800000808000008080000080800000000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF808080FF00FF
+      FFFF00FFFFFF000000FF80800000808000008080000080800000000000FF0000
+      00FF000000FF000000FF808080FF808080FF808080FF000000FF00FFFFFF0000
+      00FF000000FF00FFFFFF000000FF808000008080000080800000000000FF0000
+      00FF000000FF000000FF808080FF808080FF000000FF808080FF000000FF0000
+      00FF000000FF000000FF808080FF808000008080000080800000000000FF0000
+      00FF000000FF808080FF808080FF808080FF808080FF808080FF808080FF0000
+      00FFFFFFFFFF000000FF8080000080800000000000FF808080FF000000FF0000
+      00FF000000FF000000FF808080FF808080FF808080FF808080FF000000FFFFFF
+      FFFFFFFFFFFFFFFFFFFF808080FF000000FF00FFFFFF00FFFFFF00FFFFFF8080
+      80FF000000FF000000FF808080FF808080FF808080FF000000FF000000FFFFFF
+      FFFFFFFFFFFF000000FF808080FF808080FF00FFFFFF000000FF00FFFFFF00FF
+      FFFF000000FF000000FF808080FF808080FF808080FF808080FF000000FFFFFF
+      FFFF000000FF000000FF80800000000000FF808080FF00FFFFFF00FFFFFF00FF
+      FFFF000000FF808080FF000000FF000000FF000000FF000000FFFFFFFFFFFFFF
+      FFFFFFFFFFFF000000FF80800000000000FF808080FF808080FF808080FF8080
+      80FF00FFFFFF000000FF808080FF808080FF000000FFFFFFFFFFFFFFFFFF0000
+      00FF000000FF808080FF8080000080800000000000FF000000FF000000FF8080
+      80FF808080FF00FFFFFF000000FF808080FF000000FF000000FFFFFFFFFF8080
+      80FF808000008080000080800000808000008080000080800000808000000000
+      00FF808080FF808080FF00FFFFFF000000FF8080000080800000808000008080
+      0000808000008080000080800000808000008080000080800000808000008080
+      0000000000FF808080FF808080FF000000FF8080000080800000808000008080
+      0000808000008080000080800000808000008080000080800000808000008080
+      000080800000000000FF000000FF808000008080000080800000808000008080
+      0000808000008080000080800000FFFF0000FFFF0000FFFF0000FFFF0000FFFF
+      0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF
+      0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF
+      0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF
+      0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00000000
+      00FF000000FF000000FFFFFF0000FFFF0000FFFF0000000000FF000000FF0000
+      00FFFFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00000000
+      00FFFFFFFFFF000000FFFFFF0000FFFF0000FFFF0000000000FFFFFFFFFF0000
+      00FFFFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF00000000
+      00FF000000FF000000FFFFFF0000FFFF0000FFFF0000000000FF000000FF0000
+      00FFFFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000000000FF0000
+      00FF000000FF000000FF000000FFFFFF0000000000FF000000FF000000FF0000
+      00FF000000FFFFFF0000FFFF0000FFFF0000FFFF0000FFFF0000000000FFFFFF
+      FFFF000000FF000000FF000000FFFFFF0000000000FFFFFFFFFF000000FF0000
+      00FF000000FFFFFF0000FFFF0000FFFF0000FFFF0000000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FFFFFF0000FFFF0000000000FF000000FFFFFFFFFF0000
+      00FF000000FF000000FFC0C0C0FF000000FF000000FFFFFFFFFF000000FF0000
+      00FF000000FF000000FF000000FFFFFF0000000000FF000000FFFFFFFFFF0000
+      00FF000000FF000000FFC0C0C0FF000000FF000000FFFFFFFFFF000000FF0000
+      00FF000000FF000000FF000000FFFFFF0000000000FF000000FFFFFFFFFF0000
+      00FF000000FF000000FF000000FF000000FF000000FFFFFFFFFF000000FF0000
+      00FF000000FF000000FF000000FFFFFF0000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FFFFFF0000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FFFFFF0000000000FFFFFFFFFF000000FF0000
+      00FF000000FFFFFF0000FFFF0000FFFF0000FFFF0000FFFF0000000000FFFFFF
+      FFFF000000FF000000FF000000FFFFFF0000000000FFFFFFFFFF000000FF0000
+      00FF000000FFFFFF0000FFFF0000FFFF0000FFFF0000FFFF0000000000FFFFFF
+      FFFF000000FF000000FF000000FFFFFF0000000000FF000000FF000000FF0000
+      00FF000000FFFFFF0000FFFF0000FFFF0000FFFF0000FFFF0000000000FF0000
+      00FF000000FF000000FF000000FFFFFF0000FFFF0000FFFF0000FFFF0000FFFF
+      0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF
+      0000FFFF0000FFFF0000FFFF0000
+    }
+  end
+  object PopupMenu1: TPopupMenu
+    Left = 104
+    Top = 217
+    object MenuItem2: TMenuItem
+      Action = molRefresh
+    end
+    object MenuItem5: TMenuItem
+      Caption = '-'
+    end
+    object MenuItem4: TMenuItem
+      Action = usrUserList
+    end
+    object MenuItem7: TMenuItem
+      Action = usrCurUserPermission
+    end
+    object MenuItem6: TMenuItem
+      Action = boxEventList
+    end
+    object MenuItem3: TMenuItem
+      Caption = '-'
+    end
+    object MenuItem1: TMenuItem
+      Action = molProps
+    end
+  end
+  object ActionList1: TActionList
+    Images = ImageList1
+    Left = 104
+    Top = 280
+    object molProps: TAction
+      Caption = 'Свойства'
+      ImageIndex = 4
+      OnExecute = molPropsExecute
+    end
+    object molRefresh: TAction
+      Caption = 'Перечитать'
+      ImageIndex = 5
+      OnExecute = molRefreshExecute
+    end
+    object usrUserList: TAction
+      Category = 'Пользователи'
+      Caption = 'Список пользователей'
+      ImageIndex = 6
+      OnExecute = usrUserListExecute
+    end
+    object boxEventList: TAction
+      Category = 'Ящик'
+      Caption = 'Список событий'
+      OnExecute = boxEventListExecute
+    end
+    object usrCurUserPermission: TAction
+      Category = 'Пользователи'
+      Caption = 'Права текущего оператора'
+      OnExecute = usrCurUserPermissionExecute
+    end
+  end
+end

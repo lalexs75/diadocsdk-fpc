@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_Document"><element name="TDocument"><short>Структура данных Document содержит информацию об одном документе в Диадоке, которую можно получить, например, при помощи метода GetDocument</short>
+      </element><element name="TDocument.IndexKey"><short>IndexKey - уникальный ключ документа, который можно передавать в метод GetDocuments в качестве параметра afterIndexKey для итерирования по всему отфильтрованному списку.</short>
+      </element><element name="TDocument.MessageId"><short>MessageId - идентификатор сообщения, содержащего данный документ</short>
+      </element><element name="TDocument.CreationTimestampTicks"><short>CreationTimestampTicks - метка времени создания данного документа</short>
+      </element><element name="TDocument.EntityId"><short>EntityId - идентификатор соответствующей документу сущности типа LetterAttachment внутри сообщения</short>
+      </element><element name="TDocument.CounteragentBoxId"><short>CounteragentBoxId - идентификатор Диадок-ящика контрагента по данному документу</short><descr><p>В случае исходящего документа - это идентификатор ящика получателя, в случае входящего документа - идентификатор ящика отправителя;</p><p>Если документ находится в черновиках, то поле CounteragentBoxId может быть не заполнено.</p>
+        </descr>
+      </element><element name="TDocument.DocumentType"><short>DocumentType - тип документа, принимает одно из значений перечислимого типа DocumentType</short><descr>В зависимости от типа документа заполняется одно из полей Document.XxxMetadata. Для новых типов значение всегда будет равно UnknownDocumentType.
+</descr>
+      </element><element name="TDocument.InitialDocumentIds"><short>InitialDocumentIds - список идентификаторов документов, на которые ссылается данный</short><descr>каждый такой идентификатор задается структурой DocumentId
+</descr>
+      </element><element name="TDocument.SubordinateDocumentIds"><short>SubordinateDocumentIds - список идентификаторов документов, которые ссылаются на данный</short><descr>каждый такой идентификатор задается структурой DocumentId
+</descr>
+      </element><element name="TDocument.Content"><short>Content - содержимое документа</short><descr><p>Поле Content.Size определяет размер содержимого в байтах.</p><p>Поле Content.Data содержит собственно данные.</p><p>При получении документов списком (например, при помощи метода GetDocuments) поле Content.Data не заполняется из соображений производительности.</p>
+        </descr>
+      </element><element name="TDocument.FileName"><short>FileName - имя файла документа, которое у него было при загрузке в Диадок</short>
+      </element><element name="TDocument.DocumentDate"><short>DocumentDate (устаревшее, см. Metadata) - дата формирования документа в формате ДД.ММ.ГГГГ; может отличаться от даты загрузки его в Диадок</short>
+      </element><element name="TDocument.DocumentNumber"><short>DocumentNumber (устаревшее, см. Metadata) - номер документа</short>
+      </element><element name="TDocument.IsDeleted"><short>IsDeleted - флаг, показывающий, был ли удален данный документ</short>
+      </element><element name="TDocument.DepartmentId"><short>DepartmentId - идентификатор подразделения, в котором находится документ</short>
+      </element><element name="TDocument.IsTest"><short>IsTest - флаг, показывающий, что данный документ является тестовым и не имеет юридической силы, т.к. один из контрагентов не присоединился к регламенту Диадока</short>
+      </element><element name="TDocument.FromDepartmentId"><short>FromDepartmentId - идентификатор подразделения, из которого отправляется документ</short>
+      </element><element name="TDocument.ToDepartmentId"><short>ToDepartmentId - идентификатор подразделения, в которое отправляется документ</short>
+      </element><element name="TDocument.CustomDocumentId"><short>CustomDocumentId - идентификатор документа, определяемый внешней системой</short>
+      </element><element name="TDocument.IsEncryptedContent"><short>IsEncryptedContent - флаг, показывающий, что контент передаваемого документа зашифрован</short>
+      </element><element name="TDocument.NonformalizedDocumentMetadata"><short>NonformalizedDocumentMetadata (устаревшее, см. RecipientReceiptMetadata и RecipientResponseStatus) - дополнительные атрибуты специфичные для неформализованных документов</short>
+      </element><element name="TDocument.InvoiceMetadata"><short>InvoiceMetadata (устаревшее, см. RecipientReceiptMetadata, ConfirmationMetadata и AmendmentRequestMetadata) - дополнительные атрибуты специфичные для счетов-фактур</short>
+      </element><element name="TDocument.InvoiceRevisionMetadata"><short>InvoiceRevisionMetadata (устаревшее, см. RecipientReceiptMetadata, ConfirmationMetadata и AmendmentRequestMetadata) - дополнительные атрибуты специфичные для исправлений счетов-фактур</short>
+      </element><element name="TDocument.InvoiceCorrectionRevisionMetadata"><short>InvoiceCorrectionRevisionMetadata (устаревшее, см. RecipientReceiptMetadata, ConfirmationMetadata и AmendmentRequestMetadata) - дополнительные атрибуты специфичные для исправлений корректировочных счетов-фактур</short>
+      </element><element name="TDocument.InvoiceCorrectionMetadata"><short>InvoiceCorrectionMetadata (устаревшее, см. RecipientReceiptMetadata, ConfirmationMetadata и AmendmentRequestMetadata) - дополнительные атрибуты специфичные для корректировочных счетов-фактур</short>
+      </element><element name="TDocument.TrustConnectionRequestMetadata"><short>TrustConnectionRequestMetadata (устаревшее, см. RecipientResponseStatus) - дополнительные атрибуты специфичные для документов типа TrustConnectionRequest</short>
+      </element><element name="TDocument.Torg12Metadata"><short>Torg12Metadata (устаревшее, см. RecipientReceiptMetadata и RecipientResponseStatus) - дополнительные атрибуты специфичные для товарных накладных ТОРГ-12</short>
+      </element><element name="TDocument.AcceptanceCertificateMetadata"><short>AcceptanceCertificateMetadata (устаревшее, см. RecipientReceiptMetadata и RecipientResponseStatus) - дополнительные атрибуты специфичные для актов о выполнении работ (оказании услуг)</short>
+      </element><element name="TDocument.ProformaInvoiceMetadata"><short>ProformaInvoiceMetadata (устаревшее, см. RecipientReceiptMetadata) - дополнительные атрибуты специфичные для счетов на оплату</short>
+      </element><element name="TDocument.XmlTorg12Metadata"><short>XmlTorg12Metadata (устаревшее, см. RecipientReceiptMetadata и RecipientResponseStatus) - дополнительные атрибуты специфичные для товарных накладных ТОРГ-12 в XML-формате</short>
+      </element><element name="TDocument.XmlAcceptanceCertificateMetadata"><short>XmlAcceptanceCertificateMetadata (устаревшее, см. RecipientReceiptMetadata и RecipientResponseStatus) - дополнительные атрибуты специфичные для актов о выполнении работ (оказании услуг) в XML-формате</short>
+      </element><element name="TDocument.PriceListMetadata"><short>PriceListMetadata (устаревшее, см. RecipientReceiptMetadata и RecipientResponseStatus) - дополнительные атрибуты специфичные для ценовых листов</short>
+      </element><element name="TDocument.PriceListAgreementMetadata"><short>PriceListAgreementMetadata (устаревшее, см. RecipientReceiptMetadata и RecipientResponseStatus) - дополнительные атрибуты специфичные для протоколов согласования цены</short>
+      </element><element name="TDocument.CertificateRegistryMetadata"><short>CertificateRegistryMetadata (устаревшее, см. RecipientReceiptMetadata и RecipientResponseStatus) - дополнительные атрибуты специфичные для реестров сертификатов</short>
+      </element><element name="TDocument.ReconciliationActMetadata"><short>ReconciliationActMetadata (устаревшее, см. RecipientReceiptMetadata и RecipientResponseStatus) - дополнительные атрибуты специфичные для актов сверки</short>
+      </element><element name="TDocument.ContractMetadata"><short>ContractMetadata (устаревшее, см. RecipientReceiptMetadata и RecipientResponseStatus) - дополнительные атрибуты специфичные для договоров</short>
+      </element><element name="TDocument.Torg13Metadata"><short>Torg13Metadata (устаревшее, см. RecipientReceiptMetadata и RecipientResponseStatus) - дополнительные атрибуты специфичные для накладных ТОРГ-13</short>
+      </element><element name="TDocument.SupplementaryAgreementMetadata"><short>SupplementaryAgreementMetadata (устаревшее, см. RecipientReceiptMetadata и RecipientResponseStatus) - дополнительные атрибуты специфичные для типа документа дополнительное соглашение к договору</short>
+      </element><element name="TDocument.ResolutionStatus"><short>ResolutionStatus - текущий статус согласования данного документа</short>
+      </element><element name="TDocument.ServiceDetailsMetadata"><short>ServiceDetailsMetadata (устаревшее, см. RecipientReceiptMetadata) - дополнительные атрибуты специфичные для детализаций</short>
+      </element><element name="TDocument.UniversalTransferDocumentMetadata"><short>UniversalTransferDocumentMetadata (устаревшее, см. RecipientReceiptMetadata, RecipientResponseStatus, ConfirmationMetadata и AmendmentRequestMetadata) - дополнительные атрибуты, специфичные для УПД</short>
+      </element><element name="TDocument.UniversalTransferDocumentRevisionMetadata"><short>UniversalTransferDocumentRevisionMetadata (устаревшее, см. RecipientReceiptMetadata, RecipientResponseStatus, ConfirmationMetadata и AmendmentRequestMetadata) - дополнительные атрибуты, специфичные для исправлений УПД</short>
+      </element><element name="TDocument.UniversalCorrectionDocumentMetadata"><short>UniversalCorrectionDocumentMetadata (устаревшее, см. RecipientReceiptMetadata, RecipientResponseStatus, ConfirmationMetadata и AmendmentRequestMetadata) - дополнительные атрибуты, специфичные для УКД</short>
+      </element><element name="TDocument.UniversalCorrectionDocumentRevisionMetadata"><short>UniversalCorrectionDocumentRevisionMetadata (устаревшее, см. RecipientReceiptMetadata, RecipientResponseStatus, ConfirmationMetadata и AmendmentRequestMetadata) - дополнительные атрибуты, специфичные для исправлений УКД</short>
+      </element><element name="TDocument.RevocationStatus"><short>RevocationStatus - статус аннулирования документа</short><descr><li>RevocationStatusNone (документ не аннулирован, и не было предложений об аннулировании)</li><li>RevocationIsRequestedByMe (отправлено исходящее предложение об аннулировании документа)</li><li>RequestsMyRevocation (получено входящее предложение об аннулировании документа)</li><li>RevocationAccepted (документ аннулирован)</li><li>RevocationRejected (получен или отправлен отказ от предложения об аннулировании документа)</li><li>UnknownRevocationStatus (неизвестный статус аннулирования документа; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать статус аннулирования документа, переданный сервером)</li>
+        </descr>
+      </element><element name="TDocument.SendTimestampTicks"><short>SendTimestampTicks - Необязательная метка времени отправки данного документа</short>
+      </element><element name="TDocument.DeliveryTimestampTicks"><short>DeliveryTimestampTicks - Необязательная метка времени доставки данного документа</short>
+      </element><element name="TDocument.ForwardDocumentEvents"><short>ForwardDocumentEvents - Список событий пересылки данного документа третьей стороне</short><descr>Документ может быть переслан нескольким получателям, а также - несколько раз одному получателю.
+</descr>
+      </element><element name="TDocument.RoamingNotificationStatus"><short>RoamingNotificationStatus - статус доставки в роуминг</short><descr>Возможные значения:
+<li>RoamingNotificationStatusNone (документ не роуминговый, или документ без подтверждения доставки в роуминг)</li><li>RoamingNotificationStatusSuccess (документ с подтверждением успешной доставки в роуминг)</li><li>RoamingNotificationStatusError (документ с ошибкой доставки в роуминг)</li><li>UnknownRoamingNotificationStatus (неизвестный роуминговый статус документа; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать роуминговый статус документа, переданный сервером)</li>
+        </descr>
+      </element><element name="TDocument.HasCustomPrintForm"><short>HasCustomPrintForm - флаг, показывающий, что данный документ имеет нестандартную печатную форму. Скачать печатную форму документа можно при помощи метода GeneratePrintForm</short>
+      </element><element name="TDocument.IsRead"><short>IsRead - флаг, указывающий на то, что документ был прочитан сотрудником организации</short>
+      </element><element name="TDocument.RoamingNotificationStatusDescription"><short>RoamingNotificationStatusDescription - текстовое описание ошибки при доставке документов в роуминг.</short><descr>Обычно это поле заполняется, когда статус доставки в роуминг RoamingNotificationStatus имеет значение RoamingNotificationStatusErro
+</descr>
+      </element><element name="TDocument.ResolutionRouteId"><short>ResolutionRouteId - идентификатор маршрута согласования, на котором находится документ (если документ находится на маршруте согласования)</short>
+      </element><element name="TDocument.AttachmentVersion"><short>AttachmentVersion - информация о версии XSD схемы, в соответствии с которой сформирован документ</short>
+      </element><element name="TDocument.ProxySignatureStatus"><short>ProxySignatureStatus - статус промежуточной подписи</short><descr>Возможные значения:
+<li>ProxySignatureStatusNone (документ не требует промежуточной подписи)</li><li>WaitingForProxySignature (ожидается промежуточная подпись)</li><li>WithProxySignature (промежуточная подпись проверена и валидна)</li><li>ProxySignatureRejected (промежуточный получатель отказал в подписи)</li><li>InvalidProxySignature (промежуточная подпись проверена и невалидна)</li>
+        </descr>
+      </element><element name="TDocument.TypeNamedId"><short>TypeNamedId - строковый идентификатор типа документа. </short><descr>Его следует использовать вместо свойства DocumentType. Может принимать значения «Nonformalized», «Invoice», «Torg12», «XmlTorg12» и другие. Полный список возможных значений можно получить с помощью метода GetDocumentTypes
+</descr>
+      </element><element name="TDocument.DocFunction"><short>Function - функция документа.</short><descr>Дл всех типов, кроме UniversalTransferDocument, UniversalTransferDocumentRevision, UniversalCorrectionDocument и UniversalCorrectionDocumentRevision, принимает значение «default». Для документов типа УПД/ИУПД принимает значения «СЧФ», «ДОП» и «СЧФДОП», для документов типа УКД/ИУКД принимает значения «КСЧФ», «ДИС» и «КСЧФДИС».
+</descr>
+      </element><element name="TDocument.WorkflowId"><short>WorkflowId - числовой идентификатор типа документооброта, по которому запущен документ. Более подробную информацию см. DocumentWorkflow</short>
+      </element><element name="TDocument.Title"><short>Title - название документа. Например, «Счет-фактура №123 от 26.02.18»</short>
+      </element><element name="TDocument.Metadata"><short>Metadata - массив пар «ключ-значение», определямых типом документа. Примеры возможных значения ключей: «FileName», «DocumentDate», «DocumentNumber» и другие. Более подробную информацию см. MetadataItem. Набор возможных значений для конкретного типа можно узнать с помощью метода GetDocumentTypes</short>
+      </element><element name="TDocument.RecipientReceiptMetadata"><short>RecipientReceiptMetadata - свойство, отвечающее за состояние извещения о получении документа со стороны получателя</short>
+      </element><element name="TDocument.ConfirmationMetadata"><short>ConfirmationMetadata - свойство, отвечающее за состояние подтверждения оператором даты отправки/получения документа. Актуально, например, для счетов-фактур и УПД/УКД с некоторыми функциями</short>
+      </element><element name="TDocument.RecipientResponseStatus"><short>RecipientResponseStatus - свойство, отвечающее за состояние ответного действия получателя - ответную подпись или подписание ответного титула</short>
+      </element><element name="TDocument.AmendmentRequestMetadata"><short>AmendmentRequestMetadata - свойство, отвечающее за состояние уведомления об уточнении. Актуально, например, для счетов-фактур, УПД и некоторых версий актов и накладных</short>
+      </element><element name="TDocument.Origin"><short>Origin - свойство, позволяющее узнать, из какой сущности был создан документ. Например, из черновика или шаблона</short>
+      </element>
+    <element name="TRevocationStatus"><short>Перечисление отражает статус аннулирования документа</short><descr>Возможные значения:
+<li>UnknownRevocationStatus - неизвестный статус аннулирования документа; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать статус аннулирования документа, переданный сервером;</li><li>RevocationStatusNone - документ не аннулирован, и не было предложений об аннулировании;</li><li>RevocationIsRequestedByMe - отправлено исходящее предложение об аннулировании документа;</li><li>RequestsMyRevocation - получено входящее предложение об аннулировании документа;</li><li>RevocationAccepted - документ аннулирован;</li><li>RevocationRejected - получен или отправлен отказ от предложения об аннулировании документа.</li>
+        </descr>
+      </element><element name="TRevocationStatus.UnknownRevocationStatus"><short>неизвестный статус аннулирования документа; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать статус аннулирования документа, переданный сервером</short>
+      </element><element name="TRevocationStatus.RevocationStatusNone"><short>документ не аннулирован, и не было предложений об аннулировании</short>
+      </element><element name="TRevocationStatus.RevocationIsRequestedByMe"><short>отправлено исходящее предложение об аннулировании документа</short>
+      </element><element name="TRevocationStatus.RequestsMyRevocation"><short>получено входящее предложение об аннулировании документа</short>
+      </element><element name="TRevocationStatus.RevocationAccepted"><short>документ аннулирован</short>
+      </element><element name="TRevocationStatus.RevocationRejected"><short>получен или отправлен отказ от предложения об аннулировании документа</short>
+      </element>
+    <element name="TProxySignatureStatus"><short>Перечисление отражает статус промежуточной подписи. Возможные значения:</short>
+      </element><element name="TProxySignatureStatus.UnknownProxySignatureStatus"><short>UnknownProxySignatureStatus - неизвестный статус промежуточной подписи; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать статус промежуточной подписи, переданный сервером;</short>
+      </element><element name="TProxySignatureStatus.ProxySignatureStatusNone"><short>ProxySignatureStatusNone - документ не требует промежуточной подписи;</short>
+      </element><element name="TProxySignatureStatus.WaitingForProxySignature"><short>WaitingForProxySignature - ожидается промежуточная подпись;</short>
+      </element><element name="TProxySignatureStatus.WithProxySignature"><short>WithProxySignature - промежуточная подпись проверена и валидна;</short>
+      </element><element name="TProxySignatureStatus.ProxySignatureRejected"><short>ProxySignatureRejected - промежуточный получатель отказал в подписи;</short>
+      </element><element name="TProxySignatureStatus.InvalidProxySignature"><short>InvalidProxySignature - промежуточная подпись проверена и невалидна.</short>
+      </element><element name="TGeneralReceiptStatus"><short>Обобщенный статус извещения о получении (ИОП).</short><descr><p>Встречается в нескольких местах:</p><li>ИОП на документ со стороны получателя;</li><li>ИОП на подтверждение оператором даты отправки/получения документа. Актуально для типов, которые поддерживают подтверждения оператором даты отправки/получения. Например, счет-фактура или УПД с функциями СЧФ и СЧФДОП;</li><li>ИОП на подтверждение оператором даты отправки ИОПа на документ со стороны получателя. Актуально для типов, которые поддерживают подтверждения оператором даты отправки/получения. Например, счет-фактура или УПД с функциями СЧФ и СЧФДОП;</li><li>ИОП на уведомление об уточнении (УОУ), полученное отправителем документа.</li>
+        </descr>
+      </element><element name="TGeneralReceiptStatus.GeneralReceiptStatusUnknown"><short>GeneralReceiptStatusNotAcceptable - ИОП на документ или другой технологический документ не поддерживается либо не запрошен. Не требует никакого действия.</short>
+      </element><element name="TGeneralReceiptStatus.HaveToCreateReceipt"><short>HaveToCreateReceipt - нужно подписать ИОП на документ или другой технологический документ.</short>
+      </element><element name="TGeneralReceiptStatus.WaitingForReceipt"><short>WaitingForReceipt - ожидание подписания ИОПа на документ или уведомление об уточнении со стороны контрагента.</short>
+      </element><element name="TGeneralReceiptStatus.Finished"><short>Finished - ИОП подписано. Больше действий по нему совершать не надо.</short>
+      </element><element name="TRecipientResponseStatus"><short>Отвечает за состояние ответного действия со стороны получателя документа. Под ответным действием имеет ввиду подпись под документом либо отправка ответного титула.</short>
+      </element><element name="TRecipientResponseStatus.RecipientResponseStatusUnknown"><short>RecipientResponseStatusNotAcceptable - ответного действия не требуется. Либо это т.н. односторонний документ, например, счет, либо счет-фактура и УПД СЧФ, либо документ с опциональным запросом подписи, которая не была запрошена. Сюда также подходит однотитульный акт (XmlAcceptanceCertificate).</short>
+      </element><element name="TRecipientResponseStatus.WaitingForRecipientSignature"><short>WaitingForRecipientSignature - ожидается ответное действие получателя документа. Если документ исходящий, то не требует никаких действия. Если входящий - требуется либо подписать документ (ответный титул), либо отказать в подписи.</short>
+      </element><element name="TRecipientResponseStatus.WithRecipientSignature"><short>WithRecipientSignature - получатель подписал документ (ответный титул).</short>
+      </element><element name="TRecipientResponseStatus.RecipientSignatureRequestRejected"><short>RecipientSignatureRequestRejected - получатель документа отказал в подписи.</short>
+      </element><element name="TRecipientResponseStatus.InvalidRecipientSignature"><short>InvalidRecipientSignature — получатель подписал документ невалидной подписью. Если это незашифрованный документ, то такой статус возможен только на стороне получателя документа.</short>
+      </element><element name="TMessageType"><short>Перечисление содержит существующие типы сообщений:</short>
+      </element><element name="TMessageType.MessageLetter"><short>Letter - письмо;</short>
+      </element><element name="TMessageType.DraftLetter"><short>Draft - черновик;</short>
+      </element><element name="TMessageType.TemplateLetter"><short>Template - шаблон.</short>
+      </element><element name="TResolutionStatusType"><short>ResolutionStatusType - тип статуса согласования:</short>
+      </element><element name="TResolutionStatusType.None"><short>None - документ не согласовывался</short>
+      </element><element name="TResolutionStatusType.Approved"><short>Approved - Согласован</short>
+      </element><element name="TResolutionStatusType.Disapproved"><short>Disapproved - В согласовании отказано</short>
+      </element><element name="TResolutionStatusType.ApprovementRequested"><short>ApprovementRequested - Запрошено согласование</short>
+      </element><element name="TResolutionStatusType.SignatureRequested"><short>SignatureRequested - Запрошена подпись</short>
+      </element><element name="TResolutionStatusType.SignatureDenied"><short>SignatureDenied - В подписи отказано</short>
+      </element><element name="TRoamingNotificationStatus"><short>RoamingNotificationStatus - статус доставки в роуминг. Возможные значения:</short>
+      </element><element name="TRoamingNotificationStatus.UnknownRoamingNotificationStatus"><short>UnknownRoamingNotificationStatus (неизвестный роуминговый статус документа; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать роуминговый статус документа, переданный сервером)</short>
+      </element><element name="TRoamingNotificationStatus.RoamingNotificationStatusNone"><short>RoamingNotificationStatusNone (документ не роуминговый, или документ без подтверждения доставки в роуминг)</short>
+      </element><element name="TRoamingNotificationStatus.RoamingNotificationStatusSuccess"><short>RoamingNotificationStatusSuccess (документ с подтверждением успешной доставки в роуминг)</short>
+      </element><element name="TRoamingNotificationStatus.RoamingNotificationStatusError"><short>RoamingNotificationStatusError (документ с ошибкой доставки в роуминг)</short>
+      </element><element name="TSenderSignatureStatus"><short>Перечисление отражает статус подписи отправителя:</short>
+      </element><element name="TSenderSignatureStatus.UnknownSenderSignatureStatus"><short>UnknownSenderSignatureStatus - значение зарезервировано для устаревших клиентов;</short>
+      </element><element name="TSenderSignatureStatus.WaitingForSenderSignature"><short>WaitingForSenderSignature - ожидается подпись отправителя;</short>
+      </element><element name="TSenderSignatureStatus.SenderSignatureUnchecked"><short>SenderSignatureUnchecked - подпись отправителя еще не проверена;</short>
+      </element><element name="TSenderSignatureStatus.SenderSignatureCheckedAndValid"><short>SenderSignatureCheckedAndValid - подпись отправителя проверена и валидна;</short>
+      </element><element name="TSenderSignatureStatus.SenderSignatureCheckedAndInvalid"><short>SenderSignatureCheckedAndInvalid - подпись отправителя проверена и невалидна.</short>
+      </element><element name="TOrigin" link="http://api-docs.diadoc.ru/ru/latest/proto/Origin.html"><short>Контракт, описывающий происхождение документа.</short>
+      </element><element name="TOrigin.MessageType"><short>MessageType отражает тип документа, из которого был создан искомый документ.</short><descr><li>флаг Draft - документ создан из черновика;</li><li>флаг Template - документ создан из шаблона;</li><li>флаг Message пока не используется, создан для будущих возможных сценариев.</li>
+        </descr>
+      </element><element name="TOrigin.MessageId"><short>MessageId - идентификатор исходной сущности (например, черновика или шаблона соответственно).</short>
+      </element><element name="TAmendmentRequestMetadata"><short>Контракт, описывающий состояние уведомления об уточнении (УОУ). Актуален, например, для СФ и УПД, а также некоторых версий формализованных актов и накладных.</short>
+      </element><element name="TAmendmentRequestMetadata.AmendmentFlags"><short>AmendmentFlags отражает статус УОУ:</short><descr><li>было ли затребовано уточнение, передавалось ли исправление документа, передавалась ли корректировка документа;</li><li>представляет собой битовую маску, составленную из одного или нескольких значений перечисления InvoiceAmendmentFlags.</li>
+        </descr>
+      </element><element name="TAmendmentRequestMetadata.ReceiptStatus"><short>ReceiptStatus - статус извещения о получении под УОУ со стороны отправителя документа.</short>
+      </element><element name="TConfirmationMetadata"><short>Отвечает за подтверждение оператором даты отправки/получения документа или технологического документа (ИОПа).</short>
+      </element><element name="TConfirmationMetadata.ReceiptStatus"><short>ReceiptStatus - статус извещения о получении под подтверждением даты.</short>
+      </element><element name="TConfirmationMetadata.DateTimeTicks"><short>DateTimeTicks - метка времени создания подтверждения оператором даты отправки/получения.</short><descr>Для документов, которые на поддерживают подтверждения, значение всегда равно нулю. Представляет собой целое число тиков (100-наносекундных интервалов), прошедших с момента времени 00:00:00 01.01.0001. Данная метка представляет момент времени в московском часовом поясе (GMT+4).
+</descr>
+      </element><element name="TRecipientReceiptMetadata"><short>Содержит информацию об извещении о получении документа контрагентом.</short>
+      </element><element name="TRecipientReceiptMetadata.ReceiptStatus"><short>ReceiptStatus - статус извещения о получении документа.</short>
+      </element><element name="TRecipientReceiptMetadata.ConfirmationMetadata"><short>ConfirmationMetadata - информация о подтверждении оператором даты отправки ИОПа. Свойство актуально только для входящего документа, поддерживающего подтверждение оператора, например, счета-фактуры или УПД с функциями СЧФ/СЧФДОП.</short>
+      </element><element name="TResolutionStatus"><short>Структура ResolutionStatus содержит информацию, о текущем статусе согласования документа. Используется как часть структуры Document.</short>
+      </element><element name="TResolutionStatus.ResolutionStatusType"><short>ResolutionStatusType - тип статуса согласования:</short>
+      </element><element name="TResolutionStatus.Target"><short>Структура ResolutionTarget заполняется только при запросе согласования или подписи, и описывает получателя запроса.</short><descr>Получателем запроса на согласование или подпись может быть:
+<li>либо в подразделение, тогда заполняются идентификатор и название подразделения (поля DepartmentId и Department)</li><li>либо конкретный пользователь, тогда заполняются идентификатор и ФИО пользователя (поля UserId и User)</li>
+        </descr>
+      </element><element name="TResolutionStatus.AuthorUserId"><short>Поля ResolutionStatus.AuthorUserId и ResolutionStatus.AuthorFIO - содержат идентификатор и ФИО пользователя, который совершил действие, описываемое данным статусом (т.е согласовал/отказал или передал на согласование/подпись).</short>
+      </element><element name="TResolutionStatus.AuthorFIO"><short>Поля ResolutionStatus.AuthorUserId и ResolutionStatus.AuthorFIO - содержат идентификатор и ФИО пользователя, который совершил действие, описываемое данным статусом (т.е согласовал/отказал или передал на согласование/подпись).</short>
+      </element>
+    <element name="TSenderReceiptMetadata"><short>Содержит информацию об извещении о получении титула получателя.</short>
+      </element><element name="TSenderReceiptMetadata.ReceiptStatus"><short>ReceiptStatus - статус извещения о получении титула получателя</short>
+      </element><element name="TDocument.SenderReceiptMetadata"><short>SenderReceiptMetadata - свойство, отвечающее за состояние извещения о получении титула получателя.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

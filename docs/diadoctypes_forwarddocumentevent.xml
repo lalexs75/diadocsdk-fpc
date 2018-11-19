@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_ForwardDocumentEvent"><element name="TForwardDocumentEvent"><short>Структура данных ForwardDocumentEvent описывает событие пересылки документа третьей стороне:</short>
+      </element><element name="TForwardDocumentEvent.Timestamp"><short>Timestamp (всегда заполняется) - метка времени события пересылки документа.</short>
+      </element><element name="TForwardDocumentEvent.ToBoxId"><short>ToBoxId (всегда заполняется) - идентификатор ящика адресата пересылки (кому был передан документ).</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

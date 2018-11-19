@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_DocumentInfo"><element name="TDocumentDateAndNumber"><short>Структура представляет дату и номер документа. У формализованных документов (XML) эти поля хранятся в самом файле, у полуформализованных документов они указываются пользователем при отправке.</short>
+      </element><element name="TDocumentDateAndNumber.DocumentDate"><short>DocumentDate - дата документа.</short>
+      </element><element name="TDocumentDateAndNumber.DocumentNumber"><short>DocumentNumber - номер документа.</short>
+      </element><element name="TUniversalCorrectionDocumentInfo"><short>Структура представляет метаданные документов, имеющих тип UniversalCorrectionDocument или UniversalCorrectionDocumentRevision.</short>
+      </element><element name="TUniversalCorrectionDocumentInfo.TotalInc"><short>TotalInc - сумма с учетом налога, всего к увеличению.</short>
+      </element><element name="TUniversalCorrectionDocumentInfo.TotalDec"><short>TotalDec - сумма с учетом налога, всего к уменьшению.</short>
+      </element><element name="TUniversalCorrectionDocumentInfo.VatInc"><short>VatInc - сумма налога, всего к увеличению.</short>
+      </element><element name="TUniversalCorrectionDocumentInfo.VatDec"><short>VatDec - сумма налога, всего к уменьшению.</short>
+      </element><element name="TUniversalCorrectionDocumentInfo.CurrencyCode"><short>CurrencyCode - код валюты.</short>
+      </element><element name="TUniversalCorrectionDocumentInfo.Grounds"><short>Grounds - описание оснований для данного документа.</short>
+      </element><element name="TUniversalCorrectionDocumentInfo.FunctionType"><short>Function - функция документа, описывается структурой FunctionType.</short>
+      </element><element name="TUniversalCorrectionDocumentInfo.OriginalDocumentDateAndNumber"><short>OriginalInvoiceDateAndNumber - дата и номер исходного УПД (заполняется, если корректировка была сформирована на УПД).</short>
+      </element><element name="TUniversalCorrectionDocumentInfo.OriginalDocumentRevisionDateAndNumber"><short>OriginalInvoiceRevisionDateAndNumber - дата и номер исходного исправления УПД (заполняется, если корректировка была сформирована на исправление УПД).</short>
+      </element><element name="TUniversalCorrectionDocumentInfo.OriginalDocumentCorrectionDateAndNumber"><short>OriginalInvoiceCorrectionDateAndNumber - дата и номер исходной УКД (заполняется, если корректировка была сформирована на УКД).</short>
+      </element><element name="TUniversalTransferDocumentInfo"><short>Структура представляет метаданные документов, имеющих тип UniversalTransferDocument или UniversalTransferDocumentRevision.</short>
+      </element><element name="TUniversalTransferDocumentInfo.Total"><short>Total - сумма с учетом НДС, всего по документу.</short>
+      </element><element name="TUniversalTransferDocumentInfo.Vat"><short>Vat - сумма НДС, всего по документу.</short>
+      </element><element name="TUniversalTransferDocumentInfo.CurrencyCode"><short>CurrencyCode - код валюты.</short>
+      </element><element name="TUniversalTransferDocumentInfo.Grounds"><short>Grounds - описание оснований для данного документа.</short>
+      </element><element name="TUniversalTransferDocumentInfo.FunctionType"><short>Function - функция документа, описывается структурой FunctionType.</short>
+      </element><element name="TUniversalTransferDocumentInfo.OriginalDocumentDateAndNumber"><short>OriginalInvoiceDateAndNumber - только для UniversalTransferDocumentRevision: дата и номер исходного УПД.</short>
+      </element><element name="TSupplementaryAgreementDocumentInfo"><short>Структура представляет метаданные документов, имеющих тип SupplementaryAgreement.</short>
+      </element><element name="TSupplementaryAgreementDocumentInfo.Total"><short>Total - цена дополнительного соглашения к договору.</short>
+      </element><element name="TSupplementaryAgreementDocumentInfo.ContractType"><short>ContractType - тип договора.</short>
+      </element><element name="TSupplementaryAgreementDocumentInfo.ContractNumber"><short>ContractNumber - номер договора.</short>
+      </element><element name="TSupplementaryAgreementDocumentInfo.ContractDate"><short>ContractDate - дата договора.</short>
+      </element><element name="TContractDocumentInfo"><short>Структура представляет метаданные документов, имеющих тип Contract.</short>
+      </element><element name="TContractDocumentInfo.ContractPrice"><short>ContractPrice - цена, указанная в договоре.</short>
+      </element><element name="TContractDocumentInfo.ContractType"><short>ContractType - тип договора.</short>
+      </element><element name="TPriceListDocumentInfo"><short>
+
+Структура представляет метаданные документов, имеющих тип PriceList.</short>
+      </element><element name="TPriceListDocumentInfo.PriceListEffectiveDate"><short>PriceListEffectiveDate - дата вступления в силу ценового листа (в формате ДД.ММ.ГГГГ).</short>
+      </element><element name="TPriceListDocumentInfo.ContractDocumentDateAndNumber"><short>ContractDocumentDateAndNumber - дата составления и номер договора, к которому относится ценовой лист.</short>
+      </element><element name="TInvoiceCorrectionDocumentInfo"><short>Структура представляет метаданные документов, имеющих тип InvoiceCorrection или InvoiceCorrectionRevision.</short>
+      </element><element name="TInvoiceCorrectionDocumentInfo.TotalInc"><short>TotalInc - сумма с учетом налога, всего к увеличению.</short>
+      </element><element name="TInvoiceCorrectionDocumentInfo.TotalDec"><short>TotalDec - сумма с учетом налога, всего к уменьшению.</short>
+      </element><element name="TInvoiceCorrectionDocumentInfo.VatInc"><short>VatInc - сумма налога, всего к увеличению.</short>
+      </element><element name="TInvoiceCorrectionDocumentInfo.VatDec"><short>VatDec - сумма налога, всего к уменьшению.</short>
+      </element><element name="TInvoiceCorrectionDocumentInfo.CurrencyCode"><short>CurrencyCode - код валюты.</short>
+      </element><element name="TInvoiceCorrectionDocumentInfo.OriginalInvoiceDateAndNumber"><short>OriginalInvoiceDateAndNumber - дата и номер исходного счёта-фактуры (заполняется, если корректировка была сформирована на счёт-фактуру).</short>
+      </element><element name="TInvoiceCorrectionDocumentInfo.OriginalInvoiceRevisionDateAndNumber"><short>OriginalInvoiceRevisionDateAndNumber - дата и номер исходного исправления счёта-фактуры (заполняется, если корректировка была сформирована на исправление счёта-фактуры).</short>
+      </element><element name="TInvoiceCorrectionDocumentInfo.OriginalInvoiceCorrectionDateAndNumber"><short>OriginalInvoiceCorrectionDateAndNumber - дата и номер исходной корректировки счёта-фактуры (заполняется, если корректировка была сформирована на корректировку счёта-фактуры).</short>
+      </element><element name="TInvoiceDocumentInfo"><short>Структура представляет метаданные документов, имеющих тип Invoice или InvoiceRevision.</short>
+      </element><element name="TInvoiceDocumentInfo.Total"><short>Total - сумма с учетом НДС, всего по документу.</short>
+      </element><element name="TInvoiceDocumentInfo.Vat"><short>Vat - сумма НДС, всего по документу.</short>
+      </element><element name="TInvoiceDocumentInfo.CurrencyCode"><short>CurrencyCode - код валюты.</short>
+      </element><element name="TInvoiceDocumentInfo.OriginalInvoiceDateAndNumber"><short>OriginalInvoiceDateAndNumber - только для InvoiceRevision: дата и номер исходного счёта-фактуры.</short>
+      </element><element name="TBasicDocumentInfo"><short>Структура представляет метаданные документов, имеющих тип XmlTorg12, XmlAcceptanceCertificate, Torg12, AcceptanceCertificate, ProformaInvoice или Torg13.</short>
+      </element><element name="TBasicDocumentInfo.Total"><short>Total - сумма с учетом НДС, всего по документу.</short>
+      </element><element name="TBasicDocumentInfo.NoVat"><short>NoVat - признак того, что ставка налога по документу равна «без НДС».</short>
+      </element><element name="TBasicDocumentInfo.Vat"><short>Vat - сумма НДС, всего по документу.</short>
+      </element><element name="TBasicDocumentInfo.Grounds"><short>Grounds - описание оснований для данного документа.</short>
+      </element><element name="TDocumentInfo"><short>Структура представляет данные документа, которые не меняются в течение его жизненного цикла (метаданные). Как часть структуры DocumentWithDocflow, возвращается методами GetDocflows, GetDocflowsByPacketId, SearchDocflows.</short>
+      </element><element name="TDocumentInfo.DocumentType"><short>DocumentType - типа документа.</short>
+      </element><element name="TDocumentInfo.DocumentDirection"><short>DocumentDirection - направление документа относительно данного ящика (например, исходящий).</short>
+      </element><element name="TDocumentInfo.IsTest"><short>IsTest - признак того, что документ тестовый.</short>
+      </element><element name="TDocumentInfo.CustomDocumentId"><short>CustomDocumentId - произвольный идентификатор документа, присвоенный ему во время отправки интеграционным решением.</short>
+      </element><element name="TDocumentInfo.FromDepartmentId"><short>FromDepartmentId - идентификатор подразделения-отправителя документа.</short>
+      </element><element name="TDocumentInfo.ToDepartmentId"><short>ToDepartmentId - идентификатор подразделения-получателя документа.</short>
+      </element><element name="TDocumentInfo.CounteragentBoxId"><short>CounteragentBoxId - идентификатор ящика контрагента.</short>
+      </element><element name="TDocumentInfo.DocumentDateAndNumber"><short>DocumentDateAndNumber - дата и номер документа.</short>
+      </element><element name="TDocumentInfo.BasicDocumentInfo"><short>BasicDocumentInfo - для документов XmlTorg12, XmlAcceptanceCertificate, Torg12, AcceptanceCertificate, ProformaInvoice, Torg13.</short>
+      </element><element name="TDocumentInfo.InvoiceInfo"><short>InvoiceInfo - для документов Invoice или InvoiceRevision.</short>
+      </element><element name="TDocumentInfo.InvoiceCorrectionInfo"><short>InvoiceCorrectionInfo - для документов InvoiceCorrection или InvoiceCorrectionRevision.</short>
+      </element><element name="TDocumentInfo.PriceListInfo"><short>PriceListInfo - для документов PriceList.</short>
+      </element><element name="TDocumentInfo.ContractInfo"><short>ContractInfo - для документов Contract.</short>
+      </element><element name="TDocumentInfo.SupplementaryAgreementInfo"><short>SupplementaryAgreementInfo - для документов SupplementaryAgreement.</short>
+      </element><element name="TDocumentInfo.UniversalTransferDocumentInfo"><short>UniversalTransferDocumentInfo - для документов UniversalTransferDocument, UniversalTransferDocumentRevision.</short>
+      </element><element name="TDocumentInfo.UniversalCorrectionDocumentInfo"><short>UniversalCorrectionDocumentInfo - для документов UniversalCorrectionDocument, UniversalCorrectionDocumentRevision.</short>
+      </element><element name="TDocumentInfo.AttachmentVersion"><short>AttachmentVersion - идентификатор версии документа.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

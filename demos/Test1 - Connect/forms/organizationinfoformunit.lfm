@@ -1,0 +1,27 @@
+object OrganizationInfoForm: TOrganizationInfoForm
+  Left = 658
+  Height = 400
+  Top = 351
+  Width = 551
+  Caption = 'Параметры организации'
+  ClientHeight = 400
+  ClientWidth = 551
+  OnCreate = FormCreate
+  LCLVersion = '1.9.0.0'
+  object ButtonPanel1: TButtonPanel
+    Left = 6
+    Height = 34
+    Top = 360
+    Width = 539
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    TabOrder = 0
+    ShowButtons = [pbClose]
+  end
+end

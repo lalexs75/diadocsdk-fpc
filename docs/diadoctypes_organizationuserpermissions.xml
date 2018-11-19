@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_OrganizationUserPermissions"><element name="TDocumentAccessLevel"><short>Перечисление обозначает уровень доступа сотрудника к документам организации.</short><descr>Возможные значения:
+
+    UnknownDocumentAccessLevel - неизвестный набор прав пользователя. Может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать переданный сервером уровень прав доступа.
+    DepartmentOnly - пользователю доступны только документы из подразделения, в котором он состоит.
+    DepartmentAndSubdepartments - пользователю доступны документы из подразделения, в котором он состоит и всех дочерних подразделений.
+    AllDocuments - пользователю доступны все документы организации.
+    SelectedDepartments - пользователю доступны документы из нескольких подразделений.
+</descr>
+      </element><element name="TDocumentAccessLevel.UnknownDocumentAccessLevel"><short>UnknownDocumentAccessLevel - неизвестный набор прав пользователя. Может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать переданный сервером уровень прав доступа.</short>
+      </element><element name="TDocumentAccessLevel.DepartmentOnly"><short>DepartmentOnly - пользователю доступны только документы из подразделения, в котором он состоит.</short>
+      </element><element name="TDocumentAccessLevel.DepartmentAndSubdepartments"><short>DepartmentAndSubdepartments - пользователю доступны документы из подразделения, в котором он состоит и всех дочерних подразделений.</short>
+      </element><element name="TDocumentAccessLevel.AllDocuments"><short>AllDocuments - пользователю доступны все документы организации.</short>
+      </element><element name="TDocumentAccessLevel.SelectedDepartments"><short>SelectedDepartments - пользователю доступны документы из нескольких подразделений.</short>
+      </element>
+    <element name="TOrganizationUserPermissions"><short>Структура данных OrganizationUserPermissions содержит информацию о правах пользователя в организации.</short>
+      </element><element name="TOrganizationUserPermissions.UserDepartmentId"><short>UserDepartmentId - идентификатор подразделения организации, в котором состоит пользователь.</short><descr>В случае головного подразделения содержит значение 00000000-0000-0000-0000-000000000000.
+</descr>
+      </element><element name="TOrganizationUserPermissions.IsAdministrator"><short>IsAdministrator - может ли пользователь редактировать структуру и реквизиты организации, добавлять и редактировать других пользователей.</short>
+      </element><element name="TOrganizationUserPermissions.DocumentAccessLevel"><short>DocumentAccessLevel - уровень доступа к документам</short>
+      </element><element name="TOrganizationUserPermissions.CanSignDocuments"><short>CanSignDocuments - может ли пользователь подписывать документы.</short>
+      </element><element name="TOrganizationUserPermissions.CanManageCounteragents"><short>CanManageCounteragents - может ли пользователь видеть списки контрагентов и работать с ними.</short>
+      </element><element name="TOrganizationUserPermissions.CanAddResolutions" link="CanAddResolutions - может ли пользователь согласовывать документы."/><element name="TOrganizationUserPermissions.CanRequestResolutions"><short>CanRequestResolutions - может ли пользователь отправлять запросы на согласование и подпись документов.</short>
+      </element><element name="TOrganizationUserPermissions.SelectedDepartmentIds"><short>SelectedDepartmentIds - список подразделений, к которым имеет доступ пользователь</short><descr>заполняется только в случае DocumentAccessLevel = SelectedDepartments
+</descr>
+      </element><element name="TOrganizationUserPermissions.JobTitle"><short>JobTitle - должность пользователя в организации.</short><descr>Может быть не указана.
+</descr>
+      </element><element name="TOrganizationUserPermissions.CanCreateDocuments"><short>CanCreateDocuments - может ли пользователь создавать документы и работать с черновиками</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

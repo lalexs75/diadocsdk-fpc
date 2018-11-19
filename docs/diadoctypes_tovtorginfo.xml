@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_TovTorgInfo"><element name="TTovTorgSellerTitleInfo"><short>Структура данных TovTorgSellerTitleInfo представляет исходные данные для формирования титула продавца для товарной накладной в XML-формате</short><descr>Структура данных TovTorgSellerTitleInfo представляет исходные данные для формирования титула продавца для товарной накладной в XML-формате при помощи метода GenerateTorg12XmlForSeller с параметром documentVersion=tovtorg_05_01_02.
+</descr>
+      </element><element name="TTovTorgSellerTitleInfo.Seller"><short>Продавец</short>
+      </element><element name="TTovTorgSellerTitleInfo.Buyer"><short>Покупатель</short>
+      </element><element name="TTovTorgSellerTitleInfo.Shipper"><short>Грузоотправитель</short>
+      </element><element name="TTovTorgSellerTitleInfo.Carrier"><short>Перевозчик</short>
+      </element><element name="TTovTorgSellerTitleInfo.Consignee"><short>Грузополучатель</short>
+      </element><element name="TTovTorgSellerTitleInfo.Signers"><short>Подписант</short>
+      </element><element name="TTovTorgSellerTitleInfo.Grounds"><short>Основание</short>
+      </element><element name="TTovTorgSellerTitleInfo.Currency"><short>Валюта (код)</short>
+      </element><element name="TTovTorgSellerTitleInfo.CurrencyRate"><short>Курс валюты</short>
+      </element><element name="TTovTorgSellerTitleInfo.DocumentDate"><short>Дата составления документа о передаче товара</short>
+      </element><element name="TTovTorgSellerTitleInfo.DocumentNumber"><short>Номер документа о передаче товара</short>
+      </element><element name="TTovTorgSellerTitleInfo.RevisionDate"><short>Дата исправления документа о передаче товара</short>
+      </element><element name="TTovTorgSellerTitleInfo.RevisionNumber"><short>Номер исправления документа о передаче товара</short>
+      </element><element name="TTovTorgSellerTitleInfo.TransferInfo"><short>Сведения о факте передачи (об отпуске груза)</short>
+      </element><element name="TTovTorgSellerTitleInfo.DocumentCreator"><short>Составитель файла информации продавца</short>
+      </element><element name="TTovTorgSellerTitleInfo.OperationType"><short>Вид операции</short>
+      </element><element name="TTovTorgSellerTitleInfo.DocumentCreatorBase"><short>Основание, по которому экономический субъект является составителем файла</short>
+      </element><element name="TTovTorgSellerTitleInfo.GovernmentContractInfo"><short>Идентификатор государственного контракта</short>
+      </element><element name="TTovTorgSellerTitleInfo.Table"><short>Сведения об ассортименте, количестве, стоимости и другой информации о товарных позициях</short>
+      </element><element name="TTovTorgSellerTitleInfo.AdditionalInfoId"><short>Информационное поле документа</short>
+      </element><element name="TTovTorgSellerTitleInfo.DocumentName"><short>Наименование первичного документа, определенное организацией</short>
+      </element><element name="TGroundInfo"><short>Основание</short>
+      </element><element name="TGroundInfo.Name"><short>Наименование документа - основания</short>
+      </element><element name="TGroundInfo.Number"><short>Номер документа - основания</short>
+      </element><element name="TGroundInfo.Date"><short>Дата документа - основания</short>
+      </element><element name="TGroundInfo.Info"><short>Дополнительные сведения</short>
+      </element><element name="TTovTorgTransferInfo"><short>Сведения о факте передачи (об отпуске груза)</short>
+      </element><element name="TTovTorgTransferInfo.OperationInfo"><short>Содержание операции</short>
+      </element><element name="TTovTorgTransferInfo.TransferDate"><short>Дата отгрузки</short>
+      </element><element name="TTovTorgTransferInfo.Attachment"><short>Приложение, сертификаты и прочее</short>
+      </element><element name="TTovTorgTransferInfo.Waybills"><short>Транспортная накладная</short>
+      </element><element name="TTovTorgTransferInfo.Employee"><short>Работник организации продавца</short>
+      </element><element name="TTovTorgTransferInfo.OtherIssuer"><short>Иное лицо</short>
+      </element><element name="TTovTorgTransferInfo.AdditionalInfos"><short>Информационное поле документа</short>
+      </element><element name="TTovTorgItem"><short>информация о товарах</short>
+      </element><element name="TTovTorgItem.Product"><short>наименование товара</short>
+      </element><element name="TTovTorgItem.Feature"><short>характеристика товара</short>
+      </element><element name="TTovTorgItem.Sort"><short>сорт товара</short>
+      </element><element name="TTovTorgItem.VendorCode"><short>артикул товара</short>
+      </element><element name="TTovTorgItem.ProductCode"><short>Код товара</short>
+      </element><element name="TTovTorgItem.UnitName"><short>наименование единицы измерения товара</short><descr>Пользователь заполняет, если ОКЕИ_Тов=’0000’
+</descr>
+      </element><element name="TTovTorgItem.Unt"><short>единицы измерения товара (код)</short>
+      </element><element name="TTovTorgItem.PackageType"><short>вид упаковки товара</short>
+      </element><element name="TTovTorgItem.QuantityInPack"><short>количество мест в 1 упаковке</short>
+      </element><element name="TTovTorgItem.Quantity"><short>количество единиц товара</short>
+      </element><element name="TTovTorgItem.Gross"><short>масса брутто</short>
+      </element><element name="TTovTorgItem.Net"><short>масса нетто, количество передано (отпущено)</short>
+      </element><element name="TTovTorgItem.ItemToRelease"><short>Количество надлежит отпустить</short>
+      </element><element name="TTovTorgItem.Price"><short>цена за единицу товара</short>
+      </element><element name="TTovTorgItem.SubtotalWithVatExcluded"><short>сумма без учета налога</short>
+      </element><element name="TTovTorgItem.TaxRate"><short>ставка налога</short>
+      </element><element name="TTovTorgItem.Vat"><short>сумма налога</short>
+      </element><element name="TTovTorgItem.Subtotal"><short>сумма всего</short>
+      </element><element name="TTovTorgItem.ItemAccountDebit"><short>Корреспондирующие счета: дебет</short>
+      </element><element name="TTovTorgItem.ItemAccountCredit"><short>Корреспондирующие счета: кредит</short>
+      </element><element name="TTovTorgItem.AdditionalInfos"><short>Информационное поле документа</short>
+      </element><element name="TTovTorgTable"><short>ведения об ассортименте, количестве, стоимости и другой информации о товарных позициях</short>
+      </element><element name="TTovTorgTable.Items"><short>информация о товарах</short>
+      </element><element name="TTovTorgTable.TotalQuantity"><short>Количество мест всего по документу</short>
+      </element><element name="TTovTorgTable.TotalGross"><short>Масса брутто всего по документу</short>
+      </element><element name="TTovTorgTable.TotalNet"><short>Масса нетто всего по документу</short>
+      </element><element name="TTovTorgTable.TotalWithVatExcluded"><short>Сумма без учета налога</short>
+      </element><element name="TTovTorgTable.TotalVat"><short>Сумма НДС - всего по документу</short>
+      </element><element name="TTovTorgTable.Total"><short>Сумма всего</short>
+      </element><element name="TTovTorgBuyerTitleInfo"><short>Структура данных TovTorgBuyerTitleInfo представляет исходные данные для формирования титула продавца для товарной накладной в XML-формате </short>
+      </element><element name="TTovTorgBuyerTitleInfo.DocumentCreator"><short>Наименование экономического субъекта - составителя файла обмена информации покупателя</short>
+      </element><element name="TTovTorgBuyerTitleInfo.DocumentCreatorBase"><short>Основание, по которому экономический субъект является составителем файла обмена информации покупателя</short>
+      </element><element name="TTovTorgBuyerTitleInfo.OperationCode"><short>Вид операции</short>
+      </element><element name="TTovTorgBuyerTitleInfo.OperationContent"><short>Содержание операции</short>
+      </element><element name="TTovTorgBuyerTitleInfo.AcceptanceDate"><short>Дата принятия товаров (результатов выполненных работ), имущественных прав (подтверждения факта оказания услуг)</short>
+      </element><element name="TTovTorgBuyerTitleInfo.Employee"><short>работник организации покупателя</short>
+      </element><element name="TTovTorgBuyerTitleInfo.OtherIssuer"><short>Иное Лицо</short>
+      </element><element name="TTovTorgBuyerTitleInfo.AdditionalInfoId"><short>Информационное поле факта хозяйственной жизни (4)</short>
+      </element><element name="TTovTorgBuyerTitleInfo.Signers"><short>Подписант</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

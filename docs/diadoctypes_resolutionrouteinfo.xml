@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_ResolutionRouteInfo"><element name="TResolutionRouteAssignmentInfo"><short>Структура данных ResolutionRouteAssignmentInfo содержит информацию о запуске документа по маршруту согласования:</short>
+      </element><element name="TResolutionRouteAssignmentInfo.RouteId"><short>RouteId - идентификатор маршрута согласования, по которому был запущен документ.</short>
+      </element><element name="TResolutionRouteAssignmentInfo.Author"><short>Author - ФИО сотрудника, запустившего документ по маршруту согласования.</short>
+      </element><element name="TResolutionRouteRemovalInfo"><short>Структура данных ResolutionRouteRemovalInfo содержит информацию о снятии документа с маршрута согласования:</short>
+      </element><element name="TResolutionRouteRemovalInfo.RouteId"><short>RouteId - идентификатор маршрута согласования, с которого был снят документ.</short>
+      </element><element name="TResolutionRouteRemovalInfo.Author"><short>Author - ФИО сотрудника, который снял документ с маршрута.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

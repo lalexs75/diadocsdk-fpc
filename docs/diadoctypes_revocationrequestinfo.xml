@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_RevocationRequestInfo"><element name="TRevocationRequestInfo"><short>Структура данных RevocationRequestInfo представляет исходные данные для формирования предложения об аннулировании документа при помощи метода GenerateRevocationRequestXml</short>
+      </element><element name="TRevocationRequestInfo.Comment"><short>Comment - необязательный текст комментария к предложению об аннулировании документа.</short>
+      </element><element name="TRevocationRequestInfo.Signer"><short>Signer - необязательная информация о подписанте предложения в виде структуры данных Signer.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

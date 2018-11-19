@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_RevocationDocflow"><element name="TRevocationDocflow"><short>Структура представляет информацию об аннулировании документа.</short>
+      </element><element name="TRevocationDocflow.IsFinished"><short>IsFinished - признак того, что документооборот по аннулированию завершен, т.е. не требует дальнейших действий.</short>
+      </element><element name="TRevocationDocflow.RevocationRequestAttachment"><short>RevocationRequestAttachment - информация о файле предложения об аннулировании.</short>
+      </element><element name="TRevocationDocflow.RecipientSignatureDocflow"><short>RecipientSignatureDocflow - информация об ответной подписи под предложением об аннулировании.</short>
+      </element><element name="TRevocationDocflow.RecipientSignatureRejectionDocflow"><short>RecipientSignatureRejectionDocflow - информация об отказе в подписи предложения об аннулировании.</short>
+      </element><element name="TRevocationDocflow.InitiatorBoxId"><short>InitiatorBoxId - идентификатор ящика организации, которая инициировала аннулирование документа.</short>
+      </element><element name="TRevocationDocflow.IsRevocationAccepted"><short>IsRevocationAccepted - признак того, что запрос на аннулирование был одобрен.</short>
+      </element><element name="TRevocationDocflow.IsRevocationRejected"><short>IsRevocationRejected - признак того, что запрос на аннулирование был отклонен.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

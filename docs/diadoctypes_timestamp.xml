@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_Timestamp"><element name="TTimestamp"><short>Структура представляет некоторый момент времени, не привязанный к часовому поясу. Его можно воспринимать как UTC-время.</short>
+      </element><element name="TTimestamp.Ticks"><short>Ticks - целое число тиков (100-наносекундных интервалов), прошедших с момента времени 00:00:00 01.01.0001.</short>
+      </element><element name="TTimestamp.AsDateTime"><short>Значение даты/времени в виде DateTime</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

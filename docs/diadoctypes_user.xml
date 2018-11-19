@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_User"><element name="TUserV2"><short>Структура UserV2 содержит информацию о пользователе.</short>
+      </element><element name="TUserV2.UserId"><short>UserId - идентификатор пользователя в системе;</short>
+      </element><element name="TUserV2.Login"><short>Login - логин пользователя;</short>
+      </element><element name="TUserV2.FullName"><short>FullName - фамилия, имя и отчество пользователя;</short>
+      </element><element name="TUserV2.IsRegistered"><short>IsRegistered - признак того, что пользователь зарегистрирован в системе. </short><descr>IsRegistered - признак того, что пользователь зарегистрирован в системе. Значение false означает, что пользователь был создан в Диадоке с логином, но еще не подтвердил почту.
+</descr>
+      </element><element name="TFullName"><short>Структура FullName содержит фамилию, имя и отчество пользователя.</short>
+      </element><element name="TFullName.LastName"><short>LastName - фамилия;</short>
+      </element><element name="TFullName.FirstName"><short>FirstName - имя;</short>
+      </element><element name="TFullName.MiddleName"><short>MiddleName - отчество.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

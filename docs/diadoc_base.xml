@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="Diadoc_Base"><element name="TProxyData"><short>Структура TProxyData содержит информацию, необходимую для работы через Proxy сервер</short>
+      </element><element name="TProxyData.ProxyHost"><short>Адрес прокси сервера</short>
+      </element><element name="TProxyData.ProxyPort"><short>Порт прокси сервера</short>
+      </element><element name="TProxyData.ProxyUser"><short>Имя пользователя для прокси сервера</short>
+      </element><element name="TProxyData.ProxyPass"><short>Пароль для работы через прокси сервер</short>
+      </element><element name="EDiadocException"><short>Исключение возникает при обших ошибках в работе с сервисом Diadoc API</short>
+      </element><element name="EDiadocHttpException"><short>Исключение возникает при обших ошибках в работе с HTTP сервером сервиса Diadoc API</short>
+      </element><element name="EDiadocHttpException.HttpCode"><short>Код ошибки сервера</short>
+      </element><element name="EDiadocHttpException.HttpErrorText"><short>Рашифровка кода ошибки сервера</short>
+      </element><element name="sKonturAPI_URL"><short>Адрес сервиса Diadoc API</short>
+      </element><element name="THttpMethod"><short>Тип запроса</short>
+      </element><element name="AddURLParam"><short>Процедура добавляет в строку запроса параметр и его значение</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

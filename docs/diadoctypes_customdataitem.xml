@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_CustomDataItem"><element name="TCustomDataItem"><short>Структура представляет произвольную пару «ключ-значение», привязанную к документу в качестве пользовательских данных.</short>
+      </element><element name="TCustomDataItem.Key"><short>Key - произвольный непустой регистронезависимый ключ. Может содержать только буквы латинского алфавита, цифры и символы «-» и «_». Длина не может превышать 60 символов.</short>
+      </element><element name="TCustomDataItem.Value"><short>Value - произвольное регистронезависимое значение (возможно, пустое), соответствующее ключу Key. Длина не может превышать 200 символа.</short>
+      </element>
+    <element name="TCustomDataItems"><short>Структура представляет произвольную пару «ключ-значение», привязанную к документу в качестве пользовательских данных.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

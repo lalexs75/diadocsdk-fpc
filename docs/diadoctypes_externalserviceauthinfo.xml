@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_ExternalServiceAuthInfo"><element name="TExternalServiceAuthInfo"><short>Структура данных ExternalServiceAuthInfo представляет собой аутентификационную информацию, возвращаемую методом GetExternalServiceAuthInfo.</short>
+      </element><element name="TExternalServiceAuthInfo.ServiceUserId"><short>ServiceUserId - уникальный идентификатор пользователя во внешней системе</short>
+      </element><element name="TExternalServiceAuthInfo.Thumbprint"><short>Thumbprint - отпечаток сертификата пользователя</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

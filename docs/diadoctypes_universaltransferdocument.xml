@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_UniversalTransferDocument"><element name="TUniversalTransferDocumentStatus"><short>Перечисление UniversalTransferDocumentStatus задает возможные варианты состояний, в которых может находиться УПД/ИУПД/УКД/ИУКД:</short>
+      </element><element name="TUniversalTransferDocumentStatus.UnknownDocumentStatus"><short>UnknownDocumentStatus - неизвестный статус; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать статус документа, переданный сервером,</short>
+      </element><element name="TUniversalTransferDocumentStatus.OutboundWaitingForSenderSignature"><short>OutboundWaitingForSenderSignature - документ исходящий, документ не отправлен, поскольку не подписан отправителем,</short>
+      </element><element name="TUniversalTransferDocumentStatus.OutboundWaitingForInvoiceReceiptAndRecipientSignature"><short>OutboundWaitingForInvoiceReceiptAndRecipientSignature - документ исходящий, от покупателя ожидается извещение о получении УПД/ИУПД/УКД/ИУКД, ответная подпись, либо отказ от ее формирования,</short>
+      </element><element name="TUniversalTransferDocumentStatus.OutboundWaitingForInvoiceReceipt"><short>OutboundWaitingForInvoiceReceipt - документ исходящий, ожидается извещение о получении УПД/ИУПД/УКД/ИУКД от покупателя,</short>
+      </element><element name="TUniversalTransferDocumentStatus.OutboundWaitingForRecipientSignature"><short>OutboundWaitingForRecipientSignature - документ исходящий, ответная подпись, либо отказ от ее формирования еще не получены,</short>
+      </element><element name="TUniversalTransferDocumentStatus.OutboundWithRecipientSignature"><short>OutboundWithRecipientSignature - документ исходящий, ответная подпись получена,</short>
+      </element><element name="TUniversalTransferDocumentStatus.OutboundRecipientSignatureRequestRejected"><short>OutboundRecipientSignatureRequestRejected - документ исходящий, получен отказ от формирования ответной подписи,</short>
+      </element><element name="TUniversalTransferDocumentStatus.OutboundInvalidSenderSignature"><short>OutboundInvalidSenderSignature - документ исходящий, документ не отправлен, поскольку подпись отправителя не является корректной,</short>
+      </element><element name="TUniversalTransferDocumentStatus.OutboundNotFinished"><short>OutboundNotFinished - документ исходящий, извещение о получении УПД/ИУПД/УКД/ИУКД от покупателя уже есть, но документооборот еще не завершен,</short>
+      </element><element name="TUniversalTransferDocumentStatus.OutboundFinished"><short>OutboundFinished - документ исходящий, документооборот завершен,</short>
+      </element><element name="TUniversalTransferDocumentStatus.InboundWaitingForRecipientSignature"><short>InboundWaitingForRecipientSignature (документ входящий, ответная подпись, либо отказ от ее формирования еще не отправлены),</short>
+      </element><element name="TUniversalTransferDocumentStatus.InboundWithRecipientSignature"><short>InboundWithRecipientSignature (документ входящий, ответная подпись поставлена),</short>
+      </element><element name="TUniversalTransferDocumentStatus.InboundRecipientSignatureRequestRejected"><short>InboundRecipientSignatureRequestRejected (документ входящий, отправлен отказ от формирования ответной подписи),</short>
+      </element><element name="TUniversalTransferDocumentStatus.InboundInvalidRecipientSignature"><short>InboundInvalidRecipientSignature (документ входящий, документооборот не завершен, поскольку подпись получателя не является корректной),</short>
+      </element><element name="TUniversalTransferDocumentStatus.InboundNotFinished"><short>InboundNotFinished (документ входящий, документооборот не завершен),</short>
+      </element><element name="TUniversalTransferDocumentStatus.InboundFinished"><short>InboundFinished (документ входящий, документооборот завершен).</short>
+      </element><element name="TUniversalCorrectionDocumentRevisionMetadata"><short>Структура данных UniversalCorrectionDocumentRevisionMetadata содержит дополнительные атрибуты документа (в структуре Document) специфичные для исправлений УКД:</short>
+      </element><element name="TUniversalCorrectionDocumentRevisionMetadata.DocumentStatus"><short>DocumentStatus определяет состояние, в котором находится документооборот по данному исправлению УКД; принимает одно из значений перечисления UniversalTransferDocumentStatus.</short>
+      </element><element name="TUniversalCorrectionDocumentRevisionMetadata.OriginalInvoiceNumber"><short>OriginalInvoiceNumber - номер исходного УПД (берется из самого файла исправления УКД).</short>
+      </element><element name="TUniversalCorrectionDocumentRevisionMetadata.OriginalInvoiceDate"><short>OriginalInvoiceDate - дата исходного УПД в формате ДД.ММ.ГГГГ (берется из самого файла исправления УКД).</short>
+      </element><element name="TUniversalCorrectionDocumentRevisionMetadata.OriginalInvoiceRevisionNumber"><short>OriginalInvoiceRevisionNumber - номер исходного исправления УПД (берется из самого файла исправления УКД, может отсутствовать).</short>
+      </element><element name="TUniversalCorrectionDocumentRevisionMetadata.OriginalInvoiceRevisionDate"><short>OriginalInvoiceRevisionDate - дата исходного исправления УПД в формате ДД.ММ.ГГГГ (берется из самого файла исправления УКД, может отсутствовать).</short>
+      </element><element name="TUniversalCorrectionDocumentRevisionMetadata.OriginalInvoiceCorrectionNumber"><short>OriginalInvoiceCorrectionNumber - номер исходного УКД (берется из самого файла исправления УКД).</short>
+      </element><element name="TUniversalCorrectionDocumentRevisionMetadata.OriginalInvoiceCorrectionDatestring"><short>OriginalInvoiceCorrectionDate - дата исходного УКД в формате ДД.ММ.ГГГГ (берется из самого файла исправления УКД).</short>
+      </element><element name="TUniversalCorrectionDocumentRevisionMetadata.OriginalInvoiceCorrectionDate"><short>OriginalInvoiceCorrectionDate - дата исходного УКД в формате ДД.ММ.ГГГГ (берется из самого файла исправления УКД).</short>
+      </element><element name="TUniversalCorrectionDocumentRevisionMetadata.TotalInc"><short>TotalInc - сумма к доплате исправления УКД (берется из самого файла исправления УКД).</short>
+      </element><element name="TUniversalCorrectionDocumentRevisionMetadata.TotalDec"><short>TotalDec - сумма к уменьшению исправления УКД (берется из самого файла исправления УКД).</short>
+      </element><element name="TUniversalCorrectionDocumentRevisionMetadata.VatInc"><short>VatInc - сумма НДС к доплате исправления УКД (берется из самого файла исправления УКД).</short>
+      </element><element name="TUniversalCorrectionDocumentRevisionMetadata.VatDec"><short>VatDec - сумма НДС к уменьшению исправления УКД (берется из самого файла исправления УКД).</short>
+      </element><element name="TUniversalCorrectionDocumentRevisionMetadata.Grounds"><short>Grounds - основания для первичного документа; представляются в виде неформализованной строки текста, например, «Договор №1234, Заказ №321».</short>
+      </element><element name="TUniversalCorrectionDocumentRevisionMetadata.Currency"><short>Currency - код валюты исправления УКД (берется из самого файла исправления УКД).</short>
+      </element><element name="TUniversalCorrectionDocumentRevisionMetadata.ConfirmationDateTimeTicks"><short>ConfirmationDateTimeTicks - метка времени подтверждения оператора ДО об отправке исходящего исправления УКД или о доставке входящего исправления УКД.</short><descr><ul><li>Представляет собой целое число тиков (100-наносекундных интервалов), прошедших с момента времени 00:00:00 01.01.0001.</li><li>Данная метка представляет момент времени в московском часовом поясе (GMT+4).</li>
+          </ul>
+        </descr>
+      </element><element name="TUniversalCorrectionDocumentMetadata" link="http://api-docs.diadoc.ru/ru/latest/proto/utd/UniversalDocumentMetadata.html"><short>Структура данных UniversalCorrectionDocumentMetadata содержит дополнительные атрибуты документа (в структуре Document) специфичные для УКД:</short>
+      </element><element name="TUniversalCorrectionDocumentMetadata.DocumentStatus"><short>DocumentStatus определяет состояние, в котором находится документооборот по данному УКД; принимает одно из значений перечисления UniversalTransferDocumentStatus.</short>
+      </element><element name="TUniversalCorrectionDocumentMetadata.OriginalInvoiceNumber"><short>OriginalInvoiceNumber - номер исходного УПД (берется из самого файла УКД).</short>
+      </element><element name="TUniversalCorrectionDocumentMetadata.OriginalInvoiceDate"><short>OriginalInvoiceDate - дата исходного УПД в формате ДД.ММ.ГГГГ (берется из самого файла УКД).</short>
+      </element><element name="TUniversalCorrectionDocumentMetadata.OriginalInvoiceRevisionNumber"><short>OriginalInvoiceRevisionNumber - номер исходного исправления УПД (берется из самого файла УКД, может отсутствовать).</short>
+      </element><element name="TUniversalCorrectionDocumentMetadata.OriginalInvoiceRevisionDate"><short>OriginalInvoiceRevisionDate - дата исходного исправления УКД в формате ДД.ММ.ГГГГ (берется из самого файла УКД, может отсутствовать).</short>
+      </element><element name="TUniversalCorrectionDocumentMetadata.TotalInc"><short>TotalInc - сумма к доплате УКД (берется из самого файла УКД).</short>
+      </element><element name="TUniversalCorrectionDocumentMetadata.TotalDec"><short>TotalDec - сумма к уменьшению УКД (берется из самого файла УКД).</short>
+      </element><element name="TUniversalCorrectionDocumentMetadata.VatInc"><short>VatInc - сумма НДС к доплате УКД (берется из самого файла УКД).</short>
+      </element><element name="TUniversalCorrectionDocumentMetadata.VatDec"><short>VatDec - сумма НДС к уменьшению УКД (берется из самого файла УКД).</short>
+      </element><element name="TUniversalCorrectionDocumentMetadata.Grounds"><short>Grounds - основания для первичного документа; представляются в виде неформализованной строки текста, например, «Договор №1234, Заказ №321».</short>
+      </element><element name="TUniversalCorrectionDocumentMetadata.Currency"><short>Currency - код валюты УКД (берется из самого файла УКД).</short>
+      </element><element name="TUniversalCorrectionDocumentMetadata.ConfirmationDateTimeTicks"><short>ConfirmationDateTimeTicks - метка времени подтверждения оператора ДО об отправке исходящего КСФ или о доставке входящего КСФ.</short><descr><ul><li>Представляет собой целое число тиков (100-наносекундных интервалов), прошедших с момента времени 00:00:00 01.01.0001.</li><li>Данная метка представляет момент времени в московском часовом поясе (GMT+4).</li>
+          </ul>
+        </descr>
+      </element><element name="TUniversalCorrectionDocumentMetadata.InvoiceAmendmentFlags"><short>InvoiceAmendmentFlags отражает статус данного УКД:</short><descr><ul><li>было ли затребовано уточнение, передавалось ли исправление УКД;</li><li>представляет собой битовую маску, составленную из одного или нескольких значений перечисления InvoiceAmendmentFlags.</li>
+          </ul>
+        </descr>
+      </element><element name="TUniversalTransferDocumentRevisionMetadata"><short>Структура данных UniversalTransferDocumentRevisionMetadata содержит дополнительные атрибуты документа (в структуре Document) специфичные для исправлений УПД:</short>
+      </element><element name="TUniversalTransferDocumentRevisionMetadata.DocumentStatus"><short>DocumentStatus определяет состояние, в котором находится документооборот по данному исправлению УПД; принимает одно из значений перечисления UniversalTransferDocumentStatus.</short>
+      </element><element name="TUniversalTransferDocumentRevisionMetadata.OriginalInvoiceNumber"><short>OriginalInvoiceNumber - номер исходного УПД (берется из самого файла исправления УПД).</short>
+      </element><element name="TUniversalTransferDocumentRevisionMetadata.OriginalInvoiceDate"><short>OriginalInvoiceDate - дата исходного УПД в формате ДД.ММ.ГГГГ (берется из самого файла исправления УПД).</short>
+      </element><element name="TUniversalTransferDocumentRevisionMetadata.Total"><short>Total - сумма исправления УПД (берется из самого файла исправления УПД).</short>
+      </element><element name="TUniversalTransferDocumentRevisionMetadata.Vat"><short>Vat - сумма НДС исправления УПД (берется из самого файла исправления УПД).</short>
+      </element><element name="TUniversalTransferDocumentRevisionMetadata.Grounds"><short>Grounds - основания для первичного документа; представляются в виде неформализованной строки текста, например, «Договор №1234, Заказ №321».</short>
+      </element><element name="TUniversalTransferDocumentRevisionMetadata.Currency"><short>Currency - код валюты исправления УПД (берется из самого файла исправления УПД).</short>
+      </element><element name="TUniversalTransferDocumentRevisionMetadata.ConfirmationDateTimeTicks"><short>ConfirmationDateTimeTicks - метка времени подтверждения оператора ДО об отправке исходящего исправления УПД или о доставке входящего исправления УПД. </short><descr>Представляет собой целое число тиков (100-наносекундных интервалов), прошедших с момента времени 00:00:00 01.01.0001. Данная метка представляет момент времени в московском часовом поясе (GMT+4).
+</descr>
+      </element><element name="TUniversalTransferDocumentRevisionMetadata.InvoiceAmendmentFlags"><short>InvoiceAmendmentFlags отражает статус данного исправления УПД:</short><descr><ul><li>было ли затребовано уточнение, передавалось ли исправление УПД, передавался ли УКД;</li><li>представляет собой битовую маску, составленную из одного или нескольких значений перечисления InvoiceAmendmentFlags.</li>
+          </ul>
+        </descr>
+      </element><element name="TUniversalTransferDocumentMetadata"><short>Структура данных UniversalTransferDocumentMetadata содержит дополнительные атрибуты документа (в структуре Document) специфичные для УПД:</short>
+      </element><element name="TUniversalTransferDocumentMetadata.DocumentStatus"><short>DocumentStatus определяет состояние, в котором находится документооборот по данному УПД; принимает одно из значений перечисления UniversalTransferDocumentStatus.</short>
+      </element><element name="TUniversalTransferDocumentMetadata.Total"><short>Total - сумма УПД (берется из самого файла УПД).</short>
+      </element><element name="TUniversalTransferDocumentMetadata.Vat"><short>Vat - сумма НДС УПД (берется из самого файла УПД).</short>
+      </element><element name="TUniversalTransferDocumentMetadata.Grounds"><short>Grounds - основания для первичного документа; представляются в виде неформализованной строки текста, например, «Договор №1234, Заказ №321».</short>
+      </element><element name="TUniversalTransferDocumentMetadata.Currency"><short>Currency - код валюты УПД (берется из самого файла УПД).</short>
+      </element><element name="TUniversalTransferDocumentMetadata.ConfirmationDateTimeTicks"><short>ConfirmationDateTimeTicks - метка времени подтверждения оператора ДО об отправке исходящего УПД или о доставке входящего УПД</short><descr>Представляет собой целое число тиков (100-наносекундных интервалов), прошедших с момента времени 00:00:00 01.01.0001. Данная метка представляет момент времени в московском часовом поясе (GMT+4).
+</descr>
+      </element><element name="TUniversalTransferDocumentMetadata.InvoiceAmendmentFlags"><short>InvoiceAmendmentFlags отражает статус данного УПД:</short><descr><ul><li>было ли затребовано уточнение, передавалось ли исправление УПД, передавался ли УКД;</li><li>представляет собой битовую маску, составленную из одного или нескольких значений перечисления InvoiceAmendmentFlags.</li>
+          </ul>
+        </descr>
+      </element><element name="TInvoiceAmendmentFlag"><short>Перечисление InvoiceAmendmentFlags задает возможные варианты статусов документов с точки зрения наличия в Диадоке уведомления об уточнении или переданного исправления / корректировки.</short><descr>Статус Corrected может быть присвоен только документам типа СФ/ИСФ/УПД/ИУПД и другим, не являющимся корректировками.
+</descr>
+      </element><element name="TInvoiceAmendmentFlag.None"><short>None (уточнение не требуется, исправление или корректировка документ не передавались),</short>
+      </element><element name="TInvoiceAmendmentFlag.AmendmentRequested"><short>AmendmentRequested (имеется уведомление об уточнении документа),</short>
+      </element><element name="TInvoiceAmendmentFlag.Revised"><short>Revised (документ был исправлен, то есть было передано соответствующее исправление),</short>
+      </element><element name="TInvoiceAmendmentFlag.Corrected"><short>Corrected (документ был откорректирован, то есть был передан соответствующий корректировочный документ).</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

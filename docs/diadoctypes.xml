@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes"><element name="TDocumentFilterStatus"><short>статус документа </short>
+      </element><element name="TDocumentFilterClass.dfcInbound"><short>входящий документ</short>
+      </element><element name="TDocumentFilterClass.dfcOutbound"><short>исходящий документ</short>
+      </element><element name="TDocumentFilterClass.dfcInternal"><short>внутренний документ</short>
+      </element><element name="TDocumentFilterStatus.dfsAny"><short>Пустое значение (любой документ указанного класса Class)</short>
+      </element><element name="TDocumentFilterStatus.dfsNotRead"><short>документ не прочитан</short>
+      </element><element name="TDocumentFilterStatus.dfsNoRecipientSignatureRequest"><short>документ без запроса ответной подписи</short>
+      </element><element name="TDocumentFilterStatus.dfsWaitingForRecipientSignature"><short>документ в ожидании ответной подписи</short>
+      </element><element name="TDocumentFilterStatus.dfsWithRecipientSignature"><short>документ с ответной подписью</short>
+      </element><element name="TDocumentFilterStatus.dfsWithSenderSignature"><short>документ с подписью отправителя</short>
+      </element><element name="TDocumentFilterStatus.dfsRecipientSignatureRequestRejected"><short>документ с отказом от формирования ответной подписи</short>
+      </element><element name="TDocumentFilterStatus.dfsWaitingForSenderSignature"><short>документ, требующий подписания и отправки</short>
+      </element><element name="TDocumentFilterStatus.dfsInvalidSenderSignature"><short>документ с невалидной подписью отправителя, требующий повторного подписания и отправки</short>
+      </element><element name="TDocumentFilterStatus.dfsInvalidRecipientSignature"><short>документ с невалидной подписью получателя, требующий повторного подписания и отправки</short>
+      </element><element name="TDocumentFilterStatus.dfsApproved"><short>согласованный документ</short>
+      </element><element name="TDocumentFilterStatus.dfsDisapproved"><short>документ с отказом согласования</short>
+      </element><element name="TDocumentFilterStatus.dfsWaitingForResolution"><short>документ, находящийся на согласовании или подписи</short>
+      </element><element name="TDocumentFilterStatus.dfsSignatureRequestRejected"><short>документ с отказом в запросе подписи сотруднику</short>
+      </element><element name="TDocumentFilterStatus.dfsFinished"><short>документ с завершенным документооборотом</short>
+      </element><element name="TDocumentFilterStatus.dfsHaveToCreateReceipt"><short>требуется подписать извещение о получении</short>
+      </element><element name="TDocumentFilterStatus.dfsNotFinished"><short>документ с незавершенным документооборотом</short>
+      </element><element name="TDocumentFilterStatus.dfsInvoiceAmendmentRequested"><short>имеет смысл только для счетов-фактур; документ, по которому было запрошено уточнение</short>
+      </element><element name="TDocumentFilterStatus.dfsRevocationIsRequestedByMe"><short>документ, по которому было запрошено аннулирование</short>
+      </element><element name="TDocumentFilterStatus.dfsRequestsMyRevocation"><short>документ, по которому контрагент запросил аннулирование</short>
+      </element><element name="TDocumentFilterStatus.dfsRevocationAccepted"><short>аннулированный документ</short>
+      </element><element name="TDocumentFilterStatus.dfsRevocationRejected"><short>документ, запрос на аннулирование которого был отклонен</short>
+      </element><element name="TDocumentFilterStatus.dfsRevocationApproved"><short>документ, запрос на аннулирование которого был согласован</short>
+      </element><element name="TDocumentFilterStatus.dfsRevocationDisapproved"><short>документ с отказом согласования запроса на аннулирование</short>
+      </element><element name="TDocumentFilterStatus.dfsWaitingForRevocationApprovement"><short>документ, находящийся на согласовании запроса аннулирования</short>
+      </element><element name="TDocumentFilterStatus.dfsNotRevoked"><short>неаннулированный документ</short>
+      </element><element name="TDocumentFilterStatus.dfsWaitingForProxySignature"><short>документ в ожидании подписи промежуточного получателя</short>
+      </element><element name="TDocumentFilterStatus.dfsWithProxySignature"><short>документ с подписью промежуточного получателя</short>
+      </element><element name="TDocumentFilterStatus.dfsInvalidProxySignature"><short>документ с невалидной подписью промежуточного получателя, требующий повторного подписания и отправки</short>
+      </element><element name="TDocumentFilterStatus.dfsProxySignatureRejected"><short>документ с отказом от формирования подписи промежуточным получателем</short>
+      </element><element name="TDocumentFilterStatus.dfsWaitingForInvoiceReceipt"><short>документ в ожидании получения извещения о получении счета-фактуры</short>
+      </element><element name="TDocumentFilterStatus.dfsWaitingForReceipt"><short>документ в ожидании получения извещения о получении</short>
+      </element><element name="TDocumentFilterStatus.dfsRequestsMySignature"><short>документ, по которому контрагент запросил подпись</short>
+      </element><element name="TDocumentFilterStatus.dfsRoamingNotificationError"><short>документ, с ошибкой доставки в роуминге</short>
+      </element><element name="TReqestCounteragentStatus.rcsAny"><short>Любой</short>
+      </element><element name="TReqestCounteragentStatus.rcsIsMyCounteragent"><short>отношение партнерства установлено и действует</short>
+      </element><element name="TReqestCounteragentStatus.rcsInvitesMe"><short>контрагент прислал запрос на установление отношения партнерства</short>
+      </element><element name="TReqestCounteragentStatus.rcsIsInvitedByMe"><short>в адрес контрагента был отправлен запрос на установление отношения партнерства</short>
+      </element><element name="TReqestCounteragentStatus.rcsRejected"><short>отношение партнерства было разорвано с той или иной стороны, либо запрос на установление отношения партнерства был отклонен той или иной стороной</short>
+      </element><element name="TUniversalTransferDocumentStatus.utdsUnknownDocumentStatus"><short>неизвестный статус; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать статус документа, переданный сервером</short>
+      </element><element name="TUniversalTransferDocumentStatus.utdsOutboundWaitingForSenderSignature"><short>документ исходящий, документ не отправлен, поскольку не подписан отправителем</short>
+      </element><element name="TUniversalTransferDocumentStatus.utdsOutboundWaitingForInvoiceReceiptAndRecipientSignature"><short>документ исходящий, от покупателя ожидается извещение о получении УПД/ИУПД/УКД/ИУКД, ответная подпись, либо отказ от ее формирования</short>
+      </element><element name="TUniversalTransferDocumentStatus.utdsOutboundWaitingForInvoiceReceipt"><short>документ исходящий, ожидается извещение о получении УПД/ИУПД/УКД/ИУКД от покупателя</short>
+      </element><element name="TUniversalTransferDocumentStatus.utdsOutboundWaitingForRecipientSignature"><short>документ исходящий, ответная подпись, либо отказ от ее формирования еще не получены</short>
+      </element><element name="TUniversalTransferDocumentStatus.utdsOutboundInvalidSenderSignature"><short>документ исходящий, ответная подпись получена</short>
+      </element><element name="TUniversalTransferDocumentStatus.utdsInboundWaitingForInvoiceReceiptAndRecipientSignature"><short>документ исходящий, получен отказ от формирования ответной подписи</short>
+      </element><element name="TInvoiceAmendmentFlag"><short>Перечисление InvoiceAmendmentFlags задает возможные варианты статусов документов с точки зрения наличия в Диадоке уведомления об уточнении или переданного исправления / корректировки.</short>
+      </element><element name="TInvoiceAmendmentFlag.None"><short>None (уточнение не требуется, исправление или корректировка документ не передавались)</short>
+      </element><element name="TInvoiceAmendmentFlag.AmendmentRequested"><short>AmendmentRequested (имеется уведомление об уточнении документа)</short>
+      </element><element name="TInvoiceAmendmentFlag.Revised"><short>Revised (документ был исправлен, то есть было передано соответствующее исправление)</short>
+      </element><element name="TInvoiceAmendmentFlag.Corrected"><short>Corrected (документ был откорректирован, то есть был передан соответствующий корректировочный документ)</short>
+      </element><element name="DocumentClassFilter"><short>Текстовое представление наимнования типа документа</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

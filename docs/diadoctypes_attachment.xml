@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_Attachment"><element name="TEntity"><short>Структура представляет информацию о содержимом документа и времени его создания.</short>
+      </element><element name="TEntity.EntityId"><short>EntityId - идентификатор документа.</short>
+      </element><element name="TEntity.CreationTimestamp"><short>CreationTimestamp - время создания документа.</short>
+      </element><element name="TEntity.Content"><short>Content - содержимое файла документа.</short>
+      </element><element name="TAttachment"><short>Структура представляет базовую информацию о документе.</short>
+      </element><element name="TAttachment.Entity"><short>Entity - информация о содержимом файла.</short>
+      </element><element name="TAttachment.AttachmentFilename"><short>AttachmentFilename - имя файла.</short>
+      </element><element name="TAttachment.DisplayFilename"><short>DisplayFilename - название документа, пригодное для отображения в интерфейсе. </short><descr>DisplayFilename - название документа, пригодное для отображения в интерфейсе. Например, для счёта-фактуры оно будет иметь вид «Счет-фактура №1 от 01.02.03».
+</descr>
+      </element><element name="TSignature"><short>Структура представляет информацию о подписи под документом.</short>
+      </element><element name="TSignature.Entity"><short>Entity - информация о содержимом подписи.</short>
+      </element><element name="TSignature.SignerBoxId"><short>SignerBoxId - идентификатор ящика, от имени которого была поставлена подпись.</short>
+      </element><element name="TSignature.SignerDepartmentId"><short>SignerDepartmentId - идентификатор подразделения, сотрудник которого поставил подпись.</short>
+      </element><element name="TSignature.IsValid"><short>IsValid - признак того, что подпись либо еще не прошла проверку, либо проверена и признана верной.</short>
+      </element><element name="TSignature.VerificationResult"><short>VerificationResult - результат проверки подписи.</short>
+      </element><element name="TSignedAttachment"><short>Структура представляет базовую информацию о документе и его подписи.</short>
+      </element><element name="TSignedAttachment.Attachment"><short>Attachment - данные файла документа.</short>
+      </element><element name="TSignedAttachment.Signature"><short>Signature - подпись под файлом.</short>
+      </element><element name="TSignedAttachment.Comment"><short>Comment - комментарий к файлу.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

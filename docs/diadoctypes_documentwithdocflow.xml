@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_DocumentWithDocflow"><element name="TDocumentWithDocflow"><short>Структура представляет информацию о документе (метаданные и состояние документооборота), возвращаемую методами GetDocflows, GetDocflowsByPacketId, SearchDocflows.</short>
+      </element><element name="TDocumentWithDocflows"><short>Структура представляет информацию о документе (метаданные и состояние документооборота), возвращаемую методами GetDocflows, GetDocflowsByPacketId, SearchDocflows.</short>
+      </element><element name="TDocumentWithDocflow.DocumentId"><short>DocumentId - идентификатор документа.</short>
+      </element><element name="TDocumentWithDocflow.LastEventId"><short>LastEventId - идентификатор последнего события в письме, которое было учтено при формировании данной структуры. Это событие может относиться и к другому документу из того же письма.</short>
+      </element><element name="TDocumentWithDocflow.LastEventTimestamp"><short>LastEventTimestamp - метка времени последнего учтенного события.</short>
+      </element><element name="TDocumentWithDocflow.DocumentInfo"><short>DocumentInfo - метаданные документа.</short>
+      </element><element name="TDocumentWithDocflow.Docflow"><short>Docflow - информация о состоянии документооборота.</short>
+      </element><element name="TDocumentWithDocflow.InitialDocumentIds"><short>InitialDocumentIds - идентификаторы документов, на которые ссылается данный документ.</short>
+      </element><element name="TDocumentWithDocflow.SubordinateDocumentIds"><short>SubordinateDocumentIds - идентификаторы документов, которые ссылаются на данный документ.</short>
+      </element><element name="TDocumentWithDocflow.ForwardDocumentEvents"><short>ForwardDocumentEvents - список событий по перемещению данного документа.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

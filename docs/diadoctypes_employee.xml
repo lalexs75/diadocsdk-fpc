@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_Employee"><element name="TEmployee"><short>Структура содержит информацию о сотруднике организация. Возвращается методом GetEmployee.</short><descr>Структура содержит информацию о сотруднике организация. Возвращается методом GetEmployee.
+</descr>
+      </element><element name="TEmployee.User"><short>User - информация о пользователе</short>
+      </element><element name="TEmployee.Permissions"><short>Permissions - права сотрудника</short>
+      </element><element name="TEmployee.Position"><short>Position - должность сотрудника</short>
+      </element><element name="TEmployee.CanBeInvitedForChat"><short>CanBeInvitedForChat - сотрудник отображается в списке получателей Сообщений в веб-интерфейсе</short>
+      </element><element name="TEmployee.CreationTimestamp"><short>CreationTimestamp - дата создания сотрудника</short>
+      </element><element name="TEmployeePermissions"><short>Структура EmployeePermissions содержит информацию о правах сотрудника организации. Как часть структуры Employee возвращается методом GetEmployee.</short>
+      </element><element name="TEmployeePermissions.UserDepartmentId"><short>UserDepartmentId - идентификатор подразделения организации, в котором состоит сотрудник. В случае головного подразделения содержит значение 00000000-0000-0000-0000-000000000000</short>
+      </element><element name="TEmployeePermissions.IsAdministrator"><short>IsAdministrator - может ли сотрудник редактировать структуру и реквизиты организации, добавлять и редактировать других сотрудников</short>
+      </element><element name="TEmployeePermissions.DocumentAccessLevel"><short>DocumentAccessLevel - уровень доступа к документам</short>
+      </element><element name="TEmployeePermissions.SelectedDepartmentIds"><short>SelectedDepartmentIds - список подразделений, к которым имеет доступ сотрудник (заполняется только в случае DocumentAccessLevel = SelectedDepartments).</short>
+      </element><element name="TEmployeePermissions.Actions"><short>Actions - информация о том, какие действия имеет право выполнять сотрудник</short>
+      </element><element name="TEmployeeAction"><short>Структура EmployeeAction содержит информацию о том, может ли сотрудник совершить конкретное действие.</short>
+      </element><element name="TEmployeeAction.Name"><short>Name - строковой идентификатор действия</short><descr><b>Действия сотрудников</b><p>Идентификатор &#x9;Описание</p><p>CreateDocuments &#x9;Создавать документы и работать с черновиками</p><p>SignDocuments &#x9;Подписывать документы</p><p>AddResolutions &#x9;Согласовывать документы</p><p>RequestResolutions &#x9;Передавать на подпись и согласование</p>
+        </descr>
+      </element><element name="TEmployeeAction.IsAllowed"><short>IsAllowed - разрешено ли действие</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

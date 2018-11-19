@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_ExtendedSigner"><element name="TSignerType.LegalEntity"><short>Представитель юридического лица</short>
+      </element><element name="TSignerType.IndividualEntity"><short>Индивидуальный предприниматель</short>
+      </element><element name="TSignerType.PhysicalPerson"><short>Физическое лицо</short>
+      </element><element name="TSignerType"><short>ТИП подписанта: индивидуальный предприниматель, юридическое или физическое лицо</short>
+      </element><element name="TSignerPowers"><short>область полномочий подписанта</short>
+      </element><element name="TSignerPowers.InvoiceSigner"><short>лицо, ответственное за подписание счетов-фактур</short>
+      </element><element name="TSignerPowers.PersonMadeOperation"><short>лицо, совершившее сделку, операцию</short>
+      </element><element name="TSignerPowers.MadeAndSignOperation"><short>лицо, совершившее сделку, операцию и ответственное за её оформление;</short>
+      </element><element name="TSignerPowers.PersonDocumentedOperation"><short>лицо, ответственное за оформление свершившегося события;</short>
+      </element><element name="TSignerPowers.MadeOperationAndSignedInvoice"><short>лицо, совершившее сделку, операцию и ответственное за подписание счетов-фактур;</short>
+      </element><element name="TSignerPowers.MadeAndResponsibleForOperationAndSignedInvoice"><short>лицо, совершившее сделку, операцию и ответственное за её оформление и за подписание счетов-фактур;</short>
+      </element><element name="TSignerPowers.ResponsibleForOperationAndSignerForInvoice"><short>лицо, ответственное за оформление свершившегося события и за подписание счетов-фактур</short>
+      </element><element name="TSignerStatus"><short>статус подписанта</short>
+      </element><element name="TSignerStatus.SellerEmployee"><short>Работник организации продавца товаров (работ, услуг, имущественных прав);</short>
+      </element><element name="TSignerStatus.InformationCreatorEmployee"><short>Работник организации - составителя информации продавца;</short>
+      </element><element name="TSignerStatus.OtherOrganizationEmployee"><short>Работник иной уполномоченной организации;</short>
+      </element><element name="TSignerStatus.AuthorizedPerson"><short>Уполномоченное физическое лицо (в том числе индивидуальный предприниматель)</short>
+      </element><element name="TExtendedSignerDetailsToPost"><short>Структура данных ExtendedSignerToPost используется для записи данных о подписанте в базу данных и содержит следующие поля:</short>
+      </element><element name="TExtendedSignerDetailsToPost.JobTitle"><short>JobTitle - должность подписанта.</short>
+      </element><element name="TExtendedSignerDetailsToPost.RegistrationCertificate"><short>RegistrationCertificate - реквизиты свидетельства о регистрации индивидуального предпринимателя (необязательно).</short>
+      </element><element name="TExtendedSignerDetailsToPost.SignerType"><short>SignerType - ТИП подписанта: индивидуальный предприниматель, юридическое или физическое лицо</short>
+      </element><element name="TExtendedSignerDetailsToPost.SignerInfo"><short>SignerInfo - иные сведения, идентифицируеющие подписанта.</short>
+      </element><element name="TExtendedSignerDetailsToPost.SignerPowers"><short>SignerPowers - область полномочий подписанта. Указывается из предложенного списка.</short>
+      </element><element name="TExtendedSignerDetailsToPost.SignerStatus"><short>SignerStatus - статус подписанта. Указывается из предложенного списка.</short>
+      </element><element name="TExtendedSignerDetailsToPost.SignerPowersBase"><short>SignerPowersBase - основания полномочий (доверия) подписанта. Обязателен, если SignerStatus = 4, «уполномоченное физическое лицо»</short>
+      </element><element name="TExtendedSignerDetailsToPost.SignerOrgPowersBase"><short>SignerOrgPowersBase - Основания полномочий (доверия) организации. Обязателен, если SignerStatus = 3, «работник иной уполномоченной организации»</short>
+      </element>
+    <element name="TDocumentTitleType"><short>DocumentTitleType - Тип титула документа, для которого нужно заполнить дополнительные данные о подписанте. Для типов подписанта None и Signer значение всегда равно Absent.</short>
+      </element><element name="TExtendedSignerDetails"><short>Набор необходимых полей для подписания счетов-фактур, актов и накладных был значительно меньше, чем для подписания УПД и УКД.</short><descr><p>Набор необходимых полей для подписания счетов-фактур, актов и накладных был значительно меньше, чем для подписания УПД и УКД.</p><p>Все данные подписанта можно было достать из сертификата и данных его организации - автоматическое заполнение данных подписанта происходило при заполнении BoxId и Certificate/CertificateThumbprint.</p><p>Данная логика сохранилась и при подписании УПД/УКД и актов/накладных в форматах 551/552. Автоматическое заполнение происходит, если в Диадоке есть дополнительные данные, необходимые для подписания. Если дополнительных данных, необходимых для подписания в Диадоке нет, то будет возникать ошибка.</p><p>Расширенные данные можно заполнить методом ExtendedSignerDetails.</p>
+        </descr>
+      </element><element name="TExtendedSignerDetails.Surname"><short>Surname - фамилия подписанта.</short>
+      </element><element name="TExtendedSignerDetails.FirstName"><short>FirstName - имя подписанта.</short>
+      </element><element name="TExtendedSignerDetails.Patronymic"><short>Patronymic - отчество подписанта (необязательно).</short>
+      </element><element name="TExtendedSignerDetails.JobTitle"><short>JobTitle - должность подписанта.</short>
+      </element><element name="TExtendedSignerDetails.Inn"><short>Inn - ИНН юридического лица подписанта или индивидуального предпринимателя (необязательно).</short>
+      </element><element name="TExtendedSignerDetails.RegistrationCertificate"><short>RegistrationCertificate - реквизиты свидетельства о регистрации индивидуального предпринимателя (необязательно).</short>
+      </element><element name="TExtendedSignerDetails.SignerType"><short>SignerType - ТИП подписанта: индивидуальный предприниматель, юридическое или физическое лицо</short>
+      </element><element name="TExtendedSignerDetails.SignerOrganizationName"><short>SignerOrganizationName - наименование организации.</short><descr><p>Элемент является обязательным, если выполняются следующие условия:</p><li>SignerType = LegalEntity</li><li>AttachmentVersion = tovtorg_05_01_02 или rezru_05_01_01 вызван метод GenerateTorg12XmlForSeller, GenerateTorg12XmlForBuyer, GenerateAcceptanceCertificateXmlForSeller или GenerateAcceptanceCertificateXmlForBuyer</li>
+        </descr>
+      </element><element name="TExtendedSignerDetails.SignerInfo"><short>SignerInfo - иные сведения, идентифицируеющие подписанта.</short>
+      </element><element name="TExtendedSignerDetails.SignerPowers"><short>SignerPowers - область полномочий подписанта. Указывается из предложенного списка.</short>
+      </element><element name="TExtendedSignerDetails.SignerStatus"><short>SignerStatus - статус подписанта. Указывается из предложенного списка.</short>
+      </element><element name="TExtendedSignerDetails.SignerPowersBase"><short>SignerPowersBase - основания полномочий (доверия) подписанта. Обязателен, если SignerStatus = 4, «уполномоченное физическое лицо»</short>
+      </element><element name="TExtendedSignerDetails.SignerOrgPowersBase"><short>SignerOrgPowersBase - основания полномочий (доверия) организации. Обязателен, если SignerStatus = 3, «работник иной уполномоченной организации»</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

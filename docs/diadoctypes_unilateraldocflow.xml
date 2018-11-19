@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_UnilateralDocflow"><element name="TUnilateralDocflow"><short>Структура представляет информацию о документообороте одностороннего неформализованного документа.</short>
+      </element><element name="TUnilateralDocflow.IsFinished"><short>IsFinished - признак того, что документооборот завершен, т.е. документ не требует дальнейших действий.</short>
+      </element><element name="TUnilateralDocflow.ReceiptDocflow"><short>ReceiptDocflow - информация об извещении о получении на данный документ.</short>
+      </element><element name="TUnilateralDocflow.IsReceiptRequested"><short>IsReceiptRequested - признак того, что по документу было запрошено извещение о получении.</short>
+      </element><element name="TUnilateralDocflow.CanDocumentBeReceipted"><short>CanDocumentBeReceipted - признак того, что для документа можно отправить извещение о получении. Равен true для входящих документов, по которым корректные извещения ранее не отправлялись.</short>
+      </element><element name="TUnilateralDocflow.CanDocumentBeSignedBySender"><short>CanDocumentBeSignedBySender - признак того, что документ может быть подписан отправителем. Равен true для документов, сохраненных для последующей отправки, либо для исходящих документов с некорректной подписью.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_UniversalTransferDocumentDocflow"><element name="TInboundUniversalTransferDocumentDocflow"><short>Структура представляет информацию о документообороте входящего УПД.</short>
+      </element><element name="TInboundUniversalTransferDocumentDocflow.IsFinished"><short>IsFinished - признак завершенности документооборота.</short>
+      </element><element name="TInboundUniversalTransferDocumentDocflow.ReceiptDocflow"><short>ReceiptDocflow - информация об извещении о получении, отправленном в ответ на полученный УПД.</short>
+      </element><element name="TInboundUniversalTransferDocumentDocflow.ConfirmationDocflow"><short>ConfirmationDocflow - информация о подтверждении даты доставки УПД (СЧФ) (формируется оператором).</short>
+      </element><element name="TInboundUniversalTransferDocumentDocflow.CorrectionRequestDocflow"><short>CorrectionRequestDocflow - информация о запросе уточнения УПД (СЧФ).</short>
+      </element><element name="TInboundUniversalTransferDocumentDocflow.ConfirmationTimestamp"><short>ConfirmationTimestamp - метка времени подтверждения даты доставки.</short>
+      </element><element name="TInboundUniversalTransferDocumentDocflow.IsAmendmentRequested"><short>IsAmendmentRequested - признак того, что по УПД (СЧФ) было запрошено уточнение.</short>
+      </element><element name="TInboundUniversalTransferDocumentDocflow.IsRevised"><short>IsRevised - признак того, что УПД (СЧФ) был исправлен (на него сформировано исправление).</short>
+      </element><element name="TInboundUniversalTransferDocumentDocflow.IsCorrected"><short>IsCorrected - признак того, что УПД (СЧФ) был откорректирован (на него сформирована корректировка).</short>
+      </element><element name="TInboundUniversalTransferDocumentDocflow.BuyerTitleDocflow"><short>BuyerTitleDocflow - информация об ответной подписи под документом. Ответная подпись для формализованных двусторонних документов представляет собой подписанный файл установленного формата (например, титул покупателя для товарной накладной, или титул заказчика для акта).</short>
+      </element><element name="TInboundUniversalTransferDocumentDocflow.RecipientSignatureRejectionDocflow"><short>RecipientSignatureRejectionDocflow - информация об отказе в подписании документа получателем. Заполняется только в том случае, когда отказ был.</short>
+      </element><element name="TInboundUniversalTransferDocumentDocflow.IsReceiptRequested"><short>IsReceiptRequested - признак того, что по документу было запрошено извещение о получении.</short>
+      </element><element name="TInboundUniversalTransferDocumentDocflow.IsRecipientSignatureRequested"><short>IsRecipientSignatureRequested - признак того, что по документу запрошена ответная подпись.</short>
+      </element><element name="TInboundUniversalTransferDocumentDocflow.IsDocumentSignedByRecipient"><short>IsDocumentSignedByRecipient - признак того, что документ подписан получателем.</short>
+      </element><element name="TInboundUniversalTransferDocumentDocflow.IsDocumentRejectedByRecipient"><short>IsDocumentRejectedByRecipient - признак того, что получатель отказал в подписи документа.</short>
+      </element><element name="TInboundUniversalTransferDocumentDocflow.CanDocumentBeReceipted"><short>CanDocumentBeReceipted - признак того, что для документа можно отправить извещение о получении. Равен true для входящих документов, по которым корректные извещения ранее не отправлялись.</short>
+      </element><element name="TInboundUniversalTransferDocumentDocflow.CanDocumentBeSignedOrRejectedByRecipient"><short>CanDocumentBeSignedOrRejectedByRecipient - признак того, что получатель может подписать документ или отказать в подписании.</short>
+      </element><element name="TOutboundUniversalTransferDocumentDocflow"><short>Структура представляет информацию о документообороте входящего УПД.</short>
+      </element><element name="TOutboundUniversalTransferDocumentDocflow.IsFinished"><short>IsFinished - признак завершенности документооборота.</short>
+      </element><element name="TOutboundUniversalTransferDocumentDocflow.ReceiptDocflow"><short>ReceiptDocflow - информация об извещении о получении, отправленном в ответ на полученный УПД.</short>
+      </element><element name="TOutboundUniversalTransferDocumentDocflow.ConfirmationDocflow"><short>ConfirmationDocflow - информация о подтверждении даты доставки УПД (формируется оператором).</short>
+      </element><element name="TOutboundUniversalTransferDocumentDocflow.CorrectionRequestDocflow"><short>CorrectionRequestDocflow - информация о запросе уточнения УПД.</short>
+      </element><element name="TOutboundUniversalTransferDocumentDocflow.ConfirmationTimestamp"><short>ConfirmationTimestamp - метка времени подтверждения даты доставки.</short>
+      </element><element name="TOutboundUniversalTransferDocumentDocflow.IsAmendmentRequested"><short>IsAmendmentRequested - признак того, что по УПД было запрошено уточнение.</short>
+      </element><element name="TOutboundUniversalTransferDocumentDocflow.IsRevised"><short>IsRevised - признак того, что УПД был исправлен (на него сформировано исправление).</short>
+      </element><element name="TOutboundUniversalTransferDocumentDocflow.IsCorrected"><short>IsCorrected - признак того, что УПД был откорректирован (на него сформирована корректировка).</short>
+      </element><element name="TOutboundUniversalTransferDocumentDocflow.CanDocumentBeSignedBySender"><short>CanDocumentBeSignedBySender - признак того, что документ может быть подписан отправителем. Равен true для документов, сохраненных для последующей отправки, либо для исходящих документов с некорректной подписью.</short>
+      </element><element name="TOutboundUniversalTransferDocumentDocflow.BuyerTitleDocflow"><short>BuyerTitleDocflow - информация об ответной подписи под документом. Ответная подпись для формализованных двусторонних документов представляет собой подписанный файл установленного формата (например, титул покупателя для товарной накладной, или титул заказчика для акта).</short>
+      </element><element name="TOutboundUniversalTransferDocumentDocflow.RecipientSignatureRejectionDocflow"><short>RecipientSignatureRejectionDocflow - информация об отказе в подписании документа получателем. Заполняется только в том случае, когда отказ был.</short>
+      </element><element name="TOutboundUniversalTransferDocumentDocflow.IsReceiptRequested"><short>IsReceiptRequested - признак того, что по документу было запрошено извещение о получении.</short>
+      </element><element name="TOutboundUniversalTransferDocumentDocflow.IsRecipientSignatureRequested"><short>IsRecipientSignatureRequested - признак того, что по документу запрошена ответная подпись.</short>
+      </element><element name="TOutboundUniversalTransferDocumentDocflow.IsDocumentSignedByRecipient"><short>IsDocumentSignedByRecipient - признак того, что документ подписан получателем.</short>
+      </element><element name="TOutboundUniversalTransferDocumentDocflow.IsDocumentRejectedByRecipient"><short>IsDocumentRejectedByRecipient - признак того, что получатель отказал в подписи документа.</short>
+      </element><element name="TOutboundUniversalTransferDocumentDocflow.CanDocumentBeReceipted"><short>CanDocumentBeReceipted - признак того, что для документа можно отправить извещение о получении. Равен true для входящих документов, по которым корректные извещения ранее не отправлялись.</short>
+      </element><element name="TOutboundUniversalTransferDocumentDocflow.CanDocumentBeSignedOrRejectedByRecipient"><short>CanDocumentBeSignedOrRejectedByRecipient - признак того, что получатель может подписать документ или отказать в подписании.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

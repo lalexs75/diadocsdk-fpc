@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_ResolutionRequestInfo"><element name="TResolutionRequestInfo"><short>Структура данных ResolutionRequestInfo содержит информацию о состоянии запроса на согласование.</short>
+      </element><element name="TResolutionRequestInfo.RequestType"><short>ResolutionRequestType - тип запроса на согласование:</short>
+      </element><element name="TResolutionRequestType"><short>ResolutionRequestType - тип запроса на согласование:</short>
+      </element><element name="TResolutionRequestType.ApprovementRequest"><short>ApprovementRequest - запрос на согласование документа.</short>
+      </element><element name="TResolutionRequestType.SignatureRequest"><short>SignatureRequest - запрос на подпись документа.</short>
+      </element><element name="TResolutionRequestType.ApprovementSignatureRequest"><short>ApprovementSignatureRequest - запрос на согласующую подпись под документом.</short>
+      </element><element name="TResolutionRequestInfo.Author"><short>Author - ФИО инициатора запроса.</short>
+      </element><element name="TResolutionRequestInfo.Target"><short>ResolutionTarget - информация о том, кому направлен запрос.</short>
+      </element><element name="TResolutionRequestInfo.ResolvedWith"><short>ResolvedWith - идентификатор ответного действия (положительное/отрицательное согласование, отказ в запросе подписи).</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

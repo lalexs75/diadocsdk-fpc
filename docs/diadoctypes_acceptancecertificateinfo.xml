@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_AcceptanceCertificateInfo"><element name="TWorkItem.Name"><short>наименование</short>
+      </element><element name="TWorkItem.Description"><short>описание работы</short>
+      </element><element name="TWorkItem.UnitCode"><short>код единицы измерения</short>
+      </element><element name="TWorkItem.UnitName"><short>наименование единицы измерения</short>
+      </element><element name="TWorkItem.Price"><short>цена</short>
+      </element><element name="TWorkItem.Quantity"><short>количество</short>
+      </element><element name="TWorkItem.SubtotalWithVatExcluded"><short>сумма без учета НДС</short>
+      </element><element name="TWorkItem.Vat"><short>сумма НДС</short>
+      </element><element name="TWorkItem.Subtotal"><short>сумма с учетом НДС</short>
+      </element><element name="TWorkItem.AdditionalInfo"><short>информационное поле сведений о работе (услуге)</short>
+      </element><element name="TAcceptanceCertificateBuyerTitleInfo"><short>титул заказчика</short>
+      </element><element name="TAcceptanceCertificateBuyerTitleInfo.Complaints"><short>претензии</short>
+      </element><element name="TAcceptanceCertificateBuyerTitleInfo.Signature"><short>сведения о подписи акта</short>
+      </element><element name="TAcceptanceCertificateBuyerTitleInfo.Signer"><short>подписант</short>
+      </element><element name="TAcceptanceCertificateBuyerTitleInfo.AdditionalInfo"><short>дополнительная информация</short>
+      </element><element name="TAcceptanceCertificateSellerTitleInfo"><short>титул исполнителя</short>
+      </element><element name="TAcceptanceCertificateSellerTitleInfo.Seller"><short>исполнитель (продавец услуг)</short>
+      </element><element name="TAcceptanceCertificateSellerTitleInfo.Buyer"><short>заказчик (покупатель услуг)</short>
+      </element><element name="TAcceptanceCertificateSellerTitleInfo.DocumentDate"><short>дата составления акта о выполнении</short>
+      </element><element name="TAcceptanceCertificateSellerTitleInfo.DocumentNumber"><short>номер акта</short>
+      </element><element name="TAcceptanceCertificateSellerTitleInfo.DocumentTitle"><short>заголовок документа</short>
+      </element><element name="TAcceptanceCertificateSellerTitleInfo.Works"><short>описание выполненных работ</short>
+      </element><element name="TAcceptanceCertificateSellerTitleInfo.Signature"><short>сведения о подписи акта</short>
+      </element><element name="TAcceptanceCertificateSellerTitleInfo.Signer"><short>подписант</short>
+      </element><element name="TAcceptanceCertificateSellerTitleInfo.AdditionalInfo"><short>дополнительная информация</short>
+      </element><element name="TWorkDescription"><short>Описание работ</short>
+      </element><element name="TWorkDescription.StartingDate"><short>начало периода выполнения работ</short>
+      </element><element name="TWorkDescription.CompletionDate"><short>окончание периода выполнения работ</short>
+      </element><element name="TWorkDescription.TotalWithVatExcluded"><short>сумма без учета НДС - итого</short>
+      </element><element name="TWorkDescription.Vat"><short>умма НДС - итого</short>
+      </element><element name="TWorkDescription.Total"><short>сумма с учетом НДС - итого</short>
+      </element><element name="TWorkDescription.Items"><short>сведения о произведенной работе</short>
+      </element><element name="TAcceptanceCertificateSignatureInfo.SignatureDate"><short>дата подписи акта исполнителем / заказчиком</short>
+      </element><element name="TAcceptanceCertificateSignatureInfo.Official"><short>лицо, подписывающее со стороны исполнителя / заказчика</short>
+      </element><element name="TAcceptanceCertificateSignatureInfo.Attorney"><short>сведения о доверенности подписывающего со стороны исполнителя / заказчика</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

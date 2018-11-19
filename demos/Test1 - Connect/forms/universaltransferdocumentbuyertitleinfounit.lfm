@@ -1,0 +1,294 @@
+object UniversalTransferDocumentBuyerTitleInfoForm: TUniversalTransferDocumentBuyerTitleInfoForm
+  Left = 681
+  Height = 403
+  Top = 400
+  Width = 656
+  Caption = 'UniversalTransferDocumentBuyerTitleInfoForm'
+  ClientHeight = 403
+  ClientWidth = 656
+  LCLVersion = '1.9.0.0'
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 357
+    Top = 0
+    Width = 656
+    ActivePage = TabSheet1
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 0
+    object TabSheet1: TTabSheet
+      Caption = 'Общие данные'
+      ClientHeight = 329
+      ClientWidth = 648
+      object Label1: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = TabSheet1
+        Left = 6
+        Height = 15
+        Top = 6
+        Width = 534
+        BorderSpacing.Around = 6
+        Caption = 'Наименование экономического субъекта - составителя файла обмена информации покупателя'
+        ParentColor = False
+      end
+      object Label2: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = Edit1
+        AnchorSideTop.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 56
+        Width = 630
+        BorderSpacing.Around = 6
+        Caption = 'Основание, по которому экономический субъект является составителем файла обмена информации покупателя'
+        ParentColor = False
+      end
+      object Label3: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = Edit2
+        AnchorSideTop.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 106
+        Width = 76
+        BorderSpacing.Around = 6
+        Caption = 'ВидОперации'
+        ParentColor = False
+      end
+      object Label4: TLabel
+        AnchorSideLeft.Control = Label10
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = Edit2
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 331
+        Height = 15
+        Top = 106
+        Width = 126
+        BorderSpacing.Around = 6
+        Caption = 'Содержание операции'
+        ParentColor = False
+      end
+      object Label5: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = Edit3
+        AnchorSideTop.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 156
+        Width = 127
+        BorderSpacing.Around = 6
+        Caption = 'Дата принятия товаров'
+        ParentColor = False
+      end
+      object Label6: TLabel
+        AnchorSideLeft.Control = Label10
+        AnchorSideTop.Control = Edit4
+        AnchorSideTop.Side = asrBottom
+        Left = 330
+        Height = 15
+        Top = 156
+        Width = 192
+        BorderSpacing.Around = 6
+        Caption = 'работник организации покупателя'
+        ParentColor = False
+      end
+      object Label7: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = Edit5
+        AnchorSideTop.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 206
+        Width = 61
+        BorderSpacing.Around = 6
+        Caption = 'Иное Лицо'
+        ParentColor = False
+      end
+      object Label8: TLabel
+        AnchorSideLeft.Control = Label10
+        AnchorSideTop.Control = Edit6
+        AnchorSideTop.Side = asrBottom
+        Left = 330
+        Height = 15
+        Top = 206
+        Width = 81
+        BorderSpacing.Around = 6
+        Caption = 'ИнфПолФХЖ4'
+        ParentColor = False
+      end
+      object Label9: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = Edit7
+        AnchorSideTop.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 256
+        Width = 60
+        BorderSpacing.Around = 6
+        Caption = 'Подписант'
+        ParentColor = False
+      end
+      object Edit1: TEdit
+        AnchorSideLeft.Control = Label1
+        AnchorSideTop.Control = Label1
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 12
+        Height = 23
+        Top = 27
+        Width = 630
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 0
+        Text = 'Edit1'
+      end
+      object Edit2: TEdit
+        AnchorSideLeft.Control = Label2
+        AnchorSideTop.Control = Label2
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 12
+        Height = 23
+        Top = 77
+        Width = 630
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 1
+        Text = 'Edit2'
+      end
+      object Edit3: TEdit
+        AnchorSideLeft.Control = Label3
+        AnchorSideTop.Control = Label3
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Label10
+        AnchorSideRight.Side = asrBottom
+        Left = 12
+        Height = 23
+        Top = 127
+        Width = 307
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 2
+        Text = 'Edit3'
+      end
+      object Edit4: TEdit
+        AnchorSideLeft.Control = Label4
+        AnchorSideTop.Control = Label4
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 337
+        Height = 23
+        Top = 127
+        Width = 305
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 3
+        Text = 'Edit4'
+      end
+      object Edit5: TEdit
+        AnchorSideLeft.Control = Label5
+        AnchorSideTop.Control = Label5
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Label10
+        Left = 12
+        Height = 23
+        Top = 177
+        Width = 306
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 4
+        Text = 'Edit5'
+      end
+      object Edit6: TEdit
+        AnchorSideLeft.Control = Label6
+        AnchorSideTop.Control = Label6
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 336
+        Height = 23
+        Top = 177
+        Width = 306
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 5
+        Text = 'Edit6'
+      end
+      object Edit7: TEdit
+        AnchorSideLeft.Control = Label7
+        AnchorSideTop.Control = Label7
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Label10
+        Left = 12
+        Height = 23
+        Top = 227
+        Width = 306
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 6
+        Text = 'Edit7'
+      end
+      object Edit8: TEdit
+        AnchorSideLeft.Control = Label10
+        AnchorSideTop.Control = Label8
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 330
+        Height = 23
+        Top = 227
+        Width = 312
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 7
+        Text = 'Edit8'
+      end
+      object Edit9: TEdit
+        AnchorSideLeft.Control = Label9
+        AnchorSideTop.Control = Label9
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 12
+        Height = 23
+        Top = 277
+        Width = 630
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 8
+        Text = 'Edit9'
+      end
+      object Label10: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideLeft.Side = asrCenter
+        AnchorSideTop.Control = TabSheet1
+        Left = 324
+        Height = 1
+        Top = 0
+        Width = 1
+        ParentColor = False
+      end
+    end
+  end
+  object ButtonPanel1: TButtonPanel
+    Left = 6
+    Height = 34
+    Top = 363
+    Width = 644
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    TabOrder = 1
+    ShowButtons = [pbClose]
+  end
+end

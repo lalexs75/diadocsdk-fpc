@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_InvoiceInfo"><element name="TTaxRate.NoVat"><short>без НДС</short>
+      </element><element name="TTaxRate.Percent_0"><short>ставка налога 0%</short>
+      </element><element name="TTaxRate.Percent_10"><short>ставка налога 10%</short>
+      </element><element name="TTaxRate.Percent_18"><short>ставка налога 18%</short>
+      </element><element name="TTaxRate.Percent_20"><short>ставка налога 20%</short>
+      </element><element name="TTaxRate.Fraction_10_110"><short>ставка налога 10/110 (дробь)</short>
+      </element><element name="TTaxRate.Fraction_18_118"><short>ставка налога 18/118 (дробь)</short>
+      </element><element name="TTaxRate.TaxedByAgent"><short>ставка налога "НДС исчисляется налоговым агентом"</short>
+      </element>
+    <element name="TInvoiceInfo"><short>Структура данных InvoiceInfo представляет исходные данные для формирования счета-фактуры в XML-формате при помощи метода GenerateInvoiceXml. </short>
+      <descr><p>При заполнении структуры InvoiceInfo нужно иметь в виду:</p><li>Реквизиты продавца (InvoiceInfo.Seller) и покупателя (InvoiceInfo.Buyer) заполняются в виде структуры данных DiadocOrganizationInfo.</li><li>Реквизиты грузоотправителя и грузополучателя (ShipperOrConsignee.OrgInfo) заполняются в виде структуры данных OrganizationInfo. Если проставлен флаг ShipperOrConsignee.SameAsSellerOrBuyer, то реквизиты грузоотправителя/грузополучателя заполнять не нужно - будут использоваться соответствующие реквизиты продавца/покупателя.</li><li>Реквизиты подписанта счета-фактуры InvoiceInfo.Signer заполняются в виде структуры данных Signer.</li><li>Даты документов должны указываться в формате ДД.ММ.ГГГГ.</li><li>Суммы должны указываться в формате XXX.XX (дробная часть должна отделяться точкой). То же самое касается формата представления количества товара InvoiceItem.Quantity.</li><li>Если не указан код валюты InvoiceInfo.Currency, по умолчанию будет использоваться код 643 (Российский рубль). Код валюты можно указывать в буквенном формате (например, «USD» - Доллар США), тогда он будет автоматически сконвертирован в соответствующий числовой код.</li><li>Коды единиц измерения InvoiceItem.Unit, коды стран происхождения товара InvoiceItem.CountriesOfOrigin, а также коды иностранных госудраств ForeignAddress.Country можно указывать в буквенном формате, тогда Диадок предпримет попытку сконвертироваить их в соответствующие числовые коды.</li><li>Версия формата счета-фактуры по умолчанию DefaultInvoiceFormatVersion до 14.04.2015 будет v5_01, после 14.04.2015 будет v5_02</li><li>В зависимости от значения поля InvoiceFormatVersion, из сериализованной структуры InvoiceInfo обрабатываются поля, соответствующие указанной версии (указаны в комментариях к полям).</li><li>Правила заполнения структуры InvoiceInfo повторяют требования формата ФНС, зафиксированные в следующей XML-схеме, v5.02.</li>
+        </descr>
+      </element><element name="TInvoiceInfo.InvoiceDate"><short>дата СФ</short>
+      </element><element name="TInvoiceInfo.InvoiceNumber"><short>номер СФ</short>
+      </element><element name="TInvoiceInfo.Seller"><short>продавец</short>
+      </element><element name="TInvoiceInfo.Buyer"><short>покупатель</short>
+      </element><element name="TInvoiceInfo.Shipper"><short>грузоотправитель</short>
+      </element><element name="TInvoiceInfo.Consignee"><short>грузополучатель</short>
+      </element><element name="TInvoiceInfo.Signer"><short>подписант</short>
+      </element><element name="TInvoiceInfo.PaymentDocuments"><short>платежно-расчетные документы</short>
+      </element><element name="TInvoiceInfo.Items"><short>информация о товарах</short>
+      </element><element name="TInvoiceInfo.Currency"><short>валюта (код)</short>
+      </element><element name="TInvoiceInfo.TotalWithVatExcluded"><short>сумма без учета налога</short>
+      </element><element name="TInvoiceInfo.Vat"><short>сумма налога</short>
+      </element><element name="TInvoiceInfo.Total"><short>сумма всего</short>
+      </element><element name="TInvoiceInfo.AdditionalInfo"><short>информационное поле документа v5.01</short>
+      </element><element name="TInvoiceInfo.InvoiceRevisionDate"><short>дата ИСФ (обязательно при формировании InvoiceRevision)</short>
+      </element><element name="TInvoiceInfo.InvoiceRevisionNumber"><short>номер ИСФ (обязательно при формировании InvoiceRevision)</short>
+      </element><element name="TInvoiceInfo.AdditionalInfos"><short>информационное поле документа v5.02</short>
+      </element><element name="TInvoiceInfo.Version"><short>версия формата ФУФа (для тестирования систем в переходном периоде)
+}</short>
+      </element><element name="TAdditionalInfo.Id"><short>Идентификатор</short>
+      </element><element name="TAdditionalInfo.Value"><short>Значение</short>
+      </element><element name="TInvoiceFormatVersion"><short>Версия формата счета-фактуры по умолчанию</short>
+      </element><element name="TInvoiceFormatVersion.DefaultInvoiceFormatVersion"><short>Версия формата счета-фактуры по умолчанию DefaultInvoiceFormatVersion до 14.04.2015</short>
+      </element><element name="TInvoiceItem.Product"><short>наименование товара</short>
+      </element><element name="TInvoiceItem.Unt"><short>единицы измерения товара (код)</short>
+      </element><element name="TInvoiceItem.Quantity"><short>количество единиц товара</short>
+      </element><element name="TInvoiceItem.Price"><short>цена за единицу товара</short>
+      </element><element name="TInvoiceItem.CountriesOfOrigin"><short>страны происхождения товара (коды)</short>
+      </element><element name="TInvoiceItem.CustomsDeclarationNumbers"><short>номера таможенных деклараций v5.01</short>
+      </element><element name="TInvoiceItem.Excise"><short>акциз</short>
+      </element><element name="TInvoiceItem.TaxRate"><short>ставка налога</short>
+      </element><element name="TInvoiceItem.SubtotalWithVatExcluded"><short>сумма без учета налога</short>
+      </element><element name="TInvoiceItem.Vat"><short>сумма налога</short>
+      </element><element name="TInvoiceItem.Subtotal"><short>сумма всего</short>
+      </element><element name="TInvoiceItem.AdditionalInfo"><short>информационное поле товара v5.01</short>
+      </element><element name="TInvoiceItem.CustomsDeclarations"><short>номера таможенных деклараций v5.02</short>
+      </element><element name="TInvoiceItem.AdditionalInfos"><short>информационное поле товара v5.02</short>
+      </element><element name="TCustomsDeclaration.CountryCode"><short>код страны происхождения товара</short>
+      </element><element name="TCustomsDeclaration.DeclarationNumber"><short>номер таможенной декларации</short>
+      </element><element name="TShipperOrConsignee.SameAsSellerOrBuyer"><short>совпадает с продавцом/покупателем</short>
+      </element><element name="TShipperOrConsignee.OrgInfo"><short>реквизиты организации</short>
+      </element>
+    <element name="TInvoiceItems"><short>информация о товарах</short>
+      </element><element name="TInvoiceItem"><short>информация о товаре</short>
+      </element><element name="TInvoiceItem.UnitCode"><short>Код единицы измерения</short><descr>Информация берётся из поля <b>Unt</b>
+        </descr>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

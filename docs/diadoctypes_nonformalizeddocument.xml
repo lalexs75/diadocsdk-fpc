@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_NonformalizedDocument"><element name="TNonformalizedDocumentMetadata"><short>Структура данных NonformalizedDocumentMetadata содержит дополнительные атрибуты документа (в структуре Document) специфичные для неформализованных документов:</short>
+      </element><element name="TNonformalizedDocumentMetadata.DocumentStatus"><short>DocumentStatus определяет состояние, в котором находится данный документ; возможные варианты:</short>
+      </element><element name="TNonformalizedDocumentStatus"><short>определяет состояние, в котором находится данный документ; возможные варианты:</short>
+      </element><element name="TNonformalizedDocumentStatus.UnknownNonformalizedDocumentStatus"><short>UnknownNonformalizedDocumentStatus (неизвестный статус; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать статус документа, переданный сервером),</short>
+      </element><element name="TNonformalizedDocumentStatus.OutboundNoRecipientSignatureRequest"><short>OutboundNoRecipientSignatureRequest (документ исходящий, без запроса ответной подписи),</short>
+      </element><element name="TNonformalizedDocumentStatus.OutboundWaitingForRecipientSignature"><short>OutboundWaitingForRecipientSignature (документ исходящий, ответная подпись, либо отказ от ее формирования еще не получены),</short>
+      </element><element name="TNonformalizedDocumentStatus.OutboundWithRecipientSignature"><short>OutboundWithRecipientSignature (документ исходящий, ответная подпись получена),</short>
+      </element><element name="TNonformalizedDocumentStatus.OutboundRecipientSignatureRequestRejected"><short>OutboundRecipientSignatureRequestRejected (документ исходящий, получен отказ от формирования ответной подписи),</short>
+      </element><element name="TNonformalizedDocumentStatus.OutboundWaitingForSenderSignature"><short>OutboundWaitingForSenderSignature (документ исходящий, документ не отправлен, поскольку не подписан отправителем),</short>
+      </element><element name="TNonformalizedDocumentStatus.OutboundInvalidSenderSignature"><short>OutboundInvalidSenderSignature (документ исходящий, документ не отправлен, поскольку подпись отправителя не является корректной),</short>
+      </element><element name="TNonformalizedDocumentStatus.InboundNoRecipientSignatureRequest"><short>InboundNoRecipientSignatureRequest (документ входящий, без запроса ответной подписи),</short>
+      </element><element name="TNonformalizedDocumentStatus.InboundWaitingForRecipientSignature"><short>InboundWaitingForRecipientSignature (документ входящий, ответная подпись, либо отказ от ее формирования еще не отправлены),</short>
+      </element><element name="TNonformalizedDocumentStatus.InboundWithRecipientSignature"><short>InboundWithRecipientSignature (документ входящий, ответная подпись поставлена),</short>
+      </element><element name="TNonformalizedDocumentStatus.InboundRecipientSignatureRequestRejected"><short>InboundRecipientSignatureRequestRejected (документ входящий, отправлен отказ от формирования ответной подписи).</short>
+      </element><element name="TNonformalizedDocumentStatus.InboundInvalidRecipientSignature"><short>InboundInvalidRecipientSignature (документ входящий, документооборот не завершен, поскольку подпись получателя не является корректной),</short>
+      </element><element name="TNonformalizedDocumentStatus.InternalNoRecipientSignatureRequest"><short>InternalNoRecipientSignatureRequest (документ внутренний, без запроса ответной подписи),</short>
+      </element><element name="TNonformalizedDocumentStatus.InternalWaitingForRecipientSignature"><short>InternalWaitingForRecipientSignature (документ внутренний, ответная подпись, либо отказ от ее формирования еще не отправлены),</short>
+      </element><element name="TNonformalizedDocumentStatus.InternalWithRecipientSignature"><short>InternalWithRecipientSignature (документ внутренний, ответная подпись поставлена),</short>
+      </element><element name="TNonformalizedDocumentStatus.InternalRecipientSignatureRequestRejected"><short>InternalRecipientSignatureRequestRejected (документ внутренний, отправлен отказ от формирования ответной подписи),</short>
+      </element><element name="TNonformalizedDocumentStatus.InternalWaitingForSenderSignature"><short>InternalWaitingForSenderSignature (документ внутренний, документ не отправлен, поскольку не подписан отправителем),</short>
+      </element><element name="TNonformalizedDocumentStatus.InternalInvalidSenderSignature"><short>InternalInvalidSenderSignature (документ внутренний, документ не отправлен, поскольку подпись отправителя не является корректной),</short>
+      </element><element name="TNonformalizedDocumentStatus.InternalInvalidRecipientSignature"><short>InternalInvalidRecipientSignature (документ внутренний, документооборот не завершен, поскольку подпись получателя не является корректной).</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

@@ -1,0 +1,674 @@
+object CounteragentListForm: TCounteragentListForm
+  Left = 452
+  Height = 403
+  Top = 410
+  Width = 780
+  Caption = 'Список контрагентов'
+  ClientHeight = 403
+  ClientWidth = 780
+  Position = poScreenCenter
+  LCLVersion = '1.9.0.0'
+  object ButtonPanel1: TButtonPanel
+    Left = 6
+    Height = 34
+    Top = 363
+    Width = 768
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    TabOrder = 0
+    ShowButtons = [pbOK, pbCancel, pbHelp]
+  end
+  object RxDBGrid1: TRxDBGrid
+    Left = 0
+    Height = 357
+    Top = 0
+    Width = 652
+    ColumnDefValues.BlobText = '(данные)'
+    TitleButtons = True
+    AutoSort = True
+    Columns = <    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Статус'
+        Width = 70
+        FieldName = 'CurrentStatus'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'ИНН'
+        Width = 100
+        FieldName = 'Inn'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'КПП'
+        Width = 100
+        FieldName = 'Kpp'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Наименование'
+        Width = 250
+        FieldName = 'FullName'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'ОГРН'
+        Width = 100
+        FieldName = 'Ogrn'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Адрес|Почт. индекс'
+        Width = 100
+        FieldName = 'ZipCode'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Адрес|Регион'
+        Width = 150
+        FieldName = 'Region'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Territory'
+        FieldName = 'Territory'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Адрес|Нас. пункт'
+        Width = 150
+        FieldName = 'City'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Locality'
+        FieldName = 'Locality'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Адрес|Улица'
+        Width = 150
+        FieldName = 'Street'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Building'
+        FieldName = 'Building'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Block'
+        FieldName = 'Block'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Apartment'
+        FieldName = 'Apartment'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Дата ликвидации'
+        Width = 90
+        FieldName = 'LiquidationDate'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end>
+    KeyStrokes = <    
+      item
+        Command = rxgcShowFindDlg
+        ShortCut = 16454
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowColumnsDlg
+        ShortCut = 16471
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowFilterDlg
+        ShortCut = 16468
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowSortDlg
+        ShortCut = 16467
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowQuickFilter
+        ShortCut = 16465
+        Enabled = True
+      end    
+      item
+        Command = rxgcHideQuickFilter
+        ShortCut = 16456
+        Enabled = True
+      end    
+      item
+        Command = rxgcSelectAll
+        ShortCut = 16449
+        Enabled = True
+      end    
+      item
+        Command = rxgcDeSelectAll
+        ShortCut = 16429
+        Enabled = True
+      end    
+      item
+        Command = rxgcInvertSelection
+        ShortCut = 16426
+        Enabled = True
+      end    
+      item
+        Command = rxgcOptimizeColumnsWidth
+        ShortCut = 16427
+        Enabled = True
+      end    
+      item
+        Command = rxgcCopyCellValue
+        ShortCut = 16451
+        Enabled = True
+      end>
+    FooterOptions.DrawFullLine = False
+    SearchOptions.QuickSearchOptions = [loCaseInsensitive, loPartialKey]
+    SearchOptions.FromStart = False
+    OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgAllowQuickFilter]
+    Align = alClient
+    Color = clWindow
+    DrawFullLine = False
+    FocusColor = clRed
+    SelectedColor = clHighlight
+    GridLineStyle = psSolid
+    DataSource = dsClientList
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgHeaderPushedLook]
+    PopupMenu = PopupMenu1
+    ReadOnly = True
+    TabOrder = 1
+    TitleStyle = tsNative
+  end
+  object Panel1: TPanel
+    Left = 652
+    Height = 357
+    Top = 0
+    Width = 128
+    Align = alRight
+    AutoSize = True
+    ClientHeight = 357
+    ClientWidth = 128
+    TabOrder = 2
+    object BitBtn1: TBitBtn
+      AnchorSideLeft.Control = Panel1
+      AnchorSideTop.Control = Label1
+      AnchorSideTop.Side = asrBottom
+      Left = 7
+      Height = 25
+      Top = 28
+      Width = 114
+      AutoSize = True
+      BorderSpacing.Around = 6
+      Caption = 'Следующие 100'
+      OnClick = BitBtn1Click
+      TabOrder = 0
+    end
+    object Label1: TLabel
+      AnchorSideLeft.Control = Panel1
+      AnchorSideTop.Control = Panel1
+      Left = 7
+      Height = 15
+      Top = 7
+      Width = 34
+      BorderSpacing.Around = 6
+      Caption = 'Label1'
+      ParentColor = False
+    end
+  end
+  object rxClientList: TRxMemoryData
+    FieldDefs = <    
+      item
+        Name = 'IndexKey'
+        DataType = ftString
+        Size = 100
+      end    
+      item
+        Name = 'CurrentStatus'
+        DataType = ftInteger
+      end    
+      item
+        Name = 'MessageFromCounteragent'
+        DataType = ftString
+        Size = 200
+      end    
+      item
+        Name = 'OrgId'
+        DataType = ftString
+        Size = 100
+      end    
+      item
+        Name = 'Inn'
+        DataType = ftString
+        Size = 100
+      end    
+      item
+        Name = 'Kpp'
+        DataType = ftString
+        Size = 100
+      end    
+      item
+        Name = 'FullName'
+        DataType = ftString
+        Size = 500
+      end    
+      item
+        Name = 'ShortName'
+        DataType = ftString
+        Size = 500
+      end    
+      item
+        Name = 'Ogrn'
+        DataType = ftString
+        Size = 100
+      end    
+      item
+        Name = 'LiquidationDate'
+        DataType = ftString
+        Size = 50
+      end    
+      item
+        Name = 'ZipCode'
+        DataType = ftString
+        Size = 100
+      end    
+      item
+        Name = 'Region'
+        DataType = ftString
+        Size = 200
+      end    
+      item
+        Name = 'Territory'
+        DataType = ftString
+        Size = 200
+      end    
+      item
+        Name = 'City'
+        DataType = ftString
+        Size = 200
+      end    
+      item
+        Name = 'Locality'
+        DataType = ftString
+        Size = 100
+      end    
+      item
+        Name = 'Street'
+        DataType = ftString
+        Size = 150
+      end    
+      item
+        Name = 'Building'
+        DataType = ftString
+        Size = 20
+      end    
+      item
+        Name = 'Block'
+        DataType = ftString
+        Size = 20
+      end    
+      item
+        Name = 'Apartment'
+        DataType = ftString
+        Size = 20
+      end>
+    PacketRecords = 0
+    Left = 305
+    Top = 67
+    object rxClientListIndexKey: TStringField
+      FieldKind = fkData
+      FieldName = 'IndexKey'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object rxClientListCurrentStatus: TLongintField
+      FieldKind = fkData
+      FieldName = 'CurrentStatus'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object rxClientListMessageFromCounteragent: TStringField
+      FieldKind = fkData
+      FieldName = 'MessageFromCounteragent'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object rxClientListOrgId: TStringField
+      FieldKind = fkData
+      FieldName = 'OrgId'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object rxClientListInn: TStringField
+      FieldKind = fkData
+      FieldName = 'Inn'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object rxClientListKpp: TStringField
+      FieldKind = fkData
+      FieldName = 'Kpp'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object rxClientListFullName: TStringField
+      FieldKind = fkData
+      FieldName = 'FullName'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 500
+    end
+    object rxClientListShortName: TStringField
+      FieldKind = fkData
+      FieldName = 'ShortName'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 500
+    end
+    object rxClientListOgrn: TStringField
+      FieldKind = fkData
+      FieldName = 'Ogrn'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object rxClientListLiquidationDate: TStringField
+      FieldKind = fkData
+      FieldName = 'LiquidationDate'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+    object rxClientListZipCode: TStringField
+      FieldKind = fkData
+      FieldName = 'ZipCode'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object rxClientListRegion: TStringField
+      FieldKind = fkData
+      FieldName = 'Region'
+      Index = 11
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object rxClientListTerritory: TStringField
+      FieldKind = fkData
+      FieldName = 'Territory'
+      Index = 12
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object rxClientListCity: TStringField
+      FieldKind = fkData
+      FieldName = 'City'
+      Index = 13
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object rxClientListLocality: TStringField
+      FieldKind = fkData
+      FieldName = 'Locality'
+      Index = 14
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object rxClientListStreet: TStringField
+      FieldKind = fkData
+      FieldName = 'Street'
+      Index = 15
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 150
+    end
+    object rxClientListBuilding: TStringField
+      FieldKind = fkData
+      FieldName = 'Building'
+      Index = 16
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object rxClientListBlock: TStringField
+      FieldKind = fkData
+      FieldName = 'Block'
+      Index = 17
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object rxClientListApartment: TStringField
+      FieldKind = fkData
+      FieldName = 'Apartment'
+      Index = 18
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+  end
+  object dsClientList: TDataSource
+    DataSet = rxClientList
+    Left = 269
+    Top = 67
+  end
+  object PopupMenu1: TPopupMenu
+    Images = DDAPIMainForm.ImageList1
+    Left = 269
+    Top = 168
+    object MenuItem1: TMenuItem
+      Action = ShowSertif
+    end
+  end
+  object ActionList1: TActionList
+    Images = DDAPIMainForm.ImageList1
+    Left = 56
+    Top = 67
+    object ShowSertif: TAction
+      Caption = 'Сертификаты контрагенты'
+      ImageIndex = 4
+      OnExecute = ShowSertifExecute
+    end
+  end
+end

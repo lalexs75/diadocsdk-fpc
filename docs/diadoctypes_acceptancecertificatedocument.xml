@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_AcceptanceCertificateDocument"><element name="TAcceptanceCertificateDocumentStatus"><short>Перечисление AcceptanceCertificateDocumentStatus задает возможные варианты состояний, в которых может находиться акт о выполнении работ/оказании услуг. Содержит все значения из перечисления BilateralDocumentStatus и дополнительно еще несколько возможных значений:</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.UnknownAcceptanceCertificateDocumentStatus"><short>(неизвестное состояние документа, может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать состояние документа, переданное сервером),</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.OutboundWaitingForRecipientSignature"><short>OutboundWaitingForRecipientSignature (документ исходящий, ответная подпись, либо отказ от ее формирования еще не получены),</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.OutboundWithRecipientSignature"><short>OutboundWithRecipientSignature (документ исходящий, ответная подпись получена),</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.OutboundRecipientSignatureRequestRejected"><short>OutboundRecipientSignatureRequestRejected (документ исходящий, получен отказ от формирования ответной подписи),</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.OutboundWaitingForSenderSignature"><short>OutboundWaitingForSenderSignature (документ исходящий, документ не отправлен, поскольку не подписан отправителем),</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.OutboundInvalidSenderSignature"><short>OutboundInvalidSenderSignature (документ исходящий, документ не отправлен, поскольку подпись отправителя не является корректной),</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.InboundWaitingForRecipientSignature"><short>InboundWaitingForRecipientSignature (документ входящий, ответная подпись, либо отказ от ее формирования еще не отправлены),</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.InboundWithRecipientSignature"><short>InboundWithRecipientSignature (документ входящий, ответная подпись поставлена),</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.InboundRecipientSignatureRequestRejected"><short>InboundRecipientSignatureRequestRejected (документ входящий, отправлен отказ от формирования ответной подписи),</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.InboundInvalidRecipientSignature"><short>InboundInvalidRecipientSignature (документ входящий, документооборот не завершен, поскольку подпись получателя не является корректной),</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.InternalWaitingForRecipientSignature"><short>InternalWaitingForRecipientSignature (документ внутренний, ответная подпись, либо отказ от ее формирования еще не отправлены),</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.InternalWithRecipientSignature"><short>InternalWithRecipientSignature (документ внутренний, ответная подпись поставлена),</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.InternalRecipientSignatureRequestRejected"><short>InternalRecipientSignatureRequestRejected (документ внутренний, отправлен отказ от формирования ответной подписи),</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.InternalWaitingForSenderSignature"><short>InternalWaitingForSenderSignature (документ внутренний, документ не отправлен, поскольку не подписан отправителем),</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.InternalInvalidSenderSignature"><short>InternalInvalidSenderSignature (документ внутренний, документ не отправлен, поскольку подпись отправителя не является корректной),</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.InternalInvalidRecipientSignature"><short>InternalInvalidRecipientSignature (документ внутренний, документооборот не завершен, поскольку подпись получателя не является корректной).</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.OutboundNoRecipientSignatureRequest"><short>OutboundNoRecipientSignatureRequest (документ исходящий, ответная подпись не запрошена),</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.InboundNoRecipientSignatureRequest"><short>InboundNoRecipientSignatureRequest (документ входящий, ответная подпись не запрошена),</short>
+      </element><element name="TAcceptanceCertificateDocumentStatus.InternalNoRecipientSignatureRequest"><short>InternalNoRecipientSignatureRequest (документ внутренний, ответная подпись не запрошена).</short>
+      </element><element name="TAcceptanceCertificateMetadata"><short>Структура AcceptanceCertificateMetadata содержит дополнительные атрибуты документа (в структуре Document) специфичные для актов о выполнении работ / оказании услуг. Описание полей - аналогично структуре BasicDocumentMetadata, отличается только тип поля DocumentStatus (см. описание перечисления AcceptanceCertificateDocumentMetadata).</short>
+      </element><element name="TAcceptanceCertificateMetadata.DocumentStatus"><short>DocumentStatus определяет состояние, в котором находится данный первичный документ; </short>
+      </element><element name="TAcceptanceCertificateMetadata.Total"><short>Total - сумма первичного документа.</short>
+      </element><element name="TAcceptanceCertificateMetadata.Vat"><short>Vat - сумма НДС первичного документа; если поле не заполнено, это значит что первичный документ в Диадоке был создан с отметкой «без НДС».</short>
+      </element><element name="TAcceptanceCertificateMetadata.Grounds"><short>Grounds - основания для первичного документа; представляются в виде неформализованной строки текста, например, «Договор №1234, Заказ №321».</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

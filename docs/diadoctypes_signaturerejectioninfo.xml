@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_SignatureRejectionInfo"><element name="TSignatureRejectionInfo"><short>Структура данных SignatureRejectionInfo представляет исходные данные для формирования отказа от подписи документа, либо отказа от предложения об аннулировании документа.</short>
+      </element><element name="TSignatureRejectionInfo.ErrorMessage"><short>ErrorMessage - необязательный текст комментария к отказу</short>
+      </element><element name="TSignatureRejectionInfo.Signer"><short>Signer - обязательная информация о подписанте отказа, представленная в виде структуры данных Signer.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

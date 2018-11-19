@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_RecipientSignatureDocflow"><element name="TRecipientSignatureDocflow"><short>Структура представляет информацию об ответной подписи, поставленной контрагентом под документом.</short>
+      </element><element name="TRecipientSignatureDocflow.IsFinished"><short>IsFinished - признак того, что подпись проверена и доставлена контрагенту.</short>
+      </element><element name="TRecipientSignatureDocflow.RecipientSignature"><short>RecipientSignature - подробная информация о содержимом подписи, результатах его проверки, и пр.</short>
+      </element><element name="TRecipientSignatureDocflow.DeliveryTimestamp"><short>DeliveryTimestamp - метка времени доставки подписи контрагенту.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

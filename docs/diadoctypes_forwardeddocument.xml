@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_ForwardedDocument"><element name="TForwardedDocument"><short>Структура данных ForwardedDocument описывает переданный третьей стороне документ (по сути снэпшот состояния документа на момент пересылки)</short>
+      </element><element name="TForwardedDocument.ForwardTimestamp"><short>ForwardTimestamp (всегда заполняется) - метка времени события пересылки документа, которое привело к формированию данного пересланного документа.</short>
+      </element><element name="TForwardedDocument.ForwardedDocumentId"><short>ForwardedDocumentId (всегда заполняется) - идентификатор переданного третьей стороне документа.</short>
+      </element><element name="TForwardedDocument.DocumentWithDocflow"><short>DocumentWithDocflow (всегда заполняется) - состояние документа на момент пересылки.</short>
+      </element><element name="TForwardedDocumentId"><short>Структура данных ForwardedDocumentId описывает идентификатор документа, переданного третьей стороне:</short>
+      </element><element name="TForwardedDocumentId.FromBoxId"><short>FromBoxId (всегда заполняется) - идентификатор ящика отправителя, инициировавшего пересылку.</short>
+      </element><element name="TForwardedDocumentId.DocumentId"><short>DocumentId (всегда заполняется) - идентификатор документа в виде структуры DocumentId.</short>
+      </element><element name="TForwardedDocumentId.ForwardEventId"><short>ForwardEventId (всегда заполняется) - уникальный идентификатор события пересылки документа.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

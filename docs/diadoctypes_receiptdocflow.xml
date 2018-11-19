@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_ReceiptDocflow"><element name="TReceiptDocflow"><short>Структура представляет информацию об извещении о получении (ИоП) документа.
+
+</short>
+      </element><element name="TReceiptDocflow.IsFinished"><short>IsFinished - признак того, что документооборот ИоП завершен. Значение true говорит о том, что ИоП имеет корректную подпись, и на него было получено подтверждение оператора с корректной подписью.</short>
+      </element><element name="TReceiptDocflow.ReceiptAttachment"><short>ReceiptAttachment - информация о файле извещения.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

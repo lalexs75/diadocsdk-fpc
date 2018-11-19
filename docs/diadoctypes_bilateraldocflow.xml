@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_BilateralDocflow"><element name="TBilateralDocflow"><short>Структура представляет информацию о документообороте двустороннего неформализованного документа.</short>
+      </element><element name="TBilateralDocflow.IsFinished"><short>IsFinished - признак того, что документооборот завершен, т.е. документ не требует каких-либо действий со стороны отправители или получателя.</short>
+      </element><element name="TBilateralDocflow.ReceiptDocflow"><short>ReceiptDocflow - информация об извещении о получении на данный документ.</short>
+      </element><element name="TBilateralDocflow.RecipientSignatureDocflow"><short>RecipientSignatureDocflow - информация об ответной подписи под документом.</short>
+      </element><element name="TBilateralDocflow.RecipientSignatureRejectionDocflow"><short>RecipientSignatureRejectionDocflow - информация об отказе в подписании документа получателем. Заполняется только в том случае, когда отказ был.</short>
+      </element><element name="TBilateralDocflow.IsReceiptRequested"><short>IsReceiptRequested - признак того, что по документу было запрошено извещение о получении.</short>
+      </element><element name="TBilateralDocflow.IsRecipientSignatureRequested"><short>IsRecipientSignatureRequested - признак того, что по документу запрошена ответная подпись.</short>
+      </element><element name="TBilateralDocflow.IsDocumentSignedByRecipient"><short>
+IsDocumentSignedByRecipient - признак того, что документ подписан получателем.</short>
+      </element><element name="TBilateralDocflow.IsDocumentRejectedByRecipient"><short>IsDocumentRejectedByRecipient - признак того, что получатель отказал в подписи документа.</short>
+      </element><element name="TBilateralDocflow.CanDocumentBeReceipted"><short>CanDocumentBeReceipted - признак того, что для документа можно отправить извещение о получении. Равен true для входящих документов, по которым корректные извещения ранее не отправлялись.</short>
+      </element><element name="TBilateralDocflow.CanDocumentBeSignedBySender"><short>CanDocumentBeSignedBySender - признак того, что документ может быть подписан отправителем. Равен true для документов, сохраненных для последующей отправки, либо для исходящих документов с некорректной подписью.</short>
+      </element><element name="TBilateralDocflow.CanDocumentBeSignedOrRejectedByRecipient"><short>CanDocumentBeSignedOrRejectedByRecipient - признак того, что получатель может подписать документ или отказать в подписании.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

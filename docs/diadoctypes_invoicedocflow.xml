@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_InvoiceDocflow"><element name="TInvoiceCorrectionRequestDocflow"><short>Структура представляет информацию об уведомлении об уточнении (УоУ) счёта-фактуры.</short>
+      </element><element name="TInvoiceCorrectionRequestDocflow.IsFinished"><short>IsFinished - признак того, что документооборот УоУ завершен, т.е. уведомление имеет корректную подпись, и на него было получено извещение о получении с корректной подписью.</short>
+      </element><element name="TInvoiceCorrectionRequestDocflow.CorrectionRequestAttachment"><short>CorrectionRequestAttachment - информация о файле УоУ.</short>
+      </element><element name="TInvoiceCorrectionRequestDocflow.ReceiptDocflow"><short>ReceiptDocflow - информация об извещении о получении данного запроса.</short>
+      </element><element name="TInvoiceConfirmationDocflow"><short>Структура представляет информацию о подтверждении оператора в рамках документооборота счёта-фактуры.</short>
+      </element><element name="TInvoiceConfirmationDocflow.IsFinished"><short>IsFinished - признак того, что документооборот подтверждения завершен. Значение true говорит о том, что подтверждение имеет корректную подпись, и оператором в ответ на это подтверждение было получено извещение о получении с корректной подписью.</short>
+      </element><element name="TInvoiceConfirmationDocflow.ConfirmationAttachment"><short>ConfirmationAttachment - информация о файле подтверждения.</short>
+      </element><element name="TInvoiceConfirmationDocflow.ReceiptDocflow"><short>ReceiptDocflow - информация об извещении о получении данного подтверждения.</short>
+      </element><element name="TInboundInvoiceReceiptDocflow"><short>Структура представляет информацию об извещении о получении (ИоП) в рамках документооборота входящего счёта-фактуры.</short>
+      </element><element name="TInboundInvoiceReceiptDocflow.IsFinished"><short>IsFinished - признак того, что документооборот ИоП завершен. Значение true говорит о том, что ИоП имеет корректную подпись, и на него было получено подтверждение оператора с корректной подписью.</short>
+      </element><element name="TInboundInvoiceReceiptDocflow.ReceiptAttachment"><short>ReceiptAttachment - информация о файле ИоП.</short>
+      </element><element name="TInboundInvoiceReceiptDocflow.ConfirmationDocflow"><short>ConfirmationDocflow - информация о подтверждении оператора на данное ИоП.</short>
+      </element><element name="TOutboundInvoiceDocflow"><short>Структура представляет информацию о документообороте исходящего счёта-фактуры.</short>
+      </element><element name="TOutboundInvoiceDocflow.IsFinished"><short>IsFinished - признак завершенности документооборота.</short>
+      </element><element name="TOutboundInvoiceDocflow.ReceiptDocflow"><short>ReceiptDocflow - информация об извещении о получении, отправленном в ответ на счёт-фактуру.</short>
+      </element><element name="TOutboundInvoiceDocflow.ConfirmationDocflow"><short>ConfirmationDocflow - информация о подтверждении даты отправки (формируется оператором).</short>
+      </element><element name="TOutboundInvoiceDocflow.CorrectionRequestDocflow"><short>CorrectionRequestDocflow - информация о запросе уточнения.</short>
+      </element><element name="TOutboundInvoiceDocflow.ConfirmationTimestamp"><short>ConfirmationTimestamp - метка времени подтверждения даты отправки.</short>
+      </element><element name="TOutboundInvoiceDocflow.IsAmendmentRequested"><short>IsAmendmentRequested - признак того, что по счёту-фактуре было запрошено уточнение.</short>
+      </element><element name="TOutboundInvoiceDocflow.IsRevised"><short>IsRevised - признак того, что счёт-фактура был исправлен (на него сформировано исправление).</short>
+      </element><element name="TOutboundInvoiceDocflow.IsCorrected"><short>IsCorrected - признак того, что счёт-фактура был откорректирован (на него сформирована корректировка).</short>
+      </element><element name="TOutboundInvoiceDocflow.CanDocumentBeSignedBySender"><short>CanDocumentBeSignedBySender - признак того, что счёт-фактура может быть подписан отправителем. Значение true может означать, что документ был сохранен без подписи и готов к отправке, или уже был подписан, но подпись была признана некорректной.</short>
+      </element><element name="TInboundInvoiceDocflow"><short>Структура представляет информацию о документообороте входящего счёта-фактуры.</short>
+      </element><element name="TInboundInvoiceDocflow.IsFinished"><short>IsFinished - признак завершенности документооборота.</short>
+      </element><element name="TInboundInvoiceDocflow.ReceiptDocflow"><short>ReceiptDocflow - информация об извещении о получении, отправленном в ответ на полученный счёт-фактуру.</short>
+      </element><element name="TInboundInvoiceDocflow.ConfirmationDocflow"><short>ConfirmationDocflow - информация о подтверждении даты доставки счёта-фактуры (формируется оператором).</short>
+      </element><element name="TInboundInvoiceDocflow.CorrectionRequestDocflow"><short>CorrectionRequestDocflow - информация о запросе уточнения счёта-фактуры.</short>
+      </element><element name="TInboundInvoiceDocflow.ConfirmationTimestamp"><short>ConfirmationTimestamp - метка времени подтверждения даты доставки.</short>
+      </element><element name="TInboundInvoiceDocflow.IsAmendmentRequested"><short>IsAmendmentRequested - признак того, что по счёту-фактуре было запрошено уточнение.</short>
+      </element><element name="TInboundInvoiceDocflow.IsRevised"><short>IsRevised - признак того, что счёт-фактура был исправлен (на него сформировано исправление).</short>
+      </element><element name="TInboundInvoiceDocflow.IsCorrected"><short>IsCorrected - признак того, что счёт-фактура был откорректирован (на него сформирована корректировка).</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

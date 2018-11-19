@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_DocumentDirection"><element name="TDocumentDirection"><short>Представляет направление движения документа по отношению к тому ящику, от имени которого был сделан запрос информации о документе (см. DocumentInfo).</short>
+      </element><element name="TDocumentDirection.UnknownDocumentDirection"><short>UnknownDocumentDirection - зарезервировано для обратной совместимости.</short>
+      </element><element name="TDocumentDirection.Inbound"><short>Inbound - входящий документ</short>
+      </element><element name="TDocumentDirection.Outbound"><short>Outbound - исходящий документ.</short>
+      </element><element name="TDocumentDirection.Internal"><short>Internal - внутренний документ.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

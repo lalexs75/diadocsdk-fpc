@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_InvoiceDocument"><element name="TInvoiceStatus"><short>Перечисление InvoiceStatus задает возможные варианты состояний, в которых может находиться СФ/ИСФ/КСФ/ИКСФ</short>
+      </element><element name="TInvoiceStatus.UnknownInvoiceStatus"><short>UnknownInvoiceStatus (неизвестный статус; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать статус документа, переданный сервером),</short>
+      </element><element name="TInvoiceStatus.OutboundWaitingForInvoiceReceipt"><short>OutboundWaitingForInvoiceReceipt (СФ/ИСФ/КСФ/ИКСФ исходящий, ожидается извещение о получении СФ/ИСФ/КСФ/ИКСФ от покупателя)</short>
+      </element><element name="TInvoiceStatus.OutboundNotFinished"><short>OutboundNotFinished (СФ/ИСФ/КСФ/ИКСФ исходящий, извещение о получении СФ/ИСФ/КСФ/ИКСФ от покупателя уже есть, но документооборот еще не завершен),</short>
+      </element><element name="TInvoiceStatus.OutboundFinished"><short>OutboundFinished (СФ/ИСФ/КСФ/ИКСФ исходящий, документооборот завершен)</short>
+      </element><element name="TInvoiceStatus.OutboundWaitingForSenderSignature"><short>OutboundWaitingForSenderSignature (СФ/ИСФ/КСФ/ИКСФ исходящий, документ не отправлен, поскольку не подписан отправителем),</short>
+      </element><element name="TInvoiceStatus.OutboundInvalidSenderSignature"><short>OutboundInvalidSenderSignature (СФ/ИСФ/КСФ/ИКСФ исходящий, документ не отправлен, поскольку подпись отправителя не является корректной),</short>
+      </element><element name="TInvoiceStatus.InboundNotFinished"><short>InboundNotFinished (СФ/ИСФ/КСФ/ИКСФ входящий, документооборот не завершен)</short>
+      </element><element name="TInvoiceStatus.InboundFinished"><short>InboundFinished (СФ/ИСФ/КСФ/ИКСФ входящий, документооборот завершен).</short>
+      </element><element name="TInvoiceCorrectionRevisionMetadata"><short>Структура данных InvoiceCorrectionRevisionMetadata содержит дополнительные атрибуты документа (в структуре Document) специфичные для исправлений корректировочных счетов-фактур</short>
+      </element><element name="TInvoiceCorrectionRevisionMetadata.InvoiceCorrectionRevisionStatus"><short>определяет состояние, в котором находится документооборот по данному ИКСФ; принимает одно из значений перечисления InvoiceStatus</short>
+      </element><element name="TInvoiceCorrectionRevisionMetadata.OriginalInvoiceNumber"><short>OriginalInvoiceNumber - номер исходного счета-фактуры (берется из самого файла ИКСФ).</short>
+      </element><element name="TInvoiceCorrectionRevisionMetadata.OriginalInvoiceDate"><short>OriginalInvoiceDate - дата исходного счета-фактуры в формате ДД.ММ.ГГГГ (берется из самого файла ИКСФ).</short>
+      </element><element name="TInvoiceCorrectionRevisionMetadata.OriginalInvoiceRevisionNumber"><short>OriginalInvoiceRevisionNumber - номер исходного исправления счета-фактуры (берется из самого файла ИКСФ, может отсутствовать).</short>
+      </element><element name="TInvoiceCorrectionRevisionMetadata.OriginalInvoiceRevisionDate"><short>OriginalInvoiceRevisionDate - дата исходного исправления счета-фактуры в формате ДД.ММ.ГГГГ (берется из самого файла ИКСФ, может отсутствовать).</short>
+      </element><element name="TInvoiceCorrectionRevisionMetadata.OriginalInvoiceCorrectionNumber"><short>OriginalInvoiceCorrectionNumber - номер исходного корректировочного счета-фактуры (берется из самого файла ИКСФ).</short>
+      </element><element name="TInvoiceCorrectionRevisionMetadata.OriginalInvoiceCorrectionDate"><short>OriginalInvoiceCorrectionDate - дата исходного корректировочного счета-фактуры в формате ДД.ММ.ГГГГ (берется из самого файла ИКСФ).</short>
+      </element><element name="TInvoiceCorrectionRevisionMetadata.TotalInc"><short>TotalInc - сумма к доплате исправления корректировочного счета-фактуры (берется из самого файла ИКСФ).</short>
+      </element><element name="TInvoiceCorrectionRevisionMetadata.TotalDec"><short>TotalDec - сумма к уменьшению исправления корректировочного счета-фактуры (берется из самого файла ИКСФ).</short>
+      </element><element name="TInvoiceCorrectionRevisionMetadata.VatInc"><short>VatInc - сумма НДС к доплате исправления корректировочного счета-фактуры (берется из самого файла ИКСФ).</short>
+      </element><element name="TInvoiceCorrectionRevisionMetadata.VatDec"><short>VatDec - сумма НДС к уменьшению исправления корректировочного счета-фактуры (берется из самого файла ИКСФ).</short>
+      </element><element name="TInvoiceCorrectionRevisionMetadata.Currency"><short>Currency - код валюты исправления корректировочного счета-фактуры (берется из самого файла ИКСФ).</short>
+      </element><element name="TInvoiceCorrectionRevisionMetadata.ConfirmationDateTimeTicks"><short>ConfirmationDateTimeTicks - метка времени подтверждения оператора ДО об отправке исходящего ИКСФ или о доставке входящего ИКСФ. </short><descr>Представляет собой целое число тиков (100-наносекундных интервалов), прошедших с момента времени 00:00:00 01.01.0001. Данная метка представляет момент времени в московском часовом поясе (GMT+4).
+</descr>
+      </element><element name="TInvoiceCorrectionRevisionMetadata.InvoiceAmendmentFlags"><short>InvoiceAmendmentFlags отражает статус данного ИКСФ: было ли затребовано уточнение, передавалось ли ИКСФ</short><descr>представляет собой битовую маску, составленную из одного или нескольких значений перечисления InvoiceAmendmentFlags.
+</descr>
+      </element><element name="TInvoiceCorrectionMetadata"><short>Структура данных InvoiceCorrectionMetadata содержит дополнительные атрибуты документа (в структуре Document) специфичные для корректировочных счетов-фактур:</short>
+      </element><element name="TInvoiceCorrectionMetadata.InvoiceCorrectionStatus"><short>InvoiceStatus определяет состояние, в котором находится документооборот по данному КСФ; принимает одно из значений перечисления InvoiceStatus.</short>
+      </element><element name="TInvoiceCorrectionMetadata.OriginalInvoiceNumber"><short>OriginalInvoiceNumber - номер исходного счета-фактуры (берется из самого файла КСФ).</short>
+      </element><element name="TInvoiceCorrectionMetadata.OriginalInvoiceDate"><short>OriginalInvoiceDate - дата исходного счета-фактуры в формате ДД.ММ.ГГГГ (берется из самого файла КСФ).</short>
+      </element><element name="TInvoiceCorrectionMetadata.OriginalInvoiceRevisionNumber"><short>OriginalInvoiceRevisionNumber - номер исходного исправления счета-фактуры (берется из самого файла КСФ, может отсутствовать).</short>
+      </element><element name="TInvoiceCorrectionMetadata.OriginalInvoiceRevisionDate"><short>OriginalInvoiceRevisionDate - дата исходного исправления счета-фактуры в формате ДД.ММ.ГГГГ (берется из самого файла КСФ, может отсутствовать).</short>
+      </element><element name="TInvoiceCorrectionMetadata.TotalInc"><short>TotalInc - сумма к доплате корректировочного счета-фактуры (берется из самого файла КСФ).</short>
+      </element><element name="TInvoiceCorrectionMetadata.TotalDec"><short>TotalDec - сумма к уменьшению корректировочного счета-фактуры (берется из самого файла КСФ).</short>
+      </element><element name="TInvoiceCorrectionMetadata.VatInc"><short>VatInc - сумма НДС к доплате корректировочного счета-фактуры (берется из самого файла КСФ).</short>
+      </element><element name="TInvoiceCorrectionMetadata.VatDec"><short>VatDec - сумма НДС к уменьшению корректировочного счета-фактуры (берется из самого файла КСФ).</short>
+      </element><element name="TInvoiceCorrectionMetadata.Currency"><short>Currency - код валюты корректировочного счета-фактуры (берется из самого файла КСФ).</short>
+      </element><element name="TInvoiceCorrectionMetadata.ConfirmationDateTimeTicks"><short>ConfirmationDateTimeTicks - метка времени подтверждения оператора ДО об отправке исходящего КСФ или о доставке входящего КСФ</short><descr>Представляет собой целое число тиков (100-наносекундных интервалов), прошедших с момента времени 00:00:00 01.01.0001. Данная метка представляет момент времени в московском часовом поясе (GMT+4).
+</descr>
+      </element><element name="TInvoiceCorrectionMetadata.InvoiceAmendmentFlags"><short>InvoiceAmendmentFlags отражает статус данного КСФ: было ли затребовано уточнение, передавалось ли ИКСФ</short><descr>представляет собой битовую маску, составленную из одного или нескольких значений перечисления InvoiceAmendmentFlags.
+</descr>
+      </element><element name="TInvoiceRevisionMetadata"><short>     
+
+Структура данных InvoiceRevisionMetadata содержит дополнительные атрибуты документа (в структуре Document) специфичные для исправлений счетов-фактур</short>
+      </element><element name="TInvoiceRevisionMetadata.InvoiceRevisionStatus"><short>InvoiceRevisionStatus определяет состояние, в котором находится документооборот по данному ИСФ; принимает одно из значений перечисления InvoiceStatus</short>
+      </element><element name="TInvoiceRevisionMetadata.OriginalInvoiceNumber"><short>OriginalInvoiceNumber - номер исходного счета-фактуры (берется из самого файла ИСФ)</short>
+      </element><element name="TInvoiceRevisionMetadata.OriginalInvoiceDate"><short>OriginalInvoiceDate - дата исходного счета-фактуры в формате ДД.ММ.ГГГГ (берется из самого файла ИСФ).</short>
+      </element><element name="TInvoiceRevisionMetadata.Total"><short>Total - сумма исправления счета-фактуры (берется из самого файла ИСФ).</short>
+      </element><element name="TInvoiceRevisionMetadata.Vat"><short>Vat - сумма НДС исправления счета-фактуры (берется из самого файла ИСФ).</short>
+      </element><element name="TInvoiceRevisionMetadata.Currency"><short>Currency - код валюты исправления счета-фактуры (берется из самого файла ИСФ).</short>
+      </element><element name="TInvoiceRevisionMetadata.ConfirmationDateTimeTicks"><short>ConfirmationDateTimeTicks - метка времени подтверждения оператора ДО об отправке исходящего ИСФ или о доставке входящего ИСФ</short><descr>Представляет собой целое число тиков (100-наносекундных интервалов), прошедших с момента времени 00:00:00 01.01.0001. Данная метка представляет момент времени в московском часовом поясе (GMT+4).
+</descr>
+      </element><element name="TInvoiceRevisionMetadata.InvoiceAmendmentFlags"><short>InvoiceAmendmentFlags отражает статус данного ИСФ: было ли затребовано уточнение, передавалось ли ИСФ, передавался ли КСФ</short><descr>представляет собой битовую маску, составленную из одного или нескольких значений перечисления InvoiceAmendmentFlags.
+
+
+</descr>
+      </element><element name="TInvoiceMetadata"><short>Структура данных InvoiceMetadata содержит дополнительные атрибуты документа (в структуре Document) специфичные для счетов-фактур:</short>
+      </element><element name="TInvoiceMetadata.InvoiceStatus"><short>InvoiceStatus определяет состояние, в котором находится документооборот по данному СФ; принимает одно из значений перечисления InvoiceStatus.</short>
+      </element><element name="TInvoiceMetadata.Total"><short>Total - сумма счета-фактуры (берется из самого файла СФ).</short>
+      </element><element name="TInvoiceMetadata.Vat"><short>Vat - сумма НДС счета-фактуры (берется из самого файла СФ).</short>
+      </element><element name="TInvoiceMetadata.Currency"><short>Currency - код валюты счета-фактуры (берется из самого файла СФ).</short>
+      </element><element name="TInvoiceMetadata.ConfirmationDateTimeTicks"><short>ConfirmationDateTimeTicks - метка времени подтверждения оператора ДО об отправке исходящего СФ или о доставке входящего СФ</short><descr>Представляет собой целое число тиков (100-наносекундных интервалов), прошедших с момента времени 00:00:00 01.01.0001. Данная метка представляет момент времени в московском часовом поясе (GMT+4).
+</descr>
+      </element><element name="TInvoiceMetadata.InvoiceAmendmentFlags"><short>InvoiceAmendmentFlags отражает статус данного СФ: было ли затребовано уточнение, передавалось ли ИСФ, передавался ли КСФ</short><descr>представляет собой битовую маску, составленную из одного или нескольких значений перечисления InvoiceAmendmentFlags.
+
+
+</descr>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_RecipientSignatureRejectionDocflow"><element name="TRecipientSignatureRejectionDocflow"><short>Структура представляет информацию об отказе контрагента в подписании документа. Отказ является подписанным файлом установленного формата.</short>
+      </element><element name="TRecipientSignatureRejectionDocflow.IsFinished"><short>IsFinished - признак того, что документооборот по отказу завершен. Равен true в том случае, когда подпись под отказом проверена, и он доставлен контрагенту.</short>
+      </element><element name="TRecipientSignatureRejectionDocflow.RecipientSignatureRejectionAttachment"><short>RecipientSignatureRejectionAttachment - информация о файле отказа.</short>
+      </element><element name="TRecipientSignatureRejectionDocflow.DeliveryTimestamp"><short>DeliveryTimestamp - метка времени доставки отказа.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

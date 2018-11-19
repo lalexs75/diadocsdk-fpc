@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_CancellationInfo"><element name="TCancellationInfo"><short>Структура данных CancellationInfo содержит информацию об отмене сущности:</short>
+      </element><element name="TCancellationInfo.Author"><short>Author - ФИО сотрудника, выполнившего отмену.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

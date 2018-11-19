@@ -1,0 +1,184 @@
+object UserPermissionsForm: TUserPermissionsForm
+  Left = 752
+  Height = 435
+  Top = 212
+  Width = 393
+  Caption = 'Права доступа оператора'
+  ClientHeight = 435
+  ClientWidth = 393
+  Position = poScreenCenter
+  LCLVersion = '1.9.0.0'
+  object Label1: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    Left = 6
+    Height = 15
+    Top = 6
+    Width = 96
+    BorderSpacing.Around = 6
+    Caption = 'UserDepartmentId'
+    ParentColor = False
+  end
+  object Edit1: TEdit
+    AnchorSideLeft.Control = Label1
+    AnchorSideTop.Control = Label1
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 12
+    Height = 23
+    Top = 27
+    Width = 375
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 0
+    Text = 'Edit1'
+  end
+  object CheckBox1: TCheckBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Edit1
+    AnchorSideTop.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 56
+    Width = 101
+    BorderSpacing.Around = 6
+    Caption = 'IsAdministrator'
+    TabOrder = 1
+  end
+  object Edit2: TEdit
+    AnchorSideLeft.Control = Label2
+    AnchorSideTop.Control = Label2
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 12
+    Height = 23
+    Top = 102
+    Width = 375
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 2
+    Text = 'Edit2'
+  end
+  object Label2: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = CheckBox1
+    AnchorSideTop.Side = asrBottom
+    Left = 6
+    Height = 15
+    Top = 81
+    Width = 119
+    BorderSpacing.Around = 6
+    Caption = 'DocumentAccessLevel'
+    ParentColor = False
+  end
+  object CheckBox2: TCheckBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Edit2
+    AnchorSideTop.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 131
+    Width = 125
+    BorderSpacing.Around = 6
+    Caption = 'CanSignDocuments'
+    TabOrder = 3
+  end
+  object CheckBox3: TCheckBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = CheckBox2
+    AnchorSideTop.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 156
+    Width = 124
+    BorderSpacing.Around = 6
+    Caption = 'CanAddResolutions'
+    TabOrder = 4
+  end
+  object CheckBox4: TCheckBox
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = CheckBox3
+    AnchorSideTop.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 181
+    Width = 144
+    BorderSpacing.Around = 6
+    Caption = 'CanRequestResolutions'
+    TabOrder = 5
+  end
+  object Memo1: TMemo
+    AnchorSideLeft.Control = Label3
+    AnchorSideTop.Control = Label3
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 12
+    Height = 90
+    Top = 227
+    Width = 375
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    Lines.Strings = (
+      'Memo1'
+    )
+    TabOrder = 6
+  end
+  object Label3: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = CheckBox4
+    AnchorSideTop.Side = asrBottom
+    Left = 6
+    Height = 15
+    Top = 206
+    Width = 122
+    BorderSpacing.Around = 6
+    Caption = 'SelectedDepartmentIds'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Memo1
+    AnchorSideTop.Side = asrBottom
+    Left = 6
+    Height = 15
+    Top = 323
+    Width = 41
+    BorderSpacing.Around = 6
+    Caption = 'JobTitle'
+    ParentColor = False
+  end
+  object Edit3: TEdit
+    AnchorSideLeft.Control = Label4
+    AnchorSideTop.Control = Label4
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 12
+    Height = 23
+    Top = 344
+    Width = 375
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 7
+    Text = 'Edit3'
+  end
+  object ButtonPanel1: TButtonPanel
+    Left = 6
+    Height = 34
+    Top = 395
+    Width = 381
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    TabOrder = 8
+    ShowButtons = [pbClose]
+  end
+end

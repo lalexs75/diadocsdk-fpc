@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_Signer"><element name="TSigner"><short>Структура данных Signer представляет информацию о подписанте документа. Используется в рамках документооборота счетов-фактур (СФ/ИСФ/КСФ/ИКСФ, извещение о получении, уведомление об уточнении) и некоторых других документов.</short><descr>Одно из полей SignerCertificate или SignerDetails должно быть обязательно заполнено. Если заполнено поле SignerCertificate, то реквизиты подписанта извлекаются из сертификата. Если заполнены оба поля SignerCertificate и SignerDetails, то используется поле SignerDetails.
+</descr>
+      </element><element name="TSigner.SignerCertificate"><short>SignerCertificate - X.509 сертификат подписанта в DER - кодировке.</short>
+      </element><element name="TSigner.SignerDetails"><short>SignerDetails - реквизиты подписанта в виде структуры данных SignerDetails.</short>
+      </element><element name="TSigner.SignerCertificateThumbprint"><short>SignerCertificateThumbprint - отпечаток сертификата подписанта.</short>
+      </element><element name="TSignerDetails.Surname"><short>Surname - фамилия подписанта</short>
+      </element><element name="TSignerDetails.FirstName"><short>FirstName - имя подписанта.</short>
+      </element><element name="TSignerDetails.Patronymic"><short>Patronymic - отчество подписанта (необязательно).</short>
+      </element><element name="TSignerDetails.JobTitle"><short>JobTitle - должность подписанта. </short><descr><p>Обязательно к заполнению при использовании в методах:</p><li>GenerateInvoiceCorrectionRequestXml</li><li>GenerateInvoiceDocumentReceiptXml</li><li>GenerateSignatureRejectionXml</li><li>GenerateRevocationRequestXml</li><li>GenerateInvoiceDocumentReceiptXml</li><p>Не обязательно в методах:</p><li>GenerateInvoiceXml</li><li>GenerateTorg12XmlForSeller</li><li>GenerateTorg12XmlForBuyer</li><li>GenerateAcceptanceCertificateXmlForSeller</li><li>GenerateAcceptanceCertificateXmlForBuyer</li>
+        </descr>
+      </element><element name="TSignerDetails.Inn"><short>Inn - ИНН юридического лица подписанта или индивидуального предпринимателя.</short>
+      </element><element name="TSignerDetails.SoleProprietorRegistrationCertificate"><short>SoleProprietorRegistrationCertificate - реквизиты свидетельства о регистрации индивидуального предпринимателя (необязательно).</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="protobuf"><module name="protobuf_fpc"><element name="TSerializationObject"><short>Глобальный предок всех классов, поддерживающих серилизацию в формате PROTOBUF</short>
+      </element><element name="TSerializationObject.RegisterProp"><short>Метод для регистрации свойств</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

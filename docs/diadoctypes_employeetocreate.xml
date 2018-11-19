@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_EmployeeToCreate"><element name="TEmployeeToCreateByCertificate"><short>Структура содержит информацию о реквизитах пользователя, который будет работать по по сертификату КЭП.</short>
+      </element><element name="TEmployeeToCreateByCertificate.Content"><short>Content - X.509 сертификат пользователя, сериализованный в DER.</short>
+      </element><element name="TEmployeeToCreateByCertificate.AccessBasis"><short>AccessBasis - основание, на котором пользователь имеет доступ к организации. Требуется заполнить в случае, если ИНН сертификата не совпадает с ИНН организации.</short>
+      </element><element name="TEmployeeToCreateByCertificate.Email"><short>Email - адрес электронной почты сотрудника. В случае, если по сертификату будет создан новый пользователь или найденный пользователь не имеет логина, этот адрес будет установлен в качестве логина, и на него будет отправлено уведомление о добавлении в организацию.</short>
+      </element><element name="TEmployeeToCreateByLogin"><short>Структура содержит информацию о реквизитах пользователя, который будет работать по электронной почте и паролю.</short>
+      </element><element name="TEmployeeToCreateByLogin.Login"><short>Login - логин пользователя, должен соответствовать формату адреса электронной почты</short>
+      </element><element name="TEmployeeToCreateByLogin.FullName"><short>FullName - фамилия, имя и отчество создаваемого пользователя. Используется в случае, если пользователя с указанным логином не найдено и создан новый.</short>
+      </element><element name="TEmployeeToCreateCredentials"><short>Структура содержит информацию о реквизитах пользователя, который должен стать сотрудником организации.</short>
+      </element><element name="TEmployeeToCreateCredentials.Login"><short>Login - реквизиты в случае, если сотрудник будет работать по электронной почте и паролю</short>
+      </element><element name="TEmployeeToCreateCredentials.Certificate"><short>Certificate - реквизиты в случае, если сотрудник будет работать по сертификату КЭП</short>
+      </element><element name="TEmployeeToCreate"><short>Структура содержит информацию о создаваемом сотруднике организации. Принимается методом CreateEmployee.</short>
+      </element><element name="TEmployeeToCreate.Credentials"><short>Credentials - реквизиты пользователя, который должен стать сотрудником организации</short>
+      </element><element name="TEmployeeToCreate.Position"><short>Position - должность сотрудника</short>
+      </element><element name="TEmployeeToCreate.CanBeInvitedForChat"><short>CanBeInvitedForChat - нужно ли отображать сотрудника в списке получателей Сообщений в веб-интерфейсе</short>
+      </element><element name="TEmployeeToCreate.Permissions"><short>Permissions - права, которые получит сотрудник</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

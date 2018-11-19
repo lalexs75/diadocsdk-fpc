@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_Organization"><element name="TOrganization.HasCertificateToSign"><short>Поле *HasCertificateToSign* содержит признак наличия у организации сертификата для подписания документов.</short>
+      </element><element name="TOrganization.IsForeign"><short>Поле *IsForeign* содержит признак того, что организация являестя иностранной.</short>
+      </element><element name="TBox"><short>Структура данных *Box* содержит информацию об одном ящике в Диадоке: его идентификатор, понятное имя и информацию об организации-владельце ящика.</short>
+      </element>
+    <element name="TOrganization"><short>Структура данных Organization содержит информацию об одной организации в Диадоке</short>
+      </element><element name="TBox.Organization"><short>информацию об организации-владельце ящика</short>
+      <descr>Поле Box.Organization заполняется в том и только в том случае, когда структура Box формируется методом GetBox
+</descr>
+      </element><element name="TBox.InvoiceFormatVersion"><short>Поле Box.InvoiceFormatVersion представляет версию СФ, которая используется по умолчанию в данном ящике</short>
+      </element><element name="TOrganization.Inn"><short>ИНН организации</short>
+      </element><element name="TOrganization.Kpp"><short>КПП</short>
+      </element><element name="TOrganization.FullName"><short>полное наименование</short>
+      </element><element name="TOrganization.ShortName"><short>краткое наименование</short>
+      </element><element name="TOrganization.Boxes"><short>список ее ящиков</short>
+      </element><element name="TOrganization.Ogrn"><short>ОГРН</short>
+      </element><element name="TOrganization.FnsParticipantId"><short>Поле FnsParticipantId содержит зарегистрированный в ФНС идентификатор участника документооборота СФ, предусмотренный порядком обмена ЭСФ, который был назначен данной организации</short>
+      </element><element name="TOrganization.IfnsCode"><short>Поле IfnsCode может содержать код налоговой инспекции - место подачи декларации по НДС</short>
+      </element><element name="TOrganization.IsPilot"><short>Поле IsPilot содержит признак того, что организация работает в пилотном режиме</short>
+      </element><element name="TOrganization.IsActive"><short>Поле IsActive содержит признак активности организации в Диадоке</short>
+      </element><element name="TOrganization.IsTest"><short>Поле IsTest содержит признак того, что организация работает в тестовом режиме</short>
+      </element><element name="TOrganization.IsBranch"><short>Поле IsBranch содержит признак того, что организация является филиалом</short>
+      </element><element name="TOrganization.IsRoaming"><short>Поле IsRoaming содержит признак того, что организация работает через роуминг, то есть подключена к другому оператору ЭДО</short><descr>Кроме того, если у организации в Диадоке заполнен юридический адрес, то он включается в Organization в виде структуры Address
+</descr>
+      </element><element name="TOrganization.IsEmployee"><short>Поле IsEmployee содержит признак того, что пользователь является сотрудником организации. Используется только в методе GetMyOrganizations</short>
+      </element><element name="TOrganization.Departments"><short>Поле Departments содержит список видимых пользователю подразделений (см. Department) в организации (кроме головного)</short>
+      </element><element name="TOrganization.InvitationCount"><short>Поле InvitationCount содержит количество запросов на приглашение к сотрудничеству данной организации</short>
+      </element><element name="TOrganization.SearchCount"><short>Поле SearchCount содержит количество запросов на поиск данной организации в Диадоке</short>
+      </element><element name="TOrganization.Sociability"><short>Поле Sociability регулирует прием документов организацией от контрагентов</short><descr>Значение AllOrganizations говорит о том, что организация готова получать документы от всех контрагентов, даже если приглашение не было принято (кроме заблокированных контрагентов). Значение CounteragentsOnly показывает, что организация принимает документы только от своих контрагентов, иначе отправка документов невозможна.
+</descr>
+      </element><element name="TOrganization.LiquidationDate"><short>Поле LiquidationDate является признаком того, что организация ликвидирована, в нем указана дата ликвидации организации по данным из ЕГРЮЛ и ЕГРИП</short>
+      </element><element name="TOrganization.CertificateOfRegistryInfo"><short>Поле CertificateOfRegistryInfo содержит информацию о свидетельстве о государственной регистрации</short>
+      </element><element name="TOrganization.OrgId"><short>ID организации</short>
+      </element>
+    <element name="TDepartment"><short>Структура данных Department содержит информацию о подразделении организации</short>
+      </element><element name="TDepartment.DepartmentId"><short>DepartmentId - уникальный идентификатор подразделения</short>
+      </element><element name="TDepartment.ParentDepartmentId"><short>ParentDepartmentId - идентификатор родительского подразделения</short><descr>Если родительское подразделение - головное, то идентификатор имеет вид 00000000-0000-0000-0000-000000000000
+</descr>
+      </element><element name="TDepartment.Name"><short>Name - полное наименование подразделения</short>
+      </element><element name="TDepartment.Abbreviation"><short>Abbreviation - сокращенное наименование подразделения (может отсутствовать).</short>
+      </element><element name="TDepartment.Kpp"><short>Kpp - КПП подразделения (может отсутствовать)</short>
+      </element><element name="TDepartment.Address"><short>Address - адрес подразделения (может отсутствовать).</short>
+      </element><element name="TOrganizationInvoiceFormatVersion"><short>представляет версию СФ, которая используется по умолчанию в данном ящике</short>
+      </element><element name="TBox.BoxId"><short>идентификатор</short>
+      </element><element name="TBox.Title"><short>понятное имя</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

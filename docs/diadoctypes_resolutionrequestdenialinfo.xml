@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_ResolutionRequestDenialInfo"><element name="TResolutionRequestDenialInfo"><short>Структура данных ResolutionRequestDenialInfo содержит информацию об отказе от запроса подписи к документу.</short>
+      </element><element name="TResolutionRequestDenialInfo.Author"><short>Author - ФИО отказавшего сотрудника.</short>
+      </element><element name="TResolutionRequestDenialInfo.InitialRequestId"><short>    InitialRequestId - идентификатор запроса, по которому было отказано.
+
+</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

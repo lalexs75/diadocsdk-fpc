@@ -1,0 +1,492 @@
+object OrganizationInfoFrame: TOrganizationInfoFrame
+  Left = 0
+  Height = 384
+  Top = 0
+  Width = 526
+  ClientHeight = 384
+  ClientWidth = 526
+  TabOrder = 0
+  DesignLeft = 800
+  DesignTop = 123
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 384
+    Top = 0
+    Width = 526
+    ActivePage = TabSheet1
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 0
+    object TabSheet1: TTabSheet
+      Caption = 'Общие данные'
+      ClientHeight = 356
+      ClientWidth = 518
+      object Label1: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideBottom.Control = edtOrgId
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 14
+        Width = 82
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Organization ID'
+        ParentColor = False
+      end
+      object edtOrgId: TEdit
+        AnchorSideLeft.Control = Label1
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = TabSheet1
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 94
+        Height = 23
+        Top = 6
+        Width = 418
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 0
+        Text = 'edtOrgId'
+      end
+      object Label2: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideBottom.Control = edtOrgINN
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 43
+        Width = 27
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'ИНН'
+        ParentColor = False
+      end
+      object edtOrgINN: TEdit
+        AnchorSideLeft.Control = Label2
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtOrgId
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Label5
+        AnchorSideRight.Side = asrBottom
+        Left = 39
+        Height = 23
+        Top = 35
+        Width = 215
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 1
+        Text = 'edtOrgINN'
+      end
+      object Label3: TLabel
+        AnchorSideLeft.Control = Label5
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideBottom.Control = edtOrgKPP
+        AnchorSideBottom.Side = asrBottom
+        Left = 266
+        Height = 15
+        Top = 43
+        Width = 25
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'КПП'
+        ParentColor = False
+      end
+      object edtOrgKPP: TEdit
+        AnchorSideLeft.Control = Label3
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtOrgId
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 297
+        Height = 23
+        Top = 35
+        Width = 215
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 2
+        Text = 'edtOrgKPP'
+      end
+      object Label4: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideBottom.Control = edtOrgFullName
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 72
+        Width = 127
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Полное наименование'
+        ParentColor = False
+      end
+      object edtOrgFullName: TEdit
+        AnchorSideLeft.Control = Label4
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtOrgKPP
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 139
+        Height = 23
+        Top = 64
+        Width = 373
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 3
+        Text = 'edtOrgFullName'
+      end
+      object Label5: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideLeft.Side = asrCenter
+        AnchorSideTop.Control = TabSheet1
+        Left = 259
+        Height = 1
+        Top = 0
+        Width = 1
+        ParentColor = False
+      end
+      object Label6: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideBottom.Control = edtShortName
+        AnchorSideBottom.Side = asrBottom
+        Left = 3
+        Height = 15
+        Top = 101
+        Width = 128
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 3
+        Caption = 'Краткое наименование'
+        ParentColor = False
+      end
+      object edtShortName: TEdit
+        AnchorSideLeft.Control = Label6
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtOrgFullName
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 137
+        Height = 23
+        Top = 93
+        Width = 375
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 4
+        Text = 'edtShortName'
+      end
+      object Label7: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideBottom.Control = edtOgrn
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 130
+        Width = 31
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'ОГРН'
+        ParentColor = False
+      end
+      object edtOgrn: TEdit
+        AnchorSideLeft.Control = Label7
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtShortName
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Label5
+        Left = 43
+        Height = 23
+        Top = 122
+        Width = 210
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 5
+        Text = 'edtOgrn'
+      end
+      object Label8: TLabel
+        AnchorSideLeft.Control = Label5
+        AnchorSideBottom.Control = edtFnsParticipantId
+        AnchorSideBottom.Side = asrBottom
+        Left = 265
+        Height = 15
+        Top = 130
+        Width = 108
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Код участника ФНС'
+        ParentColor = False
+      end
+      object edtFnsParticipantId: TEdit
+        AnchorSideLeft.Control = Label8
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtShortName
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 379
+        Height = 23
+        Top = 122
+        Width = 133
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 6
+        Text = 'edtFnsParticipantId'
+      end
+      object Label9: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideBottom.Control = edtFnsRegistrationDate
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 159
+        Width = 87
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Дата рег. в ФНС'
+        ParentColor = False
+      end
+      object edtFnsRegistrationDate: TEdit
+        AnchorSideLeft.Control = Label9
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtOgrn
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Label5
+        Left = 99
+        Height = 23
+        Top = 151
+        Width = 154
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 7
+        Text = 'edtFnsRegistrationDate'
+      end
+      object Label10: TLabel
+        AnchorSideLeft.Control = Label5
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideBottom.Control = edtIfnsCode
+        AnchorSideBottom.Side = asrBottom
+        Left = 266
+        Height = 15
+        Top = 159
+        Width = 82
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Код налоговой'
+        ParentColor = False
+      end
+      object edtIfnsCode: TEdit
+        AnchorSideLeft.Control = Label10
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtFnsParticipantId
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 354
+        Height = 23
+        Top = 151
+        Width = 158
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 8
+        Text = 'edtIfnsCode'
+      end
+      object cbIsPilot: TCheckBox
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = edtFnsRegistrationDate
+        AnchorSideTop.Side = asrBottom
+        Left = 6
+        Height = 19
+        Top = 180
+        Width = 133
+        BorderSpacing.Around = 6
+        Caption = 'В пилотном режиме'
+        TabOrder = 9
+      end
+      object cbIsActive: TCheckBox
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = cbIsPilot
+        AnchorSideTop.Side = asrBottom
+        Left = 6
+        Height = 19
+        Top = 205
+        Width = 123
+        BorderSpacing.Around = 6
+        Caption = 'Активна в Диадоке'
+        TabOrder = 10
+      end
+      object cbIsTest: TCheckBox
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = cbIsActive
+        AnchorSideTop.Side = asrBottom
+        Left = 6
+        Height = 19
+        Top = 230
+        Width = 128
+        BorderSpacing.Around = 6
+        Caption = 'В тестовом режиме'
+        TabOrder = 11
+      end
+      object cbIsBranch: TCheckBox
+        AnchorSideLeft.Control = Label5
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = edtIfnsCode
+        AnchorSideTop.Side = asrBottom
+        Left = 266
+        Height = 19
+        Top = 180
+        Width = 63
+        BorderSpacing.Around = 6
+        Caption = 'Филиал'
+        TabOrder = 12
+      end
+      object cbIsRoaming: TCheckBox
+        AnchorSideLeft.Control = Label5
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = cbIsBranch
+        AnchorSideTop.Side = asrBottom
+        Left = 266
+        Height = 19
+        Top = 205
+        Width = 103
+        BorderSpacing.Around = 6
+        Caption = 'Через роуминг'
+        TabOrder = 13
+      end
+      object cbIsEmployee: TCheckBox
+        AnchorSideLeft.Control = Label5
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = cbIsRoaming
+        AnchorSideTop.Side = asrBottom
+        Left = 266
+        Height = 19
+        Top = 230
+        Width = 169
+        BorderSpacing.Around = 6
+        Caption = 'Cотрудником организации'
+        TabOrder = 14
+      end
+      object edtSociability: TEdit
+        AnchorSideLeft.Control = Label11
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = cbIsTest
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 162
+        Height = 23
+        Top = 255
+        Width = 350
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 15
+        Text = 'edtSociability'
+      end
+      object Label11: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideBottom.Control = edtSociability
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 263
+        Width = 150
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Принимающие документы'
+        ParentColor = False
+      end
+      object cbIsForeign: TCheckBox
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = edtSociability
+        AnchorSideTop.Side = asrBottom
+        Left = 6
+        Height = 19
+        Top = 284
+        Width = 87
+        BorderSpacing.Around = 6
+        Caption = 'Не резидент'
+        TabOrder = 16
+      end
+      object Label12: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideBottom.Control = edtLiquidationDate
+        AnchorSideBottom.Side = asrBottom
+        Left = 6
+        Height = 15
+        Top = 317
+        Width = 101
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Left = 6
+        Caption = 'Дата ликивидации'
+        ParentColor = False
+      end
+      object Label13: TLabel
+        AnchorSideLeft.Control = Label5
+        AnchorSideBottom.Control = edtCertificateOfRegistryInfo
+        AnchorSideBottom.Side = asrBottom
+        Left = 259
+        Height = 15
+        Top = 317
+        Width = 137
+        Anchors = [akLeft, akBottom]
+        Caption = 'Свид. о гос. регистрации'
+        ParentColor = False
+      end
+      object edtLiquidationDate: TEdit
+        AnchorSideLeft.Control = Label12
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = cbIsForeign
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Label5
+        Left = 113
+        Height = 23
+        Top = 309
+        Width = 140
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 17
+        Text = 'edtLiquidationDate'
+      end
+      object edtCertificateOfRegistryInfo: TEdit
+        AnchorSideLeft.Control = Label13
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = cbIsForeign
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 402
+        Height = 23
+        Top = 309
+        Width = 110
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        TabOrder = 18
+        Text = 'edtCertificateOfRegistryInfo'
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'Адрес'
+    end
+    object TabSheet3: TTabSheet
+      Caption = 'Документооборот - почта '
+      ClientHeight = 356
+      ClientWidth = 518
+      object Splitter1: TSplitter
+        Left = 141
+        Height = 356
+        Top = 0
+        Width = 5
+      end
+      object ListBox1: TListBox
+        Left = 0
+        Height = 356
+        Top = 0
+        Width = 141
+        Align = alLeft
+        ItemHeight = 0
+        OnClick = ListBox1Click
+        TabOrder = 1
+      end
+    end
+  end
+end

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_DocumentsMoveOperation"><element name="TDocumentsMoveOperation"><short>Структура данных DocumentsMoveOperation задает информацию для операции перемещения документов между подразделениями организации.</short><descr><li>BoxId - идентификатор ящика, в котором находятся документы.</li><li>ToDepartmentId - идентификатор подразделения, в которое необходимо переместить документы.</li><li>DocumentIds - список идентификаторов документов, которые необходимо переместить. Является массивом элементов с типом DocumentId</li>
+        </descr>
+      </element><element name="TDocumentsMoveOperation.BoxId"><short>BoxId - идентификатор ящика, в котором находятся документы.</short>
+      </element><element name="TDocumentsMoveOperation.ToDepartmentId"><short>ToDepartmentId - идентификатор подразделения, в которое необходимо переместить документы.</short>
+      </element><element name="TDocumentsMoveOperation.DocumentIds"><short>DocumentIds - список идентификаторов документов, которые необходимо переместить. Является массивом элементов с типом DocumentId</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

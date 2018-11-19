@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_ResolutionTarget"><element name="TResolutionTarget.Department"><short>идентификатор подразделения </short>
+      </element><element name="TResolutionTarget.DepartmentId"><short>название подразделения </short>
+      </element><element name="TResolutionTarget.User"><short>идентификаторпользователя</short>
+      </element><element name="TResolutionTarget.UserId"><short>ФИО пользователя</short>
+      </element><element name="TResolutionTarget"><short>ResolutionTarget заполняется только при запросе согласования или подписи, и описывает получателя запроса</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

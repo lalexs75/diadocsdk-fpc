@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_DocumentType"><element name="TDocumentType"><short>Представляет тип документа.</short>
+      </element><element name="TDocumentType.UnknownDocumentType"><short>UnknownDocumentType - неизвестный тип документа; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать тип документа, переданный сервером.</short>
+      </element><element name="TDocumentType.Nonformalized"><short>Nonformalized - неформализованный документ.</short>
+      </element><element name="TDocumentType.Invoice"><short>Invoice - счет-фактура.</short>
+      </element><element name="TDocumentType.InvoiceRevision"><short>InvoiceRevision - исправление счета-фактуры.</short>
+      </element><element name="TDocumentType.InvoiceCorrection"><short>InvoiceCorrection - корректировочный счет-фактура.</short>
+      </element><element name="TDocumentType.InvoiceCorrectionRevision"><short>InvoiceCorrectionRevision - исправление корректировочного счета-фактуры.</short>
+      </element><element name="TDocumentType.TrustConnectionRequest"><short>TrustConnectionRequest - запрос на инициацию канала обмена документами через Диадок.</short>
+      </element><element name="TDocumentType.Torg12"><short>Torg12 - товарная накладная ТОРГ-12.</short>
+      </element><element name="TDocumentType.AcceptanceCertificate"><short>AcceptanceCertificate - акт о выполнении работ / оказании услуг.</short>
+      </element><element name="TDocumentType.ProformaInvoice"><short>ProformaInvoice - счет на оплату.</short>
+      </element><element name="TDocumentType.XmlTorg12"><short>XmlTorg12 - товарная накладная ТОРГ-12 в XML-формате.</short>
+      </element><element name="TDocumentType.XmlAcceptanceCertificate"><short>XmlAcceptanceCertificate - акт о выполнении работ / оказании услуг в XML-формате.</short>
+      </element><element name="TDocumentType.PriceList"><short>PriceList - ценовой лист.</short>
+      </element><element name="TDocumentType.PriceListAgreement"><short>PriceListAgreement - протокол согласования цены.</short>
+      </element><element name="TDocumentType.CertificateRegistry"><short>CertificateRegistry - реестр сертификатов.</short>
+      </element><element name="TDocumentType.ReconciliationAct"><short>ReconciliationAct - акт сверки.</short>
+      </element><element name="TDocumentType.Contract"><short>Contract - договор.</short>
+      </element><element name="TDocumentType.Torg13"><short>Torg13 - накладная ТОРГ-13.</short>
+      </element><element name="TDocumentType.ServiceDetails"><short>ServiceDetails - детализация.</short>
+      </element><element name="TDocumentType.SupplementaryAgreement"><short>SupplementaryAgreement - дополнительное соглашение к договору.</short>
+      </element><element name="TDocumentType.UniversalTransferDocument"><short>UniversalTransferDocument - универсальный передаточный документ (УПД).</short>
+      </element><element name="TDocumentType.UniversalTransferDocumentRevision"><short>UniversalTransferDocumentRevision - исправление универсального передаточного документа.</short>
+      </element><element name="TDocumentType.UniversalCorrectionDocument"><short>UniversalCorrectionDocument - универсальный корректировочный документ (УКД).</short>
+      </element><element name="TDocumentType.UniversalCorrectionDocumentRevision"><short>UniversalCorrectionDocumentRevision - исправление универсального корректировочного документа.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

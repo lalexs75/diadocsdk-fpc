@@ -1,0 +1,38 @@
+object BoxPropsForm: TBoxPropsForm
+  Left = 658
+  Height = 329
+  Top = 324
+  Width = 376
+  Caption = 'Box propertys'
+  ClientHeight = 329
+  ClientWidth = 376
+  Position = poScreenCenter
+  LCLVersion = '1.9.0.0'
+  object ButtonPanel1: TButtonPanel
+    Left = 6
+    Height = 34
+    Top = 289
+    Width = 364
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    TabOrder = 0
+    ShowButtons = [pbClose, pbHelp]
+  end
+  object Memo1: TMemo
+    Left = 0
+    Height = 283
+    Top = 0
+    Width = 376
+    Align = alClient
+    Lines.Strings = (
+      'Memo1'
+    )
+    TabOrder = 1
+  end
+end

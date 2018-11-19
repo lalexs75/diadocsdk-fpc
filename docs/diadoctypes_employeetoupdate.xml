@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_EmployeeToUpdate"><element name="TEmployeeCanBeInvitedForChatPatch"><short>Структура для изменения необходимости отображать сотрудника в списке получателей Сообщений в веб-интерфейсе.</short>
+      </element><element name="TEmployeeCanBeInvitedForChatPatch.CanBeInvitedForChat"><short>CanBeInvitedForChat - нужно ли отображать сотрудника в списке получателей Сообщений в веб-интерфейсе</short>
+      </element><element name="TEmployeePositionPatch"><short>Структура для изменения должности сотрудника.
+
+</short>
+      </element><element name="TEmployeePositionPatch.Position"><short>Position - новая должность сотрудника</short>
+      </element><element name="TEmployeeSelectedDepartmentsPatch"><short>Структура для изменения списка подразделений, к которым имеет доступ сотрудник</short><descr>(играет роль только в случае DocumentAccessLevel = SelectedDepartments).
+</descr>
+      </element><element name="TEmployeeSelectedDepartmentsPatch.SelectedDepartmentIds"><short>SelectedDepartmentIds - новый список подразделений, к которым имеет доступ сотрудник</short>
+      </element><element name="TEmployeeDocumentAccessLevelPatch"><short>Структура для изменения уровня доступа сотрудника к документам.
+
+</short>
+      </element><element name="TEmployeeDocumentAccessLevelPatch.DocumentAccessLevel"><short>DocumentAccessLevel - новый уровень доступа к документам</short>
+      </element><element name="TEmployeeIsAdministratorPatch"><short>Структура для изменения права сотрудника администрировать организацию.</short>
+      </element><element name="TEmployeeIsAdministratorPatch.IsAdministrator"><short>IsAdministrator - имеет ли право сотрудник администрировать организацию</short>
+      </element><element name="TEmployeeDepartmentPatch"><short>Структура для изменения подразделения сотрудника.</short>
+      </element><element name="TEmployeeDepartmentPatch.DepartmentId"><short>DepartmentId - идентификатор подразделения, в которое необходимо переместить сотрудника</short>
+      </element><element name="TEmployeePermissionsPatch"><short>Структура содержит информацию о настройках разрешений сотрудника, которые необходимо изменить.</short><descr><li>Department - структура для изменения подразделения</li><li>IsAdministrator - структура для изменения права администрировать организацию</li><li>DocumentAccessLevel - структура для изменения уровня доступа к документам</li><li>SelectedDepartments - структура для изменения списка подразделений, к которым имеет доступ сотрудник (играет роль только в случае DocumentAccessLevel = SelectedDepartments)</li><li>Actions - действия сотрудника, права на которые требуется добавить или убрать</li><p>Необходимо заполнить только те поля структуры, которые соотвествуют данным, требующим изменения.</p>
+        </descr>
+      </element><element name="TEmployeePermissionsPatch.Department"><short>Department - структура для изменения подразделения</short>
+      </element><element name="TEmployeePermissionsPatch.IsAdministrator"><short>IsAdministrator - структура для изменения права администрировать организацию</short>
+      </element><element name="TEmployeePermissionsPatch.DocumentAccessLevel"><short>DocumentAccessLevel - структура для изменения уровня доступа к документам</short>
+      </element><element name="TEmployeePermissionsPatch.SelectedDepartments"><short>SelectedDepartments - структура для изменения списка подразделений, к которым имеет доступ сотрудник (играет роль только в случае DocumentAccessLevel = SelectedDepartments)</short>
+      </element><element name="TEmployeePermissionsPatch.Actions"><short>Actions - действия сотрудника, права на которые требуется добавить или убрать</short>
+      </element><element name="TEmployeeToUpdate"><short>Структура содержит информацию о данных сотрудника, которые необходимо изменить.</short><descr>Структура содержит информацию о данных сотрудника, которые необходимо изменить. Принимается методом UpdateEmployee.
+</descr>
+      </element><element name="TEmployeeToUpdate.Permissions"><short>Permissions - структура для изменения разрешений</short>
+      </element><element name="TEmployeeToUpdate.Position"><short>Position - структура для изменения должности</short>
+      </element><element name="TEmployeeToUpdate.CanBeInvitedForChat"><short>CanBeInvitedForChat - структура для изменения необходимости отображать сотрудника в списке получателей Сообщений в веб-интерфейсе</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

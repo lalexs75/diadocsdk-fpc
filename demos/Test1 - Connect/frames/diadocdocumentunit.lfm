@@ -1,0 +1,649 @@
+object DiadocDocumentFrame: TDiadocDocumentFrame
+  Left = 0
+  Height = 516
+  Top = 0
+  Width = 1207
+  ClientHeight = 516
+  ClientWidth = 1207
+  TabOrder = 0
+  DesignLeft = 383
+  DesignTop = 202
+  object Panel2: TPanel
+    Left = 0
+    Height = 119
+    Top = 0
+    Width = 1207
+    Align = alTop
+    AutoSize = True
+    ClientHeight = 119
+    ClientWidth = 1207
+    TabOrder = 0
+    object ComboBox1: TComboBox
+      AnchorSideLeft.Control = Panel2
+      AnchorSideTop.Control = Panel2
+      Left = 7
+      Height = 32
+      Top = 7
+      Width = 160
+      BorderSpacing.Around = 6
+      ItemHeight = 0
+      ItemIndex = 0
+      Items.Strings = (
+        'входящий документ'
+        'исходящий документ'
+        'внутренний документ'
+      )
+      Style = csDropDownList
+      TabOrder = 0
+      Text = 'входящий документ'
+    end
+    object ComboBox2: TComboBox
+      AnchorSideLeft.Control = ComboBox1
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = Panel2
+      Left = 173
+      Height = 32
+      Top = 7
+      Width = 273
+      BorderSpacing.Around = 6
+      ItemHeight = 0
+      ItemIndex = 1
+      Items.Strings = (
+        'Любые'
+        'dtfUniversalTransferDocumentRevision'
+      )
+      Style = csDropDownList
+      TabOrder = 1
+      Text = 'dtfUniversalTransferDocumentRevision'
+    end
+    object Button3: TButton
+      AnchorSideLeft.Control = ComboBox3
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = Panel2
+      Left = 706
+      Height = 36
+      Top = 7
+      Width = 112
+      AutoSize = True
+      BorderSpacing.Around = 6
+      Caption = 'GetDocuments'
+      OnClick = Button3Click
+      TabOrder = 2
+    end
+    object ComboBox3: TComboBox
+      AnchorSideLeft.Control = ComboBox2
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = Panel2
+      Left = 452
+      Height = 36
+      Top = 7
+      Width = 248
+      BorderSpacing.Around = 6
+      ItemHeight = 0
+      Style = csDropDownList
+      TabOrder = 3
+    end
+    object Button4: TButton
+      AnchorSideLeft.Control = Button3
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = Panel2
+      Left = 824
+      Height = 36
+      Top = 7
+      Width = 72
+      AutoSize = True
+      BorderSpacing.Around = 6
+      Caption = 'Ещё 100'
+      OnClick = Button4Click
+      TabOrder = 4
+    end
+    object CheckBox1: TCheckBox
+      AnchorSideLeft.Control = Panel2
+      AnchorSideTop.Control = ComboBox1
+      AnchorSideTop.Side = asrBottom
+      Left = 7
+      Height = 24
+      Top = 45
+      Width = 168
+      BorderSpacing.Around = 6
+      Caption = 'За период документа'
+      Checked = True
+      OnChange = CheckBox1Change
+      State = cbChecked
+      TabOrder = 5
+    end
+    object RxDateEdit1: TRxDateEdit
+      AnchorSideLeft.Control = Label2
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = CheckBox1
+      AnchorSideTop.Side = asrBottom
+      Left = 61
+      Height = 37
+      Top = 75
+      Width = 103
+      BorderSpacing.Around = 6
+      ButtonWidth = 23
+      MaxLength = 10
+      PasswordChar = #0
+      PopupColor = clWindow
+      TabOrder = 6
+      Text = '  .  .    '
+    end
+    object RxDateEdit2: TRxDateEdit
+      AnchorSideLeft.Control = Label3
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = CheckBox1
+      AnchorSideTop.Side = asrBottom
+      Left = 225
+      Height = 37
+      Top = 75
+      Width = 103
+      BorderSpacing.Around = 6
+      ButtonWidth = 23
+      MaxLength = 10
+      PasswordChar = #0
+      PopupColor = clWindow
+      TabOrder = 7
+      Text = '  .  .    '
+    end
+    object Label2: TLabel
+      AnchorSideLeft.Control = CheckBox1
+      AnchorSideBottom.Control = RxDateEdit1
+      AnchorSideBottom.Side = asrBottom
+      Left = 13
+      Height = 20
+      Top = 92
+      Width = 42
+      Anchors = [akLeft, akBottom]
+      BorderSpacing.Left = 6
+      Caption = 'с даты'
+      ParentColor = False
+    end
+    object Label3: TLabel
+      AnchorSideLeft.Control = RxDateEdit1
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideBottom.Control = RxDateEdit2
+      AnchorSideBottom.Side = asrBottom
+      Left = 170
+      Height = 20
+      Top = 92
+      Width = 49
+      Anchors = [akLeft, akBottom]
+      BorderSpacing.Left = 6
+      Caption = 'по дату'
+      ParentColor = False
+    end
+    object EditButton1: TEditButton
+      AnchorSideLeft.Control = CheckBox2
+      AnchorSideTop.Control = CheckBox2
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Panel2
+      AnchorSideRight.Side = asrBottom
+      Left = 340
+      Height = 37
+      Top = 75
+      Width = 860
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Around = 6
+      ButtonWidth = 23
+      Images = DDAPIMainForm.ImageList1
+      ImageIndex = 7
+      MaxLength = 0
+      NumGlyphs = 1
+      OnButtonClick = EditButton1ButtonClick
+      PasswordChar = #0
+      TabOrder = 8
+      Text = 'EditButton1'
+    end
+    object CheckBox2: TCheckBox
+      AnchorSideLeft.Control = RxDateEdit2
+      AnchorSideLeft.Side = asrBottom
+      AnchorSideTop.Control = ComboBox1
+      AnchorSideTop.Side = asrBottom
+      Left = 334
+      Height = 24
+      Top = 45
+      Width = 129
+      BorderSpacing.Around = 6
+      Caption = 'По контрагенту'
+      OnChange = CheckBox1Change
+      TabOrder = 9
+    end
+  end
+  object RxDBGrid1: TRxDBGrid
+    Left = 0
+    Height = 397
+    Top = 119
+    Width = 1088
+    ColumnDefValues.BlobText = '(данные)'
+    TitleButtons = True
+    AutoSort = True
+    Columns = <    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Тип документа'
+        Width = 100
+        FieldName = 'DocumentType'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footer.DisplayFormat = 'Кол-во: %d'
+        Footer.ValueType = fvtCount
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Дата и время создания'
+        Width = 120
+        FieldName = 'CreationTimestampTicks'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Почтовый ящик контрагента'
+        Width = 120
+        FieldName = 'CounteragentBoxId'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Имя файла'
+        Width = 150
+        FieldName = 'FileName'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Дата документа'
+        Width = 100
+        FieldName = 'DocumentDate'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Номер документа'
+        Width = 150
+        FieldName = 'DocumentNumber'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Сумма'
+        Width = 90
+        FieldName = 'SUMM'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end>
+    KeyStrokes = <    
+      item
+        Command = rxgcShowFindDlg
+        ShortCut = 16454
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowColumnsDlg
+        ShortCut = 16471
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowFilterDlg
+        ShortCut = 16468
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowSortDlg
+        ShortCut = 16467
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowQuickFilter
+        ShortCut = 16465
+        Enabled = True
+      end    
+      item
+        Command = rxgcHideQuickFilter
+        ShortCut = 16456
+        Enabled = True
+      end    
+      item
+        Command = rxgcSelectAll
+        ShortCut = 16449
+        Enabled = True
+      end    
+      item
+        Command = rxgcDeSelectAll
+        ShortCut = 16429
+        Enabled = True
+      end    
+      item
+        Command = rxgcInvertSelection
+        ShortCut = 16426
+        Enabled = True
+      end    
+      item
+        Command = rxgcOptimizeColumnsWidth
+        ShortCut = 16427
+        Enabled = True
+      end    
+      item
+        Command = rxgcCopyCellValue
+        ShortCut = 16451
+        Enabled = True
+      end>
+    FooterOptions.Active = True
+    FooterOptions.Color = 8454143
+    FooterOptions.RowCount = 1
+    FooterOptions.DrawFullLine = True
+    SearchOptions.QuickSearchOptions = [loCaseInsensitive, loPartialKey]
+    SearchOptions.FromStart = False
+    OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgFooterRows, rdgAllowQuickFilter]
+    FooterColor = 8454143
+    FooterRowCount = 1
+    Align = alClient
+    Color = clWindow
+    DrawFullLine = True
+    FocusColor = clRed
+    SelectedColor = clHighlight
+    GridLineStyle = psSolid
+    DataSource = dDocs
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgHeaderPushedLook]
+    PopupMenu = PopupMenu1
+    ReadOnly = True
+    TabOrder = 1
+  end
+  object Panel1: TPanel
+    Left = 1088
+    Height = 397
+    Top = 119
+    Width = 119
+    Align = alRight
+    AutoSize = True
+    ClientHeight = 397
+    ClientWidth = 119
+    TabOrder = 2
+    object Button1: TButton
+      AnchorSideLeft.Control = Panel1
+      AnchorSideTop.Control = Button2
+      AnchorSideTop.Side = asrBottom
+      Left = 7
+      Height = 36
+      Top = 49
+      Width = 105
+      AutoSize = True
+      BorderSpacing.Around = 6
+      Caption = 'GetDocument'
+      OnClick = Button1Click
+      TabOrder = 0
+    end
+    object Button2: TButton
+      AnchorSideLeft.Control = Panel1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Panel1
+      Left = 11
+      Height = 36
+      Top = 7
+      Width = 96
+      AutoSize = True
+      BorderSpacing.Around = 6
+      Caption = 'GetMessage'
+      OnClick = Button2Click
+      TabOrder = 1
+    end
+    object Label1: TLabel
+      Left = 1
+      Height = 20
+      Top = 79
+      Width = 42
+      Caption = 'Label1'
+      ParentColor = False
+    end
+  end
+  object dDocs: TDataSource
+    DataSet = rxDocs
+    Left = 256
+    Top = 180
+  end
+  object rxDocs: TRxMemoryData
+    FieldDefs = <    
+      item
+        Name = 'IndexKey'
+        DataType = ftString
+        Size = 200
+      end    
+      item
+        Name = 'MessageId'
+        DataType = ftString
+        Size = 200
+      end    
+      item
+        Name = 'EntityId'
+        DataType = ftString
+      end    
+      item
+        Name = 'CreationTimestampTicks'
+        DataType = ftDateTime
+      end    
+      item
+        Name = 'CounteragentBoxId'
+        DataType = ftString
+        Size = 200
+      end    
+      item
+        Name = 'DocumentType'
+        DataType = ftInteger
+      end    
+      item
+        Name = 'DocumentTypeStr'
+        DataType = ftString
+        Size = 200
+      end    
+      item
+        Name = 'FileName'
+        DataType = ftString
+      end    
+      item
+        Name = 'DocumentDate'
+        DataType = ftDate
+      end    
+      item
+        Name = 'DocumentNumber'
+        DataType = ftString
+        Size = 100
+      end    
+      item
+        Name = 'SUMM'
+        DataType = ftString
+        Size = 50
+      end>
+    AfterOpen = rxDocsAfterOpen
+    AfterClose = rxDocsAfterOpen
+    PacketRecords = 0
+    Left = 284
+    Top = 180
+    object rxDocsIndexKey: TStringField
+      FieldKind = fkData
+      FieldName = 'IndexKey'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object rxDocsMessageId: TStringField
+      FieldKind = fkData
+      FieldName = 'MessageId'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object rxDocsEntityId: TStringField
+      FieldKind = fkData
+      FieldName = 'EntityId'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 0
+    end
+    object rxDocsCreationTimestampTicks: TDateTimeField
+      FieldKind = fkData
+      FieldName = 'CreationTimestampTicks'
+      Index = 3
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object rxDocsCounteragentBoxId: TStringField
+      FieldKind = fkData
+      FieldName = 'CounteragentBoxId'
+      Index = 4
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object rxDocsFileName: TStringField
+      FieldKind = fkData
+      FieldName = 'FileName'
+      Index = 5
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 0
+    end
+    object rxDocsDocumentDate: TDateField
+      FieldKind = fkData
+      FieldName = 'DocumentDate'
+      Index = 6
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object rxDocsDocumentNumber: TStringField
+      FieldKind = fkData
+      FieldName = 'DocumentNumber'
+      Index = 7
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object rxDocsDocumentType: TLongintField
+      FieldKind = fkData
+      FieldName = 'DocumentType'
+      Index = 8
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+    end
+    object rxDocsDocumentTypeStr: TStringField
+      FieldKind = fkData
+      FieldName = 'DocumentTypeStr'
+      Index = 9
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 200
+    end
+    object rxDocsSUMM: TStringField
+      FieldKind = fkData
+      FieldName = 'SUMM'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 50
+    end
+  end
+  object PopupMenu1: TPopupMenu
+    Images = DDAPIMainForm.ImageList1
+    Left = 256
+    Top = 264
+    object MenuItem1: TMenuItem
+      Action = msgShow
+    end
+    object MenuItem2: TMenuItem
+      Caption = '-'
+    end
+    object MenuItem3: TMenuItem
+      Action = OrgBoxInfo
+    end
+  end
+  object ActionList1: TActionList
+    Left = 256
+    Top = 352
+    object msgShow: TAction
+      Caption = 'Сообщения...'
+      OnExecute = msgShowExecute
+    end
+    object OrgBoxInfo: TAction
+      Caption = 'Информация о почтовом ящике'
+      OnExecute = OrgBoxInfoExecute
+    end
+  end
+end

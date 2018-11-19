@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_DocumentTypeDescription"><element name="TDocumentMetadataItemType.dmtString"><short>строка</short>
+      </element><element name="TDocumentMetadataItemType.dmtInteger"><short>целое число</short>
+      </element><element name="TDocumentMetadataItemType.dmtDecimal"><short>число с десятичной точкой</short>
+      </element><element name="TDocumentMetadataItemType.dmtDate"><short>дата в формате ДД.ММ.ГГГГ</short>
+      </element><element name="TDocumentMetadataItemType.dmtTime"><short>время в формате чч:мм</short>
+      </element><element name="TDocumentMetadataSource.dmsXml"><short>метаданные содержатся в теле документа</short>
+      </element><element name="TDocumentMetadataSource.dmsUser"><short>метаданные передаются в метод API отдельными полями</short>
+      </element><element name="TDocumentMetadataItem"><short>Описывает метаданные документа.</short>
+      </element><element name="TDocumentMetadataItem.Id"><short>Id - идентификатор</short>
+      </element><element name="TDocumentMetadataItem.ItemType"><short>Type - тип значения</short>
+      </element><element name="TDocumentMetadataItem.IsRequired"><short>IsRequired - обязательность</short>
+      </element><element name="TDocumentMetadataItem.Source"><short>Source - способ передачи метаданных</short>
+      </element><element name="TDocumentMetadataItems"><short>Описывает метаданные документа.</short>
+      </element><element name="TSignerInfo"><short>Описывает тип подписанта титула.</short>
+      </element><element name="TSignerInfo.SignerType"><short>SignerType - тип подписанта необходимый для титула</short>
+      </element><element name="TSignerType"><short>SignerType - тип подписанта необходимый для титула</short>
+      </element><element name="TSignerType.None"><short>None - подписант отсутствует в контенте документа. Формируется только файл открепленной подписи. Используется для неформализованных документов</short>
+      </element><element name="TSignerType.Signer"><short>Signer - простой подписант. Используется для документов форматов @93/@172 и своих типов документов не на базе формата @155</short>
+      </element><element name="TSignerType.ExtendedSigner"><short>ExtendedSigner - расширенный подписант. Используется для документов форматов @155/@551/@552 и своих типов на базе формата @155</short>
+      </element><element name="TSignerInfo.ExtendedDocumentTitleType"><short>DocumentTitleType - Тип титула документа, для которого нужно заполнить дополнительные данные о подписанте. Для типов подписанта None и Signer значение всегда равно Absent.</short>
+      </element><element name="TDocumentTitle"><short>Описывает титул документа.</short>
+      </element><element name="TDocumentTitle.IsFormal"><short>IsFormal - титул формализованный</short>
+      </element><element name="TDocumentTitle.XsdUrl"><short>XsdUrl - URL-путь метода, возвращающего файл XSD-схемы титула</short>
+      </element><element name="TDocumentTitle.MetadataItems"><short>MetadataItems - описания метаданных документа</short>
+      </element><element name="TDocumentTitle.EncryptedMetadataItems"><short>EncryptedMetadataItems - описания метаданных для отправки зашифрованного документа</short>
+      </element><element name="TDocumentTitle.UserDataXsdUrl"><short>UserDataXsdUrl - URL-путь метода, возвращающего файл XSD-схемы контракта для генерации титула с помощью обобщённого метода генерации. Для генерации титулов получателя может быть использован метод GenerateRecipientTitleXml.</short>
+      </element><element name="TDocumentTitle.SignerInfo"><short>SignerInfo - описание подписанта титула</short>
+      </element><element name="TDocumentWorkflow"><short>Представляет вид документооборота для функции документа DocumentFunction.</short>
+      </element><element name="TDocumentWorkflow.Id"><short>Id - уникальный числовой идентификатор вида документооборота</short>
+      </element><element name="TDocumentWorkflow.IsDefault"><short>IsDefault - вид документооборота будет использован по умолчанию</short>
+      </element><element name="TDocumentVersion"><short>Описывает версию документа.</short>
+      </element><element name="TDocumentVersion.Version"><short>Version - строковой идентификатор версии, уникальный в рамках функции документа</short>
+      </element><element name="TDocumentVersion.SupportsContentPatching"><short>SupportsContentPatching - поддерживается патчинг</short>
+      </element><element name="TDocumentVersion.SupportsEncrypting"><short>SupportsEncrypting - поддерживается отправка зашифрованных документов</short>
+      </element><element name="TDocumentVersion.IsActual"><short>IsActual - версия актуальна</short>
+      </element><element name="TDocumentVersion.Titles"><short>Titles - описания титулов документа</short>
+      </element><element name="TDocumentVersion.Workflows"><short>Workflows - виды документооборота</short>
+      </element><element name="TDocumentVersion.SupportsPredefinedRecipientTitle"><short>SupportsPredefinedRecipientTitle - поддерживается отправка предопределенного титула. </short>
+      </element><element name="TDocumentFunction"><short>Описывает функцию документа.</short>
+      </element><element name="TDocumentFunction.Name"><short>Name - строковой идентификатор функции, уникальное в рамках типа документов</short>
+      </element><element name="TDocumentFunction.Versions"><short>Versions - описания версий документа</short>
+      </element><element name="TDocumentTypeDescription"><short>Описывает тип документов. Возвращается методом GetDocumentTypes.</short>
+      </element><element name="TDocumentTypeDescription.Name"><short>Name - уникальный строковой идентификатор типа</short>
+      </element><element name="TDocumentTypeDescription.Title"><short>Title - заголовок типа</short>
+      </element><element name="TDocumentTypeDescription.SupportedDocflows"><short>SupportedDocflows - поддерживаемые типы документооборота</short>
+      </element><element name="TDocumentTypeDescription.RequiresFnsRegistration"><short>RequiresFnsRegistration - для работы требуется заявление участника ЭДО</short>
+      </element><element name="TDocumentTypeDescription.Functions"><short>Functions - описания функций документа</short>
+      </element><element name="TGetDocumentTypesResponse"><short>Описание типов документов</short><descr>используется в методе GetDocumentTypes
+
+</descr>
+      </element><element name="TGetDocumentTypesResponse.DocumentTypes"><short>DocumentTypes - список типов документов.</short>
+      </element><element name="TDocumentTypeDescriptions"><short>Описывает тип документов. Возвращается методом GetDocumentTypes.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

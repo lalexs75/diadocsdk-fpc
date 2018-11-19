@@ -1,0 +1,195 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: diadoc_consts.sbadrequest
+msgid "Bad request"
+msgstr ""
+
+#: diadoc_consts.sfunctiontypebasic
+msgid "ДОП"
+msgstr ""
+
+#: diadoc_consts.sfunctiontypeinvoice
+msgid "СЧФ"
+msgstr ""
+
+#: diadoc_consts.sfunctiontypeinvoiceandbasic
+msgid "СЧФДОП"
+msgstr ""
+
+#: diadoc_consts.sinternalservererror
+msgid "Internal server error"
+msgstr ""
+
+#: diadoc_consts.sitemmarkjob
+msgid "Работа"
+msgstr ""
+
+#: diadoc_consts.sitemmarknotspecified
+msgid "Не указано"
+msgstr ""
+
+#: diadoc_consts.sitemmarkother
+msgid "Иное"
+msgstr ""
+
+#: diadoc_consts.sitemmarkprop
+msgid "Имущество"
+msgstr ""
+
+#: diadoc_consts.sitemmarkpropertyrights
+msgid "Имущественные права"
+msgstr ""
+
+#: diadoc_consts.sitemmarkservice
+msgid "Услуга"
+msgstr ""
+
+#: diadoc_consts.smethodnotallowed
+msgid "Method not allowed"
+msgstr ""
+
+#: diadoc_consts.snotdefindapikey
+msgid "Not defind API key"
+msgstr ""
+
+#: diadoc_consts.snotdefinedaderssforparse
+msgid "Not defined aderss for parse"
+msgstr ""
+
+#: diadoc_consts.snotdefinedattachmentid
+msgid "Not defined AttachmentId"
+msgstr ""
+
+#: diadoc_consts.snotdefinedboxid
+msgid "Not defined box id"
+msgstr ""
+
+#: diadoc_consts.snotdefinedcounteragentorgidgetcounteragent
+msgid "GetCounteragent: not defined CounteragentOrgId"
+msgstr ""
+
+#: diadoc_consts.snotdefinedcounteragentorgidgetcounteragentcertificates
+msgid "GetCounteragentCertificates: not defined CounteragentOrgId"
+msgstr ""
+
+#: diadoc_consts.snotdefineddepartmentid
+msgid "Not defined Department Id"
+msgstr ""
+
+#: diadoc_consts.snotdefineddocumentid
+msgid "Not defined Document Id"
+msgstr ""
+
+#: diadoc_consts.snotdefinedentityid
+msgid "Not defined entity id"
+msgstr ""
+
+#: diadoc_consts.snotdefinedeventid
+msgid "Not defined Event Id"
+msgstr ""
+
+#: diadoc_consts.snotdefinedinngetorganizationsbyinnkpp
+msgid "GetOrganizationsByInnKpp: not defined INN"
+msgstr ""
+
+#: diadoc_consts.snotdefinedinvoicetypestr
+msgid "Not defined InvoiceTypeStr"
+msgstr ""
+
+#: diadoc_consts.snotdefinedmessageid
+msgid "Not defined message id"
+msgstr ""
+
+#: diadoc_consts.snotdefinedmyorggetcounteragent
+msgid "GetCounteragent: not defined MyOrgId"
+msgstr ""
+
+#: diadoc_consts.snotdefinedmyorggetcounteragentcertificates
+msgid "GetCounteragentCertificates: not defined MyOrgId"
+msgstr ""
+
+#: diadoc_consts.snotdefinedorganizationsbyinnlistrequest
+msgid "NotDefinedOrganizationsByInnListRequest"
+msgstr ""
+
+#: diadoc_consts.snotdefinedorgid
+msgid "Not defined org Id"
+msgstr ""
+
+#: diadoc_consts.snotdefinedparamsgetorganization
+msgid "GetOrganization: not defined query params"
+msgstr ""
+
+#: diadoc_consts.snotdefinedsellerinfo
+msgid "Not defined seller info"
+msgstr ""
+
+#: diadoc_consts.snotdefinedsellertitleattachmentid
+msgid "Not defined SellerTitleAttachmentId"
+msgstr ""
+
+#: diadoc_consts.snotdefinedsellertitlemessageid
+msgid "Not defined SellerTitleMessageId"
+msgstr ""
+
+#: diadoc_consts.snotdefinedtaskid
+msgid "Not defined Task Id"
+msgstr ""
+
+#: diadoc_consts.snotdefinedusercontractdata
+msgid "not defined UserContractData"
+msgstr ""
+
+#: diadoc_consts.snotdefineduserid
+msgid "Not defined user id"
+msgstr ""
+
+#: diadoc_consts.snotfound
+msgid "Not Found"
+msgstr ""
+
+#: diadoc_consts.snotimplemented
+msgid "Not implemented"
+msgstr ""
+
+#: diadoc_consts.sok
+msgid "OK"
+msgstr ""
+
+#: diadoc_consts.staxratefraction_10_110
+msgid "ставка налога 10/110 (дробь)"
+msgstr ""
+
+#: diadoc_consts.staxratefraction_18_118
+msgid "ставка налога 18/118 (дробь)"
+msgstr ""
+
+#: diadoc_consts.staxratenovat
+msgid "без НДС"
+msgstr ""
+
+#: diadoc_consts.staxratepercent_0
+msgid "ставка налога 0%"
+msgstr ""
+
+#: diadoc_consts.staxratepercent_10
+msgid "ставка налога 10%"
+msgstr ""
+
+#: diadoc_consts.staxratepercent_18
+msgid "ставка налога 18%"
+msgstr ""
+
+#: diadoc_consts.staxratepercent_20
+msgid "ставка налога 20%"
+msgstr ""
+
+#: diadoc_consts.staxratetaxedbyagent
+msgid "ставка налога \"НДС исчисляется налоговым агентом"
+msgstr ""
+
+#: diadoc_consts.sunauthorized
+msgid "Unauthorized"
+msgstr ""
+

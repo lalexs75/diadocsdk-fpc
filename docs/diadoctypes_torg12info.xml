@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_Torg12Info"><element name="TTorg12SellerTitleInfo"><short>Структура данных Torg12SellerTitleInfo представляет исходные данные для формирования титула продавца для товарной накладной в XML-формате при помощи метода GenerateTorg12XmlForSeller</short><descr><p>При заполнении структуры Torg12SellerTitleInfo нужно иметь в виду:</p><li>Обязательные поля Torg12SellerTitleInfo.SellerDocflowParticipant и Torg12SellerTitleInfo.BuyerDocflowParticipant позволяют задать участников электронного обмена, между которыми происходит передача товарной накладной. Необходимая информация об участниках задается в виде структуры данных DocflowParticipant.</li><li>Реквизиты грузоотправителя Torg12SellerTitleInfo.Shipper, грузополучателя Torg12SellerTitleInfo.Consignee, поставщика Torg12SellerTitleInfo.Supplier и плательщика Torg12SellerTitleInfo.Payer заполняются в виде структуры данных OrganizationInfo.</li><li>Реквизиты подписанта накладной Torg12SellerTitleInfo.Signer заполняются в виде структуры данных Signer.</li><li>Реквизиты должностных лиц Torg12SellerTitleInfo.SupplyAllowedBy, Torg12SellerTitleInfo.SupplyPerformedBy и Torg12SellerTitleInfo.ChiefAccountant заполняются в виде структуры данных Official.</li><li>Правила заполнения структуры Torg12SellerTitleInfo повторяют требования формата ФНС, зафиксированные в следующей XML-схеме.</li>
+        </descr>
+      </element><element name="TTorg12SellerTitleInfo.DocumentDate"><short>дата товарной накладной</short>
+      </element><element name="TTorg12SellerTitleInfo.DocumentNumber"><short>номер товарной накладной</short>
+      </element><element name="TTorg12SellerTitleInfo.SellerDocflowParticipant"><short>участник документооборота, отпустивший товар</short>
+      </element><element name="TTorg12SellerTitleInfo.BuyerDocflowParticipant"><short>участник документооборота, которому отпущен товар</short>
+      </element><element name="TTorg12SellerTitleInfo.Shipper"><short>грузоотправитель</short>
+      </element><element name="TTorg12SellerTitleInfo.Consignee"><short>грузополучатель</short>
+      </element><element name="TTorg12SellerTitleInfo.Supplier"><short>поставщик</short>
+      </element><element name="TTorg12SellerTitleInfo.Payer"><short>плательщик</short>
+      </element><element name="TTorg12SellerTitleInfo.Grounds"><short>основание</short>
+      </element><element name="TTorg12SellerTitleInfo.WaybillDate"><short>дата составления транспортной накладной</short>
+      </element><element name="TTorg12SellerTitleInfo.WaybillNumber"><short>номер транспортной накладной</short>
+      </element><element name="TTorg12SellerTitleInfo.OperationCode"><short>код вида операции</short>
+      </element><element name="TTorg12SellerTitleInfo.Items"><short>табличные сведения товарной накладной</short>
+      </element><element name="TTorg12SellerTitleInfo.ParcelsQuantityTotal"><short>количество мест, штук - всего по накладной</short>
+      </element><element name="TTorg12SellerTitleInfo.ParcelsQuantityTotalInWords"><short>количество мест, штук - всего по накладной, прописью</short>
+      </element><element name="TTorg12SellerTitleInfo.GrossQuantityTotal"><short>брутто - всего по накладной</short>
+      </element><element name="TTorg12SellerTitleInfo.GrossQuantityTotalInWords"><short>брутто - всего по накладной, прописью</short>
+      </element><element name="TTorg12SellerTitleInfo.NetQuantityTotal"><short>нетто - всего по накладной</short>
+      </element><element name="TTorg12SellerTitleInfo.NetQuantityTotalInWords"><short>нетто - всего по накладной, прописью</short>
+      </element><element name="TTorg12SellerTitleInfo.QuantityTotal"><short>количество (масса нетто) - всего по накладной</short>
+      </element><element name="TTorg12SellerTitleInfo.TotalWithVatExcluded"><short>сумма без учета НДС - всего по накладной</short>
+      </element><element name="TTorg12SellerTitleInfo.Vat"><short>сумма НДС - всего по накладной</short>
+      </element><element name="TTorg12SellerTitleInfo.Total"><short>сумма с учетом НДС - всего по накладной</short>
+      </element><element name="TTorg12SellerTitleInfo.TotalInWords"><short>сумма с учетом НДС - всего по накладной, прописью</short>
+      </element><element name="TTorg12SellerTitleInfo.SupplyDate"><short>дата отпуска</short>
+      </element><element name="TTorg12SellerTitleInfo.SupplyAllowedBy"><short>отпуск разрешил</short>
+      </element><element name="TTorg12SellerTitleInfo.SupplyPerformedBy"><short>отпуск произвел</short>
+      </element><element name="TTorg12SellerTitleInfo.ChiefAccountant"><short>главный бухгалтер</short>
+      </element><element name="TTorg12SellerTitleInfo.Signer"><short>подписант</short>
+      </element><element name="TTorg12SellerTitleInfo.AdditionalInfo"><short>дополнительные сведения</short>
+      </element><element name="TTorg12SellerTitleInfo.AttachmentSheetsQuantity"><short>приложение, количество листов</short>
+      </element><element name="TTorg12BuyerTitleInfo"><short>титул покупателя</short>
+      </element><element name="TTorg12BuyerTitleInfo.ShipmentReceiptDate"><short>дата получения груза</short>
+      </element><element name="TTorg12BuyerTitleInfo.Attorney"><short>сведения по доверенности</short>
+      </element><element name="TTorg12BuyerTitleInfo.AcceptedBy"><short>лицо, принявшее груз</short>
+      </element><element name="TTorg12BuyerTitleInfo.ReceivedBy"><short>лицо, получившее груз</short>
+      </element><element name="TTorg12BuyerTitleInfo.Signer"><short>подписант</short>
+      </element><element name="TTorg12BuyerTitleInfo.AdditionalInfo"><short>дополнительная информация</short>
+      </element><element name="TTorg12Item"><short>табличные сведения товарной накладной</short>
+      </element><element name="TTorg12Item.Name"><short>наименование</short>
+      </element><element name="TTorg12Item.Feature"><short>характеристика</short>
+      </element><element name="TTorg12Item.Sort"><short>сорт товара</short>
+      </element><element name="TTorg12Item.NomenclatureArticle"><short>артикул</short>
+      </element><element name="TTorg12Item.Code"><short>код товара</short>
+      </element><element name="TTorg12Item.UnitCode"><short>код единицы измерения</short>
+      </element><element name="TTorg12Item.UnitName"><short>наименование единицы измерения</short>
+      </element><element name="TTorg12Item.ParcelType"><short>вид упаковки</short>
+      </element><element name="TTorg12Item.ParcelCapacity"><short>количество в одном месте</short>
+      </element><element name="TTorg12Item.ParcelsQuantity"><short>количество мест</short>
+      </element><element name="TTorg12Item.GrossQuantity"><short>брутто</short>
+      </element><element name="TTorg12Item.Quantity"><short>нетто // количество (масса)</short>
+      </element><element name="TTorg12Item.Price"><short>цена</short>
+      </element><element name="TTorg12Item.TaxRate"><short>ставка налога</short>
+      </element><element name="TTorg12Item.SubtotalWithVatExcluded"><short>сумма без учета налога</short>
+      </element><element name="TTorg12Item.Vat"><short>сумма налога</short>
+      </element><element name="TTorg12Item.Subtotal"><short>сумма всего</short>
+      </element><element name="TTorg12Item.AdditionalInfo"><short>информационное поле сведений о товаре</short>
+      </element><element name="TGrounds"><short>документ-основание</short>
+      </element><element name="TGrounds.DocumentName"><short>название документа</short>
+      </element><element name="TGrounds.DocumentNumber"><short>номер документа</short>
+      </element><element name="TGrounds.DocumentDate"><short>дата документа</short>
+      </element><element name="TGrounds.AdditionalInfo"><short>дополнительные сведения</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

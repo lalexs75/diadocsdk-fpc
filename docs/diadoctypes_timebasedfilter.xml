@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_TimeBasedFilter"><element name="TTimeBasedFilter"><short>Структура представляет фильтр, который можно передать на вход методу GetDocflowEvents. Фильтр позволяет ограничить по времени возвращаемые методом события и указать порядок их сортировки.</short>
+      </element><element name="TTimeBasedFilter.FromTimestamp"><short>FromTimestamp - нижняя граница.</short>
+      </element><element name="TTimeBasedFilter.ToTimestamp"><short>ToTimestamp - верхняя граница.</short>
+      </element><element name="TTimeBasedFilter.SortDirection"><short>SortDirection - порядок сортировки событий.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>
