@@ -243,6 +243,7 @@ type
   public
     constructor Create; override;
     function GetEnumerator: TSerializationObjectListEnumerator;
+    function AddItem:GObjType;
     property Items[AIndex:Integer]:GObjType read GetItem; default;
   end;
 
@@ -270,6 +271,21 @@ end;
 function GSerializationObjectList.GetEnumerator: TSerializationObjectListEnumerator;
 begin
   Result:=TSerializationObjectListEnumerator.Create(Self);
+end;
+
+function GSerializationObjectList.AddItem: GObjType;
+//var
+//  P: TSerializationObject;
+begin
+  if Assigned(FDataClass) then
+  begin
+    Result:=FDataClass.Create;
+//    P:=FDataClass.Create;
+//    Result:=P;
+    Add(Result);
+  end
+  else
+    Result:=nil;
 end;
 
 { GSerializationObjectListEnumerator }

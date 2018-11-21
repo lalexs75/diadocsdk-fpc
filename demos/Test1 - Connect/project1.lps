@@ -18,9 +18,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="DDAPIMainUnit"/>
-        <IsVisibleTab Value="True"/>
         <TopLine Value="202"/>
-        <CursorPos X="71" Y="213"/>
+        <CursorPos Y="208"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -119,7 +118,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="335"/>
         <CursorPos X="33" Y="359"/>
-        <UsageCount Value="118"/>
+        <UsageCount Value="120"/>
       </Unit10>
       <Unit11>
         <Filename Value="frames/diadocdocumentunit.pas"/>
@@ -131,7 +130,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="366"/>
         <CursorPos X="93" Y="389"/>
-        <UsageCount Value="114"/>
+        <UsageCount Value="116"/>
       </Unit11>
       <Unit12>
         <Filename Value="forms/universaltransferdocumentbuyertitleinfounit.pas"/>
@@ -143,7 +142,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="19"/>
         <CursorPos X="64" Y="53"/>
-        <UsageCount Value="113"/>
+        <UsageCount Value="115"/>
       </Unit12>
       <Unit13>
         <Filename Value="frames/contragentslistunit.pas"/>
@@ -154,7 +153,7 @@
         <UnitName Value="ContragentsListUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="20" Y="12"/>
-        <UsageCount Value="110"/>
+        <UsageCount Value="112"/>
       </Unit13>
       <Unit14>
         <Filename Value="forms/organizationuserslistunit.pas"/>
@@ -166,7 +165,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="22"/>
         <CursorPos X="26" Y="44"/>
-        <UsageCount Value="103"/>
+        <UsageCount Value="105"/>
       </Unit14>
       <Unit15>
         <Filename Value="forms/boxeventlistunit.pas"/>
@@ -178,7 +177,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="33"/>
         <CursorPos X="50" Y="54"/>
-        <UsageCount Value="102"/>
+        <UsageCount Value="104"/>
       </Unit15>
       <Unit16>
         <Filename Value="forms/userpermissionsunit.pas"/>
@@ -190,7 +189,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="25"/>
         <CursorPos X="67" Y="50"/>
-        <UsageCount Value="100"/>
+        <UsageCount Value="102"/>
       </Unit16>
       <Unit17>
         <Filename Value="forms/contragentfindunit.pas"/>
@@ -201,7 +200,7 @@
         <UnitName Value="ContragentFindUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="31"/>
-        <UsageCount Value="98"/>
+        <UsageCount Value="100"/>
       </Unit17>
       <Unit18>
         <Filename Value="forms/showboxinfounit.pas"/>
@@ -213,7 +212,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="19"/>
         <CursorPos X="11" Y="25"/>
-        <UsageCount Value="89"/>
+        <UsageCount Value="91"/>
       </Unit18>
       <Unit19>
         <Filename Value="frames/adressinfoframeunit.pas"/>
@@ -225,7 +224,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="47"/>
         <CursorPos X="27" Y="69"/>
-        <UsageCount Value="86"/>
+        <UsageCount Value="88"/>
       </Unit19>
       <Unit20>
         <Filename Value="forms/organizationinfoformunit.pas"/>
@@ -237,7 +236,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="4"/>
         <CursorPos X="32" Y="33"/>
-        <UsageCount Value="80"/>
+        <UsageCount Value="82"/>
       </Unit20>
       <Unit21>
         <Filename Value="../../../synapse/ssl_openssl_lib.pas"/>
@@ -1219,10 +1218,12 @@
       <Unit144>
         <Filename Value="../../diadoc_src/diadoctypes_organization.pas"/>
         <UnitName Value="DiadocTypes_Organization"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="132"/>
-        <CursorPos X="45" Y="151"/>
-        <UsageCount Value="13"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="256"/>
+        <CursorPos Y="265"/>
+        <UsageCount Value="14"/>
+        <Loaded Value="True"/>
       </Unit144>
       <Unit145>
         <Filename Value="../../../../../install/source/fpcsrc/rtl/objpas/sysutils/sysutilh.inc"/>
@@ -1560,11 +1561,23 @@
         <UsageCount Value="10"/>
       </Unit188>
     </Units>
-    <JumpHistory Count="1">
+    <JumpHistory Count="4" HistoryIndex="3">
       <Position1>
         <Filename Value="ddapimainunit.pas"/>
         <Caret Line="159" Column="15" TopLine="130"/>
       </Position1>
+      <Position2>
+        <Filename Value="ddapimainunit.pas"/>
+        <Caret Line="208" TopLine="202"/>
+      </Position2>
+      <Position3>
+        <Filename Value="../../diadoc_src/diadoctypes_organization.pas"/>
+        <Caret Line="152" Column="3" TopLine="132"/>
+      </Position3>
+      <Position4>
+        <Filename Value="../../diadoc_src/diadoctypes_organization.pas"/>
+        <Caret Line="75" TopLine="46"/>
+      </Position4>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
@@ -1572,15 +1585,6 @@
     </RunParams>
   </ProjectSession>
   <Debugging>
-    <BreakPoints Count="1">
-      <Item1>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="ddapimainunit.pas"/>
-        <Line Value="208"/>
-      </Item1>
-    </BreakPoints>
     <Watches Count="3">
       <Item1>
         <Expression Value="S"/>

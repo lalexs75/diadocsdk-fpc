@@ -85,6 +85,8 @@ type
     FZipCode: string;
   protected
     procedure InternalRegisterProperty; override;
+  public
+    function AdressStr:string;
   published
     property ZipCode:string read FZipCode write FZipCode;       // = 1; // индекс
     property Region:string read FRegion write FRegion;          // = 2; // регион (код)
@@ -172,6 +174,18 @@ begin
   RegisterProp('Building', 7);   // дом
   RegisterProp('Block', 8);      // корпус
   RegisterProp('Apartment', 9);  // квартира
+end;
+
+function TRussianAddress.AdressStr: string;
+begin
+  Result:=Region + ' ' + // регион (код)
+    Territory + ' ' + // район
+    City + ' ' + // город
+    Locality + ' ' + // населенный пункт
+    Street + ' ' + // улица
+    Building + ' ' + // дом
+    Block + ' ' + // корпус
+    Apartment; // квартира
 end;
 
 end.
