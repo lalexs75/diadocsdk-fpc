@@ -248,12 +248,43 @@ type
   end;
 
 
+function EncodeValue32(AValue: Int32):LongWord;
+function EncodeValue64(AValue: Int64):QWord;
+function DecodeValue32(AValue: LongWord):Int32;
+function DecodeValue64(AValue: QWord):Int64;
+
 implementation
 uses TypInfo
 {$IFDEF DEBUG}
   , rxAppUtils
 {$ENDIF}
 ;
+function EncodeValue32(AValue: Int32):LongWord;
+begin
+  if AValue < 0 then
+    Result:=(AValue shl 1) xor $FFFFFFFF
+  else
+    Result:=(AValue shl 1);
+end;
+
+function EncodeValue64(AValue: Int64):QWord;
+begin
+  if AValue < 0 then
+    Result:=(AValue shl 1) xor $FFFFFFFFFFFFFFFF
+  else
+    Result:=(AValue shl 1);
+end;
+
+function DecodeValue32(AValue: LongWord):Int32;
+begin
+  Result:=((AValue and $00000001) * $FFFFFFFF) xor (AValue shr 1);
+end;
+
+function DecodeValue64(AValue: QWord):Int64;
+begin
+  Result:=((AValue and $00000001) * $FFFFFFFFFFFFFFFF) xor (AValue shr 1);
+end;
+
 
 { GSerializationObjectList }
 
@@ -554,7 +585,8 @@ var
 begin
   C:=P.FPropNum shl 3 + 0; //varint
   WriteVarInt(C);
-  WriteVarInt(AValue);
+  //WriteVarInt(AValue);
+  WriteVarInt(EncodeValue32(AValue));
 end;
 
 procedure TSerializationBuffer.WriteAsString(P: TSerializationProperty;
@@ -573,8 +605,13 @@ end;
 
 procedure TSerializationBuffer.WriteAsInt64(P: TSerializationProperty;
   AValue: Int64);
+var
+  C: Integer;
 begin
-
+  C:=P.FPropNum shl 3 + 0; //varint
+  WriteVarInt(C);
+  //WriteVarInt(AValue);
+  WriteVarInt(EncodeValue64(AValue));
 end;
 
 procedure TSerializationBuffer.WriteAsQWord(P: TSerializationProperty;
@@ -732,7 +769,8 @@ function TSerializationBuffer.ReadAsInteger: Integer;
 begin
   //Доработать поддержку знаковых чисел
   case FPropType of
-    0:Result:=ReadVarInt; //Varint
+    //0:Result:=ReadVarInt; //Varint
+    0:Result:=DecodeValue32(ReadVarInt); //Varint
     1:Result:=ReadInt64; //64-bit
     //2:Length-delimited - string, bytes, embedded messages, packed repeated fields
     //3:Start group - groups (deprecated)
@@ -751,7 +789,8 @@ end;
 function TSerializationBuffer.ReadAsInt64: Int64;
 begin
   case FPropType of
-    0:Result:=ReadVarInt; //Varint
+    //0:Result:=ReadVarInt; //Varint
+    0:Result:=DecodeValue32(ReadVarInt); //Varint
     1:Result:=ReadInt64; //64-bit
     //2:Length-delimited - string, bytes, embedded messages, packed repeated fields
     //3:Start group - groups (deprecated)
@@ -1005,7 +1044,8 @@ begin
 
       tkBool : ABuf.WriteAsInteger(P, GetOrdProp(Self, FProp));
       tkQWord : ABuf.WriteAsQWord(P, GetOrdProp(Self, FProp));
-      tkInt64   : SetOrdProp(Self, FProp, ABuf.ReadAsInteger);
+      //tkInt64   : SetOrdProp(Self, FProp, ABuf.ReadAsInteger);
+      tkInt64   : ABuf.WriteAsInt64(P, GetInt64Prop(Self, FProp));
       tkInteger : ABuf.WriteAsInteger(P, GetInt64Prop(Self, FProp));
       tkEnumeration : ABuf.WriteAsInteger(P, GetOrdProp(Self, FProp));
       tkDynArray:begin

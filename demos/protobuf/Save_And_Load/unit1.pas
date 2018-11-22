@@ -20,12 +20,16 @@ type
     Edit3: TEdit;
     Edit4: TEdit;
     Edit5: TEdit;
+    Edit6: TEdit;
+    Edit7: TEdit;
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
     Memo1: TMemo;
     NameOnShelf: TLabel;
     PageControl1: TPageControl;
@@ -35,17 +39,21 @@ type
     SynEdit3: TSynEdit;
     SynEdit4: TSynEdit;
     SynEdit5: TSynEdit;
+    SynEdit6: TSynEdit;
+    SynEdit7: TSynEdit;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     TabSheet3: TTabSheet;
     TabSheet4: TTabSheet;
     TabSheet5: TTabSheet;
+    TabSheet6: TTabSheet;
+    TabSheet7: TTabSheet;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
   private
-
+    procedure SavePeople;
   public
-    function DataFileName(ANum:Integer):string;
+    function DataFileName(ANum:Integer; AName:string = ''):string;
   end;
 
 var
@@ -53,7 +61,7 @@ var
 
 implementation
 
-uses Unit2, protobuf_fpc;
+uses CommonTestTypesUnit, protobuf_fpc;
 
 {$R *.lfm}
 
@@ -103,6 +111,48 @@ begin
   T.Free;
 end;
 
+procedure TForm1.SavePeople;
+var
+  P, P1: TPeople;
+  S: TFileStream;
+begin
+  P:=TPeople.Create;
+  P.Code:=1;
+  P.FirstName:='Иван';
+  P.LastName:='Иванов';
+  S:=TFileStream.Create(DataFileName(1, 'People'), fmCreate);
+  P.SaveToStream(S);
+  S.Free;
+
+  P.Code:=Low(Int32);
+  P.FirstName:='Иван';
+  P.LastName:='Иванов';
+  S:=TFileStream.Create(DataFileName(3, 'People'), fmCreate);
+  P.SaveToStream(S);
+  S.Free;
+
+  P.Code:=-2;
+  P.FirstName:='Пётр';
+  P.LastName:='Петров';
+  S:=TFileStream.Create(DataFileName(2, 'People'), fmCreate);
+  P.SaveToStream(S);
+  S.Position:=0;
+
+  P1:=TPeople.Create;
+  P1.LoadFromStream(S);
+
+  if P1.Code <> P.Code then
+    ShowMessage('Код не совпадает');
+  if P1.FirstName <> P.FirstName then
+    ShowMessage('FirstName не совпадает');
+  if P1.LastName <> P.LastName then
+    ShowMessage('LastName не совпадает');
+
+  S.Free;
+  P1.Free;
+  P.Free;
+end;
+
 procedure TForm1.Button1Click(Sender: TObject);
 var
   T:TSerializationObject;
@@ -142,6 +192,7 @@ begin
         TDocumentList(T).Lines.Text:=Memo1.Text;
         TDocumentList(T).TotalCount:=Memo1.Lines.Count;
       end;
+    6:SavePeople;
   end;
   if not Assigned(T) then Exit;
 
@@ -151,9 +202,14 @@ begin
   T.Free;
 end;
 
-function TForm1.DataFileName(ANum: Integer): string;
+function TForm1.DataFileName(ANum: Integer; AName: string): string;
+var
+  S: String;
 begin
-  Result:=AppendPathDelim(ExtractFileDir(ParamStr(0))) + 'data' + PathDelim + Format('test%d.protobuf', [ANum]);
+  if AName = '' then AName:='test';
+  S:=ExtractFileDir(ParamStr(0));
+  S:=ExtractFileDir(S);
+  Result:=AppendPathDelim(S) + 'data' + PathDelim + Format('%s%d.protobuf', [AName, ANum]);
 end;
 
 end.

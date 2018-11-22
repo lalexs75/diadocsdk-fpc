@@ -49,9 +49,9 @@
         <UnitName Value="Unit1"/>
       </Unit1>
       <Unit2>
-        <Filename Value="unit2.pas"/>
+        <Filename Value="../common/commontesttypesunit.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Unit2"/>
+        <UnitName Value="CommonTestTypesUnit"/>
       </Unit2>
     </Units>
   </ProjectOptions>
@@ -62,6 +62,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="../common"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Linking>

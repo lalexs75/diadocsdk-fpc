@@ -18,7 +18,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="DDAPIMainUnit"/>
-        <TopLine Value="202"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="217"/>
         <CursorPos Y="208"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
@@ -649,7 +650,6 @@
       <Unit74>
         <Filename Value="../../Invoicing/diadoctypes_invoiceinfo.pas"/>
         <UnitName Value="DiadocTypes_InvoiceInfo"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <TopLine Value="36"/>
         <CursorPos X="11" Y="64"/>
@@ -1561,7 +1561,7 @@
         <UsageCount Value="10"/>
       </Unit188>
     </Units>
-    <JumpHistory Count="6" HistoryIndex="5">
+    <JumpHistory Count="5" HistoryIndex="4">
       <Position1>
         <Filename Value="ddapimainunit.pas"/>
         <Caret Line="159" Column="15" TopLine="130"/>
@@ -1579,11 +1579,7 @@
       </Position4>
       <Position5>
         <Filename Value="../../Invoicing/diadoctypes_invoiceinfo.pas"/>
-        <Caret Line="217" Column="34" TopLine="296"/>
       </Position5>
-      <Position6>
-        <Filename Value="../../Invoicing/diadoctypes_invoiceinfo.pas"/>
-      </Position6>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

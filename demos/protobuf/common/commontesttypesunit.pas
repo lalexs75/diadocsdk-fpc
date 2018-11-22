@@ -136,15 +136,48 @@ type
   //  required string DepartmentName = 2;
   //  repeated People Peoples = 3;
   //}
-  TPeople = class(TSerializationObject) //message People
+
+  { TDepartment }
+
+  TDepartment = class(TSerializationObject) //message Department
   private
+    FCode: int32;
+    FDepartmentName: string;
+    FPeoples: TPeoples;
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
+    destructor Destroy; override;
   published
+    property Code:int32 read FCode write FCode; //1;
+    property DepartmentName:string read FDepartmentName write FDepartmentName;//2;
+    property Peoples:TPeoples read FPeoples;//3;
+  end;
 
 implementation
+
+{ TDepartment }
+
+procedure TDepartment.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('Code', 1);
+  RegisterProp('DepartmentName', 2);
+  RegisterProp('Peoples', 3);
+end;
+
+procedure TDepartment.InternalInit;
+begin
+  inherited InternalInit;
+  FPeoples:=TPeoples.Create;
+end;
+
+destructor TDepartment.Destroy;
+begin
+  FreeAndNil(FPeoples);
+  inherited Destroy;
+end;
 
 { TPeople }
 
