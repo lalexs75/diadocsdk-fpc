@@ -649,10 +649,12 @@
       <Unit74>
         <Filename Value="../../Invoicing/diadoctypes_invoiceinfo.pas"/>
         <UnitName Value="DiadocTypes_InvoiceInfo"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="365"/>
-        <CursorPos X="15" Y="390"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="36"/>
+        <CursorPos X="11" Y="64"/>
         <UsageCount Value="22"/>
+        <Loaded Value="True"/>
       </Unit74>
       <Unit75>
         <Filename Value="../../Invoicing/diadoctypes_signer.pas"/>
@@ -1218,12 +1220,10 @@
       <Unit144>
         <Filename Value="../../diadoc_src/diadoctypes_organization.pas"/>
         <UnitName Value="DiadocTypes_Organization"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="256"/>
         <CursorPos Y="265"/>
         <UsageCount Value="14"/>
-        <Loaded Value="True"/>
       </Unit144>
       <Unit145>
         <Filename Value="../../../../../install/source/fpcsrc/rtl/objpas/sysutils/sysutilh.inc"/>
@@ -1561,7 +1561,7 @@
         <UsageCount Value="10"/>
       </Unit188>
     </Units>
-    <JumpHistory Count="4" HistoryIndex="3">
+    <JumpHistory Count="6" HistoryIndex="5">
       <Position1>
         <Filename Value="ddapimainunit.pas"/>
         <Caret Line="159" Column="15" TopLine="130"/>
@@ -1571,13 +1571,19 @@
         <Caret Line="208" TopLine="202"/>
       </Position2>
       <Position3>
-        <Filename Value="../../diadoc_src/diadoctypes_organization.pas"/>
-        <Caret Line="152" Column="3" TopLine="132"/>
+        <Filename Value="../../Invoicing/diadoctypes_invoiceinfo.pas"/>
+        <Caret Line="390" Column="15" TopLine="365"/>
       </Position3>
       <Position4>
-        <Filename Value="../../diadoc_src/diadoctypes_organization.pas"/>
-        <Caret Line="75" TopLine="46"/>
+        <Filename Value="../../Invoicing/diadoctypes_invoiceinfo.pas"/>
       </Position4>
+      <Position5>
+        <Filename Value="../../Invoicing/diadoctypes_invoiceinfo.pas"/>
+        <Caret Line="217" Column="34" TopLine="296"/>
+      </Position5>
+      <Position6>
+        <Filename Value="../../Invoicing/diadoctypes_invoiceinfo.pas"/>
+      </Position6>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
