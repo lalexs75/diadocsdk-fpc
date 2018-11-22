@@ -61,7 +61,8 @@ type
     Percent_20 = 4,
     Fraction_10_110 = 5,
     Fraction_18_118 = 6,
-    TaxedByAgent = 7
+    TaxedByAgent = 7,
+    Fraction_20_120 = 8
   );
 
   { TInvoiceItemAmountsDiff }

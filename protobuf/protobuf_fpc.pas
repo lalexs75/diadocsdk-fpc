@@ -274,15 +274,17 @@ begin
 end;
 
 function GSerializationObjectList.AddItem: GObjType;
-//var
-//  P: TSerializationObject;
+var
+  P: TSerializationObject;
 begin
   if Assigned(FDataClass) then
   begin
-    Result:=FDataClass.Create;
-//    P:=FDataClass.Create;
+//    Result:=FDataClass.Create;
+    P:=FDataClass.Create;
 //    Result:=P;
-    Add(Result);
+//    Add(Result);
+    Add(P);
+    Result:=GObjType(P);
   end
   else
     Result:=nil;
