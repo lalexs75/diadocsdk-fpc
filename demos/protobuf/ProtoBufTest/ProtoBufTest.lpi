@@ -46,14 +46,14 @@
         <UnitName Value="ProtoBufTestCase"/>
       </Unit1>
       <Unit2>
-        <Filename Value="googletesttypesunit.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="GoogleTestTypesUnit"/>
-      </Unit2>
-      <Unit3>
         <Filename Value="diadoctypesunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="DIADocTypesUnit"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="../common/commontesttypesunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="CommonTestTypesUnit"/>
       </Unit3>
     </Units>
   </ProjectOptions>
@@ -64,6 +64,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="../common"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Linking>

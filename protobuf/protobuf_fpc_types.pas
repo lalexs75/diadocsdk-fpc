@@ -39,10 +39,6 @@ interface
 uses
   Classes, SysUtils;
 
-type
-  sfixed64 = QWord;
-  sfixed32 = DWord;
-
 resourcestring
   sProtoBufUnknowPropType         = 'ProtoBuffer: Unknow property type - %s';
   sPropertyAlreadyRegistered      = 'ProtoBuffer: Property %s already registered';

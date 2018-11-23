@@ -43,6 +43,14 @@ uses
   Classes, SysUtils, protobuf_fpc_types;
 
 type
+  fixed64 = type QWord;
+  fixed32 = type DWord;
+  sfixed64 = type QWord;
+  sfixed32 = type DWord;
+  SInt32  = type system.Int32;
+  SInt64  = type system.Int64;
+
+type
   TSerializationBuffer = class;
   TSerializationObject = class;
   TSerializationPropertysEnumerator = class;
@@ -138,9 +146,16 @@ type
     function ReadAsInt64:Int64;
     function ReadAsQWord:QWord;
 
+    function ReadAsIntegerZZ:Integer;
+    function ReadAsInt64ZZ:Int64;
+
     procedure WriteAsInteger(P: TSerializationProperty; AValue:Integer);
-    procedure WriteAsString(P: TSerializationProperty; AValue:String);
     procedure WriteAsInt64(P: TSerializationProperty; AValue:Int64);
+
+    procedure WriteAsIntegerZZ(P: TSerializationProperty; AValue:Integer);
+    procedure WriteAsInt64ZZ(P: TSerializationProperty; AValue:Int64);
+
+    procedure WriteAsString(P: TSerializationProperty; AValue:String);
     procedure WriteAsQWord(P: TSerializationProperty; AValue:QWord);
     procedure WriteAsBytes(P: TSerializationProperty; AValue:TBytes);
     procedure WriteAsStream(P: TSerializationProperty; AStream:TStream);
@@ -585,8 +600,7 @@ var
 begin
   C:=P.FPropNum shl 3 + 0; //varint
   WriteVarInt(C);
-  //WriteVarInt(AValue);
-  WriteVarInt(EncodeValue32(AValue));
+  WriteVarInt(AValue);
 end;
 
 procedure TSerializationBuffer.WriteAsString(P: TSerializationProperty;
@@ -610,7 +624,26 @@ var
 begin
   C:=P.FPropNum shl 3 + 0; //varint
   WriteVarInt(C);
-  //WriteVarInt(AValue);
+  WriteVarInt(AValue);
+end;
+
+procedure TSerializationBuffer.WriteAsIntegerZZ(P: TSerializationProperty;
+  AValue: Integer);
+var
+  C: Integer;
+begin
+  C:=P.FPropNum shl 3 + 0; //varint
+  WriteVarInt(C);
+  WriteVarInt(EncodeValue32(AValue));
+end;
+
+procedure TSerializationBuffer.WriteAsInt64ZZ(P: TSerializationProperty;
+  AValue: Int64);
+var
+  C: Integer;
+begin
+  C:=P.FPropNum shl 3 + 0; //varint
+  WriteVarInt(C);
   WriteVarInt(EncodeValue64(AValue));
 end;
 
@@ -769,8 +802,7 @@ function TSerializationBuffer.ReadAsInteger: Integer;
 begin
   //Доработать поддержку знаковых чисел
   case FPropType of
-    //0:Result:=ReadVarInt; //Varint
-    0:Result:=DecodeValue32(ReadVarInt); //Varint
+    0:Result:=ReadVarInt; //Varint
     1:Result:=ReadInt64; //64-bit
     //2:Length-delimited - string, bytes, embedded messages, packed repeated fields
     //3:Start group - groups (deprecated)
@@ -819,6 +851,31 @@ begin
   {$IFDEF DEBUG}
   RxWriteLog(etDebug, 'ReadAsCardinal = %d', [Result]);
   {$ENDIF}
+end;
+
+function TSerializationBuffer.ReadAsIntegerZZ: Integer;
+begin
+  //Доработать поддержку знаковых чисел
+  case FPropType of
+    0:Result:=DecodeValue32(ReadVarInt); //Varint
+    1:Result:=ReadInt64; //64-bit
+    //2:Length-delimited - string, bytes, embedded messages, packed repeated fields
+    //3:Start group - groups (deprecated)
+    //4:End group   - groups (deprecated)
+    5:Result:=ReadInt32; //32-bit
+  else
+    Result:=0;
+    raise ESerializationException.Create(sProtoBufErrorReadIntegerValue);
+  end;
+
+  {$IFDEF DEBUG}
+  RxWriteLog(etDebug, 'ReadAsInteger = %d', [Result]);
+  {$ENDIF}
+end;
+
+function TSerializationBuffer.ReadAsInt64ZZ: Int64;
+begin
+
 end;
 
 { TSerializationObject }
@@ -909,6 +966,8 @@ var
   P: TSerializationProperty;
   Buf1: TSerializationBuffer;
   FProp: PPropInfo;
+  K: TTypeKind;
+  SS, STypeName: String;
 begin
   Result:=false;
   while not ABuf.Eof do
@@ -931,10 +990,10 @@ begin
         end;
         Continue;
       end;
-      if ABuf.FPropNum = 71 then
+{      if ABuf.FPropNum = 71 then
       begin
          P:=nil;
-      end;
+      end;}
       {$ENDIF}
 
       P:=FPropertys[ABuf.FPropNum];
@@ -961,6 +1020,7 @@ begin
             raise ESerializationException.CreateFmt(sProtoBufNotFondProperty, [P.PropName]);
 
           //Необходимо совместить определения типа читаемых данных по признаку из файла и из данных RTTI
+          K:=FProp^.PropType^.Kind;
           case FProp^.PropType^.Kind of
             tkChar,
             tkAString,
@@ -973,9 +1033,24 @@ begin
 
             tkQWord : SetOrdProp(Self, FProp, Ord(ABuf.ReadAsQWord));
 
-            tkInt64   : SetOrdProp(Self, FProp, ABuf.ReadAsInteger);
-            tkInteger : SetOrdProp(Self, FProp, ABuf.ReadAsInteger);
-{            tkSet                       : SetSetProp(t,PropInfo,S);
+            tkInt64   :
+               begin
+                 STypeName:=UpperCase(FProp^.PropType^.Name);
+                 if STypeName = 'SINT64' then
+                   SetOrdProp(Self, FProp, ABuf.ReadAsIntegerZZ)
+                 else
+                   SetOrdProp(Self, FProp, ABuf.ReadAsInteger);
+               end;
+            tkInteger :
+               begin
+                 STypeName:=UpperCase(FProp^.PropType^.Name);
+                 if STypeName = 'SINT32' then
+                   SetOrdProp(Self, FProp, ABuf.ReadAsIntegerZZ)
+                 else
+                   SetOrdProp(Self, FProp, ABuf.ReadAsInteger);
+               end;
+{
+  tkSet                       : SetSetProp(t,PropInfo,S);
             tkFloat                     : SetFloatProp(t,PropInfo, Value);}
             tkEnumeration : SetOrdProp(Self, FProp, Ord(ABuf.ReadAsInteger));
             tkClass : LoadClassData(FProp, P);
@@ -1028,6 +1103,7 @@ var
   K: TTypeKind;
   PArr: Pointer;
   L: Integer;
+  STypeName: String;
 begin
   for P in FPropertys do
   begin
@@ -1045,8 +1121,22 @@ begin
       tkBool : ABuf.WriteAsInteger(P, GetOrdProp(Self, FProp));
       tkQWord : ABuf.WriteAsQWord(P, GetOrdProp(Self, FProp));
       //tkInt64   : SetOrdProp(Self, FProp, ABuf.ReadAsInteger);
-      tkInt64   : ABuf.WriteAsInt64(P, GetInt64Prop(Self, FProp));
-      tkInteger : ABuf.WriteAsInteger(P, GetInt64Prop(Self, FProp));
+      tkInt64   :
+        begin
+          STypeName:=UpperCase(FProp^.PropType^.Name);
+          if STypeName = 'SINT64' then
+            ABuf.WriteAsInt64ZZ(P, GetInt64Prop(Self, FProp))
+          else
+            ABuf.WriteAsInt64(P, GetInt64Prop(Self, FProp));
+        end;
+      tkInteger :
+        begin
+          STypeName:=UpperCase(FProp^.PropType^.Name);
+          if STypeName = 'SINT32' then
+            ABuf.WriteAsIntegerZZ(P, GetInt64Prop(Self, FProp))
+          else
+            ABuf.WriteAsInteger(P, GetInt64Prop(Self, FProp));
+        end;
       tkEnumeration : ABuf.WriteAsInteger(P, GetOrdProp(Self, FProp));
       tkDynArray:begin
                    PArr:=GetDynArrayProp(Self, FProp);

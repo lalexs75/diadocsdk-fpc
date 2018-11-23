@@ -167,6 +167,7 @@ end;
 
 function DocumentTypeToDescription(ADocumentType: TDocumentType): string;
 begin
+  Result:='';
   case ADocumentType of
     Nonformalized:Result:='Неформализованный документ';
     Invoice:Result:='Счет-фактура';

@@ -3,8 +3,8 @@ program ProtoBufTest;
 {$mode objfpc}{$H+}
 
 uses
-  Interfaces, Forms, GuiTestRunner, ProtoBufTestCase, GoogleTestTypesUnit,
-  DIADocTypesUnit;
+  Interfaces, Forms, GuiTestRunner, ProtoBufTestCase,
+  DIADocTypesUnit, CommonTestTypesUnit;
 
 {$R *.res}
 

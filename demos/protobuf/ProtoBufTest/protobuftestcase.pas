@@ -15,6 +15,7 @@ type
   protected
     function GetTestStream(ATestName:string):TStream;
   published
+    procedure ZigZagTest;
     procedure SimpleCreate1;
     procedure Test1Read;
     procedure Test2Read;
@@ -24,7 +25,7 @@ type
 
 implementation
 
-uses FileUtil, LazFileUtils, GoogleTestTypesUnit, DIADocTypesUnit;
+uses FileUtil, LazFileUtils, protobuf_fpc, CommonTestTypesUnit, DIADocTypesUnit;
 
 procedure TProtobufTest.SimpleCreate1;
 var
@@ -123,6 +124,52 @@ begin
     Result:=TFileStream.Create(AFileName, fmOpenRead)
   else
     Result:=nil;
+end;
+
+procedure TProtobufTest.ZigZagTest;
+begin
+  AssertEquals(0, EncodeValue32(0));
+  AssertEquals(1, EncodeValue32(-1));
+  AssertEquals(2, EncodeValue32(1));
+  AssertEquals(3, EncodeValue32(-2));
+  AssertEquals(4, EncodeValue32(2));
+  AssertEquals(4294967294, EncodeValue32(2147483647));
+  AssertEquals(4294967295, EncodeValue32(-2147483648));
+(*
+
+  WriteLog(0, '');
+  WriteLog(0, 'Decode:');
+  WriteLogFmt(0, '%15U -- %15d = %d', [         0,            0, DecodeValue32(0) ] );
+  WriteLogFmt(0, '%15U -- %15d = %d', [         1,           -1, DecodeValue32(1)]);
+  WriteLogFmt(0, '%15U -- %15d = %d', [         2,            1, DecodeValue32(2)]);
+  WriteLogFmt(0, '%15U -- %15d = %d', [         3,           -2, DecodeValue32(3)]);
+  WriteLogFmt(0, '%15U -- %15d = %d', [         4,            2, DecodeValue32(4)]);
+  WriteLogFmt(0, '%15U -- %15d = %d', [4294967294,   2147483647, DecodeValue32(4294967294)]);
+  WriteLogFmt(0, '%15U -- %15d = %d', [4294967295,  -2147483648, DecodeValue32(4294967295)]);
+
+
+  WriteLog(1, 'Encode:');
+  WriteLogFmt(1, '%22d -- %22U = %U', [         0,            0, EncodeValue64(0) ] );
+  WriteLogFmt(1, '%22d -- %22U = %U', [        -1,            1, EncodeValue64(-1)]);
+  WriteLogFmt(1, '%22d -- %22U = %U', [         1,            2, EncodeValue64(1)]);
+  WriteLogFmt(1, '%22d -- %22U = %U', [        -2,            3, EncodeValue64(-2)]);
+  WriteLogFmt(1, '%22d -- %22U = %U', [         2,            4, EncodeValue64(2)]);
+  WriteLogFmt(1, '%22d -- %22U = %U', [ 2147483647,  4294967294, EncodeValue64(2147483647)]);
+  WriteLogFmt(1, '%22d -- %22U = %U', [-2147483648,  4294967295, EncodeValue64(-2147483648)]);
+  WriteLogFmt(1, '%22d -- %22U = %U', [ 9223372036854775807,  18446744073709551614, EncodeValue64(9223372036854775807)]);
+  WriteLogFmt(1, '%22d -- %22U = %U', [-9223372036854775808,  18446744073709551615, EncodeValue64(-9223372036854775808)]);
+  WriteLog(1, '');
+  WriteLog(1, 'Decode:');
+  WriteLogFmt(1, '%22U -- %22d = %d', [         0,            0, DecodeValue64(0) ] );
+  WriteLogFmt(1, '%22U -- %22d = %d', [         1,           -1, DecodeValue64(1)]);
+  WriteLogFmt(1, '%22U -- %22d = %d', [         2,            1, DecodeValue64(2)]);
+  WriteLogFmt(1, '%22U -- %22d = %d', [         3,           -2, DecodeValue64(3)]);
+  WriteLogFmt(1, '%22U -- %22d = %d', [         4,            2, DecodeValue64(4)]);
+  WriteLogFmt(1, '%22U -- %22d = %d', [4294967294,   2147483647, DecodeValue64(4294967294)]);
+  WriteLogFmt(1, '%22U -- %22d = %d', [4294967295,  -2147483648, DecodeValue64(4294967295)]);
+  WriteLogFmt(1, '%22U -- %22d = %d', [18446744073709551614,   9223372036854775807, DecodeValue64(18446744073709551614)]);
+  WriteLogFmt(1, '%22U -- %22d = %d', [18446744073709551615,  -9223372036854775808, DecodeValue64(18446744073709551615)]);
+*)
 end;
 
 initialization

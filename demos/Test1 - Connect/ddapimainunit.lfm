@@ -26,9 +26,9 @@ object DDAPIMainForm: TDDAPIMainForm
     Height = 586
     Top = 0
     Width = 1123
-    ActivePage = TabSheet4
+    ActivePage = TabSheet5
     Align = alClient
-    TabIndex = 3
+    TabIndex = 1
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = 'Параметры'
@@ -452,19 +452,19 @@ object DDAPIMainForm: TDDAPIMainForm
           ClientHeight = 520
           ClientWidth = 913
           object Panel1: TPanel
-            Left = 790
-            Height = 530
+            Left = 731
+            Height = 520
             Top = 0
             Width = 182
             Align = alRight
-            ClientHeight = 530
+            ClientHeight = 520
             ClientWidth = 182
             TabOrder = 0
             object Button7: TButton
               Left = 32
-              Height = 25
+              Height = 31
               Top = 40
-              Width = 122
+              Width = 133
               AutoSize = True
               Caption = 'GetCounteragents'
               OnClick = Button7Click
@@ -472,9 +472,9 @@ object DDAPIMainForm: TDDAPIMainForm
             end
             object Button8: TButton
               Left = 32
-              Height = 25
+              Height = 31
               Top = 80
-              Width = 105
+              Width = 111
               AutoSize = True
               Caption = 'GetDocuments'
               OnClick = Button8Click
@@ -482,18 +482,18 @@ object DDAPIMainForm: TDDAPIMainForm
             end
             object Button9: TButton
               Left = 32
-              Height = 25
+              Height = 31
               Top = 120
-              Width = 131
+              Width = 143
               AutoSize = True
               Caption = 'GetDocumentTypes'
               TabOrder = 2
             end
             object Button5: TButton
               Left = 32
-              Height = 25
+              Height = 31
               Top = 152
-              Width = 110
+              Width = 115
               AutoSize = True
               Caption = 'Find contragent'
               OnClick = Button5Click
@@ -501,9 +501,9 @@ object DDAPIMainForm: TDDAPIMainForm
             end
             object Button2: TButton
               Left = 8
-              Height = 25
+              Height = 31
               Top = 184
-              Width = 165
+              Width = 189
               AutoSize = True
               Caption = 'GetOrganizationsByInnList'
               OnClick = Button2Click

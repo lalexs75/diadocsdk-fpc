@@ -15,11 +15,11 @@ type
 
   TTest1 = class(TSerializationObject)
   private
-    Fa: int32;
+    Fa: Int32;
   protected
     procedure InternalRegisterProperty; override;
   published
-    property a:int32 read Fa write Fa;//1;
+    property a:Int32 read Fa write Fa;//1;
   end;
 
 
@@ -87,7 +87,7 @@ type
   end;
 
   //message DocumentList {
-  //  required int32 TotalCount = 1;
+  //  required Int32 TotalCount = 1;
   //  repeated string Lines = 2;
   //}
 
@@ -108,7 +108,7 @@ type
   end;
 
   //message People {
-  //  required int32 Code = 1;
+  //  required Int32 Code = 1;
   //  required string FirstName = 2;
   //  optional string LastName = 3;
   //}
@@ -117,7 +117,7 @@ type
 
   TPeople = class(TSerializationObject) //message People
   private
-    FCode: int32;
+    FCode: Int32;
     FFirstName: string;
     FLastName: string;
   protected
@@ -125,14 +125,14 @@ type
     procedure InternalInit; override;
   public
   published
-    property Code:int32 read FCode write FCode; //1;
+    property Code:Int32 read FCode write FCode; //1;
     property FirstName:string read FFirstName write FFirstName;//2;
     property LastName:string read FLastName write FLastName;//3;
   end;
   TPeoples = specialize GSerializationObjectList<TPeople>;
 
   //message Department {
-  //  required int32 Code = 1;
+  //  required Int32 Code = 1;
   //  required string DepartmentName = 2;
   //  repeated People Peoples = 3;
   //}
@@ -141,7 +141,7 @@ type
 
   TDepartment = class(TSerializationObject) //message Department
   private
-    FCode: int32;
+    FCode: Int32;
     FDepartmentName: string;
     FPeoples: TPeoples;
   protected
@@ -150,12 +150,84 @@ type
   public
     destructor Destroy; override;
   published
-    property Code:int32 read FCode write FCode; //1;
+    property Code:Int32 read FCode write FCode; //1;
     property DepartmentName:string read FDepartmentName write FDepartmentName;//2;
     property Peoples:TPeoples read FPeoples;//3;
   end;
 
+  { TPerson }
+
+  TPerson = class(TSerializationObject)
+  private
+    FEMail: string;
+    FId: Int32;
+    FName: string;
+  protected
+    procedure InternalInit; override;
+    procedure InternalRegisterProperty; override;
+  public
+  published
+    property Name:string read FName write FName;//1;
+    property Id:Int32 read FId write FId; //2;
+    property EMail:string read FEMail write FEMail;//3;
+  end;
+
+
+  //message SearchRequest {
+  //  required string query = 1;
+  //  optional pbInt32 page_number = 2;
+  //  optional pbInt32 result_per_page = 3;
+  //}
+
+  { TSearchRequest }
+
+  TSearchRequest= class(TSerializationObject)
+  private
+    Fpage_number: Int32;
+    Fquery: string;
+    Fresult_per_page: Int32;
+  protected
+    procedure InternalInit; override;
+    procedure InternalRegisterProperty; override;
+  public
+  published
+    property query:string read Fquery write Fquery; //1;
+    property page_number:Int32 read Fpage_number write Fpage_number;//2;
+    property result_per_page:Int32 read Fresult_per_page write Fresult_per_page;//3;
+  end;
+
 implementation
+
+
+{ TPerson }
+
+procedure TPerson.InternalInit;
+begin
+  inherited InternalInit;
+end;
+
+procedure TPerson.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('Name', 1);
+  RegisterProp('Id', 2);
+  RegisterProp('EMail', 3);
+end;
+
+{ TSearchRequest }
+
+procedure TSearchRequest.InternalInit;
+begin
+  inherited InternalInit;
+end;
+
+procedure TSearchRequest.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('query', 1);
+  RegisterProp('page_number', 2);
+  RegisterProp('result_per_page', 3);
+end;
 
 { TDepartment }
 
