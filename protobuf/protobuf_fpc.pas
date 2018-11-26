@@ -171,15 +171,17 @@ type
     procedure InternalRegisterProperty; virtual;
     procedure InternalInit; virtual;
     procedure RegisterProp(APropName:string; APropNum:Integer; ARequired:boolean = false; AObjClass:TSerializationObjectClass = nil);
+    function LoadFromSerializationBuffer(ABuf:TSerializationBuffer):boolean;
   public
     constructor Create; virtual;
     destructor Destroy; override;
     function LoadFromStream(AStream:TStream):boolean;
-    function LoadFromSerializationBuffer(ABuf:TSerializationBuffer):boolean;
+    function LoadFromFile(AFileName:string):boolean;
 
     function SaveToSerializationBuffer(ABuf:TSerializationBuffer):boolean;
     function SaveToStream(AStream:TStream):boolean; overload;
     function SaveToStream:TStream; overload;
+    function SaveToFile(AFileName:string):boolean;
   end;
 
   { TSerializationObjectList }
@@ -325,10 +327,7 @@ var
 begin
   if Assigned(FDataClass) then
   begin
-//    Result:=FDataClass.Create;
     P:=FDataClass.Create;
-//    Result:=P;
-//    Add(Result);
     Add(P);
     Result:=GObjType(P);
   end
@@ -909,6 +908,15 @@ begin
   Result:=true;
 end;
 
+function TSerializationObject.LoadFromFile(AFileName: string): boolean;
+var
+  S: TFileStream;
+begin
+  S:=TFileStream.Create(AFileName, fmOpenRead);
+  Result:=LoadFromStream(S);
+  S.Free;
+end;
+
 function TSerializationObject.LoadFromSerializationBuffer(
   ABuf: TSerializationBuffer): boolean;
 
@@ -1072,6 +1080,8 @@ procedure SaveClassData(AProp: PPropInfo; APropReg: TSerializationProperty);
 var
   Buf1: TSerializationBuffer;
   FInst: TObject;
+  i: Integer;
+  P: TSerializationObject;
 begin
   FInst := TObject(PtrInt( GetOrdProp(Self, AProp)));
   if not Assigned(FInst) then Exit;
@@ -1081,17 +1091,29 @@ begin
       TSerializationArray(FInst).SaveToBuf(ABuf, APropReg)
     else
     begin
-      Buf1:=TSerializationBuffer.Create;
-
       if FInst is TSerializationObjectList then
-        //TSerializationObjectList(FInst).CreateItem(Buf1)
-        AbstractError
+      begin
+        for i:=0 to TSerializationObjectList(FInst).Count-1 do
+        begin
+          Buf1:=TSerializationBuffer.Create;
+
+          P:=TSerializationObject(TSerializationObjectList(FInst).FList[i]);
+          P.SaveToSerializationBuffer(Buf1);
+
+          ABuf.WriteAsStream(APropReg, Buf1.Stream);
+          Buf1.Free;
+        end;
+        //AbstractError
+      end
       else
       if FInst is TSerializationObject then
+      begin
+        Buf1:=TSerializationBuffer.Create;
         TSerializationObject(FInst).SaveToSerializationBuffer(Buf1);
+        ABuf.WriteAsStream(APropReg, Buf1.Stream);
+        Buf1.Free;
+      end;
 
-      ABuf.WriteAsStream(APropReg, Buf1.Stream);
-      Buf1.Free;
     end;
   end;
 
@@ -1170,6 +1192,15 @@ function TSerializationObject.SaveToStream: TStream;
 begin
   Result:=TMemoryStream.Create;
   SaveToStream(Result);
+end;
+
+function TSerializationObject.SaveToFile(AFileName: string): boolean;
+var
+  S: TFileStream;
+begin
+  S:=TFileStream.Create(AFileName, fmCreate);
+  SaveToStream(S);
+  S.Free;
 end;
 
 procedure TSerializationObject.InternalRegisterProperty;

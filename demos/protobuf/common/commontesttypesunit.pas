@@ -12,7 +12,6 @@ type
   //message Test1 {
   //  optional int32 a = 1;
   //}
-
   TTest1 = class(TSerializationObject)
   private
     Fa: Int32;
@@ -37,12 +36,10 @@ type
   end;
 
 
+  { TTest3 }
   //message Test3 {
   //  optional Test1 c = 3;
   //}
-
-  { TTest3 }
-
   TTest3 = class(TSerializationObject)
   private
     Fc: TTest1;
@@ -56,6 +53,7 @@ type
   end;
 
 
+  { TSignedContent }
   //message SignedContent {
   //	optional bytes Content = 1;
   //	optional bytes Signature = 2;
@@ -63,9 +61,6 @@ type
   //	optional bool SignWithTestSignature = 5 [default = false];
   //	optional string SignatureNameOnShelf = 6;
   //}
-
-  { TSignedContent }
-
   TSignedContent = class(TSerializationObject) //message SignedContent
   private
     FContent: TBytes;
@@ -86,13 +81,11 @@ type
     property SignatureNameOnShelf:string read FSignatureNameOnShelf write FSignatureNameOnShelf;//6;
   end;
 
+  { TDocumentList }
   //message DocumentList {
   //  required Int32 TotalCount = 1;
   //  repeated string Lines = 2;
   //}
-
-  { TDocumentList }
-
   TDocumentList = class(TSerializationObject) //message SignedContent
   private
     FLines: TDocumentStrings;
@@ -107,14 +100,13 @@ type
     property Lines:TDocumentStrings read FLines; //2;
   end;
 
+
+   { TPeople }
   //message People {
   //  required Int32 Code = 1;
   //  required string FirstName = 2;
   //  optional string LastName = 3;
   //}
-
-  { TPeople }
-
   TPeople = class(TSerializationObject) //message People
   private
     FCode: Int32;
@@ -131,14 +123,12 @@ type
   end;
   TPeoples = specialize GSerializationObjectList<TPeople>;
 
+  { TDepartment }
   //message Department {
   //  required Int32 Code = 1;
   //  required string DepartmentName = 2;
   //  repeated People Peoples = 3;
   //}
-
-  { TDepartment }
-
   TDepartment = class(TSerializationObject) //message Department
   private
     FCode: Int32;
@@ -156,7 +146,11 @@ type
   end;
 
   { TPerson }
-
+  //message Person {
+  //  required string Name = 1;
+  //  optional Int32 Id = 2;
+  //  optional string EMail = 3;
+  //}
   TPerson = class(TSerializationObject)
   private
     FEMail: string;
@@ -173,14 +167,12 @@ type
   end;
 
 
+  { TSearchRequest }
   //message SearchRequest {
   //  required string query = 1;
-  //  optional pbInt32 page_number = 2;
-  //  optional pbInt32 result_per_page = 3;
+  //  optional Int32 page_number = 2;
+  //  optional Int32 result_per_page = 3;
   //}
-
-  { TSearchRequest }
-
   TSearchRequest= class(TSerializationObject)
   private
     Fpage_number: Int32;

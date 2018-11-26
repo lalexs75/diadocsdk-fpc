@@ -52,6 +52,7 @@ type
     procedure Button2Click(Sender: TObject);
   private
     procedure SavePeople;
+    procedure SaveDepartmet;
   public
     function DataFileName(ANum:Integer; AName:string = ''):string;
   end;
@@ -153,6 +154,17 @@ begin
   P.Free;
 end;
 
+procedure TForm1.SaveDepartmet;
+var
+  D: TDepartment;
+begin
+  D:=TDepartment.Create;
+  D.Code:=1;
+  D.DepartmentName:='Подразделение № 1';
+  D.SaveToStream();
+  D.Free;
+end;
+
 procedure TForm1.Button1Click(Sender: TObject);
 var
   T:TSerializationObject;
@@ -192,7 +204,8 @@ begin
         TDocumentList(T).Lines.Text:=Memo1.Text;
         TDocumentList(T).TotalCount:=Memo1.Lines.Count;
       end;
-    6:SavePeople;
+    5:SavePeople;
+    6:SaveDepartmet;
   end;
   if not Assigned(T) then Exit;
 

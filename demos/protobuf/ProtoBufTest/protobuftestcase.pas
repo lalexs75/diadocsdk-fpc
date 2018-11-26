@@ -14,6 +14,7 @@ type
   TProtobufTest= class(TTestCase)
   protected
     function GetTestStream(ATestName:string):TStream;
+    function GetTestForWriteStream(ATestName:string):TStream;
   published
     procedure ZigZagTest;
     procedure SimpleCreate1;
@@ -21,11 +22,37 @@ type
     procedure Test2Read;
     procedure Test3Read;
     procedure DiaDocAdressRead;
+    procedure SaveCollentions;
+    procedure LoadCollentions;
   end;
 
 implementation
 
 uses FileUtil, LazFileUtils, protobuf_fpc, CommonTestTypesUnit, DIADocTypesUnit;
+
+type
+  TPeopleData = record
+    Code:integer;
+    FirstName:string;
+    LastName:string;
+  end;
+
+const
+  PeopleDataArray : array [1..4] of TPeopleData =
+    (
+      (Code:1;
+       FirstName:'Иван';
+       LastName:'Иванов'),
+      (Code:2;
+       FirstName:'Пётр';
+       LastName:'Петров'),
+      (Code:3;
+       FirstName:'Сидор';
+       LastName:'Сидоров'),
+      (Code:4;
+       FirstName:'John';
+       LastName:'Smith')
+    );
 
 procedure TProtobufTest.SimpleCreate1;
 var
@@ -114,6 +141,53 @@ begin
   end;
 end;
 
+procedure TProtobufTest.SaveCollentions;
+var
+  D: TDepartment;
+  P: TPeople;
+  S: TStream;
+  R: TPeopleData;
+begin
+  D:=TDepartment.Create;
+  D.Code:=1;
+  D.DepartmentName:='Упраление № 1';
+  for R in PeopleDataArray do
+  begin
+    P:=D.Peoples.AddItem;
+    P.Code:=R.Code;
+    P.FirstName:=R.FirstName;
+    P.LastName:=R.LastName;
+  end;
+
+  S:=GetTestForWriteStream('Collentions_TDepartment');
+  D.SaveToStream(S);
+  S.Free;
+  D.Free;
+end;
+
+procedure TProtobufTest.LoadCollentions;
+var
+  D: TDepartment;
+  S: TStream;
+  P: TPeople;
+  i, J: Integer;
+begin
+  D:=TDepartment.Create;
+  S:=GetTestStream('Collentions_TDepartment');
+  D.LoadFromStream(S);
+  S.Free;
+  J:=D.Peoples.Count;
+  J:=High(PeopleDataArray);
+  for i:=1 to J do
+  begin
+    P:=D.Peoples[i-1];
+    AssertEquals(PeopleDataArray[i].Code, P.Code);
+    AssertEquals(PeopleDataArray[i].FirstName, P.FirstName);
+    AssertEquals(PeopleDataArray[i].LastName, P.LastName);
+  end;
+  D.Free;
+end;
+
 function TProtobufTest.GetTestStream(ATestName: string): TStream;
 var
   AFileName: String;
@@ -126,6 +200,18 @@ begin
     Result:=nil;
 end;
 
+function TProtobufTest.GetTestForWriteStream(ATestName: string): TStream;
+var
+  AFileName: String;
+begin
+  AFileName:=ExtractFileDir(ParamStr(0));
+  AFileName:=AppendPathDelim(ExtractFileDir(AFileName)) + AppendPathDelim('data') + ChangeFileExt(ATestName, '.protobuf') ;
+//  if FileExists(AFileName) then
+    Result:=TFileStream.Create(AFileName, fmCreate)
+{  else
+    Result:=nil;}
+end;
+
 procedure TProtobufTest.ZigZagTest;
 begin
   AssertEquals(0, EncodeValue32(0));
@@ -135,6 +221,18 @@ begin
   AssertEquals(4, EncodeValue32(2));
   AssertEquals(4294967294, EncodeValue32(2147483647));
   AssertEquals(4294967295, EncodeValue32(-2147483648));
+
+  AssertEquals(0,EncodeValue64(0)); ;
+(*  WriteLogFmt(1, '%22d -- %22U = %U', [        -1,            1, EncodeValue64(-1)]);
+  WriteLogFmt(1, '%22d -- %22U = %U', [         1,            2, EncodeValue64(1)]);
+  WriteLogFmt(1, '%22d -- %22U = %U', [        -2,            3, EncodeValue64(-2)]);
+  WriteLogFmt(1, '%22d -- %22U = %U', [         2,            4, EncodeValue64(2)]);
+  WriteLogFmt(1, '%22d -- %22U = %U', [ 2147483647,  4294967294, EncodeValue64(2147483647)]);
+  WriteLogFmt(1, '%22d -- %22U = %U', [-2147483648,  4294967295, EncodeValue64(-2147483648)]);
+  WriteLogFmt(1, '%22d -- %22U = %U', [ 9223372036854775807,  18446744073709551614, EncodeValue64(9223372036854775807)]);
+  WriteLogFmt(1, '%22d -- %22U = %U', [-9223372036854775808,  18446744073709551615, EncodeValue64(-9223372036854775808)]);
+*)
+
 (*
 
   WriteLog(0, '');
