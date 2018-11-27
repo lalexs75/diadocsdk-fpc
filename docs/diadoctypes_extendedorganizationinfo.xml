@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_ExtendedOrganizationInfo"><element name="TExtendedOrganizationInfo"><short>Структура данных ExtendedOrganizationInfo служит для представления реквизитов организаций-контрагентов</short><descr>при формировании счетов-фактур (см. InvoiceInfo), товарных накладных (см. Torg12SellerTitleInfo), актов о выполнении работ / оказании услуг (см. AcceptanceCertificateSellerTitleInfo) и универсальных передаточных документов в «новом» XML-формате.
+</descr>
+      </element><element name="TExtendedOrganizationInfo.BoxId"><short>идентификатор ящика в Диадоке</short><descr>при заполнении BoxID в протобуфер подставляются значения OrgName, Inn, Kpp, Address, FnsParticipantId.
+</descr>
+      </element><element name="TExtendedOrganizationInfo.OrgName"><short>наименование организации (НаимОрг)</short>
+      </element><element name="TExtendedOrganizationInfo.Inn"><short>ИНН организации (ИННФЛ/ИНН)</short>
+      </element><element name="TExtendedOrganizationInfo.Kpp"><short>КПП организации (КПП)</short>
+      </element><element name="TExtendedOrganizationInfo.Address"><short>адрес</short><descr>передаётся в структуре :doc: ../Address (Адрес)
+</descr>
+      </element><element name="TExtendedOrganizationInfo.FnsParticipantId"><short>ФНС идентификатор участника электронного документоооборота</short>
+      </element><element name="TExtendedOrganizationInfo.OrgType"><short>тип юридического лица. (СвИП/СвЮЛУч/СвИнНеУч)</short>
+      </element><element name="TExtendedOrganizationInfo.Okopf"><short>код организационно-правовой формы по ОКОПФ</short>
+      </element><element name="TExtendedOrganizationInfo.Okpo"><short>код в общероссийском классификаторе организаций и предприятий, ОКПО</short>
+      </element><element name="TExtendedOrganizationInfo.Okdp"><short>код основного вида деятельности по ОКДП</short>
+      </element><element name="TExtendedOrganizationInfo.Phone"><short>номер контактного телефона и/или номер факса.</short><descr>В отличие от протобуфере OrganizationInfo для телефона и факса используется одно поле
+</descr>
+      </element><element name="TExtendedOrganizationInfo.Email"><short>контактный Email</short>
+      </element><element name="TExtendedOrganizationInfo.CorrespondentAccount"><short>кор. счёт</short>
+      </element><element name="TExtendedOrganizationInfo.BankAccountNumber"><short>номер банковского счета организации</short>
+      </element><element name="TExtendedOrganizationInfo.BankName"><short>наименование банка</short>
+      </element><element name="TExtendedOrganizationInfo.BankId"><short>банковский идентификационный код (БИК)</short>
+      </element><element name="TExtendedOrganizationInfo.Department"><short>структурное подразделение организации</short><descr>указывается если в контексте использования протобуфера помогает для идентификации лица (СтруктПодр)
+</descr>
+      </element><element name="TExtendedOrganizationInfo.OrganizationAdditionalInfo"><short>иные сведения, идентифицирующие лицо (ИнфДляУчаст)</short>
+      </element><element name="TExtendedOrganizationInfo.IndividualEntityRegistrationCertificate"><short>реквизиты свидетельства о государственной регистрации ИП (СвГосРегИп)</short>
+      </element><element name="TExtendedOrganizationInfo.Country"><short>Страна</short>
+      </element><element name="TExtendedOrganizationInfo.OrganizationOrPersonInfo"><short>Иные сведения, идентифицирующие ФЛ или ЮЛ</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>
