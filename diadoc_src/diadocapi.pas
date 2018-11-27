@@ -1185,10 +1185,10 @@ begin
     AddURLParam(S, 'disableValidation');
 
   F:=ASellerInfo.SaveToStream;
-  if SendCommand(hmGET, 'GenerateUniversalTransferDocumentXmlForSeller', S, F) then
+  if SendCommand(hmPOST, 'GenerateUniversalTransferDocumentXmlForSeller', S, F) then
   begin
     {$IFDEF DIADOC_DEBUG}
-    SaveProtobuf('GeneratePrintForm.bin');
+    SaveProtobuf('GeneratePrintForm.xml');
     {$ENDIF}
     FHTTP.Document.Position:=0;
     if FHTTP.ResultCode = 200 then

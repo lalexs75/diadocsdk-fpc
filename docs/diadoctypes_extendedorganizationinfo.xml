@@ -26,6 +26,11 @@
       </element><element name="TExtendedOrganizationInfo.IndividualEntityRegistrationCertificate"><short>реквизиты свидетельства о государственной регистрации ИП (СвГосРегИп)</short>
       </element><element name="TExtendedOrganizationInfo.Country"><short>Страна</short>
       </element><element name="TExtendedOrganizationInfo.OrganizationOrPersonInfo"><short>Иные сведения, идентифицирующие ФЛ или ЮЛ</short>
+      </element><element name="TOrgType"><short>Тип контрагента</short>
+      </element><element name="TOrgType.LegalEntity"><short>Сведения о юридическом лице, состоящем на учете в налоговых органах</short>
+      </element><element name="TOrgType.IndividualEntity"><short>Сведения об индивидуальном предпринимателе// СвИП</short>
+      </element><element name="TOrgType.ForeignEntity"><short>Сведения об иностранном лице, не состоящем на учете в налоговых органах // СвЮлНеУч</short>
+      </element><element name="TOrgType.PhysicalEntity"><short>Сведения о физическом лице // СвФл</short>
       </element>
     </module>
   </package>
