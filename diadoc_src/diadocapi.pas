@@ -3462,7 +3462,7 @@ begin
     raise EDiadocException.Create(sNotDefinedBoxId);
 
   S:='';
-  FFilterCategory:=DocumentTypeFilter(ADocumentType) + '.' + DocumentClassFilter(ADocumentClass);
+  FFilterCategory:=DocumentTypeFilter(ADocumentType) + '.' + DocumentClassFilter(ADocumentClass)+DocumentFilterStatusStr(ADocumentStatus);
   AddURLParam(S, 'boxId', ABoxId); //идентификатор ящика, в котором осуществляется поиск документов;
   AddURLParam(S, 'filterCategory', FFilterCategory); //статус, по которому требуется отфильтровать список документов;
 

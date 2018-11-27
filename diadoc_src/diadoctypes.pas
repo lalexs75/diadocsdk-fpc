@@ -116,6 +116,7 @@ type
 
 function DocumentClassFilter(ADocumentClass:TDocumentFilterClass):string;
 function ReqestCounteragentStatusStr(AStatus:TReqestCounteragentStatus):string;
+function DocumentFilterStatusStr(ADocumentFilterStatus:TDocumentFilterStatus):string;
 implementation
 function DocumentClassFilter(ADocumentClass: TDocumentFilterClass): string;
 begin
@@ -125,6 +126,49 @@ begin
     dfcInternal:Result:='Internal'; //(внутренний документ)
   end
 end;
+
+function DocumentFilterStatusStr(ADocumentFilterStatus:TDocumentFilterStatus):string;
+begin
+  case ADocumentFilterStatus of
+    dfsNotRead:Result:='NotRead';                                                      //(документ не прочитан),
+    dfsNoRecipientSignatureRequest:Result:='NoRecipientSignatureRequest';              //(документ без запроса ответной подписи),
+    dfsWaitingForRecipientSignature:Result:='WaitingForRecipientSignature';            //(документ в ожидании ответной подписи),
+    dfsWithRecipientSignature:Result:='WithRecipientSignature';                        //(документ с ответной подписью),
+    dfsWithSenderSignature:Result:='WithSenderSignature';                              //(документ с подписью отправителя),
+    dfsRecipientSignatureRequestRejected:Result:='RecipientSignatureRequestRejected';  //(документ с отказом от формирования ответной подписи),
+    dfsWaitingForSenderSignature:Result:='WaitingForSenderSignature';                  //(документ, требующий подписания и отправки),
+    dfsInvalidSenderSignature:Result:='InvalidSenderSignature';                        //(документ с невалидной подписью отправителя, требующий повторного подписания и отправки),
+    dfsInvalidRecipientSignature:Result:='InvalidRecipientSignature';                  //(документ с невалидной подписью получателя, требующий повторного подписания и отправки),
+    dfsApproved:Result:='Approved';                                                    //(согласованный документ),
+    dfsDisapproved:Result:='Disapproved';                                              //(документ с отказом согласования),
+    dfsWaitingForResolution:Result:='WaitingForResolution';                            //(документ, находящийся на согласовании или подписи),
+    dfsSignatureRequestRejected:Result:='SignatureRequestRejected';                    //(документ с отказом в запросе подписи сотруднику),
+    dfsFinished:Result:='Finished';                                                    //(документ с завершенным документооборотом),
+    dfsHaveToCreateReceipt:Result:='HaveToCreateReceipt';                              //(требуется подписать извещение о получении),
+    dfsNotFinished:Result:='NotFinished';                                              //(документ с незавершенным документооборотом),
+    dfsInvoiceAmendmentRequested:Result:='InvoiceAmendmentRequested';                  //(имеет смысл только для счетов-фактур; документ, по которому было запрошено уточнение),
+    dfsRevocationIsRequestedByMe:Result:='RevocationIsRequestedByMe';                  //(документ, по которому было запрошено аннулирование),
+    dfsRequestsMyRevocation:Result:='RequestsMyRevocation';                            //(документ, по которому контрагент запросил аннулирование),
+    dfsRevocationAccepted:Result:='RevocationAccepted';                                //(аннулированный документ),
+    dfsRevocationRejected:Result:='RevocationRejected';                                //(документ, запрос на аннулирование которого был отклонен),
+    dfsRevocationApproved:Result:='RevocationApproved';                                //(документ, запрос на аннулирование которого был согласован),
+    dfsRevocationDisapproved:Result:='RevocationDisapproved';                          //(документ с отказом согласования запроса на аннулирование),
+    dfsWaitingForRevocationApprovement:Result:='WaitingForRevocationApprovement';      //(документ, находящийся на согласовании запроса аннулирования),
+    dfsNotRevoked:Result:='NotRevoked';                                                //(неаннулированный документ)
+    dfsWaitingForProxySignature:Result:='WaitingForProxySignature';                    //(документ в ожидании подписи промежуточного получателя),
+    dfsWithProxySignature:Result:='WithProxySignature';                                //(документ с подписью промежуточного получателя),
+    dfsInvalidProxySignature:Result:='InvalidProxySignature';                          //(документ с невалидной подписью промежуточного получателя, требующий повторного подписания и отправки),
+    dfsProxySignatureRejected:Result:='ProxySignatureRejected';                        //(документ с отказом от формирования подписи промежуточным получателем),
+    dfsWaitingForInvoiceReceipt:Result:='WaitingForInvoiceReceipt';                    //(документ в ожидании получения извещения о получении счета-фактуры),
+    dfsWaitingForReceipt:Result:='WaitingForReceipt';                                  //(документ в ожидании получения извещения о получении),
+    dfsRequestsMySignature:Result:='RequestsMySignature';                              //(документ, по которому контрагент запросил подпись),
+    dfsRoamingNotificationError:Result:='RoamingNotificationError';                    //(документ, с ошибкой доставки в роуминге)
+  else
+    //dfsAny,                                                                          //Пустое значение (любой документ указанного класса Class),
+    Result:='';
+  end;
+end;
+
 
 function ReqestCounteragentStatusStr(AStatus: TReqestCounteragentStatus
   ): string;
