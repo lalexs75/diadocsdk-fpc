@@ -1,0 +1,13 @@
+object MainDM: TMainDM
+  OldCreateOrder = False
+  Height = 378
+  HorizontalOffset = 517
+  VerticalOffset = 255
+  Width = 426
+  object rxClients: TRxMemoryData
+    FieldDefs = <>
+    PacketRecords = 0
+    Left = 48
+    Top = 32
+  end
+end
