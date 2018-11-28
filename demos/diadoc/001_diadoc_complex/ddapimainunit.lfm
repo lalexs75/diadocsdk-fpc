@@ -73,7 +73,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 139
         Height = 31
         Top = 6
-        Width = 968
+        Width = 1123
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 0
@@ -88,7 +88,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 139
         Height = 31
         Top = 43
-        Width = 968
+        Width = 1123
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 1
@@ -136,7 +136,7 @@ object DDAPIMainForm: TDDAPIMainForm
         AnchorSideLeft.Control = Label9
         AnchorSideBottom.Control = edtProxyPort
         AnchorSideBottom.Side = asrBottom
-        Left = 562
+        Left = 640
         Height = 19
         Top = 183
         Width = 68
@@ -154,7 +154,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 0
         Height = 19
         Top = 117
-        Width = 1113
+        Width = 1268
         Caption = 'Параметры proxy сервера'
         Anchors = [akTop, akLeft, akRight]
         Font.Style = [fsBold]
@@ -164,7 +164,7 @@ object DDAPIMainForm: TDDAPIMainForm
         AnchorSideLeft.Control = TabSheet1
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = TabSheet1
-        Left = 556
+        Left = 634
         Height = 1
         Top = 0
         Width = 1
@@ -179,7 +179,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 121
         Height = 31
         Top = 171
-        Width = 429
+        Width = 507
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 3
@@ -193,7 +193,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 121
         Height = 31
         Top = 208
-        Width = 429
+        Width = 507
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 4
@@ -205,10 +205,10 @@ object DDAPIMainForm: TDDAPIMainForm
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrBottom
-        Left = 636
+        Left = 714
         Height = 31
         Top = 171
-        Width = 471
+        Width = 548
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 5
@@ -217,7 +217,7 @@ object DDAPIMainForm: TDDAPIMainForm
         AnchorSideLeft.Control = Label9
         AnchorSideBottom.Control = edtProxyHost
         AnchorSideBottom.Side = asrBottom
-        Left = 556
+        Left = 634
         Height = 19
         Top = 220
         Width = 71
@@ -232,10 +232,10 @@ object DDAPIMainForm: TDDAPIMainForm
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrBottom
-        Left = 636
+        Left = 714
         Height = 31
         Top = 208
-        Width = 471
+        Width = 548
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 6
@@ -263,7 +263,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 139
         Height = 31
         Top = 80
-        Width = 968
+        Width = 1123
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 7
@@ -273,7 +273,7 @@ object DDAPIMainForm: TDDAPIMainForm
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrBottom
-        Left = 1059
+        Left = 1214
         Height = 31
         Top = 245
         Width = 48
@@ -293,7 +293,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 0
         Height = 19
         Top = 282
-        Width = 1113
+        Width = 1268
         Caption = 'User info'
         Anchors = [akTop, akLeft, akRight]
         Font.Style = [fsBold]
@@ -327,7 +327,7 @@ object DDAPIMainForm: TDDAPIMainForm
         AnchorSideLeft.Control = Label27
         AnchorSideTop.Control = DividerBevel3
         AnchorSideTop.Side = asrBottom
-        Left = 562
+        Left = 640
         Height = 19
         Top = 307
         Width = 71
@@ -339,7 +339,7 @@ object DDAPIMainForm: TDDAPIMainForm
         AnchorSideLeft.Control = Label27
         AnchorSideTop.Control = Edit4
         AnchorSideTop.Side = asrBottom
-        Left = 562
+        Left = 640
         Height = 19
         Top = 369
         Width = 68
@@ -355,7 +355,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 12
         Height = 31
         Top = 332
-        Width = 538
+        Width = 616
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 9
@@ -368,7 +368,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 12
         Height = 31
         Top = 394
-        Width = 538
+        Width = 616
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 10
@@ -379,10 +379,10 @@ object DDAPIMainForm: TDDAPIMainForm
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrBottom
-        Left = 568
+        Left = 646
         Height = 31
         Top = 332
-        Width = 539
+        Width = 616
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 11
@@ -393,10 +393,10 @@ object DDAPIMainForm: TDDAPIMainForm
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrBottom
-        Left = 568
+        Left = 646
         Height = 31
         Top = 394
-        Width = 539
+        Width = 616
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 12
@@ -405,7 +405,7 @@ object DDAPIMainForm: TDDAPIMainForm
         AnchorSideLeft.Control = TabSheet1
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = TabSheet1
-        Left = 556
+        Left = 634
         Height = 1
         Top = 0
         Width = 1

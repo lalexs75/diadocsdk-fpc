@@ -48,7 +48,7 @@
         <PackageName Value="LCL"/>
       </Item6>
     </RequiredPackages>
-    <Units Count="22">
+    <Units Count="24">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -209,9 +209,22 @@
         <Filename Value="forms/selectdepartmentunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="SelectDepartmentForm"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SelectDepartmentUnit"/>
       </Unit21>
+      <Unit22>
+        <Filename Value="ddmaindataunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="MainDM"/>
+        <ResourceBaseClass Value="DataModule"/>
+        <UnitName Value="ddMainDataUnit"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="tools/ddnewdocutdunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="ddNewDocUTDUnit"/>
+      </Unit23>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -221,7 +234,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="$(LazarusDir)/components/synapse;frames;forms"/>
+      <OtherUnitFiles Value="$(LazarusDir)/components/synapse;frames;forms;tools"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Linking>

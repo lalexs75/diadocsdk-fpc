@@ -425,7 +425,7 @@ begin
   FDiadocDocumentFrame:=TDiadocDocumentFrame.Create(Self);
   FDiadocDocumentFrame.Parent:=TabSheet7;
   FDiadocDocumentFrame.Align:=alClient;
-  FDiadocDocumentFrame.InitFrame(DiadocAPI1, CurrentBox);
+  FDiadocDocumentFrame.InitFrame(DiadocAPI1, CurrentBox, CurrentOrg);
 
   TreeView1Click(nil);
 
@@ -538,7 +538,7 @@ begin
   end;
   FDiadocDocumentFrame.Visible:=Assigned(CurrentBox);
   if FDiadocDocumentFrame.Visible then
-    FDiadocDocumentFrame.InitFrame(DiadocAPI1, CurrentBox);
+    FDiadocDocumentFrame.InitFrame(DiadocAPI1, CurrentBox, CurrentOrg);
 end;
 
 procedure TDDAPIMainForm.usrCurUserPermissionExecute(Sender: TObject);

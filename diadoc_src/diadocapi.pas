@@ -2146,7 +2146,8 @@ begin
     SaveProtobuf('MoveDocuments');
     {$ENDIF}
 
-    Result:=FHTTP.Document.Position=0;
+    Result:=ResultCode = 200;
+    FHTTP.Document.Position:=0;
     if not Result then
       FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
   end;

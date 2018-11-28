@@ -12,7 +12,7 @@ uses
   DiadocTypes_DocumentType,
   DiadocTypes_DiadocMessage_GetApi,
   DiadocTypes,
-  diadoc_consts,
+  diadoc_consts, DiadocTypes_DocumentId,
   DiadocTypes_Document,
   DiadocTypes_DocumentList;
 
@@ -21,7 +21,12 @@ type
   { TDiadocDocumentFrame }
 
   TDiadocDocumentFrame = class(TFrame)
+    MenuItem5: TMenuItem;
+    MenuItem6: TMenuItem;
+    MenuItem7: TMenuItem;
+    newUPD: TAction;
     actMoveDocBetweenDeps: TAction;
+    Button5: TButton;
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
@@ -70,6 +75,7 @@ type
     procedure CheckBox1Change(Sender: TObject);
     procedure EditButton1ButtonClick(Sender: TObject);
     procedure msgShowExecute(Sender: TObject);
+    procedure newUPDExecute(Sender: TObject);
     procedure OrgBoxInfoExecute(Sender: TObject);
     procedure rxDocsAfterOpen(DataSet: TDataSet);
   private
@@ -87,6 +93,7 @@ type
     FCurOrgBoxID:string;
 
     FBox: TBox;
+    FOrgs:TOrganization;
     procedure InitFiltres;
     procedure ClearOrg;
     procedure UpdateCtrlStates;
@@ -95,11 +102,12 @@ type
     procedure FetchDocList;
   public
     destructor Destroy; override;
-    procedure InitFrame(ADiadocAPI: TDiadocAPI; ABox:TBox);
+    procedure InitFrame(ADiadocAPI: TDiadocAPI; ABox:TBox; AOrgs:TOrganization);
   end;
 
 implementation
-uses diadoc_utils, ContragentFindUnit, ShowBoxInfoUnit, MessageForDocUnit;
+uses DiadocTypes_UniversalTransferDocumentInfo, diadoc_utils, ContragentFindUnit, ShowBoxInfoUnit, SelectDepartmentUnit, DiadocTypes_DocumentsMoveOperation,
+  MessageForDocUnit, ddNewDocUTDUnit, rxAppUtils;
 
 {$R *.lfm}
 
@@ -150,7 +158,7 @@ begin
       ShowTorg12Xml(FDiadocAPI, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, E.EntityId))
     else
     begin
-      E:=FindEntitie(M, Invoice);
+      E:=FindEntitie(M, TAttachmentType.Invoice);
       if Assigned(E) then
         ShowUniversalTransferDocumentSellerTitleXml(FDiadocAPI, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, E.EntityId))
       else
@@ -162,8 +170,50 @@ begin
 end;
 
 procedure TDiadocDocumentFrame.actMoveDocBetweenDepsExecute(Sender: TObject);
+var
+  MO: TDocumentsMoveOperation;
+  D: TDocumentId;
+  M: TMessage;
+  E: TEntity;
 begin
-  //
+  SelectDepartmentForm:=TSelectDepartmentForm.Create(Application);
+  SelectDepartmentForm.FillDepsList(FOrgs);
+  if SelectDepartmentForm.ShowModal = mrOk then
+  begin
+    MO:=TDocumentsMoveOperation.Create;
+
+    MO.BoxId:=FBox.BoxId;
+    MO.ToDepartmentId:=SelectDepartmentForm.SelectedDepartment;
+
+    RxWriteLog(etCustom, 'BoxId = ' + MO.BoxId);
+    RxWriteLog(etCustom, 'MO.ToDepartmentId = ' + MO.ToDepartmentId);
+
+    M:=FDiadocAPI.GetMessage(FBox.BoxId, rxDocsMessageId.AsString, '', false, false);
+
+{    for E in M.Entities do
+    begin
+      D:=MO.DocumentIds.AddItem;
+      D.MessageId:=M.MessageId;
+      D.EntityId:=E.EntityId;
+      RxWriteLog(etCustom, '%s:%s', [M.MessageId, E.EntityId]);
+    end;}
+
+    E:=M.Entities[0];
+    D:=MO.DocumentIds.AddItem;
+    D.MessageId:=M.MessageId;
+    D.EntityId:=E.EntityId;
+    RxWriteLog(etCustom, '%s:%s', [M.MessageId, E.EntityId]);
+
+    if FDiadocAPI.MoveDocuments(MO) then
+      ShowMessage('Успешно')
+    else
+      ErrorBox('Ошибка %d : %s '+LineEnding+'(%s)', [FDiadocAPI.ResultCode, FDiadocAPI.ResultString, FDiadocAPI.ResultText.Text]);
+    M.Free;
+    MO.Free;
+
+    Button3Click(nil);
+  end;
+  SelectDepartmentForm.Free;
 end;
 
 procedure TDiadocDocumentFrame.CheckBox1Change(Sender: TObject);
@@ -199,6 +249,30 @@ end;
 procedure TDiadocDocumentFrame.msgShowExecute(Sender: TObject);
 begin
   //
+end;
+
+procedure TDiadocDocumentFrame.newUPDExecute(Sender: TObject);
+var
+  D: TUniversalTransferDocumentSellerTitleInfo;
+  M: TMemoryStream;
+begin
+  D:=NewUniversalTransferDocumentSellerTitleInfo
+  D.SaveToFile('/tmp/UniversalTransferDocumentSellerTitleInfo.protobuf');
+
+
+  M:=FDiadocAPI.GenerateUniversalTransferDocumentXmlForSeller(D, true);
+
+  if FDiadocAPI.ResultCode <> 200 then
+    ErrorBox('Ошибка %d : %s '+LineEnding+'(%s)', [FDiadocAPI.ResultCode, FDiadocAPI.ResultString, FDiadocAPI.ResultText.Text])
+  else
+    ShowMessage('Успешно');
+
+  if Assigned(M) then
+  begin
+    M.SaveToFile('/tmp/UniversalTransferDocumentXmlForSeller.xml');
+    M.Free;
+  end;
+  D.Free;
 end;
 
 procedure TDiadocDocumentFrame.OrgBoxInfoExecute(Sender: TObject);
@@ -267,6 +341,7 @@ begin
   rxDocsDocumentTypeStr.AsString:=DocumentTypeToDescription(D.DocumentType);
   rxDocsFileName.AsString:=D.FileName;
   rxDocsDepartmentId.AsString:=D.DepartmentId;
+
 
   if D.DocumentDate<>'' then
     rxDocsDocumentDate.AsDateTime:=StrToDate(D.DocumentDate);
@@ -423,9 +498,11 @@ begin
 end;
 
 
-procedure TDiadocDocumentFrame.InitFrame(ADiadocAPI: TDiadocAPI; ABox: TBox);
+procedure TDiadocDocumentFrame.InitFrame(ADiadocAPI: TDiadocAPI; ABox: TBox;
+  AOrgs: TOrganization);
 begin
   FBox:=ABox;
+  FOrgs:=AOrgs;
   FDiadocAPI:=ADiadocAPI;
   InitFiltres;
   UpdateCtrlStates;

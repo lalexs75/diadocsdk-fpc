@@ -340,6 +340,36 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
         Filter.EmptyFont.Style = [fsItalic]
         Filter.ItemIndex = -1
         Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'MessageId'
+        Width = 120
+        FieldName = 'MessageId'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'EntityId'
+        Width = 150
+        FieldName = 'EntityId'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
       end>
     KeyStrokes = <    
       item
@@ -463,6 +493,21 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       Width = 43
       Caption = 'Label1'
       ParentColor = False
+    end
+    object Button5: TButton
+      AnchorSideRight.Control = Panel1
+      AnchorSideRight.Side = asrBottom
+      AnchorSideBottom.Control = Panel1
+      AnchorSideBottom.Side = asrBottom
+      Left = 9
+      Height = 31
+      Top = 371
+      Width = 102
+      Action = newUPD
+      Anchors = [akRight, akBottom]
+      AutoSize = True
+      BorderSpacing.Around = 6
+      TabOrder = 2
     end
   end
   object dDocs: TDataSource
@@ -660,6 +705,15 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
     object MenuItem4: TMenuItem
       Action = actMoveDocBetweenDeps
     end
+    object MenuItem6: TMenuItem
+      Caption = '-'
+    end
+    object MenuItem5: TMenuItem
+      Caption = 'Создать'
+      object MenuItem7: TMenuItem
+        Action = newUPD
+      end
+    end
     object MenuItem2: TMenuItem
       Caption = '-'
     end
@@ -683,6 +737,11 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       Caption = 'Перенос в подразделение'
       ImageIndex = 8
       OnExecute = actMoveDocBetweenDepsExecute
+    end
+    object newUPD: TAction
+      Category = 'New'
+      Caption = 'Создать УПД'
+      OnExecute = newUPDExecute
     end
   end
 end
