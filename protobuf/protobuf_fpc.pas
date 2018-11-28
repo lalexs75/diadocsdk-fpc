@@ -66,6 +66,7 @@ type
     FPropName: string;
     FPropNum: integer;
     FRequired:boolean;
+    FModified:boolean;
   public
     constructor Create(APropName:string; APropNum:integer; AOnReadProps:TReadPropsProc; ARequired:boolean);
     property OjbType:TSerializationObjectClass read FOjbType write FOjbType;
@@ -167,19 +168,23 @@ type
   TSerializationObject = class(TPersistent)
   private
     FPropertys:TSerializationPropertys;
+    function LoadFromSerializationBuffer(ABuf:TSerializationBuffer):boolean;
+    function SaveToSerializationBuffer(ABuf:TSerializationBuffer):boolean;
+    procedure InternalCheckRequired;
   protected
+    FInternalIsEmptyObject:boolean;
     procedure InternalRegisterProperty; virtual;
     procedure InternalInit; virtual;
     procedure RegisterProp(APropName:string; APropNum:Integer; ARequired:boolean = false; AObjClass:TSerializationObjectClass = nil);
-    function LoadFromSerializationBuffer(ABuf:TSerializationBuffer):boolean;
     function InternalIsEmptyObject:boolean;virtual;
+    procedure Modified(APropertyNum:integer);
   public
     constructor Create; virtual;
     destructor Destroy; override;
+    procedure Clear; virtual;
     function LoadFromStream(AStream:TStream):boolean;
     function LoadFromFile(AFileName:string):boolean;
 
-    function SaveToSerializationBuffer(ABuf:TSerializationBuffer):boolean;
     function SaveToStream(AStream:TStream):boolean; overload;
     function SaveToStream:TStream; overload;
     function SaveToFile(AFileName:string):boolean;
@@ -199,7 +204,7 @@ type
     constructor Create; override;
     destructor Destroy; override;
     function CreateItem(ABuf:TSerializationBuffer):boolean;
-    procedure Clear;
+    procedure Clear; override;
     procedure Add(AItem:TSerializationObject);
     property Count:integer read GetCount;
   end;
@@ -432,6 +437,7 @@ var
 begin
   for P in FList do
     TSerializationObject(P).Free;
+  inherited Clear;
 end;
 
 procedure TSerializationObjectList.Add(AItem: TSerializationObject);
@@ -892,12 +898,23 @@ begin
   inherited Destroy;
 end;
 
+procedure TSerializationObject.Clear;
+var
+  P: TSerializationProperty;
+begin
+  FInternalIsEmptyObject:=true;
+  for P in FPropertys do
+    P.FModified:=false;
+  { TODO : Необходимо дописать очистку всех свойств }
+end;
+
 constructor TSerializationObject.Create;
 begin
   inherited Create;
   FPropertys:=TSerializationPropertys.Create;
   InternalRegisterProperty;
   InternalInit;
+  FInternalIsEmptyObject:=false;
 end;
 
 function TSerializationObject.LoadFromStream(AStream: TStream): boolean;
@@ -1082,7 +1099,14 @@ end;
 
 function TSerializationObject.InternalIsEmptyObject: boolean;
 begin
-  Result:=false;
+  Result:=FInternalIsEmptyObject;
+end;
+
+procedure TSerializationObject.Modified(APropertyNum: integer);
+begin
+  if (APropertyNum<0) or (APropertyNum > FPropertys.Count-1) then
+    raise Exception.CreateFmt('Property index out of bounds %d', [APropertyNum]);
+  FPropertys[APropertyNum].FModified:=true;
 end;
 
 function TSerializationObject.SaveToSerializationBuffer(
@@ -1141,6 +1165,7 @@ var
   L: Integer;
   STypeName, PropValue: String;
 begin
+  InternalCheckRequired;
   for P in FPropertys do
   begin
     FProp:=GetPropInfo(Self, P.FPropName); //Retreive property informations
@@ -1190,6 +1215,15 @@ begin
     end;
   end;
   Result:=true;
+end;
+
+procedure TSerializationObject.InternalCheckRequired;
+var
+  P: TSerializationProperty;
+begin
+  for P in FPropertys do
+    if P.FRequired and not P.FModified then
+      raise Exception.CreateFmt('Value expected for property %s', [P.FPropName]);
 end;
 
 function TSerializationObject.SaveToStream(AStream: TStream): boolean;

@@ -256,7 +256,7 @@ var
   D: TUniversalTransferDocumentSellerTitleInfo;
   M: TMemoryStream;
 begin
-  D:=NewUniversalTransferDocumentSellerTitleInfo
+  D:=NewUniversalTransferDocumentSellerTitleInfo;
   D.SaveToFile('/tmp/UniversalTransferDocumentSellerTitleInfo.protobuf');
 
 

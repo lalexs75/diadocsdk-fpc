@@ -690,16 +690,27 @@ type
     FShipper: TShipper;
     FSigners: TExtendedSigners;
     FTransferInfo: TTransferInfo;
+    procedure SetCurrency(AValue: string);
+    procedure SetCurrencyRate(AValue: string);
+    procedure SetDocumentCreator(AValue: string);
+    procedure SetDocumentCreatorBase(AValue: string);
+    procedure SetDocumentDate(AValue: string);
+    procedure SetDocumentName(AValue: string);
+    procedure SetDocumentNumber(AValue: string);
+    procedure SetFunctionType(AValue: TFunctionType);
+    procedure SetGovernmentContractInfo(AValue: string);
+    procedure SetRevisionDate(AValue: string);
+    procedure SetRevisionNumber(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property FunctionType:TFunctionType read FFunctionType write FFunctionType; //1;
-    property DocumentName:string read FDocumentName write FDocumentName;//2;
-    property DocumentDate:string read FDocumentDate write FDocumentDate;//3;
-    property DocumentNumber:string read FDocumentNumber write FDocumentNumber; //4;
+    property FunctionType:TFunctionType read FFunctionType write SetFunctionType; //1;
+    property DocumentName:string read FDocumentName write SetDocumentName;//2;
+    property DocumentDate:string read FDocumentDate write SetDocumentDate;//3;
+    property DocumentNumber:string read FDocumentNumber write SetDocumentNumber; //4;
     property Seller:TExtendedOrganizationInfo read FSeller; //5;
     property Buyer:TExtendedOrganizationInfo read FBuyer; //6;
     property Shipper:TShipper read FShipper; //7;
@@ -707,15 +718,15 @@ type
     property Signers:TExtendedSigners read FSigners; // = 9;
     property PaymentDocuments:TPaymentDocumentInfos read FPaymentDocuments;//10;
     property InvoiceTable:TInvoiceTable read FInvoiceTable; //11
-    property Currency:string read FCurrency write FCurrency;//12;
-    property CurrencyRate:string read FCurrencyRate write FCurrencyRate; //13;
-    property RevisionDate:string read FRevisionDate write FRevisionDate; //14;
-    property RevisionNumber:string read FRevisionNumber write FRevisionNumber; //15;
+    property Currency:string read FCurrency write SetCurrency;//12;
+    property CurrencyRate:string read FCurrencyRate write SetCurrencyRate; //13;
+    property RevisionDate:string read FRevisionDate write SetRevisionDate; //14;
+    property RevisionNumber:string read FRevisionNumber write SetRevisionNumber; //15;
     property AdditionalInfoId:TAdditionalInfoId read FAdditionalInfoId; //16
     property TransferInfo:TTransferInfo read FTransferInfo; //17;
-    property DocumentCreator:string read FDocumentCreator write FDocumentCreator;//18;
-    property DocumentCreatorBase:string read FDocumentCreatorBase write FDocumentCreatorBase;//19;
-    property GovernmentContractInfo:string read FGovernmentContractInfo write FGovernmentContractInfo;//20
+    property DocumentCreator:string read FDocumentCreator write SetDocumentCreator;//18;
+    property DocumentCreatorBase:string read FDocumentCreatorBase write SetDocumentCreatorBase;//19;
+    property GovernmentContractInfo:string read FGovernmentContractInfo write SetGovernmentContractInfo;//20
   end;
 
 function ItemMarkToStr(AItemMark:TItemMark):string;
@@ -1175,6 +1186,83 @@ begin
 end;
 
 { TUniversalTransferDocumentSellerTitleInfo }
+
+procedure TUniversalTransferDocumentSellerTitleInfo.SetCurrency(AValue: string);
+begin
+  if FCurrency=AValue then Exit;
+  FCurrency:=AValue;
+end;
+
+procedure TUniversalTransferDocumentSellerTitleInfo.SetCurrencyRate(
+  AValue: string);
+begin
+  if FCurrencyRate=AValue then Exit;
+  FCurrencyRate:=AValue;
+end;
+
+procedure TUniversalTransferDocumentSellerTitleInfo.SetDocumentCreator(
+  AValue: string);
+begin
+  if FDocumentCreator=AValue then Exit;
+  FDocumentCreator:=AValue;
+end;
+
+procedure TUniversalTransferDocumentSellerTitleInfo.SetDocumentCreatorBase(
+  AValue: string);
+begin
+  if FDocumentCreatorBase=AValue then Exit;
+  FDocumentCreatorBase:=AValue;
+end;
+
+procedure TUniversalTransferDocumentSellerTitleInfo.SetDocumentDate(
+  AValue: string);
+begin
+  if FDocumentDate=AValue then Exit;
+  FDocumentDate:=AValue;
+end;
+
+procedure TUniversalTransferDocumentSellerTitleInfo.SetDocumentName(
+  AValue: string);
+begin
+  if FDocumentName=AValue then Exit;
+  FDocumentName:=AValue;
+end;
+
+procedure TUniversalTransferDocumentSellerTitleInfo.SetDocumentNumber(
+  AValue: string);
+begin
+  if FDocumentNumber=AValue then Exit;
+  FDocumentNumber:=AValue;
+end;
+
+procedure TUniversalTransferDocumentSellerTitleInfo.SetFunctionType(
+  AValue: TFunctionType);
+begin
+  if FFunctionType=AValue then Exit;
+  FFunctionType:=AValue;
+  Modified(1);
+end;
+
+procedure TUniversalTransferDocumentSellerTitleInfo.SetGovernmentContractInfo(
+  AValue: string);
+begin
+  if FGovernmentContractInfo=AValue then Exit;
+  FGovernmentContractInfo:=AValue;
+end;
+
+procedure TUniversalTransferDocumentSellerTitleInfo.SetRevisionDate(
+  AValue: string);
+begin
+  if FRevisionDate=AValue then Exit;
+  FRevisionDate:=AValue;
+end;
+
+procedure TUniversalTransferDocumentSellerTitleInfo.SetRevisionNumber(
+  AValue: string);
+begin
+  if FRevisionNumber=AValue then Exit;
+  FRevisionNumber:=AValue;
+end;
 
 procedure TUniversalTransferDocumentSellerTitleInfo.InternalRegisterProperty;
 begin

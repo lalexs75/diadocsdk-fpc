@@ -81,6 +81,8 @@ type
 
   { TDocumentWithDocflow }
 
+  { TExtendedOrganizationInfo }
+
   TExtendedOrganizationInfo  = class(TSerializationObject) //message ExtendedOrganizationInfo
   private
     FAddress: TAddress;
@@ -104,38 +106,199 @@ type
     FOrgName: string;
     FOrgType: TOrgType;
     FPhone: string;
+    procedure SetBankAccountNumber(AValue: string);
+    procedure SetBankId(AValue: string);
+    procedure SetBankName(AValue: string);
+    procedure SetBoxId(AValue: string);
+    procedure SetCorrespondentAccount(AValue: string);
+    procedure SetCountry(AValue: string);
+    procedure SetDepartment(AValue: string);
+    procedure SetEmail(AValue: string);
+    procedure SetFnsParticipantId(AValue: string);
+    procedure SetIndividualEntityRegistrationCertificate(AValue: string);
+    procedure SetInn(AValue: string);
+    procedure SetKpp(AValue: string);
+    procedure SetOkdp(AValue: string);
+    procedure SetOkopf(AValue: string);
+    procedure SetOkpo(AValue: string);
+    procedure SetOrganizationAdditionalInfo(AValue: string);
+    procedure SetOrganizationOrPersonInfo(AValue: string);
+    procedure SetOrgName(AValue: string);
+    procedure SetOrgType(AValue: TOrgType);
+    procedure SetPhone(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property BoxId:string read FBoxId write FBoxId; //1
-    property OrgName:string read FOrgName write FOrgName; //2;
-    property Inn:string read FInn write FInn; //3;
-    property Kpp:string read FKpp write FKpp; //4;
+    property BoxId:string read FBoxId write SetBoxId; //1
+    property OrgName:string read FOrgName write SetOrgName; //2;
+    property Inn:string read FInn write SetInn; //3;
+    property Kpp:string read FKpp write SetKpp; //4;
     property Address:TAddress read FAddress; //5;
-    property FnsParticipantId:string read FFnsParticipantId write FFnsParticipantId; //6;
-    property OrgType:TOrgType read FOrgType write FOrgType; //7
-    property Okopf:string read FOkopf write FOkopf; //8;
-    property Okpo:string read FOkpo write FOkpo; //9;
-    property Okdp:string read FOkdp write FOkdp; //10;
-    property Phone:string read FPhone write FPhone; //11;
-    property Email:string read FEmail write FEmail; //12;
-    property CorrespondentAccount:string read FCorrespondentAccount write FCorrespondentAccount; //13;
-    property BankAccountNumber:string read FBankAccountNumber write FBankAccountNumber; //14;
-    property BankName:string read FBankName write FBankName; //15;
-    property BankId:string read FBankId write FBankId; //16;
-    property Department:string read FDepartment write FDepartment; //17;
-    property OrganizationAdditionalInfo:string read FOrganizationAdditionalInfo write FOrganizationAdditionalInfo; //18;
-    property OrganizationOrPersonInfo:string read FOrganizationOrPersonInfo write FOrganizationOrPersonInfo; //19;
-    property IndividualEntityRegistrationCertificate:string read FIndividualEntityRegistrationCertificate write FIndividualEntityRegistrationCertificate; //20;
-    property Country:string read FCountry write FCountry; //21;
+    property FnsParticipantId:string read FFnsParticipantId write SetFnsParticipantId; //6;
+    property OrgType:TOrgType read FOrgType write SetOrgType; //7
+    property Okopf:string read FOkopf write SetOkopf; //8;
+    property Okpo:string read FOkpo write SetOkpo; //9;
+    property Okdp:string read FOkdp write SetOkdp; //10;
+    property Phone:string read FPhone write SetPhone; //11;
+    property Email:string read FEmail write SetEmail; //12;
+    property CorrespondentAccount:string read FCorrespondentAccount write SetCorrespondentAccount; //13;
+    property BankAccountNumber:string read FBankAccountNumber write SetBankAccountNumber; //14;
+    property BankName:string read FBankName write SetBankName; //15;
+    property BankId:string read FBankId write SetBankId; //16;
+    property Department:string read FDepartment write SetDepartment; //17;
+    property OrganizationAdditionalInfo:string read FOrganizationAdditionalInfo write SetOrganizationAdditionalInfo; //18;
+    property OrganizationOrPersonInfo:string read FOrganizationOrPersonInfo write SetOrganizationOrPersonInfo; //19;
+    property IndividualEntityRegistrationCertificate:string read FIndividualEntityRegistrationCertificate write SetIndividualEntityRegistrationCertificate; //20;
+    property Country:string read FCountry write SetCountry; //21;
   end;
 
 implementation
 
 { TExtendedOrganizationInfo }
+
+procedure TExtendedOrganizationInfo.SetBoxId(AValue: string);
+begin
+  if FBoxId=AValue then Exit;
+  FBoxId:=AValue;
+  Modified(1);
+end;
+
+procedure TExtendedOrganizationInfo.SetBankAccountNumber(AValue: string);
+begin
+  if FBankAccountNumber=AValue then Exit;
+  FBankAccountNumber:=AValue;
+  Modified(14);
+end;
+
+procedure TExtendedOrganizationInfo.SetBankId(AValue: string);
+begin
+  if FBankId=AValue then Exit;
+  FBankId:=AValue;
+  Modified(16);
+end;
+
+procedure TExtendedOrganizationInfo.SetBankName(AValue: string);
+begin
+  if FBankName=AValue then Exit;
+  FBankName:=AValue;
+  Modified(15);
+end;
+
+procedure TExtendedOrganizationInfo.SetCorrespondentAccount(AValue: string);
+begin
+  if FCorrespondentAccount=AValue then Exit;
+  FCorrespondentAccount:=AValue;
+  Modified(13);
+end;
+
+procedure TExtendedOrganizationInfo.SetCountry(AValue: string);
+begin
+  if FCountry=AValue then Exit;
+  FCountry:=AValue;
+  Modified(21);
+end;
+
+procedure TExtendedOrganizationInfo.SetDepartment(AValue: string);
+begin
+  if FDepartment=AValue then Exit;
+  FDepartment:=AValue;
+  Modified(17);
+end;
+
+procedure TExtendedOrganizationInfo.SetEmail(AValue: string);
+begin
+  if FEmail=AValue then Exit;
+  FEmail:=AValue;
+  Modified(12);
+end;
+
+procedure TExtendedOrganizationInfo.SetFnsParticipantId(AValue: string);
+begin
+  if FFnsParticipantId=AValue then Exit;
+  FFnsParticipantId:=AValue;
+  Modified(6);
+end;
+
+procedure TExtendedOrganizationInfo.SetIndividualEntityRegistrationCertificate(
+  AValue: string);
+begin
+  if FIndividualEntityRegistrationCertificate=AValue then Exit;
+  FIndividualEntityRegistrationCertificate:=AValue;
+  Modified(20);
+end;
+
+procedure TExtendedOrganizationInfo.SetInn(AValue: string);
+begin
+  if FInn=AValue then Exit;
+  FInn:=AValue;
+  Modified(3);
+end;
+
+procedure TExtendedOrganizationInfo.SetKpp(AValue: string);
+begin
+  if FKpp=AValue then Exit;
+  FKpp:=AValue;
+  Modified(4);
+end;
+
+procedure TExtendedOrganizationInfo.SetOkdp(AValue: string);
+begin
+  if FOkdp=AValue then Exit;
+  FOkdp:=AValue;
+end;
+
+procedure TExtendedOrganizationInfo.SetOkopf(AValue: string);
+begin
+  if FOkopf=AValue then Exit;
+  FOkopf:=AValue;
+  Modified(8);
+end;
+
+procedure TExtendedOrganizationInfo.SetOkpo(AValue: string);
+begin
+  if FOkpo=AValue then Exit;
+  FOkpo:=AValue;
+  Modified(9);
+end;
+
+procedure TExtendedOrganizationInfo.SetOrganizationAdditionalInfo(AValue: string
+  );
+begin
+  if FOrganizationAdditionalInfo=AValue then Exit;
+  FOrganizationAdditionalInfo:=AValue;
+  Modified(18);
+end;
+
+procedure TExtendedOrganizationInfo.SetOrganizationOrPersonInfo(AValue: string);
+begin
+  if FOrganizationOrPersonInfo=AValue then Exit;
+  FOrganizationOrPersonInfo:=AValue;
+  Modified(19);
+end;
+
+procedure TExtendedOrganizationInfo.SetOrgName(AValue: string);
+begin
+  if FOrgName=AValue then Exit;
+  FOrgName:=AValue;
+  Modified(2);
+end;
+
+procedure TExtendedOrganizationInfo.SetOrgType(AValue: TOrgType);
+begin
+  if FOrgType=AValue then Exit;
+  FOrgType:=AValue;
+  Modified(7);
+end;
+
+procedure TExtendedOrganizationInfo.SetPhone(AValue: string);
+begin
+  if FPhone=AValue then Exit;
+  FPhone:=AValue;
+  Modified(11);
+end;
 
 procedure TExtendedOrganizationInfo.InternalRegisterProperty;
 begin
