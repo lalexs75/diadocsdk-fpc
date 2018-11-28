@@ -21,9 +21,11 @@ type
   { TDiadocDocumentFrame }
 
   TDiadocDocumentFrame = class(TFrame)
+    actMoveDocBetweenDeps: TAction;
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
+    MenuItem4: TMenuItem;
     OrgBoxInfo: TAction;
     msgShow: TAction;
     ActionList1: TActionList;
@@ -50,6 +52,7 @@ type
     rxDocs: TRxMemoryData;
     rxDocsCounteragentBoxId: TStringField;
     rxDocsCreationTimestampTicks: TDateTimeField;
+    rxDocsDepartmentId: TStringField;
     rxDocsDocumentDate: TDateField;
     rxDocsDocumentNumber: TStringField;
     rxDocsDocumentType: TLongintField;
@@ -59,6 +62,7 @@ type
     rxDocsIndexKey: TStringField;
     rxDocsMessageId: TStringField;
     rxDocsSUMM: TStringField;
+    procedure actMoveDocBetweenDepsExecute(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -155,6 +159,11 @@ begin
 
   end;
   M.Free;
+end;
+
+procedure TDiadocDocumentFrame.actMoveDocBetweenDepsExecute(Sender: TObject);
+begin
+  //
 end;
 
 procedure TDiadocDocumentFrame.CheckBox1Change(Sender: TObject);
@@ -257,6 +266,7 @@ begin
   rxDocsDocumentType.AsInteger:=Ord(D.DocumentType);
   rxDocsDocumentTypeStr.AsString:=DocumentTypeToDescription(D.DocumentType);
   rxDocsFileName.AsString:=D.FileName;
+  rxDocsDepartmentId.AsString:=D.DepartmentId;
 
   if D.DocumentDate<>'' then
     rxDocsDocumentDate.AsDateTime:=StrToDate(D.DocumentDate);

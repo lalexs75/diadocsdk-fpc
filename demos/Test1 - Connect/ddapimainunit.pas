@@ -19,6 +19,20 @@ uses
 
 type
 
+  { TMyOrg }
+
+  TMyOrg = class(TObject)
+  private
+    Boxes:TBoxes;
+  public
+    destructor Destroy; override;
+    procedure Clear;
+  end;
+
+  TMyDep = class(TObject)
+    Orgs:TMyOrg;
+  end;
+
   { TDDAPIMainForm }
 
   TDDAPIMainForm = class(TForm)
@@ -127,6 +141,7 @@ type
     procedure ListBox2Click(Sender: TObject);
     procedure molPropsExecute(Sender: TObject);
     procedure molRefreshExecute(Sender: TObject);
+    procedure TreeView1Deletion(Sender: TObject; Node: TTreeNode);
     procedure usrUserListExecute(Sender: TObject);
     procedure TreeView1Click(Sender: TObject);
     procedure usrCurUserPermissionExecute(Sender: TObject);
@@ -215,6 +230,19 @@ begin
 {.$endif}
   DefaultFormatSettings.ThousandSeparator:=' ';
   DefaultFormatSettings.CurrencyString:='р.';
+end;
+
+{ TMyOrg }
+
+destructor TMyOrg.Destroy;
+begin
+  inherited Destroy;
+end;
+
+procedure TMyOrg.Clear;
+begin
+  Boxes.Free;
+  Boxes:=nil;
 end;
 
 { TDDAPIMainForm }
@@ -456,6 +484,18 @@ begin
   LoadMyOrgsTree;
 end;
 
+procedure TDDAPIMainForm.TreeView1Deletion(Sender: TObject; Node: TTreeNode);
+begin
+  if not Assigned(Node) then Exit;
+  if not Assigned(Node.Data) then Exit;
+  if TObject(Node.Data) is TMyOrg then
+    TMyOrg(Node.Data).Free
+  else
+  if TObject(Node.Data) is TMyDep then
+    TMyDep(Node.Data).Free;
+  Node.Data:=nil;
+end;
+
 procedure TDDAPIMainForm.usrUserListExecute(Sender: TObject);
 var
   FOrgs: TOrganization;
@@ -677,7 +717,6 @@ begin
     Edit5.Text:=U.LastName;
     Edit4.Text:=U.FirstName;
     Edit3.Text:=U.MiddleName;
-    //U.CloudCertificates
     FreeAndNil(U);
   end;
 end;

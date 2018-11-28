@@ -131,6 +131,7 @@ resourcestring
     sTaxRateFraction_10_110 = 'ставка налога 10/110 (дробь)';
     sTaxRateFraction_18_118 = 'ставка налога 18/118 (дробь)';
     sTaxRateTaxedByAgent    = 'ставка налога "НДС исчисляется налоговым агентом';
+    sTaxRateFraction_20_120 = 'ставка налога 20/120 (дробь)';
 
 
     //TFunctionType

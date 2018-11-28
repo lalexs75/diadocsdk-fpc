@@ -48,7 +48,7 @@
         <PackageName Value="LCL"/>
       </Item6>
     </RequiredPackages>
-    <Units Count="21">
+    <Units Count="22">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -205,6 +205,13 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="OrganizationInfoFormUnit"/>
       </Unit20>
+      <Unit21>
+        <Filename Value="forms/selectdepartmentunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="SelectDepartmentForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="SelectDepartmentUnit"/>
+      </Unit21>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

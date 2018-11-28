@@ -128,12 +128,14 @@ type
   //  required Int32 Code = 1;
   //  required string DepartmentName = 2;
   //  repeated People Peoples = 3;
+  //  repeated People Signers = 4;
   //}
   TDepartment = class(TSerializationObject) //message Department
   private
     FCode: Int32;
     FDepartmentName: string;
     FPeoples: TPeoples;
+    FSigners: TPeoples;
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -143,6 +145,7 @@ type
     property Code:Int32 read FCode write FCode; //1;
     property DepartmentName:string read FDepartmentName write FDepartmentName;//2;
     property Peoples:TPeoples read FPeoples;//3;
+    property Signers:TPeoples read FSigners;//4;
   end;
 
   { TPerson }
@@ -229,16 +232,19 @@ begin
   RegisterProp('Code', 1);
   RegisterProp('DepartmentName', 2);
   RegisterProp('Peoples', 3);
+  RegisterProp('Signers', 4);
 end;
 
 procedure TDepartment.InternalInit;
 begin
   inherited InternalInit;
   FPeoples:=TPeoples.Create;
+  FSigners:=TPeoples.Create;
 end;
 
 destructor TDepartment.Destroy;
 begin
+  FreeAndNil(FSigners);
   FreeAndNil(FPeoples);
   inherited Destroy;
 end;

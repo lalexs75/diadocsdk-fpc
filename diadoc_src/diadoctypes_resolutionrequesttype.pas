@@ -32,67 +32,31 @@
 
 { Структуры данных базируются на информации http://api-docs.diadoc.ru/ru/latest/DataStructures.html }
 
-unit DiadocTypes_ResolutionRequestInfo;
+unit DiadocTypes_ResolutionRequestType;
 
 {$I diadoc_define.inc}
 
 interface
 
-//import "ResolutionTarget.proto";
+//package Diadoc.Api.Proto;
 uses
-  Classes, SysUtils, protobuf_fpc, protobuf_fpc_types, DiadocTypes_ResolutionRequestType,
-  DiadocTypes_ResolutionTarget;
-
+  Classes, SysUtils, protobuf_fpc;
 type
-  {  TResolutionRequestInfo  }
-  //message ResolutionRequestInfo {
-  //	optional ResolutionRequestType RequestType = 1 [default = UnknownResolutionRequestType];
-  //	required string Author = 2;
-  //	optional ResolutionTarget Target = 3;
-  //	optional string ResolvedWith = 4;
+  //enum ResolutionRequestType
+  //{
+  //	UnknownResolutionRequestType = -1;
+  //	ApprovementRequest = 0;
+  //	SignatureRequest = 1;
+  //	ApprovementSignatureRequest = 2;
   //}
-  TResolutionRequestInfo = class(TSerializationObject) //message ResolutionRequestInfo
-  private
-    FAuthor: string;
-    FRequestType: TResolutionRequestType;
-    FResolvedWith: string;
-    FTarget: TResolutionTarget;
-  protected
-    procedure InternalRegisterProperty; override;
-    procedure InternalInit; override;
-  public
-    destructor Destroy; override;
-  published
-    property RequestType:TResolutionRequestType read FRequestType write FRequestType default UnknownResolutionRequestType; //1
-    property Author:string read FAuthor write FAuthor; //2
-    property Target:TResolutionTarget read FTarget; //3;
-    property ResolvedWith:string read FResolvedWith write FResolvedWith; //4;
-  end;
+  TResolutionRequestType = (
+    UnknownResolutionRequestType = -1,
+    ApprovementRequest = 0,
+    SignatureRequest = 1,
+    ApprovementSignatureRequest = 2
+  );
 
 implementation
 
-{ TResolutionRequestInfo }
-
-procedure TResolutionRequestInfo.InternalRegisterProperty;
-begin
-  inherited InternalRegisterProperty;
-  RegisterProp('RequestType', 1) ;
-  RegisterProp('Author', 2, true);
-  RegisterProp('Target', 3);
-  RegisterProp('ResolvedWith', 4);
-end;
-
-procedure TResolutionRequestInfo.InternalInit;
-begin
-  inherited InternalInit;
-  FRequestType:=UnknownResolutionRequestType;
-  FTarget:=TResolutionTarget.Create;
-end;
-
-destructor TResolutionRequestInfo.Destroy;
-begin
-  FreeAndNil(FTarget);
-  inherited Destroy;
-end;
 end.
 

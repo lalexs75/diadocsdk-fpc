@@ -16,7 +16,7 @@
     <Description Value="Компоненты интеграции Контур ДИАДОК-API для FPC и Lazarus"/>
     <License Value="LGPL"/>
     <Version Minor="9" Release="3"/>
-    <Files Count="96">
+    <Files Count="98">
       <Item1>
         <Filename Value="diadoc_define.inc"/>
         <Type Value="Include"/>
@@ -396,12 +396,20 @@
       </Item94>
       <Item95>
         <Filename Value="Employees\diadoctypes_employeetoupdate.pas"/>
-        <UnitName Value="diadoctypes_employeetoupdate"/>
+        <UnitName Value="DiadocTypes_EmployeeToUpdate"/>
       </Item95>
       <Item96>
         <Filename Value="diadoc_src\diadoctypes_documentfilter.pas"/>
-        <UnitName Value="diadoctypes_documentfilter"/>
+        <UnitName Value="DiadocTypes_DocumentFilter"/>
       </Item96>
+      <Item97>
+        <Filename Value="diadoc_src\diadoctypes_resolutiontype.pas"/>
+        <UnitName Value="diadoctypes_resolutiontype"/>
+      </Item97>
+      <Item98>
+        <Filename Value="diadoc_src\diadoctypes_resolutionrequesttype.pas"/>
+        <UnitName Value="diadoctypes_resolutionrequesttype"/>
+      </Item98>
     </Files>
     <LazDoc Paths="docs"/>
     <i18n>

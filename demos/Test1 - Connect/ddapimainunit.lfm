@@ -1,11 +1,11 @@
 object DDAPIMainForm: TDDAPIMainForm
   Left = 362
-  Height = 783
+  Height = 863
   Top = 131
-  Width = 1123
+  Width = 1278
   Caption = 'Контур ДИАДОК API тест'
-  ClientHeight = 783
-  ClientWidth = 1123
+  ClientHeight = 863
+  ClientWidth = 1278
   OnCreate = FormCreate
   Position = poScreenCenter
   SessionProperties = 'CheckBox1.Checked;edtINN.Text;edtProxyHost.Text;edtProxyPassword.Text;edtProxyPort.Text;edtProxyUserName.Text;edtUserName.Text;edtUserPwd.Text;edtAPIClientKey.Text'
@@ -13,8 +13,8 @@ object DDAPIMainForm: TDDAPIMainForm
   object Memo1: TMemo
     Left = 0
     Height = 192
-    Top = 591
-    Width = 1123
+    Top = 671
+    Width = 1278
     Align = alBottom
     Lines.Strings = (
       'Memo1'
@@ -23,17 +23,17 @@ object DDAPIMainForm: TDDAPIMainForm
   end
   object PageControl1: TPageControl
     Left = 0
-    Height = 586
+    Height = 666
     Top = 0
-    Width = 1123
+    Width = 1278
     ActivePage = TabSheet5
     Align = alClient
     TabIndex = 1
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = 'Параметры'
-      ClientHeight = 553
-      ClientWidth = 1113
+      ClientHeight = 633
+      ClientWidth = 1268
       object Label3: TLabel
         AnchorSideLeft.Control = TabSheet1
         AnchorSideRight.Control = Label9
@@ -414,11 +414,11 @@ object DDAPIMainForm: TDDAPIMainForm
     end
     object TabSheet5: TTabSheet
       Caption = 'Почта'
-      ClientHeight = 553
-      ClientWidth = 1113
+      ClientHeight = 633
+      ClientWidth = 1268
       object TreeView1: TTreeView
         Left = 0
-        Height = 553
+        Height = 633
         Top = 0
         Width = 185
         Align = alLeft
@@ -427,19 +427,20 @@ object DDAPIMainForm: TDDAPIMainForm
         ReadOnly = True
         TabOrder = 0
         OnClick = TreeView1Click
+        OnDeletion = TreeView1Deletion
         Options = [tvoAutoItemHeight, tvoHideSelection, tvoKeepCollapsedNodes, tvoReadOnly, tvoShowButtons, tvoShowLines, tvoShowRoot, tvoToolTips, tvoThemedDraw]
       end
       object Splitter2: TSplitter
         Left = 185
-        Height = 553
+        Height = 633
         Top = 0
         Width = 5
       end
       object PageControl2: TPageControl
         Left = 190
-        Height = 553
+        Height = 633
         Top = 0
-        Width = 923
+        Width = 1078
         ActivePage = TabSheet7
         Align = alClient
         TabIndex = 0
@@ -449,15 +450,15 @@ object DDAPIMainForm: TDDAPIMainForm
         end
         object TabSheet8: TTabSheet
           Caption = 'Контрагенты'
-          ClientHeight = 520
-          ClientWidth = 913
+          ClientHeight = 600
+          ClientWidth = 1068
           object Panel1: TPanel
-            Left = 731
-            Height = 520
+            Left = 886
+            Height = 600
             Top = 0
             Width = 182
             Align = alRight
-            ClientHeight = 520
+            ClientHeight = 600
             ClientWidth = 182
             TabOrder = 0
             object Button7: TButton
@@ -515,8 +516,8 @@ object DDAPIMainForm: TDDAPIMainForm
     end
     object TabSheet6: TTabSheet
       Caption = 'Organizations'
-      ClientHeight = 553
-      ClientWidth = 1113
+      ClientHeight = 633
+      ClientWidth = 1268
       object Label21: TLabel
         AnchorSideLeft.Control = TabSheet6
         AnchorSideBottom.Control = edtFndINN
@@ -618,8 +619,8 @@ object DDAPIMainForm: TDDAPIMainForm
     end
     object TabSheet4: TTabSheet
       Caption = 'Прочее'
-      ClientHeight = 553
-      ClientWidth = 1113
+      ClientHeight = 633
+      ClientWidth = 1268
       object Button3: TButton
         AnchorSideLeft.Control = TabSheet4
         AnchorSideTop.Control = TabSheet4
@@ -921,8 +922,8 @@ object DDAPIMainForm: TDDAPIMainForm
     Cursor = crVSplit
     Left = 0
     Height = 5
-    Top = 586
-    Width = 1123
+    Top = 666
+    Width = 1278
     Align = alBottom
     ResizeAnchor = akBottom
   end
@@ -941,7 +942,7 @@ object DDAPIMainForm: TDDAPIMainForm
     Left = 280
     Top = 56
     Bitmap = {
-      4C69080000001000000010000000FFFFFF00FFFFFF00FFFFFF00404060FF4060
+      4C69090000001000000010000000FFFFFF00FFFFFF00FFFFFF00404060FF4060
       A0FF004060FF004060FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00406060FF00FF
       FFFF80A0A0FF406060FFFFFFFF00FFFFFF0040A0E0FF40A0E0FF40A0E0FF0000
@@ -1197,7 +1198,39 @@ object DDAPIMainForm: TDDAPIMainForm
       00FF000000FFFFFF0000FFFF0000FFFF0000FFFF0000FFFF0000000000FF0000
       00FF000000FF000000FF000000FFFFFF0000FFFF0000FFFF0000FFFF0000FFFF
       0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF
-      0000FFFF0000FFFF0000FFFF0000
+      0000FFFF0000FFFF0000FFFF00000000000000000000000000003A3A8F2B0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000003C3C9C2B363692EA0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000003C3CA02B38389DEA2A2A92FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000003C3C9F2B38389EEA2A2A97FF202092FF2626
+      94FF303099FF32329AFF32329AFF32329AFF32329AFF32329AFF313198C63232
+      976A33339407000000000000000038389AD52B2B97FF202092FF1E1E90FF1F1F
+      90FF202091FF202091FF202091FF202091FF202091FF202091FF212193FF2525
+      93FF2A2A92D52C2C8F15000000003131932B262691EA1F1F90FF1C1C89FF1C1C
+      85FF1C1C85FF1C1C85FF1C1C85FF1C1C85FF1C1C85FF1D1D89FF1E1E8EFF1E1E
+      91FF202091FF25258DD5272788070000000029298F2B24248EEA1C1C85FF0000
+      000000000000000000000000000000000000000000001F1F850E21218B6A2121
+      90F81E1E91FF1F1F8DFF2222876A000000000000000029298C2B222284EA0000
+      0000000000000000000000000000000000000000000000000000000000002A2A
+      956A232393FF1E1E8FFF1E1E86C60000000000000000000000002929842B0000
+      0000000000000000000000000000000000000000000000000000000000003434
+      9A0E2C2C97FF1F1F90FF1D1D85FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000003C3C
+      9F0E30309AFF20208FFF1C1C83FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000003A3A
+      9F6A2E2E98FF1E1E8CFF1B1B81C6000000000000000000000000000000000000
+      000000000000000000000000000000000000000000003C3C9F0E3A3A9F6A3535
+      9CF8252592FF1C1C85FF1B1B7E6A383893FF00000000363692FF000000003636
+      92FF0000000038389DFF33339BFF32329AFF32329AFF31319AFF2E2E98FF2525
+      92FF1D1D88FF1A1A7FD51B1B7D0731318FFF000000002F2F8EFF000000002F2F
+      8EFF00000000303098FF232392FF202091FF202091FF20208FFF1E1E8CFF1C1C
+      85FF1B1B7FD51B1B7D15000000002F2F8AFF000000002D2D88FF000000002D2D
+      88FF000000002D2D8CFF1F1F86FF1C1C85FF1C1C84FF1C1C83FF1B1B81C61B1B
+      7E6A1B1B7D070000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000
     }
   end
   object PopupMenu1: TPopupMenu

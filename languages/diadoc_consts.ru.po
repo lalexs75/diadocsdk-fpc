@@ -175,6 +175,10 @@ msgstr ""
 msgid "ставка налога 18/118 (дробь)"
 msgstr ""
 
+#: diadoc_consts.staxratefraction_20_120
+msgid "ставка налога 20/120 (дробь)"
+msgstr ""
+
 #: diadoc_consts.staxratenovat
 msgid "без НДС"
 msgstr ""

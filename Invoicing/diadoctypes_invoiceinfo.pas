@@ -481,6 +481,7 @@ begin
     Fraction_10_110: Result:=sTaxRateFraction_10_110;
     Fraction_18_118: Result:=sTaxRateFraction_18_118;
     TaxedByAgent   : Result:=sTaxRateTaxedByAgent;
+    Fraction_20_120: Result:=sTaxRateFraction_20_120;
   else
     //NoVat
     Result:=sTaxRateNoVat;

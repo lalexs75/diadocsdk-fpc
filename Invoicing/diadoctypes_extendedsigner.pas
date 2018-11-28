@@ -193,7 +193,50 @@ type
   end;
   TExtendedSigners = specialize GSerializationObjectList<TExtendedSigner>;
 
+
+function SignerTypeStr(AValue:TSignerType):string;
+function SignerPowersStr(AValue:TSignerPowers):string;
+function SignerStatusStr(AValue:TSignerStatus):string;
 implementation
+
+function SignerTypeStr(AValue: TSignerType): string;
+begin
+  case AValue of
+    LegalEntity:Result:='Представитель юридического лица';
+    IndividualEntity:Result:='Индивидуальный предприниматель';
+    PhysicalPerson:Result:='Физическое лицо';
+  else
+    Result:='<Не определено>';
+  end;
+end;
+
+
+function SignerPowersStr(AValue:TSignerPowers):string;
+begin
+  case AValue of
+    InvoiceSigner:Result:='лицо, ответственное за подписание счетов-фактур';
+    PersonMadeOperation:Result:='лицо, совершившее сделку, операцию';
+    MadeAndSignOperation:Result:='лицо, совершившее сделку, операцию и ответственное за её оформление';
+    PersonDocumentedOperation:Result:='лицо, ответственное за оформление свершившегося события';
+    MadeOperationAndSignedInvoice:Result:='лицо, совершившее сделку, операцию и ответственное за подписание счетов-фактур';
+    MadeAndResponsibleForOperationAndSignedInvoice:Result:='лицо, совершившее сделку, операцию и ответственное за её оформление и за подписание счетов-фактур';
+    ResponsibleForOperationAndSignerForInvoice:Result:='лицо, ответственное за оформление свершившегося события и за подписание счетов-фактур';
+  else
+    Result:='<Не определено>';
+  end;
+end;
+
+function SignerStatusStr(AValue:TSignerStatus):string;
+begin
+  case AValue of
+    SellerEmployee:Result:='Работник организации продавца товаров (работ, услуг, имущественных прав';
+    InformationCreatorEmployee:Result:='Работник организации - составителя информации продавца';
+    OtherOrganizationEmployee:Result:='Работник иной уполномоченной организации';
+    AuthorizedPerson:Result:='Уполномоченное физическое лицо (в том числе индивидуальный предприниматель)';
+  else
+    Result:='<Не определено>';
+  end;
+end;
 
 { TExtendedSigner }
 

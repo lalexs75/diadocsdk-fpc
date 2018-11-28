@@ -39,17 +39,9 @@ unit DiadocTypes_ResolutionInfo;
 interface
 
 uses
-  Classes, SysUtils, protobuf_fpc, protobuf_fpc_types;
+  Classes, SysUtils, protobuf_fpc, protobuf_fpc_types, DiadocTypes_ResolutionType;
 
 type
-  TResolutionType = (
-    UnknownResolutionType = -1, // Reserved type to report to legacy clients for newly introduced types
-    UndefinedResolutionType = 0,
-    Approve = 1,
-    Disapprove = 2
-  );
-
-
   {  TResolutionInfo  }
   //message ResolutionInfo {
   //      optional ResolutionType ResolutionType = 1 [default = UnknownResolutionType];

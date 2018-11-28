@@ -52,7 +52,9 @@ uses
   DiadocTypes_Timestamp, DiadocTypes_User, diadoc_utils, DiadocTypes_BoxList, 
   DiadocTypes_LockMode, DiadocTypes_Employee, DiadocTypes_Subscription, 
   DiadocTypes_EmployeeToCreate, DiadocTypes_UserToUpdate, 
-  DiadocTypes_EmployeeToUpdate, DiadocTypes_DocumentFilter, LazarusPackageIntf;
+  DiadocTypes_EmployeeToUpdate, DiadocTypes_DocumentFilter, 
+  DiadocTypes_ResolutionType, DiadocTypes_ResolutionRequestType, 
+  LazarusPackageIntf;
 
 implementation
 

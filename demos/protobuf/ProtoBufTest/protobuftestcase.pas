@@ -30,6 +30,7 @@ implementation
 
 uses FileUtil, LazFileUtils, protobuf_fpc, CommonTestTypesUnit, DIADocTypesUnit;
 
+
 type
   TPeopleData = record
     Code:integer;
@@ -47,8 +48,8 @@ const
        FirstName:'Пётр';
        LastName:'Петров'),
       (Code:3;
-       FirstName:'Сидор';
-       LastName:'Сидоров'),
+       FirstName:'Bill';
+       LastName:'Gates'),
       (Code:4;
        FirstName:'John';
        LastName:'Smith')
@@ -150,7 +151,7 @@ var
 begin
   D:=TDepartment.Create;
   D.Code:=1;
-  D.DepartmentName:='Упраление № 1';
+  D.DepartmentName:='Department # 1';
   for R in PeopleDataArray do
   begin
     P:=D.Peoples.AddItem;
@@ -185,6 +186,7 @@ begin
     AssertEquals(PeopleDataArray[i].FirstName, P.FirstName);
     AssertEquals(PeopleDataArray[i].LastName, P.LastName);
   end;
+  AssertEquals(D.Signers.Count, 0);
   D.Free;
 end;
 

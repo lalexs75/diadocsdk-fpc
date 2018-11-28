@@ -172,6 +172,7 @@ type
     procedure InternalInit; virtual;
     procedure RegisterProp(APropName:string; APropNum:Integer; ARequired:boolean = false; AObjClass:TSerializationObjectClass = nil);
     function LoadFromSerializationBuffer(ABuf:TSerializationBuffer):boolean;
+    function InternalIsEmptyObject:boolean;virtual;
   public
     constructor Create; virtual;
     destructor Destroy; override;
@@ -193,6 +194,7 @@ type
   protected
     FList:TFPList;
     FDataClass:TSerializationObjectClass;
+    function InternalIsEmptyObject:boolean; override;
   public
     constructor Create; override;
     destructor Destroy; override;
@@ -391,6 +393,11 @@ end;
 function TSerializationObjectList.Get(AIndex: Integer): TSerializationObject;
 begin
 
+end;
+
+function TSerializationObjectList.InternalIsEmptyObject: boolean;
+begin
+  Result:=FList.Count = 0;
 end;
 
 constructor TSerializationObjectList.Create;
@@ -1073,6 +1080,11 @@ begin
   Result:=true;
 end;
 
+function TSerializationObject.InternalIsEmptyObject: boolean;
+begin
+  Result:=false;
+end;
+
 function TSerializationObject.SaveToSerializationBuffer(
   ABuf: TSerializationBuffer): boolean;
 
@@ -1093,6 +1105,7 @@ begin
     begin
       if FInst is TSerializationObjectList then
       begin
+        if TSerializationObjectList(FInst).InternalIsEmptyObject then Exit;
         for i:=0 to TSerializationObjectList(FInst).Count-1 do
         begin
           Buf1:=TSerializationBuffer.Create;
@@ -1108,6 +1121,7 @@ begin
       else
       if FInst is TSerializationObject then
       begin
+        if TSerializationObjectList(FInst).InternalIsEmptyObject then Exit;
         Buf1:=TSerializationBuffer.Create;
         TSerializationObject(FInst).SaveToSerializationBuffer(Buf1);
         ABuf.WriteAsStream(APropReg, Buf1.Stream);
@@ -1125,7 +1139,7 @@ var
   K: TTypeKind;
   PArr: Pointer;
   L: Integer;
-  STypeName: String;
+  STypeName, PropValue: String;
 begin
   for P in FPropertys do
   begin
@@ -1138,7 +1152,12 @@ begin
       tkAString,
       tkWString,
       tkSString,
-      tkLString   : ABuf.WriteAsString(P, GetStrProp(Self, FProp));
+      tkLString   :
+        begin
+          PropValue:=GetStrProp(Self, FProp);
+          if PropValue<>'' then
+            ABuf.WriteAsString(P, PropValue);
+        end;
 
       tkBool : ABuf.WriteAsInteger(P, GetOrdProp(Self, FProp));
       tkQWord : ABuf.WriteAsQWord(P, GetOrdProp(Self, FProp));

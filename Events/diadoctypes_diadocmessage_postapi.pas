@@ -60,7 +60,9 @@ uses
   DiadocTypes_ResolutionInfo,
   DiadocTypes_ResolutionRequestInfo,
   DiadocTypes_OrganizationInfo,
-  DiadocTypes_DocumentInfo
+  DiadocTypes_DocumentInfo,
+  DiadocTypes_ResolutionType,
+  DiadocTypes_ResolutionRequestType
   ;
 
 type
