@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_ResolutionType"><element name="TResolutionType"><short>ResolutionType - тип действия по согласованию</short>
+      </element><element name="TResolutionType.UnknownResolutionType"><short>UnknownResolutionType - неизвестное состояние (может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать состояние согласования, переданное сервером).</short>
+      </element><element name="TResolutionType.UndefinedResolutionType"><short>UndefinedResolutionType - отменить последнее согласование текущего пользователя.</short>
+      </element><element name="TResolutionType.Approve"><short>Approve - согласовать документ.</short>
+      </element><element name="TResolutionType.Disapprove"><short>Disapprove - отказать в согласовании документа.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

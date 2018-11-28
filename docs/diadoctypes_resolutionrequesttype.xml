@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_ResolutionRequestType"><element name="TResolutionRequestType"><short>ResolutionRequestType - тип запроса на согласование:</short>
+      </element><element name="TResolutionRequestType.ApprovementRequest"><short>ApprovementRequest - запрос на согласование документа.</short>
+      </element><element name="TResolutionRequestType.SignatureRequest"><short>SignatureRequest - запрос на подпись документа.</short>
+      </element><element name="TResolutionRequestType.ApprovementSignatureRequest"><short>ApprovementSignatureRequest - запрос на согласующую подпись под документом.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>
