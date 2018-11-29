@@ -49,6 +49,7 @@ resourcestring
   sProtoBufErrorReadBooleanValue  = 'ProtoBuffer: Error read boolean value';
   sProtoBufUnknowPropTypeNum      = 'ProtoBuffer: Unknow property type - %d';
   sProtoBufferPropNotFoundNum     = 'ProtoBuffer: Property number %d not found';
+  sProtoBufferPropValueExpected   = 'ProtoBuffer: Value expected for property %s';
 
 implementation
 

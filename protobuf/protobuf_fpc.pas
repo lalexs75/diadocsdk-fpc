@@ -170,13 +170,13 @@ type
     FPropertys:TSerializationPropertys;
     function LoadFromSerializationBuffer(ABuf:TSerializationBuffer):boolean;
     function SaveToSerializationBuffer(ABuf:TSerializationBuffer):boolean;
+    function InternalCheckModifiedProp(AProp: TSerializationProperty):Boolean;
     procedure InternalCheckRequired;
   protected
-    FInternalIsEmptyObject:boolean;
     procedure InternalRegisterProperty; virtual;
     procedure InternalInit; virtual;
     procedure RegisterProp(APropName:string; APropNum:Integer; ARequired:boolean = false; AObjClass:TSerializationObjectClass = nil);
-    function InternalIsEmptyObject:boolean;virtual;
+    function InternalIsModifiedObject:boolean;virtual;
     procedure Modified(APropertyNum:integer);
   public
     constructor Create; virtual;
@@ -199,7 +199,7 @@ type
   protected
     FList:TFPList;
     FDataClass:TSerializationObjectClass;
-    function InternalIsEmptyObject:boolean; override;
+    function InternalIsModifiedObject:boolean; override;
   public
     constructor Create; override;
     destructor Destroy; override;
@@ -218,7 +218,9 @@ type
     procedure InternalAddAsString(AValue:String); virtual; abstract;
     function GetCount: integer; virtual;
     procedure SaveToBuf(ABuf:TSerializationBuffer; APropReg: TSerializationProperty); virtual; abstract;
+    function Modified:Boolean; virtual; abstract;
   public
+    procedure Clear; virtual; abstract;
     property Count:integer read GetCount;
   end;
 
@@ -234,9 +236,11 @@ type
     procedure InternalAddAsString(AValue:String); override;
     procedure SaveToBuf(ABuf:TSerializationBuffer; APropReg: TSerializationProperty); override;
     function GetCount: integer; override;
+    function Modified:Boolean; override;
   public
     constructor Create;
     destructor Destroy; override;
+    procedure Clear; override;
     procedure Add(AValue:string);
     function GetEnumerator: TStringsEnumerator;
     property Item[AIndex:Integer]:string read GetItem; default;
@@ -400,9 +404,9 @@ begin
 
 end;
 
-function TSerializationObjectList.InternalIsEmptyObject: boolean;
+function TSerializationObjectList.InternalIsModifiedObject: boolean;
 begin
-  Result:=FList.Count = 0;
+  Result:=FList.Count > 0;
 end;
 
 constructor TSerializationObjectList.Create;
@@ -902,7 +906,6 @@ procedure TSerializationObject.Clear;
 var
   P: TSerializationProperty;
 begin
-  FInternalIsEmptyObject:=true;
   for P in FPropertys do
     P.FModified:=false;
   { TODO : Необходимо дописать очистку всех свойств }
@@ -914,7 +917,6 @@ begin
   FPropertys:=TSerializationPropertys.Create;
   InternalRegisterProperty;
   InternalInit;
-  FInternalIsEmptyObject:=false;
 end;
 
 function TSerializationObject.LoadFromStream(AStream: TStream): boolean;
@@ -1097,16 +1099,26 @@ begin
   Result:=true;
 end;
 
-function TSerializationObject.InternalIsEmptyObject: boolean;
+function TSerializationObject.InternalIsModifiedObject: boolean;
+var
+  P: TSerializationProperty;
 begin
-  Result:=FInternalIsEmptyObject;
+  Result:=false;
+  for P in FPropertys do
+    if InternalCheckModifiedProp(P) then Exit(True);
 end;
 
 procedure TSerializationObject.Modified(APropertyNum: integer);
+var
+  P: TSerializationProperty;
 begin
-  if (APropertyNum<0) or (APropertyNum > FPropertys.Count-1) then
-    raise Exception.CreateFmt('Property index out of bounds %d', [APropertyNum]);
-  FPropertys[APropertyNum].FModified:=true;
+  for P in FPropertys do
+    if P.PropNum = APropertyNum then
+    begin
+      P.FModified:=true;
+      Exit;
+    end;
+  raise Exception.CreateFmt(sProtoBufferPropNotFoundNum, [APropertyNum]);
 end;
 
 function TSerializationObject.SaveToSerializationBuffer(
@@ -1129,7 +1141,7 @@ begin
     begin
       if FInst is TSerializationObjectList then
       begin
-        if TSerializationObjectList(FInst).InternalIsEmptyObject then Exit;
+        if not TSerializationObjectList(FInst).InternalIsModifiedObject then Exit;
         for i:=0 to TSerializationObjectList(FInst).Count-1 do
         begin
           Buf1:=TSerializationBuffer.Create;
@@ -1145,7 +1157,7 @@ begin
       else
       if FInst is TSerializationObject then
       begin
-        if TSerializationObjectList(FInst).InternalIsEmptyObject then Exit;
+        if not TSerializationObject(FInst).InternalIsModifiedObject then Exit;
         Buf1:=TSerializationBuffer.Create;
         TSerializationObject(FInst).SaveToSerializationBuffer(Buf1);
         ABuf.WriteAsStream(APropReg, Buf1.Stream);
@@ -1180,7 +1192,7 @@ begin
       tkLString   :
         begin
           PropValue:=GetStrProp(Self, FProp);
-          if PropValue<>'' then
+//          if PropValue<>'' then
             ABuf.WriteAsString(P, PropValue);
         end;
 
@@ -1217,13 +1229,39 @@ begin
   Result:=true;
 end;
 
+function TSerializationObject.InternalCheckModifiedProp(
+  AProp: TSerializationProperty): Boolean;
+var
+  FProp: PPropInfo;
+  FInst: TObject;
+begin
+  Result:=false;
+  FProp:=GetPropInfo(Self, AProp.FPropName);
+  if not Assigned(FProp) then
+    raise ESerializationException.CreateFmt(sProtoBufNotFondProperty, [AProp.PropName]);
+  if FProp^.PropType^.Kind = tkClass then
+  begin
+    FInst := TObject(PtrInt( GetOrdProp(Self, AProp.PropName)));
+    if not Assigned(FInst) then Exit;
+    if FInst is TSerializationArray then
+      Result:=TSerializationArray(FInst).Modified
+    else
+    if FInst is TSerializationObject then
+      Result:=TSerializationObject(FInst).InternalIsModifiedObject
+    else
+      raise Exception.CreateFmt('Uknow object type %s', [AProp.PropName]);
+  end
+  else
+    Result:=AProp.FModified;
+end;
+
 procedure TSerializationObject.InternalCheckRequired;
 var
   P: TSerializationProperty;
 begin
   for P in FPropertys do
-    if P.FRequired and not P.FModified then
-      raise Exception.CreateFmt('Value expected for property %s', [P.FPropName]);
+    if P.FRequired and not InternalCheckModifiedProp(P) then
+      raise Exception.CreateFmt(sProtoBufferPropValueExpected, [P.FPropName]);
 end;
 
 function TSerializationObject.SaveToStream(AStream: TStream): boolean;
@@ -1319,6 +1357,11 @@ begin
   Result:=FItems.Count;
 end;
 
+function TDocumentStrings.Modified: Boolean;
+begin
+  Result:=FItems.Count > 0;
+end;
+
 constructor TDocumentStrings.Create;
 begin
   FItems:=TStringList.Create;
@@ -1328,6 +1371,11 @@ destructor TDocumentStrings.Destroy;
 begin
   FItems.Free;
   inherited Destroy;
+end;
+
+procedure TDocumentStrings.Clear;
+begin
+  FItems.Clear;
 end;
 
 procedure TDocumentStrings.Add(AValue: string);
