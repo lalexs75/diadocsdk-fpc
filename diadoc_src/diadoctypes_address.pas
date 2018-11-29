@@ -43,35 +43,34 @@ uses
 
 type
   { TForeignAddress }
-  (*
-  message ForeignAddress {
-  	required string Country = 1;	// страна (код)
-  	required string Address = 2;	// текст адреса
-  *)
+  //message ForeignAddress {
+  //	required string Country = 1;	// страна (код)
+  //	required string Address = 2;	// текст адреса
   TForeignAddress = class(TSerializationObject) //message ForeignAddress
   private
     FAddress: string;
     FCountry: string;
+    procedure SetAddress(AValue: string);
+    procedure SetCountry(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
   published
-    property Country:string read FCountry write FCountry;   //1 - страна (код)
-    property Address:string read FAddress write FAddress;   //2 - текст адреса
+    property Country:string read FCountry write SetCountry;   //1 - страна (код)
+    property Address:string read FAddress write SetAddress;   //2 - текст адреса
   end;
 
   { TRussianAddress }
-  (*
-  message RussianAddress {
-  	optional string ZipCode = 1;	// индекс
-  	required string Region = 2;		// регион (код)
-  	optional string Territory = 3;	// район
-  	optional string City = 4;		// город
-  	optional string Locality = 5;	// населенный пункт
-  	optional string Street = 6;		// улица
-  	optional string Building = 7;	// дом
-  	optional string Block = 8;		// корпус
-  	optional string Apartment = 9;	// квартира
-  }  *)
+  //message RussianAddress {
+  //	optional string ZipCode = 1;	// индекс
+  //	required string Region = 2;		// регион (код)
+  //	optional string Territory = 3;	// район
+  //	optional string City = 4;		// город
+  //	optional string Locality = 5;	// населенный пункт
+  //	optional string Street = 6;		// улица
+  //	optional string Building = 7;	// дом
+  //	optional string Block = 8;		// корпус
+  //	optional string Apartment = 9;	// квартира
+  //}
   TRussianAddress = class(TSerializationObject)
   private
     FApartment: string;
@@ -83,50 +82,71 @@ type
     FStreet: string;
     FTerritory: string;
     FZipCode: string;
+    procedure SetApartment(AValue: string);
+    procedure SetBlock(AValue: string);
+    procedure SetBuilding(AValue: string);
+    procedure SetCity(AValue: string);
+    procedure SetLocality(AValue: string);
+    procedure SetRegion(AValue: string);
+    procedure SetStreet(AValue: string);
+    procedure SetTerritory(AValue: string);
+    procedure SetZipCode(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
   public
     function AdressStr:string;
   published
-    property ZipCode:string read FZipCode write FZipCode;       // = 1; // индекс
-    property Region:string read FRegion write FRegion;          // = 2; // регион (код)
-    property Territory:string read FTerritory write FTerritory; // = 3; // район
-    property City:string read FCity write FCity;                // = 4; // город
-    property Locality:string read FLocality write FLocality;    // = 5; // населенный пункт
-    property Street:string read FStreet write FStreet;          // = 6; // улица
-    property Building:string read FBuilding write FBuilding;    // = 7; // дом
-    property Block:string read FBlock write FBlock;             // = 8; // корпус
-    property Apartment:string read FApartment write FApartment; // = 9; // квартира
+    property ZipCode:string read FZipCode write SetZipCode;       // = 1; // индекс
+    property Region:string read FRegion write SetRegion;          // = 2; // регион (код)
+    property Territory:string read FTerritory write SetTerritory; // = 3; // район
+    property City:string read FCity write SetCity;                // = 4; // город
+    property Locality:string read FLocality write SetLocality;    // = 5; // населенный пункт
+    property Street:string read FStreet write SetStreet;          // = 6; // улица
+    property Building:string read FBuilding write SetBuilding;    // = 7; // дом
+    property Block:string read FBlock write SetBlock;             // = 8; // корпус
+    property Apartment:string read FApartment write SetApartment; // = 9; // квартира
   end;
 
   { TAddress }
-  (*
-  message Address {
-  	optional RussianAddress RussianAddress = 1;
-  	optional ForeignAddress ForeignAddress = 2;
-  	optional string AddressCode = 3;
-  }
-  *)
-
+  //message Address {
+  //	optional RussianAddress RussianAddress = 1;
+  //	optional ForeignAddress ForeignAddress = 2;
+  //	optional string AddressCode = 3;
+  //}
   TAddress = class(TSerializationObject) //message Address
   private
     FAddressCode: string;
     FForeignAddress: TForeignAddress;
     FRussianAddress: TRussianAddress;
+    procedure SetAddressCode(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property RussianAddress:TRussianAddress read FRussianAddress write FRussianAddress;     // 1
-    property ForeignAddress:TForeignAddress read FForeignAddress write FForeignAddress;     // 2
-    property AddressCode:string read FAddressCode write FAddressCode; // 3 - Код ГАР
+    property RussianAddress:TRussianAddress read FRussianAddress;     // 1
+    property ForeignAddress:TForeignAddress read FForeignAddress;     // 2
+    property AddressCode:string read FAddressCode write SetAddressCode; // 3 - Код ГАР
   end;
 
 implementation
 
 { TForeignAddress }
+
+procedure TForeignAddress.SetAddress(AValue: string);
+begin
+  if FAddress=AValue then Exit;
+  FAddress:=AValue;
+  Modified(2);
+end;
+
+procedure TForeignAddress.SetCountry(AValue: string);
+begin
+  if FCountry=AValue then Exit;
+  FCountry:=AValue;
+  Modified(1);
+end;
 
 procedure TForeignAddress.InternalRegisterProperty;
 begin
@@ -136,6 +156,13 @@ begin
 end;
 
 { TAddress }
+procedure TAddress.SetAddressCode(AValue: string);
+begin
+  if FAddressCode=AValue then Exit;
+  FAddressCode:=AValue;
+  Modified(3);
+end;
+
 procedure TAddress.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -162,6 +189,69 @@ begin
 end;
 
 { TRussianAddress }
+
+procedure TRussianAddress.SetApartment(AValue: string);
+begin
+  if FApartment=AValue then Exit;
+  FApartment:=AValue;
+  Modified(9);
+end;
+
+procedure TRussianAddress.SetBlock(AValue: string);
+begin
+  if FBlock=AValue then Exit;
+  FBlock:=AValue;
+  Modified(8);
+end;
+
+procedure TRussianAddress.SetBuilding(AValue: string);
+begin
+  if FBuilding=AValue then Exit;
+  FBuilding:=AValue;
+  Modified(7);
+end;
+
+procedure TRussianAddress.SetCity(AValue: string);
+begin
+  if FCity=AValue then Exit;
+  FCity:=AValue;
+  Modified(4);
+end;
+
+procedure TRussianAddress.SetLocality(AValue: string);
+begin
+  if FLocality=AValue then Exit;
+  FLocality:=AValue;
+  Modified(5);
+end;
+
+procedure TRussianAddress.SetRegion(AValue: string);
+begin
+  if FRegion=AValue then Exit;
+  FRegion:=AValue;
+  Modified(2);
+end;
+
+procedure TRussianAddress.SetStreet(AValue: string);
+begin
+  if FStreet=AValue then Exit;
+  FStreet:=AValue;
+  Modified(6);
+end;
+
+procedure TRussianAddress.SetTerritory(AValue: string);
+begin
+  if FTerritory=AValue then Exit;
+  FTerritory:=AValue;
+  Modified(3);
+end;
+
+procedure TRussianAddress.SetZipCode(AValue: string);
+begin
+  if FZipCode=AValue then Exit;
+  FZipCode:=AValue;
+  Modified(1);
+end;
 
 procedure TRussianAddress.InternalRegisterProperty;
 begin

@@ -87,6 +87,8 @@ type
     FItemAccountDebit: string;
     FOriginalValues: TCorrectableInvoiceItemFields;
     FProduct: string;
+    procedure SetItemAccountCredit(AValue: string);
+    procedure SetItemAccountDebit(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -98,8 +100,8 @@ type
     property CorrectedValues:TCorrectableInvoiceItemFields read FCorrectedValues; //3
     property AmountsInc:TInvoiceItemAmountsDiff read FAmountsInc; //4
     property AmountsDec:TInvoiceItemAmountsDiff read FAmountsDec; //5
-    property ItemAccountDebit:string read FItemAccountDebit write FItemAccountDebit; //6
-    property ItemAccountCredit:string read FItemAccountCredit write FItemAccountCredit; //7
+    property ItemAccountDebit:string read FItemAccountDebit write SetItemAccountDebit; //6
+    property ItemAccountCredit:string read FItemAccountCredit write SetItemAccountCredit; //7
     property AdditionalInfo:TAdditionalInfos read FAdditionalInfo;//8
   end;
   TExtendedInvoiceCorrectionItems = specialize GSerializationObjectList<TExtendedInvoiceCorrectionItem>;
@@ -142,17 +144,22 @@ type
     FBaseDocumentDate: string;
     FBaseDocumentName: string;
     FBaseDocumentNumber: string;
+    procedure SetAdditionalInfo(AValue: string);
+    procedure SetBaseDocumentDate(AValue: string);
+    procedure SetBaseDocumentName(AValue: string);
+    procedure SetBaseDocumentNumber(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property BaseDocumentName:string read FBaseDocumentName write FBaseDocumentName;//1
-    property BaseDocumentNumber:string read FBaseDocumentNumber write FBaseDocumentNumber;//2
-    property BaseDocumentDate:string read FBaseDocumentDate write FBaseDocumentDate;//3
-    property AdditionalInfo:string read FAdditionalInfo write FAdditionalInfo;//4
+    property BaseDocumentName:string read FBaseDocumentName write SetBaseDocumentName;//1
+    property BaseDocumentNumber:string read FBaseDocumentNumber write SetBaseDocumentNumber;//2
+    property BaseDocumentDate:string read FBaseDocumentDate write SetBaseDocumentDate;//3
+    property AdditionalInfo:string read FAdditionalInfo write SetAdditionalInfo;//4
   end;
+  TCorrectionBases = specialize GSerializationObjectList<TCorrectionBase>;
 
 
   {  TEventContent  }
@@ -165,22 +172,26 @@ type
   //}
   TEventContent = class(TSerializationObject) //message EventContent
   private
-    FCorrectionBase: TCorrectionBase;
+    FCorrectionBase: TCorrectionBases;
     FCostChangeInfo: string;
     FNotificationDate: string;
     FOperationContent: string;
     FTransferDocDetails: string;
+    procedure SetCostChangeInfo(AValue: string);
+    procedure SetNotificationDate(AValue: string);
+    procedure SetOperationContent(AValue: string);
+    procedure SetTransferDocDetails(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property CostChangeInfo:string read FCostChangeInfo write FCostChangeInfo;//1;
-    property TransferDocDetails:string read FTransferDocDetails write FTransferDocDetails;//2;
-    property OperationContent:string read FOperationContent write FOperationContent;//3;
-    property NotificationDate:string read FNotificationDate write FNotificationDate;//4;
-    property CorrectionBase:TCorrectionBase read FCorrectionBase; //5
+    property CostChangeInfo:string read FCostChangeInfo write SetCostChangeInfo;//1;
+    property TransferDocDetails:string read FTransferDocDetails write SetTransferDocDetails;//2;
+    property OperationContent:string read FOperationContent write SetOperationContent;//3;
+    property NotificationDate:string read FNotificationDate write SetNotificationDate;//4;
+    property CorrectionBase:TCorrectionBases read FCorrectionBase; //5
   end;
 
 
@@ -194,14 +205,16 @@ type
   private
     FInvoiceRevisionDate: string;
     FInvoiceRevisionNumber: string;
+    procedure SetInvoiceRevisionDate(AValue: string);
+    procedure SetInvoiceRevisionNumber(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property InvoiceRevisionDate:string read FInvoiceRevisionDate write FInvoiceRevisionDate;//1
-    property InvoiceRevisionNumber:string read FInvoiceRevisionNumber write FInvoiceRevisionNumber;//2;
+    property InvoiceRevisionDate:string read FInvoiceRevisionDate write SetInvoiceRevisionDate;//1
+    property InvoiceRevisionNumber:string read FInvoiceRevisionNumber write SetInvoiceRevisionNumber;//2;
   end;
   TInvoiceRevisionInfos = specialize GSerializationObjectList<TInvoiceRevisionInfo>;
 
@@ -216,14 +229,16 @@ type
     FInvoiceDate: string;
     FInvoiceNumber: string;
     FInvoiceRevisions: TInvoiceRevisionInfos;
+    procedure SetInvoiceDate(AValue: string);
+    procedure SetInvoiceNumber(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property InvoiceDate:string read FInvoiceDate write FInvoiceDate; //1
-    property InvoiceNumber:string read FInvoiceNumber write FInvoiceNumber; //2
+    property InvoiceDate:string read FInvoiceDate write SetInvoiceDate; //1
+    property InvoiceNumber:string read FInvoiceNumber write SetInvoiceNumber; //2
     property InvoiceRevisions:TInvoiceRevisionInfos read FInvoiceRevisions; //3
   end;
   TInvoiceForCorrectionInfos = specialize GSerializationObjectList<TInvoiceForCorrectionInfo>;
@@ -238,13 +253,14 @@ type
   private
     FAdditionalInfo: TAdditionalInfos;
     FInfoFileId: string;
+    procedure SetInfoFileId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property InfoFileId:string read FInfoFileId write FInfoFileId;//1;
+    property InfoFileId:string read FInfoFileId write SetInfoFileId;//1;
     property AdditionalInfo:TAdditionalInfos read FAdditionalInfo; //2;
   end;
 
@@ -290,30 +306,41 @@ type
     FInvoices: TInvoiceForCorrectionInfos;
     FSeller: TExtendedOrganizationInfo;
     FSigners: TExtendedSigners;
+    procedure SetCorrectionRevisionDate(AValue: string);
+    procedure SetCorrectionRevisionNumber(AValue: string);
+    procedure SetCurrency(AValue: string);
+    procedure SetCurrencyRate(AValue: string);
+    procedure SetDocumentCreator(AValue: string);
+    procedure SetDocumentCreatorBase(AValue: string);
+    procedure SetDocumentDate(AValue: string);
+    procedure SetDocumentName(AValue: string);
+    procedure SetDocumentNumber(AValue: string);
+    procedure SetFunctionType(AValue: TFunctionType);
+    procedure SetGovernmentContractInfo(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property FunctionType:TFunctionType read FFunctionType write FFunctionType;//1
-    property DocumentName:string read FDocumentName write FDocumentName;//2;
-    property DocumentDate:string read FDocumentDate write FDocumentDate;//3;
-    property DocumentNumber:string read FDocumentNumber write FDocumentNumber;//4;
+    property FunctionType:TFunctionType read FFunctionType write SetFunctionType;//1
+    property DocumentName:string read FDocumentName write SetDocumentName;//2;
+    property DocumentDate:string read FDocumentDate write SetDocumentDate;//3;
+    property DocumentNumber:string read FDocumentNumber write SetDocumentNumber;//4;
     property Invoices:TInvoiceForCorrectionInfos read FInvoices; //5;
     property Seller:TExtendedOrganizationInfo read FSeller; //6;
     property Buyer:TExtendedOrganizationInfo read FBuyer; //7;
     property Signers:TExtendedSigners read FSigners; //8;
     property EventContent:TEventContent read FEventContent; //9;
     property InvoiceCorrectionTable:TInvoiceCorrectionTable read FInvoiceCorrectionTable; //10;
-    property Currency:string read FCurrency write FCurrency;//11;
-    property CurrencyRate:string read FCurrencyRate write FCurrencyRate;//12;
-    property CorrectionRevisionDate:string read FCorrectionRevisionDate write FCorrectionRevisionDate;//13;
-    property CorrectionRevisionNumber:string read FCorrectionRevisionNumber write FCorrectionRevisionNumber;//14;
+    property Currency:string read FCurrency write SetCurrency;//11;
+    property CurrencyRate:string read FCurrencyRate write SetCurrencyRate;//12;
+    property CorrectionRevisionDate:string read FCorrectionRevisionDate write SetCorrectionRevisionDate;//13;
+    property CorrectionRevisionNumber:string read FCorrectionRevisionNumber write SetCorrectionRevisionNumber;//14;
     property AdditionalInfoId:TAdditionalInfoId read FAdditionalInfoId; //15;
-    property DocumentCreator:string read FDocumentCreator write FDocumentCreator;//16;
-    property DocumentCreatorBase:string read FDocumentCreatorBase write FDocumentCreatorBase;//17;
-    property GovernmentContractInfo:string read FGovernmentContractInfo write FGovernmentContractInfo; //18;
+    property DocumentCreator:string read FDocumentCreator write SetDocumentCreator;//16;
+    property DocumentCreatorBase:string read FDocumentCreatorBase write SetDocumentCreatorBase;//17;
+    property GovernmentContractInfo:string read FGovernmentContractInfo write SetGovernmentContractInfo; //18;
   end;
 
 
@@ -334,18 +361,24 @@ type
     FTransferFirstName: string;
     FTransferPatronymic: string;
     FTransferSurname: string;
+    procedure SetEmployeeBase(AValue: string);
+    procedure SetEmployeeInfo(AValue: string);
+    procedure SetEmployeePosition(AValue: string);
+    procedure SetTransferFirstName(AValue: string);
+    procedure SetTransferPatronymic(AValue: string);
+    procedure SetTransferSurname(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property EmployeePosition:string read FEmployeePosition write FEmployeePosition; //1;
-    property EmployeeInfo:string read FEmployeeInfo write FEmployeeInfo; //2;
-    property EmployeeBase:string read FEmployeeBase write FEmployeeBase; //3;
-    property TransferSurname:string read FTransferSurname write FTransferSurname; //4;
-    property TransferFirstName:string read FTransferFirstName write FTransferFirstName; //5;
-    property TransferPatronymic:string read FTransferPatronymic write FTransferPatronymic; //6;
+    property EmployeePosition:string read FEmployeePosition write SetEmployeePosition; //1;
+    property EmployeeInfo:string read FEmployeeInfo write SetEmployeeInfo; //2;
+    property EmployeeBase:string read FEmployeeBase write SetEmployeeBase; //3;
+    property TransferSurname:string read FTransferSurname write SetTransferSurname; //4;
+    property TransferFirstName:string read FTransferFirstName write SetTransferFirstName; //5;
+    property TransferPatronymic:string read FTransferPatronymic write SetTransferPatronymic; //6;
   end;
 
 
@@ -370,20 +403,28 @@ type
     FTransferOrganizationName: string;
     FTransferPatronymic: string;
     FTransferSurname: string;
+    procedure SetTransferEmployeeBase(AValue: string);
+    procedure SetTransferEmployeeInfo(AValue: string);
+    procedure SetTransferEmployeePosition(AValue: string);
+    procedure SetTransferFirstName(AValue: string);
+    procedure SetTransferOrganizationBase(AValue: string);
+    procedure SetTransferOrganizationName(AValue: string);
+    procedure SetTransferPatronymic(AValue: string);
+    procedure SetTransferSurname(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property TransferEmployeePosition:string read FTransferEmployeePosition write FTransferEmployeePosition;//1;
-    property TransferEmployeeInfo:string read FTransferEmployeeInfo write FTransferEmployeeInfo;//2;
-    property TransferOrganizationName:string read FTransferOrganizationName write FTransferOrganizationName;//3;
-    property TransferOrganizationBase:string read FTransferOrganizationBase write FTransferOrganizationBase;//4;
-    property TransferEmployeeBase:string read FTransferEmployeeBase write FTransferEmployeeBase;//5;
-    property TransferSurname:string read FTransferSurname write FTransferSurname;//6;
-    property TransferFirstName:string read FTransferFirstName write FTransferFirstName;//7;
-    property TransferPatronymic:string read FTransferPatronymic write FTransferPatronymic;//8;
+    property TransferEmployeePosition:string read FTransferEmployeePosition write SetTransferEmployeePosition;//1;
+    property TransferEmployeeInfo:string read FTransferEmployeeInfo write SetTransferEmployeeInfo;//2;
+    property TransferOrganizationName:string read FTransferOrganizationName write SetTransferOrganizationName;//3;
+    property TransferOrganizationBase:string read FTransferOrganizationBase write SetTransferOrganizationBase;//4;
+    property TransferEmployeeBase:string read FTransferEmployeeBase write SetTransferEmployeeBase;//5;
+    property TransferSurname:string read FTransferSurname write SetTransferSurname;//6;
+    property TransferFirstName:string read FTransferFirstName write SetTransferFirstName;//7;
+    property TransferPatronymic:string read FTransferPatronymic write SetTransferPatronymic;//8;
   end;
 
 
@@ -396,14 +437,16 @@ type
   private
     FTransferDocumentDate: string;
     FTransferDocumentNumber: string;
+    procedure SetTransferDocumentDate(AValue: string);
+    procedure SetTransferDocumentNumber(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property TransferDocumentNumber:string read FTransferDocumentNumber write FTransferDocumentNumber;//1;
-    property TransferDocumentDate:string read FTransferDocumentDate write FTransferDocumentDate;//2;
+    property TransferDocumentNumber:string read FTransferDocumentNumber write SetTransferDocumentNumber;//1;
+    property TransferDocumentDate:string read FTransferDocumentDate write SetTransferDocumentDate;//2;
   end;
   TWaybills = specialize GSerializationObjectList<TWaybill>;
 
@@ -421,16 +464,20 @@ type
     FBaseDocumentInfo: string;
     FBaseDocumentName: string;
     FBaseDocumentNumber: string;
+    procedure SetBaseDocumentDate(AValue: string);
+    procedure SetBaseDocumentInfo(AValue: string);
+    procedure SetBaseDocumentName(AValue: string);
+    procedure SetBaseDocumentNumber(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property BaseDocumentName:string read FBaseDocumentName write FBaseDocumentName;//1;
-    property BaseDocumentNumber:string read FBaseDocumentNumber write FBaseDocumentNumber;//2;
-    property BaseDocumentDate:string read FBaseDocumentDate write FBaseDocumentDate;//3;
-    property BaseDocumentInfo:string read FBaseDocumentInfo write FBaseDocumentInfo;//4;
+    property BaseDocumentName:string read FBaseDocumentName write SetBaseDocumentName;//1;
+    property BaseDocumentNumber:string read FBaseDocumentNumber write SetBaseDocumentNumber;//2;
+    property BaseDocumentDate:string read FBaseDocumentDate write SetBaseDocumentDate;//3;
+    property BaseDocumentInfo:string read FBaseDocumentInfo write SetBaseDocumentInfo;//4;
   end;
   TTransferBases = specialize GSerializationObjectList<TTransferBase>;
 
@@ -464,23 +511,29 @@ type
     FTransferDate: string;
     FTransferTextInfo: string;
     FWaybill: TWaybills;
+    procedure SetCreatedThingInfo(AValue: string);
+    procedure SetCreatedThingTransferDate(AValue: string);
+    procedure SetOperationInfo(AValue: string);
+    procedure SetOperationType(AValue: string);
+    procedure SetTransferDate(AValue: string);
+    procedure SetTransferTextInfo(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property OperationInfo:string read FOperationInfo write FOperationInfo;//1;
-    property OperationType:string read FOperationType write FOperationType;//2;
-    property TransferDate:string read FTransferDate write FTransferDate;//3;
+    property OperationInfo:string read FOperationInfo write SetOperationInfo;//1;
+    property OperationType:string read FOperationType write SetOperationType;//2;
+    property TransferDate:string read FTransferDate write SetTransferDate;//3;
     property TransferBase:TTransferBases read FTransferBase; //4;
-    property TransferTextInfo:string read FTransferTextInfo write FTransferTextInfo;//5;
+    property TransferTextInfo:string read FTransferTextInfo write SetTransferTextInfo;//5;
     property Waybill:TWaybills read FWaybill; //6;
     property Carrier:TExtendedOrganizationInfo read FCarrier; //7;
     property Employee:TEmployee read FEmployee; //8;
     property OtherIssuer:TOtherIssuer read FOtherIssuer;//9;
-    property CreatedThingTransferDate:string read FCreatedThingTransferDate write FCreatedThingTransferDate;//10;
-    property CreatedThingInfo:string read FCreatedThingInfo write FCreatedThingInfo;//11;
+    property CreatedThingTransferDate:string read FCreatedThingTransferDate write SetCreatedThingTransferDate;//10;
+    property CreatedThingInfo:string read FCreatedThingInfo write SetCreatedThingInfo;//11;
     property AdditionalInfoId:TAdditionalInfoId read FAdditionalInfoId; //12;
   end;
 
@@ -526,29 +579,45 @@ type
     FUnitName: string;
     FUnt: string;
     FVat: string;
+    procedure SetAdditionalProperty(AValue: string);
+    procedure SetExcise(AValue: string);
+    procedure SetItemAccountCredit(AValue: string);
+    procedure SetItemAccountDebit(AValue: string);
+    procedure SetItemMark(AValue: TItemMark);
+    procedure SetItemToRelease(AValue: string);
+    procedure SetItemVendorCode(AValue: string);
+    procedure SetPrice(AValue: string);
+    procedure SetProduct(AValue: string);
+    procedure SetQuantity(AValue: string);
+    procedure SetSubtotal(AValue: string);
+    procedure SetSubtotalWithVatExcluded(AValue: string);
+    procedure SetTaxRate(AValue: TTaxRate);
+    procedure SetUnitName(AValue: string);
+    procedure SetUnt(AValue: string);
+    procedure SetVat(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property Product:string read FProduct write FProduct;//1;
-    property Unt:string read FUnt write FUnt;//2;
-    property UnitName:string read FUnitName write FUnitName;//3;
-    property Quantity:string read FQuantity write FQuantity;//4;
-    property Price:string read FPrice write FPrice;//5;
-    property Excise:string read FExcise write FExcise;//6;
-    property TaxRate:TTaxRate read FTaxRate write FTaxRate; //7;
-    property SubtotalWithVatExcluded:string read FSubtotalWithVatExcluded write FSubtotalWithVatExcluded;//8;
-    property Vat:string read FVat write FVat;//9;
-    property Subtotal:string read FSubtotal write FSubtotal;//10;
+    property Product:string read FProduct write SetProduct;//1;
+    property Unt:string read FUnt write SetUnt;//2;
+    property UnitName:string read FUnitName write SetUnitName;//3;
+    property Quantity:string read FQuantity write SetQuantity;//4;
+    property Price:string read FPrice write SetPrice;//5;
+    property Excise:string read FExcise write SetExcise;//6;
+    property TaxRate:TTaxRate read FTaxRate write SetTaxRate; //7;
+    property SubtotalWithVatExcluded:string read FSubtotalWithVatExcluded write SetSubtotalWithVatExcluded;//8;
+    property Vat:string read FVat write SetVat;//9;
+    property Subtotal:string read FSubtotal write SetSubtotal;//10;
     property CustomsDeclarations:TCustomsDeclarations read FCustomsDeclarations; //11;
-    property ItemMark:TItemMark read FItemMark write FFItemMark; //12;
-    property AdditionalProperty:string read FAdditionalProperty write FAdditionalProperty;//13;
-    property ItemVendorCode:string read FItemVendorCode write FItemVendorCode;//14;
-    property ItemToRelease:string read FItemToRelease write FItemToRelease;//15;
-    property ItemAccountDebit:string read FItemAccountDebit write FItemAccountDebit;//16;
-    property ItemAccountCredit:string read FItemAccountCredit write FItemAccountCredit;//17;
+    property ItemMark:TItemMark read FItemMark write SetItemMark; //12;
+    property AdditionalProperty:string read FAdditionalProperty write SetAdditionalProperty;//13;
+    property ItemVendorCode:string read FItemVendorCode write SetItemVendorCode;//14;
+    property ItemToRelease:string read FItemToRelease write SetItemToRelease;//15;
+    property ItemAccountDebit:string read FItemAccountDebit write SetItemAccountDebit;//16;
+    property ItemAccountCredit:string read FItemAccountCredit write SetItemAccountCredit;//17;
     property AdditionalInfo:TAdditionalInfos read FAdditionalInfo;//18;
   end;
   TExtendedInvoiceItems = specialize GSerializationObjectList<TExtendedInvoiceItem>;
@@ -576,17 +645,22 @@ type
     FOperationContent: string;
     FOtherIssuer: TOtherIssuer;
     FSigners: TExtendedSigners;
+    procedure SetAcceptanceDate(AValue: string);
+    procedure SetDocumentCreator(AValue: string);
+    procedure SetDocumentCreatorBase(AValue: string);
+    procedure SetOperationCode(AValue: string);
+    procedure SetOperationContent(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property DocumentCreator:string read FDocumentCreator write FDocumentCreator;//1;
-    property DocumentCreatorBase:string read FDocumentCreatorBase write FDocumentCreatorBase;//2;
-    property OperationCode:string read FOperationCode write FOperationCode;//3;
-    property OperationContent:string read FOperationContent write FOperationContent;//4;
-    property AcceptanceDate:string read FAcceptanceDate write FAcceptanceDate;//5;
+    property DocumentCreator:string read FDocumentCreator write SetDocumentCreator;//1;
+    property DocumentCreatorBase:string read FDocumentCreatorBase write SetDocumentCreatorBase;//2;
+    property OperationCode:string read FOperationCode write SetOperationCode;//3;
+    property OperationContent:string read FOperationContent write SetOperationContent;//4;
+    property AcceptanceDate:string read FAcceptanceDate write SetAcceptanceDate;//5;
     property Employee:TEmployee read FEmployee; //6;
     property OtherIssuer:TOtherIssuer read FOtherIssuer;//7;
     property AdditionalInfoId:TAdditionalInfoId read FAdditionalInfoId; //8;
@@ -610,6 +684,10 @@ type
     FTotalNet: string;
     FTotalWithVatExcluded: string;
     FVat: string;
+    procedure SetTotal(AValue: string);
+    procedure SetTotalNet(AValue: string);
+    procedure SetTotalWithVatExcluded(AValue: string);
+    procedure SetVat(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -617,10 +695,10 @@ type
     destructor Destroy; override;
   published
     property Items:TExtendedInvoiceItems read FItems; //1;
-    property TotalWithVatExcluded:string read FTotalWithVatExcluded write FTotalWithVatExcluded;//2;
-    property Vat:string read FVat write FVat;//3;
-    property Total:string read FTotal write FTotal;//4;
-    property TotalNet:string read FTotalNet write FTotalNet;//5;
+    property TotalWithVatExcluded:string read FTotalWithVatExcluded write SetTotalWithVatExcluded;//2;
+    property Vat:string read FVat write SetVat;//3;
+    property Total:string read FTotal write SetTotal;//4;
+    property TotalNet:string read FTotalNet write SetTotalNet;//5;
   end;
 
 
@@ -633,13 +711,14 @@ type
   private
     FOrgInfo: TExtendedOrganizationInfo;
     FSameAsSeller: Boolean;
+    procedure SetSameAsSeller(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property SameAsSeller:Boolean read FSameAsSeller write FSameAsSeller; //1;
+    property SameAsSeller:Boolean read FSameAsSeller write SetSameAsSeller; //1;
     property OrgInfo:TExtendedOrganizationInfo read FOrgInfo; //2;
   end;
 
@@ -759,6 +838,12 @@ end;
 
 { TShipper }
 
+procedure TShipper.SetSameAsSeller(AValue: Boolean);
+begin
+  FSameAsSeller:=AValue;
+  Modified(1);
+end;
+
 procedure TShipper.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -779,6 +864,34 @@ begin
 end;
 
 { TInvoiceTable }
+
+procedure TInvoiceTable.SetTotal(AValue: string);
+begin
+  if FTotal=AValue then Exit;
+  FTotal:=AValue;
+  Modified(4);
+end;
+
+procedure TInvoiceTable.SetTotalNet(AValue: string);
+begin
+  if FTotalNet=AValue then Exit;
+  FTotalNet:=AValue;
+  Modified(5);
+end;
+
+procedure TInvoiceTable.SetTotalWithVatExcluded(AValue: string);
+begin
+  if FTotalWithVatExcluded=AValue then Exit;
+  FTotalWithVatExcluded:=AValue;
+  Modified(2);
+end;
+
+procedure TInvoiceTable.SetVat(AValue: string);
+begin
+  if FVat=AValue then Exit;
+  FVat:=AValue;
+  Modified(3);
+end;
 
 procedure TInvoiceTable.InternalRegisterProperty;
 begin
@@ -803,6 +916,118 @@ begin
 end;
 
 { TExtendedInvoiceItem }
+
+procedure TExtendedInvoiceItem.SetAdditionalProperty(AValue: string);
+begin
+  if FAdditionalProperty=AValue then Exit;
+  FAdditionalProperty:=AValue;
+  Modified(13);
+end;
+
+procedure TExtendedInvoiceItem.SetExcise(AValue: string);
+begin
+  if FExcise=AValue then Exit;
+  FExcise:=AValue;
+  Modified(6);
+end;
+
+procedure TExtendedInvoiceItem.SetItemAccountCredit(AValue: string);
+begin
+  if FItemAccountCredit=AValue then Exit;
+  FItemAccountCredit:=AValue;
+  Modified(17);
+end;
+
+procedure TExtendedInvoiceItem.SetItemAccountDebit(AValue: string);
+begin
+  if FItemAccountDebit=AValue then Exit;
+  FItemAccountDebit:=AValue;
+  Modified(16);
+end;
+
+procedure TExtendedInvoiceItem.SetItemMark(AValue: TItemMark);
+begin
+  if FItemMark=AValue then Exit;
+  FItemMark:=AValue;
+  Modified(12);
+end;
+
+procedure TExtendedInvoiceItem.SetItemToRelease(AValue: string);
+begin
+  if FItemToRelease=AValue then Exit;
+  FItemToRelease:=AValue;
+  Modified(15);
+end;
+
+procedure TExtendedInvoiceItem.SetItemVendorCode(AValue: string);
+begin
+  if FItemVendorCode=AValue then Exit;
+  FItemVendorCode:=AValue;
+  Modified(14);
+end;
+
+procedure TExtendedInvoiceItem.SetPrice(AValue: string);
+begin
+  if FPrice=AValue then Exit;
+  FPrice:=AValue;
+  Modified(5);
+end;
+
+procedure TExtendedInvoiceItem.SetProduct(AValue: string);
+begin
+  if FProduct=AValue then Exit;
+  FProduct:=AValue;
+  Modified(1);
+end;
+
+procedure TExtendedInvoiceItem.SetQuantity(AValue: string);
+begin
+  if FQuantity=AValue then Exit;
+  FQuantity:=AValue;
+  Modified(4);
+end;
+
+procedure TExtendedInvoiceItem.SetSubtotal(AValue: string);
+begin
+  if FSubtotal=AValue then Exit;
+  FSubtotal:=AValue;
+  Modified(10);
+end;
+
+procedure TExtendedInvoiceItem.SetSubtotalWithVatExcluded(AValue: string);
+begin
+  if FSubtotalWithVatExcluded=AValue then Exit;
+  FSubtotalWithVatExcluded:=AValue;
+  Modified(8);
+end;
+
+procedure TExtendedInvoiceItem.SetTaxRate(AValue: TTaxRate);
+begin
+  if FTaxRate=AValue then Exit;
+  FTaxRate:=AValue;
+  Modified(7);
+end;
+
+procedure TExtendedInvoiceItem.SetUnitName(AValue: string);
+begin
+  if FUnitName=AValue then Exit;
+  FUnitName:=AValue;
+  Modified(3);
+end;
+
+procedure TExtendedInvoiceItem.SetUnt(AValue: string);
+begin
+  if FUnt=AValue then Exit;
+  FUnt:=AValue;
+  Modified(2);
+end;
+
+procedure TExtendedInvoiceItem.SetVat(AValue: string);
+begin
+  if FVat=AValue then Exit;
+  FVat:=AValue;
+  Modified(9);
+end;
 
 procedure TExtendedInvoiceItem.InternalRegisterProperty;
 begin
@@ -841,6 +1066,48 @@ begin
 end;
 
 { TTransferInfo }
+
+procedure TTransferInfo.SetCreatedThingInfo(AValue: string);
+begin
+  if FCreatedThingInfo=AValue then Exit;
+  FCreatedThingInfo:=AValue;
+  Modified(11);
+end;
+
+procedure TTransferInfo.SetCreatedThingTransferDate(AValue: string);
+begin
+  if FCreatedThingTransferDate=AValue then Exit;
+  FCreatedThingTransferDate:=AValue;
+  Modified(10);
+end;
+
+procedure TTransferInfo.SetOperationInfo(AValue: string);
+begin
+  if FOperationInfo=AValue then Exit;
+  FOperationInfo:=AValue;
+  Modified(1);
+end;
+
+procedure TTransferInfo.SetOperationType(AValue: string);
+begin
+  if FOperationType=AValue then Exit;
+  FOperationType:=AValue;
+  Modified(2);
+end;
+
+procedure TTransferInfo.SetTransferDate(AValue: string);
+begin
+  if FTransferDate=AValue then Exit;
+  FTransferDate:=AValue;
+  Modified(3);
+end;
+
+procedure TTransferInfo.SetTransferTextInfo(AValue: string);
+begin
+  if FTransferTextInfo=AValue then Exit;
+  FTransferTextInfo:=AValue;
+  Modified(5);
+end;
 
 procedure TTransferInfo.InternalRegisterProperty;
 begin
@@ -883,6 +1150,34 @@ end;
 
 { TTransferBase }
 
+procedure TTransferBase.SetBaseDocumentDate(AValue: string);
+begin
+  if FBaseDocumentDate=AValue then Exit;
+  FBaseDocumentDate:=AValue;
+  Modified(3);
+end;
+
+procedure TTransferBase.SetBaseDocumentInfo(AValue: string);
+begin
+  if FBaseDocumentInfo=AValue then Exit;
+  FBaseDocumentInfo:=AValue;
+  Modified(4);
+end;
+
+procedure TTransferBase.SetBaseDocumentName(AValue: string);
+begin
+  if FBaseDocumentName=AValue then Exit;
+  FBaseDocumentName:=AValue;
+  Modified(1);
+end;
+
+procedure TTransferBase.SetBaseDocumentNumber(AValue: string);
+begin
+  if FBaseDocumentNumber=AValue then Exit;
+  FBaseDocumentNumber:=AValue;
+  Modified(2);
+end;
+
 procedure TTransferBase.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -904,6 +1199,20 @@ end;
 
 { TWaybill }
 
+procedure TWaybill.SetTransferDocumentDate(AValue: string);
+begin
+  if FTransferDocumentDate=AValue then Exit;
+  FTransferDocumentDate:=AValue;
+  Modified(2);
+end;
+
+procedure TWaybill.SetTransferDocumentNumber(AValue: string);
+begin
+  if FTransferDocumentNumber=AValue then Exit;
+  FTransferDocumentNumber:=AValue;
+  Modified(1);
+end;
+
 procedure TWaybill.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -922,6 +1231,62 @@ begin
 end;
 
 { TOtherIssuer }
+
+procedure TOtherIssuer.SetTransferEmployeeBase(AValue: string);
+begin
+  if FTransferEmployeeBase=AValue then Exit;
+  FTransferEmployeeBase:=AValue;
+  Modified(5);
+end;
+
+procedure TOtherIssuer.SetTransferEmployeeInfo(AValue: string);
+begin
+  if FTransferEmployeeInfo=AValue then Exit;
+  FTransferEmployeeInfo:=AValue;
+  Modified(2);
+end;
+
+procedure TOtherIssuer.SetTransferEmployeePosition(AValue: string);
+begin
+  if FTransferEmployeePosition=AValue then Exit;
+  FTransferEmployeePosition:=AValue;
+  Modified(1);
+end;
+
+procedure TOtherIssuer.SetTransferFirstName(AValue: string);
+begin
+  if FTransferFirstName=AValue then Exit;
+  FTransferFirstName:=AValue;
+  Modified(7);
+end;
+
+procedure TOtherIssuer.SetTransferOrganizationBase(AValue: string);
+begin
+  if FTransferOrganizationBase=AValue then Exit;
+  FTransferOrganizationBase:=AValue;
+  Modified(4);
+end;
+
+procedure TOtherIssuer.SetTransferOrganizationName(AValue: string);
+begin
+  if FTransferOrganizationName=AValue then Exit;
+  FTransferOrganizationName:=AValue;
+  Modified(3);
+end;
+
+procedure TOtherIssuer.SetTransferPatronymic(AValue: string);
+begin
+  if FTransferPatronymic=AValue then Exit;
+  FTransferPatronymic:=AValue;
+  Modified(8);
+end;
+
+procedure TOtherIssuer.SetTransferSurname(AValue: string);
+begin
+  if FTransferSurname=AValue then Exit;
+  FTransferSurname:=AValue;
+  Modified(6);
+end;
 
 procedure TOtherIssuer.InternalRegisterProperty;
 begin
@@ -948,6 +1313,48 @@ end;
 
 { TEmployee }
 
+procedure TEmployee.SetEmployeeBase(AValue: string);
+begin
+  if FEmployeeBase=AValue then Exit;
+  FEmployeeBase:=AValue;
+  Modified(3);
+end;
+
+procedure TEmployee.SetEmployeeInfo(AValue: string);
+begin
+  if FEmployeeInfo=AValue then Exit;
+  FEmployeeInfo:=AValue;
+  Modified(2);
+end;
+
+procedure TEmployee.SetEmployeePosition(AValue: string);
+begin
+  if FEmployeePosition=AValue then Exit;
+  FEmployeePosition:=AValue;
+  Modified(1);
+end;
+
+procedure TEmployee.SetTransferFirstName(AValue: string);
+begin
+  if FTransferFirstName=AValue then Exit;
+  FTransferFirstName:=AValue;
+  Modified(5);
+end;
+
+procedure TEmployee.SetTransferPatronymic(AValue: string);
+begin
+  if FTransferPatronymic=AValue then Exit;
+  FTransferPatronymic:=AValue;
+  Modified(6);
+end;
+
+procedure TEmployee.SetTransferSurname(AValue: string);
+begin
+  if FTransferSurname=AValue then Exit;
+  FTransferSurname:=AValue;
+  Modified(4);
+end;
+
 procedure TEmployee.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -970,6 +1377,46 @@ begin
 end;
 
 { TUniversalTransferDocumentBuyerTitleInfo }
+
+procedure TUniversalTransferDocumentBuyerTitleInfo.SetAcceptanceDate(
+  AValue: string);
+begin
+  if FAcceptanceDate=AValue then Exit;
+  FAcceptanceDate:=AValue;
+  Modified(5);
+end;
+
+procedure TUniversalTransferDocumentBuyerTitleInfo.SetDocumentCreator(
+  AValue: string);
+begin
+  if FDocumentCreator=AValue then Exit;
+  FDocumentCreator:=AValue;
+  Modified(1);
+end;
+
+procedure TUniversalTransferDocumentBuyerTitleInfo.SetDocumentCreatorBase(
+  AValue: string);
+begin
+  if FDocumentCreatorBase=AValue then Exit;
+  FDocumentCreatorBase:=AValue;
+  Modified(2);
+end;
+
+procedure TUniversalTransferDocumentBuyerTitleInfo.SetOperationCode(
+  AValue: string);
+begin
+  if FOperationCode=AValue then Exit;
+  FOperationCode:=AValue;
+  Modified(3);
+end;
+
+procedure TUniversalTransferDocumentBuyerTitleInfo.SetOperationContent(
+  AValue: string);
+begin
+  if FOperationContent=AValue then Exit;
+  FOperationContent:=AValue;
+  Modified(4);
+end;
 
 procedure TUniversalTransferDocumentBuyerTitleInfo.InternalRegisterProperty;
 begin
@@ -1005,6 +1452,13 @@ end;
 
 { TAdditionalInfoId }
 
+procedure TAdditionalInfoId.SetInfoFileId(AValue: string);
+begin
+  if FInfoFileId=AValue then Exit;
+  FInfoFileId:=AValue;
+  Modified(1);
+end;
+
 procedure TAdditionalInfoId.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -1025,6 +1479,93 @@ begin
 end;
 
 { TUniversalCorrectionDocumentSellerTitleInfo }
+
+procedure TUniversalCorrectionDocumentSellerTitleInfo.SetCorrectionRevisionDate(
+  AValue: string);
+begin
+  if FCorrectionRevisionDate=AValue then Exit;
+  FCorrectionRevisionDate:=AValue;
+  Modified(13);
+end;
+
+procedure TUniversalCorrectionDocumentSellerTitleInfo.SetCorrectionRevisionNumber
+  (AValue: string);
+begin
+  if FCorrectionRevisionNumber=AValue then Exit;
+  FCorrectionRevisionNumber:=AValue;
+  Modified(14);
+end;
+
+procedure TUniversalCorrectionDocumentSellerTitleInfo.SetCurrency(AValue: string
+  );
+begin
+  if FCurrency=AValue then Exit;
+  FCurrency:=AValue;
+  Modified(11);
+end;
+
+procedure TUniversalCorrectionDocumentSellerTitleInfo.SetCurrencyRate(
+  AValue: string);
+begin
+  if FCurrencyRate=AValue then Exit;
+  FCurrencyRate:=AValue;
+  Modified(12);
+end;
+
+procedure TUniversalCorrectionDocumentSellerTitleInfo.SetDocumentCreator(
+  AValue: string);
+begin
+  if FDocumentCreator=AValue then Exit;
+  FDocumentCreator:=AValue;
+  Modified(16);
+end;
+
+procedure TUniversalCorrectionDocumentSellerTitleInfo.SetDocumentCreatorBase(
+  AValue: string);
+begin
+  if FDocumentCreatorBase=AValue then Exit;
+  FDocumentCreatorBase:=AValue;
+  Modified(17);
+end;
+
+procedure TUniversalCorrectionDocumentSellerTitleInfo.SetDocumentDate(
+  AValue: string);
+begin
+  if FDocumentDate=AValue then Exit;
+  FDocumentDate:=AValue;
+  Modified(3);
+end;
+
+procedure TUniversalCorrectionDocumentSellerTitleInfo.SetDocumentName(
+  AValue: string);
+begin
+  if FDocumentName=AValue then Exit;
+  FDocumentName:=AValue;
+  Modified(2);
+end;
+
+procedure TUniversalCorrectionDocumentSellerTitleInfo.SetDocumentNumber(
+  AValue: string);
+begin
+  if FDocumentNumber=AValue then Exit;
+  FDocumentNumber:=AValue;
+  Modified(4);
+end;
+
+procedure TUniversalCorrectionDocumentSellerTitleInfo.SetFunctionType(
+  AValue: TFunctionType);
+begin
+  FFunctionType:=AValue;
+  Modified(1);
+end;
+
+procedure TUniversalCorrectionDocumentSellerTitleInfo.SetGovernmentContractInfo(
+  AValue: string);
+begin
+  if FGovernmentContractInfo=AValue then Exit;
+  FGovernmentContractInfo:=AValue;
+  Modified(18);
+end;
 
 procedure TUniversalCorrectionDocumentSellerTitleInfo.InternalRegisterProperty;
 begin
@@ -1075,6 +1616,20 @@ end;
 
 { TInvoiceForCorrectionInfo }
 
+procedure TInvoiceForCorrectionInfo.SetInvoiceDate(AValue: string);
+begin
+  if FInvoiceDate=AValue then Exit;
+  FInvoiceDate:=AValue;
+  Modified(1);
+end;
+
+procedure TInvoiceForCorrectionInfo.SetInvoiceNumber(AValue: string);
+begin
+  if FInvoiceNumber=AValue then Exit;
+  FInvoiceNumber:=AValue;
+  Modified(2);
+end;
+
 procedure TInvoiceForCorrectionInfo.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -1097,6 +1652,20 @@ end;
 
 { TInvoiceRevisionInfo }
 
+procedure TInvoiceRevisionInfo.SetInvoiceRevisionDate(AValue: string);
+begin
+  if FInvoiceRevisionDate=AValue then Exit;
+  FInvoiceRevisionDate:=AValue;
+  Modified(1);
+end;
+
+procedure TInvoiceRevisionInfo.SetInvoiceRevisionNumber(AValue: string);
+begin
+  if FInvoiceRevisionNumber=AValue then Exit;
+  FInvoiceRevisionNumber:=AValue;
+  Modified(2);
+end;
+
 procedure TInvoiceRevisionInfo.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -1116,6 +1685,34 @@ end;
 
 { TEventContent }
 
+procedure TEventContent.SetCostChangeInfo(AValue: string);
+begin
+  if FCostChangeInfo=AValue then Exit;
+  FCostChangeInfo:=AValue;
+  Modified(1);
+end;
+
+procedure TEventContent.SetNotificationDate(AValue: string);
+begin
+  if FNotificationDate=AValue then Exit;
+  FNotificationDate:=AValue;
+  Modified(4);
+end;
+
+procedure TEventContent.SetOperationContent(AValue: string);
+begin
+  if FOperationContent=AValue then Exit;
+  FOperationContent:=AValue;
+  Modified(3);
+end;
+
+procedure TEventContent.SetTransferDocDetails(AValue: string);
+begin
+  if FTransferDocDetails=AValue then Exit;
+  FTransferDocDetails:=AValue;
+  Modified(2);
+end;
+
 procedure TEventContent.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -1123,13 +1720,13 @@ begin
   RegisterProp('TransferDocDetails', 2, true);
   RegisterProp('OperationContent', 3, true);
   RegisterProp('NotificationDate', 4);
-  RegisterProp('CorrectionBase', 5, true);
+  RegisterProp('CorrectionBase', 5);
 end;
 
 procedure TEventContent.InternalInit;
 begin
   inherited InternalInit;
-  FCorrectionBase:=TCorrectionBase.Create;
+  FCorrectionBase:=TCorrectionBases.Create;
 end;
 
 destructor TEventContent.Destroy;
@@ -1139,6 +1736,34 @@ begin
 end;
 
 { TCorrectionBase }
+
+procedure TCorrectionBase.SetAdditionalInfo(AValue: string);
+begin
+  if FAdditionalInfo=AValue then Exit;
+  FAdditionalInfo:=AValue;
+  Modified(4);
+end;
+
+procedure TCorrectionBase.SetBaseDocumentDate(AValue: string);
+begin
+  if FBaseDocumentDate=AValue then Exit;
+  FBaseDocumentDate:=AValue;
+  Modified(3);
+end;
+
+procedure TCorrectionBase.SetBaseDocumentName(AValue: string);
+begin
+  if FBaseDocumentName=AValue then Exit;
+  FBaseDocumentName:=AValue;
+  Modified(1);
+end;
+
+procedure TCorrectionBase.SetBaseDocumentNumber(AValue: string);
+begin
+  if FBaseDocumentNumber=AValue then Exit;
+  FBaseDocumentNumber:=AValue;
+  Modified(2);
+end;
 
 procedure TCorrectionBase.InternalRegisterProperty;
 begin
@@ -1191,6 +1816,7 @@ procedure TUniversalTransferDocumentSellerTitleInfo.SetCurrency(AValue: string);
 begin
   if FCurrency=AValue then Exit;
   FCurrency:=AValue;
+  Modified(12);
 end;
 
 procedure TUniversalTransferDocumentSellerTitleInfo.SetCurrencyRate(
@@ -1198,6 +1824,7 @@ procedure TUniversalTransferDocumentSellerTitleInfo.SetCurrencyRate(
 begin
   if FCurrencyRate=AValue then Exit;
   FCurrencyRate:=AValue;
+  Modified(13);
 end;
 
 procedure TUniversalTransferDocumentSellerTitleInfo.SetDocumentCreator(
@@ -1205,6 +1832,7 @@ procedure TUniversalTransferDocumentSellerTitleInfo.SetDocumentCreator(
 begin
   if FDocumentCreator=AValue then Exit;
   FDocumentCreator:=AValue;
+  Modified(18);
 end;
 
 procedure TUniversalTransferDocumentSellerTitleInfo.SetDocumentCreatorBase(
@@ -1212,6 +1840,7 @@ procedure TUniversalTransferDocumentSellerTitleInfo.SetDocumentCreatorBase(
 begin
   if FDocumentCreatorBase=AValue then Exit;
   FDocumentCreatorBase:=AValue;
+  Modified(19);
 end;
 
 procedure TUniversalTransferDocumentSellerTitleInfo.SetDocumentDate(
@@ -1219,6 +1848,7 @@ procedure TUniversalTransferDocumentSellerTitleInfo.SetDocumentDate(
 begin
   if FDocumentDate=AValue then Exit;
   FDocumentDate:=AValue;
+  Modified(3);
 end;
 
 procedure TUniversalTransferDocumentSellerTitleInfo.SetDocumentName(
@@ -1226,6 +1856,7 @@ procedure TUniversalTransferDocumentSellerTitleInfo.SetDocumentName(
 begin
   if FDocumentName=AValue then Exit;
   FDocumentName:=AValue;
+  Modified(2);
 end;
 
 procedure TUniversalTransferDocumentSellerTitleInfo.SetDocumentNumber(
@@ -1233,12 +1864,12 @@ procedure TUniversalTransferDocumentSellerTitleInfo.SetDocumentNumber(
 begin
   if FDocumentNumber=AValue then Exit;
   FDocumentNumber:=AValue;
+  Modified(4);
 end;
 
 procedure TUniversalTransferDocumentSellerTitleInfo.SetFunctionType(
   AValue: TFunctionType);
 begin
-  if FFunctionType=AValue then Exit;
   FFunctionType:=AValue;
   Modified(1);
 end;
@@ -1248,6 +1879,7 @@ procedure TUniversalTransferDocumentSellerTitleInfo.SetGovernmentContractInfo(
 begin
   if FGovernmentContractInfo=AValue then Exit;
   FGovernmentContractInfo:=AValue;
+  Modified(20);
 end;
 
 procedure TUniversalTransferDocumentSellerTitleInfo.SetRevisionDate(
@@ -1255,6 +1887,7 @@ procedure TUniversalTransferDocumentSellerTitleInfo.SetRevisionDate(
 begin
   if FRevisionDate=AValue then Exit;
   FRevisionDate:=AValue;
+  Modified(14);
 end;
 
 procedure TUniversalTransferDocumentSellerTitleInfo.SetRevisionNumber(
@@ -1262,6 +1895,7 @@ procedure TUniversalTransferDocumentSellerTitleInfo.SetRevisionNumber(
 begin
   if FRevisionNumber=AValue then Exit;
   FRevisionNumber:=AValue;
+  Modified(15);
 end;
 
 procedure TUniversalTransferDocumentSellerTitleInfo.InternalRegisterProperty;
@@ -1318,6 +1952,20 @@ begin
 end;
 
 { TExtendedInvoiceCorrectionItem }
+
+procedure TExtendedInvoiceCorrectionItem.SetItemAccountCredit(AValue: string);
+begin
+  if FItemAccountCredit=AValue then Exit;
+  FItemAccountCredit:=AValue;
+  Modified(7);
+end;
+
+procedure TExtendedInvoiceCorrectionItem.SetItemAccountDebit(AValue: string);
+begin
+  if FItemAccountDebit=AValue then Exit;
+  FItemAccountDebit:=AValue;
+  Modified(6);
+end;
 
 procedure TExtendedInvoiceCorrectionItem.InternalRegisterProperty;
 begin

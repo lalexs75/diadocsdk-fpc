@@ -44,15 +44,14 @@ uses
 type
 
   { TSignerDetails }
-  (*
-  message SignerDetails {
-  	required string Surname = 1;
-  	required string FirstName = 2;
-  	optional string Patronymic = 3;
-  	optional string JobTitle = 4;
-  	optional string Inn = 5;
-  	optional string SoleProprietorRegistrationCertificate = 6;
-  }  *)
+  //message SignerDetails {
+  //	required string Surname = 1;
+  //	required string FirstName = 2;
+  //	optional string Patronymic = 3;
+  //	optional string JobTitle = 4;
+  //	optional string Inn = 5;
+  //	optional string SoleProprietorRegistrationCertificate = 6;
+  //}
   TSignerDetails = class(TSerializationObject) //message SignerDetails
   private
     FFirstName: string;
@@ -61,47 +60,67 @@ type
     FPatronymic: string;
     FSoleProprietorRegistrationCertificate: string;
     FSurname: string;
+    procedure SetFirstName(AValue: string);
+    procedure SetInn(AValue: string);
+    procedure SetJobTitle(AValue: string);
+    procedure SetPatronymic(AValue: string);
+    procedure SetSoleProprietorRegistrationCertificate(AValue: string);
+    procedure SetSurname(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property Surname:string read FSurname write FSurname; //1;
-    property FirstName:string read FFirstName write FFirstName; //2;
-    property Patronymic:string read FPatronymic write FPatronymic; //3;
-    property JobTitle:string read FJobTitle write FJobTitle; //4;
-    property Inn:string read FInn write FInn; //5;
-    property SoleProprietorRegistrationCertificate:string read FSoleProprietorRegistrationCertificate write FSoleProprietorRegistrationCertificate; //6;
+    property Surname:string read FSurname write SetSurname; //1;
+    property FirstName:string read FFirstName write SetFirstName; //2;
+    property Patronymic:string read FPatronymic write SetPatronymic; //3;
+    property JobTitle:string read FJobTitle write SetJobTitle; //4;
+    property Inn:string read FInn write SetInn; //5;
+    property SoleProprietorRegistrationCertificate:string read FSoleProprietorRegistrationCertificate write SetSoleProprietorRegistrationCertificate; //6;
   end;
 
   {  TSigner  }
-  (*
-  message Signer {
-  	optional bytes SignerCertificate = 1;
-  	optional SignerDetails SignerDetails = 2;
-  	optional string SignerCertificateThumbprint = 3;
-  }
-  *)
+  //message Signer {
+  //	optional bytes SignerCertificate = 1;
+  //	optional SignerDetails SignerDetails = 2;
+  //	optional string SignerCertificateThumbprint = 3;
+  //}
   TSigner = class(TSerializationObject) //message Signer
   private
     FSignerCertificate: TBytes;
     FSignerCertificateThumbprint: string;
     FSignerDetails: TSignerDetails;
+    procedure SetSignerCertificate(AValue: TBytes);
+    procedure SetSignerCertificateThumbprint(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property SignerCertificate:TBytes read FSignerCertificate write FSignerCertificate; //1;
+    property SignerCertificate:TBytes read FSignerCertificate write SetSignerCertificate; //1;
     property SignerDetails:TSignerDetails read FSignerDetails; //2;
-    property SignerCertificateThumbprint:string read FSignerCertificateThumbprint write FSignerCertificateThumbprint; //3;
+    property SignerCertificateThumbprint:string read FSignerCertificateThumbprint write SetSignerCertificateThumbprint; //3;
   end;
 
 implementation
 
 { TSigner }
+
+procedure TSigner.SetSignerCertificate(AValue: TBytes);
+begin
+  if FSignerCertificate=AValue then Exit;
+  FSignerCertificate:=AValue;
+  Modified(1);
+end;
+
+procedure TSigner.SetSignerCertificateThumbprint(AValue: string);
+begin
+  if FSignerCertificateThumbprint=AValue then Exit;
+  FSignerCertificateThumbprint:=AValue;
+  Modified(3);
+end;
 
 procedure TSigner.InternalRegisterProperty;
 begin
@@ -124,6 +143,49 @@ begin
 end;
 
 { TSignerDetails }
+
+procedure TSignerDetails.SetFirstName(AValue: string);
+begin
+  if FFirstName=AValue then Exit;
+  FFirstName:=AValue;
+  Modified(2);
+end;
+
+procedure TSignerDetails.SetInn(AValue: string);
+begin
+  if FInn=AValue then Exit;
+  FInn:=AValue;
+  Modified(5);
+end;
+
+procedure TSignerDetails.SetJobTitle(AValue: string);
+begin
+  if FJobTitle=AValue then Exit;
+  FJobTitle:=AValue;
+  Modified(4);
+end;
+
+procedure TSignerDetails.SetPatronymic(AValue: string);
+begin
+  if FPatronymic=AValue then Exit;
+  FPatronymic:=AValue;
+  Modified(3);
+end;
+
+procedure TSignerDetails.SetSoleProprietorRegistrationCertificate(AValue: string
+  );
+begin
+  if FSoleProprietorRegistrationCertificate=AValue then Exit;
+  FSoleProprietorRegistrationCertificate:=AValue;
+  Modified(6);
+end;
+
+procedure TSignerDetails.SetSurname(AValue: string);
+begin
+  if FSurname=AValue then Exit;
+  FSurname:=AValue;
+  Modified(1);
+end;
 
 procedure TSignerDetails.InternalRegisterProperty;
 begin

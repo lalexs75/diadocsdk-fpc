@@ -99,20 +99,28 @@ type
     FSignerPowersBase: string;
     FSignerStatus: TSignerStatus;
     FSignerType: TSignerType;
+    procedure SetJobTitle(AValue: string);
+    procedure SetRegistrationCertificate(AValue: string);
+    procedure SetSignerInfo(AValue: string);
+    procedure SetSignerOrgPowersBase(AValue: string);
+    procedure SetSignerPowers(AValue: TSignerPowers);
+    procedure SetSignerPowersBase(AValue: string);
+    procedure SetSignerStatus(AValue: TSignerStatus);
+    procedure SetSignerType(AValue: TSignerType);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property JobTitle:string read FJobTitle write FJobTitle; //1;
-    property RegistrationCertificate:string read FRegistrationCertificate write FRegistrationCertificate; //2;
-    property SignerType:TSignerType read FSignerType write FSignerType; //3
-    property SignerInfo:string read FSignerInfo write FSignerInfo; //4
-    property SignerPowers:TSignerPowers read FSignerPowers write FSignerPowers; //5
-    property SignerStatus:TSignerStatus read FSignerStatus write FSignerStatus; //6
-    property SignerPowersBase:string read FSignerPowersBase write FSignerPowersBase; //7
-    property SignerOrgPowersBase:string read FSignerOrgPowersBase write FSignerOrgPowersBase; //8
+    property JobTitle:string read FJobTitle write SetJobTitle; //1;
+    property RegistrationCertificate:string read FRegistrationCertificate write SetRegistrationCertificate; //2;
+    property SignerType:TSignerType read FSignerType write SetSignerType; //3
+    property SignerInfo:string read FSignerInfo write SetSignerInfo; //4
+    property SignerPowers:TSignerPowers read FSignerPowers write SetSignerPowers; //5
+    property SignerStatus:TSignerStatus read FSignerStatus write SetSignerStatus; //6
+    property SignerPowersBase:string read FSignerPowersBase write SetSignerPowersBase; //7
+    property SignerOrgPowersBase:string read FSignerOrgPowersBase write SetSignerOrgPowersBase; //8
   end;
 
   {  TExtendedSignerDetails  }
@@ -146,25 +154,38 @@ type
     FSignerStatus: TSignerStatus;
     FSignerType: TSignerType;
     FSurname: string;
+    procedure SetFirstName(AValue: string);
+    procedure SetInn(AValue: string);
+    procedure SetJobTitle(AValue: string);
+    procedure SetPatronymic(AValue: string);
+    procedure SetRegistrationCertificate(AValue: string);
+    procedure SetSignerInfo(AValue: string);
+    procedure SetSignerOrganizationName(AValue: string);
+    procedure SetSignerOrgPowersBase(AValue: string);
+    procedure SetSignerPowers(AValue: TSignerPowers);
+    procedure SetSignerPowersBase(AValue: string);
+    procedure SetSignerStatus(AValue: TSignerStatus);
+    procedure SetSignerType(AValue: TSignerType);
+    procedure SetSurname(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property Surname:string read FSurname write FSurname; //1;
-    property FirstName:string read FFirstName write FFirstName; //2;
-    property Patronymic:string read FPatronymic write FPatronymic;//3;
-    property JobTitle:string read FJobTitle write FJobTitle;//4;
-    property Inn:string read FInn write FInn;//5;
-    property RegistrationCertificate:string read FRegistrationCertificate write FRegistrationCertificate;//6;
-    property SignerType:TSignerType read FSignerType write FSignerType default LegalEntity; //7
-    property SignerOrganizationName:string read FSignerOrganizationName write FSignerOrganizationName;//8
-    property SignerInfo:string read FSignerInfo write FSignerInfo;//9
-    property SignerPowers:TSignerPowers read FSignerPowers write FSignerPowers; //10
-    property SignerStatus:TSignerStatus read FSignerStatus write FSignerStatus; //11
-    property SignerPowersBase:string read FSignerPowersBase write FSignerPowersBase;//12
-    property SignerOrgPowersBase:string read FSignerOrgPowersBase write FSignerOrgPowersBase; //13
+    property Surname:string read FSurname write SetSurname; //1;
+    property FirstName:string read FFirstName write SetFirstName; //2;
+    property Patronymic:string read FPatronymic write SetPatronymic;//3;
+    property JobTitle:string read FJobTitle write SetJobTitle;//4;
+    property Inn:string read FInn write SetInn;//5;
+    property RegistrationCertificate:string read FRegistrationCertificate write SetRegistrationCertificate;//6;
+    property SignerType:TSignerType read FSignerType write SetSignerType default LegalEntity; //7
+    property SignerOrganizationName:string read FSignerOrganizationName write SetSignerOrganizationName;//8
+    property SignerInfo:string read FSignerInfo write SetSignerInfo;//9
+    property SignerPowers:TSignerPowers read FSignerPowers write SetSignerPowers; //10
+    property SignerStatus:TSignerStatus read FSignerStatus write SetSignerStatus; //11
+    property SignerPowersBase:string read FSignerPowersBase write SetSignerPowersBase;//12
+    property SignerOrgPowersBase:string read FSignerOrgPowersBase write SetSignerOrgPowersBase; //13
   end;
 
   {  TExtendedSigner  }
@@ -180,15 +201,18 @@ type
     FSignerCertificate: TBytes;
     FSignerCertificateThumbprint: string;
     FSignerDetails: TExtendedSignerDetails;
+    procedure SetBoxId(AValue: string);
+    procedure SetSignerCertificate(AValue: TBytes);
+    procedure SetSignerCertificateThumbprint(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property BoxId:string read FBoxId write FBoxId; //1;
-    property SignerCertificate:TBytes read FSignerCertificate write FSignerCertificate; //2;
-    property SignerCertificateThumbprint:string read FSignerCertificateThumbprint write FSignerCertificateThumbprint; //3;
+    property BoxId:string read FBoxId write SetBoxId; //1;
+    property SignerCertificate:TBytes read FSignerCertificate write SetSignerCertificate; //2;
+    property SignerCertificateThumbprint:string read FSignerCertificateThumbprint write SetSignerCertificateThumbprint; //3;
     property SignerDetails:TExtendedSignerDetails read FSignerDetails; //4;
   end;
   TExtendedSigners = specialize GSerializationObjectList<TExtendedSigner>;
@@ -240,6 +264,27 @@ end;
 
 { TExtendedSigner }
 
+procedure TExtendedSigner.SetBoxId(AValue: string);
+begin
+  if FBoxId=AValue then Exit;
+  FBoxId:=AValue;
+  Modified(1);
+end;
+
+procedure TExtendedSigner.SetSignerCertificate(AValue: TBytes);
+begin
+  if FSignerCertificate=AValue then Exit;
+  FSignerCertificate:=AValue;
+  Modified(2);
+end;
+
+procedure TExtendedSigner.SetSignerCertificateThumbprint(AValue: string);
+begin
+  if FSignerCertificateThumbprint=AValue then Exit;
+  FSignerCertificateThumbprint:=AValue;
+  Modified(3);
+end;
+
 procedure TExtendedSigner.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -262,6 +307,96 @@ begin
 end;
 
 { TExtendedSignerDetails }
+
+procedure TExtendedSignerDetails.SetFirstName(AValue: string);
+begin
+  if FFirstName=AValue then Exit;
+  FFirstName:=AValue;
+  Modified(2);
+end;
+
+procedure TExtendedSignerDetails.SetInn(AValue: string);
+begin
+  if FInn=AValue then Exit;
+  FInn:=AValue;
+  Modified(5);
+end;
+
+procedure TExtendedSignerDetails.SetJobTitle(AValue: string);
+begin
+  if FJobTitle=AValue then Exit;
+  FJobTitle:=AValue;
+  Modified(4);
+end;
+
+procedure TExtendedSignerDetails.SetPatronymic(AValue: string);
+begin
+  if FPatronymic=AValue then Exit;
+  FPatronymic:=AValue;
+  Modified(3);
+end;
+
+procedure TExtendedSignerDetails.SetRegistrationCertificate(AValue: string);
+begin
+  if FRegistrationCertificate=AValue then Exit;
+  FRegistrationCertificate:=AValue;
+  Modified(6);
+end;
+
+procedure TExtendedSignerDetails.SetSignerInfo(AValue: string);
+begin
+  if FSignerInfo=AValue then Exit;
+  FSignerInfo:=AValue;
+  Modified(9);
+end;
+
+procedure TExtendedSignerDetails.SetSignerOrganizationName(AValue: string);
+begin
+  if FSignerOrganizationName=AValue then Exit;
+  FSignerOrganizationName:=AValue;
+  Modified(8);
+end;
+
+procedure TExtendedSignerDetails.SetSignerOrgPowersBase(AValue: string);
+begin
+  if FSignerOrgPowersBase=AValue then Exit;
+  FSignerOrgPowersBase:=AValue;
+  Modified(13);
+end;
+
+procedure TExtendedSignerDetails.SetSignerPowers(AValue: TSignerPowers);
+begin
+  if FSignerPowers=AValue then Exit;
+  FSignerPowers:=AValue;
+  Modified(10);
+end;
+
+procedure TExtendedSignerDetails.SetSignerPowersBase(AValue: string);
+begin
+  if FSignerPowersBase=AValue then Exit;
+  FSignerPowersBase:=AValue;
+  Modified(12);
+end;
+
+procedure TExtendedSignerDetails.SetSignerStatus(AValue: TSignerStatus);
+begin
+  if FSignerStatus=AValue then Exit;
+  FSignerStatus:=AValue;
+  Modified(11);
+end;
+
+procedure TExtendedSignerDetails.SetSignerType(AValue: TSignerType);
+begin
+  FSignerType:=AValue;
+  Modified(7);
+end;
+
+procedure TExtendedSignerDetails.SetSurname(AValue: string);
+begin
+  if FSurname=AValue then Exit;
+  FSurname:=AValue;
+  Modified(1);
+end;
 
 procedure TExtendedSignerDetails.InternalRegisterProperty;
 begin
@@ -293,6 +428,61 @@ begin
 end;
 
 { TExtendedSignerDetailsToPost }
+
+procedure TExtendedSignerDetailsToPost.SetJobTitle(AValue: string);
+begin
+  if FJobTitle=AValue then Exit;
+  FJobTitle:=AValue;
+  Modified(1);
+end;
+
+procedure TExtendedSignerDetailsToPost.SetRegistrationCertificate(AValue: string
+  );
+begin
+  if FRegistrationCertificate=AValue then Exit;
+  FRegistrationCertificate:=AValue;
+  Modified(2);
+end;
+
+procedure TExtendedSignerDetailsToPost.SetSignerInfo(AValue: string);
+begin
+  if FSignerInfo=AValue then Exit;
+  FSignerInfo:=AValue;
+  Modified(4);
+end;
+
+procedure TExtendedSignerDetailsToPost.SetSignerOrgPowersBase(AValue: string);
+begin
+  if FSignerOrgPowersBase=AValue then Exit;
+  FSignerOrgPowersBase:=AValue;
+  Modified(8);
+end;
+
+procedure TExtendedSignerDetailsToPost.SetSignerPowers(AValue: TSignerPowers);
+begin
+  FSignerPowers:=AValue;
+  Modified(5);
+end;
+
+procedure TExtendedSignerDetailsToPost.SetSignerPowersBase(AValue: string);
+begin
+  if FSignerPowersBase=AValue then Exit;
+  FSignerPowersBase:=AValue;
+  Modified(7);
+end;
+
+procedure TExtendedSignerDetailsToPost.SetSignerStatus(AValue: TSignerStatus);
+begin
+  FSignerStatus:=AValue;
+  Modified(6);
+end;
+
+procedure TExtendedSignerDetailsToPost.SetSignerType(AValue: TSignerType);
+begin
+  if FSignerType=AValue then Exit;
+  FSignerType:=AValue;
+  Modified(3);
+end;
 
 procedure TExtendedSignerDetailsToPost.InternalRegisterProperty;
 begin

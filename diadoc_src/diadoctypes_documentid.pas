@@ -51,12 +51,14 @@ type
   private
     FEntityId: string;
     FMessageId: string;
+    procedure SetEntityId(AValue: string);
+    procedure SetMessageId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
   public
   published
-    property MessageId:string read FMessageId write FMessageId; //1
-    property EntityId:string read FEntityId write FEntityId;    //2
+    property MessageId:string read FMessageId write SetMessageId; //1
+    property EntityId:string read FEntityId write SetEntityId;    //2
   end;
   TDocumentIds = specialize GSerializationObjectList<TDocumentId>;
 
@@ -71,13 +73,16 @@ type
     FBoxId: string;
     FEntityId: string;
     FMessageId: string;
+    procedure SetBoxId(AValue: string);
+    procedure SetEntityId(AValue: string);
+    procedure SetMessageId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
   public
   published
-    property MessageId:string read FMessageId write FMessageId; //1;
-    property EntityId:string read FEntityId write FEntityId; //2;
-    property BoxId:string read FBoxId write FBoxId; //3;
+    property MessageId:string read FMessageId write SetMessageId; //1;
+    property EntityId:string read FEntityId write SetEntityId; //2;
+    property BoxId:string read FBoxId write SetBoxId; //3;
   end;
   TDocumentIdExs = specialize GSerializationObjectList<TDocumentIdEx>;
 
@@ -85,15 +90,50 @@ implementation
 
 { TDocumentIdEx }
 
+procedure TDocumentIdEx.SetBoxId(AValue: string);
+begin
+  if FBoxId=AValue then Exit;
+  FBoxId:=AValue;
+  Modified(3);
+end;
+
+procedure TDocumentIdEx.SetEntityId(AValue: string);
+begin
+  if FEntityId=AValue then Exit;
+  FEntityId:=AValue;
+  Modified(2);
+end;
+
+procedure TDocumentIdEx.SetMessageId(AValue: string);
+begin
+  if FMessageId=AValue then Exit;
+  FMessageId:=AValue;
+  Modified(1);
+end;
+
 procedure TDocumentIdEx.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('MessageId', 1);
-  RegisterProp('EntityId', 2);
-  RegisterProp('BoxId', 3);
+  RegisterProp('MessageId', 1, true);
+  RegisterProp('EntityId', 2, true);
+  RegisterProp('BoxId', 3, true);
 end;
 
 { TDocumentId }
+
+procedure TDocumentId.SetEntityId(AValue: string);
+begin
+  if FEntityId=AValue then Exit;
+  FEntityId:=AValue;
+  Modified(2);
+end;
+
+procedure TDocumentId.SetMessageId(AValue: string);
+begin
+  if FMessageId=AValue then Exit;
+  FMessageId:=AValue;
+  Modified(1);
+end;
 
 procedure TDocumentId.InternalRegisterProperty;
 begin

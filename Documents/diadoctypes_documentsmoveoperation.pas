@@ -57,20 +57,36 @@ type
     FBoxId: string;
     FDocumentIds: TDocumentIds;
     FToDepartmentId: string;
+    procedure SetBoxId(AValue: string);
+    procedure SetToDepartmentId(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property BoxId:string read FBoxId write FBoxId;//1;
-    property ToDepartmentId:string read FToDepartmentId write FToDepartmentId;//2;
+    property BoxId:string read FBoxId write SetBoxId;//1;
+    property ToDepartmentId:string read FToDepartmentId write SetToDepartmentId;//2;
     property DocumentIds:TDocumentIds read FDocumentIds;//3;
   end;
 
 implementation
 
 { TDocumentsMoveOperation }
+
+procedure TDocumentsMoveOperation.SetBoxId(AValue: string);
+begin
+  if FBoxId=AValue then Exit;
+  FBoxId:=AValue;
+  Modified(1);
+end;
+
+procedure TDocumentsMoveOperation.SetToDepartmentId(AValue: string);
+begin
+  if FToDepartmentId=AValue then Exit;
+  FToDepartmentId:=AValue;
+  Modified(2);
+end;
 
 procedure TDocumentsMoveOperation.InternalInit;
 begin

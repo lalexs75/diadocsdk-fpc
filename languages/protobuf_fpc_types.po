@@ -25,6 +25,10 @@ msgstr ""
 msgid "ProtoBuffer: Property number %d not found"
 msgstr ""
 
+#: protobuf_fpc_types.sprotobufferpropvalueexpected
+msgid "ProtoBuffer: Value expected for property %s"
+msgstr ""
+
 #: protobuf_fpc_types.sprotobufnotfondproperty
 msgid "ProtoBuffer: Not fond property %s"
 msgstr ""

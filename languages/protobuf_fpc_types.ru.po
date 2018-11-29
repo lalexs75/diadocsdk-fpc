@@ -25,6 +25,10 @@ msgstr "ProtoBuffer: Ошибка чтения значения QWord"
 msgid "ProtoBuffer: Property number %d not found"
 msgstr "ProtoBuffer: Свойство номер %d не найдено"
 
+#: protobuf_fpc_types.sprotobufferpropvalueexpected
+msgid "ProtoBuffer: Value expected for property %s"
+msgstr ""
+
 #: protobuf_fpc_types.sprotobufnotfondproperty
 msgid "ProtoBuffer: Not fond property %s"
 msgstr "ProtoBuffer: Не найдено свойство %s"
