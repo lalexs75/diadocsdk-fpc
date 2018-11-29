@@ -264,9 +264,10 @@ var
 begin
   AMsg:=TMessageToPost.Create;
   AMsg.FromBoxId:=FBox.BoxId;
-  AMsg.ToBoxId:=FBox.BoxId;
+  AMsg.ToBoxId:='7c715969e0034816b1037da20541a83a@diadoc.ru'; //только для внешней отправки - опторг
   AMsg.FromDepartmentId:='00000000-0000-0000-0000-000000000000';
-  AMsg.ToDepartmentId:='1771d98f-aa6d-478a-9419-e51f659085ac';
+  //AMsg.ToDepartmentId:='1771d98f-aa6d-478a-9419-e51f659085ac';
+  //AMsg.IsInternal:=true;
 
     Invoice:=AMsg.Invoices.AddItem;
     //Invoice.SignedContent.Content:=
@@ -284,9 +285,8 @@ begin
 
   AMsg.IsDraft:=true;
   //AMsg.LockDraft
-  //AMsg.StrictDraftValidation:
+  //AMsg.StrictDraftValidation:=false;
   //AMsg.IsInternal
-  //AMsg.FromDepartmentId
   //AMsg.DelaySend
   //AMsg.LockPacket:Boolean read FLockPacket write FLockPacket; //32
   //AMsg.LockMode:TLockMode read FLockMode write FLockMode;//35 [default = None];

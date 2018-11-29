@@ -26,9 +26,9 @@ object DDAPIMainForm: TDDAPIMainForm
     Height = 666
     Top = 0
     Width = 1278
-    ActivePage = TabSheet5
+    ActivePage = TabSheet4
     Align = alClient
-    TabIndex = 1
+    TabIndex = 3
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = 'Параметры'
@@ -643,7 +643,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 168
         Height = 31
         Top = 6
-        Width = 939
+        Width = 1094
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 1
@@ -776,7 +776,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 138
         Height = 31
         Top = 68
-        Width = 969
+        Width = 1124
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 2
@@ -791,7 +791,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 138
         Height = 31
         Top = 105
-        Width = 969
+        Width = 1124
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 3
@@ -806,7 +806,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 138
         Height = 31
         Top = 142
-        Width = 969
+        Width = 1124
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 4
@@ -821,7 +821,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 138
         Height = 31
         Top = 327
-        Width = 969
+        Width = 1124
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 5
@@ -836,7 +836,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 138
         Height = 31
         Top = 216
-        Width = 969
+        Width = 1124
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 6
@@ -851,7 +851,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 138
         Height = 31
         Top = 179
-        Width = 969
+        Width = 1124
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 7
@@ -865,7 +865,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 0
         Height = 19
         Top = 43
-        Width = 1113
+        Width = 1268
         Caption = 'Результат'
         Anchors = [akTop, akLeft, akRight]
         Font.Style = [fsBold]
@@ -881,7 +881,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 138
         Height = 31
         Top = 364
-        Width = 969
+        Width = 1124
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 8
@@ -896,7 +896,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 138
         Height = 31
         Top = 290
-        Width = 969
+        Width = 1124
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 9
@@ -911,7 +911,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 138
         Height = 31
         Top = 253
-        Width = 969
+        Width = 1124
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
         TabOrder = 10

@@ -26,11 +26,11 @@ begin
 
   Result.Seller.BoxId:='';
   Result.Seller.OrgName:='ООО "Василёк"';
-  Result.Seller.Inn:='999999999';
-  Result.Seller.Kpp:='9999999';
+  Result.Seller.Inn:='2635024103';
+  Result.Seller.Kpp:='262350001';
   Result.Seller.Address.RussianAddress.Apartment:='1';
-  Result.Seller.Address.RussianAddress.ZipCode:='999999';
-  Result.Seller.Address.RussianAddress.Region:='99';
+  Result.Seller.Address.RussianAddress.ZipCode:='356236';
+  Result.Seller.Address.RussianAddress.Region:='26';
   Result.Seller.Address.RussianAddress.Territory:='Ставропольский край';
   Result.Seller.Address.RussianAddress.City:='Ставрополь';
   Result.Seller.Address.RussianAddress.Locality:='Ставрополь';
@@ -56,11 +56,11 @@ begin
 
   Result.Buyer.BoxId:='';
   Result.Buyer.OrgName:='ООО "Василёк"';
-  Result.Buyer.Inn:='999999999';
-  Result.Buyer.Kpp:='9999999';
+  Result.Buyer.Inn:='2635024103';
+  Result.Buyer.Kpp:='262350001';
   Result.Buyer.Address.RussianAddress.Apartment:='1';
-  Result.Buyer.Address.RussianAddress.ZipCode:='999999';
-  Result.Buyer.Address.RussianAddress.Region:='99';
+  Result.Buyer.Address.RussianAddress.ZipCode:='356236';
+  Result.Buyer.Address.RussianAddress.Region:='26';
   Result.Buyer.Address.RussianAddress.Territory:='Ставропольский край';
   Result.Buyer.Address.RussianAddress.City:='Ставрополь';
   Result.Buyer.Address.RussianAddress.Locality:='Ставрополь';
@@ -90,11 +90,11 @@ begin
 
   Result.Consignee.BoxId:='';
   Result.Consignee.OrgName:='ООО "Василёк"';
-  Result.Consignee.Inn:='999999999';
-  Result.Consignee.Kpp:='9999999';
+  Result.Consignee.Inn:='2635024103';
+  Result.Consignee.Kpp:='262350001';
   Result.Consignee.Address.RussianAddress.Apartment:='1';
-  Result.Consignee.Address.RussianAddress.ZipCode:='999999';
-  Result.Consignee.Address.RussianAddress.Region:='99';
+  Result.Consignee.Address.RussianAddress.ZipCode:='356236';
+  Result.Consignee.Address.RussianAddress.Region:='26';
   Result.Consignee.Address.RussianAddress.Territory:='Ставропольский край';
   Result.Consignee.Address.RussianAddress.City:='Ставрополь';
   Result.Consignee.Address.RussianAddress.Locality:='Ставрополь';
