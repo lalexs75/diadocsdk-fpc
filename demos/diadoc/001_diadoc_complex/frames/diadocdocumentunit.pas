@@ -100,13 +100,15 @@ type
 
     procedure AppendDoc(D:TDocument);
     procedure FetchDocList;
+    procedure ShowDiadocStatus;
   public
     destructor Destroy; override;
     procedure InitFrame(ADiadocAPI: TDiadocAPI; ABox:TBox; AOrgs:TOrganization);
   end;
 
 implementation
-uses DiadocTypes_UniversalTransferDocumentInfo, diadoc_utils, ContragentFindUnit, ShowBoxInfoUnit, SelectDepartmentUnit, DiadocTypes_DocumentsMoveOperation,
+uses DiadocTypes_UniversalTransferDocumentInfo, diadoc_utils, ContragentFindUnit, ShowBoxInfoUnit, SelectDepartmentUnit,
+  DiadocTypes_DocumentsMoveOperation, DiadocTypes_DiadocMessage_PostApi,
   MessageForDocUnit, ddNewDocUTDUnit, rxAppUtils;
 
 {$R *.lfm}
@@ -252,6 +254,52 @@ begin
 end;
 
 procedure TDiadocDocumentFrame.newUPDExecute(Sender: TObject);
+
+procedure DoTestSend(AUPDXml: TMemoryStream);
+var
+  AMsg: TMessageToPost;
+  Invoice:TXmlDocumentAttachment;
+  IDs: TDocumentId;
+  M: TMessage;
+begin
+  AMsg:=TMessageToPost.Create;
+  AMsg.FromBoxId:=FBox.BoxId;
+  AMsg.ToBoxId:=FBox.BoxId;
+  AMsg.FromDepartmentId:='00000000-0000-0000-0000-000000000000';
+  AMsg.ToDepartmentId:='1771d98f-aa6d-478a-9419-e51f659085ac';
+
+    Invoice:=AMsg.Invoices.AddItem;
+    //Invoice.SignedContent.Content:=
+    //Invoice.SignedContent.Signature;
+    Invoice.SignedContent.LoadContent(AUPDXml);
+    //Invoice.SignedContent.NameOnShelf
+    //Invoice.SignedContent.SignWithTestSignature:=true;
+    //Invoice.SignedContent.SignatureNameOnShelf
+    Invoice.Comment:='Тестовоое сообщение с тестовой УПД';
+    //IDs:=Invoice.InitialDocumentIds.AddItem;
+    //Invoice.SubordinateDocumentIds
+    //Invoice.CustomDocumentId
+    Invoice.NeedReceipt:=true;
+    //Invoice.CustomData;
+
+  AMsg.IsDraft:=true;
+  //AMsg.LockDraft
+  //AMsg.StrictDraftValidation:
+  //AMsg.IsInternal
+  //AMsg.FromDepartmentId
+  //AMsg.DelaySend
+  //AMsg.LockPacket:Boolean read FLockPacket write FLockPacket; //32
+  //AMsg.LockMode:TLockMode read FLockMode write FLockMode;//35 [default = None];
+
+  M:=FDiadocAPI.PostDiadocMessage(AMsg, '');
+
+  ShowDiadocStatus;
+
+  if Assigned(M) then
+    M.Free;
+  AMsg.Free;
+end;
+
 var
   D: TUniversalTransferDocumentSellerTitleInfo;
   M: TMemoryStream;
@@ -262,14 +310,13 @@ begin
 
   M:=FDiadocAPI.GenerateUniversalTransferDocumentXmlForSeller(D, true);
 
-  if FDiadocAPI.ResultCode <> 200 then
-    ErrorBox('Ошибка %d : %s '+LineEnding+'(%s)', [FDiadocAPI.ResultCode, FDiadocAPI.ResultString, FDiadocAPI.ResultText.Text])
-  else
-    ShowMessage('Успешно');
+  ShowDiadocStatus;
 
   if Assigned(M) then
   begin
     M.SaveToFile('/tmp/UniversalTransferDocumentXmlForSeller.xml');
+    M.Position:=0;
+    DoTestSend(M);
     M.Free;
   end;
   D.Free;
@@ -489,6 +536,14 @@ begin
   end
   else
     ShowMessageFmt('Error %d (%s)', [FDiadocAPI.ResultCode, FDiadocAPI.ResultString]);
+end;
+
+procedure TDiadocDocumentFrame.ShowDiadocStatus;
+begin
+  if FDiadocAPI.ResultCode <> 200 then
+    ErrorBox('Ошибка %d : %s '+LineEnding+'(%s)', [FDiadocAPI.ResultCode, FDiadocAPI.ResultString, FDiadocAPI.ResultText.Text])
+  else
+    ShowMessage('Успешно');
 end;
 
 destructor TDiadocDocumentFrame.Destroy;

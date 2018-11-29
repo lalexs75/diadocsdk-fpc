@@ -53,16 +53,20 @@ type
     FDepartmentId: string;
     FUser: string;
     FUserId: string;
+    procedure SetDepartment(AValue: string);
+    procedure SetDepartmentId(AValue: string);
+    procedure SetUser(AValue: string);
+    procedure SetUserId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property Department:string read FDepartment write FDepartment; //1
-    property DepartmentId:string read FDepartmentId write FDepartmentId; //2
-    property User:string read FUser write FUser; //3
-    property UserId:string read FUserId write FUserId; //4
+    property Department:string read FDepartment write SetDepartment; //1
+    property DepartmentId:string read FDepartmentId write SetDepartmentId; //2
+    property User:string read FUser write SetUser; //3
+    property UserId:string read FUserId write SetUserId; //4
   end;
 
 implementation
@@ -79,6 +83,34 @@ begin
   inherited Destroy;
 end;
 
+procedure TResolutionTarget.SetDepartment(AValue: string);
+begin
+  if FDepartment=AValue then Exit;
+  FDepartment:=AValue;
+  Modified(1);
+end;
+
+procedure TResolutionTarget.SetDepartmentId(AValue: string);
+begin
+  if FDepartmentId=AValue then Exit;
+  FDepartmentId:=AValue;
+  Modified(2);
+end;
+
+procedure TResolutionTarget.SetUser(AValue: string);
+begin
+  if FUser=AValue then Exit;
+  FUser:=AValue;
+  Modified(3);
+end;
+
+procedure TResolutionTarget.SetUserId(AValue: string);
+begin
+  if FUserId=AValue then Exit;
+  FUserId:=AValue;
+  Modified(4);
+end;
+
 procedure TResolutionTarget.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -87,5 +119,6 @@ begin
   RegisterProp('User', 3);
   RegisterProp('UserId', 4);
 end;
+
 end.
 

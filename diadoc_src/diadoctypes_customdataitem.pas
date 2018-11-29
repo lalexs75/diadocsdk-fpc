@@ -52,19 +52,35 @@ type
   private
     FKey: string;
     FValue: string;
+    procedure SetKey(AValue: string);
+    procedure SetValue(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
   published
-    property Key:string read FKey write FKey; //1
-    property Value:string read FValue write FValue; //2;
+    property Key:string read FKey write SetKey; //1
+    property Value:string read FValue write SetValue; //2;
   end;
   TCustomDataItems = specialize GSerializationObjectList<TCustomDataItem>;
 
 implementation
 
 { TCustomDataItem }
+
+procedure TCustomDataItem.SetKey(AValue: string);
+begin
+  if FKey=AValue then Exit;
+  FKey:=AValue;
+  Modified(1);
+end;
+
+procedure TCustomDataItem.SetValue(AValue: string);
+begin
+  if FValue=AValue then Exit;
+  FValue:=AValue;
+  Modified(2);
+end;
 
 procedure TCustomDataItem.InternalInit;
 begin

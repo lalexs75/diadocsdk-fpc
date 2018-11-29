@@ -57,21 +57,44 @@ type
     FRequestType: TResolutionRequestType;
     FResolvedWith: string;
     FTarget: TResolutionTarget;
+    procedure SetAuthor(AValue: string);
+    procedure SetRequestType(AValue: TResolutionRequestType);
+    procedure SetResolvedWith(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property RequestType:TResolutionRequestType read FRequestType write FRequestType default UnknownResolutionRequestType; //1
-    property Author:string read FAuthor write FAuthor; //2
+    property RequestType:TResolutionRequestType read FRequestType write SetRequestType default UnknownResolutionRequestType; //1
+    property Author:string read FAuthor write SetAuthor; //2
     property Target:TResolutionTarget read FTarget; //3;
-    property ResolvedWith:string read FResolvedWith write FResolvedWith; //4;
+    property ResolvedWith:string read FResolvedWith write SetResolvedWith; //4;
   end;
 
 implementation
 
 { TResolutionRequestInfo }
+
+procedure TResolutionRequestInfo.SetAuthor(AValue: string);
+begin
+  if FAuthor=AValue then Exit;
+  FAuthor:=AValue;
+  Modified(2);
+end;
+
+procedure TResolutionRequestInfo.SetRequestType(AValue: TResolutionRequestType);
+begin
+  FRequestType:=AValue;
+  Modified(1);
+end;
+
+procedure TResolutionRequestInfo.SetResolvedWith(AValue: string);
+begin
+  if FResolvedWith=AValue then Exit;
+  FResolvedWith:=AValue;
+  Modified(4);
+end;
 
 procedure TResolutionRequestInfo.InternalRegisterProperty;
 begin

@@ -95,6 +95,7 @@ resourcestring
     sNotDefinedEventId                 = 'Not defined Event Id';
     sNotDefinedDepartmentId            = 'Not defined Department Id';
     sNotDefinedDocumentId              = 'Not defined Document Id';
+    sNotDefinedMessage                 = 'Not defined message';
 
     sNotDefinedSellerInfo              = 'Not defined seller info';
     sNotDefinedParamsGetOrganization   = 'GetOrganization: not defined query params';

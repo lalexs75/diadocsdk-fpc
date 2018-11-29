@@ -152,6 +152,12 @@
       </element><element name="TDiadocAPI.DeleteEmployee.ABoxId"><short>boxId – идентификатор ящика</short>
       </element><element name="TDiadocAPI.DeleteEmployee.AUserId"><short>userId – идентификатор пользователя</short>
       </element>
+    <element name="TDiadocAPI.PostDiadocMessage"><short>Функция отправки сообщения в систему ДИАДОК</short><descr>В теле ответа содержится отправленное сообщение, сериализованное в протобуфер Message.
+</descr>
+      </element><element name="TDiadocAPI.PostDiadocMessage.AMsg"><short>отправляемое сообщение, сериализованное в протобуфер MessageToPost</short>
+      </element><element name="TDiadocAPI.PostDiadocMessage.AOperationId"><short>уникальный идентификатор операции (строка не чувствительная к регистру, может отсутствовать)</short><descr>Если вызов с указанным идентификатором операции завершился успехом, то и все последующие вызовы с тем же идентификатором операции так же завершатся успехом. Результат всех последующих вызовов будет равен результату первого успешного вызова. По умолчанию в качестве идентификатора операции используется MD5-хэш тела запроса.
+</descr>
+      </element>
     </module>
   </package>
 </fpdoc-descriptions>

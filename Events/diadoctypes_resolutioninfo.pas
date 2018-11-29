@@ -53,20 +53,43 @@ type
     FAuthor: string;
     FInitialRequestId: string;
     FResolutionType: TResolutionType;
+    procedure SetAuthor(AValue: string);
+    procedure SetInitialRequestId(AValue: string);
+    procedure SetResolutionType(AValue: TResolutionType);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property ResolutionType:TResolutionType read FResolutionType write FResolutionType default UnknownResolutionType; //1
-    property Author:string read FAuthor write FAuthor;//2;
-    property InitialRequestId:string read FInitialRequestId write FInitialRequestId;//3;
+    property ResolutionType:TResolutionType read FResolutionType write SetResolutionType default UnknownResolutionType; //1
+    property Author:string read FAuthor write SetAuthor;//2;
+    property InitialRequestId:string read FInitialRequestId write SetInitialRequestId;//3;
   end;
 
 implementation
 
 { TResolutionInfo }
+
+procedure TResolutionInfo.SetAuthor(AValue: string);
+begin
+  if FAuthor=AValue then Exit;
+  FAuthor:=AValue;
+  Modified(2);
+end;
+
+procedure TResolutionInfo.SetInitialRequestId(AValue: string);
+begin
+  if FInitialRequestId=AValue then Exit;
+  FInitialRequestId:=AValue;
+  Modified(3);
+end;
+
+procedure TResolutionInfo.SetResolutionType(AValue: TResolutionType);
+begin
+  FResolutionType:=AValue;
+  Modified(1);
+end;
 
 procedure TResolutionInfo.InternalRegisterProperty;
 begin

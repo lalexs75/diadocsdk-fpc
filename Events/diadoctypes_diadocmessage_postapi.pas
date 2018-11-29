@@ -81,14 +81,16 @@ type
   private
     FCustomDocumentId: string;
     FDocumentId: string;
+    procedure SetCustomDocumentId(AValue: string);
+    procedure SetDocumentId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property DocumentId:string read FDocumentId write FDocumentId;//1;
-    property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId;//2;
+    property DocumentId:string read FDocumentId write SetDocumentId;//1;
+    property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId;//2;
   end;
   TDocumentTransformations = specialize GSerializationObjectList<TDocumentTransformation>;
 
@@ -103,14 +105,16 @@ type
     FBoxId: string;
     FDocumentTransformations: TDocumentTransformations;
     FTemplateId: string;
+    procedure SetBoxId(AValue: string);
+    procedure SetTemplateId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property BoxId:string read FBoxId write FBoxId;//1;
-    property TemplateId:string read FTemplateId write FTemplateId;//2;
+    property BoxId:string read FBoxId write SetBoxId;//1;
+    property TemplateId:string read FTemplateId write SetTemplateId;//2;
     property DocumentTransformations:TDocumentTransformations read FDocumentTransformations;//3;
   end;
 
@@ -124,14 +128,16 @@ type
   private
     FContent: TBytes;
     FNameOnShelf: string;
+    procedure SetContent(AValue: TBytes);
+    procedure SetNameOnShelf(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property Content:TBytes read FContent write FContent;//1;
-    property NameOnShelf:string read FNameOnShelf write FNameOnShelf;//2;
+    property Content:TBytes read FContent write SetContent;//1;
+    property NameOnShelf:string read FNameOnShelf write SetNameOnShelf;//2;
   end;
 
   { TMetadataItem }
@@ -143,13 +149,15 @@ type
   private
     FKey: string;
     FValue: string;
+    procedure SetKey(AValue: string);
+    procedure SetValue(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
   published
-    property Key:string read FKey write FKey;//1;
-    property Value:string read FValue write FValue;//2;
+    property Key:string read FKey write SetKey;//1;
+    property Value:string read FValue write SetValue;//2;
   end;
   TMetadataItems = specialize GSerializationObjectList<TMetadataItem>;
 
@@ -196,6 +204,14 @@ type
     FUnsignedContent: TUnsignedContent;
     FVersion: string;
     FWorkflowId: int32;
+    procedure SetComment(AValue: string);
+    procedure SetCustomDocumentId(AValue: string);
+    procedure SetEditingSettingId(AValue: string);
+    procedure SetFunctionType(AValue: string);
+    procedure SetNeedRecipientSignature(AValue: Boolean);
+    procedure SetTypeNamedId(AValue: string);
+    procedure SetVersion(AValue: string);
+    procedure SetWorkflowId(AValue: int32);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -203,15 +219,15 @@ type
     destructor Destroy; override;
   published
     property UnsignedContent:TUnsignedContent read FUnsignedContent;//1;
-    property Comment:string read FComment write FComment;//2;
-    property TypeNamedId:string read FTypeNamedId write FTypeNamedId;//3;
-    property FunctionType:string read FFunctionType write FFunctionType;//4;
-    property Version:string read FVersion write FVersion;//5;
+    property Comment:string read FComment write SetComment;//2;
+    property TypeNamedId:string read FTypeNamedId write SetTypeNamedId;//3;
+    property FunctionType:string read FFunctionType write SetFunctionType;//4;
+    property Version:string read FVersion write SetVersion;//5;
     property Metadata:TMetadataItems read FMetadata;//6;
-    property WorkflowId:int32 read FWorkflowId write FWorkflowId;//7;
-    property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId;//8;
-    property EditingSettingId:string read FEditingSettingId write FEditingSettingId;//9;
-    property NeedRecipientSignature:Boolean read FNeedRecipientSignature write FNeedRecipientSignature;//10
+    property WorkflowId:int32 read FWorkflowId write SetWorkflowId;//7;
+    property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId;//8;
+    property EditingSettingId:string read FEditingSettingId write SetEditingSettingId;//9;
+    property NeedRecipientSignature:Boolean read FNeedRecipientSignature write SetNeedRecipientSignature;//10
     property PredefinedRecipientTitle:TPredefinedRecipientTitle read FPredefinedRecipientTitle;//11;
   end;
   TTemplateDocumentAttachments = specialize GSerializationObjectList<TTemplateDocumentAttachment>;
@@ -235,19 +251,25 @@ type
     FMessageToBoxId: string;
     FMessageToDepartmentId: string;
     FToBoxId: string;
+    procedure SetFromBoxId(AValue: string);
+    procedure SetLockMode(AValue: TLockMode);
+    procedure SetMessageFromBoxId(AValue: string);
+    procedure SetMessageToBoxId(AValue: string);
+    procedure SetMessageToDepartmentId(AValue: string);
+    procedure SetToBoxId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property FromBoxId:string read FFromBoxId write FFromBoxId;//1;
-    property ToBoxId:string read FToBoxId write FToBoxId;//2;
-    property MessageFromBoxId:string read FMessageFromBoxId write FMessageFromBoxId;//3;
-    property MessageToBoxId:string read FMessageToBoxId write FMessageToBoxId;//4;
-    property MessageToDepartmentId:string read FMessageToDepartmentId write FMessageToDepartmentId;//5;
+    property FromBoxId:string read FFromBoxId write SetFromBoxId;//1;
+    property ToBoxId:string read FToBoxId write SetToBoxId;//2;
+    property MessageFromBoxId:string read FMessageFromBoxId write SetMessageFromBoxId;//3;
+    property MessageToBoxId:string read FMessageToBoxId write SetMessageToBoxId;//4;
+    property MessageToDepartmentId:string read FMessageToDepartmentId write SetMessageToDepartmentId;//5;
     property DocumentAttachments:TTemplateDocumentAttachments read FDocumentAttachments; //6;
-    property LockMode:TLockMode read FLockMode write FLockMode;//7 [default = None];
+    property LockMode:TLockMode read FLockMode write SetLockMode;//7 [default = None];
   end;
 
   {  TResolutionRouteRemoval  }
@@ -263,15 +285,18 @@ type
     FLabels: TDocumentStrings;
     FParentEntityId: string;
     FRouteId: string;
+    procedure SetComment(AValue: string);
+    procedure SetParentEntityId(AValue: string);
+    procedure SetRouteId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property ParentEntityId:string read FParentEntityId write FParentEntityId;//1;
-    property RouteId:string read FRouteId write FRouteId;//2;
-    property Comment:string read FComment write FComment;//3
+    property ParentEntityId:string read FParentEntityId write SetParentEntityId;//1;
+    property RouteId:string read FRouteId write SetRouteId;//2;
+    property Comment:string read FComment write SetComment;//3
     property Labels:TDocumentStrings read FLabels;//= 4;
   end;
   TResolutionRouteRemovals = specialize GSerializationObjectList<TResolutionRouteRemoval>;
@@ -287,13 +312,14 @@ type
     FAddDocumentsToPacket: TDocumentIds;
     FDocumentId: string;
     FRemoveDocumentsFromPacket: TDocumentIds;
+    procedure SetDocumentId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property DocumentId:string read FDocumentId write FDocumentId; //1;
+    property DocumentId:string read FDocumentId write SetDocumentId; //1;
     property AddDocumentsToPacket:TDocumentIds read FAddDocumentsToPacket;//2;
     property RemoveDocumentsFromPacket:TDocumentIds read FRemoveDocumentsFromPacket;//3;
   end;
@@ -312,16 +338,20 @@ type
     FOperation: TCustomDataPatchOperation;
     FParentEntityId: string;
     FValue: string;
+    procedure SetKey(AValue: string);
+    procedure SetOperation(AValue: TCustomDataPatchOperation);
+    procedure SetParentEntityId(AValue: string);
+    procedure SetValue(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property ParentEntityId:string read FParentEntityId write FParentEntityId;//1;
-    property Operation:TCustomDataPatchOperation read FOperation write FOperation;//2;
-    property Key:string read FKey write FKey;//3;
-    property Value:string read FValue write FValue;//4;
+    property ParentEntityId:string read FParentEntityId write SetParentEntityId;//1;
+    property Operation:TCustomDataPatchOperation read FOperation write SetOperation;//2;
+    property Key:string read FKey write SetKey;//3;
+    property Value:string read FValue write SetValue;//4;
   end;
   TCustomDataPatchs = specialize GSerializationObjectList<TCustomDataPatch>;
 
@@ -338,16 +368,20 @@ type
     FDescription: string;
     FEventId: string;
     FSuccess: Boolean;
+    procedure SetBoxId(AValue: string);
+    procedure SetDescription(AValue: string);
+    procedure SetEventId(AValue: string);
+    procedure SetSuccess(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property BoxId:string read FBoxId write FBoxId;//1;
-    property EventId:string read FEventId write FEventId;//2;
-    property Success:Boolean read FSuccess write FSuccess;//3;
-    property Description:string read FDescription write FDescription;//4;
+    property BoxId:string read FBoxId write SetBoxId;//1;
+    property EventId:string read FEventId write SetEventId;//2;
+    property Success:Boolean read FSuccess write SetSuccess;//3;
+    property Description:string read FDescription write SetDescription;//4;
   end;
 
 
@@ -366,17 +400,26 @@ type
     FSignature: TBytes;
     FSignatureNameOnShelf: string;
     FSignWithTestSignature: Boolean;
+    procedure SetContent(AValue: TBytes);
+    procedure SetNameOnShelf(AValue: string);
+    procedure SetSignature(AValue: TBytes);
+    procedure SetSignatureNameOnShelf(AValue: string);
+    procedure SetSignWithTestSignature(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
+    procedure LoadContent(S:TStream); overload;
+    procedure LoadContent(const AFileName:string); overload;
+    procedure LoadSignature(S:TStream); overload;
+    procedure LoadSignature(const AFileName:string); overload;
   published
-    property Content:TBytes read FContent write FContent;//1;
-    property Signature:TBytes read FSignature write FSignature;//2;
-    property NameOnShelf:string read FNameOnShelf write FNameOnShelf;//4;
-    property SignWithTestSignature:Boolean read FSignWithTestSignature write FSignWithTestSignature;//5
-    property SignatureNameOnShelf:string read FSignatureNameOnShelf write FSignatureNameOnShelf;//6;
+    property Content:TBytes read FContent write SetContent;//1;
+    property Signature:TBytes read FSignature write SetSignature;//2;
+    property NameOnShelf:string read FNameOnShelf write SetNameOnShelf;//4;
+    property SignWithTestSignature:Boolean read FSignWithTestSignature write SetSignWithTestSignature;//5
+    property SignatureNameOnShelf:string read FSignatureNameOnShelf write SetSignatureNameOnShelf;//6;
   end;
 
   {  TXmlSignatureRejectionAttachment  }
@@ -390,13 +433,14 @@ type
     FLabels: TDocumentStrings;
     FParentEntityId: string;
     FSignedContent: TSignedContent;
+    procedure SetParentEntityId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property ParentEntityId:string read FParentEntityId write FParentEntityId;//1;
+    property ParentEntityId:string read FParentEntityId write SetParentEntityId;//1;
     property SignedContent:TSignedContent read FSignedContent;//2;
     property Labels:TDocumentStrings read FLabels; //3;
   end;
@@ -413,13 +457,14 @@ type
     FLabels: TDocumentStrings;
     FParentEntityId: string;
     FSignedContent: TSignedContent;
+    procedure SetParentEntityId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property ParentEntityId:string read FParentEntityId write FParentEntityId; //1;
+    property ParentEntityId:string read FParentEntityId write SetParentEntityId; //1;
     property SignedContent:TSignedContent read FSignedContent;//2;
     property Labels:TDocumentStrings read FLabels;//3;
   end;
@@ -444,18 +489,24 @@ type
     FSignature: TBytes;
     FSignatureNameOnShelf: string;
     FSignWithTestSignature: boolean;
+    procedure SetIsApprovementSignature(AValue: boolean);
+    procedure SetParentEntityId(AValue: string);
+    procedure SetPatchedContentId(AValue: string);
+    procedure SetSignature(AValue: TBytes);
+    procedure SetSignatureNameOnShelf(AValue: string);
+    procedure SetSignWithTestSignature(AValue: boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property ParentEntityId:string read FParentEntityId write FParentEntityId;//1;
-    property Signature:TBytes read FSignature write FSignature;//2;
-    property SignWithTestSignature:boolean read FSignWithTestSignature write FSignWithTestSignature;//4
-    property IsApprovementSignature:boolean read FIsApprovementSignature write FIsApprovementSignature;//5
-    property SignatureNameOnShelf:string read FSignatureNameOnShelf write FSignatureNameOnShelf;//6;
-    property PatchedContentId:string read FPatchedContentId write FPatchedContentId;//7;
+    property ParentEntityId:string read FParentEntityId write SetParentEntityId;//1;
+    property Signature:TBytes read FSignature write SetSignature;//2;
+    property SignWithTestSignature:boolean read FSignWithTestSignature write SetSignWithTestSignature;//4
+    property IsApprovementSignature:boolean read FIsApprovementSignature write SetIsApprovementSignature;//5
+    property SignatureNameOnShelf:string read FSignatureNameOnShelf write SetSignatureNameOnShelf;//6;
+    property PatchedContentId:string read FPatchedContentId write SetPatchedContentId;//7;
     property Labels:TDocumentStrings read FLabels; //8;
   end;
   TDocumentSignatures = specialize GSerializationObjectList<TDocumentSignature>;
@@ -471,14 +522,16 @@ type
     FBoxId: string;
     FDocumentSignatures: TDocumentSignatures;
     FMessageId: String;
+    procedure SetBoxId(AValue: string);
+    procedure SetMessageId(AValue: String);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property BoxId:string read FBoxId write FBoxId;//1;
-    property MessageId:String read FMessageId write FMessageId;//2;
+    property BoxId:string read FBoxId write SetBoxId;//1;
+    property MessageId:String read FMessageId write SetMessageId;//2;
     property DocumentSignatures:TDocumentSignatures read FDocumentSignatures;//3;
   end;
 
@@ -494,6 +547,8 @@ type
     FContent: TBytes;
     FDocumentId: TDocumentId;
     FPatchedContentId: string;
+    procedure SetContent(AValue: TBytes);
+    procedure SetPatchedContentId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -501,8 +556,8 @@ type
     destructor Destroy; override;
   published
     property DocumentId:TDocumentId read FDocumentId; //1;
-    property PatchedContentId:string read FPatchedContentId write FPatchedContentId;//2;
-    property Content:TBytes read FContent write FContent;//3;
+    property PatchedContentId:string read FPatchedContentId write SetPatchedContentId;//2;
+    property Content:TBytes read FContent write SetContent;//3;
   end;
   TDocumentPatchedContents = specialize GSerializationObjectList<TDocumentPatchedContent>;
 
@@ -565,17 +620,22 @@ type
     FToBoxId: string;
     FTypeNamedId: string;
     FVersion: string;
+    procedure SetContent(AValue: TUnsignedContent);
+    procedure SetFunctionType(AValue: string);
+    procedure SetToBoxId(AValue: string);
+    procedure SetTypeNamedId(AValue: string);
+    procedure SetVersion(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property TypeNamedId:string read FTypeNamedId write FTypeNamedId;//1;
-    property FunctionType:string read FFunctionType write FFunctionType;//2;
-    property Version:string read FVersion write FVersion;//3;
-    property Content:TUnsignedContent read FContent write FContent;//4;
-    property ToBoxId:string read FToBoxId write FToBoxId;//5;
+    property TypeNamedId:string read FTypeNamedId write SetTypeNamedId;//1;
+    property FunctionType:string read FFunctionType write SetFunctionType;//2;
+    property Version:string read FVersion write SetVersion;//3;
+    property Content:TUnsignedContent read FContent write SetContent;//4;
+    property ToBoxId:string read FToBoxId write SetToBoxId;//5;
     property Signer:TSigner read FSigner;//6;
     property ExtendedSigner:TExtendedSigners read FExtendedSigner;//7;
   end;
@@ -594,6 +654,7 @@ type
     FExtendedSigner: TExtendedSigners;
     FSigner: TSigner;
     FToBoxId: string;
+    procedure SetToBoxId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -601,7 +662,7 @@ type
     destructor Destroy; override;
   published
     property DocumentId:TDocumentId read FDocumentId; //1;
-    property ToBoxId:string read FToBoxId write FToBoxId;//2;
+    property ToBoxId:string read FToBoxId write SetToBoxId;//2;
     property Signer:TSigner read FSigner;//3;
     property ExtendedSigner:TExtendedSigners read FExtendedSigner;//4;
   end;
@@ -620,13 +681,14 @@ type
     FContents: TContentToPatchs;
     FDocuments: TDocumentToPatchs;
     FDraftDocuments: TDraftDocumentToPatchs;
+    procedure SetBoxId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property BoxId:string read FBoxId write FBoxId;//1;
+    property BoxId:string read FBoxId write SetBoxId;//1;
     property DraftDocuments:TDraftDocumentToPatchs read FDraftDocuments; //2;
     property Documents:TDocumentToPatchs read FDocuments;//3;
     property Contents:TContentToPatchs read FContents;//4;
@@ -646,16 +708,20 @@ type
     FPatchedContentId: String;
     FSignature: TBytes;
     FSignWithTestSignature: Boolean;
+    procedure SetParentEntityId(AValue: string);
+    procedure SetPatchedContentId(AValue: String);
+    procedure SetSignature(AValue: TBytes);
+    procedure SetSignWithTestSignature(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property ParentEntityId:string read FParentEntityId write FParentEntityId;//1;
-    property Signature:TBytes read FSignature write FSignature;//2;
-    property SignWithTestSignature:Boolean read FSignWithTestSignature write FSignWithTestSignature;//4
-    property PatchedContentId:String read FPatchedContentId write FPatchedContentId;//5;
+    property ParentEntityId:string read FParentEntityId write SetParentEntityId;//1;
+    property Signature:TBytes read FSignature write SetSignature;//2;
+    property SignWithTestSignature:Boolean read FSignWithTestSignature write SetSignWithTestSignature;//4
+    property PatchedContentId:String read FPatchedContentId write SetPatchedContentId;//5;
   end;
   TDocumentSenderSignatures = specialize GSerializationObjectList<TDocumentSenderSignature>;
 
@@ -678,19 +744,25 @@ type
     FProxyDepartmentId: string;
     FToBoxId: string;
     FToDepartmentId: string;
+    procedure SetBoxId(AValue: string);
+    procedure SetDraftId(AValue: string);
+    procedure SetProxyBoxId(AValue: string);
+    procedure SetProxyDepartmentId(AValue: string);
+    procedure SetToBoxId(AValue: string);
+    procedure SetToDepartmentId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property BoxId:string read FBoxId write FBoxId;//1;
-    property DraftId:string read FDraftId write FDraftId;//2;
-    property ToBoxId:string read FToBoxId write FToBoxId;//3;
-    property ToDepartmentId:string read FToDepartmentId write FToDepartmentId;//4;
+    property BoxId:string read FBoxId write SetBoxId;//1;
+    property DraftId:string read FDraftId write SetDraftId;//2;
+    property ToBoxId:string read FToBoxId write SetToBoxId;//3;
+    property ToDepartmentId:string read FToDepartmentId write SetToDepartmentId;//4;
     property DocumentSignatures:TDocumentSenderSignatures read FDocumentSignatures;//5;
-    property ProxyBoxId:string read FProxyBoxId write FProxyBoxId;//6;
-    property ProxyDepartmentId:string read FProxyDepartmentId write FProxyDepartmentId;//7;
+    property ProxyBoxId:string read FProxyBoxId write SetProxyBoxId;//6;
+    property ProxyDepartmentId:string read FProxyDepartmentId write SetProxyDepartmentId;//7;
   end;
 
   {  TRequestedSignatureRejection  }
@@ -704,13 +776,14 @@ type
     FLabels: TDocumentStrings;
     FParentEntityId: string;
     FSignedContent: TSignedContent;
+    procedure SetParentEntityId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property ParentEntityId:string read FParentEntityId write FParentEntityId; //1;
+    property ParentEntityId:string read FParentEntityId write SetParentEntityId; //1;
     property SignedContent:TSignedContent read FSignedContent;//2;
     property Labels:TDocumentStrings read FLabels;//3;
   end;
@@ -728,13 +801,14 @@ type
     FLabels: TDocumentStrings;
     FParentEntityId: string;
     FSignedContent: TSignedContent;
+    procedure SetParentEntityId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property ParentEntityId:string read FParentEntityId write FParentEntityId; //1;
+    property ParentEntityId:string read FParentEntityId write SetParentEntityId; //1;
     property SignedContent:TSignedContent read FSignedContent;//2;
     property Labels:TDocumentStrings read FLabels;//4;
   end;
@@ -755,16 +829,18 @@ type
     FNeedReceipt: Boolean;
     FParentEntityId: string;
     FSignedContent: TSignedContent;
+    procedure SetNeedReceipt(AValue: Boolean);
+    procedure SetParentEntityId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property ParentEntityId:string read FParentEntityId write FParentEntityId;//1;
+    property ParentEntityId:string read FParentEntityId write SetParentEntityId;//1;
     property SignedContent:TSignedContent read FSignedContent;//2;
     property Labels:TDocumentStrings read FLabels;//4;
-    property NeedReceipt:Boolean read FNeedReceipt write FNeedReceipt default false;//5;
+    property NeedReceipt:Boolean read FNeedReceipt write SetNeedReceipt default false;//5;
   end;
   TRecipientTitleAttachments = specialize GSerializationObjectList<TRecipientTitleAttachment>;
 
@@ -781,13 +857,14 @@ type
     FLabels: TDocumentStrings;
     FParentEntityId: string;
     FSignedContent: TSignedContent;
+    procedure SetParentEntityId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property ParentEntityId:string read FParentEntityId write FParentEntityId; //1;
+    property ParentEntityId:string read FParentEntityId write SetParentEntityId; //1;
     property SignedContent:TSignedContent read FSignedContent;//2;
     property Labels:TDocumentStrings read FLabels;//4;
   end;
@@ -806,15 +883,18 @@ type
     FInitialDocumentId: string;
     FLabels: TDocumentStrings;
     FResolutionType: TResolutionType;
+    procedure SetComment(AValue: string);
+    procedure SetInitialDocumentId(AValue: string);
+    procedure SetResolutionType(AValue: TResolutionType);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property InitialDocumentId:string read FInitialDocumentId write FInitialDocumentId; //1
-    property ResolutionType:TResolutionType read FResolutionType write FResolutionType; //2
-    property Comment:string read FComment write FComment; //3;
+    property InitialDocumentId:string read FInitialDocumentId write SetInitialDocumentId; //1
+    property ResolutionType:TResolutionType read FResolutionType write SetResolutionType; //2
+    property Comment:string read FComment write SetComment; //3;
     property Labels:TDocumentStrings read FLabels; //4;
   end;
   TResolutionAttachments = specialize GSerializationObjectList<TResolutionAttachment>;
@@ -830,14 +910,16 @@ type
     FComment: string;
     FInitialResolutionRequestId: string;
     FLabels: TDocumentStrings;
+    procedure SetComment(AValue: string);
+    procedure SetInitialResolutionRequestId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property InitialResolutionRequestId:string read FInitialResolutionRequestId write FInitialResolutionRequestId;//1;
-    property Comment:string read FComment write FComment;//2;
+    property InitialResolutionRequestId:string read FInitialResolutionRequestId write SetInitialResolutionRequestId;//1;
+    property Comment:string read FComment write SetComment;//2;
     property Labels:TDocumentStrings read FLabels; //3;
   end;
   TResolutionRequestDenialAttachments = specialize GSerializationObjectList<TResolutionRequestDenialAttachment>;
@@ -849,13 +931,14 @@ type
   TResolutionRequestDenialCancellationAttachment = class(TSerializationObject) //message ResolutionRequestDenialCancellationAttachment
   private
     FInitialResolutionRequestDenialId: string;
+    procedure SetInitialResolutionRequestDenialId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property InitialResolutionRequestDenialId:string read FInitialResolutionRequestDenialId write FInitialResolutionRequestDenialId;//1;
+    property InitialResolutionRequestDenialId:string read FInitialResolutionRequestDenialId write SetInitialResolutionRequestDenialId;//1;
   end;
   TResolutionRequestDenialCancellationAttachments = specialize GSerializationObjectList<TResolutionRequestDenialCancellationAttachment>;
 
@@ -870,14 +953,16 @@ type
     FComment: string;
     FInitialResolutionRequestId: string;
     FLabels: TDocumentStrings;
+    procedure SetComment(AValue: string);
+    procedure SetInitialResolutionRequestId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property InitialResolutionRequestId:string read FInitialResolutionRequestId write FInitialResolutionRequestId; //1
-    property Comment:string read FComment write FComment; //2
+    property InitialResolutionRequestId:string read FInitialResolutionRequestId write SetInitialResolutionRequestId; //1
+    property Comment:string read FComment write SetComment; //2
     property Labels:TDocumentStrings read FLabels; //3
   end;
   TResolutionRequestCancellationAttachments = specialize GSerializationObjectList<TResolutionRequestCancellationAttachment>;
@@ -896,15 +981,18 @@ type
     FInitialDocumentId: string;
     FLabels: TDocumentStrings;
     FRouteId: string;
+    procedure SetComment(AValue: string);
+    procedure SetInitialDocumentId(AValue: string);
+    procedure SetRouteId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property InitialDocumentId:string read FInitialDocumentId write FInitialDocumentId;//1;
-    property RouteId:string read FRouteId write FRouteId;//2;
-    property Comment:string read FComment write FComment;//3;
+    property InitialDocumentId:string read FInitialDocumentId write SetInitialDocumentId;//1;
+    property RouteId:string read FRouteId write SetRouteId;//2;
+    property Comment:string read FComment write SetComment;//3;
     property Labels:TDocumentStrings read FLabels; //4
   end;
   TResolutionRouteAssignments = specialize GSerializationObjectList<TResolutionRouteAssignment>;
@@ -926,17 +1014,22 @@ type
     FResType: TResolutionRequestType;
     FTargetDepartmentId: string;
     FTargetUserId: string;
+    procedure SetComment(AValue: string);
+    procedure SetInitialDocumentId(AValue: string);
+    procedure SetResType(AValue: TResolutionRequestType);
+    procedure SetTargetDepartmentId(AValue: string);
+    procedure SetTargetUserId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property InitialDocumentId:string read FInitialDocumentId write FInitialDocumentId; //1;
-    property ResType:TResolutionRequestType read FResType write FResType; //2;
-    property TargetUserId:string read FTargetUserId write FTargetUserId; //3;
-    property TargetDepartmentId:string read FTargetDepartmentId write FTargetDepartmentId; //4;
-    property Comment:string read FComment write FComment; //5;
+    property InitialDocumentId:string read FInitialDocumentId write SetInitialDocumentId; //1;
+    property ResType:TResolutionRequestType read FResType write SetResType; //2;
+    property TargetUserId:string read FTargetUserId write SetTargetUserId; //3;
+    property TargetDepartmentId:string read FTargetDepartmentId write SetTargetDepartmentId; //4;
+    property Comment:string read FComment write SetComment; //5;
     property Labels:TDocumentStrings read FLabels; //6;
   end;
   TResolutionRequestAttachments = specialize GSerializationObjectList<TResolutionRequestAttachment>;
@@ -954,15 +1047,18 @@ type
     FInitialDocumentId: string;
     FIsValid: Boolean;
     FLabels: TDocumentStrings;
+    procedure SetErrorMessage(AValue: string);
+    procedure SetInitialDocumentId(AValue: string);
+    procedure SetIsValid(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property InitialDocumentId:string read FInitialDocumentId write FInitialDocumentId;//1;
-    property IsValid:Boolean read FIsValid write FIsValid;//2;
-    property ErrorMessage:string read FErrorMessage write FErrorMessage;//3;
+    property InitialDocumentId:string read FInitialDocumentId write SetInitialDocumentId;//1;
+    property IsValid:Boolean read FIsValid write SetIsValid;//2;
+    property ErrorMessage:string read FErrorMessage write SetErrorMessage;//3;
     property Labels:TDocumentStrings read FLabels; //4;
   end;
   TSignatureVerifications = specialize GSerializationObjectList<TSignatureVerification>;
@@ -978,14 +1074,15 @@ type
     FContent: TUnsignedContent;
     FLabels: TDocumentStrings;
     FParentEntityId: string;
+    procedure SetParentEntityId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property ParentEntityId:string read FParentEntityId write FParentEntityId;//1;
-    property Content:TUnsignedContent read FContent write FContent;//2;
+    property ParentEntityId:string read FParentEntityId write SetParentEntityId;//1;
+    property Content:TUnsignedContent read FContent;//2;
     property Labels:TDocumentStrings read FLabels; //3;
   end;
   TEditingPatchs = specialize GSerializationObjectList<TEditingPatch>;
@@ -1042,14 +1139,16 @@ type
     FXmlAcceptanceCertificateBuyerTitles: TRecipientTitleAttachments;
     FXmlSignatureRejections: TXmlSignatureRejectionAttachments;
     FXmlTorg12BuyerTitles: TRecipientTitleAttachments;
+    procedure SetBoxId(AValue: string);
+    procedure SetMessageId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property BoxId:string read FBoxId write FBoxId;//1;
-    property MessageId:string read FMessageId write FMessageId;//2;
+    property BoxId:string read FBoxId write SetBoxId;//1;
+    property MessageId:string read FMessageId write SetMessageId;//2;
     property Receipts:TReceiptAttachments read FReceipts;//3;
     property CorrectionRequests:TCorrectionRequestAttachments read FCorrectionRequests; //4;
     property Signatures:TDocumentSignatures read FSignatures;//5;
@@ -1099,6 +1198,7 @@ type
     FComment: string;
     FCustomData: TCustomDataItems;
     FCustomDocumentId: string;
+    FFunctionType: string;
     FInitialDocumentIds: TDocumentIds;
     FIsEncrypted: Boolean;
     FMetadata: TMetadataItems;
@@ -1109,6 +1209,15 @@ type
     FTypeNamedId: string;
     FVersion: string;
     FWorkflowId: int32;
+    procedure SetComment(AValue: string);
+    procedure SetCustomDocumentId(AValue: string);
+    procedure SetFunctionType(AValue: string);
+    procedure SetIsEncrypted(AValue: Boolean);
+    procedure SetNeedReceipt(AValue: boolean);
+    procedure SetNeedRecipientSignature(AValue: Boolean);
+    procedure SetTypeNamedId(AValue: string);
+    procedure SetVersion(AValue: string);
+    procedure SetWorkflowId(AValue: int32);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -1117,21 +1226,21 @@ type
   published
     property SignedContent:TSignedContent read FSignedContent; //1;
     // reserved 2 for FileName
-    property Comment:string read FComment write FComment; //3;
-    property NeedRecipientSignature:Boolean read FNeedRecipientSignature write FNeedRecipientSignature;//4
+    property Comment:string read FComment write SetComment; //3;
+    property NeedRecipientSignature:Boolean read FNeedRecipientSignature write SetNeedRecipientSignature;//4
     property InitialDocumentIds:TDocumentIds read FInitialDocumentIds;//5;
     property SubordinateDocumentIds:TDocumentIds read FSubordinateDocumentIds;//6;
     // reserved 7 for DocumentDate
     // reserved 8 for DocumentNumber
-    property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId;//9;
-    property NeedReceipt:boolean read FNeedReceipt write FNeedReceipt; //10
+    property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId;//9;
+    property NeedReceipt:boolean read FNeedReceipt write SetNeedReceipt; //10
     property CustomData:TCustomDataItems read FCustomData;//11;
-    property TypeNamedId:string read FTypeNamedId write FTypeNamedId; //12;
-    property FunctionType:string read FTypeNamedId write FTypeNamedId; //13;
-    property Version:string read FVersion write FVersion;//14;
+    property TypeNamedId:string read FTypeNamedId write SetTypeNamedId; //12;
+    property FunctionType:string read FFunctionType write SetFunctionType; //13;
+    property Version:string read FVersion write SetVersion;//14;
     property Metadata:TMetadataItems read FMetadata; //15;
-    property WorkflowId:int32 read FWorkflowId write FWorkflowId;//16;
-    property IsEncrypted:Boolean read FIsEncrypted write FIsEncrypted;//17
+    property WorkflowId:int32 read FWorkflowId write SetWorkflowId;//16;
+    property IsEncrypted:Boolean read FIsEncrypted write SetIsEncrypted;//17
   end;
   TDocumentAttachments = specialize GSerializationObjectList<TDocumentAttachment>;
 
@@ -1161,6 +1270,12 @@ type
     FNeedReceipt: boolean;
     FSignedContent: TSignedContent;
     FSubordinateDocumentIds: TDocumentIds;
+    procedure SetComment(AValue: string);
+    procedure SetCustomDocumentId(AValue: string);
+    procedure SetDocumentDate(AValue: string);
+    procedure SetDocumentNumber(AValue: string);
+    procedure SetFileName(AValue: string);
+    procedure SetNeedReceipt(AValue: boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -1168,15 +1283,15 @@ type
     destructor Destroy; override;
   published
     property SignedContent:TSignedContent read FSignedContent; //1;
-    property FileName:string read FFileName write FFileName;//2;
-    property Comment:string read FComment write FComment;//3;
+    property FileName:string read FFileName write SetFileName;//2;
+    property Comment:string read FComment write SetComment;//3;
     // reserved 4 for NeedRecipientSignature
     property InitialDocumentIds:TDocumentIds read FInitialDocumentIds;//5;
     property SubordinateDocumentIds:TDocumentIds read FSubordinateDocumentIds;//6;
-    property DocumentDate:string read FDocumentDate write FDocumentDate;//7;
-    property DocumentNumber:string read FDocumentNumber write FDocumentNumber;//8;
-    property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId;//9;
-    property NeedReceipt:boolean read FNeedReceipt write FNeedReceipt;//10
+    property DocumentDate:string read FDocumentDate write SetDocumentDate;//7;
+    property DocumentNumber:string read FDocumentNumber write SetDocumentNumber;//8;
+    property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId;//9;
+    property NeedReceipt:boolean read FNeedReceipt write SetNeedReceipt;//10
     property CustomData:TCustomDataItems read FCustomData;//11;
   end;
   TServiceDetailsAttachments = specialize GSerializationObjectList<TServiceDetailsAttachment>;
@@ -1214,6 +1329,16 @@ type
     FSignedContent: TSignedContent;
     FSubordinateDocumentIds: TDocumentIds;
     FTotal: string;
+    procedure SetComment(AValue: string);
+    procedure SetContractDate(AValue: string);
+    procedure SetContractNumber(AValue: string);
+    procedure SetContractType(AValue: string);
+    procedure SetCustomDocumentId(AValue: string);
+    procedure SetDocumentDate(AValue: string);
+    procedure SetDocumentNumber(AValue: string);
+    procedure SetFileName(AValue: string);
+    procedure SetNeedReceipt(AValue: Boolean);
+    procedure SetTotal(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -1221,18 +1346,18 @@ type
     destructor Destroy; override;
   published
     property SignedContent:TSignedContent read FSignedContent; //1;
-    property FileName:string read FFileName write FFileName;//2;
-    property Comment:string read FComment write FComment;//3;
+    property FileName:string read FFileName write SetFileName;//2;
+    property Comment:string read FComment write SetComment;//3;
     property InitialDocumentIds:TDocumentIds read FInitialDocumentIds; //4;
     property SubordinateDocumentIds:TDocumentIds read FSubordinateDocumentIds;//5;
-    property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId;//6;
-    property DocumentDate:string read FDocumentDate write FDocumentDate;//7;
-    property DocumentNumber:string read FDocumentNumber write FDocumentNumber;//8;
-    property Total:string read FTotal write FTotal;//9;
-    property ContractNumber:string read FContractNumber write FContractNumber;//10;
-    property ContractDate:string read FContractDate write FContractDate;//11;
-    property ContractType:string read FContractType write FContractType;//12;
-    property NeedReceipt:Boolean read FNeedReceipt write FNeedReceipt;//13
+    property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId;//6;
+    property DocumentDate:string read FDocumentDate write SetDocumentDate;//7;
+    property DocumentNumber:string read FDocumentNumber write SetDocumentNumber;//8;
+    property Total:string read FTotal write SetTotal;//9;
+    property ContractNumber:string read FContractNumber write SetContractNumber;//10;
+    property ContractDate:string read FContractDate write SetContractDate;//11;
+    property ContractType:string read FContractType write SetContractType;//12;
+    property NeedReceipt:Boolean read FNeedReceipt write SetNeedReceipt;//13
     property CustomData:TCustomDataItems read FCustomData; //14;
   end;
   TSupplementaryAgreementAttachments = specialize GSerializationObjectList<TSupplementaryAgreementAttachment>;
@@ -1267,6 +1392,14 @@ type
     FNeedReceipt: Boolean;
     FSignedContent: TSignedContent;
     FSubordinateDocumentIds: TDocumentIds;
+    procedure SetComment(AValue: string);
+    procedure SetContractPrice(AValue: string);
+    procedure SetContractType(AValue: string);
+    procedure SetCustomDocumentId(AValue: string);
+    procedure SetDocumentDate(AValue: string);
+    procedure SetDocumentNumber(AValue: string);
+    procedure SetFileName(AValue: string);
+    procedure SetNeedReceipt(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -1274,16 +1407,16 @@ type
     destructor Destroy; override;
   published
     property SignedContent:TSignedContent read FSignedContent; //1;
-    property FileName:string read FFileName write FFileName;//2;
-    property Comment:string read FComment write FComment;//3;
+    property FileName:string read FFileName write SetFileName;//2;
+    property Comment:string read FComment write SetComment;//3;
     property InitialDocumentIds:TDocumentIds read FInitialDocumentIds; //4;
     property SubordinateDocumentIds:TDocumentIds read FSubordinateDocumentIds; //5;
-    property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId;//6;
-    property DocumentDate:string read FDocumentDate write FDocumentDate;//7;
-    property DocumentNumber:string read FDocumentNumber write FDocumentNumber;//8;
-    property ContractPrice:string read FContractPrice write FContractPrice;//9;
-    property ContractType:string read FContractType write FContractType;//10;
-    property NeedReceipt:Boolean read FNeedReceipt write FNeedReceipt;//11
+    property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId;//6;
+    property DocumentDate:string read FDocumentDate write SetDocumentDate;//7;
+    property DocumentNumber:string read FDocumentNumber write SetDocumentNumber;//8;
+    property ContractPrice:string read FContractPrice write SetContractPrice;//9;
+    property ContractType:string read FContractType write SetContractType;//10;
+    property NeedReceipt:Boolean read FNeedReceipt write SetNeedReceipt;//11
     property CustomData:TCustomDataItems read FCustomData; //12;
   end;
   TContractAttachments = specialize GSerializationObjectList<TContractAttachment>;
@@ -1304,7 +1437,6 @@ type
   //}
   TReconciliationActAttachment = class(TSerializationObject) //message ReconciliationActAttachment
   private
-    F: string;
     FComment: string;
     FCustomData: TCustomDataItems;
     FCustomDocumentId: string;
@@ -1315,6 +1447,12 @@ type
     FNeedReceipt: Boolean;
     FSignedContent: TSignedContent;
     FSubordinateDocumentIds: TDocumentIds;
+    procedure SetComment(AValue: string);
+    procedure SetCustomDocumentId(AValue: string);
+    procedure SetDocumentDate(AValue: string);
+    procedure SetDocumentNumber(AValue: string);
+    procedure SetFileName(AValue: string);
+    procedure SetNeedReceipt(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -1322,15 +1460,15 @@ type
     destructor Destroy; override;
   published
     property SignedContent:TSignedContent read FSignedContent; //1;
-    property FileName:string read F write FFileName;//2;
-    property Comment:string read FComment write FComment;//3;
+    property FileName:string read FFileName write SetFileName;//2;
+    property Comment:string read FComment write SetComment;//3;
     // reserved 4 for NeedRecipientSignature
     property InitialDocumentIds:TDocumentIds read FInitialDocumentIds; //5;
     property SubordinateDocumentIds:TDocumentIds read FSubordinateDocumentIds;//6;
-    property DocumentDate:string read FDocumentDate write FDocumentDate;//7;
-    property DocumentNumber:string read FDocumentNumber write FDocumentNumber;//8
-    property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId;//9;
-    property NeedReceipt:Boolean read FNeedReceipt write FNeedReceipt;//10
+    property DocumentDate:string read FDocumentDate write SetDocumentDate;//7;
+    property DocumentNumber:string read FDocumentNumber write SetDocumentNumber;//8
+    property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId;//9;
+    property NeedReceipt:Boolean read FNeedReceipt write SetNeedReceipt;//10
     property CustomData:TCustomDataItems read FCustomData;//11;
   end;
   TReconciliationActAttachments = specialize GSerializationObjectList<TReconciliationActAttachment>;
@@ -1367,6 +1505,15 @@ type
     FPriceListEffectiveDate: string;
     FSignedContent: TSignedContent;
     FSubordinateDocumentIds: TDocumentIds;
+    procedure SetComment(AValue: string);
+    procedure SetContractDocumentDate(AValue: string);
+    procedure SetContractDocumentNumber(AValue: string);
+    procedure SetCustomDocumentId(AValue: string);
+    procedure SetDocumentDate(AValue: string);
+    procedure SetDocumentNumber(AValue: string);
+    procedure SetFileName(AValue: string);
+    procedure SetNeedReceipt(AValue: Boolean);
+    procedure SetPriceListEffectiveDate(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -1374,17 +1521,17 @@ type
     destructor Destroy; override;
   published
     property SignedContent:TSignedContent read FSignedContent;//1;
-    property FileName:string read FFileName write FFileName;//2;
-    property Comment:string read FComment write FComment;//3;
+    property FileName:string read FFileName write SetFileName;//2;
+    property Comment:string read FComment write SetComment;//3;
     property InitialDocumentIds:TDocumentIds read FInitialDocumentIds; //4;
     property SubordinateDocumentIds:TDocumentIds read FSubordinateDocumentIds;//5;
-    property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId;//6;
-    property DocumentDate:string read FDocumentDate write FDocumentDate;//7;
-    property DocumentNumber:string read FDocumentNumber write FDocumentNumber;//8;
-    property PriceListEffectiveDate:string read FPriceListEffectiveDate write FPriceListEffectiveDate;//9;
-    property ContractDocumentDate:string read FContractDocumentDate write FContractDocumentDate;//10;
-    property ContractDocumentNumber:string read FContractDocumentNumber write FContractDocumentNumber;//11;
-    property NeedReceipt:Boolean read FNeedReceipt write FNeedReceipt;//12
+    property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId;//6;
+    property DocumentDate:string read FDocumentDate write SetDocumentDate;//7;
+    property DocumentNumber:string read FDocumentNumber write SetDocumentNumber;//8;
+    property PriceListEffectiveDate:string read FPriceListEffectiveDate write SetPriceListEffectiveDate;//9;
+    property ContractDocumentDate:string read FContractDocumentDate write SetContractDocumentDate;//10;
+    property ContractDocumentNumber:string read FContractDocumentNumber write SetContractDocumentNumber;//11;
+    property NeedReceipt:Boolean read FNeedReceipt write SetNeedReceipt;//12
     property CustomData:TCustomDataItems read FCustomData; //13;
   end;
   TPriceListAttachments = specialize GSerializationObjectList<TPriceListAttachment>;
@@ -1400,15 +1547,18 @@ type
     FContent: TBytes;
     FFileName: string;
     FParentCustomDocumentId: string;
+    procedure SetContent(AValue: TBytes);
+    procedure SetFileName(AValue: string);
+    procedure SetParentCustomDocumentId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property Content:TBytes read FContent write FContent; //1;
-    property FileName:string read FFileName write FFileName;//2;
-    property ParentCustomDocumentId:string read FParentCustomDocumentId write FParentCustomDocumentId;//3;
+    property Content:TBytes read FContent write SetContent; //1;
+    property FileName:string read FFileName write SetFileName;//2;
+    property ParentCustomDocumentId:string read FParentCustomDocumentId write SetParentCustomDocumentId;//3;
   end;
   TStructuredDataAttachments = specialize GSerializationObjectList<TStructuredDataAttachment>;
 
@@ -1427,6 +1577,9 @@ type
     FCustomDocumentId: string;
     FFileName: string;
     FSignedContent: TSignedContent;
+    procedure SetComment(AValue: string);
+    procedure SetCustomDocumentId(AValue: string);
+    procedure SetFileName(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -1434,9 +1587,9 @@ type
     destructor Destroy; override;
   published
     property SignedContent:TSignedContent read FSignedContent; //1;
-    property FileName:string read FFileName write FFileName;//2;
-    property Comment:string read FComment write FComment;// = 3;
-    property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId;//4;
+    property FileName:string read FFileName write SetFileName;//2;
+    property Comment:string read FComment write SetComment;//3;
+    property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId;//4;
     property CustomData:TCustomDataItems read FCustomData;//5;
   end;
 
@@ -1473,6 +1626,16 @@ type
     FSubordinateDocumentIds: TDocumentIds;
     FTotal: string;
     FVat: string;
+    procedure SetComment(AValue: string);
+    procedure SetCustomDocumentId(AValue: string);
+    procedure SetDocumentDate(AValue: string);
+    procedure SetDocumentNumber(AValue: string);
+    procedure SetFileName(AValue: string);
+    procedure SetGrounds(AValue: string);
+    procedure SetNeedReceipt(AValue: Boolean);
+    procedure SetNeedRecipientSignature(AValue: Boolean);
+    procedure SetTotal(AValue: string);
+    procedure SetVat(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -1480,18 +1643,18 @@ type
     destructor Destroy; override;
   published
     property SignedContent:TSignedContent read FSignedContent; //1;
-    property FileName:string read FFileName write FFileName;//2;
-    property Comment:string read FComment write FComment;//3;
+    property FileName:string read FFileName write SetFileName;//2;
+    property Comment:string read FComment write SetComment;//3;
     property InitialDocumentIds:TDocumentIds read FInitialDocumentIds;//4;
     property SubordinateDocumentIds:TDocumentIds read FSubordinateDocumentIds;//5;
-    property DocumentDate:string read FDocumentDate write FDocumentDate;//6;
-    property DocumentNumber:string read FDocumentNumber write FDocumentNumber;//7
-    property Total:string read FTotal write FTotal;//8;
-    property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId;//9;
-    property Vat:string read FVat write FVat;//10;
-    property Grounds:string read FGrounds write FGrounds;//11;
-    property NeedReceipt:Boolean read FNeedReceipt write FNeedReceipt;//12
-    property NeedRecipientSignature:Boolean read FNeedRecipientSignature write FNeedRecipientSignature;//13
+    property DocumentDate:string read FDocumentDate write SetDocumentDate;//6;
+    property DocumentNumber:string read FDocumentNumber write SetDocumentNumber;//7
+    property Total:string read FTotal write SetTotal;//8;
+    property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId;//9;
+    property Vat:string read FVat write SetVat;//10;
+    property Grounds:string read FGrounds write SetGrounds;//11;
+    property NeedReceipt:Boolean read FNeedReceipt write SetNeedReceipt;//12
+    property NeedRecipientSignature:Boolean read FNeedRecipientSignature write SetNeedRecipientSignature;//13
     property CustomData:TCustomDataItems read FCustomData;//14;
   end;
   TAcceptanceCertificateAttachments = specialize GSerializationObjectList<TAcceptanceCertificateAttachment>;
@@ -1526,6 +1689,14 @@ type
     FSignedContent: TSignedContent;
     FSubordinateDocumentIds: TDocumentIds;
     FTotal: string;
+    procedure SetComment(AValue: string);
+    procedure SetCustomDocumentId(AValue: string);
+    procedure SetDocumentDate(AValue: string);
+    procedure SetDocumentNumber(AValue: string);
+    procedure SetFileName(AValue: string);
+    procedure SetGrounds(AValue: string);
+    procedure SetNeedReceipt(AValue: Boolean);
+    procedure SetTotal(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -1533,17 +1704,17 @@ type
     destructor Destroy; override;
   published
     property SignedContent:TSignedContent read FSignedContent;//1;
-    property FileName:string read FFileName write FFileName;//2;
-    property Comment:string read FComment write FComment;//3;
+    property FileName:string read FFileName write SetFileName;//2;
+    property Comment:string read FComment write SetComment;//3;
     property InitialDocumentIds:TDocumentIds read FInitialDocumentIds;//4;
     property SubordinateDocumentIds:TDocumentIds read FSubordinateDocumentIds;//5;
-    property DocumentDate:string read FDocumentDate write FDocumentDate;//6;
-    property DocumentNumber:string read FDocumentNumber write FDocumentNumber;//7;
-    property Total:string read FTotal write FTotal;//8;
-    property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId;//9;
+    property DocumentDate:string read FDocumentDate write SetDocumentDate;//6;
+    property DocumentNumber:string read FDocumentNumber write SetDocumentNumber;//7;
+    property Total:string read FTotal write SetTotal;//8;
+    property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId;//9;
     // reserved 10 for Vat
-    property Grounds:string read FGrounds write FGrounds;//11;
-    property NeedReceipt:Boolean read FNeedReceipt write FNeedReceipt;//12;
+    property Grounds:string read FGrounds write SetGrounds;//11;
+    property NeedReceipt:Boolean read FNeedReceipt write SetNeedReceipt;//12;
     property CustomData:TCustomDataItems read FCustomData;//13;
   end;
   TTorg13Attachments = specialize GSerializationObjectList<TTorg13Attachment>;
@@ -1579,6 +1750,15 @@ type
     FSubordinateDocumentIds: TDocumentIds;
     FTotal: string;
     FVat: string;
+    procedure SetComment(AValue: string);
+    procedure SetCustomDocumentId(AValue: string);
+    procedure SetDocumentDate(AValue: string);
+    procedure SetDocumentNumber(AValue: string);
+    procedure SetFileName(AValue: string);
+    procedure SetGrounds(AValue: string);
+    procedure SetNeedReceipt(AValue: boolean);
+    procedure SetTotal(AValue: string);
+    procedure SetVat(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -1586,17 +1766,17 @@ type
     destructor Destroy; override;
   published
     property SignedContent:TSignedContent read FSignedContent;//1;
-    property FileName:string read FFileName write FFileName;//2;
-    property Comment:string read FComment write FComment;//3;
+    property FileName:string read FFileName write SetFileName;//2;
+    property Comment:string read FComment write SetComment;//3;
     property InitialDocumentIds:TDocumentIds read FInitialDocumentIds;//4;
     property SubordinateDocumentIds:TDocumentIds read FSubordinateDocumentIds; //5;
-    property DocumentDate:string read FDocumentDate write FDocumentDate;//6;
-    property DocumentNumber:string read FDocumentNumber write FDocumentNumber;//7;
-    property Total:string read FTotal write FTotal;//8;
-    property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId;//9;
-    property Vat:string read FVat write FVat;//10;
-    property Grounds:string read FGrounds write FGrounds;//11;
-    property NeedReceipt:boolean read FNeedReceipt write FNeedReceipt; //12
+    property DocumentDate:string read FDocumentDate write SetDocumentDate;//6;
+    property DocumentNumber:string read FDocumentNumber write SetDocumentNumber;//7;
+    property Total:string read FTotal write SetTotal;//8;
+    property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId;//9;
+    property Vat:string read FVat write SetVat;//10;
+    property Grounds:string read FGrounds write SetGrounds;//11;
+    property NeedReceipt:boolean read FNeedReceipt write SetNeedReceipt; //12
     property CustomData:TCustomDataItems read FCustomData;//13;
   end;
   TBasicDocumentAttachments = specialize GSerializationObjectList<TBasicDocumentAttachment>;
@@ -1628,6 +1808,13 @@ type
     FNeedRecipientSignature: Boolean;
     FSignedContent: TSignedContent;
     FSubordinateDocumentIds: TDocumentIds;
+    procedure SetComment(AValue: string);
+    procedure SetCustomDocumentId(AValue: string);
+    procedure SetDocumentDate(AValue: string);
+    procedure SetDocumentNumber(AValue: string);
+    procedure SetFileName(AValue: string);
+    procedure SetNeedReceipt(AValue: Boolean);
+    procedure SetNeedRecipientSignature(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -1635,15 +1822,15 @@ type
     destructor Destroy; override;
   published
     property SignedContent:TSignedContent read FSignedContent; //1;
-    property FileName:string read FFileName write FFileName; //2;
-    property Comment:string read FComment write FComment; //3;
-    property NeedRecipientSignature:Boolean read FNeedRecipientSignature write FNeedRecipientSignature;//4
+    property FileName:string read FFileName write SetFileName; //2;
+    property Comment:string read FComment write SetComment; //3;
+    property NeedRecipientSignature:Boolean read FNeedRecipientSignature write SetNeedRecipientSignature;//4
     property InitialDocumentIds:TDocumentIds read FInitialDocumentIds; //5;
     property SubordinateDocumentIds:TDocumentIds read FSubordinateDocumentIds;//6;
-    property DocumentDate:string read FDocumentDate write FDocumentDate; //7;
-    property DocumentNumber:string read FDocumentNumber write FDocumentNumber; //8;
-    property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId; //9;
-    property NeedReceipt:Boolean read FNeedReceipt write FNeedReceipt; //10
+    property DocumentDate:string read FDocumentDate write SetDocumentDate; //7;
+    property DocumentNumber:string read FDocumentNumber write SetDocumentNumber; //8;
+    property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId; //9;
+    property NeedReceipt:Boolean read FNeedReceipt write SetNeedReceipt; //10
     property CustomData:TCustomDataItems read FCustomData;//11;
   end;
   TNonformalizedAttachments = specialize GSerializationObjectList<TNonformalizedAttachment>;
@@ -1667,6 +1854,9 @@ type
     FNeedReceipt: Boolean;
     FSignedContent: TSignedContent;
     FSubordinateDocumentIds: TDocumentIds;
+    procedure SetComment(AValue: string);
+    procedure SetCustomDocumentId(AValue: string);
+    procedure SetNeedReceipt(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -1674,11 +1864,11 @@ type
     destructor Destroy; override;
   published
     property SignedContent:TSignedContent read FSignedContent;//1;
-    property Comment:string read FComment write FComment; //3;
+    property Comment:string read FComment write SetComment; //3;
     property InitialDocumentIds:TDocumentIds read FInitialDocumentIds; //4;
     property SubordinateDocumentIds:TDocumentIds read FSubordinateDocumentIds;//5;
-    property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId;//6;
-    property NeedReceipt:Boolean read FNeedReceipt write FNeedReceipt; //7
+    property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId;//6;
+    property NeedReceipt:Boolean read FNeedReceipt write SetNeedReceipt; //7
     property CustomData:TCustomDataItems read FCustomData;//8;
   end;
   TXmlDocumentAttachments = specialize GSerializationObjectList<TXmlDocumentAttachment>;
@@ -1700,9 +1890,9 @@ type
   public
     destructor Destroy; override;
   published
-    property OriginalInvoiceDateAndNumber:TDocumentDateAndNumber read FOriginalInvoiceDateAndNumber write FOriginalInvoiceDateAndNumber;//1;
-    property OriginalInvoiceRevisionDateAndNumber:TDocumentDateAndNumber read FOriginalInvoiceRevisionDateAndNumber write FOriginalInvoiceRevisionDateAndNumber;//2;
-    property InvoiceCorrectionRevisionDateAndNumber:TDocumentDateAndNumber read FInvoiceCorrectionRevisionDateAndNumber write FInvoiceCorrectionRevisionDateAndNumber; //3;
+    property OriginalInvoiceDateAndNumber:TDocumentDateAndNumber read FOriginalInvoiceDateAndNumber;//1;
+    property OriginalInvoiceRevisionDateAndNumber:TDocumentDateAndNumber read FOriginalInvoiceRevisionDateAndNumber;//2;
+    property InvoiceCorrectionRevisionDateAndNumber:TDocumentDateAndNumber read FInvoiceCorrectionRevisionDateAndNumber; //3;
   end;
 
 
@@ -1719,7 +1909,7 @@ type
   public
     destructor Destroy; override;
   published
-    property RevisionDateAndNumber:TDocumentDateAndNumber read FRevisionDateAndNumber write FRevisionDateAndNumber; //1;
+    property RevisionDateAndNumber:TDocumentDateAndNumber read FRevisionDateAndNumber; //1;
   end;
 
 
@@ -1734,15 +1924,18 @@ type
     FDocumentName: string;
     FFormationDate: string;
     FFormationTime: string;
+    procedure SetDocumentName(AValue: string);
+    procedure SetFormationDate(AValue: string);
+    procedure SetFormationTime(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property FormationDate:string read FFormationDate write FFormationDate;//1;
-    property FormationTime:string read FFormationTime write FFormationTime;//2;
-    property DocumentName:string read FDocumentName write FDocumentName;//3;
+    property FormationDate:string read FFormationDate write SetFormationDate;//1;
+    property FormationTime:string read FFormationTime write SetFormationTime;//2;
+    property DocumentName:string read FDocumentName write SetDocumentName;//3;
   end;
 
 
@@ -1759,15 +1952,18 @@ type
     FDocumentDateAndNumber: TDocumentDateAndNumber;
     FFileId: string;
     FSenderFnsParticipantId: string;
+    procedure SetBuyerFnsParticipantId(AValue: string);
+    procedure SetFileId(AValue: string);
+    procedure SetSenderFnsParticipantId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property FileId:string read FFileId write FFileId;//1;
-    property BuyerFnsParticipantId:string read FBuyerFnsParticipantId write FBuyerFnsParticipantId;//2;
-    property SenderFnsParticipantId:string read FSenderFnsParticipantId write FSenderFnsParticipantId;//3;
+    property FileId:string read FFileId write SetFileId;//1;
+    property BuyerFnsParticipantId:string read FBuyerFnsParticipantId write SetBuyerFnsParticipantId;//2;
+    property SenderFnsParticipantId:string read FSenderFnsParticipantId write SetSenderFnsParticipantId;//3;
     property DocumentDateAndNumber:TDocumentDateAndNumber read FDocumentDateAndNumber; //4;
   end;
 
@@ -1794,6 +1990,10 @@ type
     FMetadata: TEncryptedDocumentMetadata;
     FSignedContent: TSignedContent;
     FSubordinateDocumentIds: TDocumentIds;
+    procedure SetComment(AValue: string);
+    procedure SetCustomDocumentId(AValue: string);
+    procedure SetInitialDocumentIds(AValue: TDocumentIds);
+    procedure SetSubordinateDocumentIds(AValue: TDocumentIds);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -1801,10 +2001,10 @@ type
     destructor Destroy; override;
   published
     property SignedContent:TSignedContent read FSignedContent; //1;
-    property Comment:string read FComment write FComment;//3;
-    property InitialDocumentIds:TDocumentIds read FInitialDocumentIds write FInitialDocumentIds;//4;
-    property SubordinateDocumentIds:TDocumentIds read FSubordinateDocumentIds write FSubordinateDocumentIds; //5;
-    property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId;// = 6;
+    property Comment:string read FComment write SetComment;//3;
+    property InitialDocumentIds:TDocumentIds read FInitialDocumentIds write SetInitialDocumentIds;//4;
+    property SubordinateDocumentIds:TDocumentIds read FSubordinateDocumentIds write SetSubordinateDocumentIds; //5;
+    property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId;// = 6;
     property CustomData:TCustomDataItems read FCustomData;//7;
     property Metadata:TEncryptedDocumentMetadata read FMetadata;//8;
     property InvoiceMetadata:TEncryptedInvoiceMetadata read FInvoiceMetadata;//9;
@@ -1834,6 +2034,8 @@ type
     FSignedContent: TSignedContent;
     FSubordinateDocumentIds: TDocumentIds;
     FXmlBasicMetadata: TEncryptedXmlBasicDocumentMetadata;
+    procedure SetComment(AValue: string);
+    procedure SetCustomDocumentId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -1841,10 +2043,10 @@ type
     destructor Destroy; override;
   published
     property SignedContent:TSignedContent read FSignedContent;//1;
-    property Comment:string read FComment write FComment;//3;
+    property Comment:string read FComment write SetComment;//3;
     property InitialDocumentIds:TDocumentIds read FInitialDocumentIds; //4;
     property SubordinateDocumentIds:TDocumentIds read FSubordinateDocumentIds; //5;
-    property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId;//6;
+    property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId;//6;
     property CustomData:TCustomDataItems read FCustomData;//7;
     property Metadata:TEncryptedDocumentMetadata read FMetadata;//8;
     property XmlBasicMetadata:TEncryptedXmlBasicDocumentMetadata read FXmlBasicMetadata;//9;
@@ -1924,14 +2126,27 @@ type
     FUniversalTransferDocumentSellerTitles: TXmlDocumentAttachments;
     FXmlAcceptanceCertificateSellerTitles: TXmlDocumentAttachments;
     FXmlTorg12SellerTitles: TXmlDocumentAttachments;
+    procedure SetDelaySend(AValue: Boolean);
+    procedure SetFromBoxId(AValue: string);
+    procedure SetFromDepartmentId(AValue: string);
+    procedure SetIsDraft(AValue: Boolean);
+    procedure SetIsInternal(AValue: Boolean);
+    procedure SetLockDraft(AValue: Boolean);
+    procedure SetLockMode(AValue: TLockMode);
+    procedure SetLockPacket(AValue: Boolean);
+    procedure SetProxyBoxId(AValue: string);
+    procedure SetProxyDepartmentId(AValue: string);
+    procedure SetStrictDraftValidation(AValue: Boolean);
+    procedure SetToBoxId(AValue: string);
+    procedure SetToDepartmentId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property FromBoxId:string read FFromBoxId write FFromBoxId;//1;
-    property ToBoxId:string read FToBoxId write FToBoxId;//2;
+    property FromBoxId:string read FFromBoxId write SetFromBoxId;//1;
+    property ToBoxId:string read FToBoxId write SetToBoxId;//2;
     property Invoices:TXmlDocumentAttachments read FInvoices; //3;
     property NonformalizedDocuments:TNonformalizedAttachments read FNonformalizedDocuments;//4;
     property Torg12Documents:TBasicDocumentAttachments read FTorg12Documents;//5;
@@ -1940,13 +2155,13 @@ type
     property ProformaInvoices:TBasicDocumentAttachments read FProformaInvoices;//9;
     property XmlTorg12SellerTitles:TXmlDocumentAttachments read FXmlTorg12SellerTitles;//10;
     property XmlAcceptanceCertificateSellerTitles:TXmlDocumentAttachments read FXmlAcceptanceCertificateSellerTitles;//11;
-    property ToDepartmentId:string read FToDepartmentId write FToDepartmentId;//12;
-    property IsDraft:Boolean read FIsDraft write FIsDraft;//13
-    property LockDraft:Boolean read FLockDraft write FLockDraft;//14
-    property StrictDraftValidation:Boolean read FStrictDraftValidation write FStrictDraftValidation default true;//15
-    property IsInternal:Boolean read FIsInternal write FIsInternal;//16
-    property FromDepartmentId:string read FFromDepartmentId write FFromDepartmentId;//17;
-    property DelaySend:Boolean read FDelaySend write FDelaySend;//18
+    property ToDepartmentId:string read FToDepartmentId write SetToDepartmentId;//12;
+    property IsDraft:Boolean read FIsDraft write SetIsDraft;//13
+    property LockDraft:Boolean read FLockDraft write SetLockDraft;//14
+    property StrictDraftValidation:Boolean read FStrictDraftValidation write SetStrictDraftValidation default true;//15
+    property IsInternal:Boolean read FIsInternal write SetIsInternal;//16
+    property FromDepartmentId:string read FFromDepartmentId write SetFromDepartmentId;//17;
+    property DelaySend:Boolean read FDelaySend write SetDelaySend;//18
     property PriceLists:TPriceListAttachments read FPriceLists;//19;
     property PriceListAgreements:TNonformalizedAttachments read FPriceListAgreements;//20;
     property CertificateRegistries:TNonformalizedAttachment read FCertificateRegistries; //21;
@@ -1954,29 +2169,42 @@ type
     property Contracts:TContractAttachments read FContracts;//23;
     property Torg13Documents:TTorg13Attachments read FTorg13Documents;//24;
     property ServiceDetailsDocuments:TServiceDetailsAttachments read FServiceDetailsDocuments;//25;
-    property ProxyBoxId:string read FProxyBoxId write FProxyBoxId;//26;
-    property ProxyDepartmentId:string read FProxyDepartmentId write FProxyDepartmentId;//27;
+    property ProxyBoxId:string read FProxyBoxId write SetProxyBoxId;//26;
+    property ProxyDepartmentId:string read FProxyDepartmentId write SetProxyDepartmentId;//27;
     property EncryptedInvoices:TEncryptedInvoiceAttachments read FEncryptedInvoices;//28;
     property EncryptedXmlTorg12SellerTitles:TEncryptedXmlDocumentAttachment read FEncryptedXmlTorg12SellerTitles;//29;
     property EncryptedXmlAcceptanceCertificateSellerTitles:TEncryptedXmlDocumentAttachment read FEncryptedXmlAcceptanceCertificateSellerTitles;//30;
     property SupplementaryAgreements:TSupplementaryAgreementAttachments read FSupplementaryAgreements;//31;
-    property LockPacket:Boolean read FLockPacket write FLockPacket; //32
+    property LockPacket:Boolean read FLockPacket write SetLockPacket; //32
     property UniversalTransferDocumentSellerTitles:TXmlDocumentAttachments read FUniversalTransferDocumentSellerTitles; //33;
     property DocumentAttachments:TDocumentAttachments read FDocumentAttachments;//34;
-    property LockMode:TLockMode read FLockMode write FLockMode;//35 [default = None];
+    property LockMode:TLockMode read FLockMode write SetLockMode;//35 [default = None];
   end;
 
 implementation
 
 { TRecipientTitleAttachment }
 
+procedure TRecipientTitleAttachment.SetNeedReceipt(AValue: Boolean);
+begin
+  FNeedReceipt:=AValue;
+  Modified(5);
+end;
+
+procedure TRecipientTitleAttachment.SetParentEntityId(AValue: string);
+begin
+  if FParentEntityId=AValue then Exit;
+  FParentEntityId:=AValue;
+  Modified(1);
+end;
+
 procedure TRecipientTitleAttachment.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('ParentEntityId', 1);
-  RegisterProp('SignedContent', 2);
+  RegisterProp('ParentEntityId', 1, true);
+  RegisterProp('SignedContent', 2, true);
   RegisterProp('Labels', 4);
-  RegisterProp('NeedReceipt', 5);
+  RegisterProp('NeedReceipt', 5, true);
 end;
 
 procedure TRecipientTitleAttachment.InternalInit;
@@ -2005,7 +2233,7 @@ end;
 procedure TPredefinedRecipientTitle.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('UnsignedContent', 1);
+  RegisterProp('UnsignedContent', 1, true);
 end;
 
 destructor TPredefinedRecipientTitle.Destroy;
@@ -2016,11 +2244,18 @@ end;
 
 { TEditingPatch }
 
+procedure TEditingPatch.SetParentEntityId(AValue: string);
+begin
+  if FParentEntityId=AValue then Exit;
+  FParentEntityId:=AValue;
+  Modified(1);
+end;
+
 procedure TEditingPatch.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('ParentEntityId', 1);
-  RegisterProp('Content', 2);
+  RegisterProp('ParentEntityId', 1, true);
+  RegisterProp('Content', 2, true);
   RegisterProp('Labels', 3);
 end;
 
@@ -2039,6 +2274,89 @@ begin
 end;
 
 { TMessageToPost }
+
+procedure TMessageToPost.SetDelaySend(AValue: Boolean);
+begin
+  FDelaySend:=AValue;
+  Modified(18);
+end;
+
+procedure TMessageToPost.SetFromBoxId(AValue: string);
+begin
+  if FFromBoxId=AValue then Exit;
+  FFromBoxId:=AValue;
+  Modified(1);
+end;
+
+procedure TMessageToPost.SetFromDepartmentId(AValue: string);
+begin
+  FFromDepartmentId:=AValue;
+  Modified(17);
+end;
+
+procedure TMessageToPost.SetIsDraft(AValue: Boolean);
+begin
+  FIsDraft:=AValue;
+  Modified(13);
+end;
+
+procedure TMessageToPost.SetIsInternal(AValue: Boolean);
+begin
+  FIsInternal:=AValue;
+  Modified(16);
+end;
+
+procedure TMessageToPost.SetLockDraft(AValue: Boolean);
+begin
+  FLockDraft:=AValue;
+  Modified(14);
+end;
+
+procedure TMessageToPost.SetLockMode(AValue: TLockMode);
+begin
+  FLockMode:=AValue;
+  Modified(35);
+end;
+
+procedure TMessageToPost.SetLockPacket(AValue: Boolean);
+begin
+  FLockPacket:=AValue;
+  Modified(32);
+end;
+
+procedure TMessageToPost.SetProxyBoxId(AValue: string);
+begin
+  if FProxyBoxId=AValue then Exit;
+  FProxyBoxId:=AValue;
+  Modified(26);
+end;
+
+procedure TMessageToPost.SetProxyDepartmentId(AValue: string);
+begin
+  if FProxyDepartmentId=AValue then Exit;
+  FProxyDepartmentId:=AValue;
+  Modified(27);
+end;
+
+procedure TMessageToPost.SetStrictDraftValidation(AValue: Boolean);
+begin
+  FStrictDraftValidation:=AValue;
+  Modified(15);
+end;
+
+procedure TMessageToPost.SetToBoxId(AValue: string);
+begin
+  if FToBoxId=AValue then Exit;
+  FToBoxId:=AValue;
+  Modified(2);
+end;
+
+procedure TMessageToPost.SetToDepartmentId(AValue: string);
+begin
+  if FToDepartmentId=AValue then Exit;
+  FToDepartmentId:=AValue;
+  Modified(12);
+end;
 
 procedure TMessageToPost.InternalRegisterProperty;
 begin
@@ -2135,6 +2453,20 @@ end;
 
 { TEncryptedXmlDocumentAttachment }
 
+procedure TEncryptedXmlDocumentAttachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(3);
+end;
+
+procedure TEncryptedXmlDocumentAttachment.SetCustomDocumentId(AValue: string);
+begin
+  if FCustomDocumentId=AValue then Exit;
+  FCustomDocumentId:=AValue;
+  Modified(6);
+end;
+
 procedure TEncryptedXmlDocumentAttachment.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -2172,6 +2504,36 @@ end;
 
 { TEncryptedInvoiceAttachment }
 
+procedure TEncryptedInvoiceAttachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(3);
+end;
+
+procedure TEncryptedInvoiceAttachment.SetCustomDocumentId(AValue: string);
+begin
+  if FCustomDocumentId=AValue then Exit;
+  FCustomDocumentId:=AValue;
+  Modified(6);
+end;
+
+procedure TEncryptedInvoiceAttachment.SetInitialDocumentIds(AValue: TDocumentIds
+  );
+begin
+  if FInitialDocumentIds=AValue then Exit;
+  FInitialDocumentIds:=AValue;
+  Modified(4);
+end;
+
+procedure TEncryptedInvoiceAttachment.SetSubordinateDocumentIds(
+  AValue: TDocumentIds);
+begin
+  if FSubordinateDocumentIds=AValue then Exit;
+  FSubordinateDocumentIds:=AValue;
+  Modified(5);
+end;
+
 procedure TEncryptedInvoiceAttachment.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -2208,6 +2570,27 @@ end;
 
 { TEncryptedDocumentMetadata }
 
+procedure TEncryptedDocumentMetadata.SetBuyerFnsParticipantId(AValue: string);
+begin
+  if FBuyerFnsParticipantId=AValue then Exit;
+  FBuyerFnsParticipantId:=AValue;
+  Modified(2);
+end;
+
+procedure TEncryptedDocumentMetadata.SetFileId(AValue: string);
+begin
+  if FFileId=AValue then Exit;
+  FFileId:=AValue;
+  Modified(1);
+end;
+
+procedure TEncryptedDocumentMetadata.SetSenderFnsParticipantId(AValue: string);
+begin
+  if FSenderFnsParticipantId=AValue then Exit;
+  FSenderFnsParticipantId:=AValue;
+  Modified(3);
+end;
+
 procedure TEncryptedDocumentMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -2230,6 +2613,27 @@ begin
 end;
 
 { TEncryptedXmlBasicDocumentMetadata }
+
+procedure TEncryptedXmlBasicDocumentMetadata.SetDocumentName(AValue: string);
+begin
+  if FDocumentName=AValue then Exit;
+  FDocumentName:=AValue;
+  Modified(3);
+end;
+
+procedure TEncryptedXmlBasicDocumentMetadata.SetFormationDate(AValue: string);
+begin
+  if FFormationDate=AValue then Exit;
+  FFormationDate:=AValue;
+  Modified(1);
+end;
+
+procedure TEncryptedXmlBasicDocumentMetadata.SetFormationTime(AValue: string);
+begin
+  if FFormationTime=AValue then Exit;
+  FFormationTime:=AValue;
+  Modified(2);
+end;
 
 procedure TEncryptedXmlBasicDocumentMetadata.InternalRegisterProperty;
 begin
@@ -2297,6 +2701,27 @@ end;
 
 { TXmlDocumentAttachment }
 
+procedure TXmlDocumentAttachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(3);
+end;
+
+procedure TXmlDocumentAttachment.SetCustomDocumentId(AValue: string);
+begin
+  if FCustomDocumentId=AValue then Exit;
+  FCustomDocumentId:=AValue;
+  Modified(6);
+end;
+
+procedure TXmlDocumentAttachment.SetNeedReceipt(AValue: Boolean);
+begin
+  if FNeedReceipt=AValue then Exit;
+  FNeedReceipt:=AValue;
+  Modified(7);
+end;
+
 procedure TXmlDocumentAttachment.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -2328,6 +2753,55 @@ begin
 end;
 
 { TNonformalizedAttachment }
+
+procedure TNonformalizedAttachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(3);
+end;
+
+procedure TNonformalizedAttachment.SetCustomDocumentId(AValue: string);
+begin
+  if FCustomDocumentId=AValue then Exit;
+  FCustomDocumentId:=AValue;
+  Modified(9);
+end;
+
+procedure TNonformalizedAttachment.SetDocumentDate(AValue: string);
+begin
+  if FDocumentDate=AValue then Exit;
+  FDocumentDate:=AValue;
+  Modified(7);
+end;
+
+procedure TNonformalizedAttachment.SetDocumentNumber(AValue: string);
+begin
+  if FDocumentNumber=AValue then Exit;
+  FDocumentNumber:=AValue;
+  Modified(8);
+end;
+
+procedure TNonformalizedAttachment.SetFileName(AValue: string);
+begin
+  if FFileName=AValue then Exit;
+  FFileName:=AValue;
+  Modified(2);
+end;
+
+procedure TNonformalizedAttachment.SetNeedReceipt(AValue: Boolean);
+begin
+  if FNeedReceipt=AValue then Exit;
+  FNeedReceipt:=AValue;
+  Modified(10);
+end;
+
+procedure TNonformalizedAttachment.SetNeedRecipientSignature(AValue: Boolean);
+begin
+  if FNeedRecipientSignature=AValue then Exit;
+  FNeedRecipientSignature:=AValue;
+  Modified(4);
+end;
 
 procedure TNonformalizedAttachment.InternalRegisterProperty;
 begin
@@ -2364,6 +2838,69 @@ begin
 end;
 
 { TBasicDocumentAttachment }
+
+procedure TBasicDocumentAttachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(3);
+end;
+
+procedure TBasicDocumentAttachment.SetCustomDocumentId(AValue: string);
+begin
+  if FCustomDocumentId=AValue then Exit;
+  FCustomDocumentId:=AValue;
+  Modified(9);
+end;
+
+procedure TBasicDocumentAttachment.SetDocumentDate(AValue: string);
+begin
+  if FDocumentDate=AValue then Exit;
+  FDocumentDate:=AValue;
+  Modified(6);
+end;
+
+procedure TBasicDocumentAttachment.SetDocumentNumber(AValue: string);
+begin
+  if FDocumentNumber=AValue then Exit;
+  FDocumentNumber:=AValue;
+  Modified(7);
+end;
+
+procedure TBasicDocumentAttachment.SetFileName(AValue: string);
+begin
+  if FFileName=AValue then Exit;
+  FFileName:=AValue;
+  Modified(2);
+end;
+
+procedure TBasicDocumentAttachment.SetGrounds(AValue: string);
+begin
+  if FGrounds=AValue then Exit;
+  FGrounds:=AValue;
+  Modified(11);
+end;
+
+procedure TBasicDocumentAttachment.SetNeedReceipt(AValue: boolean);
+begin
+  if FNeedReceipt=AValue then Exit;
+  FNeedReceipt:=AValue;
+  Modified(12);
+end;
+
+procedure TBasicDocumentAttachment.SetTotal(AValue: string);
+begin
+  if FTotal=AValue then Exit;
+  FTotal:=AValue;
+  Modified(8);
+end;
+
+procedure TBasicDocumentAttachment.SetVat(AValue: string);
+begin
+  if FVat=AValue then Exit;
+  FVat:=AValue;
+  Modified(10);
+end;
 
 procedure TBasicDocumentAttachment.InternalRegisterProperty;
 begin
@@ -2403,6 +2940,62 @@ end;
 
 { TTorg13Attachment }
 
+procedure TTorg13Attachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(3);
+end;
+
+procedure TTorg13Attachment.SetCustomDocumentId(AValue: string);
+begin
+  if FCustomDocumentId=AValue then Exit;
+  FCustomDocumentId:=AValue;
+  Modified(9);
+end;
+
+procedure TTorg13Attachment.SetDocumentDate(AValue: string);
+begin
+  if FDocumentDate=AValue then Exit;
+  FDocumentDate:=AValue;
+  Modified(6);
+end;
+
+procedure TTorg13Attachment.SetDocumentNumber(AValue: string);
+begin
+  if FDocumentNumber=AValue then Exit;
+  FDocumentNumber:=AValue;
+  Modified(7);
+end;
+
+procedure TTorg13Attachment.SetFileName(AValue: string);
+begin
+  if FFileName=AValue then Exit;
+  FFileName:=AValue;
+  Modified(2);
+end;
+
+procedure TTorg13Attachment.SetGrounds(AValue: string);
+begin
+  if FGrounds=AValue then Exit;
+  FGrounds:=AValue;
+  Modified(11);
+end;
+
+procedure TTorg13Attachment.SetNeedReceipt(AValue: Boolean);
+begin
+  if FNeedReceipt=AValue then Exit;
+  FNeedReceipt:=AValue;
+  Modified(12);
+end;
+
+procedure TTorg13Attachment.SetTotal(AValue: string);
+begin
+  if FTotal=AValue then Exit;
+  FTotal:=AValue;
+  Modified(8);
+end;
+
 procedure TTorg13Attachment.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -2440,6 +3033,77 @@ begin
 end;
 
 { TAcceptanceCertificateAttachment }
+
+procedure TAcceptanceCertificateAttachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(3);
+end;
+
+procedure TAcceptanceCertificateAttachment.SetCustomDocumentId(AValue: string);
+begin
+  if FCustomDocumentId=AValue then Exit;
+  FCustomDocumentId:=AValue;
+  Modified(9);
+end;
+
+procedure TAcceptanceCertificateAttachment.SetDocumentDate(AValue: string);
+begin
+  if FDocumentDate=AValue then Exit;
+  FDocumentDate:=AValue;
+  Modified(6);
+end;
+
+procedure TAcceptanceCertificateAttachment.SetDocumentNumber(AValue: string);
+begin
+  if FDocumentNumber=AValue then Exit;
+  FDocumentNumber:=AValue;
+  Modified(7);
+end;
+
+procedure TAcceptanceCertificateAttachment.SetFileName(AValue: string);
+begin
+  if FFileName=AValue then Exit;
+  FFileName:=AValue;
+  Modified(2);
+end;
+
+procedure TAcceptanceCertificateAttachment.SetGrounds(AValue: string);
+begin
+  if FGrounds=AValue then Exit;
+  FGrounds:=AValue;
+  Modified(11);
+end;
+
+procedure TAcceptanceCertificateAttachment.SetNeedReceipt(AValue: Boolean);
+begin
+  if FNeedReceipt=AValue then Exit;
+  FNeedReceipt:=AValue;
+  Modified(12);
+end;
+
+procedure TAcceptanceCertificateAttachment.SetNeedRecipientSignature(
+  AValue: Boolean);
+begin
+  if FNeedRecipientSignature=AValue then Exit;
+  FNeedRecipientSignature:=AValue;
+  Modified(13);
+end;
+
+procedure TAcceptanceCertificateAttachment.SetTotal(AValue: string);
+begin
+  if FTotal=AValue then Exit;
+  FTotal:=AValue;
+  Modified(8);
+end;
+
+procedure TAcceptanceCertificateAttachment.SetVat(AValue: string);
+begin
+  if FVat=AValue then Exit;
+  FVat:=AValue;
+  Modified(10);
+end;
 
 procedure TAcceptanceCertificateAttachment.InternalRegisterProperty;
 begin
@@ -2480,6 +3144,27 @@ end;
 
 { TTrustConnectionRequestAttachment }
 
+procedure TTrustConnectionRequestAttachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(3);
+end;
+
+procedure TTrustConnectionRequestAttachment.SetCustomDocumentId(AValue: string);
+begin
+  if FCustomDocumentId=AValue then Exit;
+  FCustomDocumentId:=AValue;
+  Modified(4);
+end;
+
+procedure TTrustConnectionRequestAttachment.SetFileName(AValue: string);
+begin
+  if FFileName=AValue then Exit;
+  FFileName:=AValue;
+  Modified(2);
+end;
+
 procedure TTrustConnectionRequestAttachment.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -2506,6 +3191,27 @@ end;
 
 { TStructuredDataAttachment }
 
+procedure TStructuredDataAttachment.SetContent(AValue: TBytes);
+begin
+  if FContent=AValue then Exit;
+  FContent:=AValue;
+  Modified(1);
+end;
+
+procedure TStructuredDataAttachment.SetFileName(AValue: string);
+begin
+  if FFileName=AValue then Exit;
+  FFileName:=AValue;
+  Modified(2);
+end;
+
+procedure TStructuredDataAttachment.SetParentCustomDocumentId(AValue: string);
+begin
+  if FParentCustomDocumentId=AValue then Exit;
+  FParentCustomDocumentId:=AValue;
+  Modified(3);
+end;
+
 procedure TStructuredDataAttachment.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -2525,6 +3231,69 @@ begin
 end;
 
 { TPriceListAttachment }
+
+procedure TPriceListAttachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(3);
+end;
+
+procedure TPriceListAttachment.SetContractDocumentDate(AValue: string);
+begin
+  if FContractDocumentDate=AValue then Exit;
+  FContractDocumentDate:=AValue;
+  Modified(10);
+end;
+
+procedure TPriceListAttachment.SetContractDocumentNumber(AValue: string);
+begin
+  if FContractDocumentNumber=AValue then Exit;
+  FContractDocumentNumber:=AValue;
+  Modified(11);
+end;
+
+procedure TPriceListAttachment.SetCustomDocumentId(AValue: string);
+begin
+  if FCustomDocumentId=AValue then Exit;
+  FCustomDocumentId:=AValue;
+  Modified(6);
+end;
+
+procedure TPriceListAttachment.SetDocumentDate(AValue: string);
+begin
+  if FDocumentDate=AValue then Exit;
+  FDocumentDate:=AValue;
+  Modified(7);
+end;
+
+procedure TPriceListAttachment.SetDocumentNumber(AValue: string);
+begin
+  if FDocumentNumber=AValue then Exit;
+  FDocumentNumber:=AValue;
+  Modified(8);
+end;
+
+procedure TPriceListAttachment.SetFileName(AValue: string);
+begin
+  if FFileName=AValue then Exit;
+  FFileName:=AValue;
+  Modified(2);
+end;
+
+procedure TPriceListAttachment.SetNeedReceipt(AValue: Boolean);
+begin
+  if FNeedReceipt=AValue then Exit;
+  FNeedReceipt:=AValue;
+  Modified(12);
+end;
+
+procedure TPriceListAttachment.SetPriceListEffectiveDate(AValue: string);
+begin
+  if FPriceListEffectiveDate=AValue then Exit;
+  FPriceListEffectiveDate:=AValue;
+  Modified(9);
+end;
 
 procedure TPriceListAttachment.InternalRegisterProperty;
 begin
@@ -2564,6 +3333,48 @@ end;
 
 { TReconciliationActAttachment }
 
+procedure TReconciliationActAttachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(3);
+end;
+
+procedure TReconciliationActAttachment.SetCustomDocumentId(AValue: string);
+begin
+  if FCustomDocumentId=AValue then Exit;
+  FCustomDocumentId:=AValue;
+  Modified(9);
+end;
+
+procedure TReconciliationActAttachment.SetDocumentDate(AValue: string);
+begin
+  if FDocumentDate=AValue then Exit;
+  FDocumentDate:=AValue;
+  Modified(7);
+end;
+
+procedure TReconciliationActAttachment.SetDocumentNumber(AValue: string);
+begin
+  if FDocumentNumber=AValue then Exit;
+  FDocumentNumber:=AValue;
+  Modified(8);
+end;
+
+procedure TReconciliationActAttachment.SetFileName(AValue: string);
+begin
+  if FFileName=AValue then Exit;
+  FFileName:=AValue;
+  Modified(2);
+end;
+
+procedure TReconciliationActAttachment.SetNeedReceipt(AValue: Boolean);
+begin
+  if FNeedReceipt=AValue then Exit;
+  FNeedReceipt:=AValue;
+  Modified(10);
+end;
+
 procedure TReconciliationActAttachment.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -2599,6 +3410,62 @@ begin
 end;
 
 { TContractAttachment }
+
+procedure TContractAttachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(2);
+end;
+
+procedure TContractAttachment.SetContractPrice(AValue: string);
+begin
+  if FContractPrice=AValue then Exit;
+  FContractPrice:=AValue;
+  Modified(9);
+end;
+
+procedure TContractAttachment.SetContractType(AValue: string);
+begin
+  if FContractType=AValue then Exit;
+  FContractType:=AValue;
+  Modified(10);
+end;
+
+procedure TContractAttachment.SetCustomDocumentId(AValue: string);
+begin
+  if FCustomDocumentId=AValue then Exit;
+  FCustomDocumentId:=AValue;
+  Modified(6);
+end;
+
+procedure TContractAttachment.SetDocumentDate(AValue: string);
+begin
+  if FDocumentDate=AValue then Exit;
+  FDocumentDate:=AValue;
+  Modified(7);
+end;
+
+procedure TContractAttachment.SetDocumentNumber(AValue: string);
+begin
+  if FDocumentNumber=AValue then Exit;
+  FDocumentNumber:=AValue;
+  Modified(8);
+end;
+
+procedure TContractAttachment.SetFileName(AValue: string);
+begin
+  if FFileName=AValue then Exit;
+  FFileName:=AValue;
+  Modified(1);
+end;
+
+procedure TContractAttachment.SetNeedReceipt(AValue: Boolean);
+begin
+  if FNeedReceipt=AValue then Exit;
+  FNeedReceipt:=AValue;
+  Modified(11);
+end;
 
 procedure TContractAttachment.InternalRegisterProperty;
 begin
@@ -2636,6 +3503,76 @@ begin
 end;
 
 { TSupplementaryAgreementAttachment }
+
+procedure TSupplementaryAgreementAttachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(3);
+end;
+
+procedure TSupplementaryAgreementAttachment.SetContractDate(AValue: string);
+begin
+  if FContractDate=AValue then Exit;
+  FContractDate:=AValue;
+  Modified(11);
+end;
+
+procedure TSupplementaryAgreementAttachment.SetContractNumber(AValue: string);
+begin
+  if FContractNumber=AValue then Exit;
+  FContractNumber:=AValue;
+  Modified(10);
+end;
+
+procedure TSupplementaryAgreementAttachment.SetContractType(AValue: string);
+begin
+  if FContractType=AValue then Exit;
+  FContractType:=AValue;
+  Modified(12);
+end;
+
+procedure TSupplementaryAgreementAttachment.SetCustomDocumentId(AValue: string);
+begin
+  if FCustomDocumentId=AValue then Exit;
+  FCustomDocumentId:=AValue;
+  Modified(6);
+end;
+
+procedure TSupplementaryAgreementAttachment.SetDocumentDate(AValue: string);
+begin
+  if FDocumentDate=AValue then Exit;
+  FDocumentDate:=AValue;
+  Modified(7);
+end;
+
+procedure TSupplementaryAgreementAttachment.SetDocumentNumber(AValue: string);
+begin
+  if FDocumentNumber=AValue then Exit;
+  FDocumentNumber:=AValue;
+  Modified(8);
+end;
+
+procedure TSupplementaryAgreementAttachment.SetFileName(AValue: string);
+begin
+  if FFileName=AValue then Exit;
+  FFileName:=AValue;
+  Modified(2);
+end;
+
+procedure TSupplementaryAgreementAttachment.SetNeedReceipt(AValue: Boolean);
+begin
+  if FNeedReceipt=AValue then Exit;
+  FNeedReceipt:=AValue;
+  Modified(13);
+end;
+
+procedure TSupplementaryAgreementAttachment.SetTotal(AValue: string);
+begin
+  if FTotal=AValue then Exit;
+  FTotal:=AValue;
+  Modified(9);
+end;
 
 procedure TSupplementaryAgreementAttachment.InternalRegisterProperty;
 begin
@@ -2676,6 +3613,48 @@ end;
 
 { TServiceDetailsAttachment }
 
+procedure TServiceDetailsAttachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(3);
+end;
+
+procedure TServiceDetailsAttachment.SetCustomDocumentId(AValue: string);
+begin
+  if FCustomDocumentId=AValue then Exit;
+  FCustomDocumentId:=AValue;
+  Modified(9);
+end;
+
+procedure TServiceDetailsAttachment.SetDocumentDate(AValue: string);
+begin
+  if FDocumentDate=AValue then Exit;
+  FDocumentDate:=AValue;
+  Modified(7);
+end;
+
+procedure TServiceDetailsAttachment.SetDocumentNumber(AValue: string);
+begin
+  if FDocumentNumber=AValue then Exit;
+  FDocumentNumber:=AValue;
+  Modified(8);
+end;
+
+procedure TServiceDetailsAttachment.SetFileName(AValue: string);
+begin
+  if FFileName=AValue then Exit;
+  FFileName:=AValue;
+  Modified(2);
+end;
+
+procedure TServiceDetailsAttachment.SetNeedReceipt(AValue: boolean);
+begin
+  if FNeedReceipt=AValue then Exit;
+  FNeedReceipt:=AValue;
+  Modified(10);
+end;
+
 procedure TServiceDetailsAttachment.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -2711,6 +3690,69 @@ begin
 end;
 
 { TDocumentAttachment }
+
+procedure TDocumentAttachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(3);
+end;
+
+procedure TDocumentAttachment.SetCustomDocumentId(AValue: string);
+begin
+  if FCustomDocumentId=AValue then Exit;
+  FCustomDocumentId:=AValue;
+  Modified(9);
+end;
+
+procedure TDocumentAttachment.SetFunctionType(AValue: string);
+begin
+  if FFunctionType=AValue then Exit;
+  FFunctionType:=AValue;
+  Modified(13);
+end;
+
+procedure TDocumentAttachment.SetIsEncrypted(AValue: Boolean);
+begin
+  if FIsEncrypted=AValue then Exit;
+  FIsEncrypted:=AValue;
+  Modified(17);
+end;
+
+procedure TDocumentAttachment.SetNeedReceipt(AValue: boolean);
+begin
+  if FNeedReceipt=AValue then Exit;
+  FNeedReceipt:=AValue;
+  Modified(10);
+end;
+
+procedure TDocumentAttachment.SetNeedRecipientSignature(AValue: Boolean);
+begin
+  if FNeedRecipientSignature=AValue then Exit;
+  FNeedRecipientSignature:=AValue;
+  Modified(4);
+end;
+
+procedure TDocumentAttachment.SetTypeNamedId(AValue: string);
+begin
+  if FTypeNamedId=AValue then Exit;
+  FTypeNamedId:=AValue;
+  Modified(12);
+end;
+
+procedure TDocumentAttachment.SetVersion(AValue: string);
+begin
+  if FVersion=AValue then Exit;
+  FVersion:=AValue;
+  Modified(14);
+end;
+
+procedure TDocumentAttachment.SetWorkflowId(AValue: int32);
+begin
+  if FWorkflowId=AValue then Exit;
+  FWorkflowId:=AValue;
+  Modified(16);
+end;
 
 procedure TDocumentAttachment.InternalRegisterProperty;
 begin
@@ -2755,6 +3797,20 @@ begin
 end;
 
 { TMessagePatchToPost }
+
+procedure TMessagePatchToPost.SetBoxId(AValue: string);
+begin
+  if FBoxId=AValue then Exit;
+  FBoxId:=AValue;
+  Modified(1);
+end;
+
+procedure TMessagePatchToPost.SetMessageId(AValue: string);
+begin
+  if FMessageId=AValue then Exit;
+  FMessageId:=AValue;
+  Modified(2);
+end;
 
 procedure TMessagePatchToPost.InternalRegisterProperty;
 begin
@@ -2838,6 +3894,26 @@ end;
 
 { TSignatureVerification }
 
+procedure TSignatureVerification.SetErrorMessage(AValue: string);
+begin
+  if FErrorMessage=AValue then Exit;
+  FErrorMessage:=AValue;
+  Modified(3);
+end;
+
+procedure TSignatureVerification.SetInitialDocumentId(AValue: string);
+begin
+  if FInitialDocumentId=AValue then Exit;
+  FInitialDocumentId:=AValue;
+  Modified(1);
+end;
+
+procedure TSignatureVerification.SetIsValid(AValue: Boolean);
+begin
+  FIsValid:=AValue;
+  Modified(2);
+end;
+
 procedure TSignatureVerification.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -2860,6 +3936,27 @@ begin
 end;
 
 { TResolutionRouteAssignment }
+
+procedure TResolutionRouteAssignment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(3);
+end;
+
+procedure TResolutionRouteAssignment.SetInitialDocumentId(AValue: string);
+begin
+  if FInitialDocumentId=AValue then Exit;
+  FInitialDocumentId:=AValue;
+  Modified(1);
+end;
+
+procedure TResolutionRouteAssignment.SetRouteId(AValue: string);
+begin
+  if FRouteId=AValue then Exit;
+  FRouteId:=AValue;
+  Modified(2);
+end;
 
 procedure TResolutionRouteAssignment.InternalRegisterProperty;
 begin
@@ -2884,6 +3981,13 @@ end;
 
 { TReceiptAttachment }
 
+procedure TReceiptAttachment.SetParentEntityId(AValue: string);
+begin
+  if FParentEntityId=AValue then Exit;
+  FParentEntityId:=AValue;
+  Modified(1);
+end;
+
 procedure TReceiptAttachment.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -2905,6 +4009,13 @@ begin
 end;
 
 { TCorrectionRequestAttachment }
+
+procedure TCorrectionRequestAttachment.SetParentEntityId(AValue: string);
+begin
+  if FParentEntityId=AValue then Exit;
+  FParentEntityId:=AValue;
+  Modified(1);
+end;
 
 procedure TCorrectionRequestAttachment.InternalRegisterProperty;
 begin
@@ -2928,6 +4039,13 @@ end;
 
 { TRequestedSignatureRejection }
 
+procedure TRequestedSignatureRejection.SetParentEntityId(AValue: string);
+begin
+  if FParentEntityId=AValue then Exit;
+  FParentEntityId:=AValue;
+  Modified(1);
+end;
+
 procedure TRequestedSignatureRejection.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -2950,6 +4068,33 @@ end;
 
 { TDocumentSenderSignature }
 
+procedure TDocumentSenderSignature.SetParentEntityId(AValue: string);
+begin
+  if FParentEntityId=AValue then Exit;
+  FParentEntityId:=AValue;
+  Modified(1);
+end;
+
+procedure TDocumentSenderSignature.SetPatchedContentId(AValue: String);
+begin
+  if FPatchedContentId=AValue then Exit;
+  FPatchedContentId:=AValue;
+  Modified(5);
+end;
+
+procedure TDocumentSenderSignature.SetSignature(AValue: TBytes);
+begin
+  if FSignature=AValue then Exit;
+  FSignature:=AValue;
+  Modified(1);
+end;
+
+procedure TDocumentSenderSignature.SetSignWithTestSignature(AValue: Boolean);
+begin
+  FSignWithTestSignature:=AValue;
+  Modified(4);
+end;
+
 procedure TDocumentSenderSignature.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -2970,6 +4115,48 @@ begin
 end;
 
 { TDraftToSend }
+
+procedure TDraftToSend.SetBoxId(AValue: string);
+begin
+  if FBoxId=AValue then Exit;
+  FBoxId:=AValue;
+  Modified(1);
+end;
+
+procedure TDraftToSend.SetDraftId(AValue: string);
+begin
+  if FDraftId=AValue then Exit;
+  FDraftId:=AValue;
+  Modified(2);
+end;
+
+procedure TDraftToSend.SetProxyBoxId(AValue: string);
+begin
+  if FProxyBoxId=AValue then Exit;
+  FProxyBoxId:=AValue;
+  Modified(6);
+end;
+
+procedure TDraftToSend.SetProxyDepartmentId(AValue: string);
+begin
+  if FProxyDepartmentId=AValue then Exit;
+  FProxyDepartmentId:=AValue;
+  Modified(7);
+end;
+
+procedure TDraftToSend.SetToBoxId(AValue: string);
+begin
+  if FToBoxId=AValue then Exit;
+  FToBoxId:=AValue;
+  Modified(3);
+end;
+
+procedure TDraftToSend.SetToDepartmentId(AValue: string);
+begin
+  if FToDepartmentId=AValue then Exit;
+  FToDepartmentId:=AValue;
+  Modified(4);
+end;
 
 procedure TDraftToSend.InternalRegisterProperty;
 begin
@@ -2996,6 +4183,13 @@ begin
 end;
 
 { TPrepareDocumentsToSignRequest }
+
+procedure TPrepareDocumentsToSignRequest.SetBoxId(AValue: string);
+begin
+  if FBoxId=AValue then Exit;
+  FBoxId:=AValue;
+  Modified(1);
+end;
 
 procedure TPrepareDocumentsToSignRequest.InternalRegisterProperty;
 begin
@@ -3024,6 +4218,13 @@ end;
 
 { TDraftDocumentToPatch }
 
+procedure TDraftDocumentToPatch.SetToBoxId(AValue: string);
+begin
+  if FToBoxId=AValue then Exit;
+  FToBoxId:=AValue;
+  Modified(2);
+end;
+
 procedure TDraftDocumentToPatch.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -3050,6 +4251,41 @@ begin
 end;
 
 { TContentToPatch }
+
+procedure TContentToPatch.SetContent(AValue: TUnsignedContent);
+begin
+  if FContent=AValue then Exit;
+  FContent:=AValue;
+  Modified(4);
+end;
+
+procedure TContentToPatch.SetFunctionType(AValue: string);
+begin
+  if FFunctionType=AValue then Exit;
+  FFunctionType:=AValue;
+  Modified(2);
+end;
+
+procedure TContentToPatch.SetToBoxId(AValue: string);
+begin
+  if FToBoxId=AValue then Exit;
+  FToBoxId:=AValue;
+  Modified(5);
+end;
+
+procedure TContentToPatch.SetTypeNamedId(AValue: string);
+begin
+  if FTypeNamedId=AValue then Exit;
+  FTypeNamedId:=AValue;
+  Modified(1);
+end;
+
+procedure TContentToPatch.SetVersion(AValue: string);
+begin
+  if FVersion=AValue then Exit;
+  FVersion:=AValue;
+  Modified(3);
+end;
 
 procedure TContentToPatch.InternalRegisterProperty;
 begin
@@ -3108,6 +4344,20 @@ end;
 
 { TDocumentPatchedContent }
 
+procedure TDocumentPatchedContent.SetContent(AValue: TBytes);
+begin
+  if FContent=AValue then Exit;
+  FContent:=AValue;
+  Modified(3);
+end;
+
+procedure TDocumentPatchedContent.SetPatchedContentId(AValue: string);
+begin
+  if FPatchedContentId=AValue then Exit;
+  FPatchedContentId:=AValue;
+  Modified(2);
+end;
+
 procedure TDocumentPatchedContent.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -3150,6 +4400,20 @@ end;
 
 { TMessageToSend }
 
+procedure TMessageToSend.SetBoxId(AValue: string);
+begin
+  if FBoxId=AValue then Exit;
+  FBoxId:=AValue;
+  Modified(1);
+end;
+
+procedure TMessageToSend.SetMessageId(AValue: String);
+begin
+  if FMessageId=AValue then Exit;
+  FMessageId:=AValue;
+  Modified(2);
+end;
+
 procedure TMessageToSend.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -3171,6 +4435,46 @@ begin
 end;
 
 { TDocumentSignature }
+
+procedure TDocumentSignature.SetIsApprovementSignature(AValue: boolean);
+begin
+  FIsApprovementSignature:=AValue;
+  Modified(5);
+end;
+
+procedure TDocumentSignature.SetParentEntityId(AValue: string);
+begin
+  if FParentEntityId=AValue then Exit;
+  FParentEntityId:=AValue;
+  Modified(1);
+end;
+
+procedure TDocumentSignature.SetPatchedContentId(AValue: string);
+begin
+  if FPatchedContentId=AValue then Exit;
+  FPatchedContentId:=AValue;
+  Modified(7);
+end;
+
+procedure TDocumentSignature.SetSignature(AValue: TBytes);
+begin
+  if FSignature=AValue then Exit;
+  FSignature:=AValue;
+  Modified(2);
+end;
+
+procedure TDocumentSignature.SetSignatureNameOnShelf(AValue: string);
+begin
+  if FSignatureNameOnShelf=AValue then Exit;
+  FSignatureNameOnShelf:=AValue;
+  Modified(6);
+end;
+
+procedure TDocumentSignature.SetSignWithTestSignature(AValue: boolean);
+begin
+  FSignWithTestSignature:=AValue;
+  Modified(4);
+end;
 
 procedure TDocumentSignature.InternalRegisterProperty;
 begin
@@ -3198,6 +4502,13 @@ end;
 
 { TRevocationRequestAttachment }
 
+procedure TRevocationRequestAttachment.SetParentEntityId(AValue: string);
+begin
+  if FParentEntityId=AValue then Exit;
+  FParentEntityId:=AValue;
+  Modified(1);
+end;
+
 procedure TRevocationRequestAttachment.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -3221,6 +4532,13 @@ begin
 end;
 
 { TXmlSignatureRejectionAttachment }
+
+procedure TXmlSignatureRejectionAttachment.SetParentEntityId(AValue: string);
+begin
+  if FParentEntityId=AValue then Exit;
+  FParentEntityId:=AValue;
+  Modified(1);
+end;
 
 procedure TXmlSignatureRejectionAttachment.InternalRegisterProperty;
 begin
@@ -3246,6 +4564,41 @@ end;
 
 { TSignedContent }
 
+procedure TSignedContent.SetContent(AValue: TBytes);
+begin
+  if FContent=AValue then Exit;
+  FContent:=AValue;
+  Modified(1);
+end;
+
+procedure TSignedContent.SetNameOnShelf(AValue: string);
+begin
+  if FNameOnShelf=AValue then Exit;
+  FNameOnShelf:=AValue;
+  Modified(4);
+end;
+
+procedure TSignedContent.SetSignature(AValue: TBytes);
+begin
+  if FSignature=AValue then Exit;
+  FSignature:=AValue;
+  Modified(2);
+end;
+
+procedure TSignedContent.SetSignatureNameOnShelf(AValue: string);
+begin
+  if FSignatureNameOnShelf=AValue then Exit;
+  FSignatureNameOnShelf:=AValue;
+  Modified(6);
+end;
+
+procedure TSignedContent.SetSignWithTestSignature(AValue: Boolean);
+begin
+  if FSignWithTestSignature=AValue then Exit;
+  FSignWithTestSignature:=AValue;
+  Modified(5);
+end;
+
 procedure TSignedContent.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -3266,7 +4619,71 @@ begin
   inherited Destroy;
 end;
 
+procedure TSignedContent.LoadContent(S: TStream);
+begin
+  S.Position:=0;
+  SetLength(FContent, S.Size);
+  if S.Size > 0 then
+    S.Read(FContent[0], S.Size);
+  Modified(1);
+end;
+
+procedure TSignedContent.LoadContent(const AFileName: string);
+var
+  F: TFileStream;
+begin
+  F:=TFileStream.Create(AFileName, fmOpenRead);
+  LoadContent(F);
+  F.Free;
+end;
+
+procedure TSignedContent.LoadSignature(S: TStream);
+begin
+  S.Position:=0;
+  SetLength(FSignature, S.Size);
+  if S.Size > 0 then
+    S.Read(FSignature[0], S.Size);
+  Modified(2);
+end;
+
+procedure TSignedContent.LoadSignature(const AFileName: string);
+var
+  F: TFileStream;
+begin
+  F:=TFileStream.Create(AFileName, fmOpenRead);
+  LoadSignature(F);
+  F.Free;
+end;
+
 { TRoamingNotificationToPost }
+
+procedure TRoamingNotificationToPost.SetBoxId(AValue: string);
+begin
+  if FBoxId=AValue then Exit;
+  FBoxId:=AValue;
+  Modified(1);
+end;
+
+procedure TRoamingNotificationToPost.SetDescription(AValue: string);
+begin
+  if FDescription=AValue then Exit;
+  FDescription:=AValue;
+  Modified(4);
+end;
+
+procedure TRoamingNotificationToPost.SetEventId(AValue: string);
+begin
+  if FEventId=AValue then Exit;
+  FEventId:=AValue;
+  Modified(2);
+end;
+
+procedure TRoamingNotificationToPost.SetSuccess(AValue: Boolean);
+begin
+  if FSuccess=AValue then Exit;
+  FSuccess:=AValue;
+  Modified(3);
+end;
 
 procedure TRoamingNotificationToPost.InternalRegisterProperty;
 begin
@@ -3289,6 +4706,33 @@ end;
 
 { TCustomDataPatch }
 
+procedure TCustomDataPatch.SetKey(AValue: string);
+begin
+  if FKey=AValue then Exit;
+  FKey:=AValue;
+  Modified(3);
+end;
+
+procedure TCustomDataPatch.SetOperation(AValue: TCustomDataPatchOperation);
+begin
+  FOperation:=AValue;
+  Modified(2);
+end;
+
+procedure TCustomDataPatch.SetParentEntityId(AValue: string);
+begin
+  if FParentEntityId=AValue then Exit;
+  FParentEntityId:=AValue;
+  Modified(1);
+end;
+
+procedure TCustomDataPatch.SetValue(AValue: string);
+begin
+  if FValue=AValue then Exit;
+  FValue:=AValue;
+  Modified(4);
+end;
+
 procedure TCustomDataPatch.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -3309,6 +4753,13 @@ begin
 end;
 
 { TEditDocumentPacketCommand }
+
+procedure TEditDocumentPacketCommand.SetDocumentId(AValue: string);
+begin
+  if FDocumentId=AValue then Exit;
+  FDocumentId:=AValue;
+  Modified(1);
+end;
 
 procedure TEditDocumentPacketCommand.InternalRegisterProperty;
 begin
@@ -3332,11 +4783,32 @@ end;
 
 { TResolutionRouteRemoval }
 
+procedure TResolutionRouteRemoval.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(3);
+end;
+
+procedure TResolutionRouteRemoval.SetParentEntityId(AValue: string);
+begin
+  if FParentEntityId=AValue then Exit;
+  FParentEntityId:=AValue;
+  Modified(1);
+end;
+
+procedure TResolutionRouteRemoval.SetRouteId(AValue: string);
+begin
+  if FRouteId=AValue then Exit;
+  FRouteId:=AValue;
+  Modified(2);
+end;
+
 procedure TResolutionRouteRemoval.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('ParentEntityId', 1);
-  RegisterProp('RouteId', 2);
+  RegisterProp('ParentEntityId', 1, true);
+  RegisterProp('RouteId', 2, true);
   RegisterProp('Comment', 3);
   RegisterProp('Labels', 4);
 end;
@@ -3355,13 +4827,55 @@ end;
 
 { TTemplateToPost }
 
+procedure TTemplateToPost.SetFromBoxId(AValue: string);
+begin
+  if FFromBoxId=AValue then Exit;
+  FFromBoxId:=AValue;
+  Modified(1);
+end;
+
+procedure TTemplateToPost.SetLockMode(AValue: TLockMode);
+begin
+  if FLockMode=AValue then Exit;
+  FLockMode:=AValue;
+  Modified(7);
+end;
+
+procedure TTemplateToPost.SetMessageFromBoxId(AValue: string);
+begin
+  if FMessageFromBoxId=AValue then Exit;
+  FMessageFromBoxId:=AValue;
+  Modified(3);
+end;
+
+procedure TTemplateToPost.SetMessageToBoxId(AValue: string);
+begin
+  if FMessageToBoxId=AValue then Exit;
+  FMessageToBoxId:=AValue;
+  Modified(4);
+end;
+
+procedure TTemplateToPost.SetMessageToDepartmentId(AValue: string);
+begin
+  if FMessageToDepartmentId=AValue then Exit;
+  FMessageToDepartmentId:=AValue;
+  Modified(5);
+end;
+
+procedure TTemplateToPost.SetToBoxId(AValue: string);
+begin
+  if FToBoxId=AValue then Exit;
+  FToBoxId:=AValue;
+  Modified(2);
+end;
+
 procedure TTemplateToPost.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('FromBoxId', 1);
-  RegisterProp('ToBoxId', 2);
-  RegisterProp('MessageFromBoxId', 3);
-  RegisterProp('MessageToBoxId', 4);
+  RegisterProp('FromBoxId', 1, true);
+  RegisterProp('ToBoxId', 2, true);
+  RegisterProp('MessageFromBoxId', 3, true);
+  RegisterProp('MessageToBoxId', 4, true);
   RegisterProp('MessageToDepartmentId', 5);
   RegisterProp('DocumentAttachments', 6);
   RegisterProp('LockMode', 7);
@@ -3380,6 +4894,63 @@ begin
 end;
 
 { TTemplateDocumentAttachment }
+
+procedure TTemplateDocumentAttachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(2);
+end;
+
+procedure TTemplateDocumentAttachment.SetCustomDocumentId(AValue: string);
+begin
+  if FCustomDocumentId=AValue then Exit;
+  FCustomDocumentId:=AValue;
+  Modified(8);
+end;
+
+procedure TTemplateDocumentAttachment.SetEditingSettingId(AValue: string);
+begin
+  if FEditingSettingId=AValue then Exit;
+  FEditingSettingId:=AValue;
+  Modified(9);
+end;
+
+procedure TTemplateDocumentAttachment.SetFunctionType(AValue: string);
+begin
+  if FFunctionType=AValue then Exit;
+  FFunctionType:=AValue;
+  Modified(4);
+end;
+
+procedure TTemplateDocumentAttachment.SetNeedRecipientSignature(AValue: Boolean
+  );
+begin
+  if FNeedRecipientSignature=AValue then Exit;
+  FNeedRecipientSignature:=AValue;
+  Modified(10);
+end;
+
+procedure TTemplateDocumentAttachment.SetTypeNamedId(AValue: string);
+begin
+  if FTypeNamedId=AValue then Exit;
+  FTypeNamedId:=AValue;
+  Modified(3);
+end;
+
+procedure TTemplateDocumentAttachment.SetVersion(AValue: string);
+begin
+  if FVersion=AValue then Exit;
+  FVersion:=AValue;
+  Modified(5);
+end;
+
+procedure TTemplateDocumentAttachment.SetWorkflowId(AValue: int32);
+begin
+  if FWorkflowId=AValue then Exit;
+  FWorkflowId:=AValue;
+  Modified(7);
+end;
 
 procedure TTemplateDocumentAttachment.InternalRegisterProperty;
 begin
@@ -3415,6 +4986,20 @@ end;
 
 { TUnsignedContent }
 
+procedure TUnsignedContent.SetContent(AValue: TBytes);
+begin
+  if FContent=AValue then Exit;
+  FContent:=AValue;
+  Modified(1);
+end;
+
+procedure TUnsignedContent.SetNameOnShelf(AValue: string);
+begin
+  if FNameOnShelf=AValue then Exit;
+  FNameOnShelf:=AValue;
+  Modified(2);
+end;
+
 procedure TUnsignedContent.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -3433,6 +5018,20 @@ begin
 end;
 
 { TTemplateTransformationToPost }
+
+procedure TTemplateTransformationToPost.SetBoxId(AValue: string);
+begin
+  if FBoxId=AValue then Exit;
+  FBoxId:=AValue;
+  Modified(1);
+end;
+
+procedure TTemplateTransformationToPost.SetTemplateId(AValue: string);
+begin
+  if FTemplateId=AValue then Exit;
+  FTemplateId:=AValue;
+  Modified(2);
+end;
 
 procedure TTemplateTransformationToPost.InternalRegisterProperty;
 begin
@@ -3456,6 +5055,20 @@ end;
 
 { TDocumentTransformation }
 
+procedure TDocumentTransformation.SetCustomDocumentId(AValue: string);
+begin
+  if FCustomDocumentId=AValue then Exit;
+  FCustomDocumentId:=AValue;
+  Modified(2);
+end;
+
+procedure TDocumentTransformation.SetDocumentId(AValue: string);
+begin
+  if FDocumentId=AValue then Exit;
+  FDocumentId:=AValue;
+  Modified(1);
+end;
+
 procedure TDocumentTransformation.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -3476,6 +5089,20 @@ end;
 
 { TMetadataItem }
 
+procedure TMetadataItem.SetKey(AValue: string);
+begin
+  if FKey=AValue then Exit;
+  FKey:=AValue;
+  Modified(1);
+end;
+
+procedure TMetadataItem.SetValue(AValue: string);
+begin
+  if FValue=AValue then Exit;
+  FValue:=AValue;
+  Modified(2);
+end;
+
 procedure TMetadataItem.InternalInit;
 begin
   inherited InternalInit;
@@ -3490,11 +5117,31 @@ end;
 
 { TResolutionAttachment }
 
+procedure TResolutionAttachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(3);
+end;
+
+procedure TResolutionAttachment.SetInitialDocumentId(AValue: string);
+begin
+  if FInitialDocumentId=AValue then Exit;
+  FInitialDocumentId:=AValue;
+  Modified(1);
+end;
+
+procedure TResolutionAttachment.SetResolutionType(AValue: TResolutionType);
+begin
+  FResolutionType:=AValue;
+  Modified(2);
+end;
+
 procedure TResolutionAttachment.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('InitialDocumentId', 1);
-  RegisterProp('ResolutionType', 2);
+  RegisterProp('InitialDocumentId', 1, true);
+  RegisterProp('ResolutionType', 2, true);
   RegisterProp('Comment', 3);
   RegisterProp('Labels', 4);
 end;
@@ -3513,10 +5160,25 @@ end;
 
 { TResolutionRequestDenialAttachment }
 
+procedure TResolutionRequestDenialAttachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(2);
+end;
+
+procedure TResolutionRequestDenialAttachment.SetInitialResolutionRequestId(
+  AValue: string);
+begin
+  if FInitialResolutionRequestId=AValue then Exit;
+  FInitialResolutionRequestId:=AValue;
+  Modified(1);
+end;
+
 procedure TResolutionRequestDenialAttachment.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('InitialResolutionRequestId', 1);
+  RegisterProp('InitialResolutionRequestId', 1, true);
   RegisterProp('Comment', 2);
   RegisterProp('Labels', 3);
 end;
@@ -3535,10 +5197,18 @@ end;
 
 { TResolutionRequestDenialCancellationAttachment }
 
+procedure TResolutionRequestDenialCancellationAttachment.SetInitialResolutionRequestDenialId
+  (AValue: string);
+begin
+  if FInitialResolutionRequestDenialId=AValue then Exit;
+  FInitialResolutionRequestDenialId:=AValue;
+  Modified(1);
+end;
+
 procedure TResolutionRequestDenialCancellationAttachment.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('InitialResolutionRequestDenialId', 1);
+  RegisterProp('InitialResolutionRequestDenialId', 1, true);
 end;
 
 procedure TResolutionRequestDenialCancellationAttachment.InternalInit;
@@ -3552,10 +5222,25 @@ begin
 end;
 { TResolutionRequestCancellationAttachment }
 
+procedure TResolutionRequestCancellationAttachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(2);
+end;
+
+procedure TResolutionRequestCancellationAttachment.SetInitialResolutionRequestId
+  (AValue: string);
+begin
+  if FInitialResolutionRequestId=AValue then Exit;
+  FInitialResolutionRequestId:=AValue;
+  Modified(1);
+end;
+
 procedure TResolutionRequestCancellationAttachment.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('InitialResolutionRequestId', 1);
+  RegisterProp('InitialResolutionRequestId', 1, true);
   RegisterProp('Comment', 2);
   RegisterProp('Labels', 3);
 end;
@@ -3574,11 +5259,46 @@ end;
 
 { TResolutionRequestAttachment }
 
+procedure TResolutionRequestAttachment.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(5);
+end;
+
+procedure TResolutionRequestAttachment.SetInitialDocumentId(AValue: string);
+begin
+  if FInitialDocumentId=AValue then Exit;
+  FInitialDocumentId:=AValue;
+  Modified(1);
+end;
+
+procedure TResolutionRequestAttachment.SetResType(AValue: TResolutionRequestType
+  );
+begin
+  FResType:=AValue;
+  Modified(2);
+end;
+
+procedure TResolutionRequestAttachment.SetTargetDepartmentId(AValue: string);
+begin
+  if FTargetDepartmentId=AValue then Exit;
+  FTargetDepartmentId:=AValue;
+  Modified(4);
+end;
+
+procedure TResolutionRequestAttachment.SetTargetUserId(AValue: string);
+begin
+  if FTargetUserId=AValue then Exit;
+  FTargetUserId:=AValue;
+  Modified(3);
+end;
+
 procedure TResolutionRequestAttachment.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('InitialDocumentId', 1);
-  RegisterProp('ResType', 2);
+  RegisterProp('InitialDocumentId', 1, true);
+  RegisterProp('ResType', 2, true);
   RegisterProp('TargetUserId', 3);
   RegisterProp('TargetDepartmentId', 4);
   RegisterProp('Comment', 5);

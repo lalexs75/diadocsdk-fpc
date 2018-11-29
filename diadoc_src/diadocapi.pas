@@ -287,7 +287,7 @@ type
     //-------------------------------------------------
     function GetEntityContent(ABoxID, AMessageId, AEntityId: string): TMemoryStream;
     function GetMessage(ABoxID: string; AmessageId: string; AEntityId: string; AOriginalSignature, AInjectEntityContent: boolean): TMessage;
-    //PostMessage
+
     //GetDiadocMessage(const std::wstring& boxId, const std::wstring& messageId, bool withOriginalSignature = false, bool injectEntityContent = false);
     //GetDiadocMessage(const std::wstring& boxId, const std::wstring& messageId, const std::wstring& entityId, bool withOriginalSignature = false, bool injectEntityContent = false);
 
@@ -3035,6 +3035,50 @@ begin
   end;
 end;
 
+function TDiadocAPI.PostDiadocMessage(AMsg: TMessageToPost; AOperationId: string
+  ): TMessage;
+var
+  S: String;
+  F: TStream;
+begin
+  (*
+      Message DiadocApi::PostDiadocMessage(const MessageToPost& msg, const std::wstring& operationId)
+      {
+      	WppTraceDebugOut(L"PostDiadocMessage...");
+      	std::wstringstream buf;
+      	buf << L"/V3/PostMessage";
+      	if (!operationId.empty())
+      		buf << L"?operationId=" << StringHelper::CanonicalizeUrl(operationId);
+      	return FromProtoBytes<Message>(PerformHttpRequest(buf.str(), ToProtoBytes(msg), POST));
+      }
+  *)
+  Result:=nil;
+  if not Assigned(AMsg) then
+    raise EDiadocException.Create(sNotDefinedMessage);
+
+  if not Authenticate then exit;
+  S:='';
+  if AOperationId<>'' then
+    AddURLParam(S, 'operationId', AOperationId);
+
+  F:=AMsg.SaveToStream;
+
+  if SendCommand(hmPOST, '/V3/PostMessage', S, F) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('PostDiadocMessage');
+    {$ENDIF}
+    FHTTP.Document.Position:=0;
+    if FResultCode = 200 then
+    begin
+      Result:=TMessage.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+end;
+
 function TDiadocAPI.GetEvent(ABoxId, AEventId:string):TBoxEvent;
 var
   S: String;
@@ -3051,12 +3095,12 @@ begin
     raise EDiadocException.Create(sNotDefinedBoxId);
   if AEventId = '' then
     raise EDiadocException.Create(sNotDefinedEventId);
+  if not Authenticate then exit;
 
   S:='';
   AddURLParam(S, 'boxId', ABoxId);  //boxId: идентификатор ящика
   AddURLParam(S, 'eventId', AEventId);  //eventId: идентификатор события;
 
-  if not Authenticate then exit;
 
   if SendCommand(hmGET, '/V2/GetEvent', S, nil) then
   begin
@@ -4135,7 +4179,7 @@ begin
       FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
   end;
 end;
-
+(*
 function TDiadocAPI.PostDiadocMessage(AMsg: TMessageToPost; AOperationId: string
   ): TMessage;
 var
@@ -4176,7 +4220,7 @@ begin
       FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
   end;
   F.Free;
-end;
+end; *)
 
 function TDiadocAPI.PostMessagePatch(APatch: TMessagePatchToPost;
   AOperationId: string): TMessagePatch;

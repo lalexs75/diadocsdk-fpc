@@ -62,14 +62,16 @@ type
   private
     FDocumentDate: string;
     FDocumentNumber: string;
+    procedure SetDocumentDate(AValue: string);
+    procedure SetDocumentNumber(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property DocumentDate:string read FDocumentDate write FDocumentDate;//1;
-    property DocumentNumber:string read FDocumentNumber write FDocumentNumber;//2;
+    property DocumentDate:string read FDocumentDate write SetDocumentDate;//1;
+    property DocumentNumber:string read FDocumentNumber write SetDocumentNumber;//2;
   end;
 
 
@@ -100,19 +102,26 @@ type
     FTotalInc: string;
     FVatDec: string;
     FVatInc: string;
+    procedure SetCurrencyCode(AValue: int32);
+    procedure SetFunctionType(AValue: TFunctionType);
+    procedure SetGrounds(AValue: string);
+    procedure SetTotalDec(AValue: string);
+    procedure SetTotalInc(AValue: string);
+    procedure SetVatDec(AValue: string);
+    procedure SetVatInc(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property TotalInc:string read FTotalInc write FTotalInc;//1;
-    property TotalDec:string read FTotalDec write FTotalDec;//2;
-    property VatInc:string read FVatInc write FVatInc;//3;
-    property VatDec:string read FVatDec write FVatDec;//4;
-    property CurrencyCode:int32 read FCurrencyCode write FCurrencyCode; //5;
-    property Grounds:string read FGrounds write FGrounds;//6;
-    property FunctionType:TFunctionType read FFunctionType write FFunctionType;//7;
+    property TotalInc:string read FTotalInc write SetTotalInc;//1;
+    property TotalDec:string read FTotalDec write SetTotalDec;//2;
+    property VatInc:string read FVatInc write SetVatInc;//3;
+    property VatDec:string read FVatDec write SetVatDec;//4;
+    property CurrencyCode:int32 read FCurrencyCode write SetCurrencyCode; //5;
+    property Grounds:string read FGrounds write SetGrounds;//6;
+    property FunctionType:TFunctionType read FFunctionType write SetFunctionType;//7;
     property OriginalDocumentDateAndNumber:TDocumentDateAndNumber read FOriginalDocumentDateAndNumber;//8;
     property OriginalDocumentRevisionDateAndNumber:TDocumentDateAndNumber read FOriginalDocumentRevisionDateAndNumber; //9;
     property OriginalDocumentCorrectionDateAndNumber:TDocumentDateAndNumber read FOriginalDocumentCorrectionDateAndNumber; //10;
@@ -138,17 +147,22 @@ type
     FOriginalDocumentDateAndNumber: TDocumentDateAndNumber;
     FTotal: string;
     FVat: string;
+    procedure SetCurrencyCode(AValue: int32);
+    procedure SetFunctionType(AValue: TFunctionType);
+    procedure SetGrounds(AValue: string);
+    procedure SetTotal(AValue: string);
+    procedure SetVat(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property Total:string read FTotal write FTotal; //1;
-    property Vat:string read FVat write FVat;//2;
-    property CurrencyCode:int32 read FCurrencyCode write FCurrencyCode;//3;
-    property Grounds:string read FGrounds write FGrounds; //4;
-    property FunctionType:TFunctionType read FFunctionType write FFunctionType;//5;
+    property Total:string read FTotal write SetTotal; //1;
+    property Vat:string read FVat write SetVat;//2;
+    property CurrencyCode:int32 read FCurrencyCode write SetCurrencyCode;//3;
+    property Grounds:string read FGrounds write SetGrounds; //4;
+    property FunctionType:TFunctionType read FFunctionType write SetFunctionType;//5;
     property OriginalDocumentDateAndNumber:TDocumentDateAndNumber read FOriginalDocumentDateAndNumber;//6
   end;
 
@@ -168,16 +182,20 @@ type
     FContractNumber: string;
     FContractType: string;
     FTotal: string;
+    procedure SetContractDate(AValue: string);
+    procedure SetContractNumber(AValue: string);
+    procedure SetContractType(AValue: string);
+    procedure SetTotal(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property Total:string read FTotal write FTotal; //1;
-    property ContractType:string read FContractType write FContractType; //2;
-    property ContractNumber:string read FContractNumber write FContractNumber; //3;
-    property ContractDate:string read FContractDate write FContractDate; //4;
+    property Total:string read FTotal write SetTotal; //1;
+    property ContractType:string read FContractType write SetContractType; //2;
+    property ContractNumber:string read FContractNumber write SetContractNumber; //3;
+    property ContractDate:string read FContractDate write SetContractDate; //4;
   end;
 
 
@@ -192,14 +210,16 @@ type
   private
     FContractPrice: string;
     FContractType: string;
+    procedure SetContractPrice(AValue: string);
+    procedure SetContractType(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property ContractPrice:string read FContractPrice write FContractPrice; //1;
-    property ContractType:string read FContractType write FContractType; //2;
+    property ContractPrice:string read FContractPrice write SetContractPrice; //1;
+    property ContractType:string read FContractType write SetContractType; //2;
   end;
 
 
@@ -214,13 +234,14 @@ type
   private
     FContractDocumentDateAndNumber: TDocumentDateAndNumber;
     FPriceListEffectiveDate: string;
+    procedure SetPriceListEffectiveDate(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property PriceListEffectiveDate:string read FPriceListEffectiveDate write FPriceListEffectiveDate;//1;
+    property PriceListEffectiveDate:string read FPriceListEffectiveDate write SetPriceListEffectiveDate;//1;
     property ContractDocumentDateAndNumber:TDocumentDateAndNumber read FContractDocumentDateAndNumber; //2;
   end;
 
@@ -248,17 +269,22 @@ type
     FTotalInc: string;
     FVatDec: string;
     FVatInc: string;
+    procedure SetCurrencyCode(AValue: int32);
+    procedure SetTotalDec(AValue: string);
+    procedure SetTotalInc(AValue: string);
+    procedure SetVatDec(AValue: string);
+    procedure SetVatInc(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property TotalInc:string read FTotalInc write FTotalInc; //1;
-    property TotalDec:string read FTotalDec write FTotalDec; //2;
-    property VatInc:string read FVatInc write FVatInc; //3;
-    property VatDec:string read FVatDec write FVatDec; //4;
-    property CurrencyCode:int32 read FCurrencyCode write FCurrencyCode; //5;
+    property TotalInc:string read FTotalInc write SetTotalInc; //1;
+    property TotalDec:string read FTotalDec write SetTotalDec; //2;
+    property VatInc:string read FVatInc write SetVatInc; //3;
+    property VatDec:string read FVatDec write SetVatDec; //4;
+    property CurrencyCode:int32 read FCurrencyCode write SetCurrencyCode; //5;
     property OriginalInvoiceDateAndNumber:TDocumentDateAndNumber read FOriginalInvoiceDateAndNumber; //6;
     property OriginalInvoiceRevisionDateAndNumber:TDocumentDateAndNumber read FOriginalInvoiceRevisionDateAndNumber; //7;
     property OriginalInvoiceCorrectionDateAndNumber:TDocumentDateAndNumber read FOriginalInvoiceCorrectionDateAndNumber; //8;
@@ -280,15 +306,18 @@ type
     FOriginalInvoiceDateAndNumber: TDocumentDateAndNumber;
     FTotal: string;
     FVat: string;
+    procedure SetCurrencyCode(AValue: int32);
+    procedure SetTotal(AValue: string);
+    procedure SetVat(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property Total:string read FTotal write FTotal;//1;
-    property Vat:string read FVat write FVat;//2;
-    property CurrencyCode:int32 read FCurrencyCode write FCurrencyCode; //3;
+    property Total:string read FTotal write SetTotal;//1;
+    property Vat:string read FVat write SetVat;//2;
+    property CurrencyCode:int32 read FCurrencyCode write SetCurrencyCode; //3;
     property OriginalInvoiceDateAndNumber:TDocumentDateAndNumber read FOriginalInvoiceDateAndNumber;//4;
   end;
 
@@ -310,16 +339,20 @@ type
     FRevisionDateAndNumber: TDocumentDateAndNumber;
     FTotal: string;
     FVat: string;
+    procedure SetGrounds(AValue: string);
+    procedure SetNoVat(AValue: Boolean);
+    procedure SetTotal(AValue: string);
+    procedure SetVat(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property Total:string read FTotal write FTotal;//1;
-    property NoVat:Boolean read FNoVat write FNoVat;//2;
-    property Vat:string read FVat write FVat;//3;
-    property Grounds:string read FGrounds write FGrounds;//4;
+    property Total:string read FTotal write SetTotal;//1;
+    property NoVat:Boolean read FNoVat write SetNoVat;//2;
+    property Vat:string read FVat write SetVat;//3;
+    property Grounds:string read FGrounds write SetGrounds;//4;
     property RevisionDateAndNumber:TDocumentDateAndNumber read FRevisionDateAndNumber;//5;
   end;
 
@@ -365,19 +398,27 @@ type
     FToDepartmentId: string;
     FUniversalCorrectionDocumentInfo: TUniversalCorrectionDocumentInfo;
     FUniversalTransferDocumentInfo: TUniversalTransferDocumentInfo;
+    procedure SetAttachmentVersion(AValue: string);
+    procedure SetCounteragentBoxId(AValue: string);
+    procedure SetCustomDocumentId(AValue: string);
+    procedure SetDocumentDirection(AValue: TDocumentDirection);
+    procedure SetDocumentType(AValue: TDocumentType);
+    procedure SetFromDepartmentId(AValue: string);
+    procedure SetIsTest(AValue: Boolean);
+    procedure SetToDepartmentId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property DocumentType:TDocumentType read FDocumentType write FDocumentType default UnknownDocumentType; //1
-    property DocumentDirection:TDocumentDirection read FDocumentDirection write FDocumentDirection default UnknownDocumentDirection; //2
-    property IsTest:Boolean read FIsTest write FIsTest; //3;
-    property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId; //4;
-    property FromDepartmentId:string read FFromDepartmentId write FFromDepartmentId; //5;
-    property ToDepartmentId:string read FToDepartmentId write FToDepartmentId; //6;
-    property CounteragentBoxId:string read FCounteragentBoxId write FCounteragentBoxId; //7;
+    property DocumentType:TDocumentType read FDocumentType write SetDocumentType default UnknownDocumentType; //1
+    property DocumentDirection:TDocumentDirection read FDocumentDirection write SetDocumentDirection default UnknownDocumentDirection; //2
+    property IsTest:Boolean read FIsTest write SetIsTest; //3;
+    property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId; //4;
+    property FromDepartmentId:string read FFromDepartmentId write SetFromDepartmentId; //5;
+    property ToDepartmentId:string read FToDepartmentId write SetToDepartmentId; //6;
+    property CounteragentBoxId:string read FCounteragentBoxId write SetCounteragentBoxId; //7;
     property DocumentDateAndNumber:TDocumentDateAndNumber read FDocumentDateAndNumber; //8;
     property BasicDocumentInfo:TBasicDocumentInfo read FBasicDocumentInfo;//9;
     property InvoiceInfo:TInvoiceDocumentInfo read FInvoiceInfo;//10;
@@ -387,12 +428,65 @@ type
     property SupplementaryAgreementInfo:TSupplementaryAgreementDocumentInfo read FSupplementaryAgreementInfo; //14;
     property UniversalTransferDocumentInfo:TUniversalTransferDocumentInfo read FUniversalTransferDocumentInfo;//15;
     property UniversalCorrectionDocumentInfo:TUniversalCorrectionDocumentInfo read FUniversalCorrectionDocumentInfo; //16
-    property AttachmentVersion:string read FAttachmentVersion write FAttachmentVersion; //17;
+    property AttachmentVersion:string read FAttachmentVersion write SetAttachmentVersion; //17;
   end;
 
 implementation
 
 { TDocumentInfo }
+
+procedure TDocumentInfo.SetAttachmentVersion(AValue: string);
+begin
+  if FAttachmentVersion=AValue then Exit;
+  FAttachmentVersion:=AValue;
+  Modified(17);
+end;
+
+procedure TDocumentInfo.SetCounteragentBoxId(AValue: string);
+begin
+  if FCounteragentBoxId=AValue then Exit;
+  FCounteragentBoxId:=AValue;
+  Modified(7);
+end;
+
+procedure TDocumentInfo.SetCustomDocumentId(AValue: string);
+begin
+  if FCustomDocumentId=AValue then Exit;
+  FCustomDocumentId:=AValue;
+  Modified(4);
+end;
+
+procedure TDocumentInfo.SetDocumentDirection(AValue: TDocumentDirection);
+begin
+  FDocumentDirection:=AValue;
+  Modified(2);
+end;
+
+procedure TDocumentInfo.SetDocumentType(AValue: TDocumentType);
+begin
+  FDocumentType:=AValue;
+  Modified(1);
+end;
+
+procedure TDocumentInfo.SetFromDepartmentId(AValue: string);
+begin
+  if FFromDepartmentId=AValue then Exit;
+  FFromDepartmentId:=AValue;
+  Modified(5);
+end;
+
+procedure TDocumentInfo.SetIsTest(AValue: Boolean);
+begin
+  FIsTest:=AValue;
+  Modified(3);
+end;
+
+procedure TDocumentInfo.SetToDepartmentId(AValue: string);
+begin
+  if FToDepartmentId=AValue then Exit;
+  FToDepartmentId:=AValue;
+  Modified(6);
+end;
 
 procedure TDocumentInfo.InternalRegisterProperty;
 begin
@@ -444,6 +538,34 @@ end;
 
 { TBasicDocumentInfo }
 
+procedure TBasicDocumentInfo.SetGrounds(AValue: string);
+begin
+  if FGrounds=AValue then Exit;
+  FGrounds:=AValue;
+  Modified(4);
+end;
+
+procedure TBasicDocumentInfo.SetNoVat(AValue: Boolean);
+begin
+  if FNoVat=AValue then Exit;
+  FNoVat:=AValue;
+  Modified(2);
+end;
+
+procedure TBasicDocumentInfo.SetTotal(AValue: string);
+begin
+  if FTotal=AValue then Exit;
+  FTotal:=AValue;
+  Modified(1);
+end;
+
+procedure TBasicDocumentInfo.SetVat(AValue: string);
+begin
+  if FVat=AValue then Exit;
+  FVat:=AValue;
+  Modified(3);
+end;
+
 procedure TBasicDocumentInfo.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -468,6 +590,27 @@ end;
 
 { TInvoiceDocumentInfo }
 
+procedure TInvoiceDocumentInfo.SetCurrencyCode(AValue: int32);
+begin
+  if FCurrencyCode=AValue then Exit;
+  FCurrencyCode:=AValue;
+  Modified(3);
+end;
+
+procedure TInvoiceDocumentInfo.SetTotal(AValue: string);
+begin
+  if FTotal=AValue then Exit;
+  FTotal:=AValue;
+  Modified(1);
+end;
+
+procedure TInvoiceDocumentInfo.SetVat(AValue: string);
+begin
+  if FVat=AValue then Exit;
+  FVat:=AValue;
+  Modified(2);
+end;
+
 procedure TInvoiceDocumentInfo.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -490,6 +633,41 @@ begin
 end;
 
 { TInvoiceCorrectionDocumentInfo }
+
+procedure TInvoiceCorrectionDocumentInfo.SetCurrencyCode(AValue: int32);
+begin
+  if FCurrencyCode=AValue then Exit;
+  FCurrencyCode:=AValue;
+  Modified(5);
+end;
+
+procedure TInvoiceCorrectionDocumentInfo.SetTotalDec(AValue: string);
+begin
+  if FTotalDec=AValue then Exit;
+  FTotalDec:=AValue;
+  Modified(2);
+end;
+
+procedure TInvoiceCorrectionDocumentInfo.SetTotalInc(AValue: string);
+begin
+  if FTotalInc=AValue then Exit;
+  FTotalInc:=AValue;
+  Modified(1);
+end;
+
+procedure TInvoiceCorrectionDocumentInfo.SetVatDec(AValue: string);
+begin
+  if FVatDec=AValue then Exit;
+  FVatDec:=AValue;
+  Modified(4);
+end;
+
+procedure TInvoiceCorrectionDocumentInfo.SetVatInc(AValue: string);
+begin
+  if FVatInc=AValue then Exit;
+  FVatInc:=AValue;
+  Modified(3);
+end;
 
 procedure TInvoiceCorrectionDocumentInfo.InternalRegisterProperty;
 begin
@@ -522,6 +700,13 @@ end;
 
 { TPriceListDocumentInfo }
 
+procedure TPriceListDocumentInfo.SetPriceListEffectiveDate(AValue: string);
+begin
+  if FPriceListEffectiveDate=AValue then Exit;
+  FPriceListEffectiveDate:=AValue;
+  Modified(1);
+end;
+
 procedure TPriceListDocumentInfo.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -543,6 +728,20 @@ end;
 
 { TContractDocumentInfo }
 
+procedure TContractDocumentInfo.SetContractPrice(AValue: string);
+begin
+  if FContractPrice=AValue then Exit;
+  FContractPrice:=AValue;
+  Modified(1);
+end;
+
+procedure TContractDocumentInfo.SetContractType(AValue: string);
+begin
+  if FContractType=AValue then Exit;
+  FContractType:=AValue;
+  Modified(2);
+end;
+
 procedure TContractDocumentInfo.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -561,6 +760,34 @@ begin
 end;
 
 { TSupplementaryAgreementDocumentInfo }
+
+procedure TSupplementaryAgreementDocumentInfo.SetContractDate(AValue: string);
+begin
+  if FContractDate=AValue then Exit;
+  FContractDate:=AValue;
+  Modified(4);
+end;
+
+procedure TSupplementaryAgreementDocumentInfo.SetContractNumber(AValue: string);
+begin
+  if FContractNumber=AValue then Exit;
+  FContractNumber:=AValue;
+  Modified(3);
+end;
+
+procedure TSupplementaryAgreementDocumentInfo.SetContractType(AValue: string);
+begin
+  if FContractType=AValue then Exit;
+  FContractType:=AValue;
+  Modified(2);
+end;
+
+procedure TSupplementaryAgreementDocumentInfo.SetTotal(AValue: string);
+begin
+  if FTotal=AValue then Exit;
+  FTotal:=AValue;
+  Modified(1);
+end;
 
 procedure TSupplementaryAgreementDocumentInfo.InternalRegisterProperty;
 begin
@@ -582,6 +809,41 @@ begin
 end;
 
 { TUniversalTransferDocumentInfo }
+
+procedure TUniversalTransferDocumentInfo.SetCurrencyCode(AValue: int32);
+begin
+  if FCurrencyCode=AValue then Exit;
+  FCurrencyCode:=AValue;
+  Modified(3);
+end;
+
+procedure TUniversalTransferDocumentInfo.SetFunctionType(AValue: TFunctionType);
+begin
+  if FFunctionType=AValue then Exit;
+  FFunctionType:=AValue;
+  Modified(5);
+end;
+
+procedure TUniversalTransferDocumentInfo.SetGrounds(AValue: string);
+begin
+  if FGrounds=AValue then Exit;
+  FGrounds:=AValue;
+  Modified(4);
+end;
+
+procedure TUniversalTransferDocumentInfo.SetTotal(AValue: string);
+begin
+  if FTotal=AValue then Exit;
+  FTotal:=AValue;
+  Modified(1);
+end;
+
+procedure TUniversalTransferDocumentInfo.SetVat(AValue: string);
+begin
+  if FVat=AValue then Exit;
+  FVat:=AValue;
+  Modified(2);
+end;
 
 procedure TUniversalTransferDocumentInfo.InternalRegisterProperty;
 begin
@@ -608,6 +870,20 @@ end;
 
 { TDocumentDateAndNumber }
 
+procedure TDocumentDateAndNumber.SetDocumentDate(AValue: string);
+begin
+  if FDocumentDate=AValue then Exit;
+  FDocumentDate:=AValue;
+  Modified(1);
+end;
+
+procedure TDocumentDateAndNumber.SetDocumentNumber(AValue: string);
+begin
+  if FDocumentNumber=AValue then Exit;
+  FDocumentNumber:=AValue;
+  Modified(2);
+end;
+
 procedure TDocumentDateAndNumber.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -626,6 +902,56 @@ begin
 end;
 
 { TUniversalCorrectionDocumentInfo }
+
+procedure TUniversalCorrectionDocumentInfo.SetCurrencyCode(AValue: int32);
+begin
+  if FCurrencyCode=AValue then Exit;
+  FCurrencyCode:=AValue;
+  Modified(5);
+end;
+
+procedure TUniversalCorrectionDocumentInfo.SetFunctionType(AValue: TFunctionType
+  );
+begin
+  if FFunctionType=AValue then Exit;
+  FFunctionType:=AValue;
+  Modified(7);
+end;
+
+procedure TUniversalCorrectionDocumentInfo.SetGrounds(AValue: string);
+begin
+  if FGrounds=AValue then Exit;
+  FGrounds:=AValue;
+  Modified(6);
+end;
+
+procedure TUniversalCorrectionDocumentInfo.SetTotalDec(AValue: string);
+begin
+  if FTotalDec=AValue then Exit;
+  FTotalDec:=AValue;
+  Modified(2);
+end;
+
+procedure TUniversalCorrectionDocumentInfo.SetTotalInc(AValue: string);
+begin
+  if FTotalInc=AValue then Exit;
+  FTotalInc:=AValue;
+  Modified(1);
+end;
+
+procedure TUniversalCorrectionDocumentInfo.SetVatDec(AValue: string);
+begin
+  if FVatDec=AValue then Exit;
+  FVatDec:=AValue;
+  Modified(4);
+end;
+
+procedure TUniversalCorrectionDocumentInfo.SetVatInc(AValue: string);
+begin
+  if FVatInc=AValue then Exit;
+  FVatInc:=AValue;
+  Modified(3);
+end;
 
 procedure TUniversalCorrectionDocumentInfo.InternalRegisterProperty;
 begin

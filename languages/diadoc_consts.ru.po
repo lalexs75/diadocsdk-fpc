@@ -107,6 +107,10 @@ msgstr ""
 msgid "Not defined InvoiceTypeStr"
 msgstr ""
 
+#: diadoc_consts.snotdefinedmessage
+msgid "Not defined message"
+msgstr ""
+
 #: diadoc_consts.snotdefinedmessageid
 msgid "Not defined message id"
 msgstr "Не определён message id"
