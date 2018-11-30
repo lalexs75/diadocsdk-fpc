@@ -19,7 +19,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="DDAPIMainUnit"/>
-        <IsVisibleTab Value="True"/>
         <TopLine Value="130"/>
         <CursorPos X="15" Y="146"/>
         <UsageCount Value="200"/>
@@ -128,9 +127,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="DiadocDocumentUnit"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="294"/>
-        <CursorPos X="4" Y="294"/>
+        <TopLine Value="300"/>
+        <CursorPos X="3" Y="319"/>
         <UsageCount Value="135"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -269,8 +269,8 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ddNewDocUTDUnit"/>
         <EditorIndex Value="4"/>
-        <TopLine Value="127"/>
-        <CursorPos X="27" Y="58"/>
+        <TopLine Value="102"/>
+        <CursorPos X="3" Y="20"/>
         <UsageCount Value="31"/>
         <Loaded Value="True"/>
       </Unit23>
@@ -1846,123 +1846,123 @@
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="272" TopLine="254"/>
+        <Caret Line="276" TopLine="254"/>
       </Position1>
       <Position2>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="276" TopLine="254"/>
+        <Caret Line="280" TopLine="254"/>
       </Position2>
       <Position3>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="280" TopLine="254"/>
+        <Caret Line="283" TopLine="256"/>
       </Position3>
       <Position4>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="283" TopLine="256"/>
+        <Caret Line="288" TopLine="263"/>
       </Position4>
       <Position5>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="288" TopLine="263"/>
+        <Caret Line="292" TopLine="267"/>
       </Position5>
       <Position6>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="292" TopLine="267"/>
+        <Caret Line="294" TopLine="269"/>
       </Position6>
       <Position7>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="294" TopLine="269"/>
+        <Caret Line="288" Column="19" TopLine="271"/>
       </Position7>
       <Position8>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="288" Column="19" TopLine="271"/>
+        <Caret Line="315" TopLine="299"/>
       </Position8>
       <Position9>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="315" TopLine="299"/>
+        <Caret Line="265" TopLine="248"/>
       </Position9>
       <Position10>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="265" TopLine="248"/>
+        <Caret Line="266" TopLine="248"/>
       </Position10>
       <Position11>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="266" TopLine="248"/>
+        <Caret Line="267" TopLine="248"/>
       </Position11>
       <Position12>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="267" TopLine="248"/>
+        <Caret Line="269" TopLine="248"/>
       </Position12>
       <Position13>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="269" TopLine="248"/>
+        <Caret Line="272" TopLine="248"/>
       </Position13>
       <Position14>
-        <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="272" TopLine="248"/>
+        <Filename Value="../../../Events/diadoctypes_diadocmessage_postapi.pas"/>
+        <Caret Line="4624" TopLine="4615"/>
       </Position14>
       <Position15>
         <Filename Value="../../../Events/diadoctypes_diadocmessage_postapi.pas"/>
-        <Caret Line="4624" TopLine="4615"/>
+        <Caret Line="4625" TopLine="4615"/>
       </Position15>
       <Position16>
         <Filename Value="../../../Events/diadoctypes_diadocmessage_postapi.pas"/>
-        <Caret Line="4625" TopLine="4615"/>
+        <Caret Line="4626" TopLine="4615"/>
       </Position16>
       <Position17>
         <Filename Value="../../../Events/diadoctypes_diadocmessage_postapi.pas"/>
-        <Caret Line="4626" TopLine="4615"/>
+        <Caret Line="4627" Column="16" TopLine="4615"/>
       </Position17>
       <Position18>
         <Filename Value="../../../Events/diadoctypes_diadocmessage_postapi.pas"/>
-        <Caret Line="4627" Column="16" TopLine="4615"/>
+        <Caret Line="4629" TopLine="4615"/>
       </Position18>
       <Position19>
-        <Filename Value="../../../Events/diadoctypes_diadocmessage_postapi.pas"/>
-        <Caret Line="4629" TopLine="4615"/>
+        <Filename Value="frames/diadocdocumentunit.pas"/>
+        <Caret Line="276" TopLine="255"/>
       </Position19>
       <Position20>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="276" TopLine="255"/>
+        <Caret Line="280" TopLine="255"/>
       </Position20>
       <Position21>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="280" TopLine="255"/>
+        <Caret Line="283" TopLine="256"/>
       </Position21>
       <Position22>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="283" TopLine="256"/>
+        <Caret Line="268" Column="67" TopLine="256"/>
       </Position22>
       <Position23>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="268" Column="67" TopLine="256"/>
+        <Caret Line="193" TopLine="178"/>
       </Position23>
       <Position24>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="193" TopLine="178"/>
+        <Caret Line="201" TopLine="178"/>
       </Position24>
       <Position25>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="201" TopLine="178"/>
+        <Caret Line="70" Column="15" TopLine="54"/>
       </Position25>
       <Position26>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="70" Column="15" TopLine="54"/>
+        <Caret Line="267" Column="84" TopLine="262"/>
       </Position26>
       <Position27>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="267" Column="84" TopLine="262"/>
+        <Caret Line="290" TopLine="267"/>
       </Position27>
       <Position28>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="288" Column="5" TopLine="292"/>
+        <Caret Line="294" Column="4" TopLine="294"/>
       </Position28>
       <Position29>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="290" TopLine="267"/>
+        <Caret Line="307" Column="3" TopLine="300"/>
       </Position29>
       <Position30>
-        <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="294" Column="4" TopLine="294"/>
+        <Filename Value="tools/ddnewdocutdunit.pas"/>
+        <Caret Line="11" Column="10"/>
       </Position30>
     </JumpHistory>
     <RunParams>

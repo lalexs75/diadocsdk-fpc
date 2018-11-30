@@ -316,7 +316,7 @@ begin
   begin
     M.SaveToFile('/tmp/UniversalTransferDocumentXmlForSeller.xml');
     M.Position:=0;
-    DoTestSend(M);
+//    DoTestSend(M);
     M.Free;
   end;
   D.Free;

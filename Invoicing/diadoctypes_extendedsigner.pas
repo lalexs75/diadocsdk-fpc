@@ -366,7 +366,6 @@ end;
 
 procedure TExtendedSignerDetails.SetSignerPowers(AValue: TSignerPowers);
 begin
-  if FSignerPowers=AValue then Exit;
   FSignerPowers:=AValue;
   Modified(10);
 end;
@@ -380,7 +379,6 @@ end;
 
 procedure TExtendedSignerDetails.SetSignerStatus(AValue: TSignerStatus);
 begin
-  if FSignerStatus=AValue then Exit;
   FSignerStatus:=AValue;
   Modified(11);
 end;
