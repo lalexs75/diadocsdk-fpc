@@ -437,6 +437,9 @@
       </element>
     <element name="TPredefinedRecipientTitle"><short>Предназначено для двухтитульных документов с разрешённой для действия версией. </short>
       </element>
+    <element name="TMessageToPost.ToDepartmentId"><short>идентификатор подразделения в организации получателя, в которое будут отправлены все документы из сообщения</short><descr>может отсутствовать, в этом случае документы будут отправлены в головное подразделение
+</descr>
+      </element>
     </module>
   </package>
 </fpdoc-descriptions>

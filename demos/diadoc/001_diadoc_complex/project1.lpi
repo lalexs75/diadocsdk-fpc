@@ -48,7 +48,7 @@
         <PackageName Value="LCL"/>
       </Item6>
     </RequiredPackages>
-    <Units Count="24">
+    <Units Count="27">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -225,6 +225,27 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="ddNewDocUTDUnit"/>
       </Unit23>
+      <Unit24>
+        <Filename Value="frames/transferinfounit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="TransferInfoFrame"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="TransferInfoUnit"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="frames/extendedorganizationinfounit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="ExtendedOrganizationInfoFrame"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="ExtendedOrganizationInfoUnit"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="frames/employeeunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="EmployeeFrame"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="EmployeeUnit"/>
+      </Unit26>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

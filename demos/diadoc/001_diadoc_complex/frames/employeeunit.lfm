@@ -1,0 +1,188 @@
+object EmployeeFrame: TEmployeeFrame
+  Left = 0
+  Height = 247
+  Top = 0
+  Width = 375
+  ClientHeight = 247
+  ClientWidth = 375
+  TabOrder = 0
+  DesignLeft = 472
+  DesignTop = 203
+  object Label1: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideBottom.Control = edtEmployeePosition
+    AnchorSideBottom.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 18
+    Width = 77
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 6
+    Caption = 'Должность'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideBottom.Control = edtEmployeeInfo
+    AnchorSideBottom.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 55
+    Width = 104
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 6
+    Caption = 'Иные сведения'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideBottom.Control = edtEmployeeBase
+    AnchorSideBottom.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 92
+    Width = 75
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 6
+    Caption = 'Основание'
+    ParentColor = False
+  end
+  object Label4: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideBottom.Control = edtTransferSurname
+    AnchorSideBottom.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 129
+    Width = 65
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 6
+    Caption = 'Фамилия'
+    ParentColor = False
+  end
+  object Label5: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = edtTransferSurname
+    AnchorSideTop.Side = asrBottom
+    AnchorSideBottom.Control = edtTransferFirstName
+    AnchorSideBottom.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 166
+    Width = 29
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 6
+    Caption = 'Имя'
+    ParentColor = False
+  end
+  object Label6: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = edtTransferFirstName
+    AnchorSideTop.Side = asrBottom
+    AnchorSideBottom.Control = edtTransferPatronymic
+    AnchorSideBottom.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 203
+    Width = 64
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 6
+    Caption = 'Отчество'
+    ParentColor = False
+  end
+  object edtEmployeePosition: TEdit
+    AnchorSideLeft.Control = Label1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 89
+    Height = 31
+    Top = 6
+    Width = 280
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 0
+    Text = 'edtEmployeePosition'
+  end
+  object edtEmployeeInfo: TEdit
+    AnchorSideLeft.Control = Label2
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = edtEmployeePosition
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 116
+    Height = 31
+    Top = 43
+    Width = 253
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 1
+    Text = 'edtEmployeeInfo'
+  end
+  object edtEmployeeBase: TEdit
+    AnchorSideLeft.Control = Label3
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = edtEmployeeInfo
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 87
+    Height = 31
+    Top = 80
+    Width = 282
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 2
+    Text = 'edtEmployeeBase'
+  end
+  object edtTransferSurname: TEdit
+    AnchorSideLeft.Control = Label4
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = edtEmployeeBase
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 77
+    Height = 31
+    Top = 117
+    Width = 292
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 3
+    Text = 'edtTransferSurname'
+  end
+  object edtTransferFirstName: TEdit
+    AnchorSideLeft.Control = Label5
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = edtTransferSurname
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 41
+    Height = 31
+    Top = 154
+    Width = 328
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 4
+    Text = 'edtTransferFirstName'
+  end
+  object edtTransferPatronymic: TEdit
+    AnchorSideLeft.Control = Label6
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = edtTransferFirstName
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 76
+    Height = 31
+    Top = 191
+    Width = 293
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 5
+    Text = 'edtTransferPatronymic'
+  end
+end

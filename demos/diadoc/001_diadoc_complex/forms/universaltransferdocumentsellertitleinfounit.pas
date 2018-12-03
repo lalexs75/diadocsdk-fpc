@@ -9,7 +9,7 @@ uses
   StdCtrls, DB, rxdbgrid, rxmemds, DiadocTypes_UniversalTransferDocumentInfo,
   DiadocTypes_ExtendedSigner,
   DiadocTypes_Torg12Info,
-  DiadocTypes_InvoiceInfo;
+  DiadocTypes_InvoiceInfo, TransferInfoUnit;
 
 type
 
@@ -77,8 +77,10 @@ type
     rxData: TRxMemoryData;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
+    TabSheet3: TTabSheet;
     procedure FormCreate(Sender: TObject);
   private
+    FTransferInfoFrame:TTransferInfoFrame;
     procedure FillInvoiceTable(ATableInfo:TInvoiceTable);
     procedure FillInvoiceTable(ATableInfo:TInvoiceItems);
     procedure FillTorg12Table(ATableInfo:TTorg12Items);
@@ -93,6 +95,7 @@ var
 
 implementation
 
+
 {$R *.lfm}
 
 { TUniversalTransferDocumentSellerTitleInfoForm }
@@ -101,6 +104,9 @@ procedure TUniversalTransferDocumentSellerTitleInfoForm.FormCreate(
   Sender: TObject);
 begin
   PageControl1.ActivePageIndex:=0;
+  FTransferInfoFrame:=TTransferInfoFrame.Create(Self);
+  FTransferInfoFrame.Parent:=TabSheet3;
+  FTransferInfoFrame.Align:=alClient;
 end;
 
 procedure TUniversalTransferDocumentSellerTitleInfoForm.FillInvoiceTable(
@@ -273,6 +279,8 @@ begin
   edtDocumentCreatorBase.Text:=AInfo.DocumentCreatorBase;
 
   edtGovernmentContractInfo.Text:=AInfo.GovernmentContractInfo;
+
+  FTransferInfoFrame.TransferInfo:=AInfo.TransferInfo;
 end;
 
 procedure TUniversalTransferDocumentSellerTitleInfoForm.OpenInfo(

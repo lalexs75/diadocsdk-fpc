@@ -1,9 +1,476 @@
 object ExtendedOrganizationInfoFrame: TExtendedOrganizationInfoFrame
   Left = 0
-  Height = 240
+  Height = 426
   Top = 0
-  Width = 320
+  Width = 586
+  ClientHeight = 426
+  ClientWidth = 586
   TabOrder = 0
-  DesignLeft = 325
-  DesignTop = 133
+  DesignLeft = 701
+  DesignTop = 238
+  object edtDepartment: TEdit
+    AnchorSideLeft.Control = Label12
+    AnchorSideTop.Control = Label12
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 305
+    Height = 31
+    Top = 236
+    Width = 275
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 11
+    Text = 'edtDepartment'
+  end
+  object Label1: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Label18
+    AnchorSideTop.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 25
+    Width = 134
+    BorderSpacing.Around = 6
+    Caption = 'ID почтового ящика'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = edtBoxId
+    AnchorSideTop.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 87
+    Width = 198
+    BorderSpacing.Around = 6
+    Caption = 'Наименование организации '
+    FocusControl = edtOrgName
+    ParentColor = False
+  end
+  object Label3: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = edtOrgName
+    AnchorSideTop.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 149
+    Width = 33
+    BorderSpacing.Around = 6
+    Caption = 'ИНН'
+    FocusControl = edtINN
+    ParentColor = False
+  end
+  object Label4: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = edtINN
+    AnchorSideTop.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 211
+    Width = 32
+    BorderSpacing.Around = 6
+    Caption = 'КПП'
+    FocusControl = edtKPP
+    ParentColor = False
+  end
+  object Label5: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = edtKPP
+    AnchorSideTop.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 273
+    Width = 144
+    BorderSpacing.Around = 6
+    Caption = 'ФНС идентификатор'
+    FocusControl = edtFnsParticipantId
+    ParentColor = False
+  end
+  object Label6: TLabel
+    AnchorSideLeft.Control = CLabel
+    AnchorSideTop.Control = Label18
+    AnchorSideTop.Side = asrBottom
+    Left = 299
+    Height = 19
+    Top = 25
+    Width = 55
+    BorderSpacing.Around = 6
+    Caption = 'ОКОПФ'
+    FocusControl = edtOkopf
+    ParentColor = False
+  end
+  object Label7: TLabel
+    AnchorSideLeft.Control = edtOkopf
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Label18
+    AnchorSideTop.Side = asrBottom
+    Left = 452
+    Height = 19
+    Top = 25
+    Width = 43
+    BorderSpacing.Around = 6
+    Caption = 'ОКПО'
+    FocusControl = edtOkpo
+    ParentColor = False
+  end
+  object Label8: TLabel
+    AnchorSideLeft.Control = CLabel
+    AnchorSideTop.Control = edtOkopf
+    AnchorSideTop.Side = asrBottom
+    Left = 299
+    Height = 19
+    Top = 87
+    Width = 44
+    BorderSpacing.Around = 6
+    Caption = 'ОКДП'
+    FocusControl = edtOkdp
+    ParentColor = False
+  end
+  object Label9: TLabel
+    AnchorSideLeft.Control = edtOkdp
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = edtOkpo
+    AnchorSideTop.Side = asrBottom
+    Left = 452
+    Height = 19
+    Top = 87
+    Width = 49
+    BorderSpacing.Around = 6
+    Caption = 'Страна'
+    FocusControl = edtCountry
+    ParentColor = False
+  end
+  object Label10: TLabel
+    AnchorSideLeft.Control = CLabel
+    AnchorSideTop.Control = edtOkdp
+    AnchorSideTop.Side = asrBottom
+    Left = 299
+    Height = 19
+    Top = 149
+    Width = 62
+    BorderSpacing.Around = 6
+    Caption = 'Телефон'
+    FocusControl = edtPhone
+    ParentColor = False
+  end
+  object Label11: TLabel
+    AnchorSideLeft.Control = edtPhone
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = edtCountry
+    AnchorSideTop.Side = asrBottom
+    Left = 452
+    Height = 19
+    Top = 149
+    Width = 38
+    BorderSpacing.Around = 6
+    Caption = 'Email'
+    ParentColor = False
+  end
+  object Label12: TLabel
+    AnchorSideLeft.Control = CLabel
+    AnchorSideTop.Control = edtPhone
+    AnchorSideTop.Side = asrBottom
+    Left = 299
+    Height = 19
+    Top = 211
+    Width = 115
+    BorderSpacing.Around = 6
+    Caption = 'Подзразделение'
+    ParentColor = False
+  end
+  object Label13: TLabel
+    AnchorSideTop.Side = asrBottom
+    Left = 384
+    Height = 19
+    Top = 368
+    Width = 51
+    BorderSpacing.Around = 6
+    Caption = 'Label13'
+    ParentColor = False
+    Visible = False
+  end
+  object Label14: TLabel
+    AnchorSideTop.Side = asrBottom
+    Left = 309
+    Height = 19
+    Top = 392
+    Width = 52
+    BorderSpacing.Around = 6
+    Caption = 'Label14'
+    ParentColor = False
+    Visible = False
+  end
+  object Label15: TLabel
+    AnchorSideTop.Side = asrBottom
+    Left = 299
+    Height = 19
+    Top = 352
+    Width = 51
+    BorderSpacing.Around = 6
+    Caption = 'Label15'
+    ParentColor = False
+    Visible = False
+  end
+  object Label16: TLabel
+    AnchorSideTop.Side = asrBottom
+    Left = 312
+    Height = 19
+    Top = 304
+    Width = 52
+    BorderSpacing.Around = 6
+    Caption = 'Label16'
+    ParentColor = False
+    Visible = False
+  end
+  object Label17: TLabel
+    AnchorSideTop.Side = asrBottom
+    Left = 384
+    Height = 19
+    Top = 320
+    Width = 51
+    BorderSpacing.Around = 6
+    Caption = 'Label17'
+    ParentColor = False
+    Visible = False
+  end
+  object edtBoxId: TEdit
+    AnchorSideLeft.Control = Label1
+    AnchorSideTop.Control = Label1
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = CLabel
+    Left = 12
+    Height = 31
+    Top = 50
+    Width = 275
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 0
+    Text = 'edtBoxId'
+  end
+  object edtOrgName: TEdit
+    AnchorSideLeft.Control = Label2
+    AnchorSideTop.Control = Label2
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = CLabel
+    Left = 12
+    Height = 31
+    Top = 112
+    Width = 275
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 1
+    Text = 'edtOrgName'
+  end
+  object edtINN: TEdit
+    AnchorSideLeft.Control = Label3
+    AnchorSideTop.Control = Label3
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = CLabel
+    Left = 12
+    Height = 31
+    Top = 174
+    Width = 275
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 2
+    Text = 'edtINN'
+  end
+  object edtKPP: TEdit
+    AnchorSideLeft.Control = Label4
+    AnchorSideTop.Control = Label4
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = CLabel
+    Left = 12
+    Height = 31
+    Top = 236
+    Width = 275
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 3
+    Text = 'edtKPP'
+  end
+  object edtFnsParticipantId: TEdit
+    AnchorSideLeft.Control = Label5
+    AnchorSideTop.Control = Label5
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = CLabel
+    Left = 12
+    Height = 31
+    Top = 298
+    Width = 275
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 4
+    Text = 'edtFnsParticipantId'
+  end
+  object edtOkopf: TEdit
+    AnchorSideLeft.Control = Label6
+    AnchorSideTop.Control = Label6
+    AnchorSideTop.Side = asrBottom
+    Left = 305
+    Height = 31
+    Top = 50
+    Width = 141
+    BorderSpacing.Around = 6
+    TabOrder = 5
+    Text = 'edtOkopf'
+  end
+  object edtOkpo: TEdit
+    AnchorSideLeft.Control = Label7
+    AnchorSideTop.Control = Label7
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 458
+    Height = 31
+    Top = 50
+    Width = 122
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 6
+    Text = 'edtOkpo'
+  end
+  object edtOkdp: TEdit
+    AnchorSideLeft.Control = Label8
+    AnchorSideTop.Control = Label8
+    AnchorSideTop.Side = asrBottom
+    Left = 305
+    Height = 31
+    Top = 112
+    Width = 141
+    BorderSpacing.Around = 6
+    TabOrder = 7
+    Text = 'edtOkdp'
+  end
+  object edtCountry: TEdit
+    AnchorSideLeft.Control = Label9
+    AnchorSideTop.Control = Label9
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 458
+    Height = 31
+    Top = 112
+    Width = 122
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 8
+    Text = 'edtCountry'
+  end
+  object edtPhone: TEdit
+    AnchorSideLeft.Control = Label10
+    AnchorSideTop.Control = Label10
+    AnchorSideTop.Side = asrBottom
+    Left = 305
+    Height = 31
+    Top = 174
+    Width = 141
+    BorderSpacing.Around = 6
+    TabOrder = 9
+    Text = 'edtPhone'
+  end
+  object edtEmail: TEdit
+    AnchorSideLeft.Control = Label11
+    AnchorSideTop.Control = Label11
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 458
+    Height = 31
+    Top = 174
+    Width = 122
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    TabOrder = 10
+    Text = 'edtEmail'
+  end
+  object Edit13: TEdit
+    AnchorSideTop.Side = asrBottom
+    Left = 32
+    Height = 31
+    Top = 384
+    Width = 141
+    BorderSpacing.Around = 6
+    TabOrder = 12
+    Text = 'Edit13'
+    Visible = False
+  end
+  object Edit14: TEdit
+    AnchorSideTop.Side = asrBottom
+    Left = 16
+    Height = 31
+    Top = 352
+    Width = 141
+    BorderSpacing.Around = 6
+    TabOrder = 13
+    Text = 'Edit14'
+    Visible = False
+  end
+  object Edit15: TEdit
+    AnchorSideTop.Side = asrBottom
+    Left = 240
+    Height = 31
+    Top = 352
+    Width = 141
+    BorderSpacing.Around = 6
+    TabOrder = 14
+    Text = 'Edit15'
+    Visible = False
+  end
+  object Edit16: TEdit
+    AnchorSideTop.Side = asrBottom
+    Left = 80
+    Height = 31
+    Top = 352
+    Width = 141
+    BorderSpacing.Around = 6
+    TabOrder = 15
+    Text = 'Edit16'
+    Visible = False
+  end
+  object Edit17: TEdit
+    AnchorSideLeft.Control = Label17
+    AnchorSideTop.Control = Label17
+    AnchorSideTop.Side = asrBottom
+    Left = 390
+    Height = 31
+    Top = 345
+    Width = 141
+    BorderSpacing.Around = 6
+    TabOrder = 16
+    Text = 'Edit17'
+    Visible = False
+  end
+  object Edit18: TEdit
+    AnchorSideTop.Side = asrBottom
+    Left = 152
+    Height = 31
+    Top = 392
+    Width = 80
+    BorderSpacing.Around = 6
+    TabOrder = 17
+    Text = 'Edit18'
+    Visible = False
+  end
+  object CLabel: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideLeft.Side = asrCenter
+    AnchorSideTop.Control = Owner
+    Left = 293
+    Height = 1
+    Top = 0
+    Width = 1
+    ParentColor = False
+  end
+  object Label18: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    Left = 0
+    Height = 19
+    Top = 0
+    Width = 52
+    Caption = 'Label18'
+    ParentColor = False
+  end
 end

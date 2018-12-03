@@ -433,7 +433,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
     FooterOptions.DrawFullLine = True
     SearchOptions.QuickSearchOptions = [loCaseInsensitive, loPartialKey]
     SearchOptions.FromStart = False
-    OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgFooterRows, rdgAllowQuickFilter]
+    OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgFooterRows, rdgAllowQuickFilter, rdgAllowToolMenu]
     FooterColor = 8454143
     FooterRowCount = 1
     Align = alClient
