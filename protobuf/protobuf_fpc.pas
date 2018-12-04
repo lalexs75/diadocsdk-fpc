@@ -441,6 +441,7 @@ var
 begin
   for P in FList do
     TSerializationObject(P).Free;
+  FList.Clear;
   inherited Clear;
 end;
 
