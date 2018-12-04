@@ -1,1 +1,0 @@
-protoc --decode_raw <$1 >$1.txt
