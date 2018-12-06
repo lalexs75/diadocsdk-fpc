@@ -128,6 +128,29 @@ type
     property CanBeInvitedForChat:Boolean read FCanBeInvitedForChat write FCanBeInvitedForChat;//4;
     property CreationTimestamp:TTimestamp read FCreationTimestamp;//5;
   end;
+  TEmployees = specialize GSerializationObjectList<TEmployee>;
+
+  { EmployeeList }
+  //message EmployeeList {
+  //	repeated Employee Employees = 1;
+  //	required int32 TotalCount = 2;
+  //}
+  TEmployeeList = class(TSerializationObject)
+  private
+    FEmployees:TEmployees;
+    FTotalCount:Integer;
+    procedure SetTotalCount(AValue:Integer);
+  protected
+    procedure InternalRegisterProperty; override;
+    procedure InternalInit; override;
+  public
+    destructor Destroy; override;
+  published
+    property Employees:TEmployees read FEmployees;
+    property TotalCount:Integer read FTotalCount write SetTotalCount;
+  end;
+  TEmployeeLists = specialize GSerializationObjectList<TEmployeeList>;
+
 implementation
 
 { TEmployee }
@@ -193,6 +216,34 @@ begin
   RegisterProp('Name', 1);
   RegisterProp('IsAllowed', 2);
 end;
+
+{ EmployeeList }
+
+procedure TEmployeeList.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('Employees', 1);
+  RegisterProp('TotalCount', 2, true);
+end;
+
+procedure TEmployeeList.InternalInit;
+begin
+  inherited InternalInit;
+  FEmployees:= TEmployees.Create;
+end;
+
+destructor TEmployeeList.Destroy;
+begin
+  FEmployees.Free;
+  inherited Destroy;
+end;
+
+procedure TEmployeeList.SetTotalCount(AValue:Integer);
+begin
+  FTotalCount:=AValue;
+  Modified(2);
+end;
+
 
 end.
 

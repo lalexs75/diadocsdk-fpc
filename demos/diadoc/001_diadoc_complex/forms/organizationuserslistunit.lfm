@@ -7,10 +7,10 @@ object OrganizationUsersListForm: TOrganizationUsersListForm
   ClientHeight = 461
   ClientWidth = 482
   Position = poScreenCenter
-  LCLVersion = '1.9.0.0'
+  LCLVersion = '2.1.0.0'
   object RxDBGrid1: TRxDBGrid
     Left = 0
-    Height = 415
+    Height = 407
     Top = 0
     Width = 482
     ColumnDefValues.BlobText = '(данные)'
@@ -145,8 +145,8 @@ object OrganizationUsersListForm: TOrganizationUsersListForm
   end
   object ButtonPanel1: TButtonPanel
     Left = 6
-    Height = 34
-    Top = 421
+    Height = 42
+    Top = 413
     Width = 470
     OKButton.Name = 'OKButton'
     OKButton.DefaultCaption = True

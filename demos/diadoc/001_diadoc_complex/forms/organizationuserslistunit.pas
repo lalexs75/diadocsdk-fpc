@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ButtonPanel, DB,
-  DiadocTypes_OrganizationUser, rxmemds, rxdbgrid;
+  DiadocTypes_OrganizationUser, DiadocTypes_Employee,
+  rxmemds, rxdbgrid;
 
 type
 
@@ -26,6 +27,7 @@ type
     FCurrentUserId: String;
   public
     procedure LoadInfo(AInfo:TOrganizationUsersList);
+    procedure LoadInfoEmp(AInfo:TEmployeeList);
   end;
 
 var
@@ -57,6 +59,25 @@ begin
     rxUserListNAME.AsString:=U.Name;
     rxUserListId.AsString:=U.Id;
     rxUserListPosition.AsString:=U.Position;
+    //property Permissions:TOrganizationUserPermissions read FPermissions; //3;
+    rxUserList.Post;
+  end;
+  rxUserList.First;
+end;
+
+procedure TOrganizationUsersListForm.LoadInfoEmp(AInfo: TEmployeeList);
+var
+  E:TEmployee;
+begin
+  if not Assigned(AInfo) then Exit;
+//  FCurrentUserId:=AInfo.CurrentUserId;
+  rxUserList.Open;
+  for E in AInfo.Employees do
+  begin
+    rxUserList.Append;
+    rxUserListNAME.AsString:=E.User.FullName.FirstName + ' ' + E.User.FullName.MiddleName + E.User.FullName.LastName;
+    rxUserListId.AsString:=E.User.Login;
+    rxUserListPosition.AsString:=E.Position;
     //property Permissions:TOrganizationUserPermissions read FPermissions; //3;
     rxUserList.Post;
   end;

@@ -15,7 +15,7 @@ uses
   DiadocTypes_Organization,
   DiadocTypes_OrganizationUser,
   DiadocTypes_OrganizationUserPermissions,
-  DiadocTypes_User;
+  DiadocTypes_User, DiadocTypes_Employee;
 
 type
 
@@ -36,6 +36,8 @@ type
   { TDDAPIMainForm }
 
   TDDAPIMainForm = class(TForm)
+    MenuItem8: TMenuItem;
+    usrEmployeesList: TAction;
     Button2: TButton;
     Button5: TButton;
     Button7: TButton;
@@ -142,6 +144,7 @@ type
     procedure molPropsExecute(Sender: TObject);
     procedure molRefreshExecute(Sender: TObject);
     procedure TreeView1Deletion(Sender: TObject; Node: TTreeNode);
+    procedure usrEmployeesListExecute(Sender: TObject);
     procedure usrUserListExecute(Sender: TObject);
     procedure TreeView1Click(Sender: TObject);
     procedure usrCurUserPermissionExecute(Sender: TObject);
@@ -496,6 +499,25 @@ begin
   Node.Data:=nil;
 end;
 
+procedure TDDAPIMainForm.usrEmployeesListExecute(Sender: TObject);
+var
+  FEmployeesList: TEmployeeList;
+begin
+  if not Assigned(CurrentOrg) then Exit;
+
+  FEmployeesList:=DiadocAPI1.GetEmployees(CurrentBox.BoxId, 0, 0);
+  if Assigned(FEmployeesList) then
+  begin
+    OrganizationUsersListForm:=TOrganizationUsersListForm.Create(Application);
+    OrganizationUsersListForm.LoadInfoEmp(FEmployeesList);
+    OrganizationUsersListForm.ShowModal;
+    OrganizationUsersListForm.Free;
+    FreeAndNil(FEmployeesList);
+  end
+  else
+    ShowMessage(DiadocAPI1.ResultString + LineEnding + DiadocAPI1.ResultText.Text);
+end;
+
 procedure TDDAPIMainForm.usrUserListExecute(Sender: TObject);
 var
   FOrgs: TOrganization;
@@ -512,7 +534,9 @@ begin
     OrganizationUsersListForm.ShowModal;
     OrganizationUsersListForm.Free;
     FreeAndNil(FUsers);
-  end;
+  end
+  else
+    ShowMessage(DiadocAPI1.ResultString + LineEnding + DiadocAPI1.ResultText.Text);
 end;
 
 procedure TDDAPIMainForm.TreeView1Click(Sender: TObject);

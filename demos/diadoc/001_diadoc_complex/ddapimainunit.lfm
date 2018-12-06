@@ -26,9 +26,9 @@ object DDAPIMainForm: TDDAPIMainForm
     Height = 666
     Top = 0
     Width = 1278
-    ActivePage = TabSheet4
+    ActivePage = TabSheet6
     Align = alClient
-    TabIndex = 3
+    TabIndex = 2
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = 'Параметры'
@@ -450,16 +450,16 @@ object DDAPIMainForm: TDDAPIMainForm
         end
         object TabSheet8: TTabSheet
           Caption = 'Контрагенты'
-          ClientHeight = 600
-          ClientWidth = 1068
+          ClientHeight = 629
+          ClientWidth = 1074
           object Panel1: TPanel
             Left = 886
             Height = 600
             Top = 0
             Width = 182
             Align = alRight
-            ClientHeight = 600
-            ClientWidth = 182
+            ClientHeight = 596
+            ClientWidth = 178
             TabOrder = 0
             object Button7: TButton
               Left = 32
@@ -588,7 +588,7 @@ object DDAPIMainForm: TDDAPIMainForm
         AnchorSideBottom.Control = TabSheet6
         AnchorSideBottom.Side = asrBottom
         Left = 6
-        Height = 504
+        Height = 584
         Top = 43
         Width = 284
         Anchors = [akTop, akLeft, akBottom]
@@ -609,9 +609,9 @@ object DDAPIMainForm: TDDAPIMainForm
         AnchorSideBottom.Control = TabSheet6
         AnchorSideBottom.Side = asrBottom
         Left = 296
-        Height = 504
+        Height = 584
         Top = 43
-        Width = 811
+        Width = 966
         Anchors = [akTop, akLeft, akRight, akBottom]
         BorderSpacing.Around = 6
         TabOrder = 4
@@ -1245,6 +1245,9 @@ object DDAPIMainForm: TDDAPIMainForm
     object MenuItem4: TMenuItem
       Action = usrUserList
     end
+    object MenuItem8: TMenuItem
+      Action = usrEmployeesList
+    end
     object MenuItem7: TMenuItem
       Action = usrCurUserPermission
     end
@@ -1287,6 +1290,11 @@ object DDAPIMainForm: TDDAPIMainForm
       Category = 'Пользователи'
       Caption = 'Права текущего оператора'
       OnExecute = usrCurUserPermissionExecute
+    end
+    object usrEmployeesList: TAction
+      Category = 'Пользователи'
+      Caption = 'Employees list'
+      OnExecute = usrEmployeesListExecute
     end
   end
 end

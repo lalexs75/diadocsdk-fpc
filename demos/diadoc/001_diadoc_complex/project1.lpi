@@ -229,6 +229,7 @@
         <Filename Value="frames/transferinfounit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="TransferInfoFrame"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="TransferInfoUnit"/>
       </Unit24>
@@ -236,6 +237,7 @@
         <Filename Value="frames/extendedorganizationinfounit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="ExtendedOrganizationInfoFrame"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="ExtendedOrganizationInfoUnit"/>
       </Unit25>
@@ -243,6 +245,7 @@
         <Filename Value="frames/employeeunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="EmployeeFrame"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="EmployeeUnit"/>
       </Unit26>

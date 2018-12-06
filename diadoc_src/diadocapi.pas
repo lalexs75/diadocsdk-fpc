@@ -157,6 +157,8 @@ type
     function UpdateMyUser(AUserToUpdate:TUserToUpdate):TUserV2;
 
     function GetEmployee(const ABoxId:string; const AUserId:string):DiadocTypes_Employee.TEmployee;
+    function GetEmployees(const ABoxId:string; APage:Integer; ACount:Integer):DiadocTypes_Employee.TEmployeeList;
+
     function CreateEmployee(const ABoxId:string; AEmployeeToCreate:TEmployeeToCreate):DiadocTypes_Employee.TEmployee;
     function UpdateEmployee(const ABoxId:string; AUserId:string; AEmployeeToUpdate:TEmployeeToUpdate):DiadocTypes_Employee.TEmployee;
     procedure DeleteEmployee(const ABoxId:string; AUserId:string);
@@ -615,7 +617,7 @@ begin
   //		<< L"/&userId=" << StringHelper::CanonicalizeUrl(userId);
   //	return FromProtoBytes<Diadoc::Api::Proto::Employees::Employee>(PerformHttpRequest(buf.str(), GET));
   //}
-
+  Result:=nil;
   if ABoxId = '' then
     raise EDiadocException.Create(sNotDefinedBoxId);
   if AuserId = '' then
@@ -642,6 +644,53 @@ begin
   end;
 end;
 
+function TDiadocAPI.GetEmployees(const ABoxId: string; APage: Integer;
+  ACount: Integer): DiadocTypes_Employee.TEmployeeList;
+var
+  S: String;
+begin
+  (*
+  Diadoc::Api::Proto::Employees::EmployeeList DiadocApi::GetEmployees(const std::wstring& boxId, int* page, int* count)
+  {
+  	WppTraceDebugOut("GetEmployees...");
+  	std::wstringstream buf;
+  	buf << L"/GetEmployees?boxId=" << StringHelper::CanonicalizeUrl(boxId);
+  	if (page != NULL) {
+  		buf << L"&page=" << *page;
+  	}
+  	if (count != NULL) {
+  		buf << L"&count=" << *count;
+  	}
+  	return FromProtoBytes<Diadoc::Api::Proto::Employees::EmployeeList>(PerformHttpRequest(buf.str(), GET));
+  }
+  *)
+  Result:=nil;
+  if ABoxId = '' then
+    raise EDiadocException.Create(sNotDefinedBoxId);
+  if not Authenticate then exit;
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId);
+  if APage > 0 then
+    AddURLParam(S, 'page', IntToStr(APage));
+  if ACount > 0 then
+    AddURLParam(S, 'count', IntToStr(ACount));
+
+  if SendCommand(hmGET, '/GetEmployees', S, nil) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('GetEmployees');
+    {$ENDIF}
+    FHTTP.Document.Position:=0;
+    if FResultCode = 200 then
+    begin
+      Result:=DiadocTypes_Employee.TEmployeeList.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+end;
+
 function TDiadocAPI.CreateEmployee(const ABoxId: string;
   AEmployeeToCreate: TEmployeeToCreate): DiadocTypes_Employee.TEmployee;
 var
@@ -658,7 +707,7 @@ begin
   	return FromProtoBytes<Diadoc::Api::Proto::Employees::Employee>(PerformHttpRequest(buf.str(), ToProtoBytes(employeeToCreate), POST));
   }
   *)
-
+  Result:=nil;
   if ABoxId = '' then
     raise EDiadocException.Create(sNotDefinedBoxId);
 
@@ -702,6 +751,7 @@ begin
   }
 
   *)
+  Result:=nil;
   if ABoxId = '' then
     raise EDiadocException.Create(sNotDefinedBoxId);
   if AUserId = '' then
@@ -1698,6 +1748,7 @@ begin
   	return PerformAsyncHttpRequest<DocumentProtocol>("GenerateDocumentProtocol", buf.str(), GET);
   }
   *)
+  Result:=nil;
   if not Authenticate then exit;
 
   S:='';
@@ -1740,6 +1791,7 @@ begin
   	return PerformAsyncHttpRequest<DocumentProtocol>("GenerateForwardedDocumentProtocol", buf.str(), GET);
   }
   *)
+  Result:=nil;
   if not Authenticate then exit;
 
   S:='';
@@ -2008,6 +2060,7 @@ function TDiadocAPI.GetForwardedDocumentEvents(ABoxId: string;
   ARequest: TGetForwardedDocumentEventsRequest
   ): TGetForwardedDocumentEventsResponse;
 begin
+  Result:=nil;
   (*
   GetForwardedDocumentEventsResponse DiadocApi::GetForwardedDocumentEvents(const std::wstring& boxId, const GetForwardedDocumentEventsRequest& request)
   {
@@ -3558,6 +3611,7 @@ end;
 function TDiadocAPI.GetDocuments(ADocumentFilter: TDocumentFilter
   ): TDocumentList;
 begin
+  Result:=nil;
   //
 end;
 
@@ -3607,6 +3661,7 @@ var
   S: String;
   F: TStream;
 begin
+  Result:=nil;
 
   if (AMyOrgId = '') then
     raise EDiadocException.Create(sNotDefinedMyOrgGetCounteragent);
@@ -3627,6 +3682,7 @@ function TDiadocAPI.AcquireCounteragentResult(ATaskId: string
 var
   S: String;
 begin
+  Result:=nil;
   S:='';
   if (ATaskId = '') then
     raise EDiadocException.Create(sNotDefinedTaskId);
@@ -3768,6 +3824,7 @@ var
   S: String;
   F: TStream;
 begin
+  Result:=nil;
   (*
   {
   	return PerformHttpRequestWithBoxId<GetDocflowBatchRequest, GetDocflowBatchResponse>("GetDocflows", boxId, request);
