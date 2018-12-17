@@ -51,11 +51,12 @@ type
     FData: TBytes;
     FSize: sfixed32;
     procedure SetData(AValue: TBytes);
+    procedure SetSize(AValue: sfixed32);
   protected
     procedure InternalRegisterProperty; override;
   public
   published
-    property Size:sfixed32 read FSize write FSize; //1
+    property Size:sfixed32 read FSize write SetSize; //1
     property Data:TBytes read FData write SetData; //2
   end;
 
@@ -67,6 +68,14 @@ procedure TContent.SetData(AValue: TBytes);
 begin
   if FData=AValue then Exit;
   FData:=AValue;
+  Modified(2);
+end;
+
+procedure TContent.SetSize(AValue: sfixed32);
+begin
+  if FSize=AValue then Exit;
+  FSize:=AValue;
+  Modified(1);
 end;
 
 procedure TContent.InternalRegisterProperty;
