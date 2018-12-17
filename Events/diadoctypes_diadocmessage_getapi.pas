@@ -53,11 +53,9 @@ interface
 //import "Events/ResolutionRequestDenialInfo.proto";
 //import "Events/ResolutionRouteInfo.proto";
 uses
-  Classes, SysUtils, protobuf_fpc_types,
+  Classes, SysUtils,
   protobuf_fpc,
-  diadoc_simple_arrays,
   DiadocTypes_Content,
-  DiadocTypes_DocumentId,
   DiadocTypes_LockMode,
   DiadocTypes_Document,
   DiadocTypes_CancellationInfo,
@@ -150,20 +148,25 @@ type
     FEntityId: string;
     FForwardedToBoxId: string;
     FMovedToDepartment: string;
+    procedure SetContentIsPatched(AValue: Boolean);
+    procedure SetDocumentIsDeleted(AValue: Boolean);
+    procedure SetDocumentIsRestored(AValue: Boolean);
+    procedure SetEntityId(AValue: string);
+    procedure SetForwardedToBoxId(AValue: string);
+    procedure SetMovedToDepartment(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property EntityId:string read FEntityId write FEntityId;//1;
-    property DocumentIsDeleted:Boolean read FDocumentIsDeleted write FDocumentIsDeleted;//2
-    property MovedToDepartment:string read FMovedToDepartment write FMovedToDepartment;//3;
-    property DocumentIsRestored:Boolean read FDocumentIsRestored write FDocumentIsRestored;//4
-    property ContentIsPatched:Boolean read FContentIsPatched write FContentIsPatched;//5
-    property ForwardedToBoxId:string read FForwardedToBoxId write FForwardedToBoxId;//6;
+    property EntityId:string read FEntityId write SetEntityId;//1;
+    property DocumentIsDeleted:Boolean read FDocumentIsDeleted write SetDocumentIsDeleted;//2
+    property MovedToDepartment:string read FMovedToDepartment write SetMovedToDepartment;//3;
+    property DocumentIsRestored:Boolean read FDocumentIsRestored write SetDocumentIsRestored;//4
+    property ContentIsPatched:Boolean read FContentIsPatched write SetContentIsPatched;//5
+    property ForwardedToBoxId:string read FForwardedToBoxId write SetForwardedToBoxId;//6;
   end;
-
   TEntityPatchs = specialize GSerializationObjectList<TEntityPatch>;
 
   { TEntity }
@@ -222,7 +225,20 @@ type
     FSignerDepartmentId: string;
     FVersion: string;
     procedure SetAttachmentType(AValue: TAttachmentType);
+    procedure SetAttachmentVersion(AValue: string);
+    procedure SetEntityId(AValue: string);
     procedure SetEntityType(AValue: TEntityType);
+    procedure SetFileName(AValue: string);
+    procedure SetIsApprovementSignature(AValue: Boolean);
+    procedure SetIsEncryptedContent(AValue: Boolean);
+    procedure SetNeedReceipt(AValue: boolean);
+    procedure SetNeedRecipientSignature(AValue: Boolean);
+    procedure SetNotDeliveredEventId(AValue: string);
+    procedure SetPacketId(AValue: string);
+    procedure SetParentEntityId(AValue: string);
+    procedure SetRawCreationDate(AValue: sfixed64);
+    procedure SetSignerBoxId(AValue: string);
+    procedure SetSignerDepartmentId(AValue: string);
     procedure SetVersion(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
@@ -231,32 +247,31 @@ type
     destructor Destroy; override;
   published
     property EntityType:TEntityType read FEntityType write SetEntityType default UnknownEntityType ;//1
-    property EntityId:string read FEntityId write FEntityId; //2;
-    property ParentEntityId:string read FParentEntityId write FParentEntityId; //3;
+    property EntityId:string read FEntityId write SetEntityId; //2;
+    property ParentEntityId:string read FParentEntityId write SetParentEntityId; //3;
     property Content:TContent read FContent; //4;
     property AttachmentType:TAttachmentType read FAttachmentType write SetAttachmentType default UnknownAttachmentType; //5
-    property FileName:string read FFileName write FFileName; //6;
-    property NeedRecipientSignature:Boolean read FNeedRecipientSignature write FNeedRecipientSignature; //7
-    property SignerBoxId:string read FSignerBoxId write FSignerBoxId; //8
-    property NotDeliveredEventId:string read FNotDeliveredEventId write FNotDeliveredEventId; //10
+    property FileName:string read FFileName write SetFileName; //6;
+    property NeedRecipientSignature:Boolean read FNeedRecipientSignature write SetNeedRecipientSignature; //7
+    property SignerBoxId:string read FSignerBoxId write SetSignerBoxId; //8
+    property NotDeliveredEventId:string read FNotDeliveredEventId write SetNotDeliveredEventId; //10
     property DocumentInfo:TDocument read FDocumentInfo; //11
-    property RawCreationDate:sfixed64 read FRawCreationDate write FRawCreationDate;//12
+    property RawCreationDate:sfixed64 read FRawCreationDate write SetRawCreationDate;//12
     property ResolutionInfo:TResolutionInfo read FResolutionInfo; //13;
-    property SignerDepartmentId:string read FSignerDepartmentId write FSignerDepartmentId; //14;
+    property SignerDepartmentId:string read FSignerDepartmentId write SetSignerDepartmentId; //14;
     property ResolutionRequestInfo:TResolutionRequestInfo read FResolutionRequestInfo; //15;
     property ResolutionRequestDenialInfo:TResolutionRequestDenialInfo read FResolutionRequestDenialInfo; //16;
-    property NeedReceipt:boolean read FNeedReceipt write FNeedReceipt; //17
-    property PacketId:string read FPacketId write FPacketId; //18;
-    property IsApprovementSignature:Boolean read FIsApprovementSignature write FIsApprovementSignature; //19
-    property IsEncryptedContent:Boolean read FIsEncryptedContent write FIsEncryptedContent; //20
-    property AttachmentVersion:string read FAttachmentVersion write FAttachmentVersion; //21;
+    property NeedReceipt:boolean read FNeedReceipt write SetNeedReceipt; //17
+    property PacketId:string read FPacketId write SetPacketId; //18;
+    property IsApprovementSignature:Boolean read FIsApprovementSignature write SetIsApprovementSignature; //19
+    property IsEncryptedContent:Boolean read FIsEncryptedContent write SetIsEncryptedContent; //20
+    property AttachmentVersion:string read FAttachmentVersion write SetAttachmentVersion; //21;
     property ResolutionRouteAssignmentInfo:TResolutionRouteAssignmentInfo read FResolutionRouteAssignmentInfo;//22
     property ResolutionRouteRemovalInfo:TResolutionRouteRemovalInfo read FResolutionRouteRemovalInfo; //23
     property CancellationInfo:TCancellationInfo read FCancellationInfo; //24
     property Labels:TDocumentStrings read FLabels; //25;
     property Version:string read FVersion write SetVersion;//26;
   end;
-
   TEntitys = specialize GSerializationObjectList<TEntity>;
 
   {  TMessagePatch  }
@@ -290,25 +305,35 @@ type
     FMessageIsRestored: Boolean;
     FPatchId: string;
     FTimestampTicks: sfixed64;
+    procedure SetDeliveredPatchId(AValue: string);
+    procedure SetDraftIsLocked(AValue: Boolean);
+    procedure SetDraftIsRecycled(AValue: Boolean);
+    procedure SetForDraft(AValue: Boolean);
+    procedure SetMessageId(AValue: string);
+    procedure SetMessageIsDeleted(AValue: Boolean);
+    procedure SetMessageIsDelivered(AValue: Boolean);
+    procedure SetMessageIsRestored(AValue: Boolean);
+    procedure SetPatchId(AValue: string);
+    procedure SetTimestampTicks(AValue: sfixed64);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property MessageId:string read FMessageId write FMessageId;//1;
-    property TimestampTicks:sfixed64 read FTimestampTicks write FTimestampTicks;// = 2;
+    property MessageId:string read FMessageId write SetMessageId;//1;
+    property TimestampTicks:sfixed64 read FTimestampTicks write SetTimestampTicks;// = 2;
     property Entities:TEntitys read FEntities; //3;
-    property ForDraft:Boolean read FForDraft write FForDraft;//4
-    property DraftIsRecycled:Boolean read FDraftIsRecycled write FDraftIsRecycled;//5
+    property ForDraft:Boolean read FForDraft write SetForDraft;//4
+    property DraftIsRecycled:Boolean read FDraftIsRecycled write SetDraftIsRecycled;//5
     property DraftIsTransformedToMessageIdList:TDocumentStrings read FDraftIsTransformedToMessageIdList;//6;
-    property DraftIsLocked:Boolean read FDraftIsLocked write FDraftIsLocked;//7
-    property MessageIsDeleted:Boolean read FMessageIsDeleted write FMessageIsDeleted;//8
+    property DraftIsLocked:Boolean read FDraftIsLocked write SetDraftIsLocked;//7
+    property MessageIsDeleted:Boolean read FMessageIsDeleted write SetMessageIsDeleted;//8
     property EntityPatches:TEntityPatchs read FEntityPatches;//9;
-    property MessageIsRestored:Boolean read FMessageIsRestored write FMessageIsRestored;//10
-    property MessageIsDelivered:Boolean read FMessageIsDelivered write FMessageIsDelivered;//11
-    property DeliveredPatchId:string read FDeliveredPatchId write FDeliveredPatchId;//12;
-    property PatchId:string read FPatchId write FPatchId;//13;
+    property MessageIsRestored:Boolean read FMessageIsRestored write SetMessageIsRestored;//10
+    property MessageIsDelivered:Boolean read FMessageIsDelivered write SetMessageIsDelivered;//11
+    property DeliveredPatchId:string read FDeliveredPatchId write SetDeliveredPatchId;//12;
+    property PatchId:string read FPatchId write SetPatchId;//13;
   end;
 
 
@@ -337,22 +362,31 @@ type
     FMessageToDepartmentId: string;
     FTimestampTicks: sfixed64;
     FToBoxId: string;
+    procedure SetFromBoxId(AValue: string);
+    procedure SetIsDeleted(AValue: Boolean);
+    procedure SetLockMode(AValue: TLockMode);
+    procedure SetMessageFromBoxId(AValue: string);
+    procedure SetMessageId(AValue: string);
+    procedure SetMessageToBoxId(AValue: string);
+    procedure SetMessageToDepartmentId(AValue: string);
+    procedure SetTimestampTicks(AValue: sfixed64);
+    procedure SetToBoxId(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property MessageId:string read FMessageId write FMessageId;//1;
-    property TimestampTicks:sfixed64 read FTimestampTicks write FTimestampTicks;//2;
-    property FromBoxId:string read FFromBoxId write FFromBoxId;//3;
-    property ToBoxId:string read FToBoxId write FToBoxId;//4;
-    property MessageFromBoxId:string read FMessageFromBoxId write FMessageFromBoxId;//5;
-    property MessageToBoxId:string read FMessageToBoxId write FMessageToBoxId;//6;
+    property MessageId:string read FMessageId write SetMessageId;//1;
+    property TimestampTicks:sfixed64 read FTimestampTicks write SetTimestampTicks;//2;
+    property FromBoxId:string read FFromBoxId write SetFromBoxId;//3;
+    property ToBoxId:string read FToBoxId write SetToBoxId;//4;
+    property MessageFromBoxId:string read FMessageFromBoxId write SetMessageFromBoxId;//5;
+    property MessageToBoxId:string read FMessageToBoxId write SetMessageToBoxId;//6;
     property Entities:TEntitys read FEntities;//7;
-    property IsDeleted:Boolean read FIsDeleted write FIsDeleted;//8
-    property MessageToDepartmentId:string read FMessageToDepartmentId write FMessageToDepartmentId;//9;
-    property LockMode:TLockMode read FLockMode write FLockMode; //10;
+    property IsDeleted:Boolean read FIsDeleted write SetIsDeleted;//8
+    property MessageToDepartmentId:string read FMessageToDepartmentId write SetMessageToDepartmentId;//9;
+    property LockMode:TLockMode read FLockMode write SetLockMode; //10;
   end;
 
 
@@ -403,33 +437,52 @@ type
     FTimestampTicks: sfixed64;
     FToBoxId: string;
     FToTitle: string;
+    procedure SetCreatedFromDraftId(AValue: string);
+    procedure SetDraftIsLocked(AValue: Boolean);
+    procedure SetDraftIsRecycled(AValue: Boolean);
+    procedure SetFromBoxId(AValue: string);
+    procedure SetFromTitle(AValue: string);
+    procedure SetIsDeleted(AValue: Boolean);
+    procedure SetIsDraft(AValue: Boolean);
+    procedure SetIsInternal(AValue: Boolean);
+    procedure SetIsProxified(AValue: Boolean);
+    procedure SetIsTest(AValue: Boolean);
+    procedure SetLastPatchTimestampTicks(AValue: sfixed64);
+    procedure SetLockMode(AValue: TLockMode);
+    procedure SetMessageId(AValue: string);
+    procedure SetPacketIsLocked(AValue: Boolean);
+    procedure SetProxyBoxId(AValue: string);
+    procedure SetProxyTitle(AValue: string);
+    procedure SetTimestampTicks(AValue: sfixed64);
+    procedure SetToBoxId(AValue: string);
+    procedure SetToTitle(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property MessageId:string read FMessageId write FMessageId; //1;
-    property TimestampTicks:sfixed64 read FTimestampTicks write FTimestampTicks; //2;
-    property LastPatchTimestampTicks:sfixed64 read FLastPatchTimestampTicks write FLastPatchTimestampTicks; //3;
-    property FromBoxId:string read FFromBoxId write FFromBoxId; //4;
-    property FromTitle:string read FFromTitle write FFromTitle; //5;
-    property ToBoxId:string read FToBoxId write FToBoxId; //6;
-    property ToTitle:string read FToTitle write FToTitle; //7;
+    property MessageId:string read FMessageId write SetMessageId; //1;
+    property TimestampTicks:sfixed64 read FTimestampTicks write SetTimestampTicks; //2;
+    property LastPatchTimestampTicks:sfixed64 read FLastPatchTimestampTicks write SetLastPatchTimestampTicks; //3;
+    property FromBoxId:string read FFromBoxId write SetFromBoxId; //4;
+    property FromTitle:string read FFromTitle write SetFromTitle; //5;
+    property ToBoxId:string read FToBoxId write SetToBoxId; //6;
+    property ToTitle:string read FToTitle write SetToTitle; //7;
     property Entities:TEntitys read FEntities; //8;
-    property IsDraft:Boolean read FIsDraft write FIsDraft; //9
-    property DraftIsLocked:Boolean read FDraftIsLocked write FDraftIsLocked; //10
-    property DraftIsRecycled:Boolean read FDraftIsRecycled write FDraftIsRecycled; //11
-    property CreatedFromDraftId:string read FCreatedFromDraftId write FCreatedFromDraftId; //12;
+    property IsDraft:Boolean read FIsDraft write SetIsDraft; //9
+    property DraftIsLocked:Boolean read FDraftIsLocked write SetDraftIsLocked; //10
+    property DraftIsRecycled:Boolean read FDraftIsRecycled write SetDraftIsRecycled; //11
+    property CreatedFromDraftId:string read FCreatedFromDraftId write SetCreatedFromDraftId; //12;
     property DraftIsTransformedToMessageIdList:TDocumentStrings read FDraftIsTransformedToMessageIdList;//13;
-    property IsDeleted:Boolean read FIsDeleted write FIsDeleted; //14
-    property IsTest:Boolean read FIsTest write FIsTest; //15
-    property IsInternal:Boolean read FIsInternal write FIsInternal; //16
-    property IsProxified:Boolean read FIsProxified write FIsProxified; //17
-    property ProxyBoxId:string read FProxyBoxId write FProxyBoxId; //18;
-    property ProxyTitle:string read FProxyTitle write FProxyTitle; //19;
-    property PacketIsLocked:Boolean read FPacketIsLocked write FPacketIsLocked; //20
-    property LockMode:TLockMode read FLockMode write FLockMode;//21;
+    property IsDeleted:Boolean read FIsDeleted write SetIsDeleted; //14
+    property IsTest:Boolean read FIsTest write SetIsTest; //15
+    property IsInternal:Boolean read FIsInternal write SetIsInternal; //16
+    property IsProxified:Boolean read FIsProxified write SetIsProxified; //17
+    property ProxyBoxId:string read FProxyBoxId write SetProxyBoxId; //18;
+    property ProxyTitle:string read FProxyTitle write SetProxyTitle; //19;
+    property PacketIsLocked:Boolean read FPacketIsLocked write SetPacketIsLocked; //20
+    property LockMode:TLockMode read FLockMode write SetLockMode;//21;
   end;
 
 
@@ -444,13 +497,14 @@ type
     FEventId: string;
     FMessage: TMessage;
     FPatch: TMessagePatch;
+    procedure SetEventId(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property EventId:string read FEventId write FEventId;//1;
+    property EventId:string read FEventId write SetEventId;//1;
     property Message:TMessage read FMessage;//2;
     property Patch:TMessagePatch read FPatch; //3;
   end;
@@ -466,6 +520,7 @@ type
   private
     FEvents: TBoxEvents;
     FTotalCount: int32;
+    procedure SetTotalCount(AValue: int32);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
@@ -473,7 +528,7 @@ type
     destructor Destroy; override;
   published
     property Events:TBoxEvents read FEvents;//1;
-    property TotalCount:int32 read FTotalCount write FTotalCount;//2;
+    property TotalCount:int32 read FTotalCount write SetTotalCount;//2;
   end;
 
 
@@ -554,6 +609,13 @@ end;
 
 { TBoxEventList }
 
+procedure TBoxEventList.SetTotalCount(AValue: int32);
+begin
+  if FTotalCount=AValue then Exit;
+  FTotalCount:=AValue;
+  Modified(2);
+end;
+
 procedure TBoxEventList.InternalInit;
 begin
   inherited InternalInit;
@@ -574,6 +636,13 @@ begin
 end;
 
 { TBoxEvent }
+
+procedure TBoxEvent.SetEventId(AValue: string);
+begin
+  if FEventId=AValue then Exit;
+  FEventId:=AValue;
+  Modified(1);
+end;
 
 procedure TBoxEvent.InternalInit;
 begin
@@ -599,6 +668,69 @@ end;
 
 { TTemplate }
 
+procedure TTemplate.SetFromBoxId(AValue: string);
+begin
+  if FFromBoxId=AValue then Exit;
+  FFromBoxId:=AValue;
+  Modified(3);
+end;
+
+procedure TTemplate.SetIsDeleted(AValue: Boolean);
+begin
+  if FIsDeleted=AValue then Exit;
+  FIsDeleted:=AValue;
+  Modified(8);
+end;
+
+procedure TTemplate.SetLockMode(AValue: TLockMode);
+begin
+  if FLockMode=AValue then Exit;
+  FLockMode:=AValue;
+  Modified(10);
+end;
+
+procedure TTemplate.SetMessageFromBoxId(AValue: string);
+begin
+  if FMessageFromBoxId=AValue then Exit;
+  FMessageFromBoxId:=AValue;
+  Modified(5);
+end;
+
+procedure TTemplate.SetMessageId(AValue: string);
+begin
+  if FMessageId=AValue then Exit;
+  FMessageId:=AValue;
+  Modified(1);
+end;
+
+procedure TTemplate.SetMessageToBoxId(AValue: string);
+begin
+  if FMessageToBoxId=AValue then Exit;
+  FMessageToBoxId:=AValue;
+  Modified(6);
+end;
+
+procedure TTemplate.SetMessageToDepartmentId(AValue: string);
+begin
+  if FMessageToDepartmentId=AValue then Exit;
+  FMessageToDepartmentId:=AValue;
+  Modified(9);
+end;
+
+procedure TTemplate.SetTimestampTicks(AValue: sfixed64);
+begin
+  if FTimestampTicks=AValue then Exit;
+  FTimestampTicks:=AValue;
+  Modified(2);
+end;
+
+procedure TTemplate.SetToBoxId(AValue: string);
+begin
+  if FToBoxId=AValue then Exit;
+  FToBoxId:=AValue;
+  Modified(4);
+end;
+
 procedure TTemplate.InternalInit;
 begin
   inherited InternalInit;
@@ -617,7 +749,7 @@ begin
   RegisterProp('Entities', 7);
   RegisterProp('IsDeleted', 8);
   RegisterProp('MessageToDepartmentId', 9);
-  RegisterProp('LockMode', 10);
+  RegisterProp('LockMode', 10, true);
 end;
 
 destructor TTemplate.Destroy;
@@ -628,9 +760,87 @@ end;
 
 { TMessagePatch }
 
+procedure TMessagePatch.SetDeliveredPatchId(AValue: string);
+begin
+  if FDeliveredPatchId=AValue then Exit;
+  FDeliveredPatchId:=AValue;
+  Modified(12);
+end;
+
+procedure TMessagePatch.SetDraftIsLocked(AValue: Boolean);
+begin
+  if FDraftIsLocked=AValue then Exit;
+  FDraftIsLocked:=AValue;
+  Modified(7);
+end;
+
+procedure TMessagePatch.SetDraftIsRecycled(AValue: Boolean);
+begin
+  if FDraftIsRecycled=AValue then Exit;
+  FDraftIsRecycled:=AValue;
+  Modified(5);
+end;
+
+procedure TMessagePatch.SetForDraft(AValue: Boolean);
+begin
+  if FForDraft=AValue then Exit;
+  FForDraft:=AValue;
+  Modified(4);
+end;
+
+procedure TMessagePatch.SetMessageId(AValue: string);
+begin
+  if FMessageId=AValue then Exit;
+  FMessageId:=AValue;
+  Modified(1);
+end;
+
+procedure TMessagePatch.SetMessageIsDeleted(AValue: Boolean);
+begin
+  if FMessageIsDeleted=AValue then Exit;
+  FMessageIsDeleted:=AValue;
+  Modified(8);
+end;
+
+procedure TMessagePatch.SetMessageIsDelivered(AValue: Boolean);
+begin
+  if FMessageIsDelivered=AValue then Exit;
+  FMessageIsDelivered:=AValue;
+  Modified(11);
+end;
+
+procedure TMessagePatch.SetMessageIsRestored(AValue: Boolean);
+begin
+  if FMessageIsRestored=AValue then Exit;
+  FMessageIsRestored:=AValue;
+  Modified(10);
+end;
+
+procedure TMessagePatch.SetPatchId(AValue: string);
+begin
+  if FPatchId=AValue then Exit;
+  FPatchId:=AValue;
+  Modified(13);
+end;
+
+procedure TMessagePatch.SetTimestampTicks(AValue: sfixed64);
+begin
+  if FTimestampTicks=AValue then Exit;
+  FTimestampTicks:=AValue;
+  Modified(2);
+end;
+
 procedure TMessagePatch.InternalInit;
 begin
   inherited InternalInit;
+  FEntities:=TEntitys.Create;
+  FDraftIsTransformedToMessageIdList:=TDocumentStrings.Create;
+  FEntityPatches:=TEntityPatchs.Create;
+end;
+
+procedure TMessagePatch.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
   RegisterProp('MessageId', 1, true);
   RegisterProp('TimestampTicks', 2, true);
   RegisterProp('Entities', 3);
@@ -646,14 +856,6 @@ begin
   RegisterProp('PatchId', 13, true);
 end;
 
-procedure TMessagePatch.InternalRegisterProperty;
-begin
-  inherited InternalRegisterProperty;
-  FEntities:=TEntitys.Create;
-  FDraftIsTransformedToMessageIdList:=TDocumentStrings.Create;
-  FEntityPatches:=TEntityPatchs.Create;
-end;
-
 destructor TMessagePatch.Destroy;
 begin
   FreeAndNil(FEntities);
@@ -664,20 +866,62 @@ end;
 
 { TEntityPatch }
 
+procedure TEntityPatch.SetContentIsPatched(AValue: Boolean);
+begin
+  if FContentIsPatched=AValue then Exit;
+  FContentIsPatched:=AValue;
+  Modified(5);
+end;
+
+procedure TEntityPatch.SetDocumentIsDeleted(AValue: Boolean);
+begin
+  if FDocumentIsDeleted=AValue then Exit;
+  FDocumentIsDeleted:=AValue;
+  Modified(2);
+end;
+
+procedure TEntityPatch.SetDocumentIsRestored(AValue: Boolean);
+begin
+  if FDocumentIsRestored=AValue then Exit;
+  FDocumentIsRestored:=AValue;
+  Modified(4);
+end;
+
+procedure TEntityPatch.SetEntityId(AValue: string);
+begin
+  if FEntityId=AValue then Exit;
+  FEntityId:=AValue;
+  Modified(1);
+end;
+
+procedure TEntityPatch.SetForwardedToBoxId(AValue: string);
+begin
+  if FForwardedToBoxId=AValue then Exit;
+  FForwardedToBoxId:=AValue;
+  Modified(6);
+end;
+
+procedure TEntityPatch.SetMovedToDepartment(AValue: string);
+begin
+  if FMovedToDepartment=AValue then Exit;
+  FMovedToDepartment:=AValue;
+  Modified(3);
+end;
+
 procedure TEntityPatch.InternalInit;
 begin
   inherited InternalInit;
+end;
+
+procedure TEntityPatch.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
   RegisterProp('EntityId', 1, true);
   RegisterProp('DocumentIsDeleted', 2);
   RegisterProp('MovedToDepartment', 3);
   RegisterProp('DocumentIsRestored', 4);
   RegisterProp('ContentIsPatched', 5);
   RegisterProp('ForwardedToBoxId', 6);
-end;
-
-procedure TEntityPatch.InternalRegisterProperty;
-begin
-  inherited InternalRegisterProperty;
 end;
 
 destructor TEntityPatch.Destroy;
@@ -745,6 +989,21 @@ begin
     FAttachmentType:=AValue
   else
     FAttachmentType:=Title;
+  Modified(5);
+end;
+
+procedure TEntity.SetAttachmentVersion(AValue: string);
+begin
+  if FAttachmentVersion=AValue then Exit;
+  FAttachmentVersion:=AValue;
+  Modified(21);
+end;
+
+procedure TEntity.SetEntityId(AValue: string);
+begin
+  if FEntityId=AValue then Exit;
+  FEntityId:=AValue;
+  Modified(2);
 end;
 
 procedure TEntity.SetEntityType(AValue: TEntityType);
@@ -758,6 +1017,84 @@ begin
     FEntityType:=UnknownEntityType;
     FAttachmentType:=TAttachmentType.Nonformalized;
   end;
+  Modified(1);
+end;
+
+procedure TEntity.SetFileName(AValue: string);
+begin
+  if FFileName=AValue then Exit;
+  FFileName:=AValue;
+  Modified(6);
+end;
+
+procedure TEntity.SetIsApprovementSignature(AValue: Boolean);
+begin
+  if FIsApprovementSignature=AValue then Exit;
+  FIsApprovementSignature:=AValue;
+  Modified(19);
+end;
+
+procedure TEntity.SetIsEncryptedContent(AValue: Boolean);
+begin
+  if FIsEncryptedContent=AValue then Exit;
+  FIsEncryptedContent:=AValue;
+  Modified(20);
+end;
+
+procedure TEntity.SetNeedReceipt(AValue: boolean);
+begin
+  if FNeedReceipt=AValue then Exit;
+  FNeedReceipt:=AValue;
+  Modified(17);
+end;
+
+procedure TEntity.SetNeedRecipientSignature(AValue: Boolean);
+begin
+  if FNeedRecipientSignature=AValue then Exit;
+  FNeedRecipientSignature:=AValue;
+  Modified(7);
+end;
+
+procedure TEntity.SetNotDeliveredEventId(AValue: string);
+begin
+  if FNotDeliveredEventId=AValue then Exit;
+  FNotDeliveredEventId:=AValue;
+  Modified(10);
+end;
+
+procedure TEntity.SetPacketId(AValue: string);
+begin
+  if FPacketId=AValue then Exit;
+  FPacketId:=AValue;
+  Modified(18);
+end;
+
+procedure TEntity.SetParentEntityId(AValue: string);
+begin
+  if FParentEntityId=AValue then Exit;
+  FParentEntityId:=AValue;
+  Modified(3);
+end;
+
+procedure TEntity.SetRawCreationDate(AValue: sfixed64);
+begin
+  if FRawCreationDate=AValue then Exit;
+  FRawCreationDate:=AValue;
+  Modified(12);
+end;
+
+procedure TEntity.SetSignerBoxId(AValue: string);
+begin
+  if FSignerBoxId=AValue then Exit;
+  FSignerBoxId:=AValue;
+  Modified(8);
+end;
+
+procedure TEntity.SetSignerDepartmentId(AValue: string);
+begin
+  if FSignerDepartmentId=AValue then Exit;
+  FSignerDepartmentId:=AValue;
+  Modified(14);
 end;
 
 procedure TEntity.SetVersion(AValue: string);
@@ -771,7 +1108,7 @@ procedure TEntity.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
   RegisterProp('EntityType', 1);
-  RegisterProp('EntityId', 2);
+  RegisterProp('EntityId', 2, true);
   RegisterProp('ParentEntityId', 3);
   RegisterProp('Content', 4);
   RegisterProp('AttachmentType', 5);
@@ -827,14 +1164,147 @@ end;
 
 { TMessage }
 
+procedure TMessage.SetCreatedFromDraftId(AValue: string);
+begin
+  if FCreatedFromDraftId=AValue then Exit;
+  FCreatedFromDraftId:=AValue;
+  Modified(12);
+end;
+
+procedure TMessage.SetDraftIsLocked(AValue: Boolean);
+begin
+  if FDraftIsLocked=AValue then Exit;
+  FDraftIsLocked:=AValue;
+  Modified(10);
+end;
+
+procedure TMessage.SetDraftIsRecycled(AValue: Boolean);
+begin
+  if FDraftIsRecycled=AValue then Exit;
+  FDraftIsRecycled:=AValue;
+  Modified(11);
+end;
+
+procedure TMessage.SetFromBoxId(AValue: string);
+begin
+  if FFromBoxId=AValue then Exit;
+  FFromBoxId:=AValue;
+  Modified(4);
+end;
+
+procedure TMessage.SetFromTitle(AValue: string);
+begin
+  if FFromTitle=AValue then Exit;
+  FFromTitle:=AValue;
+  Modified(5);
+end;
+
+procedure TMessage.SetIsDeleted(AValue: Boolean);
+begin
+  if FIsDeleted=AValue then Exit;
+  FIsDeleted:=AValue;
+  Modified(14);
+end;
+
+procedure TMessage.SetIsDraft(AValue: Boolean);
+begin
+  if FIsDraft=AValue then Exit;
+  FIsDraft:=AValue;
+  Modified(9);
+end;
+
+procedure TMessage.SetIsInternal(AValue: Boolean);
+begin
+  if FIsInternal=AValue then Exit;
+  FIsInternal:=AValue;
+  Modified(16);
+end;
+
+procedure TMessage.SetIsProxified(AValue: Boolean);
+begin
+  if FIsProxified=AValue then Exit;
+  FIsProxified:=AValue;
+  Modified(17);
+end;
+
+procedure TMessage.SetIsTest(AValue: Boolean);
+begin
+  if FIsTest=AValue then Exit;
+  FIsTest:=AValue;
+  Modified(15);
+end;
+
+procedure TMessage.SetLastPatchTimestampTicks(AValue: sfixed64);
+begin
+  if FLastPatchTimestampTicks=AValue then Exit;
+  FLastPatchTimestampTicks:=AValue;
+  Modified(3);
+end;
+
+procedure TMessage.SetLockMode(AValue: TLockMode);
+begin
+  if FLockMode=AValue then Exit;
+  FLockMode:=AValue;
+  Modified(21);
+end;
+
+procedure TMessage.SetMessageId(AValue: string);
+begin
+  if FMessageId=AValue then Exit;
+  FMessageId:=AValue;
+  Modified(1);
+end;
+
+procedure TMessage.SetPacketIsLocked(AValue: Boolean);
+begin
+  if FPacketIsLocked=AValue then Exit;
+  FPacketIsLocked:=AValue;
+  Modified(20);
+end;
+
+procedure TMessage.SetProxyBoxId(AValue: string);
+begin
+  if FProxyBoxId=AValue then Exit;
+  FProxyBoxId:=AValue;
+  Modified(18);
+end;
+
+procedure TMessage.SetProxyTitle(AValue: string);
+begin
+  if FProxyTitle=AValue then Exit;
+  FProxyTitle:=AValue;
+  Modified(19);
+end;
+
+procedure TMessage.SetTimestampTicks(AValue: sfixed64);
+begin
+  if FTimestampTicks=AValue then Exit;
+  FTimestampTicks:=AValue;
+  Modified(2);
+end;
+
+procedure TMessage.SetToBoxId(AValue: string);
+begin
+  if FToBoxId=AValue then Exit;
+  FToBoxId:=AValue;
+  Modified(6);
+end;
+
+procedure TMessage.SetToTitle(AValue: string);
+begin
+  if FToTitle=AValue then Exit;
+  FToTitle:=AValue;
+  Modified(7);
+end;
+
 procedure TMessage.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('MessageId', 1);
-  RegisterProp('TimestampTicks', 2);
-  RegisterProp('LastPatchTimestampTicks', 3);
-  RegisterProp('FromBoxId', 4);
-  RegisterProp('FromTitle', 5);
+  RegisterProp('MessageId', 1, true);
+  RegisterProp('TimestampTicks', 2, true);
+  RegisterProp('LastPatchTimestampTicks', 3, true);
+  RegisterProp('FromBoxId', 4, true);
+  RegisterProp('FromTitle', 5, true);
   RegisterProp('ToBoxId', 6);
   RegisterProp('ToTitle', 7);
   RegisterProp('Entities', 8);
@@ -850,7 +1320,7 @@ begin
   RegisterProp('ProxyBoxId', 18);
   RegisterProp('ProxyTitle', 19);
   RegisterProp('PacketIsLocked', 20);
-  RegisterProp('LockMode', 21);
+  RegisterProp('LockMode', 21, true);
 end;
 
 procedure TMessage.InternalInit;

@@ -89,13 +89,14 @@ type
     FProduct: string;
     procedure SetItemAccountCredit(AValue: string);
     procedure SetItemAccountDebit(AValue: string);
+    procedure SetProduct(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property Product:string read FProduct write FProduct; //1
+    property Product:string read FProduct write SetProduct; //1
     property OriginalValues:TCorrectableInvoiceItemFields read FOriginalValues; //2
     property CorrectedValues:TCorrectableInvoiceItemFields read FCorrectedValues; //3
     property AmountsInc:TInvoiceItemAmountsDiff read FAmountsInc; //4
@@ -1965,6 +1966,13 @@ begin
   if FItemAccountDebit=AValue then Exit;
   FItemAccountDebit:=AValue;
   Modified(6);
+end;
+
+procedure TExtendedInvoiceCorrectionItem.SetProduct(AValue: string);
+begin
+  if FProduct=AValue then Exit;
+  FProduct:=AValue;
+  Modified(1);
 end;
 
 procedure TExtendedInvoiceCorrectionItem.InternalRegisterProperty;
