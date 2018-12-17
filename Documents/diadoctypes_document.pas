@@ -150,13 +150,15 @@ type
   private
     FMessageId: string;
     FMessageType: TMessageType;
+    procedure SetMessageId(AValue: string);
+    procedure SetMessageType(AValue: TMessageType);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
   published
-    property MessageType:TMessageType read FMessageType write FMessageType; //1;
-    property MessageId:string read FMessageId write FMessageId; //2;
+    property MessageType:TMessageType read FMessageType write SetMessageType; //1;
+    property MessageId:string read FMessageId write SetMessageId; //2;
   end;
 
 
@@ -170,13 +172,15 @@ type
   private
     FAmendmentFlags: int32;
     FReceiptStatus: TGeneralReceiptStatus;
+    procedure SetAmendmentFlags(AValue: int32);
+    procedure SetReceiptStatus(AValue: TGeneralReceiptStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
   published
-    property AmendmentFlags:int32 read FAmendmentFlags write FAmendmentFlags; //1;
-    property ReceiptStatus:TGeneralReceiptStatus read FReceiptStatus write FReceiptStatus; //2;
+    property AmendmentFlags:int32 read FAmendmentFlags write SetAmendmentFlags; //1;
+    property ReceiptStatus:TGeneralReceiptStatus read FReceiptStatus write SetReceiptStatus default GeneralReceiptStatusUnknown; //2;
   end;
 
 
@@ -190,13 +194,15 @@ type
   private
     FDateTimeTicks: sfixed64;
     FReceiptStatus: TGeneralReceiptStatus;
+    procedure SetDateTimeTicks(AValue: sfixed64);
+    procedure SetReceiptStatus(AValue: TGeneralReceiptStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
   published
-    property ReceiptStatus:TGeneralReceiptStatus read FReceiptStatus write FReceiptStatus; //1;
-    property DateTimeTicks:sfixed64 read FDateTimeTicks write FDateTimeTicks; //2;
+    property ReceiptStatus:TGeneralReceiptStatus read FReceiptStatus write SetReceiptStatus default GeneralReceiptStatusUnknown; //1;
+    property DateTimeTicks:sfixed64 read FDateTimeTicks write SetDateTimeTicks; //2;
   end;
 
   //message SenderReceiptMetadata {
@@ -208,13 +214,14 @@ type
   TSenderReceiptMetadata = class(TSerializationObject) //message SenderReceiptMetadata
   private
     FReceiptStatus: TGeneralReceiptStatus;
+    procedure SetReceiptStatus(AValue: TGeneralReceiptStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property ReceiptStatus:TGeneralReceiptStatus read FReceiptStatus write FReceiptStatus default GeneralReceiptStatusUnknown;//1;
+    property ReceiptStatus:TGeneralReceiptStatus read FReceiptStatus write SetReceiptStatus default GeneralReceiptStatusUnknown;//1;
   end;
 
   { TRecipientReceiptMetadata }
@@ -226,13 +233,14 @@ type
   private
     FConfirmationMetadata: TConfirmationMetadata;
     FReceiptStatus: TGeneralReceiptStatus;
+    procedure SetReceiptStatus(AValue: TGeneralReceiptStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property ReceiptStatus:TGeneralReceiptStatus read FReceiptStatus write FReceiptStatus; //1;
+    property ReceiptStatus:TGeneralReceiptStatus read FReceiptStatus write SetReceiptStatus default GeneralReceiptStatusUnknown; //1;
     property ConfirmationMetadata:TConfirmationMetadata read FConfirmationMetadata; //2;
   end;
 
@@ -251,16 +259,19 @@ type
     FAuthorUserId: string;
     FResolutionStatusType: TResolutionStatusType;
     FTarget: TResolutionTarget;
+    procedure SetAuthorFIO(AValue: string);
+    procedure SetAuthorUserId(AValue: string);
+    procedure SetResolutionStatusType(AValue: TResolutionStatusType);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property ResolutionStatusType:TResolutionStatusType read FResolutionStatusType write FResolutionStatusType; //1
+    property ResolutionStatusType:TResolutionStatusType read FResolutionStatusType write SetResolutionStatusType default UnknownResolutionStatus; //1
     property Target:TResolutionTarget read FTarget; // 2
-    property AuthorUserId:string read FAuthorUserId write FAuthorUserId; //3
-    property AuthorFIO:string read FAuthorFIO write FAuthorFIO; // 4
+    property AuthorUserId:string read FAuthorUserId write SetAuthorUserId; //3
+    property AuthorFIO:string read FAuthorFIO write SetAuthorFIO; // 4
   end;
 
 
@@ -418,26 +429,63 @@ type
     FWorkflowId: int32;
     FXmlAcceptanceCertificateMetadata: TBasicDocumentMetadata;
     FXmlTorg12Metadata: TBasicDocumentMetadata;
+    procedure SetAttachmentVersion(AValue: string);
+    procedure SetCounteragentBoxId(AValue: string);
     procedure SetCreationTimestampTicks(AValue: sfixed64);
+    procedure SetCustomDocumentId(AValue: string);
+    procedure SetDeliveryTimestampTicks(AValue: sfixed64);
+    procedure SetDepartmentId(AValue: string);
+    procedure SetDocFunction(AValue: string);
+    procedure SetDocumentDate(AValue: string);
+    procedure SetDocumentDirection(AValue: TDocumentDirection);
+    procedure SetDocumentNumber(AValue: string);
+    procedure SetDocumentType(AValue: TDocumentType);
+    procedure SetEditingSettingId(AValue: string);
+    procedure SetEntityId(AValue: string);
+    procedure SetFileName(AValue: string);
+    procedure SetFromDepartmentId(AValue: string);
+    procedure SetHasCustomPrintForm(AValue: Boolean);
+    procedure SetIndexKey(AValue: string);
+    procedure SetIsDeleted(AValue: Boolean);
+    procedure SetIsEncryptedContent(AValue: Boolean);
+    procedure SetIsRead(AValue: Boolean);
+    procedure SetIsTest(AValue: Boolean);
+    procedure SetLastModificationTimestampTicks(AValue: sfixed64);
+    procedure SetLockMode(AValue: TLockMode);
+    procedure SetMessageId(AValue: string);
+    procedure SetPacketId(AValue: string);
+    procedure SetPacketIsLocked(AValue: Boolean);
+    procedure SetProxySignatureStatus(AValue: TProxySignatureStatus);
+    procedure SetRecipientResponseStatus(AValue: TRecipientResponseStatus);
+    procedure SetResolutionRouteId(AValue: string);
+    procedure SetRevocationStatus(AValue: TRevocationStatus);
+    procedure SetRoamingNotificationStatus(AValue: TRoamingNotificationStatus);
+    procedure SetRoamingNotificationStatusDescription(AValue: string);
+    procedure SetSenderSignatureStatus(AValue: TSenderSignatureStatus);
+    procedure SetSendTimestampTicks(AValue: sfixed64);
+    procedure SetTitle(AValue: string);
+    procedure SetToDepartmentId(AValue: string);
+    procedure SetTypeNamedId(AValue: string);
     procedure SetVersion(AValue: string);
+    procedure SetWorkflowId(AValue: int32);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property IndexKey:string read FIndexKey write FIndexKey;                            //1;
-    property MessageId:string read FMessageId write FMessageId;                         //2;
-    property EntityId:string read FEntityId write FEntityId;                            //3;
+    property IndexKey:string read FIndexKey write SetIndexKey;                            //1;
+    property MessageId:string read FMessageId write SetMessageId;                         //2;
+    property EntityId:string read FEntityId write SetEntityId;                            //3;
     property CreationTimestampTicks:sfixed64 read FCreationTimestampTicks write SetCreationTimestampTicks; //4
-    property CounteragentBoxId:string read FCounteragentBoxId write FCounteragentBoxId; //5
-    property DocumentType:TDocumentType read FDocumentType write FDocumentType default UnknownDocumentType; //6
+    property CounteragentBoxId:string read FCounteragentBoxId write SetCounteragentBoxId; //5
+    property DocumentType:TDocumentType read FDocumentType write SetDocumentType default UnknownDocumentType; //6
     property InitialDocumentIds:TDocumentIds read FInitialDocumentIds;                  //7
     property SubordinateDocumentIds:TDocumentIds read FSubordinateDocumentIds;          //8
     property Content:TContent read FContent;                                            //9;
-    property FileName:string read FFileName write FFileName;                            //10
-    property DocumentDate:string read FDocumentDate write FDocumentDate;                //11
-    property DocumentNumber:string read FDocumentNumber write FDocumentNumber;          //12
+    property FileName:string read FFileName write SetFileName;                            //10
+    property DocumentDate:string read FDocumentDate write SetDocumentDate;                //11
+    property DocumentNumber:string read FDocumentNumber write SetDocumentNumber;          //12
     property NonformalizedDocumentMetadata:TNonformalizedDocumentMetadata read FNonformalizedDocumentMetadata; //13
     property InvoiceMetadata:TInvoiceMetadata read FInvoiceMetadata;                    //14
     property TrustConnectionRequestMetadata:TTrustConnectionRequestMetadata read FTrustConnectionRequestMetadata; //15
@@ -449,58 +497,58 @@ type
     property ProformaInvoiceMetadata:TProformaInvoiceMetadata read FProformaInvoiceMetadata; //21
     property XmlTorg12Metadata:TBasicDocumentMetadata read FXmlTorg12Metadata; //22;
     property XmlAcceptanceCertificateMetadata:TBasicDocumentMetadata read FXmlAcceptanceCertificateMetadata; deprecated 'см. RecipientReceiptMetadata и RecipientResponseStatus'; //23;
-    property IsDeleted:Boolean read FIsDeleted write FIsDeleted; //24
-    property DepartmentId:string read FDepartmentId write FDepartmentId; //25
-    property IsTest:Boolean read FIsTest write FIsTest; //26
-    property FromDepartmentId:string read FFromDepartmentId write FFromDepartmentId; //27
-    property ToDepartmentId:string read FToDepartmentId write FToDepartmentId; //28;
+    property IsDeleted:Boolean read FIsDeleted write SetIsDeleted; //24
+    property DepartmentId:string read FDepartmentId write SetDepartmentId; //25
+    property IsTest:Boolean read FIsTest write SetIsTest; //26
+    property FromDepartmentId:string read FFromDepartmentId write SetFromDepartmentId; //27
+    property ToDepartmentId:string read FToDepartmentId write SetToDepartmentId; //28;
     property PriceListMetadata:TPriceListMetadata read FPriceListMetadata; //29;
-    property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId; //30;
+    property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId; //30;
     property ResolutionStatus:TResolutionStatus read FResolutionStatus; //31;
-    property RevocationStatus:TRevocationStatus read FRevocationStatus write FRevocationStatus; //32
-    property SendTimestampTicks:sfixed64 read FSendTimestampTicks write FSendTimestampTicks; //33;
-    property DeliveryTimestampTicks:sfixed64 read FDeliveryTimestampTicks write FDeliveryTimestampTicks; //34;
+    property RevocationStatus:TRevocationStatus read FRevocationStatus write SetRevocationStatus default UnknownRevocationStatus; //32
+    property SendTimestampTicks:sfixed64 read FSendTimestampTicks write SetSendTimestampTicks; //33;
+    property DeliveryTimestampTicks:sfixed64 read FDeliveryTimestampTicks write SetDeliveryTimestampTicks; //34;
     property ForwardDocumentEvents:TForwardDocumentEvents read FForwardDocumentEvents; // = 35;
     property ReconciliationActMetadata:TBilateralDocumentMetadata read FReconciliationActMetadata; //38
     property ContractMetadata:TContractMetadata read FContractMetadata; //39;
 
     property Torg13Metadata:TBasicDocumentMetadata read FTorg13Metadata; //40;
     property ServiceDetailsMetadata:TServiceDetailsMetadata read FServiceDetailsMetadata; //41
-    property RoamingNotificationStatus:TRoamingNotificationStatus read FRoamingNotificationStatus write FRoamingNotificationStatus default UnknownRoamingNotificationStatus; // = 42 ;
+    property RoamingNotificationStatus:TRoamingNotificationStatus read FRoamingNotificationStatus write SetRoamingNotificationStatus default UnknownRoamingNotificationStatus; // = 42 ;
 
-    property HasCustomPrintForm:Boolean read FHasCustomPrintForm write FHasCustomPrintForm; //43
+    property HasCustomPrintForm:Boolean read FHasCustomPrintForm write SetHasCustomPrintForm; //43
     property CustomData:TCustomDataItems read FCustomData; //44
-    property PacketId:string read FPacketId write FPacketId; //45;
-    property DocumentDirection:TDocumentDirection read FDocumentDirection write FDocumentDirection default UnknownDocumentDirection; //46
-    property LastModificationTimestampTicks:sfixed64 read FLastModificationTimestampTicks write FLastModificationTimestampTicks; //47;
-    property IsEncryptedContent:Boolean read FIsEncryptedContent write FIsEncryptedContent; // 48;
-    property SenderSignatureStatus:TSenderSignatureStatus read FSenderSignatureStatus write FSenderSignatureStatus default UnknownSenderSignatureStatus; //49
+    property PacketId:string read FPacketId write SetPacketId; //45;
+    property DocumentDirection:TDocumentDirection read FDocumentDirection write SetDocumentDirection default UnknownDocumentDirection; //46
+    property LastModificationTimestampTicks:sfixed64 read FLastModificationTimestampTicks write SetLastModificationTimestampTicks; //47;
+    property IsEncryptedContent:Boolean read FIsEncryptedContent write SetIsEncryptedContent; // 48;
+    property SenderSignatureStatus:TSenderSignatureStatus read FSenderSignatureStatus write SetSenderSignatureStatus default UnknownSenderSignatureStatus; //49
 
     property SupplementaryAgreementMetadata:TSupplementaryAgreementMetadata read FSupplementaryAgreementMetadata; //50;
-    property IsRead:Boolean read FIsRead write FIsRead; //51
-    property RoamingNotificationStatusDescription:string read FRoamingNotificationStatusDescription write FRoamingNotificationStatusDescription; //52;
-    property PacketIsLocked:Boolean read FPacketIsLocked write FPacketIsLocked; //53
+    property IsRead:Boolean read FIsRead write SetIsRead; //51
+    property RoamingNotificationStatusDescription:string read FRoamingNotificationStatusDescription write SetRoamingNotificationStatusDescription; //52;
+    property PacketIsLocked:Boolean read FPacketIsLocked write SetPacketIsLocked; //53
     property PriceListAgreementMetadata:TNonformalizedDocumentMetadata read FPriceListAgreementMetadata; //54
     property CertificateRegistryMetadata:TNonformalizedDocumentMetadata read FCertificateRegistryMetadata; //55
     property UniversalTransferDocumentMetadata:TUniversalTransferDocumentMetadata read FUniversalTransferDocumentMetadata; //56
     property UniversalTransferDocumentRevisionMetadata:TUniversalTransferDocumentRevisionMetadata read FUniversalTransferDocumentRevisionMetadata; //57
     property UniversalCorrectionDocumentMetadata:TUniversalCorrectionDocumentMetadata read FUniversalCorrectionDocumentMetadata; //58;
     property UniversalCorrectionDocumentRevisionMetadata:TUniversalCorrectionDocumentRevisionMetadata read FUniversalCorrectionDocumentRevisionMetadata; //59;
-    property ResolutionRouteId:string read FResolutionRouteId write FResolutionRouteId;//60
-    property AttachmentVersion:string read FAttachmentVersion write FAttachmentVersion;//61;
-    property ProxySignatureStatus:TProxySignatureStatus read FProxySignatureStatus write FProxySignatureStatus default UnknownProxySignatureStatus;//62
-    property TypeNamedId:string read FTypeNamedId write FTypeNamedId; //63;
-    property DocFunction:string read FDocFunction write FDocFunction; //64;
-    property WorkflowId:int32 read FWorkflowId write FWorkflowId;     //65;
-    property Title:string read FTitle write FTitle;                   //66;
+    property ResolutionRouteId:string read FResolutionRouteId write SetResolutionRouteId;//60
+    property AttachmentVersion:string read FAttachmentVersion write SetAttachmentVersion;//61;
+    property ProxySignatureStatus:TProxySignatureStatus read FProxySignatureStatus write SetProxySignatureStatus default UnknownProxySignatureStatus;//62
+    property TypeNamedId:string read FTypeNamedId write SetTypeNamedId; //63;
+    property DocFunction:string read FDocFunction write SetDocFunction; //64;
+    property WorkflowId:int32 read FWorkflowId write SetWorkflowId;     //65;
+    property Title:string read FTitle write SetTitle;                   //66;
     property Metadata:TMetadataItems read FMetadata; //67;
     property RecipientReceiptMetadata:TRecipientReceiptMetadata read FRecipientReceiptMetadata; //68;
     property ConfirmationMetadata:TConfirmationMetadata read FConfirmationMetadata; //69;
-    property RecipientResponseStatus:TRecipientResponseStatus read FRecipientResponseStatus write FRecipientResponseStatus default RecipientResponseStatusUnknown; //70
+    property RecipientResponseStatus:TRecipientResponseStatus read FRecipientResponseStatus write SetRecipientResponseStatus default RecipientResponseStatusUnknown; //70
     property AmendmentRequestMetadata:TAmendmentRequestMetadata read FAmendmentRequestMetadata; //71;
     property Origin:TOrigin read FOrigin; //72;
-    property EditingSettingId:string read FEditingSettingId write FEditingSettingId;//73 [default = ""];
-    property LockMode:TLockMode read FLockMode write FLockMode; //74;
+    property EditingSettingId:string read FEditingSettingId write SetEditingSettingId;//73 [default = ""];
+    property LockMode:TLockMode read FLockMode write SetLockMode; //74;
     property SenderReceiptMetadata:TSenderReceiptMetadata read FSenderReceiptMetadata; //75;
     property Version:string read FVersion write SetVersion;//76;
   end;
@@ -581,16 +629,24 @@ end;
 
 { TSenderReceiptMetadata }
 
+procedure TSenderReceiptMetadata.SetReceiptStatus(AValue: TGeneralReceiptStatus
+  );
+begin
+  if FReceiptStatus=AValue then Exit;
+  FReceiptStatus:=AValue;
+  Modified(1);
+end;
+
 procedure TSenderReceiptMetadata.InternalInit;
 begin
   inherited InternalInit;
-  FReceiptStatus:=GeneralReceiptStatusUnknown;
+  ReceiptStatus:=GeneralReceiptStatusUnknown;
 end;
 
 procedure TSenderReceiptMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('ReceiptStatus', 1);
+  RegisterProp('ReceiptStatus', 1, true);
 end;
 
 destructor TSenderReceiptMetadata.Destroy;
@@ -599,6 +655,20 @@ begin
 end;
 
 { TOrigin }
+
+procedure TOrigin.SetMessageId(AValue: string);
+begin
+  if FMessageId=AValue then Exit;
+  FMessageId:=AValue;
+  Modified(2);
+end;
+
+procedure TOrigin.SetMessageType(AValue: TMessageType);
+begin
+  if FMessageType=AValue then Exit;
+  FMessageType:=AValue;
+  Modified(1);
+end;
 
 procedure TOrigin.InternalInit;
 begin
@@ -614,45 +684,86 @@ end;
 
 { TAmendmentRequestMetadata }
 
+procedure TAmendmentRequestMetadata.SetAmendmentFlags(AValue: int32);
+begin
+  if FAmendmentFlags=AValue then Exit;
+  FAmendmentFlags:=AValue;
+  Modified(1);
+end;
+
+procedure TAmendmentRequestMetadata.SetReceiptStatus(
+  AValue: TGeneralReceiptStatus);
+begin
+  if FReceiptStatus=AValue then Exit;
+  FReceiptStatus:=AValue;
+  Modified(2);
+end;
+
 procedure TAmendmentRequestMetadata.InternalInit;
 begin
   inherited InternalInit;
+  ReceiptStatus:=GeneralReceiptStatusUnknown;
 end;
 
 procedure TAmendmentRequestMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('AmendmentFlags', 1);
-  RegisterProp('ReceiptStatus', 2);
+  RegisterProp('AmendmentFlags', 1, true);
+  RegisterProp('ReceiptStatus', 2, true);
 end;
 
 { TConfirmationMetadata }
 
+procedure TConfirmationMetadata.SetDateTimeTicks(AValue: sfixed64);
+begin
+  if FDateTimeTicks=AValue then Exit;
+  FDateTimeTicks:=AValue;
+  Modified(2);
+end;
+
+procedure TConfirmationMetadata.SetReceiptStatus(AValue: TGeneralReceiptStatus);
+begin
+  if FReceiptStatus=AValue then Exit;
+  FReceiptStatus:=AValue;
+  Modified(1);
+end;
+
 procedure TConfirmationMetadata.InternalInit;
 begin
   inherited InternalInit;
+  ReceiptStatus:=GeneralReceiptStatusUnknown;
 end;
 
 procedure TConfirmationMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('ReceiptStatus', 1);
-  RegisterProp('DateTimeTicks', 2);
+  RegisterProp('ReceiptStatus', 1, true);
+  RegisterProp('DateTimeTicks', 2, true);
 end;
 
 
 { TRecipientReceiptMetadata }
 
+procedure TRecipientReceiptMetadata.SetReceiptStatus(
+  AValue: TGeneralReceiptStatus);
+begin
+  if FReceiptStatus=AValue then Exit;
+  FReceiptStatus:=AValue;
+  Modified(1);
+end;
+
 procedure TRecipientReceiptMetadata.InternalInit;
 begin
   inherited InternalInit;
   FConfirmationMetadata:=TConfirmationMetadata.Create;
+
+  ReceiptStatus:=GeneralReceiptStatusUnknown;
 end;
 
 procedure TRecipientReceiptMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('ReceiptStatus', 1);
+  RegisterProp('ReceiptStatus', 1, true);
   RegisterProp('ConfirmationMetadata', 2);
 end;
 
@@ -664,10 +775,34 @@ end;
 
 { TResolutionStatus }
 
+procedure TResolutionStatus.SetAuthorFIO(AValue: string);
+begin
+  if FAuthorFIO=AValue then Exit;
+  FAuthorFIO:=AValue;
+  Modified(4);
+end;
+
+procedure TResolutionStatus.SetAuthorUserId(AValue: string);
+begin
+  if FAuthorUserId=AValue then Exit;
+  FAuthorUserId:=AValue;
+  Modified(3);
+end;
+
+procedure TResolutionStatus.SetResolutionStatusType(
+  AValue: TResolutionStatusType);
+begin
+  if FResolutionStatusType=AValue then Exit;
+  FResolutionStatusType:=AValue;
+  Modified(1);
+end;
+
 procedure TResolutionStatus.InternalInit;
 begin
   inherited InternalInit;
   FTarget:=TResolutionTarget.Create;
+
+  ResolutionStatusType:=UnknownResolutionStatus;
 end;
 
 procedure TResolutionStatus.InternalRegisterProperty;
@@ -675,8 +810,8 @@ begin
   inherited InternalRegisterProperty;
   RegisterProp('ResolutionStatusType', 1);
   RegisterProp('Target', 2);
-  RegisterProp('AuthorUserId', 3);
-  RegisterProp('AuthorFIO', 4);
+  RegisterProp('AuthorUserId', 3, true);
+  RegisterProp('AuthorFIO', 4, true);
 end;
 
 destructor TResolutionStatus.Destroy;
@@ -692,6 +827,261 @@ procedure TDocument.SetCreationTimestampTicks(AValue: sfixed64);
 begin
   if FCreationTimestampTicks=AValue then Exit;
   FCreationTimestampTicks:=AValue;
+  Modified(4);
+end;
+
+procedure TDocument.SetAttachmentVersion(AValue: string);
+begin
+  if FAttachmentVersion=AValue then Exit;
+  FAttachmentVersion:=AValue;
+  Modified(61);
+end;
+
+procedure TDocument.SetCounteragentBoxId(AValue: string);
+begin
+  if FCounteragentBoxId=AValue then Exit;
+  FCounteragentBoxId:=AValue;
+  Modified(5);
+end;
+
+procedure TDocument.SetCustomDocumentId(AValue: string);
+begin
+  if FCustomDocumentId=AValue then Exit;
+  FCustomDocumentId:=AValue;
+  Modified(30);
+end;
+
+procedure TDocument.SetDeliveryTimestampTicks(AValue: sfixed64);
+begin
+  if FDeliveryTimestampTicks=AValue then Exit;
+  FDeliveryTimestampTicks:=AValue;
+  Modified(34);
+end;
+
+procedure TDocument.SetDepartmentId(AValue: string);
+begin
+  if FDepartmentId=AValue then Exit;
+  FDepartmentId:=AValue;
+  Modified(25);
+end;
+
+procedure TDocument.SetDocFunction(AValue: string);
+begin
+  if FDocFunction=AValue then Exit;
+  FDocFunction:=AValue;
+  Modified(64);
+end;
+
+procedure TDocument.SetDocumentDate(AValue: string);
+begin
+  if FDocumentDate=AValue then Exit;
+  FDocumentDate:=AValue;
+  Modified(11);
+end;
+
+procedure TDocument.SetDocumentDirection(AValue: TDocumentDirection);
+begin
+  if FDocumentDirection=AValue then Exit;
+  FDocumentDirection:=AValue;
+  Modified(46);
+end;
+
+procedure TDocument.SetDocumentNumber(AValue: string);
+begin
+  if FDocumentNumber=AValue then Exit;
+  FDocumentNumber:=AValue;
+  Modified(12);
+end;
+
+procedure TDocument.SetDocumentType(AValue: TDocumentType);
+begin
+  if FDocumentType=AValue then Exit;
+  FDocumentType:=AValue;
+  Modified(6);;
+end;
+
+procedure TDocument.SetEditingSettingId(AValue: string);
+begin
+  if FEditingSettingId=AValue then Exit;
+  FEditingSettingId:=AValue;
+  Modified(73);
+end;
+
+procedure TDocument.SetEntityId(AValue: string);
+begin
+  if FEntityId=AValue then Exit;
+  FEntityId:=AValue;
+  Modified(3);
+end;
+
+procedure TDocument.SetFileName(AValue: string);
+begin
+  if FFileName=AValue then Exit;
+  FFileName:=AValue;
+  Modified(10);
+end;
+
+procedure TDocument.SetFromDepartmentId(AValue: string);
+begin
+  if FFromDepartmentId=AValue then Exit;
+  FFromDepartmentId:=AValue;
+  Modified(27);
+end;
+
+procedure TDocument.SetHasCustomPrintForm(AValue: Boolean);
+begin
+  if FHasCustomPrintForm=AValue then Exit;
+  FHasCustomPrintForm:=AValue;
+  Modified(43);
+end;
+
+procedure TDocument.SetIndexKey(AValue: string);
+begin
+  if FIndexKey=AValue then Exit;
+  FIndexKey:=AValue;
+  Modified(1);
+end;
+
+procedure TDocument.SetIsDeleted(AValue: Boolean);
+begin
+  if FIsDeleted=AValue then Exit;
+  FIsDeleted:=AValue;
+  Modified(24);
+end;
+
+procedure TDocument.SetIsEncryptedContent(AValue: Boolean);
+begin
+  if FIsEncryptedContent=AValue then Exit;
+  FIsEncryptedContent:=AValue;
+  Modified(48);
+end;
+
+procedure TDocument.SetIsRead(AValue: Boolean);
+begin
+  if FIsRead=AValue then Exit;
+  FIsRead:=AValue;
+  Modified(51);
+end;
+
+procedure TDocument.SetIsTest(AValue: Boolean);
+begin
+  if FIsTest=AValue then Exit;
+  FIsTest:=AValue;
+  Modified(26);
+end;
+
+procedure TDocument.SetLastModificationTimestampTicks(AValue: sfixed64);
+begin
+  if FLastModificationTimestampTicks=AValue then Exit;
+  FLastModificationTimestampTicks:=AValue;
+  Modified(47);
+end;
+
+procedure TDocument.SetLockMode(AValue: TLockMode);
+begin
+  if FLockMode=AValue then Exit;
+  FLockMode:=AValue;
+  Modified(74);
+end;
+
+procedure TDocument.SetMessageId(AValue: string);
+begin
+  if FMessageId=AValue then Exit;
+  FMessageId:=AValue;
+  Modified(2);
+end;
+
+procedure TDocument.SetPacketId(AValue: string);
+begin
+  if FPacketId=AValue then Exit;
+  FPacketId:=AValue;
+  Modified(45);
+end;
+
+procedure TDocument.SetPacketIsLocked(AValue: Boolean);
+begin
+  if FPacketIsLocked=AValue then Exit;
+  FPacketIsLocked:=AValue;
+  Modified(53);
+end;
+
+procedure TDocument.SetProxySignatureStatus(AValue: TProxySignatureStatus);
+begin
+  if FProxySignatureStatus=AValue then Exit;
+  FProxySignatureStatus:=AValue;
+  Modified(62);
+end;
+
+procedure TDocument.SetRecipientResponseStatus(AValue: TRecipientResponseStatus
+  );
+begin
+  if FRecipientResponseStatus=AValue then Exit;
+  FRecipientResponseStatus:=AValue;
+  Modified(70);
+end;
+
+procedure TDocument.SetResolutionRouteId(AValue: string);
+begin
+  if FResolutionRouteId=AValue then Exit;
+  FResolutionRouteId:=AValue;
+  Modified(60);
+end;
+
+procedure TDocument.SetRevocationStatus(AValue: TRevocationStatus);
+begin
+  if FRevocationStatus=AValue then Exit;
+  FRevocationStatus:=AValue;
+  Modified(32);
+end;
+
+procedure TDocument.SetRoamingNotificationStatus(
+  AValue: TRoamingNotificationStatus);
+begin
+  if FRoamingNotificationStatus=AValue then Exit;
+  FRoamingNotificationStatus:=AValue;
+  Modified(42);
+end;
+
+procedure TDocument.SetRoamingNotificationStatusDescription(AValue: string);
+begin
+  if FRoamingNotificationStatusDescription=AValue then Exit;
+  FRoamingNotificationStatusDescription:=AValue;
+  Modified(52);
+end;
+
+procedure TDocument.SetSenderSignatureStatus(AValue: TSenderSignatureStatus);
+begin
+  if FSenderSignatureStatus=AValue then Exit;
+  FSenderSignatureStatus:=AValue;
+  Modified(49);
+end;
+
+procedure TDocument.SetSendTimestampTicks(AValue: sfixed64);
+begin
+  if FSendTimestampTicks=AValue then Exit;
+  FSendTimestampTicks:=AValue;
+  Modified(33);
+end;
+
+procedure TDocument.SetTitle(AValue: string);
+begin
+  if FTitle=AValue then Exit;
+  FTitle:=AValue;
+  Modified(66);
+end;
+
+procedure TDocument.SetToDepartmentId(AValue: string);
+begin
+  if FToDepartmentId=AValue then Exit;
+  FToDepartmentId:=AValue;
+  Modified(28);
+end;
+
+procedure TDocument.SetTypeNamedId(AValue: string);
+begin
+  if FTypeNamedId=AValue then Exit;
+  FTypeNamedId:=AValue;
+  Modified(63);
 end;
 
 procedure TDocument.SetVersion(AValue: string);
@@ -699,6 +1089,13 @@ begin
   if FVersion=AValue then Exit;
   FVersion:=AValue;
   Modified(76);
+end;
+
+procedure TDocument.SetWorkflowId(AValue: int32);
+begin
+  if FWorkflowId=AValue then Exit;
+  FWorkflowId:=AValue;
+  Modified(65);
 end;
 
 procedure TDocument.InternalInit;
@@ -740,20 +1137,23 @@ begin
   FSenderReceiptMetadata:=TSenderReceiptMetadata.Create;
 
 
-  FDocumentDirection:=UnknownDocumentDirection;
-  FRevocationStatus:=UnknownRevocationStatus;
-  FRoamingNotificationStatus:=UnknownRoamingNotificationStatus;
-  FProxySignatureStatus:=UnknownProxySignatureStatus;
-  FRecipientResponseStatus:=RecipientResponseStatusUnknown;
+  DocumentDirection:=UnknownDocumentDirection;
+  RevocationStatus:=UnknownRevocationStatus;
+  RoamingNotificationStatus:=UnknownRoamingNotificationStatus;
+  ProxySignatureStatus:=UnknownProxySignatureStatus;
+  RecipientResponseStatus:=RecipientResponseStatusUnknown;
+  DocumentType:=UnknownDocumentType;
+  SenderSignatureStatus:=UnknownSenderSignatureStatus;
+  EditingSettingId:='';
 end;
 
 procedure TDocument.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
   RegisterProp('IndexKey', 1);
-  RegisterProp('MessageId', 2);
-  RegisterProp('EntityId', 3);
-  RegisterProp('CreationTimestampTicks', 4);
+  RegisterProp('MessageId', 2, true);
+  RegisterProp('EntityId', 3, true);
+  RegisterProp('CreationTimestampTicks', 4, true);
   RegisterProp('CounteragentBoxId', 5);
   RegisterProp('DocumentType', 6);
   RegisterProp('InitialDocumentIds', 7);
@@ -811,16 +1211,16 @@ begin
   RegisterProp('AttachmentVersion', 61);
   RegisterProp('ProxySignatureStatus', 62);
 
-  RegisterProp('TypeNamedId', 63);
-  RegisterProp('DocFunction', 64);
-  RegisterProp('WorkflowId', 65);
-  RegisterProp('Title', 66);
+  RegisterProp('TypeNamedId', 63, true);
+  RegisterProp('DocFunction', 64, true);
+  RegisterProp('WorkflowId', 65, true);
+  RegisterProp('Title', 66, true);
 
   RegisterProp('Metadata', 67);
-  RegisterProp('RecipientReceiptMetadata', 68);
-  RegisterProp('ConfirmationMetadata', 69);
-  RegisterProp('RecipientResponseStatus', 70);
-  RegisterProp('AmendmentRequestMetadata', 71);
+  RegisterProp('RecipientReceiptMetadata', 68, true);
+  RegisterProp('ConfirmationMetadata', 69, true);
+  RegisterProp('RecipientResponseStatus', 70, true);
+  RegisterProp('AmendmentRequestMetadata', 71, true);
   RegisterProp('Origin', 72);
   RegisterProp('EditingSettingId', 73);
   RegisterProp('LockMode', 74, true);
