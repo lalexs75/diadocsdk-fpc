@@ -58,16 +58,19 @@ type
     FName: string;
     FPermissions: TOrganizationUserPermissions;
     FPosition: string;
+    procedure SetId(AValue: string);
+    procedure SetName(AValue: string);
+    procedure SetPosition(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property Id:string read FId write FId;//1;
-    property Name:string read FName write FName;//2;
+    property Id:string read FId write SetId;//1;
+    property Name:string read FName write SetName;//2;
     property Permissions:TOrganizationUserPermissions read FPermissions; //3;
-    property Position:string read FPosition write FPosition; //4;
+    property Position:string read FPosition write SetPosition; //4;
   end;
   TOrganizationUsers = specialize GSerializationObjectList<TOrganizationUser>;
 
@@ -80,6 +83,7 @@ type
   private
     FCurrentUserId: string;
     FUsers: TOrganizationUsers;
+    procedure SetCurrentUserId(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
@@ -87,12 +91,19 @@ type
     destructor Destroy; override;
   published
     property Users:TOrganizationUsers read FUsers; //1;
-    property CurrentUserId:string read FCurrentUserId write FCurrentUserId; //2;
+    property CurrentUserId:string read FCurrentUserId write SetCurrentUserId; //2;
   end;
 
 implementation
 
 { TDocumentZipGenerationResult }
+
+procedure TOrganizationUsersList.SetCurrentUserId(AValue: string);
+begin
+  if FCurrentUserId=AValue then Exit;
+  FCurrentUserId:=AValue;
+  Modified(2);
+end;
 
 procedure TOrganizationUsersList.InternalInit;
 begin
@@ -114,6 +125,27 @@ begin
 end;
 
 { TOrganizationUser }
+
+procedure TOrganizationUser.SetId(AValue: string);
+begin
+  if FId=AValue then Exit;
+  FId:=AValue;
+  Modified(1);
+end;
+
+procedure TOrganizationUser.SetName(AValue: string);
+begin
+  if FName=AValue then Exit;
+  FName:=AValue;
+  Modified(2);
+end;
+
+procedure TOrganizationUser.SetPosition(AValue: string);
+begin
+  if FPosition=AValue then Exit;
+  FPosition:=AValue;
+  Modified(4);
+end;
 
 procedure TOrganizationUser.InternalInit;
 begin
