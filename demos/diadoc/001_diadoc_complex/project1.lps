@@ -3,7 +3,7 @@
   <ProjectSession>
     <Version Value="11"/>
     <BuildModes Active="Default"/>
-    <Units Count="234">
+    <Units Count="236">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -1814,6 +1814,7 @@
       <Unit219>
         <Filename Value="../../../Docflow/diadoctypes_documentinfo.pas"/>
         <UnitName Value="DiadocTypes_DocumentInfo"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <TopLine Value="776"/>
         <CursorPos Y="780"/>
@@ -1905,11 +1906,10 @@
       <Unit231>
         <Filename Value="../../../Documents/diadoctypes_document.pas"/>
         <UnitName Value="DiadocTypes_Document"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="40"/>
         <CursorPos X="26" Y="35"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
       </Unit231>
       <Unit232>
         <Filename Value="../../../diadoc_src/diadoctypes_content.pas"/>
@@ -1922,96 +1922,27 @@
       <Unit233>
         <Filename Value="../../../Documents/diadoctypes_acceptancecertificatedocument.pas"/>
         <UnitName Value="DiadocTypes_AcceptanceCertificateDocument"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="62"/>
-        <CursorPos X="72" Y="94"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="13"/>
+        <CursorPos X="47" Y="35"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit233>
+      <Unit234>
+        <Filename Value="../../../Documents/diadoctypes_receiptstatus.pas"/>
+        <UnitName Value="DiadocTypes_ReceiptStatus"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="33"/>
+        <UsageCount Value="10"/>
+      </Unit234>
+      <Unit235>
+        <Filename Value="../../../Documents/diadoctypes_bilateraldocument.pas"/>
+        <UnitName Value="DiadocTypes_BilateralDocument"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="55"/>
+        <UsageCount Value="10"/>
+      </Unit235>
     </Units>
-    <JumpHistory Count="20" HistoryIndex="19">
-      <Position1>
-        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
-        <Caret Line="539" Column="154" TopLine="517"/>
-      </Position1>
-      <Position2>
-        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
-        <Caret Line="458" Column="15" TopLine="519"/>
-      </Position2>
-      <Position3>
-        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
-        <Caret Line="468" Column="15" TopLine="524"/>
-      </Position3>
-      <Position4>
-        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
-        <Caret Line="438" Column="15" TopLine="512"/>
-      </Position4>
-      <Position5>
-        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
-        <Caret Line="470" Column="15" TopLine="511"/>
-      </Position5>
-      <Position6>
-        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
-        <Caret Line="466" Column="15" TopLine="450"/>
-      </Position6>
-      <Position7>
-        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
-        <Caret Line="547" Column="170" TopLine="515"/>
-      </Position7>
-      <Position8>
-        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
-        <Caret Line="459" Column="15" TopLine="520"/>
-      </Position8>
-      <Position9>
-        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
-        <Caret Line="443" Column="15" TopLine="526"/>
-      </Position9>
-      <Position10>
-        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
-        <Caret Line="454" Column="15" TopLine="531"/>
-      </Position10>
-      <Position11>
-        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
-        <Caret Line="469" Column="15" TopLine="453"/>
-      </Position11>
-      <Position12>
-        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
-        <Caret Line="1091" Column="3" TopLine="1085"/>
-      </Position12>
-      <Position13>
-        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
-        <Caret Line="469" Column="15" TopLine="453"/>
-      </Position13>
-      <Position14>
-        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
-        <Caret Line="1269" Column="3" TopLine="1234"/>
-      </Position14>
-      <Position15>
-        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
-        <Caret Line="35" Column="26" TopLine="40"/>
-      </Position15>
-      <Position16>
-        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
-        <Caret Line="35" Column="26" TopLine="40"/>
-      </Position16>
-      <Position17>
-        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
-        <Caret Line="35" Column="26" TopLine="40"/>
-      </Position17>
-      <Position18>
-        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
-        <Caret Line="35" Column="26" TopLine="40"/>
-      </Position18>
-      <Position19>
-        <Filename Value="../../../Documents/diadoctypes_acceptancecertificatedocument.pas"/>
-        <Caret Line="87" Column="22" TopLine="58"/>
-      </Position19>
-      <Position20>
-        <Filename Value="../../../Documents/diadoctypes_acceptancecertificatedocument.pas"/>
-        <Caret Line="114" Column="33" TopLine="84"/>
-      </Position20>
-    </JumpHistory>
+    <JumpHistory HistoryIndex="-1"/>
     <RunParams>
       <FormatVersion Value="2"/>
       <Modes Count="0" ActiveMode=""/>
