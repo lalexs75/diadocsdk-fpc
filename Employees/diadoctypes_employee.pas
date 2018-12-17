@@ -61,12 +61,14 @@ type
   private
     FIsAllowed: boolean;
     FName: string;
+    procedure SetIsAllowed(AValue: boolean);
+    procedure SetName(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
   public
   published
-    property Name:string read FName write FName;//1;
-    property IsAllowed:boolean read FIsAllowed write FIsAllowed;//2;
+    property Name:string read FName write SetName;//1;
+    property IsAllowed:boolean read FIsAllowed write SetIsAllowed;//2;
   end;
   TEmployeeActions = specialize GSerializationObjectList<TEmployeeAction>;
 
@@ -87,15 +89,18 @@ type
     FIsAdministrator: Boolean;
     FSelectedDepartmentIds: TDocumentStrings;
     FUserDepartmentId: string;
+    procedure SetDocumentAccessLevel(AValue: TDocumentAccessLevel);
+    procedure SetIsAdministrator(AValue: Boolean);
+    procedure SetUserDepartmentId(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property UserDepartmentId:string read FUserDepartmentId write FUserDepartmentId; //1;
-    property IsAdministrator:Boolean read FIsAdministrator write FIsAdministrator; //2;
-    property DocumentAccessLevel:TDocumentAccessLevel read FDocumentAccessLevel write FDocumentAccessLevel; //3 [default = UnknownDocumentAccessLevel];
+    property UserDepartmentId:string read FUserDepartmentId write SetUserDepartmentId; //1;
+    property IsAdministrator:Boolean read FIsAdministrator write SetIsAdministrator; //2;
+    property DocumentAccessLevel:TDocumentAccessLevel read FDocumentAccessLevel write SetDocumentAccessLevel default UnknownDocumentAccessLevel;
     property SelectedDepartmentIds:TDocumentStrings read FSelectedDepartmentIds;//4;
     property Actions:TEmployeeActions read FActions;//5;
   end;
@@ -116,6 +121,8 @@ type
     FPermissions: TEmployeePermissions;
     FPosition: string;
     FUser: TUserV2;
+    procedure SetCanBeInvitedForChat(AValue: Boolean);
+    procedure SetPosition(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
@@ -124,8 +131,8 @@ type
   published
     property User:TUserV2 read FUser;//1;
     property Permissions:TEmployeePermissions read FPermissions;//2;
-    property Position:string read FPosition write FPosition;//3;
-    property CanBeInvitedForChat:Boolean read FCanBeInvitedForChat write FCanBeInvitedForChat;//4;
+    property Position:string read FPosition write SetPosition;//3;
+    property CanBeInvitedForChat:Boolean read FCanBeInvitedForChat write SetCanBeInvitedForChat;//4;
     property CreationTimestamp:TTimestamp read FCreationTimestamp;//5;
   end;
   TEmployees = specialize GSerializationObjectList<TEmployee>;
@@ -155,22 +162,36 @@ implementation
 
 { TEmployee }
 
+procedure TEmployee.SetCanBeInvitedForChat(AValue: Boolean);
+begin
+  if FCanBeInvitedForChat=AValue then Exit;
+  FCanBeInvitedForChat:=AValue;
+  Modified(4);
+end;
+
+procedure TEmployee.SetPosition(AValue: string);
+begin
+  if FPosition=AValue then Exit;
+  FPosition:=AValue;
+  Modified(3);
+end;
+
 procedure TEmployee.InternalInit;
 begin
   inherited InternalInit;
-  RegisterProp('User', 1);
-  RegisterProp('Permissions', 2);
-  RegisterProp('Position', 3);
-  RegisterProp('CanBeInvitedForChat', 4);
-  RegisterProp('CreationTimestamp', 5);
+  FUser:=TUserV2.Create;
+  FPermissions:=TEmployeePermissions.Create;
+  FCreationTimestamp:=TTimestamp.Create;
 end;
 
 procedure TEmployee.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  FUser:=TUserV2.Create;
-  FPermissions:=TEmployeePermissions.Create;
-  FCreationTimestamp:=TTimestamp.Create;
+  RegisterProp('User', 1, true);
+  RegisterProp('Permissions', 2, true);
+  RegisterProp('Position', 3, true);
+  RegisterProp('CanBeInvitedForChat', 4, true);
+  RegisterProp('CreationTimestamp', 5);
 end;
 
 destructor TEmployee.Destroy;
@@ -183,10 +204,32 @@ end;
 
 { TEmployeePermissions }
 
+procedure TEmployeePermissions.SetDocumentAccessLevel(
+  AValue: TDocumentAccessLevel);
+begin
+  if FDocumentAccessLevel=AValue then Exit;
+  FDocumentAccessLevel:=AValue;
+  Modified(3);
+end;
+
+procedure TEmployeePermissions.SetIsAdministrator(AValue: Boolean);
+begin
+  if FIsAdministrator=AValue then Exit;
+  FIsAdministrator:=AValue;
+  Modified(2);
+end;
+
+procedure TEmployeePermissions.SetUserDepartmentId(AValue: string);
+begin
+  if FUserDepartmentId=AValue then Exit;
+  FUserDepartmentId:=AValue;
+  Modified(1);
+end;
+
 procedure TEmployeePermissions.InternalInit;
 begin
   inherited InternalInit;
-  FDocumentAccessLevel:= UnknownDocumentAccessLevel;
+  DocumentAccessLevel:= UnknownDocumentAccessLevel;
   FSelectedDepartmentIds:=TDocumentStrings.Create;
   FActions:=TEmployeeActions.Create;
 end;
@@ -194,9 +237,9 @@ end;
 procedure TEmployeePermissions.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('UserDepartmentId', 1);
-  RegisterProp('IsAdministrator', 2);
-  RegisterProp('DocumentAccessLevel', 3);
+  RegisterProp('UserDepartmentId', 1, true);
+  RegisterProp('IsAdministrator', 2, true);
+  RegisterProp('DocumentAccessLevel', 3, true);
   RegisterProp('SelectedDepartmentIds', 4);
   RegisterProp('Actions', 5);
 end;
@@ -210,11 +253,25 @@ end;
 
 { TEmployeeAction }
 
+procedure TEmployeeAction.SetIsAllowed(AValue: boolean);
+begin
+  if FIsAllowed=AValue then Exit;
+  FIsAllowed:=AValue;
+  Modified(2);
+end;
+
+procedure TEmployeeAction.SetName(AValue: string);
+begin
+  if FName=AValue then Exit;
+  FName:=AValue;
+  Modified(1);
+end;
+
 procedure TEmployeeAction.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('Name', 1);
-  RegisterProp('IsAllowed', 2);
+  RegisterProp('Name', 1, true);
+  RegisterProp('IsAllowed', 2, true);
 end;
 
 { EmployeeList }
