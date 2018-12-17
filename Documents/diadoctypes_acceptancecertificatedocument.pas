@@ -82,16 +82,21 @@ type
     FReceiptStatus: TReceiptStatus;
     FTotal: string;
     FVat: string;
+    procedure SetDocumentStatus(AValue: TAcceptanceCertificateDocumentStatus);
+    procedure SetGrounds(AValue: string);
+    procedure SetReceiptStatus(AValue: TReceiptStatus);
+    procedure SetTotal(AValue: string);
+    procedure SetVat(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
   published
-    property DocumentStatus:TAcceptanceCertificateDocumentStatus read FDocumentStatus write FDocumentStatus default UnknownAcceptanceCertificateDocumentStatus;//1
-    property Total:string read FTotal write FTotal;       //2
-    property Vat:string read FVat write FVat;             //3
-    property Grounds:string read FGrounds write FGrounds; //4
-    property ReceiptStatus:TReceiptStatus read FReceiptStatus write FReceiptStatus default UnknownReceiptStatus;//5
+    property DocumentStatus:TAcceptanceCertificateDocumentStatus read FDocumentStatus write SetDocumentStatus default UnknownAcceptanceCertificateDocumentStatus;//1
+    property Total:string read FTotal write SetTotal;       //2
+    property Vat:string read FVat write SetVat;             //3
+    property Grounds:string read FGrounds write SetGrounds; //4
+    property ReceiptStatus:TReceiptStatus read FReceiptStatus write SetReceiptStatus default UnknownReceiptStatus;//5
   end;
 
 
@@ -100,11 +105,48 @@ implementation
 
 { TAcceptanceCertificateMetadata }
 
+procedure TAcceptanceCertificateMetadata.SetDocumentStatus(
+  AValue: TAcceptanceCertificateDocumentStatus);
+begin
+  if FDocumentStatus=AValue then Exit;
+  FDocumentStatus:=AValue;
+  Modified(1);
+end;
+
+procedure TAcceptanceCertificateMetadata.SetGrounds(AValue: string);
+begin
+  if FGrounds=AValue then Exit;
+  FGrounds:=AValue;
+  Modified(4);
+end;
+
+procedure TAcceptanceCertificateMetadata.SetReceiptStatus(AValue: TReceiptStatus
+  );
+begin
+  if FReceiptStatus=AValue then Exit;
+  FReceiptStatus:=AValue;
+  Modified(5);
+end;
+
+procedure TAcceptanceCertificateMetadata.SetTotal(AValue: string);
+begin
+  if FTotal=AValue then Exit;
+  FTotal:=AValue;
+  Modified(2);
+end;
+
+procedure TAcceptanceCertificateMetadata.SetVat(AValue: string);
+begin
+  if FVat=AValue then Exit;
+  FVat:=AValue;
+  Modified(3);
+end;
+
 procedure TAcceptanceCertificateMetadata.InternalInit;
 begin
   inherited InternalInit;
-  FDocumentStatus:=UnknownAcceptanceCertificateDocumentStatus;
-  FReceiptStatus:=UnknownReceiptStatus;
+  DocumentStatus:=UnknownAcceptanceCertificateDocumentStatus;
+  ReceiptStatus:=UnknownReceiptStatus;
 end;
 
 procedure TAcceptanceCertificateMetadata.InternalRegisterProperty;
