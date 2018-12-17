@@ -192,6 +192,7 @@ type
   //	optional ResolutionRouteRemovalInfo ResolutionRouteRemovalInfo = 23;	// only for AttachmentType.ResolutionRouteRemovalAttachment
   //	optional CancellationInfo CancellationInfo = 24;						// only for AttachmentType.Cancellation
   //	repeated string Labels = 25;
+  //    optional string Version = 26;
   //}
   TEntity  = class(TSerializationObject) //message Entity
   private
@@ -219,8 +220,10 @@ type
     FResolutionRouteRemovalInfo: TResolutionRouteRemovalInfo;
     FSignerBoxId: string;
     FSignerDepartmentId: string;
+    FVersion: string;
     procedure SetAttachmentType(AValue: TAttachmentType);
     procedure SetEntityType(AValue: TEntityType);
+    procedure SetVersion(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -251,6 +254,7 @@ type
     property ResolutionRouteRemovalInfo:TResolutionRouteRemovalInfo read FResolutionRouteRemovalInfo; //23
     property CancellationInfo:TCancellationInfo read FCancellationInfo; //24
     property Labels:TDocumentStrings read FLabels; //25;
+    property Version:string read FVersion write SetVersion;//26;
   end;
 
   TEntitys = specialize GSerializationObjectList<TEntity>;
@@ -756,6 +760,13 @@ begin
   end;
 end;
 
+procedure TEntity.SetVersion(AValue: string);
+begin
+  if FVersion=AValue then Exit;
+  FVersion:=AValue;
+  Modified(26);
+end;
+
 procedure TEntity.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -782,7 +793,8 @@ begin
   RegisterProp('ResolutionRouteAssignmentInfo', 22);
   RegisterProp('ResolutionRouteRemovalInfo', 23);
   RegisterProp('CancellationInfo', 24);
-  RegisterProp('Labels', 25);
+  RegisterProp('Labels', 25, true);
+  RegisterProp('Version', 26);
 end;
 
 procedure TEntity.InternalInit;

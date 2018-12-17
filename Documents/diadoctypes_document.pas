@@ -340,6 +340,7 @@ type
   //    optional string EditingSettingId = 73 [default = ""];
   //    required LockMode LockMode = 74 [default = None];
   //    required SenderReceiptMetadata SenderReceiptMetadata = 75;
+  //    required string Version = 76;
   //}
   TDocument = class(TSerializationObject)
   private
@@ -413,10 +414,12 @@ type
     FUniversalCorrectionDocumentRevisionMetadata: TUniversalCorrectionDocumentRevisionMetadata;
     FUniversalTransferDocumentMetadata: TUniversalTransferDocumentMetadata;
     FUniversalTransferDocumentRevisionMetadata: TUniversalTransferDocumentRevisionMetadata;
+    FVersion: string;
     FWorkflowId: int32;
     FXmlAcceptanceCertificateMetadata: TBasicDocumentMetadata;
     FXmlTorg12Metadata: TBasicDocumentMetadata;
     procedure SetCreationTimestampTicks(AValue: sfixed64);
+    procedure SetVersion(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
@@ -499,6 +502,7 @@ type
     property EditingSettingId:string read FEditingSettingId write FEditingSettingId;//73 [default = ""];
     property LockMode:TLockMode read FLockMode write FLockMode; //74;
     property SenderReceiptMetadata:TSenderReceiptMetadata read FSenderReceiptMetadata; //75;
+    property Version:string read FVersion write SetVersion;//76;
   end;
   TDocuments = specialize GSerializationObjectList<TDocument>;
 
@@ -604,8 +608,8 @@ end;
 procedure TOrigin.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('MessageType', 1);
-  RegisterProp('MessageId', 2);
+  RegisterProp('MessageType', 1, true);
+  RegisterProp('MessageId', 2, true);
 end;
 
 { TAmendmentRequestMetadata }
@@ -688,6 +692,13 @@ procedure TDocument.SetCreationTimestampTicks(AValue: sfixed64);
 begin
   if FCreationTimestampTicks=AValue then Exit;
   FCreationTimestampTicks:=AValue;
+end;
+
+procedure TDocument.SetVersion(AValue: string);
+begin
+  if FVersion=AValue then Exit;
+  FVersion:=AValue;
+  Modified(76);
 end;
 
 procedure TDocument.InternalInit;
@@ -812,8 +823,9 @@ begin
   RegisterProp('AmendmentRequestMetadata', 71);
   RegisterProp('Origin', 72);
   RegisterProp('EditingSettingId', 73);
-  RegisterProp('LockMode', 74);
-  RegisterProp('SenderReceiptMetadata', 75);
+  RegisterProp('LockMode', 74, true);
+  RegisterProp('SenderReceiptMetadata', 75, true);
+  RegisterProp('Version', 76, true);
 end;
 
 destructor TDocument.Destroy;

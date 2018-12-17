@@ -378,6 +378,7 @@ type
   //	optional UniversalTransferDocumentInfo UniversalTransferDocumentInfo = 15; // for UniversalTransferDocument, UniversalTransferDocumentRevision
   //	optional UniversalCorrectionDocumentInfo UniversalCorrectionDocumentInfo = 16; // for UniversalCorrectionDocument, UniversalCorrectionDocumentRevision
   //	optional string AttachmentVersion = 17;
+  //    required string Version = 18;
   //}
   TDocumentInfo = class(TSerializationObject) //message DocumentInfo
   private
@@ -398,6 +399,7 @@ type
     FToDepartmentId: string;
     FUniversalCorrectionDocumentInfo: TUniversalCorrectionDocumentInfo;
     FUniversalTransferDocumentInfo: TUniversalTransferDocumentInfo;
+    FVersion: string;
     procedure SetAttachmentVersion(AValue: string);
     procedure SetCounteragentBoxId(AValue: string);
     procedure SetCustomDocumentId(AValue: string);
@@ -406,6 +408,7 @@ type
     procedure SetFromDepartmentId(AValue: string);
     procedure SetIsTest(AValue: Boolean);
     procedure SetToDepartmentId(AValue: string);
+    procedure SetVersion(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -429,6 +432,7 @@ type
     property UniversalTransferDocumentInfo:TUniversalTransferDocumentInfo read FUniversalTransferDocumentInfo;//15;
     property UniversalCorrectionDocumentInfo:TUniversalCorrectionDocumentInfo read FUniversalCorrectionDocumentInfo; //16
     property AttachmentVersion:string read FAttachmentVersion write SetAttachmentVersion; //17;
+    property Version:string read FVersion write SetVersion; //18;
   end;
 
 implementation
@@ -488,6 +492,13 @@ begin
   Modified(6);
 end;
 
+procedure TDocumentInfo.SetVersion(AValue: string);
+begin
+  if FVersion=AValue then Exit;
+  FVersion:=AValue;
+  Modified(18);
+end;
+
 procedure TDocumentInfo.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -508,6 +519,7 @@ begin
   RegisterProp('UniversalTransferDocumentInfo', 15);
   RegisterProp('UniversalCorrectionDocumentInfo', 16);
   RegisterProp('AttachmentVersion', 17);
+  RegisterProp('Version', 18, true);
 end;
 
 procedure TDocumentInfo.InternalInit;
