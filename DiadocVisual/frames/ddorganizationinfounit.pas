@@ -90,6 +90,8 @@ type
     destructor Destroy; override;
     procedure LoadInfo(AOrganization: TOrganization);
     procedure ClearInfo;
+    property BoxInfo: TBoxInfoFrame read FBoxInfo;
+    property Address:TAdressInfoFrame read FAddress;
   end;
 
 implementation
@@ -166,7 +168,10 @@ begin
       ListBox1.Items.AddObject(B.BoxId, B);
 
     if ListBox1.Items.Count>0 then
-      ListBox1.ItemIndex:=0
+    begin
+      ListBox1.ItemIndex:=0;
+      ListBox1Click(nil);
+    end
     else
       FBoxInfo.ClearInfo;
   end

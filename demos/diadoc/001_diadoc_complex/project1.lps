@@ -19,8 +19,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="DDAPIMainUnit"/>
-        <TopLine Value="340"/>
-        <CursorPos Y="356"/>
+        <TopLine Value="352"/>
+        <CursorPos Y="371"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -276,7 +276,8 @@
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="BoxInfoUnit"/>
         <EditorIndex Value="-1"/>
-        <CursorPos Y="31"/>
+        <TopLine Value="30"/>
+        <CursorPos X="3" Y="45"/>
         <UsageCount Value="200"/>
       </Unit24>
       <Unit25>
@@ -286,10 +287,11 @@
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="ddOrganizationInfoUnit"/>
         <EditorIndex Value="2"/>
-        <TopLine Value="29"/>
-        <CursorPos X="3" Y="45"/>
+        <TopLine Value="77"/>
+        <CursorPos X="31" Y="82"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit25>
       <Unit26>
         <Filename Value="../../../DiadocVisual/frames/adressinfoframeunit.pas"/>
@@ -298,8 +300,8 @@
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="AdressInfoFrameUnit"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="74"/>
-        <CursorPos Y="32"/>
+        <TopLine Value="30"/>
+        <CursorPos X="50" Y="48"/>
         <UsageCount Value="120"/>
       </Unit26>
       <Unit27>
@@ -1970,11 +1972,10 @@
       <Unit240>
         <Filename Value="../../../DiadocVisual/ddvisualcommon.pas"/>
         <UnitName Value="ddVisualCommon"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="33"/>
         <CursorPos X="3" Y="44"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit240>
       <Unit241>
         <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
@@ -1982,8 +1983,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ddSelectClient"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
-        <CursorPos Y="31"/>
+        <TopLine Value="155"/>
+        <CursorPos X="17" Y="175"/>
         <UsageCount Value="10"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -2045,77 +2048,76 @@
       <Unit249>
         <Filename Value="../../../DiadocVisual/ddconsts.pas"/>
         <UnitName Value="ddConsts"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="15"/>
         <CursorPos Y="31"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit249>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="131" Column="16" TopLine="120"/>
+        <Filename Value="ddapimainunit.pas"/>
+        <Caret Line="356" TopLine="340"/>
       </Position1>
       <Position2>
         <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="73" Column="14" TopLine="52"/>
+        <Caret Line="149" TopLine="137"/>
       </Position2>
       <Position3>
         <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="146" Column="3" TopLine="135"/>
+        <Caret Line="150" TopLine="137"/>
       </Position3>
       <Position4>
         <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="56" Column="15" TopLine="40"/>
+        <Caret Line="151" TopLine="137"/>
       </Position4>
       <Position5>
         <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="112" Column="3" TopLine="102"/>
+        <Caret Line="152" TopLine="137"/>
       </Position5>
       <Position6>
         <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="51" Column="15" TopLine="40"/>
+        <Caret Line="153" TopLine="137"/>
       </Position6>
       <Position7>
-        <Filename Value="ddapimainunit.pas"/>
-        <Caret Line="263" Column="3" TopLine="258"/>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="155" Column="4" TopLine="137"/>
       </Position7>
       <Position8>
         <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="92" Column="3" TopLine="76"/>
+        <Caret Line="83" Column="57" TopLine="57"/>
       </Position8>
       <Position9>
         <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="94" Column="3" TopLine="76"/>
+        <Caret Line="73" Column="49" TopLine="57"/>
       </Position9>
       <Position10>
         <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="95" Column="25" TopLine="78"/>
+        <Caret Line="74" Column="54" TopLine="57"/>
       </Position10>
       <Position11>
-        <Filename Value="ddapimainunit.pas"/>
-        <Caret Line="464" TopLine="451"/>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="151" Column="33" TopLine="148"/>
       </Position11>
       <Position12>
-        <Filename Value="ddapimainunit.pas"/>
-        <Caret Line="263" Column="3" TopLine="259"/>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="89" TopLine="74"/>
       </Position12>
       <Position13>
-        <Filename Value="ddapimainunit.pas"/>
-        <Caret Line="356" TopLine="352"/>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="115" Column="30" TopLine="85"/>
       </Position13>
       <Position14>
-        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="95" Column="25" TopLine="78"/>
+        <Filename Value="../../../DiadocVisual/frames/ddorganizationinfounit.pas"/>
+        <Caret Line="91" Column="15" TopLine="76"/>
       </Position14>
       <Position15>
-        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="151" Column="40" TopLine="138"/>
+        <Filename Value="../../../DiadocVisual/frames/ddorganizationinfounit.pas"/>
+        <Caret Line="171" Column="13" TopLine="146"/>
       </Position15>
       <Position16>
-        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="153" Column="75" TopLine="137"/>
+        <Filename Value="../../../DiadocVisual/frames/ddorganizationinfounit.pas"/>
+        <Caret Line="105" Column="3" TopLine="100"/>
       </Position16>
       <Position17>
         <Filename Value="ddapimainunit.pas"/>
@@ -2123,55 +2125,55 @@
       </Position17>
       <Position18>
         <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="149" TopLine="137"/>
+        <Caret Line="164" Column="10" TopLine="143"/>
       </Position18>
       <Position19>
-        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="150" TopLine="137"/>
+        <Filename Value="../../../DiadocVisual/frames/ddorganizationinfounit.pas"/>
+        <Caret Line="105" Column="3" TopLine="100"/>
       </Position19>
       <Position20>
-        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="151" TopLine="137"/>
+        <Filename Value="../../../DiadocVisual/frames/ddorganizationinfounit.pas"/>
+        <Caret Line="86" Column="5" TopLine="10"/>
       </Position20>
       <Position21>
-        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="152" TopLine="137"/>
+        <Filename Value="../../../DiadocVisual/frames/ddorganizationinfounit.pas"/>
+        <Caret Line="91" Column="31" TopLine="86"/>
       </Position21>
       <Position22>
-        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="153" TopLine="137"/>
+        <Filename Value="../../../DiadocVisual/frames/ddorganizationinfounit.pas"/>
+        <Caret Line="135" Column="3" TopLine="151"/>
       </Position22>
       <Position23>
-        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="155" Column="4" TopLine="137"/>
+        <Filename Value="../../../DiadocVisual/frames/ddorganizationinfounit.pas"/>
+        <Caret Line="88" Column="15" TopLine="76"/>
       </Position23>
       <Position24>
         <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="83" Column="57" TopLine="57"/>
+        <Caret Line="171" Column="54" TopLine="152"/>
       </Position24>
       <Position25>
         <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="73" Column="49" TopLine="57"/>
+        <Caret Line="53" Column="5" TopLine="37"/>
       </Position25>
       <Position26>
-        <Filename Value="../../../DiadocVisual/ddvisualcommon.pas"/>
-        <Caret Line="44" Column="3" TopLine="33"/>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="172" Column="51" TopLine="154"/>
       </Position26>
       <Position27>
-        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="74" Column="54" TopLine="57"/>
+        <Filename Value="../../../DiadocVisual/frames/ddorganizationinfounit.pas"/>
+        <Caret Line="93" Column="14" TopLine="77"/>
       </Position27>
       <Position28>
         <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="151" Column="33" TopLine="148"/>
+        <Caret Line="173" TopLine="79"/>
       </Position28>
       <Position29>
-        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Caret Line="89" TopLine="74"/>
+        <Filename Value="ddapimainunit.pas"/>
+        <Caret Line="371" TopLine="352"/>
       </Position29>
       <Position30>
-        <Filename Value="../../../DiadocVisual/ddconsts.pas"/>
-        <Caret Line="11" Column="23"/>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="75" Column="14" TopLine="59"/>
       </Position30>
     </JumpHistory>
     <RunParams>
@@ -2180,22 +2182,6 @@
     </RunParams>
   </ProjectSession>
   <Debugging>
-    <BreakPoints Count="2">
-      <Item1>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="ddapimainunit.pas"/>
-        <Line Value="356"/>
-      </Item1>
-      <Item2>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="../../../DiadocVisual/ddselectclient.pas"/>
-        <Line Value="159"/>
-      </Item2>
-    </BreakPoints>
     <Watches Count="1">
       <Item1>
         <Expression Value="P.FPropName"/>

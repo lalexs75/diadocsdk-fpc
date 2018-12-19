@@ -2,9 +2,9 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
   Left = 0
   Height = 459
   Top = 0
-  Width = 666
+  Width = 717
   ClientHeight = 459
-  ClientWidth = 666
+  ClientWidth = 717
   TabOrder = 0
   DesignLeft = 800
   DesignTop = 123
@@ -12,7 +12,7 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
     Left = 0
     Height = 459
     Top = 0
-    Width = 666
+    Width = 717
     ActivePage = TabSheet1
     Align = alClient
     TabIndex = 0
@@ -20,7 +20,7 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
     object TabSheet1: TTabSheet
       Caption = 'Общие данные'
       ClientHeight = 426
-      ClientWidth = 656
+      ClientWidth = 707
       object Label1: TLabel
         AnchorSideLeft.Control = TabSheet1
         AnchorSideBottom.Control = edtOrgId
@@ -43,9 +43,10 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         Left = 115
         Height = 31
         Top = 6
-        Width = 535
+        Width = 586
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
+        ReadOnly = True
         TabOrder = 0
         Text = 'edtOrgId'
       end
@@ -72,9 +73,10 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         Left = 45
         Height = 31
         Top = 43
-        Width = 278
+        Width = 303
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
+        ReadOnly = True
         TabOrder = 1
         Text = 'edtOrgINN'
       end
@@ -83,7 +85,7 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         AnchorSideLeft.Side = asrBottom
         AnchorSideBottom.Control = edtOrgKPP
         AnchorSideBottom.Side = asrBottom
-        Left = 335
+        Left = 360
         Height = 19
         Top = 55
         Width = 32
@@ -99,12 +101,13 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrBottom
-        Left = 373
+        Left = 398
         Height = 31
         Top = 43
-        Width = 277
+        Width = 303
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
+        ReadOnly = True
         TabOrder = 2
         Text = 'edtOrgKPP'
       end
@@ -131,9 +134,10 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         Left = 167
         Height = 31
         Top = 80
-        Width = 483
+        Width = 534
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
+        ReadOnly = True
         TabOrder = 3
         Text = 'edtOrgFullName'
       end
@@ -141,7 +145,7 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         AnchorSideLeft.Control = TabSheet1
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = TabSheet1
-        Left = 328
+        Left = 353
         Height = 1
         Top = 0
         Width = 1
@@ -170,9 +174,10 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         Left = 168
         Height = 31
         Top = 117
-        Width = 482
+        Width = 533
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
+        ReadOnly = True
         TabOrder = 4
         Text = 'edtShortName'
       end
@@ -198,9 +203,10 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         Left = 51
         Height = 31
         Top = 154
-        Width = 271
+        Width = 296
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
+        ReadOnly = True
         TabOrder = 5
         Text = 'edtOgrn'
       end
@@ -208,7 +214,7 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         AnchorSideLeft.Control = Label5
         AnchorSideBottom.Control = edtFnsParticipantId
         AnchorSideBottom.Side = asrBottom
-        Left = 334
+        Left = 359
         Height = 19
         Top = 166
         Width = 134
@@ -224,12 +230,13 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrBottom
-        Left = 474
+        Left = 499
         Height = 31
         Top = 154
-        Width = 176
+        Width = 202
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
+        ReadOnly = True
         TabOrder = 6
         Text = 'edtFnsParticipantId'
       end
@@ -255,9 +262,10 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         Left = 123
         Height = 31
         Top = 191
-        Width = 199
+        Width = 224
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
+        ReadOnly = True
         TabOrder = 7
         Text = 'edtFnsRegistrationDate'
       end
@@ -266,7 +274,7 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         AnchorSideLeft.Side = asrBottom
         AnchorSideBottom.Control = edtIfnsCode
         AnchorSideBottom.Side = asrBottom
-        Left = 335
+        Left = 360
         Height = 19
         Top = 203
         Width = 101
@@ -282,12 +290,13 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrBottom
-        Left = 442
+        Left = 467
         Height = 31
         Top = 191
-        Width = 208
+        Width = 234
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
+        ReadOnly = True
         TabOrder = 8
         Text = 'edtIfnsCode'
       end
@@ -301,6 +310,7 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         Width = 163
         BorderSpacing.Around = 6
         Caption = 'В пилотном режиме'
+        Enabled = False
         TabOrder = 9
       end
       object cbIsActive: TCheckBox
@@ -313,6 +323,7 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         Width = 157
         BorderSpacing.Around = 6
         Caption = 'Активна в Диадоке'
+        Enabled = False
         TabOrder = 10
       end
       object cbIsTest: TCheckBox
@@ -325,6 +336,7 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         Width = 159
         BorderSpacing.Around = 6
         Caption = 'В тестовом режиме'
+        Enabled = False
         TabOrder = 11
       end
       object cbIsBranch: TCheckBox
@@ -332,12 +344,13 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = edtIfnsCode
         AnchorSideTop.Side = asrBottom
-        Left = 335
+        Left = 360
         Height = 23
         Top = 228
         Width = 82
         BorderSpacing.Around = 6
         Caption = 'Филиал'
+        Enabled = False
         TabOrder = 12
       end
       object cbIsRoaming: TCheckBox
@@ -345,12 +358,13 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = cbIsBranch
         AnchorSideTop.Side = asrBottom
-        Left = 335
+        Left = 360
         Height = 23
         Top = 257
         Width = 126
         BorderSpacing.Around = 6
         Caption = 'Через роуминг'
+        Enabled = False
         TabOrder = 13
       end
       object cbIsEmployee: TCheckBox
@@ -358,12 +372,13 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = cbIsRoaming
         AnchorSideTop.Side = asrBottom
-        Left = 335
+        Left = 360
         Height = 23
         Top = 286
         Width = 208
         BorderSpacing.Around = 6
         Caption = 'Cотрудником организации'
+        Enabled = False
         TabOrder = 14
       end
       object edtSociability: TEdit
@@ -376,9 +391,11 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         Left = 191
         Height = 31
         Top = 315
-        Width = 459
+        Width = 510
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
+        Enabled = False
+        ReadOnly = True
         TabOrder = 15
         Text = 'edtSociability'
       end
@@ -405,6 +422,7 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         Width = 111
         BorderSpacing.Around = 6
         Caption = 'Не резидент'
+        Enabled = False
         TabOrder = 16
       end
       object Label12: TLabel
@@ -424,7 +442,7 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         AnchorSideLeft.Control = Label5
         AnchorSideBottom.Control = edtCertificateOfRegistryInfo
         AnchorSideBottom.Side = asrBottom
-        Left = 328
+        Left = 353
         Height = 19
         Top = 393
         Width = 169
@@ -441,9 +459,11 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         Left = 144
         Height = 31
         Top = 381
-        Width = 178
+        Width = 203
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
+        Enabled = False
+        ReadOnly = True
         TabOrder = 17
         Text = 'edtLiquidationDate'
       end
@@ -454,12 +474,14 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrBottom
-        Left = 503
+        Left = 528
         Height = 31
         Top = 381
-        Width = 147
+        Width = 173
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Around = 6
+        Enabled = False
+        ReadOnly = True
         TabOrder = 18
         Text = 'edtCertificateOfRegistryInfo'
       end
@@ -470,16 +492,16 @@ object OrganizationInfoFrame: TOrganizationInfoFrame
     object TabSheet3: TTabSheet
       Caption = 'Документооборот - почта '
       ClientHeight = 426
-      ClientWidth = 656
+      ClientWidth = 707
       object Splitter1: TSplitter
         Left = 141
-        Height = 356
+        Height = 426
         Top = 0
         Width = 5
       end
       object ListBox1: TListBox
         Left = 0
-        Height = 356
+        Height = 426
         Top = 0
         Width = 141
         Align = alLeft

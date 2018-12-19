@@ -93,6 +93,7 @@ begin
   end
   else
     ClearInfo;
+  GroupBox1.Visible:=Assigned(FOrganizationInfoFrame);
 end;
 
 procedure TBoxInfoFrame.ClearInfo;

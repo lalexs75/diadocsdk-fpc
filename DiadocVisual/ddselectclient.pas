@@ -160,13 +160,19 @@ begin
   Clear;
   if not Assigned(Connection) then Exit;
   FEditForm:=TddSelectClientForm.Create(Application);
+  FEditForm.Caption:=FCaption;
   FOrganizationList:=Connection.GetOrganizationsByInnKpp(AInn, AKpp, false);
 
   FEditForm.FillList(FOrganizationList);
   if FEditForm.ShowModal = mrOk then
   begin
-
-    Result:=false;
+    FSelectedIndex:=FEditForm.ListBox1.ItemIndex;
+    if (FSelectedIndex>-1) and Assigned(FEditForm.FOrganizationInfoFrame.BoxInfo) then
+    begin
+      if (FEditForm.FOrganizationInfoFrame.ListBox1.ItemIndex>-1) and (FEditForm.FOrganizationInfoFrame.ListBox1.ItemIndex < FEditForm.FOrganizationInfoFrame.ListBox1.Items.Count) then
+        FSelectedBox:=TBox(FEditForm.FOrganizationInfoFrame.ListBox1.Items.Objects[FEditForm.FOrganizationInfoFrame.ListBox1.ItemIndex]);
+    end;
+    Result:=true;
   end;
   FEditForm.Free;
 end;

@@ -350,10 +350,25 @@ begin
 end;
 
 procedure TDDAPIMainForm.Button4Click(Sender: TObject);
+var
+  S: String;
 begin
   SetupAPI;
 
-  DiadocSelectClient1.Execute(edtFndINN.Text, edtFndKPP.Text);
+  if DiadocSelectClient1.Execute(edtFndINN.Text, edtFndKPP.Text) then
+  begin
+    if Assigned(DiadocSelectClient1.Selected) then
+    begin
+      S:='Организация - ' + DiadocSelectClient1.Selected.FullName + LineEnding;
+      if Assigned(DiadocSelectClient1.SelectedBox) then
+        S:=S + 'Почтовый ящик - ' + DiadocSelectClient1.SelectedBox.Title
+      else
+        S:=S + 'Не выбран почтовый ящик';
+      InfoBox(S);
+    end
+    else
+      ErrorBox('Ничего не выбрано');
+  end;
 end;
 
 procedure TDDAPIMainForm.Button5Click(Sender: TObject);

@@ -1,10 +1,10 @@
 object AdressInfoFrame: TAdressInfoFrame
   Left = 0
-  Height = 240
+  Height = 237
   Top = 0
-  Width = 522
-  ClientHeight = 240
-  ClientWidth = 522
+  Width = 586
+  ClientHeight = 237
+  ClientWidth = 586
   TabOrder = 0
   DesignLeft = 733
   DesignTop = 83
@@ -29,9 +29,10 @@ object AdressInfoFrame: TAdressInfoFrame
     Left = 68
     Height = 31
     Top = 6
-    Width = 187
+    Width = 219
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
+    ReadOnly = True
     TabOrder = 0
     Text = 'edtAddressCode'
   end
@@ -40,7 +41,7 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideLeft.Side = asrBottom
     AnchorSideBottom.Control = edtZipCode
     AnchorSideBottom.Side = asrBottom
-    Left = 268
+    Left = 300
     Height = 19
     Top = 18
     Width = 49
@@ -67,7 +68,7 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideLeft.Side = asrBottom
     AnchorSideBottom.Control = edtTerritory
     AnchorSideBottom.Side = asrBottom
-    Left = 268
+    Left = 300
     Height = 19
     Top = 55
     Width = 41
@@ -107,7 +108,7 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideLeft.Side = asrBottom
     AnchorSideBottom.Control = edtLocality
     AnchorSideBottom.Side = asrBottom
-    Left = 268
+    Left = 300
     Height = 19
     Top = 92
     Width = 123
@@ -121,7 +122,7 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideLeft.Side = asrBottom
     AnchorSideBottom.Control = edtApartment
     AnchorSideBottom.Side = asrBottom
-    Left = 404
+    Left = 436
     Height = 19
     Top = 129
     Width = 63
@@ -135,7 +136,7 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideLeft.Side = asrBottom
     AnchorSideBottom.Control = edtBlock
     AnchorSideBottom.Side = asrBottom
-    Left = 268
+    Left = 300
     Height = 19
     Top = 129
     Width = 45
@@ -162,7 +163,7 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideLeft.Control = Owner
     AnchorSideLeft.Side = asrCenter
     AnchorSideTop.Control = Owner
-    Left = 261
+    Left = 293
     Height = 1
     Top = 0
     Width = 1
@@ -174,12 +175,13 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 323
+    Left = 355
     Height = 31
     Top = 6
-    Width = 193
+    Width = 225
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
+    ReadOnly = True
     TabOrder = 1
     Text = 'edtZipCode'
   end
@@ -192,9 +194,10 @@ object AdressInfoFrame: TAdressInfoFrame
     Left = 93
     Height = 31
     Top = 43
-    Width = 162
+    Width = 194
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
+    ReadOnly = True
     TabOrder = 2
     Text = 'edtRegion'
   end
@@ -205,12 +208,13 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 315
+    Left = 347
     Height = 31
     Top = 43
-    Width = 201
+    Width = 233
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
+    ReadOnly = True
     TabOrder = 3
     Text = 'edtTerritory'
   end
@@ -223,9 +227,10 @@ object AdressInfoFrame: TAdressInfoFrame
     Left = 50
     Height = 31
     Top = 80
-    Width = 205
+    Width = 237
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
+    ReadOnly = True
     TabOrder = 4
     Text = 'edtCity'
   end
@@ -236,12 +241,13 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 397
+    Left = 429
     Height = 31
     Top = 80
-    Width = 119
+    Width = 151
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
+    ReadOnly = True
     TabOrder = 5
     Text = 'edtLocality'
   end
@@ -255,6 +261,7 @@ object AdressInfoFrame: TAdressInfoFrame
     Top = 117
     Width = 131
     BorderSpacing.Around = 6
+    ReadOnly = True
     TabOrder = 6
     Text = 'edtStreet'
   end
@@ -267,9 +274,10 @@ object AdressInfoFrame: TAdressInfoFrame
     Left = 223
     Height = 31
     Top = 117
-    Width = 32
+    Width = 64
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
+    ReadOnly = True
     TabOrder = 7
     Text = 'edtBuilding'
   end
@@ -278,11 +286,12 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = edtLocality
     AnchorSideTop.Side = asrBottom
-    Left = 319
+    Left = 351
     Height = 31
     Top = 117
     Width = 79
     BorderSpacing.Around = 6
+    ReadOnly = True
     TabOrder = 8
     Text = 'edtBlock'
   end
@@ -293,12 +302,13 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 473
+    Left = 505
     Height = 31
     Top = 117
-    Width = 43
+    Width = 75
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
+    ReadOnly = True
     TabOrder = 9
     Text = 'edtApartment'
   end
@@ -338,9 +348,10 @@ object AdressInfoFrame: TAdressInfoFrame
     Left = 92
     Height = 31
     Top = 154
-    Width = 424
+    Width = 488
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
+    ReadOnly = True
     TabOrder = 10
     Text = 'edtCountry'
   end
@@ -354,9 +365,10 @@ object AdressInfoFrame: TAdressInfoFrame
     Left = 110
     Height = 31
     Top = 191
-    Width = 406
+    Width = 470
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
+    ReadOnly = True
     TabOrder = 11
     Text = 'edtFKAddress'
   end

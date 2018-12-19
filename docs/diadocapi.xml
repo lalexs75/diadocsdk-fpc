@@ -161,6 +161,10 @@
     <element name="TDiadocAPI.GetEmployees"><short>Возвращает список сотрудников организации.</short><descr><p>Сотрудники сортируются по признаку IsRegistered струкуры UserV2 (сначала выводятся сотрудники без учетной записи в системе), а затем по дате создания в прямом порядке.</p><p>Сотрудники возвращаются постранично, для навигации используется параметр page.</p><p>Запрос доступен только администраторам организации.</p>
         </descr>
       </element>
+    <element name="TDiadocAPI.GetOrganizationsByInnKpp.AINN"><short>ИНН организации</short>
+      </element><element name="TDiadocAPI.GetOrganizationsByInnKpp.AKPP"><short>КПП организации (может отсутствовать)</short>
+      </element><element name="TDiadocAPI.GetOrganizationsByInnKpp.AIncludeRelations"><short>признак, указывающий на то, нужно ли возвращать данные о количестве контрагентов, заинтересованных в сотрудничестве с данной организацией</short>
+      </element>
     </module>
   </package>
 </fpdoc-descriptions>
