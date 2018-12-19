@@ -28,27 +28,33 @@
       <FormatVersion Value="2"/>
       <Modes Count="0"/>
     </RunParams>
-    <RequiredPackages Count="6">
+    <RequiredPackages Count="8">
       <Item1>
-        <PackageName Value="FCL"/>
+        <PackageName Value="diadoc_visual"/>
       </Item1>
       <Item2>
-        <PackageName Value="LazControls"/>
+        <PackageName Value="AnchorDocking"/>
       </Item2>
       <Item3>
-        <PackageName Value="rxnew"/>
+        <PackageName Value="FCL"/>
       </Item3>
       <Item4>
-        <PackageName Value="diadoc_fpc"/>
+        <PackageName Value="LazControls"/>
       </Item4>
       <Item5>
-        <PackageName Value="laz_synapse"/>
+        <PackageName Value="rxnew"/>
       </Item5>
       <Item6>
-        <PackageName Value="LCL"/>
+        <PackageName Value="diadoc_fpc"/>
       </Item6>
+      <Item7>
+        <PackageName Value="laz_synapse"/>
+      </Item7>
+      <Item8>
+        <PackageName Value="LCL"/>
+      </Item8>
     </RequiredPackages>
-    <Units Count="27">
+    <Units Count="24">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -102,153 +108,129 @@
         <UnitName Value="MessageForDocUnit"/>
       </Unit7>
       <Unit8>
-        <Filename Value="frames/boxinfounit.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="BoxInfoFrame"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Frame"/>
-        <UnitName Value="BoxInfoUnit"/>
-      </Unit8>
-      <Unit9>
-        <Filename Value="frames/organizationinfounit.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="OrganizationInfoFrame"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Frame"/>
-        <UnitName Value="OrganizationInfoUnit"/>
-      </Unit9>
-      <Unit10>
         <Filename Value="forms/universaltransferdocumentsellertitleinfounit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="UniversalTransferDocumentSellerTitleInfoForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UniversalTransferDocumentSellerTitleInfoUnit"/>
-      </Unit10>
-      <Unit11>
+      </Unit8>
+      <Unit9>
         <Filename Value="frames/diadocdocumentunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="DiadocDocumentFrame"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="DiadocDocumentUnit"/>
-      </Unit11>
-      <Unit12>
+      </Unit9>
+      <Unit10>
         <Filename Value="forms/universaltransferdocumentbuyertitleinfounit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="UniversalTransferDocumentBuyerTitleInfoForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UniversalTransferDocumentBuyerTitleInfoUnit"/>
-      </Unit12>
-      <Unit13>
+      </Unit10>
+      <Unit11>
         <Filename Value="frames/contragentslistunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="ContragentsListFrame"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="ContragentsListUnit"/>
-      </Unit13>
-      <Unit14>
+      </Unit11>
+      <Unit12>
         <Filename Value="forms/organizationuserslistunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="OrganizationUsersListForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="OrganizationUsersListUnit"/>
-      </Unit14>
-      <Unit15>
+      </Unit12>
+      <Unit13>
         <Filename Value="forms/boxeventlistunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="BoxEventListForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="BoxEventListUnit"/>
-      </Unit15>
-      <Unit16>
+      </Unit13>
+      <Unit14>
         <Filename Value="forms/userpermissionsunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="UserPermissionsForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UserPermissionsUnit"/>
-      </Unit16>
-      <Unit17>
+      </Unit14>
+      <Unit15>
         <Filename Value="forms/contragentfindunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="ContragentFindForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ContragentFindUnit"/>
-      </Unit17>
-      <Unit18>
+      </Unit15>
+      <Unit16>
         <Filename Value="forms/showboxinfounit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="ShowBoxInfoForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ShowBoxInfoUnit"/>
-      </Unit18>
-      <Unit19>
-        <Filename Value="frames/adressinfoframeunit.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="AdressInfoFrame"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Frame"/>
-        <UnitName Value="AdressInfoFrameUnit"/>
-      </Unit19>
-      <Unit20>
+      </Unit16>
+      <Unit17>
         <Filename Value="forms/organizationinfoformunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="OrganizationInfoForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="OrganizationInfoFormUnit"/>
-      </Unit20>
-      <Unit21>
+      </Unit17>
+      <Unit18>
         <Filename Value="forms/selectdepartmentunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="SelectDepartmentForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SelectDepartmentUnit"/>
-      </Unit21>
-      <Unit22>
+      </Unit18>
+      <Unit19>
         <Filename Value="ddmaindataunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="MainDM"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="ddMainDataUnit"/>
-      </Unit22>
-      <Unit23>
+      </Unit19>
+      <Unit20>
         <Filename Value="tools/ddnewdocutdunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ddNewDocUTDUnit"/>
-      </Unit23>
-      <Unit24>
+      </Unit20>
+      <Unit21>
         <Filename Value="frames/transferinfounit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="TransferInfoFrame"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="TransferInfoUnit"/>
-      </Unit24>
-      <Unit25>
+      </Unit21>
+      <Unit22>
         <Filename Value="frames/extendedorganizationinfounit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="ExtendedOrganizationInfoFrame"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="ExtendedOrganizationInfoUnit"/>
-      </Unit25>
-      <Unit26>
+      </Unit22>
+      <Unit23>
         <Filename Value="frames/employeeunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="EmployeeFrame"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="EmployeeUnit"/>
-      </Unit26>
+      </Unit23>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -258,7 +240,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="$(LazarusDir)/components/synapse;frames;forms;tools"/>
+      <OtherUnitFiles Value="$(LazarusDir)/components/synapse;frames;forms;tools;../../../DiadocVisual/frames"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Linking>

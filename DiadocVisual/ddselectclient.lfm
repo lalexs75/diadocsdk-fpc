@@ -1,0 +1,46 @@
+object ddSelectClientForm: TddSelectClientForm
+  Left = 603
+  Height = 468
+  Top = 221
+  Width = 779
+  Caption = 'Найденные контрагенты'
+  ClientHeight = 468
+  ClientWidth = 779
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '2.1.0.0'
+  object ButtonPanel1: TButtonPanel
+    Left = 6
+    Height = 42
+    Top = 420
+    Width = 767
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    TabOrder = 0
+    ShowButtons = [pbOK, pbCancel, pbHelp]
+  end
+  object ListBox1: TListBox
+    Left = 0
+    Height = 414
+    Top = 0
+    Width = 100
+    Align = alLeft
+    ItemHeight = 0
+    OnClick = ListBox1Click
+    ScrollWidth = 98
+    TabOrder = 1
+    TopIndex = -1
+  end
+  object Splitter1: TSplitter
+    Left = 100
+    Height = 414
+    Top = 0
+    Width = 5
+  end
+end

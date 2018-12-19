@@ -369,7 +369,7 @@ uses synautil, synacode, XMLRead;
 
 procedure Register;
 begin
-  RegisterComponents('TradeEquipment',[TDiadocAPI]);
+  RegisterComponents('Diadoc',[TDiadocAPI]);
 end;
 
 function CreateUtdDocumentTitleType(AForBuyer, AForCorrection:Boolean):TDocumentTitleType;

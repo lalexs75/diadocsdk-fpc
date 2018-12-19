@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ButtonPanel,
-  OrganizationInfoUnit, DiadocTypes_Organization;
+  ddOrganizationInfoUnit, DiadocTypes_Organization;
 
 type
 

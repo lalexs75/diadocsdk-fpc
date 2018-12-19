@@ -7,13 +7,15 @@ uses
   cthreads,
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, lazcontrols, rxAppUtils, DDAPIMainUnit, ssl_openssl, ssl_openssl_lib,
-  CounteragentListUnit, DocListUnit, BoxPropsUnit, MessageForDocUnit,
-  BoxInfoUnit, OrganizationInfoUnit,
+  Forms, lazcontrols, anchordockpkg,
+  rxAppUtils, rxlogging,
+  DDAPIMainUnit, ssl_openssl,
+  ssl_openssl_lib, CounteragentListUnit, DocListUnit, BoxPropsUnit,
+  MessageForDocUnit,
   UniversalTransferDocumentSellerTitleInfoUnit, DiadocDocumentUnit,
   UniversalTransferDocumentBuyerTitleInfoUnit, ContragentsListUnit,
   OrganizationUsersListUnit, BoxEventListUnit, UserPermissionsUnit,
-  ContragentFindUnit, ShowBoxInfoUnit, AdressInfoFrameUnit,
+  ContragentFindUnit, ShowBoxInfoUnit,
   OrganizationInfoFormUnit, SelectDepartmentUnit, ddMainDataUnit,
   ddNewDocUTDUnit, TransferInfoUnit, ExtendedOrganizationInfoUnit, EmployeeUnit
   { you can add units after this };

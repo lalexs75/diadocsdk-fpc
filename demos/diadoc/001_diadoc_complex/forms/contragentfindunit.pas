@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
   ButtonPanel, ExtCtrls, DiadocAPI, DiadocTypes_Organization, BoxInfoUnit,
-  OrganizationInfoUnit;
+  ddOrganizationInfoUnit;
 
 type
 

@@ -3,13 +3,13 @@
   <ProjectSession>
     <Version Value="11"/>
     <BuildModes Active="Default"/>
-    <Units Count="236">
+    <Units Count="250">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="2"/>
-        <CursorPos X="13" Y="11"/>
+        <TopLine Value="3"/>
+        <CursorPos X="73" Y="23"/>
         <UsageCount Value="200"/>
       </Unit0>
       <Unit1>
@@ -19,8 +19,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="DDAPIMainUnit"/>
-        <TopLine Value="508"/>
-        <CursorPos X="82" Y="539"/>
+        <TopLine Value="340"/>
+        <CursorPos Y="356"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -85,30 +85,6 @@
         <UsageCount Value="200"/>
       </Unit7>
       <Unit8>
-        <Filename Value="frames/boxinfounit.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="BoxInfoFrame"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Frame"/>
-        <UnitName Value="BoxInfoUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="39"/>
-        <CursorPos X="3" Y="53"/>
-        <UsageCount Value="200"/>
-      </Unit8>
-      <Unit9>
-        <Filename Value="frames/organizationinfounit.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="OrganizationInfoFrame"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Frame"/>
-        <UnitName Value="OrganizationInfoUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="35"/>
-        <CursorPos X="40" Y="9"/>
-        <UsageCount Value="200"/>
-      </Unit9>
-      <Unit10>
         <Filename Value="forms/universaltransferdocumentsellertitleinfounit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="UniversalTransferDocumentSellerTitleInfoForm"/>
@@ -118,9 +94,9 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="266"/>
         <CursorPos X="54" Y="283"/>
-        <UsageCount Value="151"/>
-      </Unit10>
-      <Unit11>
+        <UsageCount Value="154"/>
+      </Unit8>
+      <Unit9>
         <Filename Value="frames/diadocdocumentunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="DiadocDocumentFrame"/>
@@ -128,11 +104,11 @@
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="DiadocDocumentUnit"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="146"/>
-        <CursorPos X="3" Y="152"/>
-        <UsageCount Value="147"/>
-      </Unit11>
-      <Unit12>
+        <TopLine Value="88"/>
+        <CursorPos X="70" Y="119"/>
+        <UsageCount Value="150"/>
+      </Unit9>
+      <Unit10>
         <Filename Value="forms/universaltransferdocumentbuyertitleinfounit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="UniversalTransferDocumentBuyerTitleInfoForm"/>
@@ -142,9 +118,9 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="19"/>
         <CursorPos X="64" Y="53"/>
-        <UsageCount Value="146"/>
-      </Unit12>
-      <Unit13>
+        <UsageCount Value="149"/>
+      </Unit10>
+      <Unit11>
         <Filename Value="frames/contragentslistunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="ContragentsListFrame"/>
@@ -153,9 +129,9 @@
         <UnitName Value="ContragentsListUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="20" Y="12"/>
-        <UsageCount Value="143"/>
-      </Unit13>
-      <Unit14>
+        <UsageCount Value="146"/>
+      </Unit11>
+      <Unit12>
         <Filename Value="forms/organizationuserslistunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="OrganizationUsersListForm"/>
@@ -165,9 +141,9 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="9"/>
         <CursorPos X="27" Y="75"/>
-        <UsageCount Value="136"/>
-      </Unit14>
-      <Unit15>
+        <UsageCount Value="139"/>
+      </Unit12>
+      <Unit13>
         <Filename Value="forms/boxeventlistunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="BoxEventListForm"/>
@@ -177,9 +153,9 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="33"/>
         <CursorPos X="50" Y="54"/>
-        <UsageCount Value="135"/>
-      </Unit15>
-      <Unit16>
+        <UsageCount Value="138"/>
+      </Unit13>
+      <Unit14>
         <Filename Value="forms/userpermissionsunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="UserPermissionsForm"/>
@@ -189,9 +165,9 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="25"/>
         <CursorPos X="67" Y="50"/>
-        <UsageCount Value="133"/>
-      </Unit16>
-      <Unit17>
+        <UsageCount Value="136"/>
+      </Unit14>
+      <Unit15>
         <Filename Value="forms/contragentfindunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="ContragentFindForm"/>
@@ -199,10 +175,10 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="ContragentFindUnit"/>
         <EditorIndex Value="-1"/>
-        <CursorPos Y="31"/>
-        <UsageCount Value="131"/>
-      </Unit17>
-      <Unit18>
+        <CursorPos X="25" Y="10"/>
+        <UsageCount Value="134"/>
+      </Unit15>
+      <Unit16>
         <Filename Value="forms/showboxinfounit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="ShowBoxInfoForm"/>
@@ -212,21 +188,9 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="19"/>
         <CursorPos X="11" Y="25"/>
-        <UsageCount Value="122"/>
-      </Unit18>
-      <Unit19>
-        <Filename Value="frames/adressinfoframeunit.pas"/>
-        <IsPartOfProject Value="True"/>
-        <ComponentName Value="AdressInfoFrame"/>
-        <HasResources Value="True"/>
-        <ResourceBaseClass Value="Frame"/>
-        <UnitName Value="AdressInfoFrameUnit"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="41"/>
-        <CursorPos X="27" Y="69"/>
-        <UsageCount Value="119"/>
-      </Unit19>
-      <Unit20>
+        <UsageCount Value="125"/>
+      </Unit16>
+      <Unit17>
         <Filename Value="forms/organizationinfoformunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="OrganizationInfoForm"/>
@@ -234,11 +198,10 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="OrganizationInfoFormUnit"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="4"/>
-        <CursorPos X="32" Y="33"/>
-        <UsageCount Value="113"/>
-      </Unit20>
-      <Unit21>
+        <CursorPos X="5" Y="9"/>
+        <UsageCount Value="116"/>
+      </Unit17>
+      <Unit18>
         <Filename Value="forms/selectdepartmentunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="SelectDepartmentForm"/>
@@ -248,9 +211,9 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="22"/>
         <CursorPos X="88" Y="30"/>
-        <UsageCount Value="47"/>
-      </Unit21>
-      <Unit22>
+        <UsageCount Value="50"/>
+      </Unit18>
+      <Unit19>
         <Filename Value="ddmaindataunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="MainDM"/>
@@ -259,18 +222,18 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="13"/>
         <CursorPos X="3" Y="43"/>
-        <UsageCount Value="46"/>
-      </Unit22>
-      <Unit23>
+        <UsageCount Value="49"/>
+      </Unit19>
+      <Unit20>
         <Filename Value="tools/ddnewdocutdunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ddNewDocUTDUnit"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="20"/>
         <CursorPos X="3" Y="20"/>
-        <UsageCount Value="43"/>
-      </Unit23>
-      <Unit24>
+        <UsageCount Value="46"/>
+      </Unit20>
+      <Unit21>
         <Filename Value="frames/transferinfounit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="TransferInfoFrame"/>
@@ -280,9 +243,9 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="84"/>
         <CursorPos X="5" Y="93"/>
-        <UsageCount Value="32"/>
-      </Unit24>
-      <Unit25>
+        <UsageCount Value="35"/>
+      </Unit21>
+      <Unit22>
         <Filename Value="frames/extendedorganizationinfounit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="ExtendedOrganizationInfoFrame"/>
@@ -292,9 +255,9 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="67"/>
         <CursorPos X="3" Y="99"/>
-        <UsageCount Value="30"/>
-      </Unit25>
-      <Unit26>
+        <UsageCount Value="33"/>
+      </Unit22>
+      <Unit23>
         <Filename Value="frames/employeeunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="EmployeeFrame"/>
@@ -304,7 +267,40 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="10"/>
         <CursorPos X="17" Y="15"/>
-        <UsageCount Value="29"/>
+        <UsageCount Value="32"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="../../../DiadocVisual/frames/boxinfounit.pas"/>
+        <ComponentName Value="BoxInfoFrame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="BoxInfoUnit"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos Y="31"/>
+        <UsageCount Value="200"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="../../../DiadocVisual/frames/ddorganizationinfounit.pas"/>
+        <ComponentName Value="OrganizationInfoFrame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="ddOrganizationInfoUnit"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="29"/>
+        <CursorPos X="3" Y="45"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="../../../DiadocVisual/frames/adressinfoframeunit.pas"/>
+        <ComponentName Value="AdressInfoFrame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="AdressInfoFrameUnit"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="74"/>
+        <CursorPos Y="32"/>
+        <UsageCount Value="120"/>
       </Unit26>
       <Unit27>
         <Filename Value="../../../synapse/ssl_openssl_lib.pas"/>
@@ -1530,9 +1526,9 @@
       <Unit182>
         <Filename Value="/home/install/source/fpcsrc/rtl/objpas/classes/classesh.inc"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="877"/>
-        <CursorPos X="14" Y="892"/>
-        <UsageCount Value="9"/>
+        <TopLine Value="1880"/>
+        <CursorPos Y="1889"/>
+        <UsageCount Value="10"/>
       </Unit182>
       <Unit183>
         <Filename Value="/home/install/source/fpcsrc/rtl/objpas/classes/streams.inc"/>
@@ -1775,8 +1771,8 @@
         <Filename Value="../../../diadoc_src/diadocapi.pas"/>
         <UnitName Value="DiadocAPI"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="332"/>
-        <CursorPos X="14" Y="350"/>
+        <TopLine Value="4"/>
+        <CursorPos X="15" Y="33"/>
         <UsageCount Value="13"/>
         <Bookmarks Count="1">
           <Item0 Y="3115" ID="1"/>
@@ -1814,12 +1810,10 @@
       <Unit219>
         <Filename Value="../../../Docflow/diadoctypes_documentinfo.pas"/>
         <UnitName Value="DiadocTypes_DocumentInfo"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="776"/>
         <CursorPos Y="780"/>
         <UsageCount Value="12"/>
-        <Loaded Value="True"/>
       </Unit219>
       <Unit220>
         <Filename Value="../../../Events/diadoctypes_resolutioninfo.pas"/>
@@ -1879,7 +1873,7 @@
         <UnitName Value="Forms"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="313"/>
-        <CursorPos Y="326"/>
+        <CursorPos X="14" Y="327"/>
         <UsageCount Value="10"/>
       </Unit227>
       <Unit228>
@@ -1899,8 +1893,8 @@
       <Unit230>
         <Filename Value="../../../../protobuf-fpc/protobuf/protobuf_fpc.pas"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="382"/>
-        <CursorPos Y="399"/>
+        <TopLine Value="285"/>
+        <CursorPos X="71" Y="300"/>
         <UsageCount Value="10"/>
       </Unit230>
       <Unit231>
@@ -1941,14 +1935,267 @@
         <TopLine Value="55"/>
         <UsageCount Value="10"/>
       </Unit235>
+      <Unit236>
+        <Filename Value="../../../../rxnew/rxcontrols/rxapputils.pas"/>
+        <UnitName Value="rxAppUtils"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="83"/>
+        <CursorPos X="44" Y="94"/>
+        <UsageCount Value="10"/>
+      </Unit236>
+      <Unit237>
+        <Filename Value="../../../../rxnew/rxtools/rxlogging.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="31"/>
+        <CursorPos X="15" Y="31"/>
+        <FoldState Value=" T6iO02b"/>
+        <UsageCount Value="10"/>
+      </Unit237>
+      <Unit238>
+        <Filename Value="../../../../lazutils/lazfileutils.pas"/>
+        <UnitName Value="LazFileUtils"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="297"/>
+        <CursorPos X="3" Y="302"/>
+        <UsageCount Value="10"/>
+      </Unit238>
+      <Unit239>
+        <Filename Value="../../../../rxnew/rxtools/rxfileutils.pas"/>
+        <UnitName Value="rxFileUtils"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="197"/>
+        <CursorPos X="3" Y="202"/>
+        <UsageCount Value="10"/>
+      </Unit239>
+      <Unit240>
+        <Filename Value="../../../DiadocVisual/ddvisualcommon.pas"/>
+        <UnitName Value="ddVisualCommon"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="33"/>
+        <CursorPos X="3" Y="44"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit240>
+      <Unit241>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <ComponentName Value="ddSelectClientForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="ddSelectClient"/>
+        <EditorIndex Value="3"/>
+        <CursorPos Y="31"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit241>
+      <Unit242>
+        <Filename Value="../../../DiadocVisual/ddvisualregister.pas"/>
+        <UnitName Value="ddVisualRegister"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="19"/>
+        <CursorPos Y="31"/>
+        <UsageCount Value="10"/>
+      </Unit242>
+      <Unit243>
+        <Filename Value="../../../diadoc_visual.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="3" Y="11"/>
+        <UsageCount Value="10"/>
+      </Unit243>
+      <Unit244>
+        <Filename Value="../../../Docflow/diadoctypes_attachment.pas"/>
+        <UnitName Value="DiadocTypes_Attachment"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="34"/>
+        <CursorPos Y="32"/>
+        <UsageCount Value="10"/>
+      </Unit244>
+      <Unit245>
+        <Filename Value="../../../diadoc_src/diadoctypes_organization.pas"/>
+        <UnitName Value="DiadocTypes_Organization"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="70"/>
+        <CursorPos X="52" Y="86"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit245>
+      <Unit246>
+        <Filename Value="../../../../../lcl/controls.pp"/>
+        <UnitName Value="Controls"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="153"/>
+        <CursorPos X="3" Y="169"/>
+        <UsageCount Value="10"/>
+      </Unit246>
+      <Unit247>
+        <Filename Value="../../../../lazutils/laztracer.pas"/>
+        <UnitName Value="LazTracer"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="34"/>
+        <CursorPos Y="50"/>
+        <UsageCount Value="10"/>
+      </Unit247>
+      <Unit248>
+        <Filename Value="../../../../../lcl/include/control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3530"/>
+        <CursorPos Y="3551"/>
+        <UsageCount Value="10"/>
+      </Unit248>
+      <Unit249>
+        <Filename Value="../../../DiadocVisual/ddconsts.pas"/>
+        <UnitName Value="ddConsts"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="5"/>
+        <CursorPos Y="31"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit249>
     </Units>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory Count="30" HistoryIndex="29">
+      <Position1>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="131" Column="16" TopLine="120"/>
+      </Position1>
+      <Position2>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="73" Column="14" TopLine="52"/>
+      </Position2>
+      <Position3>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="146" Column="3" TopLine="135"/>
+      </Position3>
+      <Position4>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="56" Column="15" TopLine="40"/>
+      </Position4>
+      <Position5>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="112" Column="3" TopLine="102"/>
+      </Position5>
+      <Position6>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="51" Column="15" TopLine="40"/>
+      </Position6>
+      <Position7>
+        <Filename Value="ddapimainunit.pas"/>
+        <Caret Line="263" Column="3" TopLine="258"/>
+      </Position7>
+      <Position8>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="92" Column="3" TopLine="76"/>
+      </Position8>
+      <Position9>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="94" Column="3" TopLine="76"/>
+      </Position9>
+      <Position10>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="95" Column="25" TopLine="78"/>
+      </Position10>
+      <Position11>
+        <Filename Value="ddapimainunit.pas"/>
+        <Caret Line="464" TopLine="451"/>
+      </Position11>
+      <Position12>
+        <Filename Value="ddapimainunit.pas"/>
+        <Caret Line="263" Column="3" TopLine="259"/>
+      </Position12>
+      <Position13>
+        <Filename Value="ddapimainunit.pas"/>
+        <Caret Line="356" TopLine="352"/>
+      </Position13>
+      <Position14>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="95" Column="25" TopLine="78"/>
+      </Position14>
+      <Position15>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="151" Column="40" TopLine="138"/>
+      </Position15>
+      <Position16>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="153" Column="75" TopLine="137"/>
+      </Position16>
+      <Position17>
+        <Filename Value="ddapimainunit.pas"/>
+        <Caret Line="356" TopLine="340"/>
+      </Position17>
+      <Position18>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="149" TopLine="137"/>
+      </Position18>
+      <Position19>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="150" TopLine="137"/>
+      </Position19>
+      <Position20>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="151" TopLine="137"/>
+      </Position20>
+      <Position21>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="152" TopLine="137"/>
+      </Position21>
+      <Position22>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="153" TopLine="137"/>
+      </Position22>
+      <Position23>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="155" Column="4" TopLine="137"/>
+      </Position23>
+      <Position24>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="83" Column="57" TopLine="57"/>
+      </Position24>
+      <Position25>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="73" Column="49" TopLine="57"/>
+      </Position25>
+      <Position26>
+        <Filename Value="../../../DiadocVisual/ddvisualcommon.pas"/>
+        <Caret Line="44" Column="3" TopLine="33"/>
+      </Position26>
+      <Position27>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="74" Column="54" TopLine="57"/>
+      </Position27>
+      <Position28>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="151" Column="33" TopLine="148"/>
+      </Position28>
+      <Position29>
+        <Filename Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Caret Line="89" TopLine="74"/>
+      </Position29>
+      <Position30>
+        <Filename Value="../../../DiadocVisual/ddconsts.pas"/>
+        <Caret Line="11" Column="23"/>
+      </Position30>
+    </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
       <Modes Count="0" ActiveMode=""/>
     </RunParams>
   </ProjectSession>
   <Debugging>
+    <BreakPoints Count="2">
+      <Item1>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="ddapimainunit.pas"/>
+        <Line Value="356"/>
+      </Item1>
+      <Item2>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="../../../DiadocVisual/ddselectclient.pas"/>
+        <Line Value="159"/>
+      </Item2>
+    </BreakPoints>
     <Watches Count="1">
       <Item1>
         <Expression Value="P.FPropName"/>

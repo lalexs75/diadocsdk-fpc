@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="4">
+    <Name Value="diadoc_visual"/>
+    <Type Value="RunAndDesignTime"/>
+    <Author Value="Лагунов А.А."/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <SearchPaths>
+        <OtherUnitFiles Value="DiadocVisual;DiadocVisual/frames"/>
+        <UnitOutputDirectory Value="lib/diadoc_visual/$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+    </CompilerOptions>
+    <Description Value="Визуальные компоненты для ДИАДОК"/>
+    <License Value="LGPL"/>
+    <Version Minor="1" Release="1" Build="1"/>
+    <Files Count="7">
+      <Item1>
+        <Filename Value="DiadocVisual/ddselectclient.pas"/>
+        <AddToUsesPkgSection Value="False"/>
+        <UnitName Value="ddSelectClient"/>
+      </Item1>
+      <Item2>
+        <Filename Value="DiadocVisual/ddvisualcommon.pas"/>
+        <UnitName Value="ddVisualCommon"/>
+      </Item2>
+      <Item3>
+        <Filename Value="DiadocVisual/ddvisualregister.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="ddVisualRegister"/>
+      </Item3>
+      <Item4>
+        <Filename Value="DiadocVisual/frames/ddorganizationinfounit.pas"/>
+        <UnitName Value="ddOrganizationInfoUnit"/>
+      </Item4>
+      <Item5>
+        <Filename Value="DiadocVisual/frames/adressinfoframeunit.pas"/>
+        <UnitName Value="AdressInfoFrameUnit"/>
+      </Item5>
+      <Item6>
+        <Filename Value="DiadocVisual/frames/boxinfounit.pas"/>
+        <UnitName Value="BoxInfoUnit"/>
+      </Item6>
+      <Item7>
+        <Filename Value="DiadocVisual/ddconsts.pas"/>
+        <UnitName Value="ddconsts"/>
+      </Item7>
+    </Files>
+    <LazDoc Paths="/usr/local/share/lazarus/components/diadocsdk-fpc/docs"/>
+    <i18n>
+      <EnableI18N Value="True"/>
+      <OutDir Value="languages"/>
+    </i18n>
+    <RequiredPkgs Count="3">
+      <Item1>
+        <PackageName Value="LCL"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="diadoc_fpc"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="FCL"/>
+      </Item3>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+      <UseFileFilters Value="True"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>

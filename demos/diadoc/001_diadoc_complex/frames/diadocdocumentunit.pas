@@ -108,8 +108,8 @@ type
 
 implementation
 uses DiadocTypes_UniversalTransferDocumentInfo, diadoc_utils, ContragentFindUnit, ShowBoxInfoUnit, SelectDepartmentUnit,
-  DiadocTypes_DocumentsMoveOperation, DiadocTypes_DiadocMessage_PostApi,
-  MessageForDocUnit, ddNewDocUTDUnit, rxAppUtils;
+  DiadocTypes_DocumentsMoveOperation, DiadocTypes_DiadocMessage_PostApi, rxAppUtils,
+  MessageForDocUnit, ddNewDocUTDUnit, rxlogging;
 
 {$R *.lfm}
 

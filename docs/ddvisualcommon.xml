@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_visual"><module name="ddVisualCommon"><element name="TddAbstract.Connection"><short>Конектор к ДИАДОК</short>
+      </element><element name="TddAbstract.Clear"><short>Очистить параметры</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

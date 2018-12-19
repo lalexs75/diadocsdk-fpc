@@ -6,16 +6,17 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
-  ExtCtrls, Menus, ActnList, httpsend, DividerBevel, DiadocAPI, DiadocTypes,
-  OrganizationInfoUnit, RxIniPropStorage, DiadocTypes_Address, protobuf_fpc,
-  DiadocDocumentUnit,
+  ExtCtrls, Menus, ActnList, httpsend, DividerBevel, AnchorDockPanel, DiadocAPI,
+  DiadocTypes, ddOrganizationInfoUnit, RxIniPropStorage, DiadocTypes_Address,
+  rxAppUtils, LazFileUtils,
+  protobuf_fpc, DiadocDocumentUnit,
 
   DiadocTypes_GetOrganizationsByInnList,
   DiadocTypes_DocumentList,
   DiadocTypes_Organization,
   DiadocTypes_OrganizationUser,
   DiadocTypes_OrganizationUserPermissions,
-  DiadocTypes_User, DiadocTypes_Employee;
+  DiadocTypes_User, DiadocTypes_Employee, ddSelectClient;
 
 type
 
@@ -36,7 +37,11 @@ type
   { TDDAPIMainForm }
 
   TDDAPIMainForm = class(TForm)
+    Button4: TButton;
+    DiadocSelectClient1: TDiadocSelectClient;
     MenuItem8: TMenuItem;
+    Panel2: TPanel;
+    Splitter3: TSplitter;
     usrEmployeesList: TAction;
     Button2: TButton;
     Button5: TButton;
@@ -134,6 +139,7 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
     procedure Button5Click(Sender: TObject);
     procedure Button7Click(Sender: TObject);
     procedure Button8Click(Sender: TObject);
@@ -341,6 +347,13 @@ begin
   end;
   ShowStatus;
   R.Free;
+end;
+
+procedure TDDAPIMainForm.Button4Click(Sender: TObject);
+begin
+  SetupAPI;
+
+  DiadocSelectClient1.Execute(edtFndINN.Text, edtFndKPP.Text);
 end;
 
 procedure TDDAPIMainForm.Button5Click(Sender: TObject);
