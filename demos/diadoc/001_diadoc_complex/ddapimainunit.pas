@@ -11,12 +11,10 @@ uses
   rxAppUtils, LazFileUtils,
   protobuf_fpc, DiadocDocumentUnit,
 
-  DiadocTypes_GetOrganizationsByInnList,
-  DiadocTypes_DocumentList,
-  DiadocTypes_Organization,
-  DiadocTypes_OrganizationUser,
-  DiadocTypes_OrganizationUserPermissions,
-  DiadocTypes_User, DiadocTypes_Employee, ddSelectClient;
+  DiadocTypes_GetOrganizationsByInnList, DiadocTypes_DocumentList,
+  DiadocTypes_Organization, DiadocTypes_OrganizationUser,
+  DiadocTypes_OrganizationUserPermissions, DiadocTypes_User,
+  DiadocTypes_Employee, ddSelectClient, ddOrganizationUsersList;
 
 type
 
@@ -38,10 +36,13 @@ type
 
   TDDAPIMainForm = class(TForm)
     Button4: TButton;
+    CheckBox2: TCheckBox;
+    ddOrganizationUsersList1: TddOrganizationUsersList;
     DiadocSelectClient1: TDiadocSelectClient;
     MenuItem8: TMenuItem;
     Panel2: TPanel;
     Splitter3: TSplitter;
+    TabSheet2: TTabSheet;
     usrEmployeesList: TAction;
     Button2: TButton;
     Button5: TButton;
@@ -355,7 +356,14 @@ var
 begin
   SetupAPI;
 
-  if DiadocSelectClient1.Execute(edtFndINN.Text, edtFndKPP.Text) then
+  if CheckBox2.Checked then
+    DiadocSelectClient1.Style:=scfSymply
+  else
+    DiadocSelectClient1.Style:=scfDetail;
+
+  DiadocSelectClient1.INN:=edtFndINN.Text;
+  DiadocSelectClient1.KPP:=edtFndKPP.Text;
+  if DiadocSelectClient1.Execute then
   begin
     if Assigned(DiadocSelectClient1.Selected) then
     begin

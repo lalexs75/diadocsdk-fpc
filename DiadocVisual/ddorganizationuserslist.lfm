@@ -1,0 +1,8 @@
+object ddOrganizationUsersListForm: TddOrganizationUsersListForm
+  Left = 603
+  Height = 470
+  Top = 221
+  Width = 394
+  Caption = 'Пользователи системы'
+  LCLVersion = '2.1.0.0'
+end

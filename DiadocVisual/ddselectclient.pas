@@ -36,10 +36,11 @@ interface
 
 uses
   Classes, SysUtils, ddVisualCommon, Forms, Controls, ButtonPanel, StdCtrls,  ExtCtrls,
-  DiadocTypes_Organization,
+  DiadocTypes_Organization, ssOrganizationInfoSympleUnit,
   ddOrganizationInfoUnit;
 
 type
+  TscfStyle = (scfDetail, scfSymply);
 
   { TddSelectClientForm }
 
@@ -47,12 +48,13 @@ type
     ButtonPanel1: TButtonPanel;
     ListBox1: TListBox;
     Splitter1: TSplitter;
-    procedure FormCreate(Sender: TObject);
     procedure ListBox1Click(Sender: TObject);
   private
     FOrganizationInfoFrame: TOrganizationInfoFrame;
+    FOrganizationInfoSymple: TOrganizationInfoSymple;
     FOrgsList: TOrganizationList;
   public
+    constructor CreateSelectClientForm(AStyle:TscfStyle);
     procedure FillList(AOrgsList: TOrganizationList);
   end;
 
@@ -60,19 +62,19 @@ type
 
   TDiadocSelectClient = class(TddAbstract)
   private
-    FCaption: string;
     FINN: string;
     FKPP: string;
     FOrganizationList: TOrganizationList;
     FSelectedIndex: integer;
     FSelectedBox:TBox;
+    FStyle: TscfStyle;
     function GetSelected: TOrganization;
     function GetSelectedBox: TBox;
   protected
 
   public
     constructor Create(AOwner: TComponent); override;
-    function Execute(AInn, AKpp:string):boolean;
+    function Execute:boolean;
     procedure Clear; override;
 
     property OrganizationList: TOrganizationList read FOrganizationList;
@@ -81,7 +83,9 @@ type
     property SelectedBox:TBox read GetSelectedBox;
   published
     property Connection;
-    property Caption:string read FCaption write FCaption;
+    property Style:TscfStyle read FStyle write FStyle default scfDetail;
+    property INN:string read FINN write FINN;
+    property KPP:string read FKPP write FKPP;
   end;
 
 implementation
@@ -96,14 +100,28 @@ var
   O: TOrganization;
 begin
   O:=ListBox1.Items.Objects[ListBox1.ItemIndex] as TOrganization;
-  FOrganizationInfoFrame.LoadInfo(O);
+
+  if Assigned(FOrganizationInfoSymple) then
+    FOrganizationInfoSymple.LoadInfo(O);
+  if Assigned(FOrganizationInfoFrame) then
+    FOrganizationInfoFrame.LoadInfo(O);
 end;
 
-procedure TddSelectClientForm.FormCreate(Sender: TObject);
+constructor TddSelectClientForm.CreateSelectClientForm(AStyle: TscfStyle);
 begin
-  FOrganizationInfoFrame:=TOrganizationInfoFrame.Create(Self);
-  FOrganizationInfoFrame.Parent:=Self;
-  FOrganizationInfoFrame.Align:=alClient;
+  inherited Create(Application);
+  if AStyle = scfDetail then
+  begin
+    FOrganizationInfoFrame:=TOrganizationInfoFrame.Create(Self);
+    FOrganizationInfoFrame.Parent:=Self;
+    FOrganizationInfoFrame.Align:=alClient;
+  end
+  else
+  begin
+    FOrganizationInfoSymple:=TOrganizationInfoSymple.Create(Self);
+    FOrganizationInfoSymple.Parent:=Self;
+    FOrganizationInfoSymple.Align:=alClient;
+  end;
 end;
 
 procedure TddSelectClientForm.FillList(AOrgsList: TOrganizationList);
@@ -125,7 +143,12 @@ begin
     ListBox1Click(nil);
   end
   else
-    FOrganizationInfoFrame.ClearInfo;
+  begin
+    if Assigned(FOrganizationInfoSymple) then
+      FOrganizationInfoSymple.ClearInfo;
+    if Assigned(FOrganizationInfoFrame) then
+      FOrganizationInfoFrame.ClearInfo;
+  end;
 end;
 
 { TDiadocSelectClient }
@@ -149,25 +172,26 @@ end;
 constructor TDiadocSelectClient.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
-  FCaption:=sSelectClientCaption;
+  Caption:=sSelectClientCaption;
+  FStyle:=scfDetail;
 end;
 
-function TDiadocSelectClient.Execute(AInn, AKpp: string): boolean;
+function TDiadocSelectClient.Execute: boolean;
 var
   FEditForm: TddSelectClientForm;
 begin
   Result:=false;
   Clear;
   if not Assigned(Connection) then Exit;
-  FEditForm:=TddSelectClientForm.Create(Application);
-  FEditForm.Caption:=FCaption;
-  FOrganizationList:=Connection.GetOrganizationsByInnKpp(AInn, AKpp, false);
-
+  FEditForm:=TddSelectClientForm.CreateSelectClientForm(FStyle);
+  FEditForm.Caption:=Caption;
+  FOrganizationList:=Connection.GetOrganizationsByInnKpp(Inn, Kpp, false);
   FEditForm.FillList(FOrganizationList);
+
   if FEditForm.ShowModal = mrOk then
   begin
     FSelectedIndex:=FEditForm.ListBox1.ItemIndex;
-    if (FSelectedIndex>-1) and Assigned(FEditForm.FOrganizationInfoFrame.BoxInfo) then
+    if (FSelectedIndex>-1) and Assigned(FEditForm.FOrganizationInfoFrame) and Assigned(FEditForm.FOrganizationInfoFrame.BoxInfo) then
     begin
       if (FEditForm.FOrganizationInfoFrame.ListBox1.ItemIndex>-1) and (FEditForm.FOrganizationInfoFrame.ListBox1.ItemIndex < FEditForm.FOrganizationInfoFrame.ListBox1.Items.Count) then
         FSelectedBox:=TBox(FEditForm.FOrganizationInfoFrame.ListBox1.Items.Objects[FEditForm.FOrganizationInfoFrame.ListBox1.ItemIndex]);

@@ -1,0 +1,321 @@
+object OrganizationInfoSymple: TOrganizationInfoSymple
+  Left = 0
+  Height = 416
+  Top = 0
+  Width = 794
+  ClientHeight = 416
+  ClientWidth = 794
+  TabOrder = 0
+  DesignLeft = 575
+  DesignTop = 353
+  object Label2: TLabel
+    AnchorSideBottom.Control = edtOrgINN
+    AnchorSideBottom.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 18
+    Width = 33
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 6
+    Caption = 'ИНН'
+    ParentColor = False
+  end
+  object edtOrgINN: TEdit
+    AnchorSideLeft.Control = Label2
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Label5
+    AnchorSideRight.Side = asrBottom
+    Left = 45
+    Height = 31
+    Top = 6
+    Width = 303
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    ReadOnly = True
+    TabOrder = 0
+    Text = 'edtOrgINN'
+  end
+  object Label3: TLabel
+    AnchorSideLeft.Control = Label5
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideBottom.Control = edtOrgKPP
+    AnchorSideBottom.Side = asrBottom
+    Left = 360
+    Height = 19
+    Top = 18
+    Width = 32
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 6
+    Caption = 'КПП'
+    ParentColor = False
+  end
+  object edtOrgKPP: TEdit
+    AnchorSideLeft.Control = Label3
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = cbIsForeign
+    Left = 398
+    Height = 31
+    Top = 6
+    Width = 273
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    ReadOnly = True
+    TabOrder = 1
+    Text = 'edtOrgKPP'
+  end
+  object Label4: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideBottom.Control = edtOrgFullName
+    AnchorSideBottom.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 55
+    Width = 155
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 6
+    Caption = 'Полное наименование'
+    ParentColor = False
+  end
+  object edtOrgFullName: TEdit
+    AnchorSideLeft.Control = Label4
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = edtOrgKPP
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 167
+    Height = 31
+    Top = 43
+    Width = 621
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    ReadOnly = True
+    TabOrder = 2
+    Text = 'edtOrgFullName'
+  end
+  object Label6: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideBottom.Control = edtShortName
+    AnchorSideBottom.Side = asrBottom
+    Left = 3
+    Height = 19
+    Top = 92
+    Width = 159
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 3
+    Caption = 'Краткое наименование'
+    ParentColor = False
+  end
+  object edtShortName: TEdit
+    AnchorSideLeft.Control = Label6
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = edtOrgFullName
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 168
+    Height = 31
+    Top = 80
+    Width = 620
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    ReadOnly = True
+    TabOrder = 3
+    Text = 'edtShortName'
+  end
+  object Label7: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideBottom.Control = edtOgrn
+    AnchorSideBottom.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 129
+    Width = 39
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 6
+    Caption = 'ОГРН'
+    ParentColor = False
+  end
+  object edtOgrn: TEdit
+    AnchorSideLeft.Control = Label7
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = edtShortName
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Label5
+    Left = 51
+    Height = 31
+    Top = 117
+    Width = 296
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    ReadOnly = True
+    TabOrder = 4
+    Text = 'edtOgrn'
+  end
+  object cbIsForeign: TCheckBox
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 677
+    Height = 23
+    Top = 6
+    Width = 111
+    Anchors = [akTop, akRight]
+    BorderSpacing.Around = 6
+    Caption = 'Не резидент'
+    Enabled = False
+    TabOrder = 5
+  end
+  object Label12: TLabel
+    AnchorSideLeft.Control = Label5
+    AnchorSideBottom.Control = edtLiquidationDate
+    AnchorSideBottom.Side = asrBottom
+    Left = 359
+    Height = 19
+    Top = 129
+    Width = 132
+    Anchors = [akLeft, akBottom]
+    BorderSpacing.Left = 6
+    Caption = 'Дата ликивидации'
+    ParentColor = False
+  end
+  object edtLiquidationDate: TEdit
+    AnchorSideLeft.Control = Label12
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = edtShortName
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 497
+    Height = 31
+    Top = 117
+    Width = 291
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Around = 6
+    Enabled = False
+    ReadOnly = True
+    TabOrder = 6
+    Text = 'edtLiquidationDate'
+  end
+  object Label5: TLabel
+    AnchorSideLeft.Side = asrCenter
+    Left = 353
+    Height = 1
+    Top = 0
+    Width = 1
+    ParentColor = False
+  end
+  object Label1: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = edtOgrn
+    AnchorSideTop.Side = asrBottom
+    Left = 6
+    Height = 19
+    Top = 154
+    Width = 41
+    BorderSpacing.Around = 6
+    Caption = 'Адрес'
+    ParentColor = False
+  end
+  inline AdressInfoFrame1: TAdressInfoFrame
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Label1
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Height = 237
+    Top = 179
+    Width = 794
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    ClientHeight = 237
+    ClientWidth = 794
+    TabOrder = 7
+    inherited Label1: TLabel
+      AnchorSideLeft.Control = AdressInfoFrame1
+    end
+    inherited edtAddressCode: TEdit
+      AnchorSideTop.Control = AdressInfoFrame1
+      Width = 323
+    end
+    inherited Label2: TLabel
+      Left = 404
+    end
+    inherited Label3: TLabel
+      AnchorSideLeft.Control = AdressInfoFrame1
+    end
+    inherited Label4: TLabel
+      Left = 404
+    end
+    inherited Label5: TLabel
+      AnchorSideLeft.Control = AdressInfoFrame1
+    end
+    inherited Label6: TLabel
+      AnchorSideLeft.Control = AdressInfoFrame1
+    end
+    inherited Label7: TLabel
+      Left = 404
+    end
+    inherited Label8: TLabel
+      Left = 540
+    end
+    inherited Label9: TLabel
+      Left = 404
+    end
+    inherited Label11: TLabel
+      AnchorSideLeft.Control = AdressInfoFrame1
+      AnchorSideTop.Control = AdressInfoFrame1
+      Left = 397
+    end
+    inherited edtZipCode: TEdit
+      AnchorSideTop.Control = AdressInfoFrame1
+      AnchorSideRight.Control = AdressInfoFrame1
+      Left = 459
+      Width = 329
+    end
+    inherited edtRegion: TEdit
+      Width = 298
+    end
+    inherited edtTerritory: TEdit
+      AnchorSideRight.Control = AdressInfoFrame1
+      Left = 451
+      Width = 337
+    end
+    inherited edtCity: TEdit
+      Width = 341
+    end
+    inherited edtLocality: TEdit
+      AnchorSideRight.Control = AdressInfoFrame1
+      Left = 533
+      Width = 255
+    end
+    inherited edtBuilding: TEdit
+      Width = 168
+    end
+    inherited edtBlock: TEdit
+      Left = 455
+    end
+    inherited edtApartment: TEdit
+      AnchorSideRight.Control = AdressInfoFrame1
+      Left = 609
+      Width = 179
+    end
+    inherited Label12: TLabel
+      AnchorSideLeft.Control = AdressInfoFrame1
+    end
+    inherited Label13: TLabel
+      AnchorSideLeft.Control = AdressInfoFrame1
+    end
+    inherited edtCountry: TEdit
+      AnchorSideRight.Control = AdressInfoFrame1
+      Width = 696
+    end
+    inherited edtFKAddress: TEdit
+      AnchorSideRight.Control = AdressInfoFrame1
+      Width = 678
+    end
+  end
+end

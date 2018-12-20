@@ -28,26 +28,40 @@
   Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 }
 
-unit ddVisualRegister;
+
+unit ddOrganizationUsersList;
 
 {$mode objfpc}{$H+}
 
 interface
 
 uses
-  Classes, SysUtils;
+  Classes, SysUtils, LResources, ddVisualCommon, Forms, Controls, Graphics, Dialogs;
 
-procedure Register;
+type
+
+  TddOrganizationUsersListForm = class(TForm)
+  public
+
+  end;
+
+  { TddOrganizationUsersList }
+
+  TddOrganizationUsersList = class(TddAbstract)
+  private
+    FOrgId: string;
+
+  protected
+
+  public
+
+  published
+    property OrgId:string read FOrgId write FOrgId;
+    property Connection;
+  end;
 
 implementation
-uses ddSelectClient, ddOrganizationUsersList;
 
-{$R diadoc-visual.res}
-
-procedure Register;
-begin
-  RegisterComponents('Diadoc',[TDiadocSelectClient, TddOrganizationUsersList]);
-end;
+{$R *.lfm}
 
 end.
-

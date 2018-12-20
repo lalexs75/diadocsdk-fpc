@@ -6,7 +6,6 @@ object ddSelectClientForm: TddSelectClientForm
   Caption = 'Найденные контрагенты'
   ClientHeight = 468
   ClientWidth = 779
-  OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '2.1.0.0'
   object ButtonPanel1: TButtonPanel

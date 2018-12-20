@@ -26,9 +26,9 @@ object DDAPIMainForm: TDDAPIMainForm
     Height = 666
     Top = 0
     Width = 1278
-    ActivePage = TabSheet6
+    ActivePage = TabSheet5
     Align = alClient
-    TabIndex = 2
+    TabIndex = 1
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = 'Параметры'
@@ -450,16 +450,16 @@ object DDAPIMainForm: TDDAPIMainForm
         end
         object TabSheet8: TTabSheet
           Caption = 'Контрагенты'
-          ClientHeight = 629
-          ClientWidth = 1074
+          ClientHeight = 600
+          ClientWidth = 1068
           object Panel1: TPanel
             Left = 886
             Height = 600
             Top = 0
             Width = 182
             Align = alRight
-            ClientHeight = 596
-            ClientWidth = 178
+            ClientHeight = 600
+            ClientWidth = 182
             TabOrder = 0
             object Button7: TButton
               Left = 32
@@ -616,15 +616,6 @@ object DDAPIMainForm: TDDAPIMainForm
           Caption = 'GetOrganizationsByInnKpp'
           OnClick = Button10Click
           TabOrder = 2
-        end
-        object Button4: TButton
-          Left = 656
-          Height = 25
-          Top = 13
-          Width = 75
-          Caption = 'Button4'
-          OnClick = Button4Click
-          TabOrder = 3
         end
       end
     end
@@ -928,6 +919,36 @@ object DDAPIMainForm: TDDAPIMainForm
         TabOrder = 10
       end
     end
+    object TabSheet2: TTabSheet
+      Caption = 'Инструменты'
+      ClientHeight = 633
+      ClientWidth = 1268
+      object Button4: TButton
+        AnchorSideLeft.Control = TabSheet2
+        AnchorSideTop.Control = TabSheet2
+        Left = 6
+        Height = 31
+        Top = 6
+        Width = 113
+        AutoSize = True
+        BorderSpacing.Around = 6
+        Caption = 'Поиск клиента'
+        OnClick = Button4Click
+        TabOrder = 0
+      end
+      object CheckBox2: TCheckBox
+        AnchorSideLeft.Control = Button4
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = Button4
+        AnchorSideTop.Side = asrCenter
+        Left = 125
+        Height = 23
+        Top = 10
+        Width = 250
+        Caption = 'Упрощённый стиль отображения'
+        TabOrder = 1
+      end
+    end
   end
   object Splitter1: TSplitter
     Cursor = crVSplit
@@ -940,8 +961,8 @@ object DDAPIMainForm: TDDAPIMainForm
   end
   object DiadocAPI1: TDiadocAPI
     OnHttpStatus = DiadocAPI1HttpStatus
-    Left = 424
-    Top = 8
+    Left = 264
+    Top = 200
   end
   object RxIniPropStorage1: TRxIniPropStorage
     StoredValues = <>
@@ -1313,5 +1334,10 @@ object DDAPIMainForm: TDDAPIMainForm
     Caption = 'Найденные контрагенты'
     Left = 371
     Top = 230
+  end
+  object ddOrganizationUsersList1: TddOrganizationUsersList
+    Connection = DiadocAPI1
+    Left = 371
+    Top = 292
   end
 end

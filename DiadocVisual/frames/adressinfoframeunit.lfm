@@ -1,10 +1,10 @@
 object AdressInfoFrame: TAdressInfoFrame
   Left = 0
-  Height = 237
+  Height = 247
   Top = 0
-  Width = 586
-  ClientHeight = 237
-  ClientWidth = 586
+  Width = 625
+  ClientHeight = 247
+  ClientWidth = 625
   TabOrder = 0
   DesignLeft = 733
   DesignTop = 83
@@ -29,7 +29,7 @@ object AdressInfoFrame: TAdressInfoFrame
     Left = 68
     Height = 31
     Top = 6
-    Width = 219
+    Width = 238
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
     ReadOnly = True
@@ -41,7 +41,7 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideLeft.Side = asrBottom
     AnchorSideBottom.Control = edtZipCode
     AnchorSideBottom.Side = asrBottom
-    Left = 300
+    Left = 319
     Height = 19
     Top = 18
     Width = 49
@@ -68,7 +68,7 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideLeft.Side = asrBottom
     AnchorSideBottom.Control = edtTerritory
     AnchorSideBottom.Side = asrBottom
-    Left = 300
+    Left = 319
     Height = 19
     Top = 55
     Width = 41
@@ -108,7 +108,7 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideLeft.Side = asrBottom
     AnchorSideBottom.Control = edtLocality
     AnchorSideBottom.Side = asrBottom
-    Left = 300
+    Left = 319
     Height = 19
     Top = 92
     Width = 123
@@ -122,7 +122,7 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideLeft.Side = asrBottom
     AnchorSideBottom.Control = edtApartment
     AnchorSideBottom.Side = asrBottom
-    Left = 436
+    Left = 455
     Height = 19
     Top = 129
     Width = 63
@@ -136,7 +136,7 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideLeft.Side = asrBottom
     AnchorSideBottom.Control = edtBlock
     AnchorSideBottom.Side = asrBottom
-    Left = 300
+    Left = 319
     Height = 19
     Top = 129
     Width = 45
@@ -163,7 +163,7 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideLeft.Control = Owner
     AnchorSideLeft.Side = asrCenter
     AnchorSideTop.Control = Owner
-    Left = 293
+    Left = 312
     Height = 1
     Top = 0
     Width = 1
@@ -175,10 +175,10 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 355
+    Left = 374
     Height = 31
     Top = 6
-    Width = 225
+    Width = 245
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
     ReadOnly = True
@@ -194,7 +194,7 @@ object AdressInfoFrame: TAdressInfoFrame
     Left = 93
     Height = 31
     Top = 43
-    Width = 194
+    Width = 213
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
     ReadOnly = True
@@ -208,10 +208,10 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 347
+    Left = 366
     Height = 31
     Top = 43
-    Width = 233
+    Width = 253
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
     ReadOnly = True
@@ -227,7 +227,7 @@ object AdressInfoFrame: TAdressInfoFrame
     Left = 50
     Height = 31
     Top = 80
-    Width = 237
+    Width = 256
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
     ReadOnly = True
@@ -241,10 +241,10 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 429
+    Left = 448
     Height = 31
     Top = 80
-    Width = 151
+    Width = 171
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
     ReadOnly = True
@@ -274,7 +274,7 @@ object AdressInfoFrame: TAdressInfoFrame
     Left = 223
     Height = 31
     Top = 117
-    Width = 64
+    Width = 83
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
     ReadOnly = True
@@ -286,7 +286,7 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = edtLocality
     AnchorSideTop.Side = asrBottom
-    Left = 351
+    Left = 370
     Height = 31
     Top = 117
     Width = 79
@@ -302,10 +302,10 @@ object AdressInfoFrame: TAdressInfoFrame
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 505
+    Left = 524
     Height = 31
     Top = 117
-    Width = 75
+    Width = 95
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
     ReadOnly = True
@@ -348,7 +348,7 @@ object AdressInfoFrame: TAdressInfoFrame
     Left = 92
     Height = 31
     Top = 154
-    Width = 488
+    Width = 527
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
     ReadOnly = True
@@ -365,7 +365,7 @@ object AdressInfoFrame: TAdressInfoFrame
     Left = 110
     Height = 31
     Top = 191
-    Width = 470
+    Width = 509
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Around = 6
     ReadOnly = True

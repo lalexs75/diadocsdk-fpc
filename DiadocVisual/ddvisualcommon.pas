@@ -43,6 +43,7 @@ type
 
   TddAbstract = class(TComponent)
   private
+    FCaption: string;
     FConnection: TDiadocAPI;
   protected
     property Connection:TDiadocAPI read FConnection write FConnection;
@@ -50,7 +51,7 @@ type
     destructor Destroy; override;
     procedure Clear; virtual;
   published
-
+    property Caption:string read FCaption write FCaption;
   end;
 
 implementation

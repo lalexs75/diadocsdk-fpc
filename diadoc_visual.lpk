@@ -14,11 +14,12 @@
     <Description Value="Визуальные компоненты для ДИАДОК"/>
     <License Value="LGPL"/>
     <Version Minor="1" Release="1" Build="1"/>
-    <Files Count="7">
+    <Files Count="9">
       <Item1>
         <Filename Value="DiadocVisual/ddselectclient.pas"/>
         <AddToUsesPkgSection Value="False"/>
         <UnitName Value="ddSelectClient"/>
+        <ResourceBaseClass Value="Form"/>
       </Item1>
       <Item2>
         <Filename Value="DiadocVisual/ddvisualcommon.pas"/>
@@ -32,19 +33,31 @@
       <Item4>
         <Filename Value="DiadocVisual/frames/ddorganizationinfounit.pas"/>
         <UnitName Value="ddOrganizationInfoUnit"/>
+        <ResourceBaseClass Value="Frame"/>
       </Item4>
       <Item5>
         <Filename Value="DiadocVisual/frames/adressinfoframeunit.pas"/>
         <UnitName Value="AdressInfoFrameUnit"/>
+        <ResourceBaseClass Value="Frame"/>
       </Item5>
       <Item6>
         <Filename Value="DiadocVisual/frames/boxinfounit.pas"/>
         <UnitName Value="BoxInfoUnit"/>
+        <ResourceBaseClass Value="Frame"/>
       </Item6>
       <Item7>
         <Filename Value="DiadocVisual/ddconsts.pas"/>
-        <UnitName Value="ddconsts"/>
+        <UnitName Value="ddConsts"/>
       </Item7>
+      <Item8>
+        <Filename Value="DiadocVisual/frames/ssorganizationinfosympleunit.pas"/>
+        <UnitName Value="ssOrganizationInfoSympleUnit"/>
+        <ResourceBaseClass Value="Frame"/>
+      </Item8>
+      <Item9>
+        <Filename Value="DiadocVisual/ddorganizationuserslist.pas"/>
+        <UnitName Value="ddOrganizationUsersList"/>
+      </Item9>
     </Files>
     <LazDoc Paths="/usr/local/share/lazarus/components/diadocsdk-fpc/docs"/>
     <i18n>
