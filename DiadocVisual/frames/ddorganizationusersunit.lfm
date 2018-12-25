@@ -1,0 +1,48 @@
+object OrganizationUsersFrame: TOrganizationUsersFrame
+  Left = 0
+  Height = 343
+  Top = 0
+  Width = 567
+  ClientHeight = 343
+  ClientWidth = 567
+  TabOrder = 0
+  DesignLeft = 575
+  DesignTop = 363
+  object ListView1: TListView
+    Left = 0
+    Height = 343
+    Top = 0
+    Width = 567
+    Align = alClient
+    Columns = <    
+      item
+        Caption = 'Login'
+        Width = 100
+      end    
+      item
+        Caption = 'Фамилия'
+        Width = 100
+      end    
+      item
+        Caption = 'Имя'
+        Width = 100
+      end    
+      item
+        Caption = 'Отчество'
+        Width = 252
+      end>
+    GridLines = True
+    Items.LazData = {
+      B200000002000000FFFFFFFFFFFFFFFFFFFFFFFF030000000500000075736572
+      310C000000D098D0B2D0B0D0BDD0BED0B208000000D098D0B2D0B0D0BD100000
+      00D098D0B2D0B0D0BDD0BED0B2D0B8D187FFFFFFFFFFFFFFFFFFFFFFFF030000
+      000500000075736572320C000000D09FD0B5D182D180D0BED0B208000000D09F
+      D191D182D18010000000D09FD0B5D182D180D0BED0B2D0B8D187FFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+    }
+    ReadOnly = True
+    RowSelect = True
+    TabOrder = 0
+    ViewStyle = vsReport
+  end
+end

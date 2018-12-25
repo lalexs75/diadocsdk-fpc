@@ -1002,10 +1002,17 @@ function TDiadocAPI.ParseUniversalTransferDocumentSellerTitleXml(
 var
   S: String;
 begin
+(*
+Diadoc::Api::Proto::Invoicing::UniversalTransferDocumentSellerTitleInfo DiadocApi::ParseUniversalTransferDocumentSellerTitleXml(const Bytes_t& utdXmlContent)
+{
+	WppTraceDebugOut("ParseUniversalTransferDocumentSellerTitleXml...");
+	return FromProtoBytes<UniversalTransferDocumentSellerTitleInfo>(PerformHttpRequest(L"/ParseUniversalTransferDocumentSellerTitleXml?documentVersion=utd_05_01_05", utdXmlContent, L"POST"));
+}
+*)
   Result:=nil;
   if not Authenticate then exit;
   S:='';
-  AddURLParam(S, 'documentVersion', 'utd_05_01_04');
+  AddURLParam(S, 'documentVersion', 'utd_05_01_05');
   if SendCommand(hmPOST, 'ParseUniversalTransferDocumentSellerTitleXml', S, AXmlContent) then
   begin
     {$IFDEF DIADOC_DEBUG}
@@ -1028,10 +1035,17 @@ function TDiadocAPI.ParseUniversalCorrectionDocumentSellerTitleXml(
 var
   S: String;
 begin
+(*
+Diadoc::Api::Proto::Invoicing::UniversalCorrectionDocumentSellerTitleInfo DiadocApi::ParseUniversalCorrectionDocumentSellerTitleXml(const Bytes_t& utdXmlContent)
+{
+	WppTraceDebugOut("ParseUniversalCorrectionDocumentSellerTitleXml...");
+	return FromProtoBytes<UniversalCorrectionDocumentSellerTitleInfo>(PerformHttpRequest(L"/ParseUniversalCorrectionDocumentSellerTitleXml?documentVersion=ucd_05_01_03", utdXmlContent, L"POST"));
+}
+*)
   Result:=nil;
   if not Authenticate then exit;
   S:='';
-  AddURLParam(S, 'documentVersion', 'ucd_05_01_02');
+  AddURLParam(S, 'documentVersion', 'ucd_05_01_03');
   if SendCommand(hmPOST, 'ParseUniversalCorrectionDocumentSellerTitleXml', S, AXmlContent) then
   begin
     {$IFDEF DIADOC_DEBUG}
@@ -1106,11 +1120,17 @@ function TDiadocAPI.ParseTovTorg551SellerTitleXml(AXmlContent: TStream
 var
   S: String;
 begin
-  //return FromProtoBytes<TovTorgSellerTitleInfo>(PerformHttpRequest(L"/ParseTorg12SellerTitleXml?documentVersion=tovtorg_05_01_03", content, L"POST"));
+  (*
+  TovTorgSellerTitleInfo DiadocApi::ParseTovTorg551SellerTitleXml(const Bytes_t& content)
+  {
+  	WppTraceDebugOut("ParseTovTorg551SellerTitleXml...");
+  	return FromProtoBytes<TovTorgSellerTitleInfo>(PerformHttpRequest(L"/ParseTorg12SellerTitleXml?documentVersion=tovtorg_05_01_04", content, L"POST"));
+  }
+  *)
   Result:=nil;
   if not Authenticate then exit;
   S:='';
-  AddURLParam(S, 'documentVersion', 'tovtorg_05_01_03');
+  AddURLParam(S, 'documentVersion', 'tovtorg_05_01_04');
   if SendCommand(hmPOST, 'ParseTorg12SellerTitleXml', S, AXmlContent) then
   begin
     {$IFDEF DIADOC_DEBUG}
@@ -1649,7 +1669,7 @@ begin
       auto requestBody = ToProtoBytes(acceptanceCertificateSellerInfo);
       auto connect = session_.Connect(api_url_.c_str(), api_port_);
       std::wstringstream queryString;
-      queryString << L"/GenerateAcceptanceCertificate552XmlForSeller?documentVersion=rezru_05_01_01" << (disableValidation ? L"&disableValidation" : L"");
+      queryString << L"/GenerateAcceptanceCertificate552XmlForSeller?documentVersion=rezru_05_01_02" << (disableValidation ? L"&disableValidation" : L"");
       auto request = connect.OpenRequest(POST.c_str(), queryString.str().c_str(), NULL, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, connection_flags_);
       SendRequest(request, requestBody);
       return WebFile(request);
@@ -1660,7 +1680,7 @@ begin
   if not Authenticate then exit;
 
   S:='';
-  AddURLParam(S, 'documentVersion', 'rezru_05_01_01');
+  AddURLParam(S, 'documentVersion', 'rezru_05_01_02');
   if ADisableValidation then
     AddURLParam(S, 'disableValidation');
 
@@ -1698,7 +1718,7 @@ begin
       queryString << L"/GenerateAcceptanceCertificate552XmlForBuyer?boxId=" << StringHelper::CanonicalizeUrl(boxId)
                   << L"&sellerTitleMessageId=" << StringHelper::CanonicalizeUrl(sellerTitleMessageId)
                   << L"&sellerTitleAttachmentId=" << StringHelper::CanonicalizeUrl(sellerTitleAttachmentId)
-                  << L"&documentVersion=rezru_05_01_01";
+                  << L"&documentVersion=rezru_05_01_02";
       auto requestBody = ToProtoBytes(acceptanceCertificateBuyerInfo);
       auto connect = session_.Connect(api_url_.c_str(), api_port_);
       auto request = connect.OpenRequest(POST.c_str(), queryString.str().c_str(), NULL, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, connection_flags_);
@@ -1714,7 +1734,7 @@ begin
   AddURLParam(S, 'boxId', ABoxId);
   AddURLParam(S, 'sellerTitleMessageId', ASellerTitleMessageId);
   AddURLParam(S, 'sellerTitleAttachmentId', AsellerTitleAttachmentId);
-  AddURLParam(S, 'documentVersion', 'rezru_05_01_01');
+  AddURLParam(S, 'documentVersion', 'rezru_05_01_02');
 
   F:=AAcceptanceCertificateBuyerInfo.SaveToStream;
   if SendCommand(hmPOST, 'GenerateAcceptanceCertificate552XmlForBuyer', S, F) then
@@ -2507,7 +2527,7 @@ begin
   	auto requestBody = ToProtoBytes(tovTorgSellerInfo);
   	auto connect = session_.Connect(api_url_.c_str(), api_port_);
   	std::wstringstream queryString;
-  	queryString << L"/GenerateTorg12XmlForSeller?documentVersion=tovtorg_05_01_03" << (disableValidation ? L"&disableValidation" : L"");
+  	queryString << L"/GenerateTorg12XmlForSeller?documentVersion=tovtorg_05_01_04" << (disableValidation ? L"&disableValidation" : L"");
   	auto request = connect.OpenRequest(POST.c_str(), queryString.str().c_str(), NULL, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, connection_flags_);
   	SendRequest(request, requestBody);
   	return WebFile(request);
@@ -2519,7 +2539,7 @@ begin
 
   if ADisableValidation then
   AddURLParam(S, 'disableValidation');
-  AddURLParam(S, 'documentVersion', 'tovtorg_05_01_03');
+  AddURLParam(S, 'documentVersion', 'tovtorg_05_01_04');
 
   F:=ATovTorgSellerInfo.SaveToStream;
   if SendCommand(hmPOST, 'GenerateTorg12XmlForSeller', S, F) then
@@ -2555,7 +2575,7 @@ begin
   	std::wstringstream queryString;
 
   	std::wstring version = documentVersion.empty()
-  		? L"tovtorg_05_01_02"
+  		? L"tovtorg_05_01_04"
   		: documentVersion;
 
   	queryString << L"/GenerateTorg12XmlForBuyer?boxId=" << StringHelper::CanonicalizeUrl(boxId)
@@ -2583,6 +2603,9 @@ begin
     raise EDiadocException.Create(sNotDefinedSellerTitleAttachmentId);
 
   if not Authenticate then exit;
+
+  if ADocumentVersion = '' then
+    ADocumentVersion:='tovtorg_05_01_04';
 
   AddURLParam(S, 'boxId', ABoxId); //идентификатор ящика
   AddURLParam(S, 'sellerTitleMessageId', ASellerTitleMessageId);
@@ -2617,14 +2640,14 @@ begin
   TovTorgBuyerTitleInfo DiadocApi::ParseTovTorg551BuyerTitleXml(const Bytes_t& content)
   {
   	WppTraceDebugOut("ParseTovTorg551BuyerTitleXml...");
-  	return FromProtoBytes<TovTorgBuyerTitleInfo>(PerformHttpRequest(L"/ParseTorg12BuyerTitleXml?documentVersion=tovtorg_05_01_02", content, L"POST"));
+  	return FromProtoBytes<TovTorgBuyerTitleInfo>(PerformHttpRequest(L"/ParseTorg12BuyerTitleXml?documentVersion=tovtorg_05_01_04", content, L"POST"));
   }
   *)
 
   Result:=nil;
   if not Authenticate then exit;
   S:='';
-  AddURLParam(S, 'documentVersion', 'tovtorg_05_01_02'); //идентификатор ящика
+  AddURLParam(S, 'documentVersion', 'tovtorg_05_01_04'); //идентификатор ящика
 
   if SendCommand(hmPOST, 'ParseTorg12BuyerTitleXml', S, AContent) then
   begin
@@ -2652,13 +2675,13 @@ begin
   AcceptanceCertificate552SellerTitleInfo DiadocApi::ParseAcceptanceCertificate552SellerTitleXml(const Bytes_t& sellerTitleXmlContent)
   {
       WppTraceDebugOut("ParseAcceptanceCertificate552SellerTitleXml...");
-      return FromProtoBytes<AcceptanceCertificate552SellerTitleInfo>(PerformHttpRequest(L"/ParseAcceptanceCertificate552SellerTitleXml?documentVersion=rezru_05_01_01", sellerTitleXmlContent, L"POST"));
+      return FromProtoBytes<AcceptanceCertificate552SellerTitleInfo>(PerformHttpRequest(L"/ParseAcceptanceCertificate552SellerTitleXml?documentVersion=rezru_05_01_02", sellerTitleXmlContent, L"POST"));
   }
   *)
   Result:=nil;
   if not Authenticate then exit;
   S:='';
-  AddURLParam(S, 'documentVersion', 'rezru_05_01_01');
+  AddURLParam(S, 'documentVersion', 'rezru_05_01_02');
 
   if SendCommand(hmPOST, 'ParseAcceptanceCertificate552SellerTitleXml', S, ASellerTitleXmlContent) then
   begin
@@ -2686,13 +2709,13 @@ begin
   AcceptanceCertificate552BuyerTitleInfo DiadocApi::ParseAcceptanceCertificate552BuyerTitleXml(const Bytes_t& buyerTitleXmlContent)
   {
       WppTraceDebugOut("ParseAcceptanceCertificate552BuyerTitleXml...");
-      return FromProtoBytes<AcceptanceCertificate552BuyerTitleInfo>(PerformHttpRequest(L"/ParseAcceptanceCertificate552BuyerTitleXml?documentVersion=rezru_05_01_01", buyerTitleXmlContent, L"POST"));
+      return FromProtoBytes<AcceptanceCertificate552BuyerTitleInfo>(PerformHttpRequest(L"/ParseAcceptanceCertificate552BuyerTitleXml?documentVersion=rezru_05_01_02", buyerTitleXmlContent, L"POST"));
   }
   *)
   Result:=nil;
   if not Authenticate then exit;
   S:='';
-  AddURLParam(S, 'documentVersion', 'rezru_05_01_01');
+  AddURLParam(S, 'documentVersion', 'rezru_05_01_02');
 
   if SendCommand(hmPOST, 'ParseAcceptanceCertificate552BuyerTitleXml', S, ABuyerTitleXmlContent) then
   begin

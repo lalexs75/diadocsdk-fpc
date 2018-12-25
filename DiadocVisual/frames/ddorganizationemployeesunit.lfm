@@ -1,0 +1,19 @@
+object OrganizationEmployeesFrame: TOrganizationEmployeesFrame
+  Left = 0
+  Height = 286
+  Top = 0
+  Width = 365
+  ClientHeight = 286
+  ClientWidth = 365
+  TabOrder = 0
+  DesignLeft = 701
+  DesignTop = 399
+  object ListView1: TListView
+    Left = 41
+    Height = 150
+    Top = 55
+    Width = 250
+    Columns = <>
+    TabOrder = 0
+  end
+end

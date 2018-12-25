@@ -10,7 +10,8 @@ interface
 uses
   ddVisualCommon, ddVisualRegister, ddOrganizationInfoUnit, 
   AdressInfoFrameUnit, BoxInfoUnit, ddConsts, ssOrganizationInfoSympleUnit, 
-  ddOrganizationUsersList, LazarusPackageIntf;
+  ddOrganizationUsersList, ddOrganizationUsersUnit, 
+  ddOrganizationEmployeesUnit, LazarusPackageIntf;
 
 implementation
 

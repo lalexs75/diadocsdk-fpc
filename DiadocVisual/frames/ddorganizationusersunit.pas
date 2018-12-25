@@ -28,85 +28,54 @@
   Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 }
 
-
-unit ddOrganizationUsersList;
+unit ddOrganizationUsersUnit;
 
 {$mode objfpc}{$H+}
 
 interface
 
 uses
-  Classes, SysUtils, LResources, ddVisualCommon, DiadocTypes_OrganizationUser,
-  Forms, Controls, Graphics, Dialogs, ButtonPanel, ComCtrls,
-  ddOrganizationUsersUnit;
+  Classes, SysUtils, Forms, Controls, ComCtrls, DiadocTypes_OrganizationUser;
 
 type
 
-  { TddOrganizationUsersListForm }
+  { TOrganizationUsersFrame }
 
-  TddOrganizationUsersListForm = class(TForm)
-    ButtonPanel1: TButtonPanel;
-    procedure FormCreate(Sender: TObject);
-  public
-    FOrganizationUsersFrame:TOrganizationUsersFrame;
-  end;
-
-  { TddOrganizationUsersList }
-
-  TddOrganizationUsersList = class(TddAbstract)
+  TOrganizationUsersFrame = class(TFrame)
+    ListView1: TListView;
   private
-    FOrgId: string;
-
-  protected
-    FUsers: TOrganizationUsersList;
+    FCurrentUserId: String;
   public
-    function Execute:boolean;
-    procedure Clear; override;
-  published
-    property OrgId:string read FOrgId write FOrgId;
-    property Connection;
-    property Users: TOrganizationUsersList read FUsers;
+    procedure LoadInfo(AInfo:TOrganizationUsersList);
+    property CurrentUserId: String read FCurrentUserId;
   end;
 
 implementation
 
 {$R *.lfm}
 
-{ TddOrganizationUsersList }
+{ TOrganizationUsersFrame }
 
-function TddOrganizationUsersList.Execute: boolean;
+procedure TOrganizationUsersFrame.LoadInfo(AInfo: TOrganizationUsersList);
 var
-  EditForm: TddOrganizationUsersListForm;
+  U: TOrganizationUser;
+  Itm: TListItem;
 begin
-  EditForm:=TddOrganizationUsersListForm.Create(Application);
-(*  FUsers:=Connection.GetOrganizationUsers(FOrgs.OrgId);
-  if Assigned(FUsers) then
+  ListView1.Items.Clear;
+  if not Assigned(AInfo) then Exit;
+  FCurrentUserId:=AInfo.CurrentUserId;
+
+  ListView1.Items.BeginUpdate;
+  for U in AInfo.Users do
   begin
-    OrganizationUsersListForm:=TOrganizationUsersListForm.Create(Application);
-    OrganizationUsersListForm.LoadInfo(FUsers);
-    OrganizationUsersListForm.ShowModal;
-    OrganizationUsersListForm.Free;
-
-    FreeAndNil(FUsers);
-  end; *)
-  EditForm.ShowModal;
-  EditForm.Free;
-end;
-
-procedure TddOrganizationUsersList.Clear;
-begin
-  inherited Clear;
-  if Assigned(FUsers) then
-    FreeAndNil(FUsers);
-end;
-
-{ TddOrganizationUsersListForm }
-
-procedure TddOrganizationUsersListForm.FormCreate(Sender: TObject);
-begin
-  FOrganizationUsersFrame:=TOrganizationUsersFrame.Create(Self);
-  FOrganizationUsersFrame.Parent:=Self;
-  FOrganizationUsersFrame.Align:=alClient;
+    Itm:=ListView1.Items.Add;
+    Itm.Caption:=U.Name;
+    Itm.SubItems.Add(U.Position);
+    Itm.SubItems.Add(U.Id);
+    //property Permissions:TOrganizationUserPermissions read FPermissions; //3;
+  end;
+  ListView1.Items.EndUpdate;
 end;
 
 end.
+

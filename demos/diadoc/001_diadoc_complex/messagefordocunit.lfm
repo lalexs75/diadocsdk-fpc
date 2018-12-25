@@ -29,9 +29,9 @@ object MessageForDocForm: TMessageForDocForm
     Height = 693
     Top = 0
     Width = 908
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     Align = alClient
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = 'Message'
@@ -481,6 +481,21 @@ object MessageForDocForm: TMessageForDocForm
         TitleButtons = False
         AutoSort = True
         Columns = <        
+          item
+            Title.Alignment = taCenter
+            Title.Orientation = toHorizontal
+            Title.Caption = 'EntityId'
+            Width = 120
+            FieldName = 'EntityId'
+            EditButtons = <>
+            Filter.DropDownRows = 0
+            Filter.EmptyValue = '(Пусто)'
+            Filter.NotEmptyValue = '(Не пусто)'
+            Filter.AllValue = '(Все значения)'
+            Filter.EmptyFont.Style = [fsItalic]
+            Filter.ItemIndex = -1
+            Footers = <>
+          end        
           item
             Title.Alignment = taCenter
             Title.Orientation = toHorizontal

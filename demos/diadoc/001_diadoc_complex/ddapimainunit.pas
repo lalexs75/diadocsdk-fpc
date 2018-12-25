@@ -559,7 +559,7 @@ var
   FOrgs: TOrganization;
   FUsers: TOrganizationUsersList;
 begin
-  FOrgs:=CurrentOrg;
+(*  FOrgs:=CurrentOrg;
   if not Assigned(FOrgs) then Exit;
 
   FUsers:=DiadocAPI1.GetOrganizationUsers(FOrgs.OrgId);
@@ -573,6 +573,9 @@ begin
   end
   else
     ShowMessage(DiadocAPI1.ResultString + LineEnding + DiadocAPI1.ResultText.Text);
+*)
+  ddOrganizationUsersList1.OrgId:=FOrgs.OrgId;
+  ddOrganizationUsersList1.Execute;
 end;
 
 procedure TDDAPIMainForm.TreeView1Click(Sender: TObject);
