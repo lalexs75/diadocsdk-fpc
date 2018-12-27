@@ -50,6 +50,29 @@ type
     SelectedDepartments = 3
   );
 
+  //message AuthorizationPermission {
+  //	required bool IsBlocked = 1;
+  //	optional string Comment = 2;
+  //}
+
+  { TAuthorizationPermission }
+
+  TAuthorizationPermission = class(TSerializationObject)
+  private
+    FComment: string;
+    FIsBlocked: Boolean;
+    procedure SetComment(AValue: string);
+    procedure SetIsBlocked(AValue: Boolean);
+  protected
+    procedure InternalInit; override;
+    procedure InternalRegisterProperty; override;
+  public
+    destructor Destroy; override;
+  published
+    property IsBlocked:Boolean read FIsBlocked write SetIsBlocked; //@1
+    property Comment:string read FComment write SetComment; //@2
+  end;
+
   {  TOrganizationUserPermissions  }
   //message OrganizationUserPermissions {
   //       required string UserDepartmentId = 1;
@@ -62,6 +85,7 @@ type
   //       repeated string SelectedDepartmentIds = 9;
   //       optional string JobTitle = 10;
   //       required bool CanCreateDocuments = 11;
+  //       required AuthorizationPermission AuthorizationPermission = 12;
   // }
   TOrganizationUserPermissions = class(TSerializationObject)
   private
@@ -75,22 +99,31 @@ type
     FJobTitle: string;
     FSelectedDepartmentIds: TDocumentStrings;
     FUserDepartmentId: string;
+    procedure SetCanAddResolutions(AValue: Boolean);
+    procedure SetCanCreateDocuments(AValue: boolean);
+    procedure SetCanManageCounteragents(AValue: Boolean);
+    procedure SetCanRequestResolutions(AValue: Boolean);
+    procedure SetCanSignDocuments(AValue: Boolean);
+    procedure SetDocumentAccessLevel(AValue: TDocumentAccessLevel);
+    procedure SetIsAdministrator(AValue: Boolean);
+    procedure SetJobTitle(AValue: string);
+    procedure SetUserDepartmentId(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property UserDepartmentId:string read FUserDepartmentId write FUserDepartmentId;//1;
-    property IsAdministrator:Boolean read FIsAdministrator write FIsAdministrator;//2;
-    property DocumentAccessLevel:TDocumentAccessLevel read FDocumentAccessLevel write FDocumentAccessLevel; //3
-    property CanSignDocuments:Boolean read FCanSignDocuments write FCanSignDocuments;//4;
-    property CanManageCounteragents:Boolean read FCanManageCounteragents write FCanManageCounteragents;//6;
-    property CanAddResolutions:Boolean read FCanAddResolutions write FCanAddResolutions;//7;
-    property CanRequestResolutions:Boolean read FCanRequestResolutions write FCanRequestResolutions;//8;
+    property UserDepartmentId:string read FUserDepartmentId write SetUserDepartmentId;//1;
+    property IsAdministrator:Boolean read FIsAdministrator write SetIsAdministrator;//2;
+    property DocumentAccessLevel:TDocumentAccessLevel read FDocumentAccessLevel write SetDocumentAccessLevel; //3
+    property CanSignDocuments:Boolean read FCanSignDocuments write SetCanSignDocuments;//4;
+    property CanManageCounteragents:Boolean read FCanManageCounteragents write SetCanManageCounteragents;//6;
+    property CanAddResolutions:Boolean read FCanAddResolutions write SetCanAddResolutions;//7;
+    property CanRequestResolutions:Boolean read FCanRequestResolutions write SetCanRequestResolutions;//8;
     property SelectedDepartmentIds:TDocumentStrings read FSelectedDepartmentIds;//9;
-    property JobTitle:string read FJobTitle write FJobTitle; //10;
-    property CanCreateDocuments:boolean read FCanCreateDocuments write FCanCreateDocuments; //11;
+    property JobTitle:string read FJobTitle write SetJobTitle; //10;
+    property CanCreateDocuments:boolean read FCanCreateDocuments write SetCanCreateDocuments; //11;
   end;
 
 function DocumentAccessLevelToStr(AAccessLevel:TDocumentAccessLevel):string;
@@ -109,7 +142,106 @@ begin
   end
 end;
 
+{ TAuthorizationPermission }
+
+procedure TAuthorizationPermission.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(2);
+end;
+
+procedure TAuthorizationPermission.SetIsBlocked(AValue: Boolean);
+begin
+  if FIsBlocked=AValue then Exit;
+  FIsBlocked:=AValue;
+  Modified(1);
+end;
+
+procedure TAuthorizationPermission.InternalInit;
+begin
+  inherited InternalInit;
+end;
+
+procedure TAuthorizationPermission.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('IsBlocked', 1, true);
+  RegisterProp('Comment', 2);
+end;
+
+destructor TAuthorizationPermission.Destroy;
+begin
+  inherited Destroy;
+end;
+
 { TOrganizationUserPermissions }
+
+procedure TOrganizationUserPermissions.SetCanAddResolutions(AValue: Boolean);
+begin
+  if FCanAddResolutions=AValue then Exit;
+  FCanAddResolutions:=AValue;
+  Modified(7);
+end;
+
+procedure TOrganizationUserPermissions.SetCanCreateDocuments(AValue: boolean);
+begin
+  if FCanCreateDocuments=AValue then Exit;
+  FCanCreateDocuments:=AValue;
+  Modified(11);
+end;
+
+procedure TOrganizationUserPermissions.SetCanManageCounteragents(AValue: Boolean
+  );
+begin
+  if FCanManageCounteragents=AValue then Exit;
+  FCanManageCounteragents:=AValue;
+  Modified(6);
+end;
+
+procedure TOrganizationUserPermissions.SetCanRequestResolutions(AValue: Boolean
+  );
+begin
+  if FCanRequestResolutions=AValue then Exit;
+  FCanRequestResolutions:=AValue;
+  Modified(8);
+end;
+
+procedure TOrganizationUserPermissions.SetCanSignDocuments(AValue: Boolean);
+begin
+  if FCanSignDocuments=AValue then Exit;
+  FCanSignDocuments:=AValue;
+  Modified(4);
+end;
+
+procedure TOrganizationUserPermissions.SetDocumentAccessLevel(
+  AValue: TDocumentAccessLevel);
+begin
+  if FDocumentAccessLevel=AValue then Exit;
+  FDocumentAccessLevel:=AValue;
+  Modified(3);
+end;
+
+procedure TOrganizationUserPermissions.SetIsAdministrator(AValue: Boolean);
+begin
+  if FIsAdministrator=AValue then Exit;
+  FIsAdministrator:=AValue;
+  Modified(2);
+end;
+
+procedure TOrganizationUserPermissions.SetJobTitle(AValue: string);
+begin
+  if FJobTitle=AValue then Exit;
+  FJobTitle:=AValue;
+  Modified(10);
+end;
+
+procedure TOrganizationUserPermissions.SetUserDepartmentId(AValue: string);
+begin
+  if FUserDepartmentId=AValue then Exit;
+  FUserDepartmentId:=AValue;
+  Modified(1);
+end;
 
 procedure TOrganizationUserPermissions.InternalInit;
 begin

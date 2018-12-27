@@ -56,16 +56,18 @@ type
   TddOrganizationUsersList = class(TddAbstract)
   private
     FOrgId: string;
-
+    FCurrentUserID:Integer;
+    function GetCurrentUser: TOrganizationUser;
   protected
     FUsers: TOrganizationUsersList;
   public
     function Execute:boolean;
     procedure Clear; override;
+    property Users: TOrganizationUsersList read FUsers;
+    property CurrentUser:TOrganizationUser read GetCurrentUser;
   published
     property OrgId:string read FOrgId write FOrgId;
     property Connection;
-    property Users: TOrganizationUsersList read FUsers;
   end;
 
 implementation
@@ -74,28 +76,36 @@ implementation
 
 { TddOrganizationUsersList }
 
+function TddOrganizationUsersList.GetCurrentUser: TOrganizationUser;
+begin
+  if (FCurrentUserID>-1) and (Assigned(FUsers)) then
+    Result:=FUsers.Users[FCurrentUserID]
+  else
+    Result:=nil;
+end;
+
 function TddOrganizationUsersList.Execute: boolean;
 var
   EditForm: TddOrganizationUsersListForm;
 begin
-  EditForm:=TddOrganizationUsersListForm.Create(Application);
-(*  FUsers:=Connection.GetOrganizationUsers(FOrgs.OrgId);
+  Clear;
+  Result:=false;
+  FUsers:=Connection.GetOrganizationUsers(FOrgId);
   if Assigned(FUsers) then
   begin
-    OrganizationUsersListForm:=TOrganizationUsersListForm.Create(Application);
-    OrganizationUsersListForm.LoadInfo(FUsers);
-    OrganizationUsersListForm.ShowModal;
-    OrganizationUsersListForm.Free;
+    EditForm:=TddOrganizationUsersListForm.Create(Application);
+    EditForm.FOrganizationUsersFrame.LoadInfo(FUsers);
 
-    FreeAndNil(FUsers);
-  end; *)
-  EditForm.ShowModal;
-  EditForm.Free;
+    if EditForm.ShowModal = mrOk then
+      FCurrentUserID:=EditForm.FOrganizationUsersFrame.ListView1.ItemIndex;
+    EditForm.Free;
+  end;
 end;
 
 procedure TddOrganizationUsersList.Clear;
 begin
   inherited Clear;
+  FCurrentUserID:=-1;
   if Assigned(FUsers) then
     FreeAndNil(FUsers);
 end;

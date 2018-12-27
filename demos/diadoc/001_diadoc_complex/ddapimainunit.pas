@@ -557,23 +557,11 @@ end;
 procedure TDDAPIMainForm.usrUserListExecute(Sender: TObject);
 var
   FOrgs: TOrganization;
-  FUsers: TOrganizationUsersList;
 begin
-(*  FOrgs:=CurrentOrg;
+  FOrgs:=CurrentOrg;
   if not Assigned(FOrgs) then Exit;
 
-  FUsers:=DiadocAPI1.GetOrganizationUsers(FOrgs.OrgId);
-  if Assigned(FUsers) then
-  begin
-    OrganizationUsersListForm:=TOrganizationUsersListForm.Create(Application);
-    OrganizationUsersListForm.LoadInfo(FUsers);
-    OrganizationUsersListForm.ShowModal;
-    OrganizationUsersListForm.Free;
-    FreeAndNil(FUsers);
-  end
-  else
-    ShowMessage(DiadocAPI1.ResultString + LineEnding + DiadocAPI1.ResultText.Text);
-*)
+
   ddOrganizationUsersList1.OrgId:=FOrgs.OrgId;
   ddOrganizationUsersList1.Execute;
 end;

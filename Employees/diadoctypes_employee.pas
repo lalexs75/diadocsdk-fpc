@@ -78,6 +78,7 @@ type
   //      required DocumentAccessLevel DocumentAccessLevel = 3 [default = UnknownDocumentAccessLevel];
   //      repeated string SelectedDepartmentIds = 4;
   //      repeated EmployeeAction Actions = 5;
+  //      optional AuthorizationPermission AuthorizationPermission = 6;
   //}
 
   { TEmployeePermissions }
@@ -85,6 +86,7 @@ type
   TEmployeePermissions = class(TSerializationObject)
   private
     FActions: TEmployeeActions;
+    FAuthorizationPermission: TAuthorizationPermission;
     FDocumentAccessLevel: TDocumentAccessLevel;
     FIsAdministrator: Boolean;
     FSelectedDepartmentIds: TDocumentStrings;
@@ -103,6 +105,7 @@ type
     property DocumentAccessLevel:TDocumentAccessLevel read FDocumentAccessLevel write SetDocumentAccessLevel default UnknownDocumentAccessLevel;
     property SelectedDepartmentIds:TDocumentStrings read FSelectedDepartmentIds;//4;
     property Actions:TEmployeeActions read FActions;//5;
+    property AuthorizationPermission:TAuthorizationPermission read FAuthorizationPermission;//@6;
   end;
 
   //message Employee
@@ -232,6 +235,7 @@ begin
   DocumentAccessLevel:= UnknownDocumentAccessLevel;
   FSelectedDepartmentIds:=TDocumentStrings.Create;
   FActions:=TEmployeeActions.Create;
+  FAuthorizationPermission:=TAuthorizationPermission.Create;
 end;
 
 procedure TEmployeePermissions.InternalRegisterProperty;
@@ -242,12 +246,14 @@ begin
   RegisterProp('DocumentAccessLevel', 3, true);
   RegisterProp('SelectedDepartmentIds', 4);
   RegisterProp('Actions', 5);
+  RegisterProp('AuthorizationPermission', 6);
 end;
 
 destructor TEmployeePermissions.Destroy;
 begin
-  FSelectedDepartmentIds:=TDocumentStrings.Create;
-  FActions:=TEmployeeActions.Create;
+  FreeAndNil(FSelectedDepartmentIds);
+  FreeAndNil(FActions);
+  FreeAndNil(FAuthorizationPermission);
   inherited Destroy;
 end;
 

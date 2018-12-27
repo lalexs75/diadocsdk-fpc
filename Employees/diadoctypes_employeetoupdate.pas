@@ -46,6 +46,29 @@ uses
 //package Diadoc.Api.Proto.Employees;
 
 type
+  //message AuthorizationPermissionPatch {
+  // 	required bool IsBlocked = 1;
+  // 	optional string Comment = 2;
+  // }
+
+  { TAuthorizationPermissionPatch }
+
+  TAuthorizationPermissionPatch = class(TSerializationObject)
+  private
+    FComment: string;
+    FIsBlocked: Boolean;
+    procedure SetComment(AValue: string);
+    procedure SetIsBlocked(AValue: Boolean);
+  protected
+    procedure InternalInit; override;
+    procedure InternalRegisterProperty; override;
+  public
+    destructor Destroy; override;
+  published
+    property IsBlocked:Boolean read FIsBlocked write SetIsBlocked; //@1
+    property Comment:string read FComment write SetComment; //@2
+  end;
+
   //message EmployeeCanBeInvitedForChatPatch
   //{
   //	required bool CanBeInvitedForChat = 1;
@@ -56,13 +79,14 @@ type
   TEmployeeCanBeInvitedForChatPatch = class(TSerializationObject)
   private
     FCanBeInvitedForChat: Boolean;
+    procedure SetCanBeInvitedForChat(AValue: Boolean);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property CanBeInvitedForChat:Boolean read FCanBeInvitedForChat write FCanBeInvitedForChat;//1;
+    property CanBeInvitedForChat:Boolean read FCanBeInvitedForChat write SetCanBeInvitedForChat;//1;
   end;
 
 
@@ -77,13 +101,14 @@ type
   TEmployeePositionPatch = class(TSerializationObject)
   private
     FPosition: string;
+    procedure SetPosition(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property Position:string read FPosition write FPosition;//1;
+    property Position:string read FPosition write SetPosition;//1;
   end;
 
   //message EmployeeSelectedDepartmentsPatch
@@ -117,13 +142,14 @@ type
   TEmployeeDocumentAccessLevelPatch = class(TSerializationObject)
   private
     FDocumentAccessLevel: TDocumentAccessLevel;
+    procedure SetDocumentAccessLevel(AValue: TDocumentAccessLevel);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property DocumentAccessLevel:TDocumentAccessLevel read FDocumentAccessLevel write FDocumentAccessLevel;//1;
+    property DocumentAccessLevel:TDocumentAccessLevel read FDocumentAccessLevel write SetDocumentAccessLevel;//1;
   end;
 
   //message EmployeeIsAdministratorPatch
@@ -136,13 +162,14 @@ type
   TEmployeeIsAdministratorPatch = class(TSerializationObject)
   private
     FIsAdministrator: boolean;
+    procedure SetIsAdministrator(AValue: boolean);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property IsAdministrator:boolean read FIsAdministrator write FIsAdministrator;//1;
+    property IsAdministrator:boolean read FIsAdministrator write SetIsAdministrator;//1;
   end;
 
   //message EmployeeDepartmentPatch
@@ -156,15 +183,17 @@ type
   TEmployeeDepartmentPatch = class(TSerializationObject)
   private
     FDepartmentId: string;
+    procedure SetDepartmentId(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property DepartmentId:string read FDepartmentId write FDepartmentId;//1;
+    property DepartmentId:string read FDepartmentId write SetDepartmentId;//1;
   end;
 
+  { TEmployeePermissionsPatch }
   //message EmployeePermissionsPatch
   //{
   //	optional EmployeeDepartmentPatch Department = 1;
@@ -172,14 +201,13 @@ type
   //	optional EmployeeDocumentAccessLevelPatch DocumentAccessLevel = 3;
   //	optional EmployeeSelectedDepartmentsPatch SelectedDepartments = 4;
   //	repeated EmployeeAction Actions = 5;
+  //    optional AuthorizationPermissionPatch AuthorizationPermission = 6;
   //}
-  //
-
-  { TEmployeePermissionsPatch }
 
   TEmployeePermissionsPatch = class(TSerializationObject)
   private
     FActions: TEmployeeActions;
+    FAuthorizationPermission: TAuthorizationPermissionPatch;
     FDepartment: TEmployeeDepartmentPatch;
     FDocumentAccessLevel: TEmployeeDocumentAccessLevelPatch;
     FIsAdministrator: TEmployeeIsAdministratorPatch;
@@ -195,17 +223,16 @@ type
     property DocumentAccessLevel:TEmployeeDocumentAccessLevelPatch read FDocumentAccessLevel;//3;
     property SelectedDepartments:TEmployeeSelectedDepartmentsPatch read FSelectedDepartments;//4;
     property Actions:TEmployeeActions read FActions;//5
+    property AuthorizationPermission:TAuthorizationPermissionPatch read FAuthorizationPermission; //@6;
   end;
 
+  { TEmployeeToUpdate }
   //message EmployeeToUpdate
   //{
   //	optional EmployeePermissionsPatch Permissions = 1;
   //	optional EmployeePositionPatch Position = 2;
   //	optional EmployeeCanBeInvitedForChatPatch CanBeInvitedForChat = 3;
   //}
-  //
-
-  { TEmployeeToUpdate }
 
   TEmployeeToUpdate = class(TSerializationObject)
   private
@@ -224,6 +251,39 @@ type
   end;
 
 implementation
+
+{ TAuthorizationPermissionPatch }
+
+procedure TAuthorizationPermissionPatch.SetComment(AValue: string);
+begin
+  if FComment=AValue then Exit;
+  FComment:=AValue;
+  Modified(2);
+end;
+
+procedure TAuthorizationPermissionPatch.SetIsBlocked(AValue: Boolean);
+begin
+  if FIsBlocked=AValue then Exit;
+  FIsBlocked:=AValue;
+  Modified(1);
+end;
+
+procedure TAuthorizationPermissionPatch.InternalInit;
+begin
+  inherited InternalInit;
+end;
+
+procedure TAuthorizationPermissionPatch.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('FComment', 1, true);
+  RegisterProp('FIsBlocked', 2);
+end;
+
+destructor TAuthorizationPermissionPatch.Destroy;
+begin
+  inherited Destroy;
+end;
 
 { TEmployeeToUpdate }
 
@@ -253,6 +313,13 @@ end;
 
 { TEmployeeIsAdministratorPatch }
 
+procedure TEmployeeIsAdministratorPatch.SetIsAdministrator(AValue: boolean);
+begin
+  if FIsAdministrator=AValue then Exit;
+  FIsAdministrator:=AValue;
+  Modified(1);
+end;
+
 procedure TEmployeeIsAdministratorPatch.InternalInit;
 begin
   inherited InternalInit;
@@ -279,6 +346,7 @@ begin
   FDocumentAccessLevel:=TEmployeeDocumentAccessLevelPatch.Create;
   FSelectedDepartments:=TEmployeeSelectedDepartmentsPatch.Create;
   FActions:=TEmployeeActions.Create;
+  FAuthorizationPermission:=TAuthorizationPermissionPatch.Create;
 end;
 
 procedure TEmployeePermissionsPatch.InternalRegisterProperty;
@@ -289,6 +357,7 @@ begin
   RegisterProp('DocumentAccessLevel', 3);
   RegisterProp('SelectedDepartments', 4);
   RegisterProp('Actions', 5);
+  RegisterProp('AuthorizationPermission', 6);
 end;
 
 destructor TEmployeePermissionsPatch.Destroy;
@@ -298,10 +367,18 @@ begin
   FreeAndNil(FDocumentAccessLevel);
   FreeAndNil(FSelectedDepartments);
   FreeAndNil(FActions);
+  FreeAndNil(FAuthorizationPermission);
   inherited Destroy;
 end;
 
 { TEmployeeDepartmentPatch }
+
+procedure TEmployeeDepartmentPatch.SetDepartmentId(AValue: string);
+begin
+  if FDepartmentId=AValue then Exit;
+  FDepartmentId:=AValue;
+  Modified(1);
+end;
 
 procedure TEmployeeDepartmentPatch.InternalInit;
 begin
@@ -320,6 +397,14 @@ begin
 end;
 
 { TEmployeeDocumentAccessLevelPatch }
+
+procedure TEmployeeDocumentAccessLevelPatch.SetDocumentAccessLevel(
+  AValue: TDocumentAccessLevel);
+begin
+  if FDocumentAccessLevel=AValue then Exit;
+  FDocumentAccessLevel:=AValue;
+  Modified(1);
+end;
 
 procedure TEmployeeDocumentAccessLevelPatch.InternalInit;
 begin
@@ -359,6 +444,13 @@ end;
 
 { TEmployeePositionPatch }
 
+procedure TEmployeePositionPatch.SetPosition(AValue: string);
+begin
+  if FPosition=AValue then Exit;
+  FPosition:=AValue;
+  Modified(1);
+end;
+
 procedure TEmployeePositionPatch.InternalInit;
 begin
   inherited InternalInit;
@@ -376,6 +468,14 @@ begin
 end;
 
 { TEmployeeCanBeInvitedForChatPatch }
+
+procedure TEmployeeCanBeInvitedForChatPatch.SetCanBeInvitedForChat(
+  AValue: Boolean);
+begin
+  if FCanBeInvitedForChat=AValue then Exit;
+  FCanBeInvitedForChat:=AValue;
+  Modified(1);
+end;
 
 procedure TEmployeeCanBeInvitedForChatPatch.InternalInit;
 begin
