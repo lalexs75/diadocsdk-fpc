@@ -122,6 +122,58 @@
       </element><element name="TInvoiceCorrectionTable.TotalsInc"><short>суммы к увеличению // ВсегоУвел</short>
       </element><element name="TInvoiceCorrectionTable.TotalsDec"><short>суммы к уменьшению // ВсегоУм</short>
       </element>
+    <element name="TEventContent"><short>Содержание события</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo.EventContent"><short>Содержание события</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo.FunctionType"><short>Функция документа</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo.DocumentName"><short>Наименование первичного документа, определенное организацией</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo.DocumentDate"><short>дата УКД</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo.DocumentNumber"><short>номер УКД</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo.Invoices"><short>Счет-фактура (первичный документ), к которому составлен корректировочный счет-фактура</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo.Seller"><short>продавец</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo.Buyer"><short>покупатель</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo.Signers"><short>Подписант</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo.InvoiceCorrectionTable"><short>Сведения таблицы корректировочного счета-фактуры</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo.Currency"><short>валюта (код)</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo.CurrencyRate"><short>Курс валюты</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo.CorrectionRevisionDate"><short>ДатаИспрКСчФ, обязателен, если формируется исправление</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo.CorrectionRevisionNumber"><short>НомИспрКСчФ, обязателен, если формируется исправление</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo.AdditionalInfoId"><short>информационное поле документа</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo.DocumentCreator"><short>Наименование экономического субъекта-составителя файла обмена счета-фактуры (информации продавца)</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo.DocumentCreatorBase"><short>Основание, по которому экономический субъект является составителем файла обмена счета-фактуры</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo.GovernmentContractInfo"><short>Идентификатор государственного контракта</short>
+      </element><element name="TTransferInfo"><short>Сведения о передаче (сдаче)</short>
+      </element><element name="TTransferBase"><short>Основание отгрузки</short>
+      </element><element name="TTransferBases"><short>Основание отгрузки</short>
+      </element><element name="TWaybill"><short>Транспортная накладная</short>
+      </element><element name="TWaybills"><short>Транспортная накладная</short>
+      </element><element name="TOtherIssuer"><short>Иное лицо</short>
+      </element><element name="TUniversalCorrectionDocumentSellerTitleInfo"><short>Структура данных UniversalCorrectionDocumentSellerTitleInfo представляет исходные данные для формирования файлов в XML-формате при помощи метода GenerateUniversalTransferDocumentXmlForSeller</short>
+      </element><element name="TAdditionalInfoId"><short>информационное поле документа</short>
+      </element><element name="TAdditionalInfoId.InfoFileId"><short>Идентификатор файла информационного поля</short>
+      </element><element name="TAdditionalInfoId.AdditionalInfo"><short>Текстовая информация</short>
+      </element><element name="TInvoiceForCorrectionInfo"><short>Счет-фактура (первичный документ), к которому составлен корректировочный счет-фактура</short>
+      </element><element name="TInvoiceForCorrectionInfo.InvoiceDate"><short>ДатаСчФ</short>
+      </element><element name="TInvoiceForCorrectionInfo.InvoiceNumber"><short>НомерСчФ</short>
+      </element><element name="TInvoiceForCorrectionInfo.InvoiceRevisions"><short>С учетом исправления</short>
+      </element><element name="TInvoiceForCorrectionInfos"><short>Счет-фактура (первичный документ), к которому составлен корректировочный счет-фактура</short>
+      </element><element name="TInvoiceRevisionInfo"><short>С учетом исправления</short>
+      </element><element name="TInvoiceRevisionInfos"><short>С учетом исправления</short>
+      </element><element name="TInvoiceRevisionInfo.InvoiceRevisionDate"><short>ДатаИспрСчФ</short>
+      </element><element name="TInvoiceRevisionInfo.InvoiceRevisionNumber"><short>НомИспрСчФ</short>
+      </element><element name="TEventContent.CostChangeInfo"><short>Иные сведения об изменении стоимости</short>
+      </element><element name="TEventContent.TransferDocDetails"><short>Реквизиты передаточных документов, к которым относится корректировка</short>
+      </element><element name="TEventContent.OperationContent"><short>Содержание операции</short>
+      </element><element name="TEventContent.NotificationDate"><short>Дата направления на согласование</short>
+      </element><element name="TEventContent.CorrectionBase"><short>Основание корректировки</short>
+      </element><element name="TCorrectionBases"><short>Основание корректировки</short>
+      </element><element name="TCorrectionBase"><short>Основание корректировки</short>
+      </element><element name="TCorrectionBase.BaseDocumentName"><short>Наименование документа - основания</short>
+      </element><element name="TCorrectionBase.BaseDocumentNumber"><short>Номер документа - основания</short>
+      </element><element name="TCorrectionBase.BaseDocumentDate"><short>Дата документа - основания, обязателен при НаимОсн отличном от значения "Отсутствует"</short>
+      </element><element name="TCorrectionBase.AdditionalInfo"><short>Дополнительные сведения </short>
+      </element><element name="TExtendedInvoiceCorrectionItem"><short>информация о товарах</short>
+      </element><element name="TExtendedInvoiceCorrectionItems"><short>информация о товарах</short>
+      </element>
     </module>
   </package>
 </fpdoc-descriptions>
