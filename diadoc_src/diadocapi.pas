@@ -231,7 +231,7 @@ type
     //------------Генерация УПД
     function GenerateUniversalTransferDocumentXmlForSeller( ASellerInfo: TUniversalTransferDocumentSellerTitleInfo; ADisableValidation: boolean): TMemoryStream;
     function GenerateUniversalTransferDocumentXmlForBuyer(utdBuyerInfo:TUniversalTransferDocumentBuyerTitleInfo; ABoxId:string; ASellerTitleMessageId:string; ASellerTitleAttachmentId:string):TStream;
-    function GenerateUniversalCorrectionDocumentXmlForSeller(AUtdSellerInfo:TUniversalCorrectionDocumentSellerTitleInfo; ADisableValidation:Boolean):TStream;
+    function GenerateUniversalCorrectionDocumentXmlForSeller(AUtdSellerInfo:TUniversalCorrectionDocumentSellerTitleInfo; ADisableValidation:Boolean):TMemoryStream;
     function GenerateRecipientTitleXml(ABoxId, ASenderTitleMessageId, ASenderTitleAttachmentId:string; AUserContractData:TStream; ADocumentVersion:string):TStream;
     function GenerateSenderTitleXml(ABoxId, ADocumentTypeNamedId, ADocumentFunction, ADocumentVersion:string;  AUserContractData:TStream;  AEditingSettingId:string; ADisableValidation:boolean):TStream;
 
@@ -1332,7 +1332,7 @@ end;
 
 function TDiadocAPI.GenerateUniversalCorrectionDocumentXmlForSeller(
   AUtdSellerInfo: TUniversalCorrectionDocumentSellerTitleInfo;
-  ADisableValidation: Boolean): TStream;
+  ADisableValidation: Boolean): TMemoryStream;
 var
   S: String;
   F: TStream;
@@ -1368,7 +1368,7 @@ begin
   if SendCommand(hmPOST, 'GenerateUniversalTransferDocumentXmlForSeller', S, F) then
   begin
     {$IFDEF DIADOC_DEBUG}
-    SaveProtobuf('GenerateUniversalTransferDocumentXmlForSeller.xml');
+    SaveProtobuf('GenerateUniversalCorrectionDocumentXmlForSeller.xml');
     {$ENDIF}
     FHTTP.Document.Position:=0;
     if FHTTP.ResultCode = 200 then
