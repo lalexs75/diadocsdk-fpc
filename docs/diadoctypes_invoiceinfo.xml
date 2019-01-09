@@ -58,6 +58,52 @@
       </element><element name="TInvoiceItem.UnitCode"><short>Код единицы измерения</short><descr>Информация берётся из поля <b>Unt</b>
         </descr>
       </element>
+    <element name="TInvoiceCorrectionInfo"><short>Структура данных InvoiceCorrectionInfo представляет исходные данные для формирования корректировочного счета-фактуры в XML-формате при помощи метода GenerateInvoiceXml</short>
+      </element><element name="TInvoiceCorrectionInfo.InvoiceDate"><short>дата СФ</short>
+      </element><element name="TInvoiceCorrectionInfo.InvoiceNumber"><short>номер СФ</short>
+      </element><element name="TInvoiceCorrectionInfo.InvoiceRevisionDate"><short>дата ИСФ (заполняется, если КСФ/ИКСФ формируется на исправленный СФ)</short>
+      </element><element name="TInvoiceCorrectionInfo.InvoiceRevisionNumber"><short> номер ИСФ (заполняется, если КСФ/ИКСФ формируется на исправленный СФ)</short>
+      </element><element name="TInvoiceCorrectionInfo.InvoiceCorrectionDate"><short>дата КСФ</short>
+      </element><element name="TInvoiceCorrectionInfo.InvoiceCorrectionNumber"><short>номер КСФ</short>
+      </element><element name="TInvoiceCorrectionInfo.InvoiceCorrectionRevisionDate"><short>дата ИКСФ (обязательно при формировании InvoiceCorrectionRevision)</short>
+      </element><element name="TInvoiceCorrectionInfo.InvoiceCorrectionRevisionNumber"><short>номер ИКСФ (обязательно при формировании InvoiceCorrectionRevision)</short>
+      </element><element name="TInvoiceCorrectionInfo.Seller"><short>продавец</short>
+      </element><element name="TInvoiceCorrectionInfo.Buyer"><short>покупатель</short>
+      </element><element name="TInvoiceCorrectionInfo.Signer"><short>подписант</short>
+      </element><element name="TInvoiceCorrectionInfo.Items"><short>информация о товарах</short>
+      </element><element name="TInvoiceCorrectionInfo.Currency"><short>валюта (код)</short>
+      </element><element name="TInvoiceCorrectionInfo.TotalsInc"><short>суммы к увеличению</short>
+      </element><element name="TInvoiceCorrectionInfo.TotalsDec"><short>суммы к уменьшению</short>
+      </element><element name="TInvoiceCorrectionInfo.AdditionalInfo"><short>информационное поле документа v5.01</short>
+      </element><element name="TInvoiceCorrectionInfo.AdditionalInfos"><short>информационное поле документа v5.02</short>
+      </element><element name="TInvoiceCorrectionInfo.Version"><short>версия формата ФУФа (для тестирования систем в переходном периоде)</short>
+      </element><element name="TInvoiceTotalsDiff"><short>Изменение сумм</short>
+      </element><element name="TInvoiceTotalsDiff.TotalWithVatExcluded"><short>сумма без учета налога</short>
+      </element><element name="TInvoiceTotalsDiff.Vat"><short>сумма налога</short>
+      </element><element name="TInvoiceTotalsDiff.Total"><short>сумма всего</short>
+      </element><element name="TInvoiceCorrectionItem"><short>информация о товарах</short>
+      </element><element name="TInvoiceCorrectionItems"><short>информация о товарах</short>
+      </element><element name="TInvoiceCorrectionItem.Product"><short>наименование товара</short>
+      </element><element name="TInvoiceCorrectionItem.OriginalValues"><short>значения до изменения</short>
+      </element><element name="TInvoiceCorrectionItem.CorrectedValues"><short>значения после изменения</short>
+      </element><element name="TInvoiceCorrectionItem.AmountsInc"><short>суммы к увеличению</short>
+      </element><element name="TInvoiceCorrectionItem.AmountsDec"><short>суммы к уменьшению</short>
+      </element><element name="TInvoiceCorrectionItem.AdditionalInfo"><short>информационное поле товара v5.01</short>
+      </element><element name="TInvoiceCorrectionItem.AdditionalInfos"><short>информационное поле товара v5.02
+}</short>
+      </element><element name="TCorrectableInvoiceItemFields.Unt"><short>единицы измерения товара (код)</short>
+      </element><element name="TCorrectableInvoiceItemFields.Quantity"><short>количество единиц товара</short>
+      </element><element name="TCorrectableInvoiceItemFields.Price"><short>цена за единицу товара</short>
+      </element><element name="TCorrectableInvoiceItemFields.Excise"><short>акциз</short>
+      </element><element name="TCorrectableInvoiceItemFields.TaxRate"><short>ставка налога</short>
+      </element><element name="TCorrectableInvoiceItemFields.SubtotalWithVatExcluded"><short> сумма без учета налога</short>
+      </element><element name="TCorrectableInvoiceItemFields.Vat"><short>сумма налога</short>
+      </element><element name="TCorrectableInvoiceItemFields.Subtotal"><short>сумма с учетом налога</short>
+      </element><element name="TInvoiceItemAmountsDiff.Excise"><short>акциз</short>
+      </element><element name="TInvoiceItemAmountsDiff.SubtotalWithVatExcluded"><short>сумма без учета налога</short>
+      </element><element name="TInvoiceItemAmountsDiff.Vat"><short>сумма налога</short>
+      </element><element name="TInvoiceItemAmountsDiff.Subtotal"><short>сумма с учетом налога</short>
+      </element>
     </module>
   </package>
 </fpdoc-descriptions>
