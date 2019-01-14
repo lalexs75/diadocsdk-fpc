@@ -872,21 +872,19 @@ function TDiadocAPI.GetEmployees(const ABoxId: string; APage: Integer;
 var
   S: String;
 begin
-  (*
-  Diadoc::Api::Proto::Employees::EmployeeList DiadocApi::GetEmployees(const std::wstring& boxId, int* page, int* count)
-  {
-  	WppTraceDebugOut("GetEmployees...");
-  	std::wstringstream buf;
-  	buf << L"/GetEmployees?boxId=" << StringHelper::CanonicalizeUrl(boxId);
-  	if (page != NULL) {
-  		buf << L"&page=" << *page;
-  	}
-  	if (count != NULL) {
-  		buf << L"&count=" << *count;
-  	}
-  	return FromProtoBytes<Diadoc::Api::Proto::Employees::EmployeeList>(PerformHttpRequest(buf.str(), GET));
-  }
-  *)
+  //Diadoc::Api::Proto::Employees::EmployeeList DiadocApi::GetEmployees(const std::wstring& boxId, int* page, int* count)
+  //{
+  //	WppTraceDebugOut("GetEmployees...");
+  //	std::wstringstream buf;
+  //	buf << L"/GetEmployees?boxId=" << StringHelper::CanonicalizeUrl(boxId);
+  //	if (page != NULL) {
+  //		buf << L"&page=" << *page;
+  //	}
+  //	if (count != NULL) {
+  //		buf << L"&count=" << *count;
+  //	}
+  //	return FromProtoBytes<Diadoc::Api::Proto::Employees::EmployeeList>(PerformHttpRequest(buf.str(), GET));
+  //}
   Result:=nil;
   if ABoxId = '' then
     raise EDiadocException.Create(sNotDefinedBoxId);
@@ -5003,12 +5001,10 @@ function TDiadocAPI.CloudSignConfirmResult(ATaskId: string
 var
   S: String;
 begin
-  (*
-  TaskResult<CloudSignConfirmResult> DiadocApi::CloudSignConfirmResult(const std::wstring& taskId)
-  {
-  	return PerformAsyncHttpRequest<Diadoc::Api::Proto::CloudSignConfirmResult>("CloudSignConfirmResult", L"taskId=" + StringHelper::CanonicalizeUrl(taskId), GET);
-  }
-  *)
+  //TaskResult<CloudSignConfirmResult> DiadocApi::CloudSignConfirmResult(const std::wstring& taskId)
+  //{
+  //	return PerformAsyncHttpRequest<Diadoc::Api::Proto::CloudSignConfirmResult>("CloudSignConfirmResult", L"taskId=" + StringHelper::CanonicalizeUrl(taskId), GET);
+  //}
   Result:=nil;
   if not Authenticate then exit;
   S:='';
@@ -5036,18 +5032,16 @@ function TDiadocAPI.AutoSignReceipts(ABoxId, ACertificateThumbprint,
 var
   S: String;
 begin
-  (*
-  AsyncMethodResult DiadocApi::AutoSignReceipts(const std::wstring& boxId, const std::wstring& certificateThumbprint, const std::wstring& batchKey)
-  {
-  	std::wstringstream params;
-  	params << "boxId=" << StringHelper::CanonicalizeUrl(boxId);
-  	if (!certificateThumbprint.empty())
-  		params << "&certificateThumbprint=" << StringHelper::CanonicalizeUrl(certificateThumbprint);
-  	if (!batchKey.empty())
-  		params << "&batchKey=" << StringHelper::CanonicalizeUrl(batchKey);
-  	return PerformHttpRequest<AsyncMethodResult>("AutoSignReceipts", params.str());
-  }
-  *)
+  //AsyncMethodResult DiadocApi::AutoSignReceipts(const std::wstring& boxId, const std::wstring& certificateThumbprint, const std::wstring& batchKey)
+  //{
+  //	std::wstringstream params;
+  //	params << "boxId=" << StringHelper::CanonicalizeUrl(boxId);
+  //	if (!certificateThumbprint.empty())
+  //		params << "&certificateThumbprint=" << StringHelper::CanonicalizeUrl(certificateThumbprint);
+  //	if (!batchKey.empty())
+  //		params << "&batchKey=" << StringHelper::CanonicalizeUrl(batchKey);
+  //	return PerformHttpRequest<AsyncMethodResult>("AutoSignReceipts", params.str());
+  //}
   Result:=nil;
   if not Authenticate then exit;
   S:='';
@@ -5079,15 +5073,13 @@ function TDiadocAPI.GetDocumentsByMessageId(ABoxId, AMessageId: string
 var
   S: String;
 begin
-  (*
-  DocumentList DiadocApi::GetDocumentsByMessageId(const std::wstring& boxId, const std::wstring& messageId)
-  {
-  	auto queryString = L"/GetDocumentsByMessageId?boxId=" + StringHelper::CanonicalizeUrl(boxId)
-  		+ L"&messageId=" + StringHelper::CanonicalizeUrl(messageId);
-  	auto bytes = PerformHttpRequest(queryString, GET);
-  	return FromProtoBytes<DocumentList>(bytes);
-  }
-  *)
+  //DocumentList DiadocApi::GetDocumentsByMessageId(const std::wstring& boxId, const std::wstring& messageId)
+  //{
+  //	auto queryString = L"/GetDocumentsByMessageId?boxId=" + StringHelper::CanonicalizeUrl(boxId)
+  //		+ L"&messageId=" + StringHelper::CanonicalizeUrl(messageId);
+  //	auto bytes = PerformHttpRequest(queryString, GET);
+  //	return FromProtoBytes<DocumentList>(bytes);
+  //}
   Result:=nil;
   if not Authenticate then exit;
   S:='';
@@ -5116,15 +5108,13 @@ function TDiadocAPI.DetectDocumentTypes(ABoxId, ANameOnShelf: string
 var
   S: String;
 begin
-  (*
-  DetectDocumentTypesResponse DiadocApi::DetectDocumentTypes(const std::wstring& boxId, const std::wstring& nameOnShelf)
-  {
-      WppTraceDebugOut("DetectDocumentTypes...");
-      auto queryString = L"/DetectDocumentTypes?boxId=" + StringHelper::CanonicalizeUrl(boxId)
-                         + L"&nameOnShelf=" + StringHelper::CanonicalizeUrl(nameOnShelf);
-      return FromProtoBytes<DetectDocumentTypesResponse>(PerformHttpRequest(queryString, GET));
-  }
-  *)
+  //DetectDocumentTypesResponse DiadocApi::DetectDocumentTypes(const std::wstring& boxId, const std::wstring& nameOnShelf)
+  //{
+  //    WppTraceDebugOut("DetectDocumentTypes...");
+  //    auto queryString = L"/DetectDocumentTypes?boxId=" + StringHelper::CanonicalizeUrl(boxId)
+  //                       + L"&nameOnShelf=" + StringHelper::CanonicalizeUrl(nameOnShelf);
+  //    return FromProtoBytes<DetectDocumentTypesResponse>(PerformHttpRequest(queryString, GET));
+  //}
   Result:=nil;
   if not Authenticate then exit;
   S:='';
@@ -5153,15 +5143,13 @@ function TDiadocAPI.DetectDocumentTypes(ABoxId: string; AContent: TStream
 var
   S: String;
 begin
-  (*
-  DetectDocumentTypesResponse DiadocApi::DetectDocumentTypes(const std::wstring& boxId, const Bytes_t& content)
-  {
-  	WppTraceDebugOut("DetectDocumentTypes...");
-  	std::wstringstream buf;
-  	buf << L"/DetectDocumentTypes?boxId=" << StringHelper::CanonicalizeUrl(boxId);
-  	return FromProtoBytes<DetectDocumentTypesResponse>(PerformHttpRequest(buf.str(), content, POST));
-  }
-  *)
+  //DetectDocumentTypesResponse DiadocApi::DetectDocumentTypes(const std::wstring& boxId, const Bytes_t& content)
+  //{
+  //	WppTraceDebugOut("DetectDocumentTypes...");
+  //	std::wstringstream buf;
+  //	buf << L"/DetectDocumentTypes?boxId=" << StringHelper::CanonicalizeUrl(boxId);
+  //	return FromProtoBytes<DetectDocumentTypesResponse>(PerformHttpRequest(buf.str(), content, POST));
+  //}
   Result:=nil;
   if not Authenticate then exit;
   S:='';
@@ -5189,22 +5177,20 @@ function TDiadocAPI.GetContent(ATypeNamedId, AFunction, AVersion: string;
 var
   S: String;
 begin
-  (*
-  DiadocApi::WebFile DiadocApi::GetContent(const std::wstring& typeNamedId, const std::wstring& function, const std::wstring& version, int titleIndex)
-  {
-  	WppTraceDebugOut("GetContent...");
-  	std::wstringstream buf;
-  	buf << L"/GetContent?typeNamedId=" << StringHelper::CanonicalizeUrl(typeNamedId);
-  	buf << L"&function=" << StringHelper::CanonicalizeUrl(function);
-  	buf << L"&version=" << StringHelper::CanonicalizeUrl(version);
-  	buf << L"&titleIndex=" << titleIndex;
-  	auto connect = session_.Connect(api_url_.c_str(), api_port_);
-  	auto request = connect.OpenRequest(GET.c_str(), buf.str().c_str(), NULL, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, connection_flags_);
-  	Bytes_t requestBody;
-  	SendRequest(request, requestBody);
-  	return WebFile(request);
-  }
-  *)
+  //DiadocApi::WebFile DiadocApi::GetContent(const std::wstring& typeNamedId, const std::wstring& function, const std::wstring& version, int titleIndex)
+  //{
+  //	WppTraceDebugOut("GetContent...");
+  //	std::wstringstream buf;
+  //	buf << L"/GetContent?typeNamedId=" << StringHelper::CanonicalizeUrl(typeNamedId);
+  //	buf << L"&function=" << StringHelper::CanonicalizeUrl(function);
+  //	buf << L"&version=" << StringHelper::CanonicalizeUrl(version);
+  //	buf << L"&titleIndex=" << titleIndex;
+  //	auto connect = session_.Connect(api_url_.c_str(), api_port_);
+  //	auto request = connect.OpenRequest(GET.c_str(), buf.str().c_str(), NULL, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, connection_flags_);
+  //	Bytes_t requestBody;
+  //	SendRequest(request, requestBody);
+  //	return WebFile(request);
+  //}
   Result:=nil;
   if not Authenticate then exit;
   S:='';
