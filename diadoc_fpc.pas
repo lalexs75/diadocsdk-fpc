@@ -54,7 +54,9 @@ uses
   DiadocTypes_EmployeeToCreate, DiadocTypes_UserToUpdate, 
   DiadocTypes_EmployeeToUpdate, DiadocTypes_DocumentFilter, 
   DiadocTypes_ResolutionType, DiadocTypes_ResolutionRequestType, 
-  LazarusPackageIntf;
+  DiadocTypes_Department, DiadocTypes_DepartmentList, 
+  DiadocTypes_DepartmentToCreate, DiadocTypes_DepartmentToUpdate, 
+  DiadocTypes_Routing, LazarusPackageIntf;
 
 implementation
 

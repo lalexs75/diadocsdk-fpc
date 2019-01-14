@@ -40,6 +40,10 @@ uses
   Classes, SysUtils, diadoc_base, DiadocTypes, httpsend,
   protobuf_fpc,
   diadoc_consts,
+  DiadocTypes_Department,
+  DiadocTypes_DepartmentList,
+  DiadocTypes_DepartmentToCreate,
+  DiadocTypes_DepartmentToUpdate,
   DiadocTypes_AcquireCounteragent,
   DiadocTypes_Address,
   DiadocTypes_AsyncMethodResult,
@@ -85,7 +89,8 @@ uses
   DiadocTypes_EmployeeToCreate,
   DiadocTypes_UserToUpdate,
   DiadocTypes_EmployeeToUpdate,
-  DiadocTypes_DocumentFilter
+  DiadocTypes_DocumentFilter,
+  DiadocTypes_Routing
   ;
 
 type
@@ -156,6 +161,12 @@ type
 
     function UpdateMyUser(AUserToUpdate:TUserToUpdate):TUserV2;
 
+    function GetDepartmentByFullId(const ABoxId:string; const ADepartmentId:string):DiadocTypes_Department.TDepartment;
+    function GetDepartments(const ABoxId:string; const APage:Integer = 0; const ACount:Integer = 0):DiadocTypes_DepartmentList.TDepartmentList;
+    function CreateDepartment(const ABoxId:string; const ADepartmentToCreate:DiadocTypes_DepartmentToCreate.TDepartmentToCreate):DiadocTypes_Department.TDepartment;
+    function UpdateDepartment(const ABoxId:string; const ADepartmentId:string; ADepartmentToUpdate:DiadocTypes_DepartmentToUpdate.TDepartmentToUpdate):DiadocTypes_Department.TDepartment;
+    procedure DeleteDepartment(const ABoxId:string; const ADepartmentId:string);
+
     function GetEmployee(const ABoxId:string; const AUserId:string):DiadocTypes_Employee.TEmployee;
     function GetEmployees(const ABoxId:string; APage:Integer; ACount:Integer):DiadocTypes_Employee.TEmployeeList;
 
@@ -167,7 +178,7 @@ type
     function UpdateSubscriptions(const AboxId:string; const AUserId:string; const ASubscriptionsToUpdate:TSubscriptionsToUpdate):TEmployeeSubscriptions;
     function GetOrganizationUsers(AOrgId: string): TOrganizationUsersList;
     function GetBoxes:TBoxList; deprecated;
-    function GetDepartment(AOrgId, ADepartmentId: string): TDepartment;
+    function GetDepartment(AOrgId, ADepartmentId: string): DiadocTypes_Organization.TDepartment;
     function GetMyPermissions(AOrgId: string): TOrganizationUserPermissions;
 
     //SetProxyCredentials(const std::wstring& username, const std::wstring& password);
@@ -604,6 +615,218 @@ begin
   F.Free;
 end;
 
+function TDiadocAPI.GetDepartmentByFullId(const ABoxId: string;
+  const ADepartmentId: string): DiadocTypes_Department.TDepartment;
+var
+  S: String;
+begin
+  //Diadoc::Api::Proto::Departments::Department DiadocApi::GetDepartmentByFullId(const std::wstring& boxId, const std::wstring& departmentId)
+  //{
+  //	WppTraceDebugOut("GetDepartmentByFullId...");
+  //	std::wstringstream buf;
+  //	buf << L"/admin/GetDepartment?boxId=" << StringHelper::CanonicalizeUrl(boxId)
+  //		<< L"&departmentId=" << StringHelper::CanonicalizeUrl(departmentId);
+  //	return FromProtoBytes<Diadoc::Api::Proto::Departments::Department>(PerformHttpRequest(buf.str(), GET));
+  //}
+  Result:=nil;
+  if ABoxId = '' then
+    raise EDiadocException.Create(sNotDefinedBoxId);
+  if ADepartmentId = '' then
+    raise EDiadocException.Create(sNotDefinedDepartmentId);
+
+  if not Authenticate then exit;
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId);
+  AddURLParam(S, 'departmentId', ADepartmentId);
+
+  if SendCommand(hmGET, '/admin/GetDepartment', S, nil) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('GetDepartment');
+    {$ENDIF}
+    FHTTP.Document.Position:=0;
+    if FResultCode = 200 then
+    begin
+      Result:=DiadocTypes_Department.TDepartment.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+end;
+
+function TDiadocAPI.GetDepartments(const ABoxId: string; const APage: Integer;
+  const ACount: Integer): DiadocTypes_DepartmentList.TDepartmentList;
+var
+  S: String;
+begin
+  //Diadoc::Api::Proto::Departments::DepartmentList DiadocApi::GetDepartments(const std::wstring& boxId, int* page, int* count)
+  //{
+  //	WppTraceDebugOut("GetDepartments...");
+  //	std::wstringstream buf;
+  //	buf << L"/admin/GetDepartments?boxId=" << StringHelper::CanonicalizeUrl(boxId);
+  //	if (page != NULL) {
+  //		buf << L"&page=" << *page;
+  //	}
+  //	if (count != NULL) {
+  //		buf << L"&count=" << *count;
+  //	}
+  //	return FromProtoBytes<Diadoc::Api::Proto::Departments::DepartmentList>(PerformHttpRequest(buf.str(), GET));
+  //}
+
+  Result:=nil;
+  if ABoxId = '' then
+    raise EDiadocException.Create(sNotDefinedBoxId);
+
+  if not Authenticate then exit;
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId);
+  if APage > 0 then
+    AddURLParam(S, 'page', IntToStr(APage));
+  if ACount > 0 then
+    AddURLParam(S, 'count', IntToStr(ACount));
+
+  if SendCommand(hmGET, '/admin/GetDepartments', S, nil) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('GetDepartments');
+    {$ENDIF}
+    FHTTP.Document.Position:=0;
+    if FResultCode = 200 then
+    begin
+      Result:=DiadocTypes_DepartmentList.TDepartmentList.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+end;
+
+function TDiadocAPI.CreateDepartment(const ABoxId: string;
+  const ADepartmentToCreate: DiadocTypes_DepartmentToCreate.TDepartmentToCreate
+  ): DiadocTypes_Department.TDepartment;
+var
+  S: String;
+  F: TStream;
+begin
+  //Diadoc::Api::Proto::Departments::Department DiadocApi::CreateDepartment(const std::wstring& boxId, const Diadoc::Api::Proto::Departments::DepartmentToCreate& departmentToCreate)
+  //{
+  //	WppTraceDebugOut("CreateDepartment...");
+  //	std::wstringstream buf;
+  //	buf << L"/admin/CreateDepartment?boxId=" << StringHelper::CanonicalizeUrl(boxId);
+  //	return FromProtoBytes<Diadoc::Api::Proto::Departments::Department>(PerformHttpRequest(buf.str(), ToProtoBytes(departmentToCreate), POST));
+  //}
+
+  Result:=nil;
+  if ABoxId = '' then
+    raise EDiadocException.Create(sNotDefinedBoxId);
+
+  if not Authenticate then exit;
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId);
+  F:=ADepartmentToCreate.SaveToStream;
+
+  if SendCommand(hmPOST, '/admin/CreateDepartment', S, F) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('CreateDepartment');
+    {$ENDIF}
+    FHTTP.Document.Position:=0;
+    if FResultCode = 200 then
+    begin
+      Result:=DiadocTypes_Department.TDepartment.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+  F.Free;
+end;
+
+function TDiadocAPI.UpdateDepartment(const ABoxId: string;
+  const ADepartmentId: string;
+  ADepartmentToUpdate: DiadocTypes_DepartmentToUpdate.TDepartmentToUpdate
+  ): DiadocTypes_Department.TDepartment;
+var
+  S: String;
+  F: TStream;
+begin
+  //Diadoc::Api::Proto::Departments::Department DiadocApi::UpdateDepartment(const std::wstring& boxId, const std::wstring& departmentId, Diadoc::Api::Proto::Departments::DepartmentToUpdate& departmentToUpdate)
+  //{
+  //	WppTraceDebugOut("UpdateDepartment...");
+  //	std::wstringstream buf;
+  //	buf << L"/admin/UpdateDepartment?boxId=" << StringHelper::CanonicalizeUrl(boxId)
+  //		<< L"&departmentId=" << StringHelper::CanonicalizeUrl(departmentId);
+  //	return FromProtoBytes<Diadoc::Api::Proto::Departments::Department>(PerformHttpRequest(buf.str(), ToProtoBytes(departmentToUpdate), POST));
+  //}
+
+  Result:=nil;
+  if ABoxId = '' then
+    raise EDiadocException.Create(sNotDefinedBoxId);
+  if ADepartmentId = '' then
+    raise EDiadocException.Create(sNotDefinedDepartmentId);
+
+  if not Authenticate then exit;
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId);
+  AddURLParam(S, 'departmentId', ADepartmentId);
+  F:=ADepartmentToUpdate.SaveToStream;
+
+  if SendCommand(hmPOST, '/admin/UpdateDepartment', S, F) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('CreateDepartment');
+    {$ENDIF}
+    FHTTP.Document.Position:=0;
+    if FResultCode = 200 then
+    begin
+      Result:=DiadocTypes_Department.TDepartment.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+  F.Free;
+end;
+
+procedure TDiadocAPI.DeleteDepartment(const ABoxId: string;
+  const ADepartmentId: string);
+var
+  S: String;
+begin
+  //void DiadocApi::DeleteDepartment(const std::wstring& boxId, const std::wstring& departmentId)
+  //{
+  //	WppTraceDebugOut("DeleteDepartment...");
+  //	std::wstringstream buf;
+  //	buf << L"/admin/DeleteDepartment?boxId=" << StringHelper::CanonicalizeUrl(boxId)
+  //		<< L"&departmentId=" << StringHelper::CanonicalizeUrl(departmentId);
+  //	PerformHttpRequest(buf.str(), POST);
+  //}
+
+  if ABoxId = '' then
+    raise EDiadocException.Create(sNotDefinedBoxId);
+  if ADepartmentId = '' then
+    raise EDiadocException.Create(sNotDefinedDepartmentId);
+
+  if not Authenticate then exit;
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId);
+  AddURLParam(S, 'departmentId', ADepartmentId);
+
+  if SendCommand(hmPOST, '/admin/DeleteDepartment', S, nil) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('DeleteDepartment');
+    {$ENDIF}
+    FHTTP.Document.Position:=0;
+    if FResultCode = 200 then
+    begin
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+end;
+
 function TDiadocAPI.GetEmployee(const ABoxId: string; const AUserId: string
   ): DiadocTypes_Employee.TEmployee;
 var
@@ -697,16 +920,13 @@ var
   F: TStream;
   S: String;
 begin
-  (*
-
-  Diadoc::Api::Proto::Employees::Employee DiadocApi::CreateEmployee(const std::wstring& boxId, const Diadoc::Api::Proto::Employees::EmployeeToCreate& employeeToCreate)
-  {
-  	WppTraceDebugOut("CreateEmployee...");
-  	std::wstringstream buf;
-  	buf << L"/CreateEmployee?boxId=" << StringHelper::CanonicalizeUrl(boxId);
-  	return FromProtoBytes<Diadoc::Api::Proto::Employees::Employee>(PerformHttpRequest(buf.str(), ToProtoBytes(employeeToCreate), POST));
-  }
-  *)
+  //Diadoc::Api::Proto::Employees::Employee DiadocApi::CreateEmployee(const std::wstring& boxId, const Diadoc::Api::Proto::Employees::EmployeeToCreate& employeeToCreate)
+  //{
+  //	WppTraceDebugOut("CreateEmployee...");
+  //	std::wstringstream buf;
+  //	buf << L"/CreateEmployee?boxId=" << StringHelper::CanonicalizeUrl(boxId);
+  //	return FromProtoBytes<Diadoc::Api::Proto::Employees::Employee>(PerformHttpRequest(buf.str(), ToProtoBytes(employeeToCreate), POST));
+  //}
   Result:=nil;
   if ABoxId = '' then
     raise EDiadocException.Create(sNotDefinedBoxId);
@@ -3236,7 +3456,8 @@ begin
   end;
 end;
 
-function TDiadocAPI.GetDepartment(AOrgId, ADepartmentId:string):TDepartment;
+function TDiadocAPI.GetDepartment(AOrgId, ADepartmentId: string
+  ): DiadocTypes_Organization.TDepartment;
 var
   S: String;
 begin

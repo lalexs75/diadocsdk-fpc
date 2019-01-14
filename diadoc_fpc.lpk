@@ -9,14 +9,14 @@
       <Version Value="11"/>
       <PathDelim Value="\"/>
       <SearchPaths>
-        <OtherUnitFiles Value="Docflow;Invoicing;Documents\Types;Events;Documents;Recognition;KeyValueStorage;Forwarding;diadoc_src;Employees;Employees\Subscriptions;Users"/>
+        <OtherUnitFiles Value="Docflow;Invoicing;Documents\Types;Events;Documents;Recognition;KeyValueStorage;Forwarding;diadoc_src;Employees;Employees\Subscriptions;Users;Departments"/>
         <UnitOutputDirectory Value="lib\diadoc\$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
     </CompilerOptions>
     <Description Value="Компоненты интеграции Контур ДИАДОК-API для FPC и Lazarus"/>
     <License Value="LGPL"/>
     <Version Minor="9" Release="3"/>
-    <Files Count="98">
+    <Files Count="103">
       <Item1>
         <Filename Value="diadoc_define.inc"/>
         <Type Value="Include"/>
@@ -410,6 +410,26 @@
         <Filename Value="diadoc_src\diadoctypes_resolutionrequesttype.pas"/>
         <UnitName Value="diadoctypes_resolutionrequesttype"/>
       </Item98>
+      <Item99>
+        <Filename Value="Departments\diadoctypes_department.pas"/>
+        <UnitName Value="diadoctypes_Department"/>
+      </Item99>
+      <Item100>
+        <Filename Value="Departments\diadoctypes_departmentlist.pas"/>
+        <UnitName Value="diadoctypes_DepartmentList"/>
+      </Item100>
+      <Item101>
+        <Filename Value="Departments\diadoctypes_departmenttocreate.pas"/>
+        <UnitName Value="diadoctypes_DepartmentToCreate"/>
+      </Item101>
+      <Item102>
+        <Filename Value="Departments\diadoctypes_departmenttoupdate.pas"/>
+        <UnitName Value="diadoctypes_DepartmentToUpdate"/>
+      </Item102>
+      <Item103>
+        <Filename Value="Departments\diadoctypes_routing.pas"/>
+        <UnitName Value="diadoctypes_Routing"/>
+      </Item103>
     </Files>
     <LazDoc Paths="docs"/>
     <i18n>
