@@ -1,0 +1,186 @@
+object DepartmentInfoFrame: TDepartmentInfoFrame
+  Left = 0
+  Height = 298
+  Top = 0
+  Width = 483
+  ClientHeight = 298
+  ClientWidth = 483
+  TabOrder = 0
+  DesignLeft = 621
+  DesignTop = 285
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 298
+    Top = 0
+    Width = 483
+    ActivePage = TabSheet1
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 0
+    object TabSheet1: TTabSheet
+      Caption = 'Подразделение'
+      ClientHeight = 265
+      ClientWidth = 473
+      object CLabel: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideLeft.Side = asrCenter
+        AnchorSideTop.Control = TabSheet1
+        Left = 236
+        Height = 1
+        Top = 0
+        Width = 1
+        ParentColor = False
+      end
+      object Label2: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = TabSheet1
+        Left = 6
+        Height = 19
+        Top = 6
+        Width = 15
+        BorderSpacing.Around = 6
+        Caption = 'ID'
+        ParentColor = False
+      end
+      object Label1: TLabel
+        AnchorSideLeft.Control = CLabel
+        AnchorSideTop.Control = TabSheet1
+        Left = 242
+        Height = 19
+        Top = 6
+        Width = 59
+        BorderSpacing.Around = 6
+        Caption = 'ParentID'
+        ParentColor = False
+      end
+      object Edit1: TEdit
+        AnchorSideLeft.Control = Label2
+        AnchorSideTop.Control = Label2
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = CLabel
+        Left = 12
+        Height = 31
+        Top = 31
+        Width = 218
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        ReadOnly = True
+        TabOrder = 0
+        Text = 'Edit1'
+      end
+      object Edit2: TEdit
+        AnchorSideLeft.Control = Label1
+        AnchorSideTop.Control = Label2
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 248
+        Height = 31
+        Top = 31
+        Width = 219
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        ReadOnly = True
+        TabOrder = 1
+        Text = 'Edit2'
+      end
+      object Label3: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = Edit1
+        AnchorSideTop.Side = asrBottom
+        Left = 6
+        Height = 19
+        Top = 68
+        Width = 103
+        BorderSpacing.Around = 6
+        Caption = 'Наименование'
+        ParentColor = False
+      end
+      object Edit3: TEdit
+        AnchorSideLeft.Control = Label3
+        AnchorSideTop.Control = Label3
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 6
+        Height = 31
+        Top = 93
+        Width = 467
+        Anchors = [akTop, akLeft, akRight]
+        ReadOnly = True
+        TabOrder = 2
+        Text = 'Edit3'
+      end
+      object Label4: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = Edit3
+        AnchorSideTop.Side = asrBottom
+        Left = 6
+        Height = 19
+        Top = 130
+        Width = 196
+        BorderSpacing.Around = 6
+        Caption = 'Сокращённое наименование'
+        ParentColor = False
+      end
+      object Edit4: TEdit
+        AnchorSideLeft.Control = Label4
+        AnchorSideTop.Control = Label4
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 12
+        Height = 31
+        Top = 155
+        Width = 455
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        ReadOnly = True
+        TabOrder = 3
+        Text = 'Edit4'
+      end
+      object Label5: TLabel
+        AnchorSideLeft.Control = TabSheet1
+        AnchorSideTop.Control = Edit4
+        AnchorSideTop.Side = asrBottom
+        Left = 6
+        Height = 19
+        Top = 192
+        Width = 32
+        BorderSpacing.Around = 6
+        Caption = 'КПП'
+        ParentColor = False
+      end
+      object CheckBox1: TCheckBox
+        AnchorSideLeft.Control = CLabel
+        AnchorSideTop.Control = Edit5
+        Left = 242
+        Height = 23
+        Top = 223
+        Width = 83
+        BorderSpacing.Around = 6
+        Caption = 'Закрыто'
+        Enabled = False
+        TabOrder = 4
+      end
+      object Edit5: TEdit
+        AnchorSideLeft.Control = Label5
+        AnchorSideTop.Control = Label5
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = CLabel
+        Left = 12
+        Height = 31
+        Top = 217
+        Width = 218
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Around = 6
+        ReadOnly = True
+        TabOrder = 5
+        Text = 'Edit5'
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'Адрес'
+    end
+  end
+end

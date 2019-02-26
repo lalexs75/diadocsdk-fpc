@@ -14,7 +14,7 @@
     <Description Value="Визуальные компоненты для ДИАДОК"/>
     <License Value="LGPL"/>
     <Version Minor="1" Release="1" Build="1"/>
-    <Files Count="11">
+    <Files Count="12">
       <Item1>
         <Filename Value="DiadocVisual/ddselectclient.pas"/>
         <AddToUsesPkgSection Value="False"/>
@@ -66,6 +66,10 @@
         <Filename Value="DiadocVisual/frames/ddorganizationemployeesunit.pas"/>
         <UnitName Value="ddorganizationemployeesunit"/>
       </Item11>
+      <Item12>
+        <Filename Value="DiadocVisual/frames/dddepartmentinfounit.pas"/>
+        <UnitName Value="dddepartmentinfounit"/>
+      </Item12>
     </Files>
     <LazDoc Paths="/usr/local/share/lazarus/components/diadocsdk-fpc/docs"/>
     <i18n>

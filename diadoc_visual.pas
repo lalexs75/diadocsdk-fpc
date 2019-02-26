@@ -11,7 +11,7 @@ uses
   ddVisualCommon, ddVisualRegister, ddOrganizationInfoUnit, 
   AdressInfoFrameUnit, BoxInfoUnit, ddConsts, ssOrganizationInfoSympleUnit, 
   ddOrganizationUsersList, ddOrganizationUsersUnit, 
-  ddOrganizationEmployeesUnit, LazarusPackageIntf;
+  ddOrganizationEmployeesUnit, ddDepartmentInfoUnit, LazarusPackageIntf;
 
 implementation
 
