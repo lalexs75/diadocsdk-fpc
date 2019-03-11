@@ -41,7 +41,7 @@ interface
 //import "ResolutionTarget.proto";
 uses
   Classes, SysUtils, protobuf_fpc, protobuf_fpc_types, DiadocTypes_ResolutionRequestType,
-  DiadocTypes_ResolutionTarget;
+  DiadocTypes_ResolutionTarget, ResolutionAction;
 
 type
   {  TResolutionRequestInfo  }
@@ -50,9 +50,11 @@ type
   //	required string Author = 2;
   //	optional ResolutionTarget Target = 3;
   //	optional string ResolvedWith = 4;
+  //    repeated ResolutionAction Actions = 5;
   //}
   TResolutionRequestInfo = class(TSerializationObject) //message ResolutionRequestInfo
   private
+    FActions: TResolutionActions;
     FAuthor: string;
     FRequestType: TResolutionRequestType;
     FResolvedWith: string;
@@ -70,6 +72,7 @@ type
     property Author:string read FAuthor write SetAuthor; //2
     property Target:TResolutionTarget read FTarget; //3;
     property ResolvedWith:string read FResolvedWith write SetResolvedWith; //4;
+    property Actions:TResolutionActions read FActions write FActions;
   end;
 
 implementation

@@ -56,7 +56,7 @@ uses
   DiadocTypes_ResolutionType, DiadocTypes_ResolutionRequestType, 
   DiadocTypes_Department, DiadocTypes_DepartmentList, 
   DiadocTypes_DepartmentToCreate, DiadocTypes_DepartmentToUpdate, 
-  DiadocTypes_Routing, LazarusPackageIntf;
+  DiadocTypes_Routing, ResolutionAction, LazarusPackageIntf;
 
 implementation
 

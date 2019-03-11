@@ -48,12 +48,14 @@ type
   //	ApprovementRequest = 0;
   //	SignatureRequest = 1;
   //	ApprovementSignatureRequest = 2;
+  //    Custom = 3;
   //}
   TResolutionRequestType = (
     UnknownResolutionRequestType = -1,
     ApprovementRequest = 0,
     SignatureRequest = 1,
-    ApprovementSignatureRequest = 2
+    ApprovementSignatureRequest = 2,
+    Custom = 3
   );
 
 implementation

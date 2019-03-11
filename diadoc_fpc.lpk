@@ -16,7 +16,7 @@
     <Description Value="Компоненты интеграции Контур ДИАДОК-API для FPC и Lazarus"/>
     <License Value="LGPL"/>
     <Version Minor="9" Release="3"/>
-    <Files Count="103">
+    <Files Count="104">
       <Item1>
         <Filename Value="diadoc_define.inc"/>
         <Type Value="Include"/>
@@ -430,6 +430,10 @@
         <Filename Value="Departments\diadoctypes_routing.pas"/>
         <UnitName Value="diadoctypes_Routing"/>
       </Item103>
+      <Item104>
+        <Filename Value="diadoc_src\ResolutionAction.pas"/>
+        <UnitName Value="Diadoc_Api"/>
+      </Item104>
     </Files>
     <LazDoc Paths="docs"/>
     <i18n>

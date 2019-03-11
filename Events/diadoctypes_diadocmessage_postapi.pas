@@ -2178,7 +2178,7 @@ type
     property LockPacket:Boolean read FLockPacket write SetLockPacket; //32
     property UniversalTransferDocumentSellerTitles:TXmlDocumentAttachments read FUniversalTransferDocumentSellerTitles; //33;
     property DocumentAttachments:TDocumentAttachments read FDocumentAttachments;//34;
-    property LockMode:TLockMode read FLockMode write SetLockMode;//35 [default = None];
+    property LockMode:TLockMode read FLockMode write SetLockMode default None;//35];
   end;
 
 implementation
@@ -2423,6 +2423,7 @@ begin
   FDocumentAttachments:=TDocumentAttachments.Create;
 
   FStrictDraftValidation:=true;//15
+  FLockMode:=None;
 end;
 
 destructor TMessageToPost.Destroy;

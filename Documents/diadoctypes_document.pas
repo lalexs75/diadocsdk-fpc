@@ -114,7 +114,8 @@ type
     Disapproved = 2,
     ApprovementRequested = 3,
     SignatureRequested = 4,
-    SignatureDenied = 5
+    SignatureDenied = 5,
+    ActionsRequested = 6
   );
 
   TRevocationStatus = (
