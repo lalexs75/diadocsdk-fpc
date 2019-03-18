@@ -150,6 +150,7 @@ type
     //Авторизация
     //-------------------------------------------------
     function Authenticate:boolean;
+    function AuthenticateBySert(certBytes:TStream):boolean;
     function GetExternalServiceAuthInfo(AKey:string):TExternalServiceAuthInfo;
     //void Authenticate(const Bytes_t& certBytes, bool useLocalMachineStorage = false);
     function VerifyThatUserHasAccessToAnyBox(ACertBytes:TStream):boolean;
@@ -485,18 +486,35 @@ var
   S: String;
 begin
   if FAuthToken <> '' then Exit(True);
+  //WppTraceDebugOut(L"Authenticating by login/password pair...");
 
   Result:=false;
   S:='';
   AddURLParam(S, 'login', FUserName);
   AddURLParam(S, 'password', FPassword);
 
-  if SendCommand(hmPOST, 'Authenticate', S, nil) then
+  if SendCommand(hmPOST, '/V2/Authenticate', S, nil) then
   begin
     FHTTP.Document.Position:=0;
     FAuthToken:=ReadStrFromStream(FHTTP.Document, FHTTP.Document.Size);
     Result:=true;
   end;
+end;
+
+function TDiadocAPI.AuthenticateBySert(certBytes: TStream): boolean;
+begin
+  raise ENotImplemented.Create(sNotImplemented);
+  (*
+  WppTraceDebugOut(L"Authenticating by certBytes...");
+  auto response = PerformHttpRequest(L"/V2/Authenticate", certBytes, POST);
+  CertSystemStore store(useLocalMachineStorage);
+  auto decryptedToken = store.Decrypt(response);
+
+  std::wstringstream wss;
+  wss << L"/V2/AuthenticateConfirm?token=" << StringHelper::CanonicalizeUrl(CryptHelper::ToBase64(decryptedToken)) << std::flush;
+  auto confirmResponse = PerformHttpRequestString(wss.str(), certBytes, POST);
+  token_ = StringHelper::Utf8ToUtf16(confirmResponse);
+  *)
 end;
 
 function TDiadocAPI.GetExternalServiceAuthInfo(AKey: string
@@ -3193,7 +3211,7 @@ var
   S: String;
   documentTitleType: TDocumentTitleType;
 begin
-  raise ENotImplemented.Create(sNotDefindAPIKey);
+  raise ENotImplemented.Create(sNotImplemented);
   (*
 
   Signers::ExtendedSignerDetails DiadocApi::GetExtendedSignerDetails(const std::wstring& token, const std::wstring& boxId, const std::wstring& thumbprint, bool forBuyer, bool forCorrection)
