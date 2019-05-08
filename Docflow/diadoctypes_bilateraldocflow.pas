@@ -79,28 +79,93 @@ type
     FReceiptDocflow: TReceiptDocflow;
     FRecipientSignatureDocflow: TRecipientSignatureDocflow;
     FRecipientSignatureRejectionDocflow: TRecipientSignatureRejectionDocflow;
+    procedure SetCanDocumentBeReceipted(AValue: Boolean);
+    procedure SetCanDocumentBeSignedBySender(AValue: Boolean);
+    procedure SetCanDocumentBeSignedOrRejectedByRecipient(AValue: Boolean);
+    procedure SetIsDocumentRejectedByRecipient(AValue: Boolean);
+    procedure SetIsDocumentSignedByRecipient(AValue: Boolean);
+    procedure SetIsFinished(AValue: Boolean);
+    procedure SetIsReceiptRequested(AValue: Boolean);
+    procedure SetIsRecipientSignatureRequested(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property IsFinished:Boolean read FIsFinished write FIsFinished; //1;
+    property IsFinished:Boolean read FIsFinished write SetIsFinished; //1;
     property ReceiptDocflow:TReceiptDocflow read FReceiptDocflow; //2;
     property RecipientSignatureDocflow:TRecipientSignatureDocflow read FRecipientSignatureDocflow; //3;
     property RecipientSignatureRejectionDocflow:TRecipientSignatureRejectionDocflow read FRecipientSignatureRejectionDocflow; //4;
-    property IsReceiptRequested:Boolean read FIsReceiptRequested write FIsReceiptRequested; //5;
-    property IsRecipientSignatureRequested:Boolean read FIsRecipientSignatureRequested write FIsRecipientSignatureRequested; //6;
-    property IsDocumentSignedByRecipient:Boolean read FIsDocumentSignedByRecipient write FIsDocumentSignedByRecipient; //7;
-    property IsDocumentRejectedByRecipient:Boolean read FIsDocumentRejectedByRecipient write FIsDocumentRejectedByRecipient; //8;
-    property CanDocumentBeReceipted:Boolean read FCanDocumentBeReceipted write FCanDocumentBeReceipted; //9;
-    property CanDocumentBeSignedBySender:Boolean read FCanDocumentBeSignedBySender write FCanDocumentBeSignedBySender; //10;
-    property CanDocumentBeSignedOrRejectedByRecipient:Boolean read FCanDocumentBeSignedOrRejectedByRecipient write FCanDocumentBeSignedOrRejectedByRecipient; //11;
+    property IsReceiptRequested:Boolean read FIsReceiptRequested write SetIsReceiptRequested; //5;
+    property IsRecipientSignatureRequested:Boolean read FIsRecipientSignatureRequested write SetIsRecipientSignatureRequested; //6;
+    property IsDocumentSignedByRecipient:Boolean read FIsDocumentSignedByRecipient write SetIsDocumentSignedByRecipient; //7;
+    property IsDocumentRejectedByRecipient:Boolean read FIsDocumentRejectedByRecipient write SetIsDocumentRejectedByRecipient; //8;
+    property CanDocumentBeReceipted:Boolean read FCanDocumentBeReceipted write SetCanDocumentBeReceipted; //9;
+    property CanDocumentBeSignedBySender:Boolean read FCanDocumentBeSignedBySender write SetCanDocumentBeSignedBySender; //10;
+    property CanDocumentBeSignedOrRejectedByRecipient:Boolean read FCanDocumentBeSignedOrRejectedByRecipient write SetCanDocumentBeSignedOrRejectedByRecipient; //11;
   end;
 
 implementation
 
 { TBilateralDocflow }
+
+procedure TBilateralDocflow.SetCanDocumentBeReceipted(AValue: Boolean);
+begin
+  if FCanDocumentBeReceipted=AValue then Exit;
+  FCanDocumentBeReceipted:=AValue;
+  Modified(9);
+end;
+
+procedure TBilateralDocflow.SetCanDocumentBeSignedBySender(AValue: Boolean);
+begin
+  if FCanDocumentBeSignedBySender=AValue then Exit;
+  FCanDocumentBeSignedBySender:=AValue;
+  Modified(10);
+end;
+
+procedure TBilateralDocflow.SetCanDocumentBeSignedOrRejectedByRecipient(
+  AValue: Boolean);
+begin
+  if FCanDocumentBeSignedOrRejectedByRecipient=AValue then Exit;
+  FCanDocumentBeSignedOrRejectedByRecipient:=AValue;
+  Modified(11);
+end;
+
+procedure TBilateralDocflow.SetIsDocumentRejectedByRecipient(AValue: Boolean);
+begin
+  if FIsDocumentRejectedByRecipient=AValue then Exit;
+  FIsDocumentRejectedByRecipient:=AValue;
+  Modified(8);
+end;
+
+procedure TBilateralDocflow.SetIsDocumentSignedByRecipient(AValue: Boolean);
+begin
+  if FIsDocumentSignedByRecipient=AValue then Exit;
+  FIsDocumentSignedByRecipient:=AValue;
+  Modified(7);
+end;
+
+procedure TBilateralDocflow.SetIsFinished(AValue: Boolean);
+begin
+  if FIsFinished=AValue then Exit;
+  FIsFinished:=AValue;
+  Modified(1);
+end;
+
+procedure TBilateralDocflow.SetIsReceiptRequested(AValue: Boolean);
+begin
+  if FIsReceiptRequested=AValue then Exit;
+  FIsReceiptRequested:=AValue;
+  Modified(5);
+end;
+
+procedure TBilateralDocflow.SetIsRecipientSignatureRequested(AValue: Boolean);
+begin
+  if FIsRecipientSignatureRequested=AValue then Exit;
+  FIsRecipientSignatureRequested:=AValue;
+  Modified(6);
+end;
 
 procedure TBilateralDocflow.InternalRegisterProperty;
 begin

@@ -80,18 +80,21 @@ type
     FPreviousDocumentState: TDocumentWithDocflow;
     FPreviousEventId: string;
     FTimestamp: TTimestamp;
+    procedure SetEventId(AValue: string);
+    procedure SetIndexKey(AValue: TBytes);
+    procedure SetPreviousEventId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property EventId:string read FEventId write FEventId;//1;
+    property EventId:string read FEventId write SetEventId;//1;
     property Timestamp:TTimestamp read FTimestamp; //2;
     property DocumentId:TDocumentId read FDocumentId; //3;
-    property IndexKey:TBytes read FIndexKey write FIndexKey; //4;
+    property IndexKey:TBytes read FIndexKey write SetIndexKey; //4;
     property Document:TDocumentWithDocflow read FDocument; //5;
-    property PreviousEventId:string read FPreviousEventId write FPreviousEventId;//6;
+    property PreviousEventId:string read FPreviousEventId write SetPreviousEventId;//6;
     property PreviousDocumentState:TDocumentWithDocflow read FPreviousDocumentState;//7;
   end;
   TDocflowEvents = specialize GSerializationObjectList<TDocflowEvent>;
@@ -106,13 +109,14 @@ type
   private
     FEvents: TDocflowEvents;
     FTotalCount: int32;
+    procedure SetTotalCount(AValue: int32);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property TotalCount:int32  read FTotalCount write FTotalCount; //1;
+    property TotalCount:int32  read FTotalCount write SetTotalCount; //1;
     property Events:TDocflowEvents read FEvents; //2;
   end;
 
@@ -132,6 +136,10 @@ type
     FInjectEntityContent: Boolean;
     FPopulateDocuments: Boolean;
     FPopulatePreviousDocumentStates: Boolean;
+    procedure SetAfterIndexKey(AValue: TBytes);
+    procedure SetInjectEntityContent(AValue: Boolean);
+    procedure SetPopulateDocuments(AValue: Boolean);
+    procedure SetPopulatePreviousDocumentStates(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -139,10 +147,10 @@ type
     destructor Destroy; override;
   published
     property Filter:TTimeBasedFilter read FFilter; //1;
-    property AfterIndexKey:TBytes read FAfterIndexKey write FAfterIndexKey; //2;
-    property PopulateDocuments:Boolean read FPopulateDocuments write FPopulateDocuments;//3
-    property InjectEntityContent:Boolean read FInjectEntityContent write FInjectEntityContent; //4
-    property PopulatePreviousDocumentStates:Boolean read FPopulatePreviousDocumentStates write FPopulatePreviousDocumentStates; //5
+    property AfterIndexKey:TBytes read FAfterIndexKey write SetAfterIndexKey; //2;
+    property PopulateDocuments:Boolean read FPopulateDocuments write SetPopulateDocuments;//3
+    property InjectEntityContent:Boolean read FInjectEntityContent write SetInjectEntityContent; //4
+    property PopulatePreviousDocumentStates:Boolean read FPopulatePreviousDocumentStates write SetPopulatePreviousDocumentStates; //5
   end;
 
 
@@ -156,6 +164,7 @@ type
   private
     FDocument: TDocumentWithDocflow;
     FIndexKey: TBytes;
+    procedure SetIndexKey(AValue: TBytes);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -163,7 +172,7 @@ type
     destructor Destroy; override;
   published
     property Document:TDocumentWithDocflow read FDocument; //1;
-    property IndexKey:TBytes read FIndexKey write FIndexKey; //2;
+    property IndexKey:TBytes read FIndexKey write SetIndexKey; //2;
   end;
   TFetchedDocuments = specialize GSerializationObjectList<TFetchedDocument>;
 
@@ -177,6 +186,7 @@ type
   private
     FDocuments: TFetchedDocuments;
     FNextPageIndexKey: TBytes;
+    procedure SetNextPageIndexKey(AValue: TBytes);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -184,7 +194,7 @@ type
     destructor Destroy; override;
   published
     property Documents:TFetchedDocuments read FDocuments; //1;
-    property NextPageIndexKey:TBytes read FNextPageIndexKey write FNextPageIndexKey; //2;
+    property NextPageIndexKey:TBytes read FNextPageIndexKey write SetNextPageIndexKey; //2;
   end;
 
 
@@ -202,16 +212,20 @@ type
     FCount: int32;
     FInjectEntityContent: Boolean;
     FPacketId: string;
+    procedure SetAfterIndexKey(AValue: TBytes);
+    procedure SetCount(AValue: int32);
+    procedure SetInjectEntityContent(AValue: Boolean);
+    procedure SetPacketId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property PacketId:string read FPacketId write FPacketId; //1;
-    property Count:int32 read FCount write FCount default 100; //2
-    property InjectEntityContent:Boolean read FInjectEntityContent write FInjectEntityContent; //3
-    property AfterIndexKey:TBytes read FAfterIndexKey write FAfterIndexKey; //4;
+    property PacketId:string read FPacketId write SetPacketId; //1;
+    property Count:int32 read FCount write SetCount default 100; //2
+    property InjectEntityContent:Boolean read FInjectEntityContent write SetInjectEntityContent; //3
+    property AfterIndexKey:TBytes read FAfterIndexKey write SetAfterIndexKey; //4;
   end;
 
 
@@ -225,6 +239,7 @@ type
   private
     FDocuments: TDocumentWithDocflows;
     FHaveMoreDocuments: Boolean;
+    procedure SetHaveMoreDocuments(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -232,7 +247,7 @@ type
     destructor Destroy; override;
   published
     property Documents:TDocumentWithDocflows read FDocuments; //1;
-    property HaveMoreDocuments:Boolean read FHaveMoreDocuments write FHaveMoreDocuments; //2;
+    property HaveMoreDocuments:Boolean read FHaveMoreDocuments write SetHaveMoreDocuments; //2;
   end;
 
 
@@ -252,17 +267,22 @@ type
     FInjectEntityContent: Boolean;
     FQueryString: string;
     FScope: TSearchScope;
+    procedure SetCount(AValue: int32);
+    procedure SetFirstIndex(AValue: int32);
+    procedure SetInjectEntityContent(AValue: Boolean);
+    procedure SetQueryString(AValue: string);
+    procedure SetScope(AValue: TSearchScope);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property QueryString:string read FQueryString write FQueryString;//1;
-    property Count:int32 read FCount write FCount default 100;//2
-    property FirstIndex:int32 read FFirstIndex write FFirstIndex;//3;
-    property Scope:TSearchScope read FScope write FScope default SearchScopeAny;//4
-    property InjectEntityContent:Boolean read FInjectEntityContent write FInjectEntityContent;//5
+    property QueryString:string read FQueryString write SetQueryString;//1;
+    property Count:int32 read FCount write SetCount default 100;//2
+    property FirstIndex:int32 read FFirstIndex write SetFirstIndex;//3;
+    property Scope:TSearchScope read FScope write SetScope default SearchScopeAny;//4
+    property InjectEntityContent:Boolean read FInjectEntityContent write SetInjectEntityContent;//5
   end;
 
 
@@ -280,7 +300,7 @@ type
   public
     destructor Destroy; override;
   published
-    property Documents:TDocumentWithDocflows read FDocuments write FDocuments; //1;
+    property Documents:TDocumentWithDocflows read FDocuments; //1;
   end;
 
 
@@ -296,6 +316,8 @@ type
     FDocumentId: TDocumentId;
     FInjectEntityContent: Boolean;
     FLastEventId: string;
+    procedure SetInjectEntityContent(AValue: Boolean);
+    procedure SetLastEventId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -303,8 +325,8 @@ type
     destructor Destroy; override;
   published
     property DocumentId:TDocumentId read FDocumentId; //1;
-    property LastEventId:string read FLastEventId write FLastEventId; //2;
-    property InjectEntityContent:Boolean read FInjectEntityContent write FInjectEntityContent;//3
+    property LastEventId:string read FLastEventId write SetLastEventId; //2;
+    property InjectEntityContent:Boolean read FInjectEntityContent write SetInjectEntityContent;//3
   end;
   TGetDocflowRequests = specialize GSerializationObjectList<TGetDocflowRequest>;
 
@@ -349,6 +371,20 @@ end;
 
 { TGetDocflowRequest }
 
+procedure TGetDocflowRequest.SetInjectEntityContent(AValue: Boolean);
+begin
+  if FInjectEntityContent=AValue then Exit;
+  FInjectEntityContent:=AValue;
+  Modified(3);
+end;
+
+procedure TGetDocflowRequest.SetLastEventId(AValue: string);
+begin
+  if FLastEventId=AValue then Exit;
+  FLastEventId:=AValue;
+  Modified(2);
+end;
+
 procedure TGetDocflowRequest.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -391,6 +427,41 @@ end;
 
 { TSearchDocflowsRequest }
 
+procedure TSearchDocflowsRequest.SetCount(AValue: int32);
+begin
+  if FCount=AValue then Exit;
+  FCount:=AValue;
+  Modified(2);
+end;
+
+procedure TSearchDocflowsRequest.SetFirstIndex(AValue: int32);
+begin
+  if FFirstIndex=AValue then Exit;
+  FFirstIndex:=AValue;
+  Modified(3);
+end;
+
+procedure TSearchDocflowsRequest.SetInjectEntityContent(AValue: Boolean);
+begin
+  if FInjectEntityContent=AValue then Exit;
+  FInjectEntityContent:=AValue;
+  Modified(5);
+end;
+
+procedure TSearchDocflowsRequest.SetQueryString(AValue: string);
+begin
+  if FQueryString=AValue then Exit;
+  FQueryString:=AValue;
+  Modified(1);
+end;
+
+procedure TSearchDocflowsRequest.SetScope(AValue: TSearchScope);
+begin
+  if FScope=AValue then Exit;
+  FScope:=AValue;
+  Modified(4);
+end;
+
 procedure TSearchDocflowsRequest.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -416,6 +487,13 @@ end;
 
 { TSearchDocflowsResponse }
 
+procedure TSearchDocflowsResponse.SetHaveMoreDocuments(AValue: Boolean);
+begin
+  if FHaveMoreDocuments=AValue then Exit;
+  FHaveMoreDocuments:=AValue;
+  Modified(2);
+end;
+
 procedure TSearchDocflowsResponse.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -436,6 +514,34 @@ begin
 end;
 
 { TGetDocflowsByPacketIdRequest }
+
+procedure TGetDocflowsByPacketIdRequest.SetAfterIndexKey(AValue: TBytes);
+begin
+  if FAfterIndexKey=AValue then Exit;
+  FAfterIndexKey:=AValue;
+  Modified(4);
+end;
+
+procedure TGetDocflowsByPacketIdRequest.SetCount(AValue: int32);
+begin
+  if FCount=AValue then Exit;
+  FCount:=AValue;
+  Modified(2);
+end;
+
+procedure TGetDocflowsByPacketIdRequest.SetInjectEntityContent(AValue: Boolean);
+begin
+  if FInjectEntityContent=AValue then Exit;
+  FInjectEntityContent:=AValue;
+  Modified(3);
+end;
+
+procedure TGetDocflowsByPacketIdRequest.SetPacketId(AValue: string);
+begin
+  if FPacketId=AValue then Exit;
+  FPacketId:=AValue;
+  Modified(1);
+end;
 
 procedure TGetDocflowsByPacketIdRequest.InternalRegisterProperty;
 begin
@@ -460,6 +566,13 @@ end;
 
 { TGetDocflowsByPacketIdResponse }
 
+procedure TGetDocflowsByPacketIdResponse.SetNextPageIndexKey(AValue: TBytes);
+begin
+  if FNextPageIndexKey=AValue then Exit;
+  FNextPageIndexKey:=AValue;
+  Modified(2);
+end;
+
 procedure TGetDocflowsByPacketIdResponse.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -481,6 +594,13 @@ end;
 
 { TFetchedDocument }
 
+procedure TFetchedDocument.SetIndexKey(AValue: TBytes);
+begin
+  if FIndexKey=AValue then Exit;
+  FIndexKey:=AValue;
+  Modified(2);
+end;
+
 procedure TFetchedDocument.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -501,6 +621,35 @@ begin
 end;
 
 { TGetDocflowEventsRequest }
+
+procedure TGetDocflowEventsRequest.SetAfterIndexKey(AValue: TBytes);
+begin
+  if FAfterIndexKey=AValue then Exit;
+  FAfterIndexKey:=AValue;
+  Modified(2);
+end;
+
+procedure TGetDocflowEventsRequest.SetInjectEntityContent(AValue: Boolean);
+begin
+  if FInjectEntityContent=AValue then Exit;
+  FInjectEntityContent:=AValue;
+  Modified(4);
+end;
+
+procedure TGetDocflowEventsRequest.SetPopulateDocuments(AValue: Boolean);
+begin
+  if FPopulateDocuments=AValue then Exit;
+  FPopulateDocuments:=AValue;
+  Modified(3);
+end;
+
+procedure TGetDocflowEventsRequest.SetPopulatePreviousDocumentStates(
+  AValue: Boolean);
+begin
+  if FPopulatePreviousDocumentStates=AValue then Exit;
+  FPopulatePreviousDocumentStates:=AValue;
+  Modified(5);
+end;
 
 procedure TGetDocflowEventsRequest.InternalRegisterProperty;
 begin
@@ -526,6 +675,13 @@ end;
 
 { TGetDocflowEventsResponse }
 
+procedure TGetDocflowEventsResponse.SetTotalCount(AValue: int32);
+begin
+  if FTotalCount=AValue then Exit;
+  FTotalCount:=AValue;
+  Modified(1);
+end;
+
 procedure TGetDocflowEventsResponse.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -546,6 +702,27 @@ begin
 end;
 
 { TDocflowEvent }
+
+procedure TDocflowEvent.SetEventId(AValue: string);
+begin
+  if FEventId=AValue then Exit;
+  FEventId:=AValue;
+  Modified(1);
+end;
+
+procedure TDocflowEvent.SetIndexKey(AValue: TBytes);
+begin
+  if FIndexKey=AValue then Exit;
+  FIndexKey:=AValue;
+  Modified(4);
+end;
+
+procedure TDocflowEvent.SetPreviousEventId(AValue: string);
+begin
+  if FPreviousEventId=AValue then Exit;
+  FPreviousEventId:=AValue;
+  Modified(6);
+end;
 
 procedure TDocflowEvent.InternalRegisterProperty;
 begin

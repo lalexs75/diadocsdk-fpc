@@ -58,13 +58,14 @@ type
     FContent: TContent;
     FCreationTimestamp: TTimestamp;
     FEntityId: string;
+    procedure SetEntityId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property EntityId:string read FEntityId write FEntityId; //1;
+    property EntityId:string read FEntityId write SetEntityId; //1;
     property CreationTimestamp:TTimestamp read FCreationTimestamp; //2;
     property Content:TContent read FContent; //3;
   end;
@@ -76,6 +77,8 @@ type
     FAttachmentFilename: string;
     FDisplayFilename: string;
     FEntity: TEntity;
+    procedure SetAttachmentFilename(AValue: string);
+    procedure SetDisplayFilename(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -83,8 +86,8 @@ type
     destructor Destroy; override;
   published
     property Entity:TEntity read FEntity; //1;
-    property AttachmentFilename:string read FAttachmentFilename write FAttachmentFilename; //2;
-    property DisplayFilename:string read FDisplayFilename write FDisplayFilename; //3;
+    property AttachmentFilename:string read FAttachmentFilename write SetAttachmentFilename; //2;
+    property DisplayFilename:string read FDisplayFilename write SetDisplayFilename; //3;
   end;
 
   {  TSignature  }
@@ -96,6 +99,9 @@ type
     FSignerBoxId: string;
     FSignerDepartmentId: string;
     FVerificationResult: TSignatureVerificationResult;
+    procedure SetIsValid(AValue: Boolean);
+    procedure SetSignerBoxId(AValue: string);
+    procedure SetSignerDepartmentId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -103,9 +109,9 @@ type
     destructor Destroy; override;
   published
     property Entity:TEntity read FEntity; //1;
-    property SignerBoxId:string read FSignerBoxId write FSignerBoxId; //2;
-    property SignerDepartmentId:string read FSignerDepartmentId write FSignerDepartmentId; //3;
-    property IsValid:Boolean read FIsValid write FIsValid; //4;
+    property SignerBoxId:string read FSignerBoxId write SetSignerBoxId; //2;
+    property SignerDepartmentId:string read FSignerDepartmentId write SetSignerDepartmentId; //3;
+    property IsValid:Boolean read FIsValid write SetIsValid; //4;
     property VerificationResult:TSignatureVerificationResult read FVerificationResult; //5;
   end;
 
@@ -130,6 +136,13 @@ type
 implementation
 
 { TEntity }
+
+procedure TEntity.SetEntityId(AValue: string);
+begin
+  if FEntityId=AValue then Exit;
+  FEntityId:=AValue;
+  Modified(1);
+end;
 
 procedure TEntity.InternalRegisterProperty;
 begin
@@ -181,6 +194,20 @@ end;
 
 { TAttachment }
 
+procedure TAttachment.SetAttachmentFilename(AValue: string);
+begin
+  if FAttachmentFilename=AValue then Exit;
+  FAttachmentFilename:=AValue;
+  Modified(2);
+end;
+
+procedure TAttachment.SetDisplayFilename(AValue: string);
+begin
+  if FDisplayFilename=AValue then Exit;
+  FDisplayFilename:=AValue;
+  Modified(3);
+end;
+
 procedure TAttachment.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -202,6 +229,27 @@ begin
 end;
 
 { TSignature }
+
+procedure TSignature.SetIsValid(AValue: Boolean);
+begin
+  if FIsValid=AValue then Exit;
+  FIsValid:=AValue;
+  Modified(4);
+end;
+
+procedure TSignature.SetSignerBoxId(AValue: string);
+begin
+  if FSignerBoxId=AValue then Exit;
+  FSignerBoxId:=AValue;
+  Modified(2);
+end;
+
+procedure TSignature.SetSignerDepartmentId(AValue: string);
+begin
+  if FSignerDepartmentId=AValue then Exit;
+  FSignerDepartmentId:=AValue;
+  Modified(3);
+end;
 
 procedure TSignature.InternalRegisterProperty;
 begin

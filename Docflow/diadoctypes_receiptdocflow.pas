@@ -55,19 +55,27 @@ type
   private
     FIsFinished: Boolean;
     FReceiptAttachment: TSignedAttachment;
+    procedure SetIsFinished(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property IsFinished:Boolean read FIsFinished write FIsFinished; // 1;
+    property IsFinished:Boolean read FIsFinished write SetIsFinished; // 1;
     property ReceiptAttachment:TSignedAttachment read FReceiptAttachment; //2;
   end;
 
 implementation
 
 { TReceiptDocflow }
+
+procedure TReceiptDocflow.SetIsFinished(AValue: Boolean);
+begin
+  if FIsFinished=AValue then Exit;
+  FIsFinished:=AValue;
+  Modified(1);
+end;
 
 procedure TReceiptDocflow.InternalRegisterProperty;
 begin

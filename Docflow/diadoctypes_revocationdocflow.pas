@@ -71,24 +71,56 @@ type
     FRecipientSignatureDocflow: TRecipientSignatureDocflow;
     FRecipientSignatureRejectionDocflow: TRecipientSignatureRejectionDocflow;
     FRevocationRequestAttachment: TSignedAttachment;
+    procedure SetInitiatorBoxId(AValue: string);
+    procedure SetIsFinished(AValue: Boolean);
+    procedure SetIsRevocationAccepted(AValue: Boolean);
+    procedure SetIsRevocationRejected(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property IsFinished:Boolean read FIsFinished write FIsFinished; //1;
+    property IsFinished:Boolean read FIsFinished write SetIsFinished; //1;
     property RevocationRequestAttachment:TSignedAttachment read FRevocationRequestAttachment; //2;
     property RecipientSignatureDocflow:TRecipientSignatureDocflow read FRecipientSignatureDocflow; //3;
     property RecipientSignatureRejectionDocflow:TRecipientSignatureRejectionDocflow read FRecipientSignatureRejectionDocflow; //4;
-    property InitiatorBoxId:string read FInitiatorBoxId write FInitiatorBoxId; // = 5;
-    property IsRevocationAccepted:Boolean read FIsRevocationAccepted write FIsRevocationAccepted; //6;
-    property IsRevocationRejected:Boolean read FIsRevocationRejected write FIsRevocationRejected; //7;
+    property InitiatorBoxId:string read FInitiatorBoxId write SetInitiatorBoxId; // = 5;
+    property IsRevocationAccepted:Boolean read FIsRevocationAccepted write SetIsRevocationAccepted; //6;
+    property IsRevocationRejected:Boolean read FIsRevocationRejected write SetIsRevocationRejected; //7;
   end;
 
 implementation
 
 { TRevocationDocflow }
+
+procedure TRevocationDocflow.SetInitiatorBoxId(AValue: string);
+begin
+  if FInitiatorBoxId=AValue then Exit;
+  FInitiatorBoxId:=AValue;
+  Modified(5);
+end;
+
+procedure TRevocationDocflow.SetIsFinished(AValue: Boolean);
+begin
+  if FIsFinished=AValue then Exit;
+  FIsFinished:=AValue;
+  Modified(1);
+end;
+
+procedure TRevocationDocflow.SetIsRevocationAccepted(AValue: Boolean);
+begin
+  if FIsRevocationAccepted=AValue then Exit;
+  FIsRevocationAccepted:=AValue;
+  Modified(6);
+end;
+
+procedure TRevocationDocflow.SetIsRevocationRejected(AValue: Boolean);
+begin
+  if FIsRevocationRejected=AValue then Exit;
+  FIsRevocationRejected:=AValue;
+  Modified(7);
+end;
 
 procedure TRevocationDocflow.InternalRegisterProperty;
 begin

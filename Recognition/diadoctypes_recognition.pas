@@ -57,14 +57,16 @@ type
   private
     FMetadataJson: string;
     FValidationErrorMessage: string;
+    procedure SetMetadataJson(AValue: string);
+    procedure SetValidationErrorMessage(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property MetadataJson:string read FMetadataJson write FMetadataJson;//1;
-    property ValidationErrorMessage:string read FValidationErrorMessage write FValidationErrorMessage;//2;
+    property MetadataJson:string read FMetadataJson write SetMetadataJson;//1;
+    property ValidationErrorMessage:string read FValidationErrorMessage write SetValidationErrorMessage;//2;
   end;
 
 
@@ -85,17 +87,22 @@ type
     FFileName: string;
     FInvoice: TRecognizedInvoice;
     FRecognitionId: string;
+    procedure SetContent(AValue: TBytes);
+    procedure SetDocumentType(AValue: TRecognizedDocumentType);
+    procedure SetErrorMessage(AValue: string);
+    procedure SetFileName(AValue: string);
+    procedure SetRecognitionId(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property RecognitionId:string read FRecognitionId write FRecognitionId;//1;
-    property ErrorMessage:string read FErrorMessage write FErrorMessage;//2;
-    property FileName:string read FFileName write FFileName;//3;
-    property DocumentType:TRecognizedDocumentType read FDocumentType write FDocumentType default UnknownRecognizedDocumentType;//4
-    property Content:TBytes read FContent write FContent;// 5;
+    property RecognitionId:string read FRecognitionId write SetRecognitionId;//1;
+    property ErrorMessage:string read FErrorMessage write SetErrorMessage;//2;
+    property FileName:string read FFileName write SetFileName;//3;
+    property DocumentType:TRecognizedDocumentType read FDocumentType write SetDocumentType default UnknownRecognizedDocumentType;//4
+    property Content:TBytes read FContent write SetContent;// 5;
     property Invoice:TRecognizedInvoice read FInvoice;//6;
   end;
 
@@ -103,6 +110,41 @@ type
 implementation
 
 { TRecognized }
+
+procedure TRecognized.SetContent(AValue: TBytes);
+begin
+  if FContent=AValue then Exit;
+  FContent:=AValue;
+  Modified(5);
+end;
+
+procedure TRecognized.SetDocumentType(AValue: TRecognizedDocumentType);
+begin
+  if FDocumentType=AValue then Exit;
+  FDocumentType:=AValue;
+  Modified(4);
+end;
+
+procedure TRecognized.SetErrorMessage(AValue: string);
+begin
+  if FErrorMessage=AValue then Exit;
+  FErrorMessage:=AValue;
+  Modified(2);
+end;
+
+procedure TRecognized.SetFileName(AValue: string);
+begin
+  if FFileName=AValue then Exit;
+  FFileName:=AValue;
+  Modified(3);
+end;
+
+procedure TRecognized.SetRecognitionId(AValue: string);
+begin
+  if FRecognitionId=AValue then Exit;
+  FRecognitionId:=AValue;
+  Modified(1);
+end;
 
 procedure TRecognized.InternalInit;
 begin
@@ -130,6 +172,20 @@ end;
 
 { TRecognizedInvoice }
 
+procedure TRecognizedInvoice.SetMetadataJson(AValue: string);
+begin
+  if FMetadataJson=AValue then Exit;
+  FMetadataJson:=AValue;
+  Modified(1);
+end;
+
+procedure TRecognizedInvoice.SetValidationErrorMessage(AValue: string);
+begin
+  if FValidationErrorMessage=AValue then Exit;
+  FValidationErrorMessage:=AValue;
+  Modified(2);
+end;
+
 procedure TRecognizedInvoice.InternalInit;
 begin
   inherited InternalInit;
@@ -138,7 +194,7 @@ end;
 procedure TRecognizedInvoice.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('MetadataJson', 1, true);;
+  RegisterProp('MetadataJson', 1, true);
   RegisterProp('ValidationErrorMessage', 2);
 end;
 

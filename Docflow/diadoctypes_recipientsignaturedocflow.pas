@@ -61,13 +61,14 @@ type
     FDeliveryTimestamp: TTimestamp;
     FIsFinished: boolean;
     FRecipientSignature: TSignature;
+    procedure SetIsFinished(AValue: boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property IsFinished:boolean read FIsFinished write FIsFinished; //1;
+    property IsFinished:boolean read FIsFinished write SetIsFinished; //1;
     property RecipientSignature:TSignature read FRecipientSignature; //2;
     property DeliveryTimestamp:TTimestamp read FDeliveryTimestamp; //3;
   end;
@@ -75,6 +76,13 @@ type
 implementation
 
 { TRecipientSignatureDocflow }
+
+procedure TRecipientSignatureDocflow.SetIsFinished(AValue: boolean);
+begin
+  if FIsFinished=AValue then Exit;
+  FIsFinished:=AValue;
+  Modified(1);
+end;
 
 procedure TRecipientSignatureDocflow.InternalRegisterProperty;
 begin

@@ -85,15 +85,18 @@ type
     FSeverity: TDocflowStatusSeverity;
     FStatusHint: string;
     FStatusText: string;
+    procedure SetSeverity(AValue: TDocflowStatusSeverity);
+    procedure SetStatusHint(AValue: string);
+    procedure SetStatusText(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property Severity:TDocflowStatusSeverity read FSeverity write FSeverity default dssUnknownDocflowStatusSeverity; // 1
-    property StatusText:string read FStatusText write FStatusText; //2;
-    property StatusHint:string read FStatusHint write FStatusHint; //3;
+    property Severity:TDocflowStatusSeverity read FSeverity write SetSeverity default dssUnknownDocflowStatusSeverity; // 1
+    property StatusText:string read FStatusText write SetStatusText; //2;
+    property StatusHint:string read FStatusHint write SetStatusHint; //3;
   end;
 
   {  TDocflowStatus  }
@@ -129,6 +132,7 @@ type
   private
     FIsSuccess: Boolean;
     FNotification: TEntity;
+    procedure SetIsSuccess(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -136,7 +140,7 @@ type
     destructor Destroy; override;
   published
     property Notification:TEntity read FNotification; //1;
-    property IsSuccess:Boolean read FIsSuccess write FIsSuccess; //2;
+    property IsSuccess:Boolean read FIsSuccess write SetIsSuccess; //2;
   end;
 
   {  TDocflow  }
@@ -192,16 +196,21 @@ type
     FSendTimestamp: TTimestamp;
     FUnilateralDocflow: TUnilateralDocflow;
     FXmlBilateralDocflow: TXmlBilateralDocflow;
+    procedure SetCanDocumentBeRevokedUnilaterallyBySender(AValue: Boolean);
+    procedure SetDepartmentId(AValue: string);
+    procedure SetDocumentIsDeleted(AValue: Boolean);
+    procedure SetIsFinished(AValue: Boolean);
+    procedure SetPacketId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property IsFinished:Boolean read FIsFinished write FIsFinished; //1;
+    property IsFinished:Boolean read FIsFinished write SetIsFinished; //1;
     property DocumentAttachment:TSignedAttachment read FDocumentAttachment; //2;
-    property DepartmentId:string read FDepartmentId write FDepartmentId; //3;
-    property DocumentIsDeleted:Boolean read FDocumentIsDeleted write FDocumentIsDeleted; //4;
+    property DepartmentId:string read FDepartmentId write SetDepartmentId; //3;
+    property DocumentIsDeleted:Boolean read FDocumentIsDeleted write SetDocumentIsDeleted; //4;
     property DocflowStatus:TDocflowStatus read FDocflowStatus; //5;
     property SendTimestamp:TTimestamp read FSendTimestamp; //6;
     property DeliveryTimestamp:TTimestamp read FDeliveryTimestamp; //7;
@@ -212,8 +221,8 @@ type
     property UnilateralDocflow:TUnilateralDocflow read FUnilateralDocflow; //12;
     property RevocationDocflow:TRevocationDocflow read FRevocationDocflow; //13;
     property ResolutionDocflow:TResolutionDocflow read FResolutionDocflow; //14;
-    property CanDocumentBeRevokedUnilaterallyBySender:Boolean read FCanDocumentBeRevokedUnilaterallyBySender write FCanDocumentBeRevokedUnilaterallyBySender; //15;
-    property PacketId:string read FPacketId write FPacketId; //16;
+    property CanDocumentBeRevokedUnilaterallyBySender:Boolean read FCanDocumentBeRevokedUnilaterallyBySender write SetCanDocumentBeRevokedUnilaterallyBySender; //15;
+    property PacketId:string read FPacketId write SetPacketId; //16;
     property CustomData:TCustomDataItems read FCustomData; //17;
     property InboundUniversalTransferDocumentDocflow:TInboundUniversalTransferDocumentDocflow read FInboundUniversalTransferDocumentDocflow; //18;
     property OutboundUniversalTransferDocumentDocflow:TOutboundUniversalTransferDocumentDocflow read FOutboundUniversalTransferDocumentDocflow; //19;
@@ -238,6 +247,13 @@ end;
 
 { TRoamingNotification }
 
+procedure TRoamingNotification.SetIsSuccess(AValue: Boolean);
+begin
+  if FIsSuccess=AValue then Exit;
+  FIsSuccess:=AValue;
+  Modified(2);
+end;
+
 procedure TRoamingNotification.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -258,6 +274,41 @@ begin
 end;
 
 { TDocflow }
+
+procedure TDocflow.SetCanDocumentBeRevokedUnilaterallyBySender(AValue: Boolean);
+begin
+  if FCanDocumentBeRevokedUnilaterallyBySender=AValue then Exit;
+  FCanDocumentBeRevokedUnilaterallyBySender:=AValue;
+  Modified(15);
+end;
+
+procedure TDocflow.SetDepartmentId(AValue: string);
+begin
+  if FDepartmentId=AValue then Exit;
+  FDepartmentId:=AValue;
+  Modified(3);
+end;
+
+procedure TDocflow.SetDocumentIsDeleted(AValue: Boolean);
+begin
+  if FDocumentIsDeleted=AValue then Exit;
+  FDocumentIsDeleted:=AValue;
+  Modified(4);
+end;
+
+procedure TDocflow.SetIsFinished(AValue: Boolean);
+begin
+  if FIsFinished=AValue then Exit;
+  FIsFinished:=AValue;
+  Modified(1);
+end;
+
+procedure TDocflow.SetPacketId(AValue: string);
+begin
+  if FPacketId=AValue then Exit;
+  FPacketId:=AValue;
+  Modified(16);
+end;
 
 procedure TDocflow.InternalRegisterProperty;
 begin
@@ -325,6 +376,27 @@ begin
 end;
 
 { TDocflowStatusModel }
+
+procedure TDocflowStatusModel.SetSeverity(AValue: TDocflowStatusSeverity);
+begin
+  if FSeverity=AValue then Exit;
+  FSeverity:=AValue;
+  Modified(1);
+end;
+
+procedure TDocflowStatusModel.SetStatusHint(AValue: string);
+begin
+  if FStatusHint=AValue then Exit;
+  FStatusHint:=AValue;
+  Modified(3);
+end;
+
+procedure TDocflowStatusModel.SetStatusText(AValue: string);
+begin
+  if FStatusText=AValue then Exit;
+  FStatusText:=AValue;
+  Modified(2);
+end;
 
 procedure TDocflowStatusModel.InternalRegisterProperty;
 begin

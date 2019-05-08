@@ -76,6 +76,7 @@ type
     FLastEventId: string;
     FLastEventTimestamp: TTimestamp;
     FSubordinateDocumentIds: TDocumentIds;
+    procedure SetLastEventId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -83,7 +84,7 @@ type
     destructor Destroy; override;
   published
     property DocumentId:TDocumentId read FDocumentId; //1;
-    property LastEventId:string read FLastEventId write FLastEventId; //2;
+    property LastEventId:string read FLastEventId write SetLastEventId; //2;
     property LastEventTimestamp:TTimestamp read FLastEventTimestamp; //3;
     property DocumentInfo:TDocumentInfo read FDocumentInfo; //4;
     property Docflow:TDocflow read FDocflow; //5;
@@ -96,6 +97,13 @@ type
 implementation
 
 { TDocumentWithDocflow }
+
+procedure TDocumentWithDocflow.SetLastEventId(AValue: string);
+begin
+  if FLastEventId=AValue then Exit;
+  FLastEventId:=AValue;
+  Modified(2);
+end;
 
 procedure TDocumentWithDocflow.InternalRegisterProperty;
 begin

@@ -63,13 +63,14 @@ type
     FCorrectionRequestAttachment: TSignedAttachment;
     FIsFinished: Boolean;
     FReceiptDocflow: TReceiptDocflow;
+    procedure SetIsFinished(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property IsFinished:Boolean read FIsFinished write FIsFinished; //1;
+    property IsFinished:Boolean read FIsFinished write SetIsFinished; //1;
     property CorrectionRequestAttachment:TSignedAttachment read FCorrectionRequestAttachment; //2;
     property ReceiptDocflow:TReceiptDocflow read FReceiptDocflow; //3;
   end;
@@ -87,13 +88,14 @@ type
     FConfirmationAttachment: TSignedAttachment;
     FIsFinished: Boolean;
     FReceiptDocflow: TReceiptDocflow;
+    procedure SetIsFinished(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property IsFinished:Boolean read FIsFinished write FIsFinished; //1;
+    property IsFinished:Boolean read FIsFinished write SetIsFinished; //1;
     property ConfirmationAttachment:TSignedAttachment read FConfirmationAttachment; //2;
     property ReceiptDocflow:TReceiptDocflow read FReceiptDocflow; //3;
   end;
@@ -110,13 +112,14 @@ type
     FConfirmationDocflow: TInvoiceConfirmationDocflow;
     FIsFinished: boolean;
     FReceiptAttachment: TSignedAttachment;
+    procedure SetIsFinished(AValue: boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property IsFinished:boolean read FIsFinished write FIsFinished; //1;
+    property IsFinished:boolean read FIsFinished write SetIsFinished; //1;
     property ReceiptAttachment:TSignedAttachment read FReceiptAttachment; //2;
     property ConfirmationDocflow:TInvoiceConfirmationDocflow read FConfirmationDocflow; //3;
   end;
@@ -145,21 +148,26 @@ type
     FIsFinished: Boolean;
     FIsRevised: Boolean;
     FReceiptDocflow: TReceiptDocflow;
+    procedure SetCanDocumentBeSignedBySender(AValue: Boolean);
+    procedure SetIsAmendmentRequested(AValue: Boolean);
+    procedure SetIsCorrected(AValue: Boolean);
+    procedure SetIsFinished(AValue: Boolean);
+    procedure SetIsRevised(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property IsFinished:Boolean read FIsFinished write FIsFinished; //1;
+    property IsFinished:Boolean read FIsFinished write SetIsFinished; //1;
     property ReceiptDocflow:TReceiptDocflow read FReceiptDocflow; //2;
     property ConfirmationDocflow:TInvoiceConfirmationDocflow read FConfirmationDocflow; //3;
     property CorrectionRequestDocflow:TInvoiceCorrectionRequestDocflow read FCorrectionRequestDocflow; //4;
     property ConfirmationTimestamp:TTimestamp read FConfirmationTimestamp; //5;
-    property IsAmendmentRequested:Boolean read FIsAmendmentRequested write FIsAmendmentRequested; //6;
-    property IsRevised:Boolean read FIsRevised write FIsRevised; //7;
-    property IsCorrected:Boolean read FIsCorrected write FIsCorrected; //8;
-    property CanDocumentBeSignedBySender:Boolean read FCanDocumentBeSignedBySender write FCanDocumentBeSignedBySender; //9;
+    property IsAmendmentRequested:Boolean read FIsAmendmentRequested write SetIsAmendmentRequested; //6;
+    property IsRevised:Boolean read FIsRevised write SetIsRevised; //7;
+    property IsCorrected:Boolean read FIsCorrected write SetIsCorrected; //8;
+    property CanDocumentBeSignedBySender:Boolean read FCanDocumentBeSignedBySender write SetCanDocumentBeSignedBySender; //9;
   end;
 
 
@@ -185,25 +193,36 @@ type
     FIsFinished: Boolean;
     FIsRevised: Boolean;
     FReceiptDocflow: TInboundInvoiceReceiptDocflow;
+    procedure SetIsAmendmentRequested(AValue: Boolean);
+    procedure SetIsCorrected(AValue: Boolean);
+    procedure SetIsFinished(AValue: Boolean);
+    procedure SetIsRevised(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property IsFinished:Boolean read FIsFinished write FIsFinished; //1;
+    property IsFinished:Boolean read FIsFinished write SetIsFinished; //1;
     property ReceiptDocflow:TInboundInvoiceReceiptDocflow read FReceiptDocflow; //2;
     property ConfirmationDocflow:TInvoiceConfirmationDocflow read FConfirmationDocflow; //3;
     property CorrectionRequestDocflow:TInvoiceCorrectionRequestDocflow read FCorrectionRequestDocflow; //4;
     property ConfirmationTimestamp:TTimestamp read FConfirmationTimestamp; //5;
-    property IsAmendmentRequested:Boolean read FIsAmendmentRequested write FIsAmendmentRequested; //6;
-    property IsRevised:Boolean read FIsRevised write FIsRevised; //7;
-    property IsCorrected:Boolean read FIsCorrected write FIsCorrected; //8;
+    property IsAmendmentRequested:Boolean read FIsAmendmentRequested write SetIsAmendmentRequested; //6;
+    property IsRevised:Boolean read FIsRevised write SetIsRevised; //7;
+    property IsCorrected:Boolean read FIsCorrected write SetIsCorrected; //8;
   end;
 
 implementation
 
 { TInvoiceCorrectionRequestDocflow }
+
+procedure TInvoiceCorrectionRequestDocflow.SetIsFinished(AValue: Boolean);
+begin
+  if FIsFinished=AValue then Exit;
+  FIsFinished:=AValue;
+  Modified(1);
+end;
 
 procedure TInvoiceCorrectionRequestDocflow.InternalRegisterProperty;
 begin
@@ -229,6 +248,13 @@ end;
 
 { TInboundInvoiceReceiptDocflow }
 
+procedure TInboundInvoiceReceiptDocflow.SetIsFinished(AValue: boolean);
+begin
+  if FIsFinished=AValue then Exit;
+  FIsFinished:=AValue;
+  Modified(1);
+end;
+
 procedure TInboundInvoiceReceiptDocflow.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -253,6 +279,13 @@ end;
 
 { TInvoiceConfirmationDocflow }
 
+procedure TInvoiceConfirmationDocflow.SetIsFinished(AValue: Boolean);
+begin
+  if FIsFinished=AValue then Exit;
+  FIsFinished:=AValue;
+  Modified(1);
+end;
+
 procedure TInvoiceConfirmationDocflow.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -276,6 +309,42 @@ begin
 end;
 
 { TOutboundInvoiceDocflow }
+
+procedure TOutboundInvoiceDocflow.SetIsFinished(AValue: Boolean);
+begin
+  if FIsFinished=AValue then Exit;
+  FIsFinished:=AValue;
+  Modified(1);
+end;
+
+procedure TOutboundInvoiceDocflow.SetCanDocumentBeSignedBySender(AValue: Boolean
+  );
+begin
+  if FCanDocumentBeSignedBySender=AValue then Exit;
+  FCanDocumentBeSignedBySender:=AValue;
+  Modified(9);
+end;
+
+procedure TOutboundInvoiceDocflow.SetIsAmendmentRequested(AValue: Boolean);
+begin
+  if FIsAmendmentRequested=AValue then Exit;
+  FIsAmendmentRequested:=AValue;
+  Modified(6);
+end;
+
+procedure TOutboundInvoiceDocflow.SetIsCorrected(AValue: Boolean);
+begin
+  if FIsCorrected=AValue then Exit;
+  FIsCorrected:=AValue;
+  Modified(8);
+end;
+
+procedure TOutboundInvoiceDocflow.SetIsRevised(AValue: Boolean);
+begin
+  if FIsRevised=AValue then Exit;
+  FIsRevised:=AValue;
+  Modified(7);
+end;
 
 procedure TOutboundInvoiceDocflow.InternalRegisterProperty;
 begin
@@ -310,6 +379,34 @@ begin
 end;
 
 { TInboundInvoiceDocflow }
+
+procedure TInboundInvoiceDocflow.SetIsAmendmentRequested(AValue: Boolean);
+begin
+  if FIsAmendmentRequested=AValue then Exit;
+  FIsAmendmentRequested:=AValue;
+  Modified(6);
+end;
+
+procedure TInboundInvoiceDocflow.SetIsCorrected(AValue: Boolean);
+begin
+  if FIsCorrected=AValue then Exit;
+  FIsCorrected:=AValue;
+  Modified(8);
+end;
+
+procedure TInboundInvoiceDocflow.SetIsFinished(AValue: Boolean);
+begin
+  if FIsFinished=AValue then Exit;
+  FIsFinished:=AValue;
+  Modified(1);
+end;
+
+procedure TInboundInvoiceDocflow.SetIsRevised(AValue: Boolean);
+begin
+  if FIsRevised=AValue then Exit;
+  FIsRevised:=AValue;
+  Modified(7);
+end;
 
 procedure TInboundInvoiceDocflow.InternalRegisterProperty;
 begin
