@@ -9,14 +9,14 @@
       <Version Value="11"/>
       <PathDelim Value="\"/>
       <SearchPaths>
-        <OtherUnitFiles Value="Docflow;Invoicing;Documents\Types;Events;Documents;Recognition;KeyValueStorage;Forwarding;diadoc_src;Employees;Employees\Subscriptions;Users;Departments"/>
+        <OtherUnitFiles Value="Docflow;Invoicing;Documents\Types;Events;Documents;Recognition;KeyValueStorage;Forwarding;diadoc_src;Employees;Employees\Subscriptions;Users;Departments;Registration"/>
         <UnitOutputDirectory Value="lib\diadoc\$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
     </CompilerOptions>
     <Description Value="Компоненты интеграции Контур ДИАДОК-API для FPC и Lazarus"/>
     <License Value="LGPL"/>
-    <Version Minor="9" Release="3"/>
-    <Files Count="104">
+    <Version Major="1" Release="3" Build="1"/>
+    <Files Count="105">
       <Item1>
         <Filename Value="diadoc_define.inc"/>
         <Type Value="Include"/>
@@ -404,36 +404,40 @@
       </Item96>
       <Item97>
         <Filename Value="diadoc_src\diadoctypes_resolutiontype.pas"/>
-        <UnitName Value="diadoctypes_resolutiontype"/>
+        <UnitName Value="DiadocTypes_ResolutionType"/>
       </Item97>
       <Item98>
         <Filename Value="diadoc_src\diadoctypes_resolutionrequesttype.pas"/>
-        <UnitName Value="diadoctypes_resolutionrequesttype"/>
+        <UnitName Value="DiadocTypes_ResolutionRequestType"/>
       </Item98>
       <Item99>
         <Filename Value="Departments\diadoctypes_department.pas"/>
-        <UnitName Value="diadoctypes_Department"/>
+        <UnitName Value="DiadocTypes_Department"/>
       </Item99>
       <Item100>
         <Filename Value="Departments\diadoctypes_departmentlist.pas"/>
-        <UnitName Value="diadoctypes_DepartmentList"/>
+        <UnitName Value="DiadocTypes_DepartmentList"/>
       </Item100>
       <Item101>
         <Filename Value="Departments\diadoctypes_departmenttocreate.pas"/>
-        <UnitName Value="diadoctypes_DepartmentToCreate"/>
+        <UnitName Value="DiadocTypes_DepartmentToCreate"/>
       </Item101>
       <Item102>
         <Filename Value="Departments\diadoctypes_departmenttoupdate.pas"/>
-        <UnitName Value="diadoctypes_DepartmentToUpdate"/>
+        <UnitName Value="DiadocTypes_DepartmentToUpdate"/>
       </Item102>
       <Item103>
         <Filename Value="Departments\diadoctypes_routing.pas"/>
-        <UnitName Value="diadoctypes_Routing"/>
+        <UnitName Value="DiadocTypes_Routing"/>
       </Item103>
       <Item104>
         <Filename Value="diadoc_src\ResolutionAction.pas"/>
-        <UnitName Value="Diadoc_Api"/>
+        <UnitName Value="ResolutionAction"/>
       </Item104>
+      <Item105>
+        <Filename Value="Registration\diadoctypes_registrationrequest.pas"/>
+        <UnitName Value="DiadocTypes_RegistrationRequest"/>
+      </Item105>
     </Files>
     <LazDoc Paths="docs"/>
     <i18n>
