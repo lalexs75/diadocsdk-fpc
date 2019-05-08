@@ -90,7 +90,8 @@ uses
   DiadocTypes_UserToUpdate,
   DiadocTypes_EmployeeToUpdate,
   DiadocTypes_DocumentFilter,
-  DiadocTypes_Routing
+  DiadocTypes_Routing,
+  DiadocTypes_RegistrationRequest
   ;
 
 type
@@ -220,6 +221,10 @@ type
     function DetectDocumentTypes(ABoxId, ANameOnShelf:string):TDetectDocumentTypesResponse;
     function DetectDocumentTypes(ABoxId:string; AContent:TStream):TDetectDocumentTypesResponse;
     function GetContent(ATypeNamedId, AFunction, AVersion:string; ATitleIndex:integer):TStream;
+    function Register(const ARequest:TRegistrationRequest):TRegistrationResponse;
+    procedure RegisterConfirm(const ARequest:TRegistrationConfirmRequest);
+
+
 
     function ParseUniversalTransferDocumentBuyerTitleXml(AXmlContent:TStream):TUniversalTransferDocumentBuyerTitleInfo; //------------Парсинг УПД
     function ParseUniversalTransferDocumentSellerTitleXml(AXmlContent:TStream):TUniversalTransferDocumentSellerTitleInfo; //------------Парсинг СФ---------------------------
@@ -5232,6 +5237,65 @@ begin
     else
       FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
   end;
+end;
+
+function TDiadocAPI.Register(const ARequest: TRegistrationRequest): TRegistrationResponse;
+var
+  F: TStream;
+begin
+  //Diadoc::Api::Proto::Registration::RegistrationResponse DiadocApi::Register(const Diadoc::Api::Proto::Registration::RegistrationRequest& request)
+  //{
+  //	WppTraceDebugOut("Register...");
+  //	DiadocApi::Bytes_t result = PerformHttpRequest(L"/Register", ToProtoBytes(request), POST);
+  //	return FromProtoBytes<Diadoc::Api::Proto::Registration::RegistrationResponse>(result);
+  //}
+
+  Result:=nil;
+  if not Assigned(ARequest) then exit;
+  if not Authenticate then exit;
+  F:=ARequest.SaveToStream;
+  if SendCommand(hmPOST, 'Register', '', F) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('Register');
+    {$ENDIF}
+
+    FHTTP.Document.Position:=0;
+    if FHTTP.ResultCode = 200 then
+    begin
+      Result:=TRegistrationResponse.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+  F.Free;
+end;
+
+procedure TDiadocAPI.RegisterConfirm(const ARequest: TRegistrationConfirmRequest
+  );
+var
+  F: TStream;
+begin
+  //void DiadocApi::RegisterConfirm(const Diadoc::Api::Proto::Registration::RegistrationConfirmRequest& request)
+  //{
+  //	WppTraceDebugOut("RegisterConfirm...");
+  //	PerformHttpRequest(L"/RegisterConfirm", ToProtoBytes(request), POST);
+  //}
+  if not Assigned(ARequest) then exit;
+  if not Authenticate then exit;
+  F:=ARequest.SaveToStream;
+  if SendCommand(hmPOST, 'RegisterConfirm', '', F) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('RegisterConfirm');
+    {$ENDIF}
+
+    FHTTP.Document.Position:=0;
+    if FHTTP.ResultCode <> 200 then
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+  F.Free;
 end;
 
 end.
