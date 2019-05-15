@@ -230,6 +230,8 @@ type
     function ParseUniversalTransferDocumentSellerTitleXml(AXmlContent:TStream):TUniversalTransferDocumentSellerTitleInfo; //------------Парсинг СФ---------------------------
     function ParseUniversalCorrectionDocumentSellerTitleXml(AXmlContent:TStream):TUniversalCorrectionDocumentSellerTitleInfo;
     function ParseUniversalCorrectionDocumentBuyerTitleXml(AXmlContent:TStream):TUniversalTransferDocumentBuyerTitleInfo;
+    //Bytes_t ParseTitleXml(const std::wstring& boxId, const std::wstring& documentTypeNamedId, const std::wstring& documentFunction, const std::wstring& documentVersion, int titleIndex, const Bytes_t& content);
+    function ParseTitleXml(const ABoxId:string; const ADocumentTypeNamedId:string; const ADocumentFunction:string; const ADocumentVersion:string; ATitleIndex:integer; const AContent:TStream):TStream;
 
     function ParseTorg12SellerTitleXml(AXmlContent:TStream):TTorg12SellerTitleInfo;
     function ParseTovTorg551SellerTitleXml(AXmlContent:TStream):TTovTorgSellerTitleInfo;
@@ -1327,6 +1329,53 @@ begin
     else
       FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
   end;
+end;
+
+function TDiadocAPI.ParseTitleXml(const ABoxId: string;
+  const ADocumentTypeNamedId: string; const ADocumentFunction: string;
+  const ADocumentVersion: string; ATitleIndex: integer; const AContent: TStream
+  ): TStream;
+var
+  S: String;
+begin
+  //DiadocApi::Bytes_t DiadocApi::ParseTitleXml(const std::wstring& boxId, const std::wstring& documentTypeNamedId, const std::wstring& documentFunction, const std::wstring& documentVersion, int titleIndex, const Bytes_t& content)
+  //{
+  //	WppTraceDebugOut("ParseTitleXml...");
+  //	std::wstringstream buf;
+  //	buf << L"/ParseTitleXml";
+  //	buf << L"?boxId=" << StringHelper::CanonicalizeUrl(boxId);
+  //	buf << L"&documentTypeNamedId=" << StringHelper::CanonicalizeUrl(documentTypeNamedId);
+  //	buf << L"&documentFunction=" << StringHelper::CanonicalizeUrl(documentFunction);
+  //	buf << L"&documentVersion=" << StringHelper::CanonicalizeUrl(documentVersion);
+  //	buf << L"&titleIndex=" << titleIndex;
+  //	return PerformHttpRequest(buf.str(), content, L"POST");
+  //}
+
+  Result:=nil;
+  if not Authenticate then exit;
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId);
+  AddURLParam(S, 'documentTypeNamedId', ADocumentTypeNamedId);
+  AddURLParam(S, 'documentFunction', ADocumentFunction);
+  AddURLParam(S, 'documentVersion', ADocumentVersion);
+  AddURLParam(S, 'titleIndex', IntToStr(ATitleIndex));
+
+  if SendCommand(hmPOST, 'ParseTitleXml', S, AContent) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('ParseTitleXml.xml');
+    {$ENDIF}
+
+    FHTTP.Document.Position:=0;
+    if FHTTP.ResultCode = 200 then
+    begin
+      Result:=TMemoryStream.Create;
+      Result.CopyFrom(FHTTP.Document, -1);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+
 end;
 
 function TDiadocAPI.ParseTorg12SellerTitleXml(AXmlContent: TStream
