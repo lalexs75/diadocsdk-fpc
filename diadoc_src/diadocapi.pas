@@ -91,7 +91,8 @@ uses
   DiadocTypes_EmployeeToUpdate,
   DiadocTypes_DocumentFilter,
   DiadocTypes_Routing,
-  DiadocTypes_RegistrationRequest
+  DiadocTypes_RegistrationRequest,
+  DiadocTypes_OrganizationFeatures
   ;
 
 type
@@ -332,6 +333,8 @@ type
     function ParseRussianAddress(AAddress:string):TRussianAddress;
 
     function GetMyOrganizations(autoRegister:boolean = false):TOrganizationList;
+    //Diadoc::Api::Proto::Organizations::OrganizationFeatures GetOrganizationFeatures(const std::wstring& boxId);
+    function GetOrganizationFeatures(const ABoxId:string):TOrganizationFeatures;
     function GetBox(const ABoxId:string):TBox;
     function GetDocumentTypes(const ABoxId:string):TGetDocumentTypesResponse;
 
@@ -4415,6 +4418,39 @@ begin
     if FHTTP.ResultCode = 200 then
     begin
       Result:=TOrganizationList.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+end;
+
+function TDiadocAPI.GetOrganizationFeatures(const ABoxId: string
+  ): TOrganizationFeatures;
+var
+  S: String;
+begin
+  //Diadoc::Api::Proto::Organizations::OrganizationFeatures DiadocApi::GetOrganizationFeatures(const std::wstring& boxId)
+  //{
+  //	WppTraceDebugOut("GetOrganizationFeatures...");
+  //	std::wstringstream buf;
+  //	buf << L"/GetOrganizationFeatures?boxId=" << StringHelper::CanonicalizeUrl(boxId);
+  //	return FromProtoBytes<Diadoc::Api::Proto::Organizations::OrganizationFeatures>(PerformHttpRequest(buf.str(), GET));
+  //}
+  Result:=nil;
+  if not Authenticate then exit;
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId);
+  if SendCommand(hmGET, 'GetOrganizationFeatures', S, nil) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('GetOrganizationFeatures');
+    {$ENDIF}
+
+    FHTTP.Document.Position:=0;
+    if FHTTP.ResultCode = 200 then
+    begin
+      Result:=TOrganizationFeatures.Create;
       Result.LoadFromStream(FHTTP.Document);
     end
     else
