@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_RegistrationRequest"><element name="TRegistrationConfirmRequest"><short>Содержит данные для подтверждения владения закрытым ключом сертификата. </short><descr>Принимается методом RegisterConfirm.
+</descr>
+      </element><element name="TRegistrationConfirmRequest.CertificateContent"><short>CertificateContent - X.509 сертификат пользователя, сериализованный в DER</short>
+      </element><element name="TRegistrationConfirmRequest.Thumbprint"><short>Thumbprint - отпечаток сертификата пользователя</short>
+      </element><element name="TRegistrationConfirmRequest.DataToSign"><short>DataToSign — контент, возвращенный методом Register</short>
+      </element><element name="TRegistrationConfirmRequest.Signature"><short>Signature — подпись под контентом DataToSign в формате CMS SignedData в DER-кодировке</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>
