@@ -9,14 +9,14 @@
       <Version Value="11"/>
       <PathDelim Value="\"/>
       <SearchPaths>
-        <OtherUnitFiles Value="Docflow;Invoicing;Documents\Types;Events;Documents;Recognition;KeyValueStorage;Forwarding;diadoc_src;Employees;Employees\Subscriptions;Users;Departments;Registration"/>
+        <OtherUnitFiles Value="Docflow;Invoicing;Documents\Types;Events;Documents;Recognition;KeyValueStorage;Forwarding;diadoc_src;Employees;Employees\Subscriptions;Users;Departments;Registration;Organizations"/>
         <UnitOutputDirectory Value="lib\diadoc\$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
     </CompilerOptions>
     <Description Value="Компоненты интеграции Контур ДИАДОК-API для FPC и Lazarus"/>
     <License Value="LGPL"/>
     <Version Major="1" Release="3" Build="1"/>
-    <Files Count="105">
+    <Files Count="109">
       <Item1>
         <Filename Value="diadoc_define.inc"/>
         <Type Value="Include"/>
@@ -438,6 +438,22 @@
         <Filename Value="Registration\diadoctypes_registrationrequest.pas"/>
         <UnitName Value="DiadocTypes_RegistrationRequest"/>
       </Item105>
+      <Item106>
+        <Filename Value="Organizations\diadoctypes_autoblockstatus.pas"/>
+        <UnitName Value="DiadocTypes_AutoBlockStatus"/>
+      </Item106>
+      <Item107>
+        <Filename Value="Organizations\diadoctypes_blockstatus.pas"/>
+        <UnitName Value="DiadocTypes_BlockStatus"/>
+      </Item107>
+      <Item108>
+        <Filename Value="Organizations\diadoctypes_manualblockstatus.pas"/>
+        <UnitName Value="DiadocTypes_ManualBlockStatus"/>
+      </Item108>
+      <Item109>
+        <Filename Value="Organizations\diadoctypes_organizationfeatures.pas"/>
+        <UnitName Value="DiadocTypes_OrganizationFeatures"/>
+      </Item109>
     </Files>
     <LazDoc Paths="docs"/>
     <i18n>

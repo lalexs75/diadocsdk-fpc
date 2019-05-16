@@ -57,6 +57,8 @@ uses
   DiadocTypes_Department, DiadocTypes_DepartmentList, 
   DiadocTypes_DepartmentToCreate, DiadocTypes_DepartmentToUpdate, 
   DiadocTypes_Routing, ResolutionAction, DiadocTypes_RegistrationRequest, 
+  DiadocTypes_AutoBlockStatus, DiadocTypes_BlockStatus, 
+  DiadocTypes_ManualBlockStatus, DiadocTypes_OrganizationFeatures, 
   LazarusPackageIntf;
 
 implementation
