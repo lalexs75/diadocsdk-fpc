@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_OrganizationFeatures"><element name="TOrganizationFeatures"><short>Структура OrganizationFeatures содержит информацию о статусе блокировки и BoxFeatures ящика.</short>
+      </element><element name="TOrganizationFeatures.BlockStatus"><short>BlockStatus - статус блокировки организации.</short>
+      </element><element name="TOrganizationFeatures.Features"><short>Features - список включенных BoxFeatures ящика</short><descr><ul><li>AllowApprovementSignatures - разрешить согласующую подпись</li><li>AllowDocumentsForwarding - разрешить пересылку документов третьей стороне</li><li>AllowProxifiedDocuments - разрешить отправлять документы через промежуточного получателя</li><li>AllowSendEncryptedDocuments - разрешить посылать зашифрованные документы</li>
+          </ul>
+        </descr>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

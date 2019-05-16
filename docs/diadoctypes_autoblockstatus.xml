@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_AutoBlockStatus"><element name="TAutoBlockStatus"><short>Структура AutoBlockStatus содержит информацию о статусе автоблокировки организации.</short>
+      </element><element name="TAutoBlockStatus.IsBlocked"><short>IsBlocked - заблокирована ли отправка</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

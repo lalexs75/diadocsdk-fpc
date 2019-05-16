@@ -333,7 +333,6 @@ type
     function ParseRussianAddress(AAddress:string):TRussianAddress;
 
     function GetMyOrganizations(autoRegister:boolean = false):TOrganizationList;
-    //Diadoc::Api::Proto::Organizations::OrganizationFeatures GetOrganizationFeatures(const std::wstring& boxId);
     function GetOrganizationFeatures(const ABoxId:string):TOrganizationFeatures;
     function GetBox(const ABoxId:string):TBox;
     function GetDocumentTypes(const ABoxId:string):TGetDocumentTypesResponse;

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_BlockStatus"><element name="TBlockStatus" link="http://api-docs.diadoc.ru/ru/latest/proto/Organizations/BlockStatus.html"><short>Структура BlockStatus содержит информацию о статусе блокировки и BoxFeatures ящика.</short>
+      </element><element name="TBlockStatus.ManualBlockStatus"><short>ManualBlockStatus - статус ручной блокировки организации</short>
+      </element><element name="TBlockStatus.AutoBlockStatus"><short>AutoBlockStatus - статус автоблокировки организации (на основании текущего пакета)</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

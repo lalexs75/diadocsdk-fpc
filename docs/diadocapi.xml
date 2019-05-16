@@ -171,6 +171,12 @@
       </element><element name="TDiadocAPI.Register" link="http://api-docs.diadoc.ru/ru/latest/http/Register.html"><short>Метод выполняет поиск организации в Диадоке по ИНН сертификата. Если организация еще не работает в Диадоке, для нее будет создан ящик на основе данных ЕГРЮЛ/ЕГРИП.</short><descr><p>Status Codes:</p><ul><li>200 OK – операция успешно завершена</li><li>400 Bad Request – данные в запросе имеют неверный формат или отсутствуют обязательные параметры</li><li>401 Unauthorized – в запросе отсутствует HTTP-заголовок Authorization, или в этом заголовке содержатся некорректные авторизационные данные</li><li>405 Method Not Allowed – используется неподходящий HTTP-метод</li><li>500 Internal Server Error – при обработке запроса возникла непредвиденная ошибка</li>
           </ul><p>Находит или создает в Диадоке организацию по сертификату</p><p>Добавляет владельца сертификата в сотрудники этой организации или создает запрос на доступ администраторам</p>
         </descr>
+      </element><element name="TDiadocAPI.GetOrganizationFeatures.ABoxId"><short>boxId – идентификатор ящика</short>
+      </element><element name="TDiadocAPI.GetOrganizationFeatures" link="http://api-docs.diadoc.ru/ru/latest/http/Organizations/GetOrganizationFeatures.html"><short>Возвращает статус блокировки организации и BoxFeatures ящика.</short><descr><p>Примечания:</p><p>Метод может вызывать только пользователь с доступом в ящик.
+Если сотрудник заблокирован в ящике, то этот метод недоступен
+</p><p>Status Codes:</p><ul><li>200 OK – операция успешно завершена</li><li>400 Bad Request – данные в запросе имеют неверный формат или отсутствуют обязательные параметры</li><li>401 Unauthorized – в запросе отсутствует HTTP-заголовок Authorization, или в этом заголовке содержатся некорректные авторизационные данные</li><li>402 Payment Required – закончилась подписка на API</li><li>403 Forbidden – доступ к ящику с предоставленным авторизационным токеном запрещен</li><li>404 Not Found – ящик не найден</li><li>405 Method Not Allowed – используется неподходящий HTTP-метод</li><li>500 Internal Server Error – при обработке запроса возникла непредвиденная ошибка</li>
+          </ul>
+        </descr>
       </element>
     </module>
   </package>

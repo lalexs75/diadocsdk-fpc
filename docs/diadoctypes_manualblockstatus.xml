@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_ManualBlockStatus"><element name="TManualBlockStatus"><short>Структура ManualBlockStatus содержит информацию о ручной блокировке ящика.</short>
+      </element><element name="TManualBlockStatus.IsBlocked"><short>IsBlocked - заблокирована ли отправка</short>
+      </element><element name="TManualBlockStatus.RequestedTicks"><short>RequestedTicks - дата загрузки списка на блокировку</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>
