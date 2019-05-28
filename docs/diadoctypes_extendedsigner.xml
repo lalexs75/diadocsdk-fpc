@@ -44,6 +44,18 @@
       </element><element name="TExtendedSignerDetails.SignerPowersBase"><short>SignerPowersBase - основания полномочий (доверия) подписанта. Обязателен, если SignerStatus = 4, «уполномоченное физическое лицо»</short>
       </element><element name="TExtendedSignerDetails.SignerOrgPowersBase"><short>SignerOrgPowersBase - основания полномочий (доверия) организации. Обязателен, если SignerStatus = 3, «работник иной уполномоченной организации»</short>
       </element>
+    <element name="TSignerStatus.BuyerEmployee"><short>Работник организации - покупателя (для документов в формате приказа №820)</short>
+      </element><element name="TSignerStatus.InformationCreatorBuyerEmployee"><short>Работник организации - составителя файла обмена информации покупателя, если составитель файла обмена информации покупателя не является покупателем (для документов в формате приказа №820)</short>
+      </element><element name="TDocumentTitleType.UtdSeller"><short>Данные для титула продавца УПД</short>
+      </element><element name="TDocumentTitleType.UtdBuyer"><short>Данные для титула покупателя УПД</short>
+      </element><element name="TDocumentTitleType.UcdSeller"><short>Данные для титула продавца УКД</short>
+      </element><element name="TDocumentTitleType.UcdBuyer"><short>Данные для титула покупателя УКД</short>
+      </element><element name="TDocumentTitleType.TovTorg551Seller"><short>Данные для титула продавца формата приказа  551</short>
+      </element><element name="TDocumentTitleType.TovTorg551Buyer"><short>Данные для титула покупателя формата приказа 551</short>
+      </element><element name="TDocumentTitleType.AccCert552Seller"><short>Данные для титула исполнителя формата приказа 552</short>
+      </element><element name="TDocumentTitleType.AccCert552Buyer"><short>Данные для титула заказчика формата приказа 552</short>
+      </element><element name="TDocumentTitleType.Utd820Buyer"><short>Данные для титула покупателя УПД формата приказа 820</short>
+      </element>
     </module>
   </package>
 </fpdoc-descriptions>
