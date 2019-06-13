@@ -32,7 +32,7 @@ object DDAPIMainForm: TDDAPIMainForm
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = 'Параметры'
-      ClientHeight = 633
+      ClientHeight = 635
       ClientWidth = 1268
       object Label3: TLabel
         AnchorSideLeft.Control = TabSheet1
@@ -414,11 +414,11 @@ object DDAPIMainForm: TDDAPIMainForm
     end
     object TabSheet5: TTabSheet
       Caption = 'Почта'
-      ClientHeight = 633
+      ClientHeight = 635
       ClientWidth = 1268
       object TreeView1: TTreeView
         Left = 0
-        Height = 633
+        Height = 635
         Top = 0
         Width = 185
         Align = alLeft
@@ -432,13 +432,13 @@ object DDAPIMainForm: TDDAPIMainForm
       end
       object Splitter2: TSplitter
         Left = 185
-        Height = 633
+        Height = 635
         Top = 0
         Width = 5
       end
       object PageControl2: TPageControl
         Left = 190
-        Height = 633
+        Height = 635
         Top = 0
         Width = 1078
         ActivePage = TabSheet7
@@ -450,7 +450,7 @@ object DDAPIMainForm: TDDAPIMainForm
         end
         object TabSheet8: TTabSheet
           Caption = 'Контрагенты'
-          ClientHeight = 600
+          ClientHeight = 604
           ClientWidth = 1068
           object Panel1: TPanel
             Left = 886
@@ -516,7 +516,7 @@ object DDAPIMainForm: TDDAPIMainForm
     end
     object TabSheet6: TTabSheet
       Caption = 'Organizations'
-      ClientHeight = 633
+      ClientHeight = 635
       ClientWidth = 1268
       object ListBox2: TListBox
         Left = 0
@@ -621,7 +621,7 @@ object DDAPIMainForm: TDDAPIMainForm
     end
     object TabSheet4: TTabSheet
       Caption = 'Прочее'
-      ClientHeight = 633
+      ClientHeight = 635
       ClientWidth = 1268
       object Button3: TButton
         AnchorSideLeft.Control = TabSheet4
@@ -921,7 +921,7 @@ object DDAPIMainForm: TDDAPIMainForm
     end
     object TabSheet2: TTabSheet
       Caption = 'Инструменты'
-      ClientHeight = 633
+      ClientHeight = 635
       ClientWidth = 1268
       object Button4: TButton
         AnchorSideLeft.Control = TabSheet2

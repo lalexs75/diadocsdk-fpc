@@ -3495,7 +3495,7 @@ begin
     {
     	WppTraceDebugOut(L"GetNewEvents...");
     	std::wstringstream queryString;
-    	queryString << L"/V5/GetNewEvents?boxId=" << StringHelper::CanonicalizeUrl(boxId);
+    	queryString << L"/V6/GetNewEvents?boxId=" << StringHelper::CanonicalizeUrl(boxId);
     	if (!afterEventId.empty())
     		queryString << L"&afterEventId=" << StringHelper::CanonicalizeUrl(afterEventId);
     	queryString << L"&includeDrafts";
@@ -3512,7 +3512,7 @@ begin
 
   if not Authenticate then exit;
 
-  if SendCommand(hmGET, '/V5/GetNewEvents', S, nil) then
+  if SendCommand(hmGET, '/V6/GetNewEvents', S, nil) then
   begin
     {$IFDEF DIADOC_DEBUG}
     SaveProtobuf('GetNewEvents');

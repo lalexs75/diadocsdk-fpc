@@ -62,7 +62,8 @@ uses
   DiadocTypes_ResolutionInfo,
   DiadocTypes_ResolutionRequestInfo,
   DiadocTypes_ResolutionRequestDenialInfo,
-  DiadocTypes_ResolutionRouteInfo
+  DiadocTypes_ResolutionRouteInfo,
+  DiadocTypes_DocumentId
   ;
 
 type
@@ -125,11 +126,33 @@ type
     ResolutionRouteRemovalAttachment = 67,
     Title = 68,
     Cancellation = 69,
-    Edition = 71
+    Edition = 71,
+    DeletionRestoration = 72,
+    TemplateTransformation = 73
     //Неизвестные типы должны обрабатываться как Title
   );
 
 
+  {  TTemplateTransformationInfo  }
+  //message TemplateTransformationInfo
+  //{
+  //	optional DocumentId TransformedToDocumentId = 1;
+  //	optional string Author = 2;
+  //}
+  TTemplateTransformationInfo = class(TSerializationObject)
+  private
+    FAuthor: string;
+    FTransformedToDocumentId: TDocumentId;
+    procedure SetAuthor(AValue: string);
+  protected
+    procedure InternalInit; override;
+    procedure InternalRegisterProperty; override;
+  public
+    destructor Destroy; override;
+  published
+    property TransformedToDocumentId:TDocumentId read FTransformedToDocumentId;//1;
+    property Author:string read FAuthor write SetAuthor; //2;
+  end;
 
   {  TEntityPatch  }
   //message EntityPatch {
@@ -196,6 +219,7 @@ type
   //	optional CancellationInfo CancellationInfo = 24;						// only for AttachmentType.Cancellation
   //	repeated string Labels = 25;
   //    optional string Version = 26;
+  //    optional TemplateTransformationInfo TemplateTransformationInfo = 27;
   //}
   TEntity  = class(TSerializationObject) //message Entity
   private
@@ -223,6 +247,7 @@ type
     FResolutionRouteRemovalInfo: TResolutionRouteRemovalInfo;
     FSignerBoxId: string;
     FSignerDepartmentId: string;
+    FTemplateTransformationInfo: TTemplateTransformationInfo;
     FVersion: string;
     procedure SetAttachmentType(AValue: TAttachmentType);
     procedure SetAttachmentVersion(AValue: string);
@@ -271,6 +296,7 @@ type
     property CancellationInfo:TCancellationInfo read FCancellationInfo; //24
     property Labels:TDocumentStrings read FLabels; //25;
     property Version:string read FVersion write SetVersion;//26;
+    property TemplateTransformationInfo:TTemplateTransformationInfo read FTemplateTransformationInfo;//27
   end;
   TEntitys = specialize GSerializationObjectList<TEntity>;
 
@@ -289,6 +315,8 @@ type
   //	optional bool MessageIsDelivered = 11 [default = false];
   //	optional string DeliveredPatchId = 12;
   //	required string PatchId = 13;
+  //
+  //    required Documents.MessageType MessageType = 15;
   //}
   TMessagePatch = class(TSerializationObject)
   private
@@ -303,6 +331,7 @@ type
     FMessageIsDeleted: Boolean;
     FMessageIsDelivered: Boolean;
     FMessageIsRestored: Boolean;
+    FMessageType: TMessageType;
     FPatchId: string;
     FTimestampTicks: sfixed64;
     procedure SetDeliveredPatchId(AValue: string);
@@ -313,6 +342,7 @@ type
     procedure SetMessageIsDeleted(AValue: Boolean);
     procedure SetMessageIsDelivered(AValue: Boolean);
     procedure SetMessageIsRestored(AValue: Boolean);
+    procedure SetMessageType(AValue: TMessageType);
     procedure SetPatchId(AValue: string);
     procedure SetTimestampTicks(AValue: sfixed64);
   protected
@@ -334,6 +364,7 @@ type
     property MessageIsDelivered:Boolean read FMessageIsDelivered write SetMessageIsDelivered;//11
     property DeliveredPatchId:string read FDeliveredPatchId write SetDeliveredPatchId;//12;
     property PatchId:string read FPatchId write SetPatchId;//13;
+    property MessageType:TMessageType read FMessageType write SetMessageType;//15;
   end;
 
 
@@ -389,6 +420,35 @@ type
     property LockMode:TLockMode read FLockMode write SetLockMode; //10;
   end;
 
+  { TTemplateToLetterTransformationInfo }
+  //message TemplateToLetterTransformationInfo
+  //{
+  //	required string LetterFromBoxId = 1;
+  //	required string LetterToBoxId = 2;
+  //	optional string LetterFromDepartmentId = 3;
+  //	optional string LetterToDepartmentId = 4;
+  //}
+  TTemplateToLetterTransformationInfo = class(TSerializationObject)
+  private
+    FLetterFromBoxId: string;
+    FLetterFromDepartmentId: string;
+    FLetterToBoxId: string;
+    FLetterToDepartmentId: string;
+    procedure SetLetterFromBoxId(AValue: string);
+    procedure SetLetterFromDepartmentId(AValue: string);
+    procedure SetLetterToBoxId(AValue: string);
+    procedure SetLetterToDepartmentId(AValue: string);
+  protected
+    procedure InternalInit; override;
+    procedure InternalRegisterProperty; override;
+  public
+    destructor Destroy; override;
+  published
+    property LetterFromBoxId:string read FLetterFromBoxId write SetLetterFromBoxId;//1;
+    property LetterToBoxId:string read FLetterToBoxId write SetLetterToBoxId;//2;
+    property LetterFromDepartmentId:string read FLetterFromDepartmentId write SetLetterFromDepartmentId;//3;
+    property LetterToDepartmentId:string read FLetterToDepartmentId write SetLetterToDepartmentId;//4;
+  end;
 
   {  TMessage  }
   //message Message {
@@ -413,6 +473,8 @@ type
   //	optional string ProxyTitle = 19;
   //	optional bool PacketIsLocked = 20 [default = false];
   //    required LockMode LockMode = 21 [default = None];
+  //    required Documents.MessageType MessageType = 22;
+  //    optional TemplateToLetterTransformationInfo TemplateToLetterTransformationInfo = 23;
   //}
   TMessage  = class(TSerializationObject) //message Message {
   private
@@ -431,9 +493,11 @@ type
     FLastPatchTimestampTicks: sfixed64;
     FLockMode: TLockMode;
     FMessageId: string;
+    FMessageType: TMessageType;
     FPacketIsLocked: Boolean;
     FProxyBoxId: string;
     FProxyTitle: string;
+    FTemplateToLetterTransformationInfo: TTemplateToLetterTransformationInfo;
     FTimestampTicks: sfixed64;
     FToBoxId: string;
     FToTitle: string;
@@ -450,6 +514,7 @@ type
     procedure SetLastPatchTimestampTicks(AValue: sfixed64);
     procedure SetLockMode(AValue: TLockMode);
     procedure SetMessageId(AValue: string);
+    procedure SetMessageType(AValue: TMessageType);
     procedure SetPacketIsLocked(AValue: Boolean);
     procedure SetProxyBoxId(AValue: string);
     procedure SetProxyTitle(AValue: string);
@@ -483,6 +548,8 @@ type
     property ProxyTitle:string read FProxyTitle write SetProxyTitle; //19;
     property PacketIsLocked:Boolean read FPacketIsLocked write SetPacketIsLocked; //20
     property LockMode:TLockMode read FLockMode write SetLockMode;//21;
+    property MessageType:TMessageType read FMessageType write SetMessageType; //22
+    property TemplateToLetterTransformationInfo:TTemplateToLetterTransformationInfo read FTemplateToLetterTransformationInfo; //23
   end;
 
 
@@ -605,6 +672,85 @@ begin
   else
     Result:='';
   end;
+end;
+
+{ TTemplateTransformationInfo }
+
+procedure TTemplateTransformationInfo.SetAuthor(AValue: string);
+begin
+  if FAuthor=AValue then Exit;
+  FAuthor:=AValue;
+end;
+
+procedure TTemplateTransformationInfo.InternalInit;
+begin
+  inherited InternalInit;
+  FTransformedToDocumentId:=TDocumentId.Create;
+end;
+
+procedure TTemplateTransformationInfo.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('TransformedToDocumentId', 1);
+  RegisterProp('Author', 2);
+end;
+
+destructor TTemplateTransformationInfo.Destroy;
+begin
+  FreeAndNil(FTransformedToDocumentId);
+  inherited Destroy;
+end;
+
+{ TTemplateToLetterTransformationInfo }
+
+procedure TTemplateToLetterTransformationInfo.SetLetterFromBoxId(AValue: string
+  );
+begin
+  if FLetterFromBoxId=AValue then Exit;
+  FLetterFromBoxId:=AValue;
+  Modified(1);
+end;
+
+procedure TTemplateToLetterTransformationInfo.SetLetterFromDepartmentId(
+  AValue: string);
+begin
+  if FLetterFromDepartmentId=AValue then Exit;
+  FLetterFromDepartmentId:=AValue;
+  Modified(3);
+end;
+
+procedure TTemplateToLetterTransformationInfo.SetLetterToBoxId(AValue: string);
+begin
+  if FLetterToBoxId=AValue then Exit;
+  FLetterToBoxId:=AValue;
+  Modified(2);
+end;
+
+procedure TTemplateToLetterTransformationInfo.SetLetterToDepartmentId(
+  AValue: string);
+begin
+  if FLetterToDepartmentId=AValue then Exit;
+  FLetterToDepartmentId:=AValue;
+  Modified(4);
+end;
+
+procedure TTemplateToLetterTransformationInfo.InternalInit;
+begin
+  inherited InternalInit;
+end;
+
+procedure TTemplateToLetterTransformationInfo.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('LetterFromBoxId', 1, true);
+  RegisterProp('LetterToBoxId', 2, true);
+  RegisterProp('LetterFromDepartmentId', 3);
+  RegisterProp('LetterToDepartmentId', 4);
+end;
+
+destructor TTemplateToLetterTransformationInfo.Destroy;
+begin
+  inherited Destroy;
 end;
 
 { TBoxEventList }
@@ -816,6 +962,13 @@ begin
   Modified(10);
 end;
 
+procedure TMessagePatch.SetMessageType(AValue: TMessageType);
+begin
+  if FMessageType=AValue then Exit;
+  FMessageType:=AValue;
+  Modified(15);
+end;
+
 procedure TMessagePatch.SetPatchId(AValue: string);
 begin
   if FPatchId=AValue then Exit;
@@ -854,6 +1007,7 @@ begin
   RegisterProp('MessageIsDelivered', 11);
   RegisterProp('DeliveredPatchId', 12);
   RegisterProp('PatchId', 13, true);
+  RegisterProp('MessageType', 15, true);
 end;
 
 destructor TMessagePatch.Destroy;
@@ -1132,6 +1286,7 @@ begin
   RegisterProp('CancellationInfo', 24);
   RegisterProp('Labels', 25, true);
   RegisterProp('Version', 26);
+  RegisterProp('TemplateTransformationInfo', 27);
 end;
 
 procedure TEntity.InternalInit;
@@ -1146,6 +1301,7 @@ begin
   FResolutionRouteRemovalInfo:=TResolutionRouteRemovalInfo.Create;
   FCancellationInfo:=TCancellationInfo.Create;
   FLabels:=TDocumentStrings.Create;
+  FTemplateTransformationInfo:=TTemplateTransformationInfo.Create;
 end;
 
 destructor TEntity.Destroy;
@@ -1159,6 +1315,7 @@ begin
   FreeAndNil(FResolutionRouteRemovalInfo);
   FreeAndNil(FCancellationInfo);
   FreeAndNil(FLabels);
+  FreeAndNil(FTemplateTransformationInfo);
   inherited Destroy;
 end;
 
@@ -1255,6 +1412,13 @@ begin
   Modified(1);
 end;
 
+procedure TMessage.SetMessageType(AValue: TMessageType);
+begin
+  if FMessageType=AValue then Exit;
+  FMessageType:=AValue;
+  Modified(22);
+end;
+
 procedure TMessage.SetPacketIsLocked(AValue: Boolean);
 begin
   if FPacketIsLocked=AValue then Exit;
@@ -1321,6 +1485,8 @@ begin
   RegisterProp('ProxyTitle', 19);
   RegisterProp('PacketIsLocked', 20);
   RegisterProp('LockMode', 21, true);
+  RegisterProp('MessageType', 22, true);
+  RegisterProp('TemplateToLetterTransformationInfo', 23);
 end;
 
 procedure TMessage.InternalInit;
@@ -1328,12 +1494,14 @@ begin
   inherited InternalInit;
   FEntities:=TEntitys.Create;
   FDraftIsTransformedToMessageIdList:=TDocumentStrings.Create;
+  FTemplateToLetterTransformationInfo:=TTemplateToLetterTransformationInfo.Create;
 end;
 
 destructor TMessage.Destroy;
 begin
   FreeAndNil(FEntities);
   FreeAndNil(FDraftIsTransformedToMessageIdList);
+  FreeAndNil(FTemplateToLetterTransformationInfo);
   inherited Destroy;
 end;
 
