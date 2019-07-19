@@ -241,22 +241,28 @@ type
   //	optional string MessageToDepartmentId = 5;
   //	repeated TemplateDocumentAttachment DocumentAttachments = 6;
   //    optional LockMode LockMode = 7 [default = None];
+  //    optional string FromDepartmentId = 8;
+  //    optional string ToDepartmentId = 9;
   //}
   TTemplateToPost = class(TSerializationObject) //message TemplateToPost
   private
     FDocumentAttachments: TTemplateDocumentAttachments;
     FFromBoxId: string;
+    FFromDepartmentId: string;
     FLockMode: TLockMode;
     FMessageFromBoxId: string;
     FMessageToBoxId: string;
     FMessageToDepartmentId: string;
     FToBoxId: string;
+    FToDepartmentId: string;
     procedure SetFromBoxId(AValue: string);
+    procedure SetFromDepartmentId(AValue: string);
     procedure SetLockMode(AValue: TLockMode);
     procedure SetMessageFromBoxId(AValue: string);
     procedure SetMessageToBoxId(AValue: string);
     procedure SetMessageToDepartmentId(AValue: string);
     procedure SetToBoxId(AValue: string);
+    procedure SetToDepartmentId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -270,6 +276,8 @@ type
     property MessageToDepartmentId:string read FMessageToDepartmentId write SetMessageToDepartmentId;//5;
     property DocumentAttachments:TTemplateDocumentAttachments read FDocumentAttachments; //6;
     property LockMode:TLockMode read FLockMode write SetLockMode;//7 [default = None];
+    property FromDepartmentId:string read FFromDepartmentId write SetFromDepartmentId; //8;
+    property ToDepartmentId:string read FToDepartmentId write SetToDepartmentId;//9;
   end;
 
   {  TResolutionRouteRemoval  }
@@ -361,16 +369,21 @@ type
   //	required string EventId = 2;
   //	required bool Success = 3;
   //	optional string Description = 4;
+  //    optional string MessageId = 5;
+  //    repeated string NotifiableEntityIds = 6;
   //}
   TRoamingNotificationToPost = class(TSerializationObject) //message RoamingNotificationToPost
   private
     FBoxId: string;
     FDescription: string;
     FEventId: string;
+    FMessageId: string;
+    FNotifiableEntityIds: TDocumentStrings;
     FSuccess: Boolean;
     procedure SetBoxId(AValue: string);
     procedure SetDescription(AValue: string);
     procedure SetEventId(AValue: string);
+    procedure SetMessageId(AValue: string);
     procedure SetSuccess(AValue: Boolean);
   protected
     procedure InternalRegisterProperty; override;
@@ -382,6 +395,8 @@ type
     property EventId:string read FEventId write SetEventId;//2;
     property Success:Boolean read FSuccess write SetSuccess;//3;
     property Description:string read FDescription write SetDescription;//4;
+    property MessageId:string read FMessageId write SetMessageId;// = 5;
+    property NotifiableEntityIds:TDocumentStrings read FNotifiableEntityIds;//6;
   end;
 
 
@@ -4679,6 +4694,13 @@ begin
   Modified(2);
 end;
 
+procedure TRoamingNotificationToPost.SetMessageId(AValue: string);
+begin
+  if FMessageId=AValue then Exit;
+  FMessageId:=AValue;
+  Modified(5);
+end;
+
 procedure TRoamingNotificationToPost.SetSuccess(AValue: Boolean);
 begin
   if FSuccess=AValue then Exit;
@@ -4693,15 +4715,19 @@ begin
   RegisterProp('EventId', 2, true);
   RegisterProp('Success', 3, true);
   RegisterProp('Description', 4);
+  RegisterProp('MessageId', 5);
+  RegisterProp('NotifiableEntityIds', 6);
 end;
 
 procedure TRoamingNotificationToPost.InternalInit;
 begin
   inherited InternalInit;
+  FNotifiableEntityIds:=TDocumentStrings.Create;
 end;
 
 destructor TRoamingNotificationToPost.Destroy;
 begin
+  FreeAndNil(FNotifiableEntityIds);
   inherited Destroy;
 end;
 
@@ -4835,6 +4861,13 @@ begin
   Modified(1);
 end;
 
+procedure TTemplateToPost.SetFromDepartmentId(AValue: string);
+begin
+  if FFromDepartmentId=AValue then Exit;
+  FFromDepartmentId:=AValue;
+  Modified(8);
+end;
+
 procedure TTemplateToPost.SetLockMode(AValue: TLockMode);
 begin
   if FLockMode=AValue then Exit;
@@ -4870,6 +4903,13 @@ begin
   Modified(2);
 end;
 
+procedure TTemplateToPost.SetToDepartmentId(AValue: string);
+begin
+  if FToDepartmentId=AValue then Exit;
+  FToDepartmentId:=AValue;
+  Modified(9);
+end;
+
 procedure TTemplateToPost.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -4880,6 +4920,8 @@ begin
   RegisterProp('MessageToDepartmentId', 5);
   RegisterProp('DocumentAttachments', 6);
   RegisterProp('LockMode', 7);
+  RegisterProp('FromDepartmentId', 8);
+  RegisterProp('ToDepartmentId', 9);
 end;
 
 procedure TTemplateToPost.InternalInit;

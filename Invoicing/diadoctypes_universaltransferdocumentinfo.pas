@@ -166,7 +166,7 @@ type
   {  TEventContent  }
   //message EventContent {
   //	optional string CostChangeInfo = 1;                          // Иные сведения об изменении стоимости  // ИныеСвИзмСтоим
-  //	required string TransferDocDetails = 2;                      // Реквизиты передаточных документов, к которым относится корректировка // ПередатДокум
+  //	optional string TransferDocDetails = 2;                      // Реквизиты передаточных документов, к которым относится корректировка // ПередатДокум
   //	required string OperationContent = 3;                        // Содержание операции // СодОпер
   //	optional string NotificationDate = 4;                        // Дата направления на согласование // ДатаНапр
   //	repeated CorrectionBase CorrectionBase = 5;                  // Основание корректировки // ОснКор
@@ -1718,7 +1718,7 @@ procedure TEventContent.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
   RegisterProp('CostChangeInfo', 1);
-  RegisterProp('TransferDocDetails', 2, true);
+  RegisterProp('TransferDocDetails', 2, false);
   RegisterProp('OperationContent', 3, true);
   RegisterProp('NotificationDate', 4);
   RegisterProp('CorrectionBase', 5);

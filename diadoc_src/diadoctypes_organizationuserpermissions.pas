@@ -86,11 +86,14 @@ type
   //       optional string JobTitle = 10;
   //       required bool CanCreateDocuments = 11;
   //       required AuthorizationPermission AuthorizationPermission = 12;
+  //       required bool CanDeleteRestoreDocuments = 13;
   // }
   TOrganizationUserPermissions = class(TSerializationObject)
   private
+    FAuthorizationPermission: TAuthorizationPermission;
     FCanAddResolutions: Boolean;
     FCanCreateDocuments: boolean;
+    FCanDeleteRestoreDocuments: Boolean;
     FCanManageCounteragents: Boolean;
     FCanRequestResolutions: Boolean;
     FCanSignDocuments: Boolean;
@@ -101,6 +104,7 @@ type
     FUserDepartmentId: string;
     procedure SetCanAddResolutions(AValue: Boolean);
     procedure SetCanCreateDocuments(AValue: boolean);
+    procedure SetCanDeleteRestoreDocuments(AValue: Boolean);
     procedure SetCanManageCounteragents(AValue: Boolean);
     procedure SetCanRequestResolutions(AValue: Boolean);
     procedure SetCanSignDocuments(AValue: Boolean);
@@ -124,6 +128,8 @@ type
     property SelectedDepartmentIds:TDocumentStrings read FSelectedDepartmentIds;//9;
     property JobTitle:string read FJobTitle write SetJobTitle; //10;
     property CanCreateDocuments:boolean read FCanCreateDocuments write SetCanCreateDocuments; //11;
+    property AuthorizationPermission:TAuthorizationPermission read FAuthorizationPermission;//12;
+    property CanDeleteRestoreDocuments:Boolean read FCanDeleteRestoreDocuments write SetCanDeleteRestoreDocuments;//13;
   end;
 
 function DocumentAccessLevelToStr(AAccessLevel:TDocumentAccessLevel):string;
@@ -191,6 +197,14 @@ begin
   Modified(11);
 end;
 
+procedure TOrganizationUserPermissions.SetCanDeleteRestoreDocuments(
+  AValue: Boolean);
+begin
+  if FCanDeleteRestoreDocuments=AValue then Exit;
+  FCanDeleteRestoreDocuments:=AValue;
+  Modified(13);
+end;
+
 procedure TOrganizationUserPermissions.SetCanManageCounteragents(AValue: Boolean
   );
 begin
@@ -247,6 +261,7 @@ procedure TOrganizationUserPermissions.InternalInit;
 begin
   inherited InternalInit;
   FSelectedDepartmentIds:=TDocumentStrings.Create;
+  FAuthorizationPermission:=TAuthorizationPermission.Create;
 end;
 
 procedure TOrganizationUserPermissions.InternalRegisterProperty;
@@ -261,11 +276,14 @@ begin
   RegisterProp('CanRequestResolutions', 8, true);
   RegisterProp('SelectedDepartmentIds', 9);
   RegisterProp('JobTitle', 10);
-  RegisterProp('CanCreateDocuments', 11);
+  RegisterProp('CanCreateDocuments', 11, true);
+  RegisterProp('AuthorizationPermission', 12, true);
+  RegisterProp('CanDeleteRestoreDocuments', 13, true);
 end;
 
 destructor TOrganizationUserPermissions.Destroy;
 begin
+  FreeAndNil(FAuthorizationPermission);
   FreeAndNil(FSelectedDepartmentIds);
   inherited Destroy;
 end;

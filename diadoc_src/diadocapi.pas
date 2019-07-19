@@ -176,6 +176,8 @@ type
     function CreateEmployee(const ABoxId:string; AEmployeeToCreate:TEmployeeToCreate):DiadocTypes_Employee.TEmployee;
     function UpdateEmployee(const ABoxId:string; AUserId:string; AEmployeeToUpdate:TEmployeeToUpdate):DiadocTypes_Employee.TEmployee;
     procedure DeleteEmployee(const ABoxId:string; AUserId:string);
+    //Diadoc::Api::Proto::Employees::Employee GetMyEmployee(const std::wstring& boxId);
+    function GetMyEmployee(const ABoxId:string):DiadocTypes_Employee.TEmployee;
 
     function GetSubscriptions(const ABoxId:string; const AUserId:string):TEmployeeSubscriptions;
     function UpdateSubscriptions(const AboxId:string; const AUserId:string; const ASubscriptionsToUpdate:TSubscriptionsToUpdate):TEmployeeSubscriptions;
@@ -1055,6 +1057,42 @@ begin
     {$IFDEF DIADOC_DEBUG}
     SaveProtobuf('DeleteEmployee');
     {$ENDIF}
+  end;
+end;
+
+function TDiadocAPI.GetMyEmployee(const ABoxId: string
+  ): DiadocTypes_Employee.TEmployee;
+var
+  S: String;
+begin
+  (*
+  iadoc::Api::Proto::Employees::Employee DiadocApi::GetMyEmployee(const std::wstring& boxId)
+  {
+  	WppTraceDebugOut("GetMyEmployee...");
+  	std::wstringstream buf;
+  	buf << L"/GetMyEmployee?boxId=" << StringHelper::CanonicalizeUrl(boxId);
+  	return FromProtoBytes<Diadoc::Api::Proto::Employees::Employee>(PerformHttpRequest(buf.str(), GET));
+  }
+  *)
+  Result:=nil;
+  if ABoxId = '' then
+    raise EDiadocException.Create(sNotDefinedBoxId);
+  if not Authenticate then exit;
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId);
+  if SendCommand(hmPOST, '/GetMyEmployee', S, nil) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('GetMyEmployee');
+    {$ENDIF}
+    FHTTP.Document.Position:=0;
+    if FResultCode = 200 then
+    begin
+      Result:=DiadocTypes_Employee.TEmployee.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
   end;
 end;
 
