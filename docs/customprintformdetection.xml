@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="CustomPrintFormDetection"><element name="TCustomPrintFormDetectionRequest"><short>Структура данных CustomPrintFormDetectionRequest содержит список документов, для которых необходимо определить наличие нестандартной печатной формы.</short>
+      </element><element name="TCustomPrintFormDetectionRequest.DocumentIds"><short>DocumentId — идентификатор документа</short>
+      </element><element name="TCustomPrintFormDetectionResult"><short>Структура данных CustomPrintFormDetectionResult содержит результат проверки.</short>
+      </element><element name="TCustomPrintFormDetectionItemResult"><short>Элемент структуры данных CustomPrintFormDetectionResult содержит результат проверки.</short>
+      </element><element name="TCustomPrintFormDetectionItemResult.DocumentId"><short>DocumentId — идентификатор документа</short>
+      </element><element name="TCustomPrintFormDetectionItemResult.HasCustomPrintForm"><short>HasCustomPrintForm — флаг, показывающий, что данный документ имеет нестандартную печатную форму</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>
