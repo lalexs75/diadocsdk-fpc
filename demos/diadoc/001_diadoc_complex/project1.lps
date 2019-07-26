@@ -3,7 +3,7 @@
   <ProjectSession>
     <Version Value="12"/>
     <BuildModes Active="Default"/>
-    <Units Count="287">
+    <Units Count="288">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -94,7 +94,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="266"/>
         <CursorPos X="54" Y="283"/>
-        <UsageCount Value="194"/>
+        <UsageCount Value="195"/>
       </Unit8>
       <Unit9>
         <Filename Value="frames/diadocdocumentunit.pas"/>
@@ -103,10 +103,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="DiadocDocumentUnit"/>
-        <EditorIndex Value="15"/>
+        <EditorIndex Value="16"/>
         <TopLine Value="497"/>
         <CursorPos Y="521"/>
-        <UsageCount Value="190"/>
+        <UsageCount Value="191"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit9>
@@ -119,7 +119,7 @@
         <UnitName Value="UniversalTransferDocumentBuyerTitleInfoUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="3" Y="15"/>
-        <UsageCount Value="189"/>
+        <UsageCount Value="190"/>
       </Unit10>
       <Unit11>
         <Filename Value="frames/contragentslistunit.pas"/>
@@ -130,7 +130,7 @@
         <UnitName Value="ContragentsListUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="20" Y="12"/>
-        <UsageCount Value="186"/>
+        <UsageCount Value="187"/>
       </Unit11>
       <Unit12>
         <Filename Value="forms/organizationuserslistunit.pas"/>
@@ -142,7 +142,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="18"/>
         <CursorPos X="3" Y="34"/>
-        <UsageCount Value="179"/>
+        <UsageCount Value="180"/>
       </Unit12>
       <Unit13>
         <Filename Value="forms/boxeventlistunit.pas"/>
@@ -154,7 +154,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="33"/>
         <CursorPos X="50" Y="54"/>
-        <UsageCount Value="178"/>
+        <UsageCount Value="179"/>
       </Unit13>
       <Unit14>
         <Filename Value="forms/userpermissionsunit.pas"/>
@@ -166,7 +166,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="25"/>
         <CursorPos X="67" Y="50"/>
-        <UsageCount Value="176"/>
+        <UsageCount Value="177"/>
       </Unit14>
       <Unit15>
         <Filename Value="forms/contragentfindunit.pas"/>
@@ -177,7 +177,7 @@
         <UnitName Value="ContragentFindUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="25" Y="10"/>
-        <UsageCount Value="174"/>
+        <UsageCount Value="175"/>
       </Unit15>
       <Unit16>
         <Filename Value="forms/showboxinfounit.pas"/>
@@ -189,7 +189,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="19"/>
         <CursorPos X="11" Y="25"/>
-        <UsageCount Value="165"/>
+        <UsageCount Value="166"/>
       </Unit16>
       <Unit17>
         <Filename Value="forms/organizationinfoformunit.pas"/>
@@ -200,7 +200,7 @@
         <UnitName Value="OrganizationInfoFormUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="5" Y="9"/>
-        <UsageCount Value="156"/>
+        <UsageCount Value="157"/>
       </Unit17>
       <Unit18>
         <Filename Value="forms/selectdepartmentunit.pas"/>
@@ -211,7 +211,7 @@
         <UnitName Value="SelectDepartmentUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="88" Y="30"/>
-        <UsageCount Value="90"/>
+        <UsageCount Value="91"/>
       </Unit18>
       <Unit19>
         <Filename Value="ddmaindataunit.pas"/>
@@ -222,7 +222,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="10"/>
         <CursorPos X="3" Y="43"/>
-        <UsageCount Value="89"/>
+        <UsageCount Value="90"/>
       </Unit19>
       <Unit20>
         <Filename Value="tools/ddnewdocutdunit.pas"/>
@@ -231,7 +231,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="20"/>
         <CursorPos X="3" Y="20"/>
-        <UsageCount Value="86"/>
+        <UsageCount Value="87"/>
       </Unit20>
       <Unit21>
         <Filename Value="frames/transferinfounit.pas"/>
@@ -243,7 +243,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="84"/>
         <CursorPos X="5" Y="93"/>
-        <UsageCount Value="75"/>
+        <UsageCount Value="76"/>
       </Unit21>
       <Unit22>
         <Filename Value="frames/extendedorganizationinfounit.pas"/>
@@ -255,7 +255,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="68"/>
         <CursorPos X="3" Y="99"/>
-        <UsageCount Value="73"/>
+        <UsageCount Value="74"/>
       </Unit22>
       <Unit23>
         <Filename Value="frames/employeeunit.pas"/>
@@ -267,7 +267,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="10"/>
         <CursorPos X="17" Y="15"/>
-        <UsageCount Value="72"/>
+        <UsageCount Value="73"/>
       </Unit23>
       <Unit24>
         <Filename Value="../../../DiadocVisual/frames/boxinfounit.pas"/>
@@ -1671,10 +1671,10 @@
       <Unit201>
         <Filename Value="../../../Invoicing/diadoctypes_universaltransferdocumentinfo.pas"/>
         <UnitName Value="DiadocTypes_UniversalTransferDocumentInfo"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="159"/>
         <CursorPos X="15" Y="186"/>
-        <UsageCount Value="16"/>
+        <UsageCount Value="17"/>
         <Loaded Value="True"/>
       </Unit201>
       <Unit202>
@@ -1725,10 +1725,10 @@
       <Unit208>
         <Filename Value="../../../Invoicing/diadoctypes_extendedsigner.pas"/>
         <UnitName Value="DiadocTypes_ExtendedSigner"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="49"/>
         <CursorPos X="7" Y="79"/>
-        <UsageCount Value="13"/>
+        <UsageCount Value="14"/>
         <Loaded Value="True"/>
       </Unit208>
       <Unit209>
@@ -1757,19 +1757,19 @@
       <Unit212>
         <Filename Value="../../../diadoc_src/diadoctypes_documentid.pas"/>
         <UnitName Value="DiadocTypes_DocumentId"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="10"/>
         <TopLine Value="31"/>
         <CursorPos X="28" Y="35"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="12"/>
         <Loaded Value="True"/>
       </Unit212>
       <Unit213>
         <Filename Value="../../../Events/diadoctypes_diadocmessage_getapi.pas"/>
         <UnitName Value="DiadocTypes_DiadocMessage_GetApi"/>
-        <EditorIndex Value="6"/>
-        <TopLine Value="421"/>
-        <CursorPos X="15" Y="437"/>
-        <UsageCount Value="14"/>
+        <EditorIndex Value="7"/>
+        <TopLine Value="539"/>
+        <CursorPos X="53" Y="552"/>
+        <UsageCount Value="15"/>
         <Bookmarks Count="1">
           <Item0 X="53" Y="552" ID="1"/>
         </Bookmarks>
@@ -1778,11 +1778,13 @@
       <Unit214>
         <Filename Value="../../../diadoc_src/diadocapi.pas"/>
         <UnitName Value="DiadocAPI"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
-        <TopLine Value="1063"/>
-        <CursorPos X="3" Y="1081"/>
-        <UsageCount Value="20"/>
+        <TopLine Value="191"/>
+        <CursorPos X="22" Y="205"/>
+        <UsageCount Value="21"/>
+        <Bookmarks Count="1">
+          <Item0 X="19" Y="4914"/>
+        </Bookmarks>
         <Loaded Value="True"/>
       </Unit214>
       <Unit215>
@@ -1795,8 +1797,8 @@
       <Unit216>
         <Filename Value="../../../Events/diadoctypes_diadocmessage_postapi.pas"/>
         <UnitName Value="DiadocTypes_DiadocMessage_PostApi"/>
-        <EditorIndex Value="2"/>
-        <UsageCount Value="12"/>
+        <EditorIndex Value="3"/>
+        <UsageCount Value="13"/>
         <Loaded Value="True"/>
       </Unit216>
       <Unit217>
@@ -1901,10 +1903,10 @@
       </Unit229>
       <Unit230>
         <Filename Value="../../../../protobuf-fpc/protobuf/protobuf_fpc.pas"/>
-        <EditorIndex Value="13"/>
-        <TopLine Value="211"/>
-        <CursorPos X="3" Y="229"/>
-        <UsageCount Value="13"/>
+        <EditorIndex Value="14"/>
+        <TopLine Value="176"/>
+        <CursorPos X="14" Y="189"/>
+        <UsageCount Value="14"/>
         <Loaded Value="True"/>
       </Unit230>
       <Unit231>
@@ -2060,10 +2062,10 @@
       <Unit250>
         <Filename Value="../../../diadoc_src/diadoctypes_organizationuserpermissions.pas"/>
         <UnitName Value="DiadocTypes_OrganizationUserPermissions"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="198"/>
         <CursorPos X="14" Y="205"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="11"/>
         <Loaded Value="True"/>
       </Unit250>
       <Unit251>
@@ -2194,10 +2196,10 @@
       <Unit266>
         <Filename Value="../../../Registration/diadoctypes_registrationrequest.pas"/>
         <UnitName Value="DiadocTypes_RegistrationRequest"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="8"/>
         <TopLine Value="118"/>
         <CursorPos X="30" Y="128"/>
-        <UsageCount Value="14"/>
+        <UsageCount Value="15"/>
         <Loaded Value="True"/>
       </Unit266>
       <Unit267>
@@ -2241,10 +2243,10 @@
       <Unit272>
         <Filename Value="../../../Docflow/diadoctypes_documentwithdocflow.pas"/>
         <UnitName Value="DiadocTypes_DocumentWithDocflow"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="9"/>
         <TopLine Value="55"/>
         <CursorPos X="18" Y="72"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="12"/>
         <Loaded Value="True"/>
       </Unit272>
       <Unit273>
@@ -2304,10 +2306,10 @@
       <Unit280>
         <Filename Value="../../../Organizations/diadoctypes_autoblockstatus.pas"/>
         <UnitName Value="DiadocTypes_AutoBlockStatus"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="15"/>
         <TopLine Value="32"/>
         <CursorPos X="18" Y="60"/>
-        <UsageCount Value="14"/>
+        <UsageCount Value="15"/>
         <Loaded Value="True"/>
       </Unit280>
       <Unit281>
@@ -2320,28 +2322,28 @@
       <Unit282>
         <Filename Value="../../../Organizations/diadoctypes_organizationfeatures.pas"/>
         <UnitName Value="DiadocTypes_OrganizationFeatures"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="11"/>
         <TopLine Value="34"/>
         <CursorPos X="19" Y="61"/>
-        <UsageCount Value="14"/>
+        <UsageCount Value="15"/>
         <Loaded Value="True"/>
       </Unit282>
       <Unit283>
         <Filename Value="../../../Organizations/diadoctypes_blockstatus.pas"/>
         <UnitName Value="DiadocTypes_BlockStatus"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="12"/>
         <TopLine Value="33"/>
         <CursorPos X="26" Y="62"/>
-        <UsageCount Value="13"/>
+        <UsageCount Value="14"/>
         <Loaded Value="True"/>
       </Unit283>
       <Unit284>
         <Filename Value="../../../Organizations/diadoctypes_manualblockstatus.pas"/>
         <UnitName Value="DiadocTypes_ManualBlockStatus"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="13"/>
         <TopLine Value="33"/>
         <CursorPos X="18" Y="64"/>
-        <UsageCount Value="13"/>
+        <UsageCount Value="14"/>
         <Loaded Value="True"/>
       </Unit284>
       <Unit285>
@@ -2360,125 +2362,134 @@
         <CursorPos X="15" Y="177"/>
         <UsageCount Value="10"/>
       </Unit286>
+      <Unit287>
+        <Filename Value="../../../diadoc_src/CustomPrintFormDetection.pas"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="63"/>
+        <CursorPos X="17" Y="84"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit287>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="../../../Events/diadoctypes_diadocmessage_postapi.pas"/>
-        <Caret Line="389" Column="15" TopLine="374"/>
-      </Position1>
-      <Position2>
-        <Filename Value="../../../Events/diadoctypes_diadocmessage_postapi.pas"/>
-        <Caret Line="386" Column="15" TopLine="374"/>
-      </Position2>
-      <Position3>
-        <Filename Value="../../../Events/diadoctypes_diadocmessage_postapi.pas"/>
-        <Caret Line="4701" Column="13" TopLine="4697"/>
-      </Position3>
-      <Position4>
-        <Filename Value="../../../Events/diadoctypes_diadocmessage_postapi.pas"/>
-        <Caret Line="386" Column="15" TopLine="371"/>
-      </Position4>
-      <Position5>
-        <Filename Value="../../../diadoc_src/diadoctypes_organizationuserpermissions.pas"/>
-        <Caret Line="81" Column="15" TopLine="65"/>
-      </Position5>
-      <Position6>
-        <Filename Value="../../../diadoc_src/diadoctypes_organizationuserpermissions.pas"/>
-      </Position6>
-      <Position7>
-        <Filename Value="../../../diadoc_src/diadoctypes_organizationuserpermissions.pas"/>
-        <Caret Line="130" Column="117" TopLine="111"/>
-      </Position7>
-      <Position8>
-        <Filename Value="../../../diadoc_src/diadoctypes_organizationuserpermissions.pas"/>
-        <Caret Line="201" Column="3" TopLine="197"/>
-      </Position8>
-      <Position9>
-        <Filename Value="../../../diadoc_src/diadoctypes_organizationuserpermissions.pas"/>
-        <Caret Line="115" TopLine="107"/>
-      </Position9>
-      <Position10>
-        <Filename Value="../../../diadoc_src/diadoctypes_organizationuserpermissions.pas"/>
-        <Caret Line="276" Column="48" TopLine="255"/>
-      </Position10>
-      <Position11>
-        <Filename Value="../../../diadoc_src/diadoctypes_organizationuserpermissions.pas"/>
-        <Caret Line="116" Column="15" TopLine="86"/>
-      </Position11>
-      <Position12>
-        <Filename Value="../../../diadoc_src/diadoctypes_organizationuserpermissions.pas"/>
-        <Caret Line="273" Column="3" TopLine="256"/>
-      </Position12>
-      <Position13>
-        <Filename Value="../../../diadoc_src/diadoctypes_organizationuserpermissions.pas"/>
-        <Caret Line="116" TopLine="108"/>
-      </Position13>
-      <Position14>
-        <Filename Value="../../../diadoc_src/diadoctypes_organizationuserpermissions.pas"/>
-        <Caret Line="284" Column="38" TopLine="258"/>
-      </Position14>
-      <Position15>
-        <Filename Value="../../../diadoc_src/diadoctypes_organizationuserpermissions.pas"/>
-        <Caret Line="117" TopLine="105"/>
-      </Position15>
-      <Position16>
-        <Filename Value="../../../diadoc_src/diadoctypes_organizationuserpermissions.pas"/>
-        <Caret Line="280" Column="53" TopLine="260"/>
-      </Position16>
-      <Position17>
-        <Filename Value="../../../diadoc_src/diadoctypes_organizationuserpermissions.pas"/>
-        <Caret Line="116" Column="15" TopLine="103"/>
-      </Position17>
-      <Position18>
-        <Filename Value="../../../diadoc_src/diadoctypes_organizationuserpermissions.pas"/>
-        <Caret Line="261" Column="3" TopLine="258"/>
-      </Position18>
-      <Position19>
-        <Filename Value="../../../diadoc_src/diadoctypes_organizationuserpermissions.pas"/>
-        <Caret Line="117" Column="15" TopLine="111"/>
-      </Position19>
-      <Position20>
         <Filename Value="../../../diadoc_src/diadoctypes_organizationuserpermissions.pas"/>
         <Caret Line="106" Column="15" TopLine="106"/>
-      </Position20>
-      <Position21>
+      </Position1>
+      <Position2>
         <Filename Value="../../../diadoc_src/diadoctypes_organizationuserpermissions.pas"/>
         <Caret Line="107" Column="15" TopLine="107"/>
+      </Position2>
+      <Position3>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+      </Position3>
+      <Position4>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Caret Line="180" Column="41" TopLine="153"/>
+      </Position4>
+      <Position5>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Caret Line="1066" Column="3" TopLine="1061"/>
+      </Position5>
+      <Position6>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Caret Line="180" Column="14" TopLine="166"/>
+      </Position6>
+      <Position7>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Caret Line="1074" Column="3" TopLine="1040"/>
+      </Position7>
+      <Position8>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Caret Line="177" Column="14" TopLine="166"/>
+      </Position8>
+      <Position9>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Caret Line="1028" TopLine="999"/>
+      </Position9>
+      <Position10>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Caret Line="180" Column="14" TopLine="177"/>
+      </Position10>
+      <Position11>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Caret Line="1095" TopLine="1068"/>
+      </Position11>
+      <Position12>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Caret Line="1084" Column="51" TopLine="1063"/>
+      </Position12>
+      <Position13>
+        <Filename Value="../../../diadoc_src/CustomPrintFormDetection.pas"/>
+        <Caret TopLine="19"/>
+      </Position13>
+      <Position14>
+        <Filename Value="../../../diadoc_src/CustomPrintFormDetection.pas"/>
+        <Caret Line="38" Column="58" TopLine="23"/>
+      </Position14>
+      <Position15>
+        <Filename Value="../../../diadoc_src/CustomPrintFormDetection.pas"/>
+        <Caret Line="71" Column="12" TopLine="56"/>
+      </Position15>
+      <Position16>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Caret Line="93" Column="3" TopLine="76"/>
+      </Position16>
+      <Position17>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+      </Position17>
+      <Position18>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Caret Line="205" TopLine="179"/>
+      </Position18>
+      <Position19>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Caret Line="4901" Column="3" TopLine="4896"/>
+      </Position19>
+      <Position20>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Caret Line="204" TopLine="191"/>
+      </Position20>
+      <Position21>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Caret Line="4911" Column="21" TopLine="4905"/>
       </Position21>
       <Position22>
-        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Filename Value="../../../Events/diadoctypes_diadocmessage_getapi.pas"/>
+        <Caret Line="552" Column="53" TopLine="539"/>
       </Position22>
       <Position23>
         <Filename Value="../../../diadoc_src/diadocapi.pas"/>
-        <Caret Line="180" Column="41" TopLine="153"/>
+        <Caret Line="4973" TopLine="4949"/>
       </Position23>
       <Position24>
-        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
-        <Caret Line="1066" Column="3" TopLine="1061"/>
+        <Filename Value="../../../Events/diadoctypes_diadocmessage_getapi.pas"/>
+        <Caret Line="552" Column="53" TopLine="539"/>
       </Position24>
       <Position25>
         <Filename Value="../../../diadoc_src/diadocapi.pas"/>
-        <Caret Line="180" Column="14" TopLine="166"/>
+        <Caret Line="4915" Column="26" TopLine="4896"/>
       </Position25>
       <Position26>
         <Filename Value="../../../diadoc_src/diadocapi.pas"/>
-        <Caret Line="1074" Column="3" TopLine="1040"/>
+        <Caret Line="4932" TopLine="4904"/>
       </Position26>
       <Position27>
         <Filename Value="../../../diadoc_src/diadocapi.pas"/>
-        <Caret Line="177" Column="14" TopLine="166"/>
+        <Caret Line="4919" Column="41" TopLine="4906"/>
       </Position27>
       <Position28>
         <Filename Value="../../../diadoc_src/diadocapi.pas"/>
-        <Caret Line="1028" TopLine="999"/>
+        <Caret Line="4915" Column="3" TopLine="4897"/>
       </Position28>
       <Position29>
         <Filename Value="../../../diadoc_src/diadocapi.pas"/>
-        <Caret Line="180" Column="14" TopLine="177"/>
+        <Caret Line="4918" Column="3" TopLine="4893"/>
       </Position29>
       <Position30>
         <Filename Value="../../../diadoc_src/diadocapi.pas"/>
-        <Caret Line="1095" TopLine="1068"/>
+        <Caret Line="205" Column="22" TopLine="191"/>
       </Position30>
     </JumpHistory>
     <RunParams>

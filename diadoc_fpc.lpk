@@ -16,7 +16,7 @@
     <Description Value="Компоненты интеграции Контур ДИАДОК-API для FPC и Lazarus"/>
     <License Value="LGPL"/>
     <Version Major="1" Release="3" Build="1"/>
-    <Files Count="109">
+    <Files Count="110">
       <Item1>
         <Filename Value="diadoc_define.inc"/>
         <Type Value="Include"/>
@@ -454,6 +454,10 @@
         <Filename Value="Organizations\diadoctypes_organizationfeatures.pas"/>
         <UnitName Value="DiadocTypes_OrganizationFeatures"/>
       </Item109>
+      <Item110>
+        <Filename Value="diadoc_src\CustomPrintFormDetection.pas"/>
+        <UnitName Value="CustomPrintFormDetection"/>
+      </Item110>
     </Files>
     <LazDoc Paths="docs"/>
     <i18n>

@@ -92,7 +92,8 @@ uses
   DiadocTypes_DocumentFilter,
   DiadocTypes_Routing,
   DiadocTypes_RegistrationRequest,
-  DiadocTypes_OrganizationFeatures
+  DiadocTypes_OrganizationFeatures,
+  CustomPrintFormDetection
   ;
 
 type
@@ -200,6 +201,7 @@ type
 
     function Recognize(AFileName:string; AFileContent:TStream):string;
     function GetRecognized(ARecognitionId:string):TRecognized;
+    function DetectCustomPrintForms(const ABoxId:string; ARequest:TCustomPrintFormDetectionRequest):TCustomPrintFormDetectionResult;
 
 
     // WARN: [[deprecated]]
@@ -4890,6 +4892,46 @@ begin
     else
       FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
   end;
+end;
+
+function TDiadocAPI.DetectCustomPrintForms(const ABoxId: string;
+  ARequest: TCustomPrintFormDetectionRequest): TCustomPrintFormDetectionResult;
+var
+  S: String;
+  F: TStream;
+begin
+  (*
+  CustomPrintFormDetectionResult DiadocApi::DetectCustomPrintForms(const std::wstring& boxId, const CustomPrintFormDetectionRequest request)
+  {
+  	WppTraceDebugOut(L"DetectCustomPrintForms...");
+  	std::wstringstream buf;
+  	buf << L"/DetectCustomPrintForms";
+  	if (!boxId.empty())
+  		buf << L"?boxId=" << StringHelper::CanonicalizeUrl(boxId);
+  	return FromProtoBytes<CustomPrintFormDetectionResult>(PerformHttpRequest(buf.str(), ToProtoBytes(request), POST));
+  }
+  *)
+  Result:=nil;
+  if not Authenticate then exit;
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId);
+  F:=ARequest.SaveToStream;
+  if SendCommand(hmPOST, 'DetectCustomPrintForms', S, F) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('DetectCustomPrintForms');
+    {$ENDIF}
+
+    FHTTP.Document.Position:=0;
+    if FHTTP.ResultCode = 200 then
+    begin
+      Result:=TCustomPrintFormDetectionResult.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+  F.Free;
 end;
 
 function TDiadocAPI.SendFnsRegistrationMessage(ABoxId: string;
