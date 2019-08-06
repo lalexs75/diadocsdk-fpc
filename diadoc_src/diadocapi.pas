@@ -232,8 +232,8 @@ type
 
 
     function ParseUniversalTransferDocumentBuyerTitleXml(AXmlContent:TStream):TUniversalTransferDocumentBuyerTitleInfo; //------------Парсинг УПД
-    function ParseUniversalTransferDocumentSellerTitleXml(AXmlContent:TStream):TUniversalTransferDocumentSellerTitleInfo; //------------Парсинг СФ---------------------------
-    function ParseUniversalCorrectionDocumentSellerTitleXml(AXmlContent:TStream):TUniversalCorrectionDocumentSellerTitleInfo;
+    function ParseUniversalTransferDocumentSellerTitleXml(AXmlContent:TStream; const documentVersion:string = 'utd_05_01_05'):TUniversalTransferDocumentSellerTitleInfo; //------------Парсинг СФ---------------------------
+    function ParseUniversalCorrectionDocumentSellerTitleXml(AXmlContent:TStream; const documentVersion:string = 'ucd_05_01_03'):TUniversalCorrectionDocumentSellerTitleInfo;
     function ParseUniversalCorrectionDocumentBuyerTitleXml(AXmlContent:TStream):TUniversalTransferDocumentBuyerTitleInfo;
     //Bytes_t ParseTitleXml(const std::wstring& boxId, const std::wstring& documentTypeNamedId, const std::wstring& documentFunction, const std::wstring& documentVersion, int titleIndex, const Bytes_t& content);
     function ParseTitleXml(const ABoxId:string; const ADocumentTypeNamedId:string; const ADocumentFunction:string; const ADocumentVersion:string; ATitleIndex:integer; const AContent:TStream):TStream;
@@ -253,9 +253,11 @@ type
     //-------------------------------------------------
     //Работа с УПД
     //------------Генерация УПД
-    function GenerateUniversalTransferDocumentXmlForSeller( ASellerInfo: TUniversalTransferDocumentSellerTitleInfo; ADisableValidation: boolean): TMemoryStream;
+    function GenerateUniversalTransferDocumentXmlForSeller( ASellerInfo: TUniversalTransferDocumentSellerTitleInfo;
+        ADisableValidation: boolean; const DocumentVersion:string = 'utd_05_01_05'): TMemoryStream;
     function GenerateUniversalTransferDocumentXmlForBuyer(utdBuyerInfo:TUniversalTransferDocumentBuyerTitleInfo; ABoxId:string; ASellerTitleMessageId:string; ASellerTitleAttachmentId:string):TStream;
-    function GenerateUniversalCorrectionDocumentXmlForSeller(AUtdSellerInfo:TUniversalCorrectionDocumentSellerTitleInfo; ADisableValidation:Boolean):TMemoryStream;
+    function GenerateUniversalCorrectionDocumentXmlForSeller(AUtdSellerInfo:TUniversalCorrectionDocumentSellerTitleInfo;
+        ADisableValidation:Boolean; const documentVersion:string = 'ucd_05_01_03'):TMemoryStream;
     function GenerateRecipientTitleXml(ABoxId, ASenderTitleMessageId, ASenderTitleAttachmentId:string; AUserContractData:TStream; ADocumentVersion:string):TStream;
     function GenerateSenderTitleXml(ABoxId, ADocumentTypeNamedId, ADocumentFunction, ADocumentVersion:string;  AUserContractData:TStream;  AEditingSettingId:string; ADisableValidation:boolean):TStream;
 
@@ -1283,7 +1285,8 @@ begin
 end;
 
 function TDiadocAPI.ParseUniversalTransferDocumentSellerTitleXml(
-  AXmlContent: TStream): TUniversalTransferDocumentSellerTitleInfo;
+  AXmlContent: TStream; const documentVersion: string = 'utd_05_01_05'
+  ): TUniversalTransferDocumentSellerTitleInfo;
 var
   S: String;
 begin
@@ -1297,7 +1300,7 @@ Diadoc::Api::Proto::Invoicing::UniversalTransferDocumentSellerTitleInfo DiadocAp
   Result:=nil;
   if not Authenticate then exit;
   S:='';
-  AddURLParam(S, 'documentVersion', 'utd_05_01_05');
+  AddURLParam(S, 'documentVersion', documentVersion);
   if SendCommand(hmPOST, 'ParseUniversalTransferDocumentSellerTitleXml', S, AXmlContent) then
   begin
     {$IFDEF DIADOC_DEBUG}
@@ -1316,7 +1319,8 @@ Diadoc::Api::Proto::Invoicing::UniversalTransferDocumentSellerTitleInfo DiadocAp
 end;
 
 function TDiadocAPI.ParseUniversalCorrectionDocumentSellerTitleXml(
-  AXmlContent: TStream): TUniversalCorrectionDocumentSellerTitleInfo;
+  AXmlContent: TStream; const documentVersion: string = 'ucd_05_01_03'
+  ): TUniversalCorrectionDocumentSellerTitleInfo;
 var
   S: String;
 begin
@@ -1330,7 +1334,7 @@ Diadoc::Api::Proto::Invoicing::UniversalCorrectionDocumentSellerTitleInfo Diadoc
   Result:=nil;
   if not Authenticate then exit;
   S:='';
-  AddURLParam(S, 'documentVersion', 'ucd_05_01_03');
+  AddURLParam(S, 'documentVersion', documentVersion);
   if SendCommand(hmPOST, 'ParseUniversalCorrectionDocumentSellerTitleXml', S, AXmlContent) then
   begin
     {$IFDEF DIADOC_DEBUG}
@@ -1557,7 +1561,9 @@ begin
   F.Free;
 end;
 
-function TDiadocAPI.GenerateUniversalTransferDocumentXmlForSeller(ASellerInfo:TUniversalTransferDocumentSellerTitleInfo; ADisableValidation:boolean): TMemoryStream;
+function TDiadocAPI.GenerateUniversalTransferDocumentXmlForSeller(
+  ASellerInfo: TUniversalTransferDocumentSellerTitleInfo;
+  ADisableValidation: boolean; const DocumentVersion: string = 'utd_05_01_05'): TMemoryStream;
 var
   S: String;
   F: TStream;
@@ -1585,6 +1591,7 @@ begin
   S:='';
   if ADisableValidation then
     AddURLParam(S, 'disableValidation');
+  AddURLParam(S, 'documentVersion', documentVersion);
 
   F:=ASellerInfo.SaveToStream;
   F.Position:=0;
@@ -1664,7 +1671,7 @@ end;
 
 function TDiadocAPI.GenerateUniversalCorrectionDocumentXmlForSeller(
   AUtdSellerInfo: TUniversalCorrectionDocumentSellerTitleInfo;
-  ADisableValidation: Boolean): TMemoryStream;
+  ADisableValidation: Boolean; const documentVersion: string = 'ucd_05_01_03'): TMemoryStream;
 var
   S: String;
   F: TStream;
@@ -1695,6 +1702,7 @@ begin
   AddURLParam(S, 'correction');
   if ADisableValidation then
     AddURLParam(S, 'disableValidation');
+  AddURLParam(S, 'documentVersion', documentVersion);
 
   F:=AUtdSellerInfo.SaveToStream;
   if SendCommand(hmPOST, 'GenerateUniversalTransferDocumentXmlForSeller', S, F) then
