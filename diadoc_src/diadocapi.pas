@@ -201,6 +201,7 @@ type
 
     function Recognize(AFileName:string; AFileContent:TStream):string;
     function GetRecognized(ARecognitionId:string):TRecognized;
+    function GetLastEvent(const ABoxId:string):TBoxEvent;
     function DetectCustomPrintForms(const ABoxId:string; ARequest:TCustomPrintFormDetectionRequest):TCustomPrintFormDetectionResult;
 
 
@@ -4895,6 +4896,40 @@ begin
     if FHTTP.ResultCode = 200 then
     begin
       Result:=TRecognized.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+end;
+
+function TDiadocAPI.GetLastEvent(const ABoxId: string): TBoxEvent;
+var
+  S: String;
+begin
+(*
+  Diadoc::Api::Proto::Events::BoxEvent DiadocApi::GetLastEvent(const std::wstring& boxId)
+  {
+  	WppTraceDebugOut("GetLastEvent...");
+  	std::wstringstream buf;
+  	buf << L"/GetLastEvent?boxId=" << StringHelper::CanonicalizeUrl(boxId);
+  	return FromProtoBytes<Diadoc::Api::Proto::Events::BoxEvent>(PerformHttpRequest(buf.str(), GET));
+  }
+*)
+  Result:=nil;
+  if not Authenticate then exit;
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId);
+  if SendCommand(hmGET, 'GetLastEvent', S, nil) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('GetLastEvent');
+    {$ENDIF}
+
+    FHTTP.Document.Position:=0;
+    if FHTTP.ResultCode = 200 then
+    begin
+      Result:=TBoxEvent.Create;
       Result.LoadFromStream(FHTTP.Document);
     end
     else
