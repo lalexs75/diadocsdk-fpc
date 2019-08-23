@@ -93,7 +93,8 @@ uses
   DiadocTypes_Routing,
   DiadocTypes_RegistrationRequest,
   DiadocTypes_OrganizationFeatures,
-  CustomPrintFormDetection
+  CustomPrintFormDetection,
+  XsdContentType
   ;
 
 type
@@ -226,7 +227,7 @@ type
     function GetDocumentsByMessageId(ABoxId, AMessageId:string):TDocumentList;
     function DetectDocumentTypes(ABoxId, ANameOnShelf:string):TDetectDocumentTypesResponse;
     function DetectDocumentTypes(ABoxId:string; AContent:TStream):TDetectDocumentTypesResponse;
-    function GetContent(ATypeNamedId, AFunction, AVersion:string; ATitleIndex:integer):TStream;
+    function GetContent(ATypeNamedId, AFunction, AVersion:string; ATitleIndex:integer; contentType:TXsdContentType  = TitleXsd):TStream;
     function Register(const ARequest:TRegistrationRequest):TRegistrationResponse;
     procedure RegisterConfirm(const ARequest:TRegistrationConfirmRequest);
 
@@ -5403,11 +5404,11 @@ begin
 end;
 
 function TDiadocAPI.GetContent(ATypeNamedId, AFunction, AVersion: string;
-  ATitleIndex: integer): TStream;
+  ATitleIndex: integer; contentType:TXsdContentType  = TitleXsd): TStream;
 var
   S: String;
 begin
-  //DiadocApi::WebFile DiadocApi::GetContent(const std::wstring& typeNamedId, const std::wstring& function, const std::wstring& version, int titleIndex)
+  //DiadocApi::WebFile DiadocApi::GetContent(const std::wstring& typeNamedId, const std::wstring& function, const std::wstring& version, int titleIndex, XsdContentType contentType)
   //{
   //	WppTraceDebugOut("GetContent...");
   //	std::wstringstream buf;
@@ -5415,20 +5416,33 @@ begin
   //	buf << L"&function=" << StringHelper::CanonicalizeUrl(function);
   //	buf << L"&version=" << StringHelper::CanonicalizeUrl(version);
   //	buf << L"&titleIndex=" << titleIndex;
+  //	switch (contentType)
+  //	{
+  //		case TitleXsd: buf << L"&contentType=TitleXsd"; break;
+  //		case UserContractXsd: buf << L"&contentType=UserContractXsd"; break;
+  //		default: throw std::runtime_error("Invalid XsdContentType value");
+  //	}
   //	auto connect = session_.Connect(api_url_.c_str(), api_port_);
   //	auto request = connect.OpenRequest(GET.c_str(), buf.str().c_str(), NULL, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, connection_flags_);
   //	Bytes_t requestBody;
   //	SendRequest(request, requestBody);
   //	return WebFile(request);
   //}
+
   Result:=nil;
-  if not Authenticate then exit;
   S:='';
   AddURLParam(S, 'typeNamedId', ATypeNamedId);
   AddURLParam(S, 'function', AFunction);
   AddURLParam(S, 'version', AVersion);
   AddURLParam(S, 'titleIndex', IntToStr(ATitleIndex));
+  case contentType of
+    TitleXsd: AddURLParam(S, 'contentType', 'TitleXsd');
+    UserContractXsd: AddURLParam(S, 'contentType', 'UserContractXsd');
+  else
+    raise Exception.Create('Invalid XsdContentType value');
+  end;
 
+  if not Authenticate then exit;
   if SendCommand(hmPOST, 'GetContent', S, nil) then
   begin
     {$IFDEF DIADOC_DEBUG}
