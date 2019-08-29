@@ -113,6 +113,9 @@ resourcestring
     sNotDefinedSellerTitleMessageId    = 'Not defined SellerTitleMessageId';
     sNotDefinedSellerTitleAttachmentId = 'Not defined SellerTitleAttachmentId';
     sNotDefinedAttachmentId            = 'Not defined AttachmentId';
+    sNotDefinedDocumentTypeNamedId     = 'Not defined DocumentTypeNamedId';
+    sNotDefinedDocumentFunction        = 'Not defined DocumentFunction';
+    sNotDefinedDocumentVersion         = 'Not defined DocumentVersion';
 
     //TItemMark
     sItemMarkNotSpecified   = 'Не указано';

@@ -258,6 +258,11 @@ type
     function GenerateUniversalTransferDocumentXmlForSeller( ASellerInfo: TUniversalTransferDocumentSellerTitleInfo;
         ADisableValidation: boolean; const DocumentVersion:string = 'utd_05_01_05'): TMemoryStream;
     function GenerateUniversalTransferDocumentXmlForBuyer(utdBuyerInfo:TUniversalTransferDocumentBuyerTitleInfo; ABoxId:string; ASellerTitleMessageId:string; ASellerTitleAttachmentId:string):TStream;
+    function GenerateTitleXml(const ABoxId:string; const ADocumentTypeNamedId:string; const ADocumentFunction:string;
+        const ADocumentVersion:string; ATitleIndex:Integer; const AUserContractData: TStream;
+        const AEditingSettingId:string = ''; ADisableValidation:boolean = false; const ALetterId:string = '';
+        const ADocumentId:string = ''): TStream;
+
     function GenerateUniversalCorrectionDocumentXmlForSeller(AUtdSellerInfo:TUniversalCorrectionDocumentSellerTitleInfo;
         ADisableValidation:Boolean; const documentVersion:string = 'ucd_05_01_03'):TMemoryStream;
     function GenerateRecipientTitleXml(ABoxId, ASenderTitleMessageId, ASenderTitleAttachmentId:string; AUserContractData:TStream; ADocumentVersion:string):TStream;
@@ -1669,6 +1674,86 @@ begin
       FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
   end;
   FreeAndNil(F);
+end;
+
+function TDiadocAPI.GenerateTitleXml(const ABoxId: string;
+  const ADocumentTypeNamedId: string; const ADocumentFunction: string;
+  const ADocumentVersion: string; ATitleIndex: Integer;
+  const AUserContractData: TStream; const AEditingSettingId: string;
+  ADisableValidation: boolean; const ALetterId: string;
+  const ADocumentId: string): TStream;
+var
+  S: String;
+begin
+(*
+  DiadocApi::WebFile DiadocApi::GenerateTitleXml(
+          const std::wstring& boxId,
+          const std::wstring& documentTypeNamedId,
+          const std::wstring& documentFunction,
+          const std::wstring& documentVersion,
+          int titleIndex,
+          const DiadocApi::Bytes_t& userContractData,
+          const std::wstring& editingSettingId,
+          bool disableValidation,
+          const std::wstring& letterId,
+          const std::wstring& documentId) {
+      WppTraceDebugOut("GenerateTitleXml...");
+      std::wstringstream queryString;
+      queryString << L"/GenerateTitleXml?boxId=" << StringHelper::CanonicalizeUrl(boxId)
+                  << L"&documentTypeNamedId=" << StringHelper::CanonicalizeUrl(documentTypeNamedId)
+                  << L"&documentFunction=" << StringHelper::CanonicalizeUrl(documentFunction)
+                  << L"&documentVersion=" << StringHelper::CanonicalizeUrl(documentVersion)
+                  << L"&titleIndex=" << titleIndex
+                  << L"&editingSettingId=" << StringHelper::CanonicalizeUrl(editingSettingId)
+                  << (disableValidation ? L"&disableValidation" : L"")
+                  << L"&letterId=" << StringHelper::CanonicalizeUrl(letterId)
+                  << L"&documentId=" << StringHelper::CanonicalizeUrl(documentId);
+      auto connect = session_.Connect(api_url_.c_str(), api_port_);
+      auto request = connect.OpenRequest(POST.c_str(), queryString.str().c_str(), NULL, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, connection_flags_);
+      SendRequest(request, userContractData);
+      return WebFile(request);
+  }
+*)
+
+  Result:=nil;
+  if Assigned(AUserContractData) then
+    raise EDiadocException.Create(sNotDefinedUserContractData);
+  if AboxId = '' then
+    raise EDiadocException.Create(sNotDefinedBoxId);
+  if ADocumentTypeNamedId = '' then
+    raise EDiadocException.Create(sNotDefinedDocumentTypeNamedId);
+  if ADocumentFunction = '' then
+    raise EDiadocException.Create(sNotDefinedDocumentFunction);
+  if ADocumentVersion = '' then
+    raise EDiadocException.Create(sNotDefinedDocumentVersion);
+
+  if not Authenticate then exit;
+  S:='';
+  AddURLParam(S, 'boxId', AboxId);
+  AddURLParam(S, 'documentTypeNamedId', ADocumentTypeNamedId);
+  AddURLParam(S, 'documentFunction', ADocumentFunction);
+  AddURLParam(S, 'documentVersion', ADocumentVersion);
+  AddURLParam(S, 'titleIndex', IntToStr(ATitleIndex));
+  AddURLParam(S, 'editingSettingId', AEditingSettingId);
+  if ADisableValidation then
+    AddURLParam(S, 'disableValidation');
+  AddURLParam(S, 'letterId', ALetterId);
+  AddURLParam(S, 'documentId', ADocumentId);
+
+  if SendCommand(hmPOST, 'GenerateTitleXml', S, AUserContractData) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('GenerateTitleXml.xml');
+    {$ENDIF}
+    FHTTP.Document.Position:=0;
+    if FHTTP.ResultCode = 200 then
+    begin
+      Result:=TMemoryStream.Create;
+      Result.CopyFrom(FHTTP.Document, 0);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
 end;
 
 function TDiadocAPI.GenerateUniversalCorrectionDocumentXmlForSeller(

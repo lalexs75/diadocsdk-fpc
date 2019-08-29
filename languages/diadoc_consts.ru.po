@@ -87,8 +87,20 @@ msgstr ""
 msgid "Not defined Department Id"
 msgstr ""
 
+#: diadoc_consts.snotdefineddocumentfunction
+msgid "Not defined DocumentFunction"
+msgstr ""
+
 #: diadoc_consts.snotdefineddocumentid
 msgid "Not defined Document Id"
+msgstr ""
+
+#: diadoc_consts.snotdefineddocumenttypenamedid
+msgid "Not defined DocumentTypeNamedId"
+msgstr ""
+
+#: diadoc_consts.snotdefineddocumentversion
+msgid "Not defined DocumentVersion"
 msgstr ""
 
 #: diadoc_consts.snotdefinedentityid

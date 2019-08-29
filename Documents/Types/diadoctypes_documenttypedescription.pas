@@ -168,6 +168,7 @@ type
 
   { TDocumentTitle }
   //message DocumentTitle {
+  //    required int32 Index = 7;
   //	required bool IsFormal = 1;
   //	optional string XsdUrl = 2;
   //    optional string UserDataXsdUrl = 5;
@@ -178,22 +179,28 @@ type
   TDocumentTitle = class(TSerializationObject) //message DocumentTitle
   private
     FEncryptedMetadataItems: TDocumentMetadataItems;
+    FIndex: Integer;
     FIsFormal: Boolean;
     FMetadataItems: TDocumentMetadataItems;
     FSignerInfo: TSignerInfo;
     FUserDataXsdUrl: string;
     FXsdUrl: string;
+    procedure SetIndex(AValue: Integer);
+    procedure SetIsFormal(AValue: Boolean);
+    procedure SetUserDataXsdUrl(AValue: string);
+    procedure SetXsdUrl(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property IsFormal:Boolean read FIsFormal write FIsFormal; //1
-    property XsdUrl:string read FXsdUrl write FXsdUrl; //2
+    property Index:Integer read FIndex write SetIndex; //7;
+    property IsFormal:Boolean read FIsFormal write SetIsFormal; //1
+    property XsdUrl:string read FXsdUrl write SetXsdUrl; //2
     property MetadataItems:TDocumentMetadataItems read FMetadataItems; //3
     property EncryptedMetadataItems:TDocumentMetadataItems read FEncryptedMetadataItems; //4
-    property UserDataXsdUrl:string read FUserDataXsdUrl write FUserDataXsdUrl;//5;
+    property UserDataXsdUrl:string read FUserDataXsdUrl write SetUserDataXsdUrl;//5;
     property SignerInfo:TSignerInfo read FSignerInfo;//6;
   end;
   TDocumentTitles = specialize GSerializationObjectList<TDocumentTitle>;
@@ -438,6 +445,34 @@ end;
 
 { TDocumentTitle }
 
+procedure TDocumentTitle.SetIndex(AValue: Integer);
+begin
+  if FIndex=AValue then Exit;
+  FIndex:=AValue;
+  Modified(7);
+end;
+
+procedure TDocumentTitle.SetIsFormal(AValue: Boolean);
+begin
+  if FIsFormal=AValue then Exit;
+  FIsFormal:=AValue;
+  Modified(1);
+end;
+
+procedure TDocumentTitle.SetUserDataXsdUrl(AValue: string);
+begin
+  if FUserDataXsdUrl=AValue then Exit;
+  FUserDataXsdUrl:=AValue;
+  Modified(5);
+end;
+
+procedure TDocumentTitle.SetXsdUrl(AValue: string);
+begin
+  if FXsdUrl=AValue then Exit;
+  FXsdUrl:=AValue;
+  Modified(2);
+end;
+
 procedure TDocumentTitle.InternalInit;
 begin
   inherited InternalInit;
@@ -454,7 +489,8 @@ begin
   RegisterProp('MetadataItems', 3);
   RegisterProp('EncryptedMetadataItems', 4);
   RegisterProp('UserDataXsdUrl', 5);
-  RegisterProp('SignerInfo', 6);
+  RegisterProp('SignerInfo', 6, true);
+  RegisterProp('Index', 7, true);
 end;
 
 destructor TDocumentTitle.Destroy;
