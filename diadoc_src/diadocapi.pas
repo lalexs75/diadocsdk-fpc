@@ -213,8 +213,9 @@ type
 
     function SendFnsRegistrationMessage(ABoxId:string; ACertBytes:TStream):boolean;
 
-    function GetOrganizationStorageEntries(AOrgId:String; AKeys:TKeyValueStorageApiGetRequest):TKeyValueStorageApiGetResponse;
-    function PutOrganizationStorageEntries(AOrgId:string; AEntries:TKeyValueStorageApiPutRequest):boolean;
+
+    function GetOrganizationStorageEntries(const ABoxId:String; AKeys:TKeyValueStorageApiGetRequest):TKeyValueStorageApiGetResponse;
+    function PutOrganizationStorageEntries(const ABoxId:string; AEntries:TKeyValueStorageApiPutRequest):boolean;
 
     function GetSignatureInfo(ABoxId, AMessageId, AEntityId:string):TSignatureInfo;
 
@@ -5097,18 +5098,18 @@ begin
 
 end;
 
-function TDiadocAPI.GetOrganizationStorageEntries(AOrgId: String;
+function TDiadocAPI.GetOrganizationStorageEntries(const ABoxId: String;
   AKeys: TKeyValueStorageApiGetRequest): TKeyValueStorageApiGetResponse;
 var
   F: TStream;
   S: String;
 begin
   (*
-  KeyValueStorageApiGetResponse DiadocApi::GetOrganizationStorageEntries(const std::wstring& orgId, const KeyValueStorageApiGetRequest& keys)
+  KeyValueStorageApiGetResponse DiadocApi::GetOrganizationStorageEntries(const std::wstring& boxId, const KeyValueStorageApiGetRequest& keys)
   {
   	WppTraceDebugOut("GetOrganizationStorageEntries...");
   	std::wstringstream buf;
-  	buf << L"/KeyValueStorageGet?orgId=" << StringHelper::CanonicalizeUrl(orgId);
+  	buf << L"/V2/KeyValueStorageGet?boxId=" << StringHelper::CanonicalizeUrl(boxId);
   	auto requestBody = ToProtoBytes(keys);
   	return FromProtoBytes<KeyValueStorageApiGetResponse>(PerformHttpRequest(buf.str(), requestBody, POST));
   }
@@ -5116,10 +5117,10 @@ begin
   Result:=nil;
   if not Authenticate then exit;
   S:='';
-  AddURLParam(S, 'orgId', AOrgId);
+  AddURLParam(S, 'boxId', ABoxId);
 
   F:=AKeys.SaveToStream;
-  if SendCommand(hmPOST, 'KeyValueStorageGet', S, F) then
+  if SendCommand(hmPOST, '/V2/KeyValueStorageGet', S, F) then
   begin
     {$IFDEF DIADOC_DEBUG}
     SaveProtobuf('KeyValueStorageGet');
@@ -5137,18 +5138,18 @@ begin
   F.Free;
 end;
 
-function TDiadocAPI.PutOrganizationStorageEntries(AOrgId: string;
+function TDiadocAPI.PutOrganizationStorageEntries(const ABoxId: string;
   AEntries: TKeyValueStorageApiPutRequest): boolean;
 var
   S: String;
   F: TStream;
 begin
   (*
-  void DiadocApi::PutOrganizationStorageEntries(const std::wstring& orgId, const KeyValueStorageApiPutRequest& entries)
+  void DiadocApi::PutOrganizationStorageEntries(const std::wstring& boxId, const KeyValueStorageApiPutRequest& entries)
   {
   	WppTraceDebugOut("PutOrganizationStorageEntries...");
   	std::wstringstream buf;
-  	buf << L"/KeyValueStoragePut?orgId=" << StringHelper::CanonicalizeUrl(orgId);
+  	buf << L"/V2/KeyValueStoragePut?boxId=" << StringHelper::CanonicalizeUrl(boxId);
   	auto requestBody = ToProtoBytes(entries);
   	PerformHttpRequest(buf.str(), requestBody, POST);
   }
@@ -5156,9 +5157,9 @@ begin
   Result:=false;
   if not Authenticate then exit;
   S:='';
-  AddURLParam(S, 'orgId', AOrgId);
+  AddURLParam(S, 'boxId', ABoxId);
   F:=AEntries.SaveToStream;
-  if SendCommand(hmPOST, 'KeyValueStoragePut', S, F) then
+  if SendCommand(hmPOST, '/V2/KeyValueStoragePut', S, F) then
   begin
     {$IFDEF DIADOC_DEBUG}
     SaveProtobuf('KeyValueStoragePut');
