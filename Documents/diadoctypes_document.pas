@@ -277,7 +277,7 @@ type
 
 
   { TDocument }
-  //message Document {
+  //%message Document {
   //	optional string IndexKey = 1;
   //	required string MessageId = 2;
   //	required string EntityId = 3;
@@ -559,6 +559,7 @@ function ProxySignatureStatusToStr(AStatus:TProxySignatureStatus):string;
 function RevocationStatusToStr(AStatus:TRevocationStatus):string;
 function RevocationStatusToHStr(AStatus:TRevocationStatus):string;
 function SenderSignatureStatusToStr(AStatus:TSenderSignatureStatus):string;
+function MessageTypeToStr(AMessageType:TMessageType):string;
 implementation
 
 function ProxySignatureStatusToStr(AStatus:TProxySignatureStatus):string;
@@ -625,6 +626,18 @@ begin
     SenderSignatureCheckedAndInvalid:Result:='SenderSignatureCheckedAndInvalid';
   else
     Result:='';
+  end;
+end;
+
+function MessageTypeToStr(AMessageType: TMessageType): string;
+begin
+  case AMessageType of
+    Unknown:Result:='Не определено';
+    MessageLetter:Result:='Letter - письмо';
+    DraftLetter:Result:='Draft - черновик';
+    TemplateLetter:Result:='Template - шаблон';
+  else
+    Result:=Format('Не известный тип (%d)', [Ord(AMessageType)]);
   end;
 end;
 

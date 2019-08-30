@@ -109,9 +109,9 @@
       </element><element name="TRecipientResponseStatus.RecipientSignatureRequestRejected"><short>RecipientSignatureRequestRejected - получатель документа отказал в подписи.</short>
       </element><element name="TRecipientResponseStatus.InvalidRecipientSignature"><short>InvalidRecipientSignature — получатель подписал документ невалидной подписью. Если это незашифрованный документ, то такой статус возможен только на стороне получателя документа.</short>
       </element><element name="TMessageType"><short>Перечисление содержит существующие типы сообщений:</short>
-      </element><element name="TMessageType.MessageLetter"><short>Letter - письмо;</short>
-      </element><element name="TMessageType.DraftLetter"><short>Draft - черновик;</short>
-      </element><element name="TMessageType.TemplateLetter"><short>Template - шаблон.</short>
+      </element><element name="TMessageType.MessageLetter"><short>Letter - письмо</short>
+      </element><element name="TMessageType.DraftLetter"><short>Draft - черновик</short>
+      </element><element name="TMessageType.TemplateLetter"><short>Template - шаблон</short>
       </element><element name="TResolutionStatusType"><short>ResolutionStatusType - тип статуса согласования:</short>
       </element><element name="TResolutionStatusType.None"><short>None - документ не согласовывался</short>
       </element><element name="TResolutionStatusType.Approved"><short>Approved - Согласован</short>
@@ -156,6 +156,8 @@
     <element name="TSenderReceiptMetadata"><short>Содержит информацию об извещении о получении титула получателя.</short>
       </element><element name="TSenderReceiptMetadata.ReceiptStatus"><short>ReceiptStatus - статус извещения о получении титула получателя</short>
       </element><element name="TDocument.SenderReceiptMetadata"><short>SenderReceiptMetadata - свойство, отвечающее за состояние извещения о получении титула получателя.</short>
+      </element>
+    <element name="MessageTypeToStr"><short>Представление типа сообщения в виде строки</short>
       </element>
     </module>
   </package>

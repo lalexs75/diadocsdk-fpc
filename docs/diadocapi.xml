@@ -193,6 +193,10 @@
           </ul>
         </descr>
       </element>
+    <element name="TDiadocAPI.GetOrganizationUsers"><short>Получить список операторов указанной организации</short><descr><p>Параметры строки запроса:</p><ul><li>orgId: идентификатор организации</li>
+          </ul><p>В теле ответа содержится список всех пользователей организации в виде сериализованной структуры OrganizationUsersList.</p>
+        </descr>
+      </element>
     </module>
   </package>
 </fpdoc-descriptions>

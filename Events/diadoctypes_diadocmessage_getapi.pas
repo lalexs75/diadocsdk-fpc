@@ -271,32 +271,32 @@ type
   public
     destructor Destroy; override;
   published
-    property EntityType:TEntityType read FEntityType write SetEntityType default UnknownEntityType ;//1
-    property EntityId:string read FEntityId write SetEntityId; //2;
-    property ParentEntityId:string read FParentEntityId write SetParentEntityId; //3;
-    property Content:TContent read FContent; //4;
-    property AttachmentType:TAttachmentType read FAttachmentType write SetAttachmentType default UnknownAttachmentType; //5
-    property FileName:string read FFileName write SetFileName; //6;
-    property NeedRecipientSignature:Boolean read FNeedRecipientSignature write SetNeedRecipientSignature; //7
-    property SignerBoxId:string read FSignerBoxId write SetSignerBoxId; //8
-    property NotDeliveredEventId:string read FNotDeliveredEventId write SetNotDeliveredEventId; //10
-    property DocumentInfo:TDocument read FDocumentInfo; //11
-    property RawCreationDate:sfixed64 read FRawCreationDate write SetRawCreationDate;//12
-    property ResolutionInfo:TResolutionInfo read FResolutionInfo; //13;
-    property SignerDepartmentId:string read FSignerDepartmentId write SetSignerDepartmentId; //14;
-    property ResolutionRequestInfo:TResolutionRequestInfo read FResolutionRequestInfo; //15;
-    property ResolutionRequestDenialInfo:TResolutionRequestDenialInfo read FResolutionRequestDenialInfo; //16;
-    property NeedReceipt:boolean read FNeedReceipt write SetNeedReceipt; //17
-    property PacketId:string read FPacketId write SetPacketId; //18;
-    property IsApprovementSignature:Boolean read FIsApprovementSignature write SetIsApprovementSignature; //19
-    property IsEncryptedContent:Boolean read FIsEncryptedContent write SetIsEncryptedContent; //20
-    property AttachmentVersion:string read FAttachmentVersion write SetAttachmentVersion; //21;
-    property ResolutionRouteAssignmentInfo:TResolutionRouteAssignmentInfo read FResolutionRouteAssignmentInfo;//22
-    property ResolutionRouteRemovalInfo:TResolutionRouteRemovalInfo read FResolutionRouteRemovalInfo; //23
-    property CancellationInfo:TCancellationInfo read FCancellationInfo; //24
-    property Labels:TDocumentStrings read FLabels; //25;
-    property Version:string read FVersion write SetVersion;//26;
-    property TemplateTransformationInfo:TTemplateTransformationInfo read FTemplateTransformationInfo;//27
+    property EntityType:TEntityType read FEntityType write SetEntityType default UnknownEntityType ;//%1
+    property EntityId:string read FEntityId write SetEntityId; //%2;
+    property ParentEntityId:string read FParentEntityId write SetParentEntityId; //%3;
+    property Content:TContent read FContent; //%4;
+    property AttachmentType:TAttachmentType read FAttachmentType write SetAttachmentType default UnknownAttachmentType; //%5
+    property FileName:string read FFileName write SetFileName; //%6;
+    property NeedRecipientSignature:Boolean read FNeedRecipientSignature write SetNeedRecipientSignature; //%7
+    property SignerBoxId:string read FSignerBoxId write SetSignerBoxId; //%8
+    property NotDeliveredEventId:string read FNotDeliveredEventId write SetNotDeliveredEventId; //%10
+    property DocumentInfo:TDocument read FDocumentInfo; //%11
+    property RawCreationDate:sfixed64 read FRawCreationDate write SetRawCreationDate;//%12
+    property ResolutionInfo:TResolutionInfo read FResolutionInfo; //%13;
+    property SignerDepartmentId:string read FSignerDepartmentId write SetSignerDepartmentId; //%14;
+    property ResolutionRequestInfo:TResolutionRequestInfo read FResolutionRequestInfo; //%15;
+    property ResolutionRequestDenialInfo:TResolutionRequestDenialInfo read FResolutionRequestDenialInfo; //%16;
+    property NeedReceipt:boolean read FNeedReceipt write SetNeedReceipt; //%17
+    property PacketId:string read FPacketId write SetPacketId; //%18;
+    property IsApprovementSignature:Boolean read FIsApprovementSignature write SetIsApprovementSignature; //%19
+    property IsEncryptedContent:Boolean read FIsEncryptedContent write SetIsEncryptedContent; //%20
+    property AttachmentVersion:string read FAttachmentVersion write SetAttachmentVersion; //%21;
+    property ResolutionRouteAssignmentInfo:TResolutionRouteAssignmentInfo read FResolutionRouteAssignmentInfo;//%22
+    property ResolutionRouteRemovalInfo:TResolutionRouteRemovalInfo read FResolutionRouteRemovalInfo; //%23
+    property CancellationInfo:TCancellationInfo read FCancellationInfo; //%24
+    property Labels:TDocumentStrings read FLabels; //%25;
+    property Version:string read FVersion write SetVersion;//%26;
+    property TemplateTransformationInfo:TTemplateTransformationInfo read FTemplateTransformationInfo;//%27
   end;
   TEntitys = specialize GSerializationObjectList<TEntity>;
 
@@ -421,7 +421,7 @@ type
   end;
 
   { TTemplateToLetterTransformationInfo }
-  //message TemplateToLetterTransformationInfo
+  //%message TemplateToLetterTransformationInfo
   //{
   //	required string LetterFromBoxId = 1;
   //	required string LetterToBoxId = 2;
@@ -451,7 +451,7 @@ type
   end;
 
   {  TMessage  }
-  //message Message {
+  //%message Message {
   //	required string MessageId = 1;
   //	required sfixed64 TimestampTicks = 2;			// DateTime.Ticks in UTC
   //	required sfixed64 LastPatchTimestampTicks = 3;	// DateTime.Ticks in UTC
@@ -527,29 +527,29 @@ type
   public
     destructor Destroy; override;
   published
-    property MessageId:string read FMessageId write SetMessageId; //1;
-    property TimestampTicks:sfixed64 read FTimestampTicks write SetTimestampTicks; //2;
-    property LastPatchTimestampTicks:sfixed64 read FLastPatchTimestampTicks write SetLastPatchTimestampTicks; //3;
-    property FromBoxId:string read FFromBoxId write SetFromBoxId; //4;
-    property FromTitle:string read FFromTitle write SetFromTitle; //5;
-    property ToBoxId:string read FToBoxId write SetToBoxId; //6;
-    property ToTitle:string read FToTitle write SetToTitle; //7;
-    property Entities:TEntitys read FEntities; //8;
-    property IsDraft:Boolean read FIsDraft write SetIsDraft; //9
-    property DraftIsLocked:Boolean read FDraftIsLocked write SetDraftIsLocked; //10
-    property DraftIsRecycled:Boolean read FDraftIsRecycled write SetDraftIsRecycled; //11
-    property CreatedFromDraftId:string read FCreatedFromDraftId write SetCreatedFromDraftId; //12;
-    property DraftIsTransformedToMessageIdList:TDocumentStrings read FDraftIsTransformedToMessageIdList;//13;
-    property IsDeleted:Boolean read FIsDeleted write SetIsDeleted; //14
-    property IsTest:Boolean read FIsTest write SetIsTest; //15
-    property IsInternal:Boolean read FIsInternal write SetIsInternal; //16
-    property IsProxified:Boolean read FIsProxified write SetIsProxified; //17
-    property ProxyBoxId:string read FProxyBoxId write SetProxyBoxId; //18;
-    property ProxyTitle:string read FProxyTitle write SetProxyTitle; //19;
-    property PacketIsLocked:Boolean read FPacketIsLocked write SetPacketIsLocked; //20
-    property LockMode:TLockMode read FLockMode write SetLockMode;//21;
-    property MessageType:TMessageType read FMessageType write SetMessageType; //22
-    property TemplateToLetterTransformationInfo:TTemplateToLetterTransformationInfo read FTemplateToLetterTransformationInfo; //23
+    property MessageId:string read FMessageId write SetMessageId; //%1
+    property TimestampTicks:sfixed64 read FTimestampTicks write SetTimestampTicks; //%2
+    property LastPatchTimestampTicks:sfixed64 read FLastPatchTimestampTicks write SetLastPatchTimestampTicks; //%3
+    property FromBoxId:string read FFromBoxId write SetFromBoxId; //%4
+    property FromTitle:string read FFromTitle write SetFromTitle; //%5
+    property ToBoxId:string read FToBoxId write SetToBoxId; //%6
+    property ToTitle:string read FToTitle write SetToTitle; //%7
+    property Entities:TEntitys read FEntities; //%8
+    property IsDraft:Boolean read FIsDraft write SetIsDraft; //%9
+    property DraftIsLocked:Boolean read FDraftIsLocked write SetDraftIsLocked; //%10
+    property DraftIsRecycled:Boolean read FDraftIsRecycled write SetDraftIsRecycled; //%11
+    property CreatedFromDraftId:string read FCreatedFromDraftId write SetCreatedFromDraftId; //%12
+    property DraftIsTransformedToMessageIdList:TDocumentStrings read FDraftIsTransformedToMessageIdList;//%13
+    property IsDeleted:Boolean read FIsDeleted write SetIsDeleted; //%14
+    property IsTest:Boolean read FIsTest write SetIsTest; //%15
+    property IsInternal:Boolean read FIsInternal write SetIsInternal; //%16
+    property IsProxified:Boolean read FIsProxified write SetIsProxified; //%17
+    property ProxyBoxId:string read FProxyBoxId write SetProxyBoxId; //%18
+    property ProxyTitle:string read FProxyTitle write SetProxyTitle; //%19
+    property PacketIsLocked:Boolean read FPacketIsLocked write SetPacketIsLocked; //%20
+    property LockMode:TLockMode read FLockMode write SetLockMode;//%21
+    property MessageType:TMessageType read FMessageType write SetMessageType; //%22
+    property TemplateToLetterTransformationInfo:TTemplateToLetterTransformationInfo read FTemplateToLetterTransformationInfo; //%23
   end;
 
 

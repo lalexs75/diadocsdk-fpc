@@ -74,20 +74,20 @@ type
   end;
 
   {  TOrganizationUserPermissions  }
-  //message OrganizationUserPermissions {
-  //       required string UserDepartmentId = 1;
-  //       required bool IsAdministrator = 2;
-  //       optional DocumentAccessLevel DocumentAccessLevel = 3 [default = UnknownDocumentAccessLevel];
-  //       required bool CanSignDocuments = 4;
-  //       required bool CanManageCounteragents = 6;
-  //       required bool CanAddResolutions = 7;
-  //       required bool CanRequestResolutions = 8;
-  //       repeated string SelectedDepartmentIds = 9;
-  //       optional string JobTitle = 10;
-  //       required bool CanCreateDocuments = 11;
-  //       required AuthorizationPermission AuthorizationPermission = 12;
-  //       required bool CanDeleteRestoreDocuments = 13;
-  // }
+  //%message OrganizationUserPermissions {
+  //%       required string UserDepartmentId = 1;
+  //%       required bool IsAdministrator = 2;
+  //%       optional DocumentAccessLevel DocumentAccessLevel = 3 [default = UnknownDocumentAccessLevel];
+  //%       required bool CanSignDocuments = 4;
+  //%       required bool CanManageCounteragents = 6;
+  //%       required bool CanAddResolutions = 7;
+  //%       required bool CanRequestResolutions = 8;
+  //%       repeated string SelectedDepartmentIds = 9;
+  //%       optional string JobTitle = 10;
+  //%       required bool CanCreateDocuments = 11;
+  //%       required AuthorizationPermission AuthorizationPermission = 12;
+  //%       required bool CanDeleteRestoreDocuments = 13;
+  //% }
   TOrganizationUserPermissions = class(TSerializationObject)
   private
     FAuthorizationPermission: TAuthorizationPermission;
