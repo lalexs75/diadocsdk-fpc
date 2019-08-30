@@ -108,7 +108,10 @@
       </element><element name="TRecipientResponseStatus.WithRecipientSignature"><short>WithRecipientSignature - получатель подписал документ (ответный титул).</short>
       </element><element name="TRecipientResponseStatus.RecipientSignatureRequestRejected"><short>RecipientSignatureRequestRejected - получатель документа отказал в подписи.</short>
       </element><element name="TRecipientResponseStatus.InvalidRecipientSignature"><short>InvalidRecipientSignature — получатель подписал документ невалидной подписью. Если это незашифрованный документ, то такой статус возможен только на стороне получателя документа.</short>
-      </element><element name="TMessageType"><short>Перечисление содержит существующие типы сообщений:</short>
+      </element><element name="TMessageType"><short>Перечисление содержит существующие типы сообщений</short>
+      <descr><ul><li>Letter - письмо</li><li>Draft - черновик</li><li>Template - шаблон</li>
+          </ul>
+        </descr>
       </element><element name="TMessageType.MessageLetter"><short>Letter - письмо</short>
       </element><element name="TMessageType.DraftLetter"><short>Draft - черновик</short>
       </element><element name="TMessageType.TemplateLetter"><short>Template - шаблон</short>
