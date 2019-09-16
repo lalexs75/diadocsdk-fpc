@@ -43,7 +43,7 @@ uses
 
 type
   { TDocumentId }
-  //message DocumentId {
+  //%message DocumentId {
   //	required string MessageId = 1;
   //	required string EntityId = 2;
   //}
@@ -57,13 +57,13 @@ type
     procedure InternalRegisterProperty; override;
   public
   published
-    property MessageId:string read FMessageId write SetMessageId; //1
-    property EntityId:string read FEntityId write SetEntityId;    //2
+    property MessageId:string read FMessageId write SetMessageId; //%1
+    property EntityId:string read FEntityId write SetEntityId;    //%2
   end;
   TDocumentIds = specialize GSerializationObjectList<TDocumentId>;
 
   { TDocumentIdEx }
-  //message DocumentIdEx {
+  //%message DocumentIdEx {
   //	required string MessageId = 1;
   //	required string EntityId = 2;
   //	required string BoxId = 3;
@@ -80,9 +80,9 @@ type
     procedure InternalRegisterProperty; override;
   public
   published
-    property MessageId:string read FMessageId write SetMessageId; //1;
-    property EntityId:string read FEntityId write SetEntityId; //2;
-    property BoxId:string read FBoxId write SetBoxId; //3;
+    property MessageId:string read FMessageId write SetMessageId; //%1;
+    property EntityId:string read FEntityId write SetEntityId; //%2;
+    property BoxId:string read FBoxId write SetBoxId; //%3;
   end;
   TDocumentIdExs = specialize GSerializationObjectList<TDocumentIdEx>;
 

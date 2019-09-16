@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_DocumentId"><element name="TDocumentId"><short>Структура DocumentId представляет идентификатор документа:</short>
+      <descr><ul><li>MessageId - идентификатор сообщения, содержащего документ.</li><li>EntityId - идентификатор сущности документа внутри сообщения.</li>
+          </ul>
+        </descr>
       </element><element name="TDocumentId.MessageId"><short>MessageId - идентификатор сообщения, содержащего документ.</short>
       </element><element name="TDocumentId.EntityId"><short>EntityId - идентификатор сущности документа внутри сообщения.</short>
       </element>

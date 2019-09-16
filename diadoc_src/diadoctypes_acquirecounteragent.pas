@@ -42,7 +42,8 @@ interface
 
 uses
   Classes, SysUtils, protobuf_fpc_types, protobuf_fpc,
-  DiadocTypes_DiadocMessage_PostApi;
+  DiadocTypes_DiadocMessage_PostApi,
+  DiadocTypes_DocumentId;
 
 type
 
@@ -59,6 +60,9 @@ type
     FFileName: string;
     FSignatureRequested: Boolean;
     FSignedContent: TSignedContent;
+    procedure SetDocType(AValue: string);
+    procedure SetFileName(AValue: string);
+    procedure SetSignatureRequested(AValue: Boolean);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
@@ -66,26 +70,30 @@ type
     destructor Destroy; override;
   published
     property SignedContent:TSignedContent read FSignedContent; //1;
-    property FileName:string read FFileName write FFileName; //2;
-    property SignatureRequested:Boolean read FSignatureRequested write FSignatureRequested;//3
-    property DocType:string read FDocType write FDocType;//4;
+    property FileName:string read FFileName write SetFileName; //2;
+    property SignatureRequested:Boolean read FSignatureRequested write SetSignatureRequested;//3
+    property DocType:string read FDocType write SetDocType;//4;
   end;
 
 
   {  TAcquireCounteragentResult  }
   //message AcquireCounteragentResult {
   //       required string OrgId = 1;
+  //       optional DocumentId InvitationDocumentId = 2;
   //}
   TAcquireCounteragentResult = class(TSerializationObject)
   private
+    FInvitationDocumentId: TDocumentId;
     FOrgId: string;
+    procedure SetOrgId(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property OrgId:string read FOrgId write FOrgId;//1;
+    property OrgId:string read FOrgId write SetOrgId;//1;
+    property InvitationDocumentId:TDocumentId read FInvitationDocumentId;//2;
   end;
 
   {  TAcquireCounteragentRequest  }
@@ -101,21 +109,45 @@ type
     FInvitationDocument: TInvitationDocument;
     FMessageToCounteragent: string;
     FOrgId: string;
+    procedure SetInn(AValue: string);
+    procedure SetMessageToCounteragent(AValue: string);
+    procedure SetOrgId(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property OrgId:string read FOrgId write FOrgId;//1;
-    property Inn:string read FInn write FInn;//2;
-    property MessageToCounteragent:string read FMessageToCounteragent write FMessageToCounteragent;//3;
+    property OrgId:string read FOrgId write SetOrgId;//1;
+    property Inn:string read FInn write SetInn;//2;
+    property MessageToCounteragent:string read FMessageToCounteragent write SetMessageToCounteragent;//3;
     property InvitationDocument:TInvitationDocument read FInvitationDocument;//4;
   end;
 
 implementation
 
 { TAcquireCounteragentRequest }
+
+procedure TAcquireCounteragentRequest.SetInn(AValue: string);
+begin
+  if FInn=AValue then Exit;
+  FInn:=AValue;
+  Modified(2);
+end;
+
+procedure TAcquireCounteragentRequest.SetMessageToCounteragent(AValue: string);
+begin
+  if FMessageToCounteragent=AValue then Exit;
+  FMessageToCounteragent:=AValue;
+  Modified(3);
+end;
+
+procedure TAcquireCounteragentRequest.SetOrgId(AValue: string);
+begin
+  if FOrgId=AValue then Exit;
+  FOrgId:=AValue;
+  Modified(1);
+end;
 
 procedure TAcquireCounteragentRequest.InternalInit;
 begin
@@ -140,23 +172,54 @@ end;
 
 { TAcquireCounteragentResult }
 
+procedure TAcquireCounteragentResult.SetOrgId(AValue: string);
+begin
+  if FOrgId=AValue then Exit;
+  FOrgId:=AValue;
+  Modified(1);
+end;
+
 procedure TAcquireCounteragentResult.InternalInit;
 begin
   inherited InternalInit;
+  FInvitationDocumentId:=TDocumentId.Create;
 end;
 
 procedure TAcquireCounteragentResult.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
   RegisterProp('OrgId', 1, true);
+  RegisterProp('InvitationDocumentId', 2, false);
 end;
 
 destructor TAcquireCounteragentResult.Destroy;
 begin
+  FreeAndNil(FInvitationDocumentId);
   inherited Destroy;
 end;
 
 { TInvitationDocument }
+
+procedure TInvitationDocument.SetDocType(AValue: string);
+begin
+  if FDocType=AValue then Exit;
+  FDocType:=AValue;
+  Modified(4);
+end;
+
+procedure TInvitationDocument.SetFileName(AValue: string);
+begin
+  if FFileName=AValue then Exit;
+  FFileName:=AValue;
+  Modified(2);
+end;
+
+procedure TInvitationDocument.SetSignatureRequested(AValue: Boolean);
+begin
+  if FSignatureRequested=AValue then Exit;
+  FSignatureRequested:=AValue;
+  Modified(3);
+end;
 
 procedure TInvitationDocument.InternalInit;
 begin

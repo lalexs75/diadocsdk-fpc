@@ -41,7 +41,8 @@ interface
 //import "Organization.proto";
 uses
   Classes, SysUtils, protobuf_fpc_types, protobuf_fpc,
-  DiadocTypes_Organization;
+  DiadocTypes_Organization,
+  DiadocTypes_DocumentId;
 
 type
   TCounteragentStatus = (
@@ -97,27 +98,36 @@ type
   //	required sfixed64 LastEventTimestampTicks = 4;
   //	optional string MessageFromCounteragent = 6;
   //	optional string MessageToCounteragent = 7;
+  //    optional DocumentId InvitationDocumentId = 8;
   //}
   TCounteragent = class(TSerializationObject)
   private
     FCurrentStatus: TCounteragentStatus;
     FIndexKey: string;
+    FInvitationDocumentId: TDocumentId;
     FLastEventTimestampTicks: sfixed64;
     FMessageFromCounteragent: string;
     FMessageToCounteragent: string;
     FOrganization: TOrganization;
+    procedure SetCurrentStatus(AValue: TCounteragentStatus);
+    procedure SetIndexKey(AValue: string);
+    procedure SetLastEventTimestampTicks(AValue: sfixed64);
+    procedure SetMessageFromCounteragent(AValue: string);
+    procedure SetMessageToCounteragent(AValue: string);
+    procedure SetOrganization(AValue: TOrganization);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property IndexKey:string read FIndexKey write FIndexKey; // = 1;
-    property Organization:TOrganization read FOrganization write FOrganization; //= 2;
-    property CurrentStatus:TCounteragentStatus read FCurrentStatus write FCurrentStatus; //= 3 [default = UnknownCounteragentStatus];
-    property LastEventTimestampTicks:sfixed64 read FLastEventTimestampTicks write FLastEventTimestampTicks; // = 4;
-    property MessageFromCounteragent:string read FMessageFromCounteragent write FMessageFromCounteragent;// = 6;
-    property MessageToCounteragent:string read FMessageToCounteragent write FMessageToCounteragent;// = 7;
+    property IndexKey:string read FIndexKey write SetIndexKey; // = 1;
+    property Organization:TOrganization read FOrganization write SetOrganization; //= 2;
+    property CurrentStatus:TCounteragentStatus read FCurrentStatus write SetCurrentStatus; //= 3 [default = UnknownCounteragentStatus];
+    property LastEventTimestampTicks:sfixed64 read FLastEventTimestampTicks write SetLastEventTimestampTicks; // = 4;
+    property MessageFromCounteragent:string read FMessageFromCounteragent write SetMessageFromCounteragent;// = 6;
+    property MessageToCounteragent:string read FMessageToCounteragent write SetMessageToCounteragent;// = 7;
+    property InvitationDocumentId:TDocumentId read FInvitationDocumentId;//8;
   end;
   TCounteragents = specialize GSerializationObjectList<TCounteragent>;
 
@@ -130,14 +140,14 @@ type
   private
     FCounteragents: TCounteragents;
     FTotalCount: Int32;
-    procedure SetTotalCount(AValue: integer);
+    procedure SetTotalCount(AValue: Int32);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property TotalCount:Int32 read FTotalCount write FTotalCount;
+    property TotalCount:Int32 read FTotalCount write SetTotalCount;
     property Counteragents:TCounteragents read FCounteragents;
   end;
 
@@ -164,6 +174,7 @@ procedure TCertificate.SetData(AValue: TBytes);
 begin
   if FData=AValue then Exit;
   FData:=AValue;
+  Modified(1);
 end;
 
 procedure TCertificate.InternalInit;
@@ -204,11 +215,54 @@ end;
 
 { TCounteragent }
 
+procedure TCounteragent.SetCurrentStatus(AValue: TCounteragentStatus);
+begin
+  if FCurrentStatus=AValue then Exit;
+  FCurrentStatus:=AValue;
+  Modified(3);
+end;
+
+procedure TCounteragent.SetIndexKey(AValue: string);
+begin
+  if FIndexKey=AValue then Exit;
+  FIndexKey:=AValue;
+  Modified(1);
+end;
+
+procedure TCounteragent.SetLastEventTimestampTicks(AValue: sfixed64);
+begin
+  if FLastEventTimestampTicks=AValue then Exit;
+  FLastEventTimestampTicks:=AValue;
+  Modified(4);
+end;
+
+procedure TCounteragent.SetMessageFromCounteragent(AValue: string);
+begin
+  if FMessageFromCounteragent=AValue then Exit;
+  FMessageFromCounteragent:=AValue;
+  Modified(6);
+end;
+
+procedure TCounteragent.SetMessageToCounteragent(AValue: string);
+begin
+  if FMessageToCounteragent=AValue then Exit;
+  FMessageToCounteragent:=AValue;
+  Modified(7);
+end;
+
+procedure TCounteragent.SetOrganization(AValue: TOrganization);
+begin
+  if FOrganization=AValue then Exit;
+  FOrganization:=AValue;
+  Modified(2);
+end;
+
 procedure TCounteragent.InternalInit;
 begin
   inherited InternalInit;
   FOrganization:=TOrganization.Create;
   FCurrentStatus:=UnknownCounteragentStatus;
+  FInvitationDocumentId:=TDocumentId.Create;
 end;
 
 procedure TCounteragent.InternalRegisterProperty;
@@ -220,22 +274,25 @@ begin
   RegisterProp('LastEventTimestampTicks', 4);
   RegisterProp('MessageFromCounteragent', 6);
   RegisterProp('MessageToCounteragent', 7);
+  RegisterProp('InvitationDocumentId', 8);
 end;
 
 destructor TCounteragent.Destroy;
 begin
   if Assigned(FOrganization) then
     FreeAndNil(FOrganization);
+
+  FreeAndNil(FInvitationDocumentId);
   inherited Destroy;
 end;
 
 { TCounteragentList }
 
-procedure TCounteragentList.SetTotalCount(AValue: integer);
-var
-  FFValue: Integer;
+procedure TCounteragentList.SetTotalCount(AValue: Int32);
 begin
-  FFValue:=AValue;
+  if FTotalCount=AValue then Exit;
+  FTotalCount:=AValue;
+  Modified(1);
 end;
 
 procedure TCounteragentList.InternalInit;
