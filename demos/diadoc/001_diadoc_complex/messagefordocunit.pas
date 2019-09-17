@@ -147,10 +147,19 @@ end;
 procedure ShowUniversalTransferDocumentSellerTitleXml(ADiadocAPI:TDiadocAPI; AStream: TStream);
 var
   U1: TUniversalTransferDocumentSellerTitleInfo;
+  I2: TInvoiceInfo;
+  S: String;
 begin
   if not Assigned(AStream) then Exit;
+
   AStream.Position:=0;
-  U1:=ADiadocAPI.ParseUniversalTransferDocumentSellerTitleXml(AStream);
+  S:=InvoiceVersion(AStream);
+
+  if S = '' then
+    U1:=ADiadocAPI.ParseUniversalTransferDocumentSellerTitleXml(AStream)
+  else
+    U1:=ADiadocAPI.ParseUniversalTransferDocumentSellerTitleXml(AStream, S);
+
   if Assigned(U1) then
   begin
     UniversalTransferDocumentSellerTitleInfoForm:=TUniversalTransferDocumentSellerTitleInfoForm.Create(Application);
@@ -158,6 +167,15 @@ begin
     UniversalTransferDocumentSellerTitleInfoForm.ShowModal;
     UniversalTransferDocumentSellerTitleInfoForm.Free;
     FreeAndNil(U1);
+  end
+  else
+  begin
+    AStream.Position:=0;
+    I2:=ADiadocAPI.ParseInvoiceXml(AStream);
+    if Assigned(I2) then
+    begin
+      FreeAndNil(I2);
+    end;
   end;
   FreeAndNil(AStream);
 end;

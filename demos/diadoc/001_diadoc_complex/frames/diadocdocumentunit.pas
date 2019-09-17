@@ -136,6 +136,7 @@ procedure TDiadocDocumentFrame.Button2Click(Sender: TObject);
 var
   M: TMessage;
 begin
+  if rxDocs.RecordCount = 0 then Exit;
   M:=FDiadocAPI.GetMessage(FBox.BoxId, rxDocsMessageId.AsString, '', false, false);
   MessageForDocForm:=TMessageForDocForm.Create(Application);
   MessageForDocForm.OpenDocList(FDiadocAPI, FBox.BoxId, rxDocsMessageId.AsString, M);
@@ -149,6 +150,7 @@ var
   M: TMessage;
   E: TEntity;
 begin
+  if rxDocs.RecordCount = 0 then Exit;
   M:=FDiadocAPI.GetMessage(FBox.BoxId, rxDocsMessageId.AsString, '', false, false);
   E:=FindEntitie(M, UniversalTransferDocument);
   if Assigned(E) then

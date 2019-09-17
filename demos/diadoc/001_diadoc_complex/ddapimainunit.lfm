@@ -454,18 +454,18 @@ object DDAPIMainForm: TDDAPIMainForm
           ClientWidth = 1068
           object Panel1: TPanel
             Left = 886
-            Height = 600
+            Height = 604
             Top = 0
             Width = 182
             Align = alRight
-            ClientHeight = 600
+            ClientHeight = 604
             ClientWidth = 182
             TabOrder = 0
             object Button7: TButton
               Left = 32
-              Height = 31
+              Height = 33
               Top = 40
-              Width = 133
+              Width = 128
               AutoSize = True
               Caption = 'GetCounteragents'
               OnClick = Button7Click
@@ -473,9 +473,9 @@ object DDAPIMainForm: TDDAPIMainForm
             end
             object Button8: TButton
               Left = 32
-              Height = 31
+              Height = 33
               Top = 80
-              Width = 111
+              Width = 107
               AutoSize = True
               Caption = 'GetDocuments'
               OnClick = Button8Click
@@ -483,18 +483,18 @@ object DDAPIMainForm: TDDAPIMainForm
             end
             object Button9: TButton
               Left = 32
-              Height = 31
+              Height = 33
               Top = 120
-              Width = 143
+              Width = 136
               AutoSize = True
               Caption = 'GetDocumentTypes'
               TabOrder = 2
             end
             object Button5: TButton
               Left = 32
-              Height = 31
+              Height = 33
               Top = 152
-              Width = 115
+              Width = 113
               AutoSize = True
               Caption = 'Find contragent'
               OnClick = Button5Click
@@ -502,9 +502,9 @@ object DDAPIMainForm: TDDAPIMainForm
             end
             object Button2: TButton
               Left = 8
-              Height = 31
+              Height = 33
               Top = 184
-              Width = 189
+              Width = 178
               AutoSize = True
               Caption = 'GetOrganizationsByInnList'
               OnClick = Button2Click
