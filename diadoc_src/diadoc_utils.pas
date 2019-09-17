@@ -42,8 +42,10 @@ uses
 
 function TimestampTicksToDateTime(Ticks:sfixed64):TDateTime;
 function DateTimeToTimestampTicks(ADateTime:TDateTime):sfixed64;
+
+function InvoiceVersion(const AXmlDoc:TStream):string;
 implementation
-uses DateUtils;
+uses DateUtils, DOM, XMLRead;
 
 function TimestampTicksToDateTime(Ticks: sfixed64): TDateTime;
 var
@@ -58,6 +60,93 @@ end;
 function DateTimeToTimestampTicks(ADateTime: TDateTime): sfixed64;
 begin
 
+end;
+
+function InvoiceVersion(const AXmlDoc: TStream): string;
+
+function NodeValue(ANode:TDOMNode):String;
+begin
+//  Result:='';
+  Result:=ANode.NodeValue;
+//  SetCodePage();
+end;
+
+var
+  P: Int64;
+  D: TXMLDocument;
+  S: String;
+  RFile, RDoc, EVerF, EKnd, EFunc: TDOMNode;
+  S1, S2, S3: String;
+begin
+  Result:='';
+  RFile:=nil;
+  RDoc:=nil;
+  EVerF:=nil;
+  EKnd:=nil;
+  EFunc:=nil;
+
+  P:=AXmlDoc.Position;
+  try
+    ReadXMLFile(D, AXmlDoc);
+    if Assigned(D) then
+    begin
+      S:='Файл';
+      RFile:=D.FindNode(S);
+      S:='Документ';
+      if Assigned(RFile) then
+        RDoc:=RFile.FindNode(S);
+
+      if Assigned(RFile) and Assigned(RDoc) then
+      begin
+        S:='ВерсФорм'; //="5.02"
+        EVerF:=RFile.Attributes.GetNamedItem(S);
+        //КНД="1115125" Функция="СЧФДОП"
+        S:='КНД';
+        EKnd:=RDoc.Attributes.GetNamedItem(S);
+        S:='Функция';
+        EFunc:=RDoc.Attributes.GetNamedItem(S);
+        if Assigned(EVerF) and Assigned(EKnd) and Assigned(EFunc) then
+        begin
+          S1:=EVerF.NodeValue;
+          S2:=EKnd.NodeValue;
+          //S3:=EFunc.NodeValue;
+          S3:=NodeValue(EFunc);
+
+          if S3 = 'СЧФ' then
+          begin
+            Result:='invoice_';
+            if S1 = '5.02' then
+              Result:=Result + '05_02_01'
+            else
+            if S1 = '5.01' then
+              Result:=Result + '05_01_03';
+          end
+          else
+          if S3 = 'СЧФДОП' then
+          begin
+            Result:='utd_';
+            if S1 = '5.02' then
+              Result:=Result + '05_02_01'
+            else
+            if S1 = '5.01' then
+              Result:=Result + '05_01_05';
+          end;
+        end;
+      end;
+      D.Free;
+          //invoice_05_01_01
+          //invoice_05_01_03
+          //invoice_05_02_01
+          //utd_05_01_01
+          //utd_05_01_02
+          //utd_05_01_04
+          //utd_05_01_05
+          //utd_05_02_01
+          //utd820_05_01_01
+    end;
+  finally
+    AXmlDoc.Position;
+  end;
 end;
 
 end.
