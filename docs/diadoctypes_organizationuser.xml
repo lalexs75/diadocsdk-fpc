@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_OrganizationUser"><element name="TOrganizationUsersList"><short>Структура данных OrganizationUser содержит информацию о пользователе организации.</short><descr><ul><li>Id - идентификатор пользователя</li><li>Name - ФИО пользователя</li><li>Permissions - права пользователя в организации в виде структуры OrganizationUserPermissions</li><li>Position - должность пользователя</li>
+          </ul><p>Структура данных OrganizationUsersList представляет собой список записей OrganizationUser, возвращаемый методом GetOrganizationUsers.</p>
+        </descr>
+      </element><element name="TOrganizationUser"><short>Структура данных OrganizationUser содержит информацию о пользователе организации.</short><descr><ul><li>Id - идентификатор пользователя</li><li>Name - ФИО пользователя</li><li>Permissions - права пользователя в организации в виде структуры OrganizationUserPermissions</li><li>Position - должность пользователя</li>
+          </ul><p>Структура данных OrganizationUsersList представляет собой список записей OrganizationUser, возвращаемый методом GetOrganizationUsers.</p>
+        </descr>
+      </element><element name="TOrganizationUser.Id"><short>идентификатор пользователя</short>
+      </element><element name="TOrganizationUser.Name"><short>ФИО пользователя</short>
+      </element><element name="TOrganizationUser.Permissions"><short>Permissions - права пользователя в организации в виде структуры OrganizationUserPermissions</short>
+      </element><element name="TOrganizationUser.Position"><short>Position - должность пользователя</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

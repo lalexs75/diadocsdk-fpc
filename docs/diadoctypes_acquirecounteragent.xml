@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_AcquireCounteragent"><element name="TAcquireCounteragentResult"><short>Идентификатор приглашенной организации.</short><descr>Метод AcquireCounteragentResult позволяет получить идентификатор приглашенной организации.
+</descr>
+      </element><element name="TAcquireCounteragentResult.OrgId"><short>orgId: идентификатор приглашенной организации</short>
+      </element><element name="TAcquireCounteragentResult.InvitationDocumentId"><short>InvitationDocumentId: ссылка на документ, который был отправлен вместе с приглашением. Данное поле заполняется независимо от наличия доступа к документу.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>
