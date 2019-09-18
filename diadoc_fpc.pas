@@ -59,7 +59,7 @@ uses
   DiadocTypes_Routing, ResolutionAction, DiadocTypes_RegistrationRequest, 
   DiadocTypes_AutoBlockStatus, DiadocTypes_BlockStatus, 
   DiadocTypes_ManualBlockStatus, DiadocTypes_OrganizationFeatures, 
-  CustomPrintFormDetection, XsdContentType, LazarusPackageIntf;
+  CustomPrintFormDetection, XsdContentType, LoginPassword, LazarusPackageIntf;
 
 implementation
 

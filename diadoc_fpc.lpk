@@ -16,7 +16,7 @@
     <Description Value="Компоненты интеграции Контур ДИАДОК-API для FPC и Lazarus"/>
     <License Value="LGPL"/>
     <Version Major="1" Release="3" Build="1"/>
-    <Files Count="111">
+    <Files Count="112">
       <Item1>
         <Filename Value="diadoc_define.inc"/>
         <Type Value="Include"/>
@@ -462,6 +462,10 @@
         <Filename Value="diadoc_src\xsdcontenttype.pas"/>
         <UnitName Value="xsdcontenttype"/>
       </Item111>
+      <Item112>
+        <Filename Value="diadoc_src\LoginPassword.pas"/>
+        <UnitName Value="LoginPassword"/>
+      </Item112>
     </Files>
     <LazDoc Paths="docs"/>
     <i18n>

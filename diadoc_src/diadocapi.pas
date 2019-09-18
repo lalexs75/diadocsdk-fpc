@@ -94,7 +94,8 @@ uses
   DiadocTypes_RegistrationRequest,
   DiadocTypes_OrganizationFeatures,
   CustomPrintFormDetection,
-  XsdContentType
+  XsdContentType,
+  LoginPassword
   ;
 
 type
@@ -5605,3 +5606,5 @@ begin
 end;
 
 end.
+
+{ TODO : Необходимо реализовать поддержку авторизации в системе по протоколу V3 - https://github.com/diadoc/diadocsdk-cpp/commit/fffca188f45b8862d5b7369e1b77757a2bf4829d}
