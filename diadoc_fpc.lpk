@@ -9,14 +9,14 @@
       <Version Value="11"/>
       <PathDelim Value="\"/>
       <SearchPaths>
-        <OtherUnitFiles Value="Docflow;Invoicing;Documents\Types;Events;Documents;Recognition;KeyValueStorage;Forwarding;diadoc_src;Employees;Employees\Subscriptions;Users;Departments;Registration;Organizations"/>
+        <OtherUnitFiles Value="Docflow;Invoicing;Documents\Types;Events;Documents;Recognition;KeyValueStorage;Forwarding;diadoc_src;Employees;Employees\Subscriptions;Users;Departments;Registration;Organizations;Dss"/>
         <UnitOutputDirectory Value="lib\diadoc\$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
     </CompilerOptions>
     <Description Value="Компоненты интеграции Контур ДИАДОК-API для FPC и Lazarus"/>
     <License Value="LGPL"/>
     <Version Major="1" Release="3" Build="1"/>
-    <Files Count="112">
+    <Files Count="114">
       <Item1>
         <Filename Value="diadoc_define.inc"/>
         <Type Value="Include"/>
@@ -460,12 +460,20 @@
       </Item110>
       <Item111>
         <Filename Value="diadoc_src\xsdcontenttype.pas"/>
-        <UnitName Value="xsdcontenttype"/>
+        <UnitName Value="XsdContentType"/>
       </Item111>
       <Item112>
         <Filename Value="diadoc_src\LoginPassword.pas"/>
         <UnitName Value="LoginPassword"/>
       </Item112>
+      <Item113>
+        <Filename Value="diadoc_src\Content_v3.pas"/>
+        <UnitName Value="Content_v3"/>
+      </Item113>
+      <Item114>
+        <Filename Value="Dss\DssSign.pas"/>
+        <UnitName Value="DssSign"/>
+      </Item114>
     </Files>
     <LazDoc Paths="docs"/>
     <i18n>

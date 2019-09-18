@@ -95,7 +95,9 @@ uses
   DiadocTypes_OrganizationFeatures,
   CustomPrintFormDetection,
   XsdContentType,
-  LoginPassword
+  LoginPassword,
+  Content_v3,
+  DssSign
   ;
 
 type
@@ -225,6 +227,12 @@ type
     function CloudSignConfirm(AToken, AConfirmationCode:string):TAsyncMethodResult;
     function CloudSignConfirmResult(ATaskId:string):TCloudSignConfirmResult;
     function AutoSignReceipts(ABoxId, ACertificateThumbprint, ABatchKey:string):TAsyncMethodResult;
+
+    //Diadoc::Api::Proto::AsyncMethodResult DssSign(const std::wstring& boxId, const Diadoc::Api::Proto::Dss::DssSignRequest& request, const std::wstring& certificateThumbprint);
+    function DssSign(const ABoxId:string; const ARequest:TDssSignRequest; ACertificateThumbprint:string):TAsyncMethodResult;
+    //Diadoc::Api::Proto::Dss::DssSignResult DssSignResult(const std::wstring& boxId, const std::wstring& taskId);
+    function DssSignResult(const ABoxId:string; const ATaskId:string):TDssSignResult;
+
     //function WaitAutosignReceiptsResult(const std::wstring& taskId);
     function GetDocumentsByMessageId(ABoxId, AMessageId:string):TDocumentList;
     function DetectDocumentTypes(ABoxId, ANameOnShelf:string):TDetectDocumentTypesResponse;
@@ -5378,6 +5386,84 @@ begin
     if FHTTP.ResultCode = 200 then
     begin
       Result:=TAsyncMethodResult.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+end;
+
+function TDiadocAPI.DssSign(const ABoxId: string;
+  const ARequest: TDssSignRequest; ACertificateThumbprint: string
+  ): TAsyncMethodResult;
+var
+  S: String;
+  F: TStream;
+begin
+  //AsyncMethodResult DiadocApi::DssSign(const std::wstring& boxId, const DssSignRequest& request, const std::wstring& certificateThumbprint)
+  //{
+  //	WppTraceDebugOut("DssSign...");
+  //	std::wstringstream buf;
+  //	buf << L"/DssSign?boxId=" << StringHelper::CanonicalizeUrl(boxId);
+  //	buf << L"&certificateThumbprint=" << StringHelper::CanonicalizeUrl(certificateThumbprint);
+  //	return FromProtoBytes<AsyncMethodResult>(PerformHttpRequest(buf.str(), ToProtoBytes(request), POST));
+  //}
+  Result:=nil;
+  if not Authenticate then exit;
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId);
+  AddURLParam(S, 'certificateThumbprint', ACertificateThumbprint);
+  F:=ARequest.SaveToStream;
+  if SendCommand(hmPOST, 'DssSign', S, F) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('DssSign');
+    {$ENDIF}
+
+    FHTTP.Document.Position:=0;
+    if FHTTP.ResultCode = 200 then
+    begin
+      Result:=TAsyncMethodResult.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+  F.Free;
+end;
+
+function TDiadocAPI.DssSignResult(const ABoxId: string; const ATaskId: string
+  ): TDssSignResult;
+var
+  S: String;
+begin
+
+  //DssSignResult DiadocApi::DssSignResult(const std::wstring& boxId, const std::wstring& taskId)
+  //{
+  //	WppTraceDebugOut("DssSignResult...");
+  //	std::wstringstream buf;
+  //	buf << L"/DssSignResult?boxId=" << StringHelper::CanonicalizeUrl(boxId);
+  //	buf << L"&taskId=" << StringHelper::CanonicalizeUrl(taskId);
+  //	return FromProtoBytes<Dss::DssSignResult>(PerformHttpRequest(buf.str(), GET));
+  //}
+
+
+  Result:=nil;
+  if not Authenticate then exit;
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId);
+  AddURLParam(S, 'taskId', ATaskId);
+
+  if SendCommand(hmGET, 'DssSignResult', S, nil) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('DssSignResult');
+    {$ENDIF}
+
+    FHTTP.Document.Position:=0;
+    if FHTTP.ResultCode = 200 then
+    begin
+      Result:=TDssSignResult.Create;
       Result.LoadFromStream(FHTTP.Document);
     end
     else

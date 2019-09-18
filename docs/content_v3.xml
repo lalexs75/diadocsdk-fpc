@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="Content_v3"><element name="TContent_v3"><short>Структура описывает данные (содержимое документа, файла) либо как массив байтов, либо как ссылку на загруженный файл в Диадоке.</short><descr>Должно быть заполнено ровно одно из полей Content, NameOnShelf, EntityId, PatchedContentId.
+</descr>
+      </element><element name="TContent_v3.Content"><short>Content - данные как массив байтов</short>
+      </element><element name="TContent_v3.NameOnShelf"><short>NameOnShelf - имя файла на полке (подробнее в описании метода ShelfUpload)</short>
+      </element><element name="TContent_v3.EntityId"><short>EntityId - идентификатор сущности в Диадоке</short>
+      </element><element name="TContent_v3.PatchedContentId"><short>PatchedContentId - Идентификатор документа, «подготовленного к отправке» методом PrepareDocumentsToSign.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

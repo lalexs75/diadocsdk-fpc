@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DssSign"><element name="TDssFileSigningStatus.UnknownSigningStatus"><short>UnknownSigningStatus - неизвестный статус. Будет возвращено, если клиент использует устаревшую версию SDK и не может интерпретировать статус, возвращенный сервером</short>
+      </element><element name="TDssFileSigningStatus"><short>Описывает статус подписания конкретного файла DSS-сертификатом.</short><descr><ul><li>UnknownSigningStatus - неизвестный статус. Будет возвращено, если клиент использует устаревшую версию SDK и не может интерпретировать статус, возвращенный сервером</li><li>SigningCompleted - файл подписан</li><li>SigningError - произошел сбой при подписании файла</li>
+          </ul>
+        </descr>
+      </element><element name="TDssFileSigningStatus.SigningCompleted"><short>SigningCompleted - файл подписан</short>
+      </element><element name="TDssFileSigningStatus.SigningError"><short>SigningError - произошел сбой при подписании файла</short>
+      </element><element name="TDssOperationStatus"><short>Описывает состояние операции подписания файлов DSS-сертификатом.</short><descr><ul><li>Unknown - неизвестный статус операции. Будет возвращено, если клиент использует устаревшую версию SDK и не может интерпретировать статус операции, возвращенный сервером</li><li>InProgress - операция находится в процессе или ожидает подтверждения от владельца DSS-сертификата</li><li>Completed - операция успешно завершена</li><li>CanceledByUser - владелец DSS-сертификата отклонил запрос на подтверждение</li><li>Timeout - владелец DSS-сертификата не подтвердил операцию за отведенный промежуток времени</li><li>Crashed - произошел сбой при выполнении операции</li><li>UserHasUnconfirmedOperation - у владельца DSS-сертификата есть другая неподтвержденная операция. Необходимо подтвердить или отклонить ее, после чего повторить запрос</li>
+          </ul>
+        </descr>
+      </element><element name="TDssOperationStatus.Unknown"><short>Unknown - неизвестный статус операции. Будет возвращено, если клиент использует устаревшую версию SDK и не может интерпретировать статус операции, возвращенный сервером</short>
+      </element><element name="TDssOperationStatus.InProgress"><short>InProgress - операция находится в процессе или ожидает подтверждения от владельца DSS-сертификата</short>
+      </element><element name="TDssOperationStatus.Completed"><short>Completed - операция успешно завершена</short>
+      </element><element name="TDssOperationStatus.CanceledByUser"><short>CanceledByUser - владелец DSS-сертификата отклонил запрос на подтверждение</short>
+      </element><element name="TDssOperationStatus.Timeout"><short>Timeout - владелец DSS-сертификата не подтвердил операцию за отведенный промежуток времени</short>
+      </element><element name="TDssOperationStatus.Crashed"><short>Crashed - произошел сбой при выполнении операции</short>
+      </element><element name="TDssOperationStatus.UserHasUnconfirmedOperation"><short>UserHasUnconfirmedOperation - у владельца DSS-сертификата есть другая неподтвержденная операция. Необходимо подтвердить или отклонить ее, после чего повторить запрос</short>
+      </element><element name="TDssSignResult"><short>Структура описывает результат подписания файлов DSS-сертификатом. Возвращается методом DssSignResult.</short>
+      </element><element name="TDssSignResult.OperationStatus"><short>OperationStatus - статус операции подписания</short>
+      </element><element name="TDssSignResult.FileSigningResults"><short>FileSigningResults - результаты подписания каждого файла</short>
+      </element><element name="TDssFileSigningResult"><short>Структура описывает результат подписания конкретного файла DSS-сертификатом.</short>
+      </element><element name="TDssFileSigningResult.FileSigningStatus"><short>FileSigningStatus - статус подписания файла</short>
+      </element><element name="TDssFileSigningResult.Signature"><short>Signature - подпись в формате CMS SignedData в DER-кодировке</short>
+      </element><element name="TDssSignRequest"><short>Структура описывает запрос на подписание файлов DSS-сертификатом. Принимается методом DssSign.</short>
+      </element><element name="TDssSignRequest.Files"><short>Files - список файлов для подписания</short>
+      </element><element name="TDssSignFile"><short>Описывает файл для подписания.</short>
+      </element><element name="TDssSignFile.Content"><short>Content_v3 - содержимое файла</short>
+      </element><element name="TDssSignFile.FileName"><short>FileName - имя файла</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

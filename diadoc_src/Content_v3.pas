@@ -1,0 +1,116 @@
+{ Diadoc interface library for FPC and Lazarus
+
+  Copyright (C) 2018-2019 Lagunov Aleksey alexs75@yandex.ru
+
+  base on docs from http://api-docs.diadoc.ru
+
+  This library is free software; you can redistribute it and/or modify it
+  under the terms of the GNU Library General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or (at your
+  option) any later version with the following modification:
+
+  As a special exception, the copyright holders of this library give you
+  permission to link this library with independent modules to produce an
+  executable, regardless of the license terms of these independent modules,and
+  to copy and distribute the resulting executable under terms of your choice,
+  provided that you also meet, for each linked independent module, the terms
+  and conditions of the license of that module. An independent module is a
+  module which is not derived from or based on this library. If you modify
+  this library, you may extend this exception to your version of the library,
+  but you are not obligated to do so. If you do not wish to do so, delete this
+  exception statement from your version.
+
+  This program is distributed in the hope that it will be useful, but WITHOUT
+  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+  FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License
+  for more details.
+
+  You should have received a copy of the GNU Library General Public License
+  along with this library; if not, write to the Free Software Foundation,
+  Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+}
+{ Структуры данных базируются на информации http://api-docs.diadoc.ru/ru/latest/DataStructures.html }
+
+unit Content_v3;
+
+interface
+
+uses Classes, SysUtils, types, protobuf_fpc, DiadocTypes_DocumentId;
+
+type
+
+  TContent_v3 = class;
+
+  { Content_v3 } 
+  //%message Content_v3 {
+  //	optional bytes Content = 1;
+  //	optional string NameOnShelf = 2;
+  //	optional DocumentId EntityId = 3;
+  //	optional string PatchedContentId = 4;
+  //}
+  TContent_v3 = class(TSerializationObject)
+  private
+    FContent:TBytes;
+    FNameOnShelf:String;
+    FEntityId:TDocumentId;
+    FPatchedContentId:String;
+    procedure SetContent(AValue:TBytes);
+    procedure SetNameOnShelf(AValue:String);
+    procedure SetPatchedContentId(AValue:String);
+  protected
+    procedure InternalRegisterProperty; override;
+    procedure InternalInit; override;
+  public
+    destructor Destroy; override;
+  published
+    property Content:TBytes read FContent write SetContent;
+    property NameOnShelf:String read FNameOnShelf write SetNameOnShelf;
+    property EntityId:TDocumentId read FEntityId;
+    property PatchedContentId:String read FPatchedContentId write SetPatchedContentId;
+  end;
+  TContent_v3s = specialize GSerializationObjectList<TContent_v3>;
+
+implementation
+
+  { Content_v3 } 
+
+procedure TContent_v3.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('Content', 1);
+  RegisterProp('NameOnShelf', 2);
+  RegisterProp('EntityId', 3);
+  RegisterProp('PatchedContentId', 4);
+end;
+
+procedure TContent_v3.InternalInit;
+begin
+  inherited InternalInit;
+  FEntityId:= TDocumentId.Create;
+end;
+
+destructor TContent_v3.Destroy;
+begin
+  FEntityId.Free;
+  inherited Destroy;
+end;
+
+procedure TContent_v3.SetContent(AValue:TBytes);
+begin
+  FContent:=AValue;
+  Modified(1);
+end;
+
+procedure TContent_v3.SetNameOnShelf(AValue:String);
+begin
+  FNameOnShelf:=AValue;
+  Modified(2);
+end;
+
+procedure TContent_v3.SetPatchedContentId(AValue:String);
+begin
+  FPatchedContentId:=AValue;
+  Modified(4);
+end;
+
+end.
