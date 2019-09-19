@@ -128,7 +128,8 @@ begin
   if S<>'' then S:=S + '&';
   if AValue <>'' then
   begin
-    AValue:=StringReplace(AValue, '#', '%23', [rfReplaceAll]);
+    //AValue:=StringReplace(AValue, '#', '%23', [rfReplaceAll]);
+    AValue:=StringReplace(AValue, '%', '%25', [rfReplaceAll]);
     S:=S + AParam + '=' + HTTPEncode(AValue)
   end
   else
