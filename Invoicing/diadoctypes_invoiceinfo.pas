@@ -523,6 +523,7 @@ type
   end;
 
 function TaxRateToStr(ATaxRate:TTaxRate):string;
+function TaxRateValue(ATaxRate:TTaxRate):Integer;
 implementation
 uses StrUtils, diadoc_consts;
 
@@ -540,6 +541,24 @@ begin
   else
     //NoVat
     Result:=sTaxRateNoVat;
+  end;
+end;
+
+function TaxRateValue(ATaxRate: TTaxRate): Integer;
+begin
+  case ATaxRate of
+    NoVat:Result:=0;
+    Percent_0:Result:=0;
+    Percent_10:Result:=10;
+    Percent_18:Result:=18;
+    Percent_20:Result:=20;
+    Fraction_10_110:Result:=10;
+    Fraction_18_118:Result:=18;
+    TaxedByAgent:Result:=0;
+    Fraction_20_120:Result:=20;
+  else
+    //NoVat
+    Result:=0;
   end;
 end;
 
