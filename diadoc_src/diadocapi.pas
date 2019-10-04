@@ -290,6 +290,7 @@ type
     function GenerateDocumentProtocol(ABoxId, AmessageId, ADocumentId:string):TDocumentProtocol;
     function GenerateForwardedDocumentProtocol(ABoxId:string; AForwardedDocumentId:TForwardedDocumentId):TDocumentProtocol;
     function GenerateDocumentZip(ABoxId, AMessageId, ADocumentId: string; AFullDocflow: boolean): TDocumentZipGenerationResult;
+    function GenerateReceiptXml(const ABoxId:string; const AMessageId:string; const AAttachmentId:string; const ASigner:TSigner):TStream;
     function GenerateDocumentReceiptXml(ABoxId, AMessageId, AAttachmentId:string; ASigner:TSigner):TStream;
     function GeneratePrintForm(ABoxId, AMessageId, ADocumentId:string):TPrintFormResult;
     //GeneratePrintFormFromAttachment
@@ -2311,6 +2312,53 @@ begin
     else
       FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
   end;
+end;
+
+function TDiadocAPI.GenerateReceiptXml(const ABoxId: string;
+  const AMessageId: string; const AAttachmentId: string; const ASigner: TSigner
+  ): TStream;
+var
+  F: TStream;
+  S: String;
+begin
+  (*
+  DiadocApi::WebFile DiadocApi::GenerateReceiptXml(const std::wstring& boxId, const std::wstring& messageId, const std::wstring& attachmentId, const Diadoc::Api::Proto::Invoicing::Signer signer)
+  {
+      WppTraceDebugOut("GenerateReceiptXml...");
+      auto requestBody = ToProtoBytes(signer);
+      std::wstringstream buf;
+      buf << L"/GenerateReceiptXml?boxId=" << StringHelper::CanonicalizeUrl(boxId) << L"&messageId=" << StringHelper::CanonicalizeUrl(messageId) << L"&attachmentId=" << StringHelper::CanonicalizeUrl(attachmentId);
+      auto connect = session_.Connect(api_url_.c_str(), api_port_);
+      auto request = connect.OpenRequest(POST.c_str(), buf.str().c_str(), NULL, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, connection_flags_);
+      SendRequest(request, requestBody);
+      return WebFile(request);
+  }
+  *)
+
+  Result:=nil;
+  if not Authenticate then exit;
+
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId);//идентификатор ящика;
+  AddURLParam(S, 'messageId', AMessageId);
+  AddURLParam(S, 'attachmentId', AAttachmentId);
+  F:=ASigner.SaveToStream;
+  if SendCommand(hmPOST, 'GenerateReceiptXml', S, F) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('GenerateReceiptXml');
+    {$ENDIF}
+
+    FHTTP.Document.Position:=0;
+    if FHTTP.ResultCode = 200 then
+    begin
+      Result:=TMemoryStream.Create;
+      Result.CopyFrom(FHTTP.Document, 0);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+  F.Free;
 end;
 
 function TDiadocAPI.GenerateDocumentReceiptXml(ABoxId, AMessageId,
