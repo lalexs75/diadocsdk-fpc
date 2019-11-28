@@ -67,8 +67,8 @@
       </element><element name="TDiadocAPI.GetCounteragentCertificates"><short>В ответе содержится информация о сертификатах контрагента counteragentOrgId.</short>
       </element>
     <element name="TDiadocAPI.GetDocuments.boxId"><short>Идентификатор ящика, в котором осуществляется поиск документов</short>
-      </element><element name="TDiadocAPI.GetDocuments"><short>В теле ответа содержится список документов из ящика boxId, подходящих под определенный фильтр</short><descr>В теле ответа содержится список документов из ящика boxId, подходящих под определенный фильтр. Список выдается в виде сериализованной структуры данных DocumentList.
-</descr>
+      </element><element name="TDiadocAPI.GetDocuments"><short>В теле ответа содержится список документов из ящика boxId, подходящих под определенный фильтр</short><descr><p>В теле ответа содержится список документов из ящика boxId, подходящих под определенный фильтр. Список выдается в виде сериализованной структуры данных DocumentList.</p><p>Элементы в списке DocumentList.Documents идут в порядке возрастания меток времени (поля Document.TimestampTicks). В поле DocumentList.TotalCount указывается общее количество документов, удовлетворяющих запросу.</p><p>При получении списков документов их содержимое в протобуфер не включается – поле Document.Content.Data у них будет равно NULL. В случае необходимости содержимое документа всегда можно получить при помощи метода GetEntityContent.</p>
+        </descr>
       </element><element name="TDiadocAPI.GetDocuments.filterCategory"><short>статус, по которому требуется отфильтровать список документов</short>
       </element><element name="TDiadocAPI.GetDocuments.ABoxId"><short>идентификатор ящика, в котором осуществляется поиск документов</short>
       </element><element name="TDiadocAPI.GetDocuments.AFilterCategory"><short>статус, по которому требуется отфильтровать список документов</short>

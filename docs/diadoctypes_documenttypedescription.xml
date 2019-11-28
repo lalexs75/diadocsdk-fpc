@@ -47,7 +47,6 @@
       </element><element name="TDocumentTypeDescription.RequiresFnsRegistration"><short>RequiresFnsRegistration - для работы требуется заявление участника ЭДО</short>
       </element><element name="TDocumentTypeDescription.Functions"><short>Functions - описания функций документа</short>
       </element><element name="TGetDocumentTypesResponse"><short>Описание типов документов</short><descr>используется в методе GetDocumentTypes
-
 </descr>
       </element><element name="TGetDocumentTypesResponse.DocumentTypes"><short>DocumentTypes - список типов документов.</short>
       </element><element name="TDocumentTypeDescriptions"><short>Описывает тип документов. Возвращается методом GetDocumentTypes.</short>

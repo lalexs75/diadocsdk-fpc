@@ -360,9 +360,9 @@ type
     function GetBox(const ABoxId:string):TBox;
     function GetDocumentTypes(const ABoxId:string):TGetDocumentTypesResponse;
 
-    //GetDocuments(const std::wstring& boxId, const std::wstring& filterCategory, const std::wstring& counteragentBoxId, __int64* timestampFrom, __int64* timestampTo, const std::wstring& fromDocumentDate, const std::wstring& toDocumentDate, const std::wstring& departmentId, bool excludeSubdepartments, const std::string& afterIndexKey, int* count = NULL);
-    //GetDocuments(const std::wstring& boxId, const std::wstring& filterCategory, const std::wstring& counteragentBoxId, __int64* timestampFrom, __int64* timestampTo, const std::wstring& fromDocumentDate, const std::wstring& toDocumentDate, const std::wstring& departmentId, bool excludeSubdepartments, const std::string& afterIndexKey, int* count = NULL);
-    //GetDocuments(const DocumentFilter& documentFilter);
+    //$GetDocuments(const std::wstring& boxId, const std::wstring& filterCategory, const std::wstring& counteragentBoxId, __int64* timestampFrom, __int64* timestampTo, const std::wstring& fromDocumentDate, const std::wstring& toDocumentDate, const std::wstring& departmentId, bool excludeSubdepartments, const std::string& afterIndexKey, int* count = NULL);
+    //$GetDocuments(const std::wstring& boxId, const std::wstring& filterCategory, const std::wstring& counteragentBoxId, __int64* timestampFrom, __int64* timestampTo, const std::wstring& fromDocumentDate, const std::wstring& toDocumentDate, const std::wstring& departmentId, bool excludeSubdepartments, const std::string& afterIndexKey, int* count = NULL);
+    //$GetDocuments(const DocumentFilter& documentFilter);
     function GetDocuments(ABoxId: string; ADocumentType: TDocumentTypeFilter; ADocumentClass: TDocumentFilterClass; ADocumentStatus: TDocumentFilterStatus; ADepartmentId: string; ACounteragentBoxId: string; AFromDocumentDate: string; AToDocumentDate: string; AAfterIndexKey: string): TDocumentList; overload;
     function GetDocuments(ADocumentFilter:TDocumentFilter): TDocumentList; overload;
 
