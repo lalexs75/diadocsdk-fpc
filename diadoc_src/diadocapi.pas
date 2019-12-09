@@ -265,7 +265,7 @@ type
     //Работа с УПД
     //------------Генерация УПД
     function GenerateUniversalTransferDocumentXmlForSeller( ASellerInfo: TUniversalTransferDocumentSellerTitleInfo;
-        ADisableValidation: boolean; const DocumentVersion:string = 'utd_05_01_05'): TMemoryStream;
+        ADisableValidation: boolean; const DocumentVersion:string { = 'utd_05_01_05'}): TMemoryStream;
     function GenerateUniversalTransferDocumentXmlForBuyer(utdBuyerInfo:TUniversalTransferDocumentBuyerTitleInfo; ABoxId:string; ASellerTitleMessageId:string; ASellerTitleAttachmentId:string):TStream;
     function GenerateTitleXml(const ABoxId:string; const ADocumentTypeNamedId:string; const ADocumentFunction:string;
         const ADocumentVersion:string; ATitleIndex:Integer; const AUserContractData: TStream;
@@ -1580,7 +1580,7 @@ end;
 
 function TDiadocAPI.GenerateUniversalTransferDocumentXmlForSeller(
   ASellerInfo: TUniversalTransferDocumentSellerTitleInfo;
-  ADisableValidation: boolean; const DocumentVersion: string = 'utd_05_01_05'): TMemoryStream;
+  ADisableValidation: boolean; const DocumentVersion: string {= 'utd_05_01_05'}): TMemoryStream;
 var
   S: String;
   F: TStream;
