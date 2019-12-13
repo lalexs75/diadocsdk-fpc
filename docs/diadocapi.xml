@@ -203,6 +203,9 @@
         </descr>
       </element><element name="TDiadocAPI.ParseTitleXml"><short>Парсинг используется для того, чтобы «разобрать» документ на составляющие его элементы и получить значения этих элементов. </short>
       </element>
+    <element name="TDiadocAPI.DetectDocumentTitles"><short>Метод возвращает возможные типы переданного документа.</short><descr>Метод будет пытаться детектировать только по тем типам документов, которые доступны в конкретной организации.
+</descr>
+      </element>
     </module>
   </package>
 </fpdoc-descriptions>

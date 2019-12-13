@@ -310,7 +310,7 @@ begin
   D.SaveToFile('/tmp/UniversalTransferDocumentSellerTitleInfo.protobuf');
 
 
-  M:=FDiadocAPI.GenerateUniversalTransferDocumentXmlForSeller(D, true);
+  M:=FDiadocAPI.GenerateUniversalTransferDocumentXmlForSeller(D, true, 'utd_05_01_05');
 
   ShowDiadocStatus;
 

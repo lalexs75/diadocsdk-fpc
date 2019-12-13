@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
-  <Package Version="4">
+  <Package Version="5">
     <PathDelim Value="\"/>
     <Name Value="diadoc_fpc"/>
     <Type Value="RunAndDesignTime"/>
@@ -16,7 +16,7 @@
     <Description Value="Компоненты интеграции Контур ДИАДОК-API для FPC и Lazarus"/>
     <License Value="LGPL"/>
     <Version Major="1" Release="3" Build="1"/>
-    <Files Count="114">
+    <Files Count="115">
       <Item1>
         <Filename Value="diadoc_define.inc"/>
         <Type Value="Include"/>
@@ -474,6 +474,10 @@
         <Filename Value="Dss\DssSign.pas"/>
         <UnitName Value="DssSign"/>
       </Item114>
+      <Item115>
+        <Filename Value="Documents\DetectTitleResponse.pas"/>
+        <UnitName Value="DetectTitleResponse"/>
+      </Item115>
     </Files>
     <LazDoc Paths="docs"/>
     <i18n>

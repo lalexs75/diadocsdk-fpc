@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DetectTitleResponse"><element name="TDetectTitleResponse"><short>Cтруктура содержит описание типов документов</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

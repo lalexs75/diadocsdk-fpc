@@ -97,7 +97,8 @@ uses
   XsdContentType,
   LoginPassword,
   Content_v3,
-  DssSign
+  DssSign,
+  DetectTitleResponse
   ;
 
 type
@@ -235,8 +236,12 @@ type
 
     //function WaitAutosignReceiptsResult(const std::wstring& taskId);
     function GetDocumentsByMessageId(ABoxId, AMessageId:string):TDocumentList;
-    function DetectDocumentTypes(ABoxId, ANameOnShelf:string):TDetectDocumentTypesResponse;
-    function DetectDocumentTypes(ABoxId:string; AContent:TStream):TDetectDocumentTypesResponse;
+    function DetectDocumentTypes(const ABoxId, ANameOnShelf:string):TDetectDocumentTypesResponse;
+
+    function DetectDocumentTitles(const ABoxId:string; const NameOnShelf:string):TDetectTitleResponse;
+    function DetectDocumentTypes(const ABoxId:string; const AContent:TStream):TDetectDocumentTypesResponse;
+    function DetectDocumentTitles(const ABoxId:string; const AContent:TStream):TDetectTitleResponse;
+
     function GetContent(ATypeNamedId, AFunction, AVersion:string; ATitleIndex:integer; contentType:TXsdContentType  = TitleXsd):TStream;
     function Register(const ARequest:TRegistrationRequest):TRegistrationResponse;
     procedure RegisterConfirm(const ARequest:TRegistrationConfirmRequest);
@@ -5554,7 +5559,7 @@ begin
   end;
 end;
 
-function TDiadocAPI.DetectDocumentTypes(ABoxId, ANameOnShelf: string
+function TDiadocAPI.DetectDocumentTypes(const ABoxId, ANameOnShelf: string
   ): TDetectDocumentTypesResponse;
 var
   S: String;
@@ -5589,8 +5594,43 @@ begin
   end;
 end;
 
-function TDiadocAPI.DetectDocumentTypes(ABoxId: string; AContent: TStream
-  ): TDetectDocumentTypesResponse;
+function TDiadocAPI.DetectDocumentTitles(const ABoxId: string;
+  const NameOnShelf: string): TDetectTitleResponse;
+var
+  S: String;
+begin
+  //DetectTitleResponse DiadocApi::DetectDocumentTitles(const std::wstring& boxId, const std::wstring& nameOnShelf)
+  //{
+  //    WppTraceDebugOut("DetectDocumentTitles...");
+  //    auto queryString = L"/DetectDocumentTitles?boxId=" + StringHelper::CanonicalizeUrl(boxId)
+  //                       + L"&nameOnShelf=" + StringHelper::CanonicalizeUrl(nameOnShelf);
+  //    return FromProtoBytes<DetectTitleResponse>(PerformHttpRequest(queryString, GET));
+  //}
+  Result:=nil;
+  if not Authenticate then exit;
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId);
+  AddURLParam(S, 'nameOnShelf', NameOnShelf);
+
+  if SendCommand(hmGET, 'DetectDocumentTitles', S, nil) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('DetectDocumentTitles');
+    {$ENDIF}
+
+    FHTTP.Document.Position:=0;
+    if FHTTP.ResultCode = 200 then
+    begin
+      Result:=TDetectTitleResponse.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+end;
+
+function TDiadocAPI.DetectDocumentTypes(const ABoxId: string;
+  const AContent: TStream): TDetectDocumentTypesResponse;
 var
   S: String;
 begin
@@ -5616,6 +5656,40 @@ begin
     if FHTTP.ResultCode = 200 then
     begin
       Result:=TDetectDocumentTypesResponse.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+end;
+
+function TDiadocAPI.DetectDocumentTitles(const ABoxId: string;
+  const AContent: TStream): TDetectTitleResponse;
+var
+  S: String;
+begin
+  //DetectTitleResponse DiadocApi::DetectDocumentTitles(const std::wstring& boxId, const Bytes_t& content)
+  //{
+  //    WppTraceDebugOut("DetectDocumentTitles...");
+  //    std::wstringstream buf;
+  //    buf << L"/DetectDocumentTitles?boxId=" << StringHelper::CanonicalizeUrl(boxId);
+  //    return FromProtoBytes<DetectTitleResponse>(PerformHttpRequest(buf.str(), content, POST));
+  //}
+  Result:=nil;
+  if not Authenticate then exit;
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId);
+
+  if SendCommand(hmGET, 'DetectDocumentTitles', S, AContent) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('DetectDocumentTitles');
+    {$ENDIF}
+
+    FHTTP.Document.Position:=0;
+    if FHTTP.ResultCode = 200 then
+    begin
+      Result:=TDetectTitleResponse.Create;
       Result.LoadFromStream(FHTTP.Document);
     end
     else
