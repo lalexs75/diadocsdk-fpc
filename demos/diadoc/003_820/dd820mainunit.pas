@@ -111,18 +111,21 @@ begin
 
   Seler1:=U.Sellers.Seller.CreateChild;
   Seler1.OrganizationReference.OrgType:='1';
-  Seler1.OrganizationReference.BoxId:='73B75544-B78C-408E-B88D-A044B79F644D'; //'7c715969e0034816b1037da20541a83a@diadoc.ru';
+  //Seler1.OrganizationReference.BoxId:='73B75544-B78C-408E-B88D-A044B79F644D';
+  Seler1.OrganizationReference.BoxId:='7c715969-e003-4816-b103-7da20541a83a';
 
   Buyer1:=U.Buyers.Buyer.CreateChild;
   Buyer1.OrganizationReference.OrgType:='1';
-  Buyer1.OrganizationReference.BoxId:='B379AD3C-5737-46CF-88A7-A154683352B9';//'7c715969e0034816b1037da20541a83a@diadoc.ru';
+  //Buyer1.OrganizationReference.BoxId:='B379AD3C-5737-46CF-88A7-A154683352B9';
+  Buyer1.OrganizationReference.BoxId:='7c715969-e003-4816-b103-7da20541a83a';
 
   Shipper1:=U.Shippers.Shipper.CreateChild;
   Shipper1.SameAsSeller:='true';
 
   Consignee1:=U.Consignees.Consignee.CreateChild;
   Consignee1.OrganizationReference.OrgType:='1';
-  Consignee1.OrganizationReference.BoxId:='9B071EDF-1E30-43CD-9232-860C5F12F7D9';//'7c715969e0034816b1037da20541a83a@diadoc.ru';
+  //Consignee1.OrganizationReference.BoxId:='9B071EDF-1E30-43CD-9232-860C5F12F7D9';//'7c715969e0034816b1037da20541a83a@diadoc.ru';
+  Consignee1.OrganizationReference.BoxId:='7c715969-e003-4816-b103-7da20541a83a';
 
   //Signer1:=U.Signers.Signer.CreateChild;
   Signer1:=U.Signers;
