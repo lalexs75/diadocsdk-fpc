@@ -1,0 +1,198 @@
+object dd820MainForm: Tdd820MainForm
+  Left = 361
+  Height = 509
+  Top = 142
+  Width = 594
+  Caption = 'dd820MainForm'
+  ClientHeight = 509
+  ClientWidth = 594
+  OnClose = FormClose
+  Position = poScreenCenter
+  SessionProperties = 'Edit1.Text;Edit2.Text;Edit3.Text'
+  LCLVersion = '2.1.0.0'
+  object GroupBox1: TGroupBox
+    Left = 0
+    Height = 189
+    Top = 0
+    Width = 594
+    Align = alTop
+    AutoSize = True
+    Caption = 'Параметры подключения'
+    ClientHeight = 171
+    ClientWidth = 592
+    TabOrder = 0
+    object Button1: TButton
+      AnchorSideLeft.Control = GroupBox1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = Edit2
+      AnchorSideTop.Side = asrBottom
+      Left = 242
+      Height = 33
+      Top = 132
+      Width = 108
+      AutoSize = True
+      BorderSpacing.Around = 6
+      Caption = 'Подключиться'
+      OnClick = Button1Click
+      TabOrder = 0
+    end
+    object Label1: TLabel
+      AnchorSideLeft.Control = GroupBox1
+      AnchorSideTop.Control = GroupBox1
+      Left = 6
+      Height = 17
+      Top = 6
+      Width = 56
+      BorderSpacing.Around = 6
+      Caption = 'API ключ'
+      FocusControl = Edit1
+      ParentColor = False
+    end
+    object Label2: TLabel
+      AnchorSideLeft.Control = GroupBox1
+      AnchorSideTop.Control = Edit1
+      AnchorSideTop.Side = asrBottom
+      Left = 6
+      Height = 17
+      Top = 69
+      Width = 89
+      BorderSpacing.Around = 6
+      Caption = 'Пользователь'
+      FocusControl = Edit2
+      ParentColor = False
+    end
+    object Label3: TLabel
+      AnchorSideLeft.Control = CLabel
+      AnchorSideTop.Control = Edit1
+      AnchorSideTop.Side = asrBottom
+      Left = 302
+      Height = 17
+      Top = 69
+      Width = 48
+      BorderSpacing.Around = 6
+      Caption = 'Пароль'
+      FocusControl = Edit3
+      ParentColor = False
+    end
+    object Edit1: TEdit
+      AnchorSideLeft.Control = Label1
+      AnchorSideTop.Control = Label1
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = GroupBox1
+      AnchorSideRight.Side = asrBottom
+      Left = 12
+      Height = 34
+      Top = 29
+      Width = 574
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Around = 6
+      TabOrder = 1
+    end
+    object CLabel: TLabel
+      AnchorSideLeft.Control = GroupBox1
+      AnchorSideLeft.Side = asrCenter
+      AnchorSideTop.Control = GroupBox1
+      Left = 296
+      Height = 1
+      Top = 0
+      Width = 1
+      ParentColor = False
+    end
+    object Edit2: TEdit
+      AnchorSideLeft.Control = Label2
+      AnchorSideTop.Control = Label2
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = CLabel
+      Left = 12
+      Height = 34
+      Top = 92
+      Width = 278
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Around = 6
+      TabOrder = 2
+    end
+    object Edit3: TEdit
+      AnchorSideLeft.Control = Label3
+      AnchorSideTop.Control = Label2
+      AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = GroupBox1
+      AnchorSideRight.Side = asrBottom
+      Left = 308
+      Height = 34
+      Top = 92
+      Width = 278
+      Anchors = [akTop, akLeft, akRight]
+      BorderSpacing.Around = 6
+      TabOrder = 3
+    end
+  end
+  object Button2: TButton
+    Left = 400
+    Height = 25
+    Top = 240
+    Width = 75
+    Caption = 'Button2'
+    OnClick = Button2Click
+    TabOrder = 1
+  end
+  object Memo1: TMemo
+    Left = 0
+    Height = 149
+    Top = 360
+    Width = 594
+    Align = alBottom
+    Lines.Strings = (
+      'Memo1'
+    )
+    TabOrder = 2
+  end
+  object Memo2: TMemo
+    Left = 0
+    Height = 90
+    Top = 270
+    Width = 594
+    Align = alBottom
+    Lines.Strings = (
+      'Memo2'
+    )
+    TabOrder = 3
+  end
+  object Button3: TButton
+    Left = 256
+    Height = 25
+    Top = 240
+    Width = 75
+    Caption = 'SaveFile'
+    OnClick = Button3Click
+    TabOrder = 4
+  end
+  object DiadocAPI1: TDiadocAPI
+    OnHttpStatus = DiadocAPI1HttpStatus
+    Left = 64
+    Top = 96
+  end
+  object RxCloseFormValidator1: TRxCloseFormValidator
+    ErrorMsgCaption = 'Ошибка. Ожидается значение...'
+    Items = <    
+      item
+        Control = Edit1
+        FieldCaption = 'API ключ'
+      end    
+      item
+        Control = Edit2
+        FieldCaption = 'Пользователь'
+      end    
+      item
+        Control = Edit3
+        FieldCaption = 'Пароль'
+      end>
+    Left = 248
+    Top = 24
+  end
+  object RxIniPropStorage1: TRxIniPropStorage
+    StoredValues = <>
+    SeparateFiles = True
+    Left = 216
+    Top = 24
+  end
+end
