@@ -13,24 +13,24 @@ object Form1: TForm1
   LCLVersion = '2.1.0.0'
   object GroupBox1: TGroupBox
     Left = 0
-    Height = 145
+    Height = 189
     Top = 0
     Width = 622
     Align = alTop
     AutoSize = True
     Caption = 'Параметры подключения'
-    ClientHeight = 127
-    ClientWidth = 618
+    ClientHeight = 171
+    ClientWidth = 620
     TabOrder = 0
     object Button1: TButton
       AnchorSideLeft.Control = GroupBox1
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = Edit2
       AnchorSideTop.Side = asrBottom
-      Left = 258
-      Height = 23
-      Top = 98
-      Width = 102
+      Left = 256
+      Height = 33
+      Top = 132
+      Width = 108
       AutoSize = True
       BorderSpacing.Around = 6
       Caption = 'Подключиться'
@@ -41,9 +41,9 @@ object Form1: TForm1
       AnchorSideLeft.Control = GroupBox1
       AnchorSideTop.Control = GroupBox1
       Left = 6
-      Height = 13
+      Height = 17
       Top = 6
-      Width = 48
+      Width = 56
       BorderSpacing.Around = 6
       Caption = 'API ключ'
       FocusControl = Edit1
@@ -54,9 +54,9 @@ object Form1: TForm1
       AnchorSideTop.Control = Edit1
       AnchorSideTop.Side = asrBottom
       Left = 6
-      Height = 13
-      Top = 52
-      Width = 73
+      Height = 17
+      Top = 69
+      Width = 89
       BorderSpacing.Around = 6
       Caption = 'Пользователь'
       FocusControl = Edit2
@@ -66,10 +66,10 @@ object Form1: TForm1
       AnchorSideLeft.Control = CLabel
       AnchorSideTop.Control = Edit1
       AnchorSideTop.Side = asrBottom
-      Left = 315
-      Height = 13
-      Top = 52
-      Width = 39
+      Left = 316
+      Height = 17
+      Top = 69
+      Width = 48
       BorderSpacing.Around = 6
       Caption = 'Пароль'
       FocusControl = Edit3
@@ -82,9 +82,9 @@ object Form1: TForm1
       AnchorSideRight.Control = GroupBox1
       AnchorSideRight.Side = asrBottom
       Left = 12
-      Height = 21
-      Top = 25
-      Width = 600
+      Height = 34
+      Top = 29
+      Width = 602
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Around = 6
       TabOrder = 1
@@ -93,7 +93,7 @@ object Form1: TForm1
       AnchorSideLeft.Control = GroupBox1
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = GroupBox1
-      Left = 309
+      Left = 310
       Height = 1
       Top = 0
       Width = 1
@@ -105,9 +105,9 @@ object Form1: TForm1
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = CLabel
       Left = 12
-      Height = 21
-      Top = 71
-      Width = 291
+      Height = 34
+      Top = 92
+      Width = 292
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Around = 6
       TabOrder = 2
@@ -118,27 +118,36 @@ object Form1: TForm1
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = GroupBox1
       AnchorSideRight.Side = asrBottom
-      Left = 321
-      Height = 21
-      Top = 71
-      Width = 291
+      Left = 322
+      Height = 34
+      Top = 92
+      Width = 292
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Around = 6
       TabOrder = 3
     end
+    object Button2: TButton
+      Left = 0
+      Height = 25
+      Top = 143
+      Width = 75
+      Caption = 'Button2'
+      OnClick = Button2Click
+      TabOrder = 4
+    end
   end
   object Panel1: TPanel
     Left = 0
-    Height = 368
-    Top = 145
+    Height = 324
+    Top = 189
     Width = 622
     Align = alClient
-    ClientHeight = 368
+    ClientHeight = 324
     ClientWidth = 622
     TabOrder = 1
     object TreeView1: TTreeView
       Left = 1
-      Height = 366
+      Height = 322
       Top = 1
       Width = 207
       Align = alLeft
@@ -150,7 +159,7 @@ object Form1: TForm1
     end
     object Memo1: TMemo
       Left = 213
-      Height = 366
+      Height = 322
       Top = 1
       Width = 408
       Align = alClient
@@ -163,7 +172,7 @@ object Form1: TForm1
     end
     object Splitter1: TSplitter
       Left = 208
-      Height = 366
+      Height = 322
       Top = 1
       Width = 5
     end

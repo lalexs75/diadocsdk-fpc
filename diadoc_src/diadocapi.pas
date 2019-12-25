@@ -242,7 +242,7 @@ type
     function DetectDocumentTypes(const ABoxId:string; const AContent:TStream):TDetectDocumentTypesResponse;
     function DetectDocumentTitles(const ABoxId:string; const AContent:TStream):TDetectTitleResponse;
 
-    function GetContent(ATypeNamedId, AFunction, AVersion:string; ATitleIndex:integer; contentType:TXsdContentType  = TitleXsd):TStream;
+    function GetContent(ATypeNamedId, AFunction, AVersion:string; ATitleIndex:integer; contentType:TXsdContentType  = TitleXsd):TMemoryStream;
     function Register(const ARequest:TRegistrationRequest):TRegistrationResponse;
     procedure RegisterConfirm(const ARequest:TRegistrationConfirmRequest);
 
@@ -275,12 +275,12 @@ type
     function GenerateTitleXml(const ABoxId:string; const ADocumentTypeNamedId:string; const ADocumentFunction:string;
         const ADocumentVersion:string; ATitleIndex:Integer; const AUserContractData: TStream;
         const AEditingSettingId:string = ''; ADisableValidation:boolean = false; const ALetterId:string = '';
-        const ADocumentId:string = ''): TStream;
+        const ADocumentId:string = ''): TMemoryStream;
 
     function GenerateUniversalCorrectionDocumentXmlForSeller(AUtdSellerInfo:TUniversalCorrectionDocumentSellerTitleInfo;
         ADisableValidation:Boolean; const documentVersion:string = 'ucd_05_01_03'):TMemoryStream;
     function GenerateRecipientTitleXml(ABoxId, ASenderTitleMessageId, ASenderTitleAttachmentId:string; AUserContractData:TStream; ADocumentVersion:string):TStream;
-    function GenerateSenderTitleXml(ABoxId, ADocumentTypeNamedId, ADocumentFunction, ADocumentVersion:string;  AUserContractData:TStream;  AEditingSettingId:string; ADisableValidation:boolean):TStream;
+    function GenerateSenderTitleXml(ABoxId, ADocumentTypeNamedId, ADocumentFunction, ADocumentVersion:string;  AUserContractData:TStream;  AEditingSettingId:string; ADisableValidation:boolean):TMemoryStream;
 
     //ExtendedSignerDetails
     //-------------------------------------------------
@@ -1696,7 +1696,7 @@ function TDiadocAPI.GenerateTitleXml(const ABoxId: string;
   const ADocumentVersion: string; ATitleIndex: Integer;
   const AUserContractData: TStream; const AEditingSettingId: string;
   ADisableValidation: boolean; const ALetterId: string;
-  const ADocumentId: string): TStream;
+  const ADocumentId: string): TMemoryStream;
 var
   S: String;
 begin
@@ -1731,7 +1731,7 @@ begin
 *)
 
   Result:=nil;
-  if Assigned(AUserContractData) then
+  if not Assigned(AUserContractData) then
     raise EDiadocException.Create(sNotDefinedUserContractData);
   if AboxId = '' then
     raise EDiadocException.Create(sNotDefinedBoxId);
@@ -1876,7 +1876,7 @@ end;
 
 function TDiadocAPI.GenerateSenderTitleXml(ABoxId, ADocumentTypeNamedId,
   ADocumentFunction, ADocumentVersion: string; AUserContractData: TStream;
-  AEditingSettingId: string; ADisableValidation: boolean): TStream;
+  AEditingSettingId: string; ADisableValidation: boolean): TMemoryStream;
 var
   S: String;
 begin
@@ -1909,7 +1909,8 @@ DiadocApi::WebFile DiadocApi::GenerateSenderTitleXml(const std::wstring& boxId, 
   AddURLParam(S, 'documentTypeNamedId=', ADocumentTypeNamedId);
   AddURLParam(S, 'documentFunction=', ADocumentFunction);
   AddURLParam(S, 'documentVersion=', ADocumentVersion);
-  AddURLParam(S, 'editingSettingId=', AEditingSettingId);
+  if AEditingSettingId<>'' then
+    AddURLParam(S, 'editingSettingId=', AEditingSettingId);
   if ADisableValidation then
     AddURLParam(S, 'disableValidation');
 
@@ -5698,7 +5699,7 @@ begin
 end;
 
 function TDiadocAPI.GetContent(ATypeNamedId, AFunction, AVersion: string;
-  ATitleIndex: integer; contentType:TXsdContentType  = TitleXsd): TStream;
+  ATitleIndex: integer; contentType: TXsdContentType): TMemoryStream;
 var
   S: String;
 begin
@@ -5737,7 +5738,7 @@ begin
   end;
 
   if not Authenticate then exit;
-  if SendCommand(hmPOST, 'GetContent', S, nil) then
+  if SendCommand(hmGET, 'GetContent', S, nil) then
   begin
     {$IFDEF DIADOC_DEBUG}
     SaveProtobuf('GetContent');

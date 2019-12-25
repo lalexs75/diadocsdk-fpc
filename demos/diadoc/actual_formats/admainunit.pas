@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
   ComCtrls, DiadocAPI, DiadocTypes_Organization, ddSelectClient,
-  DiadocTypes_DocumentTypeDescription, RxIniPropStorage, RxCloseFormValidator;
+  DiadocTypes_DocumentTypeDescription, RxIniPropStorage, RxCloseFormValidator, httpsend;
 
 type
 
@@ -15,6 +15,7 @@ type
 
   TForm1 = class(TForm)
     Button1: TButton;
+    Button2: TButton;
     DiadocAPI1: TDiadocAPI;
     Edit1: TEdit;
     Edit2: TEdit;
@@ -32,6 +33,8 @@ type
     Splitter1: TSplitter;
     TreeView1: TTreeView;
     procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure DiadocAPI1HttpStatus(Sender: TDiadocAPI; AHTTP: THTTPSend);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure TreeView1Click(Sender: TObject);
@@ -47,7 +50,7 @@ var
   Form1: TForm1;
 
 implementation
-uses rxlogging, rxAppUtils, rxconst;
+uses rxlogging, rxAppUtils, rxconst, Diadoc_Base, XsdContentType;
 {$R *.lfm}
 
 { TForm1 }
@@ -57,6 +60,37 @@ begin
   if not RxCloseFormValidator1.CheckCloseForm then Exit;
   DoConnect;
   FillBoxList;
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+var
+  M: TMemoryStream;
+begin
+  //typeNamedId=Invoice&function=default&version=utd820_05_01_01_hyphen&titleIndex=0&contentType=UserContractXsd
+  M:=DiadocAPI1.GetContent('Invoice', 'default', 'utd820_05_01_01_hyphen', 0, UserContractXsd);//'UserContractXsd');
+  if Assigned(M) then
+  begin
+    M.SaveToFile('/home/alexs/3/Invoice.xsd');
+    M.Free;
+  end
+  else
+    Memo1.Lines.Assign(DiadocAPI1.ResultText);
+
+  //GetContent?typeNamedId=UniversalTransferDocument&function=%u0421%u0427%u0424&version=utd820_05_01_01_hyphen&titleIndex=0&contentType=UserContractXsd
+  M:=DiadocAPI1.GetContent('UniversalTransferDocument', 'СЧФ', 'utd820_05_01_01_hyphen', 0, UserContractXsd);//'UserContractXsd');
+  if Assigned(M) then
+  begin
+    M.SaveToFile('/home/alexs/3/UniversalTransferDocument.xsd');
+    M.Free;
+  end
+  else
+    Memo1.Lines.Assign(DiadocAPI1.ResultText);
+end;
+
+procedure TForm1.DiadocAPI1HttpStatus(Sender: TDiadocAPI; AHTTP: THTTPSend);
+begin
+//  if Assigned(AHTTP.Document) then
+//    AHTTP.Document.SaveToFile('/home/alexs/3/aaa.xml');
 end;
 
 procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -70,6 +104,9 @@ begin
   Memo1.Lines.Clear;
 end;
 
+type
+  TDiadocAPIHack = class(TDiadocAPI);
+
 procedure TForm1.TreeView1Click(Sender: TObject);
 var
   B: TBox;
@@ -79,6 +116,7 @@ var
   DFV:TDocumentVersion;
   i: Integer;
   S: String;
+  DFVT:TDocumentTitle;
 begin
   Memo1.Lines.Clear;
   if Assigned(TreeView1.Selected) and Assigned(TreeView1.Selected.Data) then
@@ -112,6 +150,26 @@ begin
           for DFV in DF.Versions do
           begin
             Memo1.Lines.Add('      * '+DFV.Version);
+            for DFVT in DFV.Titles do
+            begin
+              Memo1.Lines.Add('      ** UserDataXsdUrl : '+DFVT.UserDataXsdUrl);
+              Memo1.Lines.Add('      ** XsdUrl : '+DFVT.XsdUrl);
+
+              if (DTD.Name = 'UniversalTransferDocument') and (DFV.Version = 'utd820_05_01_01_hyphen') and (DF.Name = 'СЧФ') then
+              begin
+                Memo1.Lines.Add('      **** ');
+(*                DiadocAPI1.OnHttpStatus:=@DiadocAPI1HttpStatus;
+                if TDiadocAPIHack(DiadocAPI1).SendCommand(hmGET, '', DFVT.UserDataXsdUrl, nil) then
+                begin
+                  Memo1.Lines.Add('+++Успех+++');
+                  ;
+                end
+                else
+                  Memo1.Lines.Add('!!Error!!');
+                DiadocAPI1.OnHttpStatus:=nil; *)
+              end;
+            end;
+            Memo1.Lines.Add('      **** ');
           end;
         end;
         Memo1.Lines.Add('');
