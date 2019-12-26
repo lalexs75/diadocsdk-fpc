@@ -2109,12 +2109,12 @@ end;
 procedure TExtendedSignerDetails.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
+  RegisterProperty('SignerStatus', 'SignerStatus', '', '', 1, 100);
 end;
 
 procedure TExtendedSignerDetails.InternalInitChilds;
 begin
   inherited InternalInitChilds;
-  RegisterProperty('SignerStatus', 'SignerStatus', '', '', 1, 100);
 end;
 
 destructor TExtendedSignerDetails.Destroy;
@@ -3253,6 +3253,7 @@ end;
 
 procedure TExtendedOrganizationDetailsWithHyphens.InternalRegisterPropertys;
 begin
+  inherited InternalRegisterPropertys;
   RegisterProperty('HyphenInn', 'HyphenInn', 'О', '', -1, -1);
 end;
 
@@ -3270,6 +3271,7 @@ end;
 
 procedure TExtendedOrganizationInfoWithHyphens.InternalRegisterPropertys;
 begin
+  inherited InternalRegisterPropertys;
   RegisterProperty('OrganizationDetails', 'OrganizationDetails', 'О', '', -1, -1);
   RegisterProperty('OrganizationReference', 'OrganizationReference', 'О', '', -1, -1);
 end;
@@ -3397,6 +3399,7 @@ end;
 
 procedure TUniversalTransferDocumentWithHyphens.InternalRegisterPropertys;
 begin
+  inherited InternalRegisterPropertys;
   RegisterProperty('Sellers', 'Sellers', 'О', '', -1, -1);
   RegisterProperty('Buyers', 'Buyers', 'О', '', -1, -1);
   RegisterProperty('Table', 'Table', '', '', -1, -1);

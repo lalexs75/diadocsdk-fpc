@@ -9,7 +9,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="3" Y="14"/>
-        <UsageCount Value="41"/>
+        <UsageCount Value="44"/>
       </Unit>
       <Unit>
         <Filename Value="../../../DataXml/universaltransferdocumentwithhyphens.pas"/>
@@ -18,7 +18,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="3141"/>
         <CursorPos X="20" Y="3155"/>
-        <UsageCount Value="41"/>
+        <UsageCount Value="44"/>
         <Bookmarks Count="2">
           <Item0 Y="1374" ID="1"/>
           <Item1 Y="963" ID="2"/>
@@ -31,9 +31,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="dd820MainUnit"/>
+        <IsVisibleTab Value="True"/>
         <TopLine Value="138"/>
         <CursorPos X="43" Y="153"/>
-        <UsageCount Value="41"/>
+        <UsageCount Value="44"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -41,13 +42,13 @@
         <Filename Value="ssl_openssl.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="40"/>
+        <UsageCount Value="43"/>
       </Unit>
       <Unit>
         <Filename Value="ssl_openssl_lib.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="40"/>
+        <UsageCount Value="43"/>
       </Unit>
       <Unit>
         <Filename Value="unit1.pas"/>
@@ -61,19 +62,17 @@
       </Unit>
       <Unit>
         <Filename Value="../../../../protobuf-fpc/xmlobject/xmlobject.pas"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="158"/>
         <CursorPos X="14" Y="173"/>
         <UsageCount Value="20"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../../diadoc_src/diadocapi.pas"/>
         <UnitName Value="DiadocAPI"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="85"/>
         <UsageCount Value="19"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../../diadoc_src/diadoctypes_organization.pas"/>
@@ -128,16 +127,14 @@
       </Unit>
       <Unit>
         <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="3431"/>
-        <CursorPos Y="3461"/>
+        <CursorPos Y="3457"/>
         <UsageCount Value="14"/>
         <Bookmarks Count="2">
           <Item0 Y="1145" ID="1"/>
           <Item1 X="48" Y="894" ID="2"/>
         </Bookmarks>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="/home/install/source/fpcsrc/packages/fcl-xml/src/dom.pp"/>
@@ -149,18 +146,17 @@
       </Unit>
       <Unit>
         <Filename Value="../../../../protobuf-fpc/protobuf/protobuf_fpc.pas"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="351"/>
         <CursorPos Y="366"/>
-        <UsageCount Value="13"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="12"/>
       </Unit>
       <Unit>
         <Filename Value="/home/install/source/fpcsrc/rtl/inc/objpash.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="191"/>
         <CursorPos X="23" Y="206"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit>
       <Unit>
         <Filename Value="../../../Invoicing/diadoctypes_universaltransferdocumentinfo.pas"/>
@@ -168,85 +164,24 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="405"/>
         <CursorPos X="3" Y="290"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit>
       <Unit>
         <Filename Value="../../../Documents/DetectTitleResponse.pas"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="61"/>
         <CursorPos Y="77"/>
         <UsageCount Value="12"/>
-        <Loaded Value="True"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="2134" Column="3" TopLine="2132"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="742" Column="15" TopLine="728"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="2127" Column="3" TopLine="2125"/>
-      </Position>
+    <JumpHistory HistoryIndex="4">
       <Position>
         <Filename Value="dd820mainunit.pas"/>
         <Caret Line="164" Column="54" TopLine="127"/>
       </Position>
       <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="683" Column="14" TopLine="669"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="658" Column="3" TopLine="633"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="3087" Column="3" TopLine="3058"/>
-      </Position>
-      <Position>
         <Filename Value="dd820mainunit.pas"/>
         <Caret Line="146" Column="28" TopLine="131"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="684" Column="14" TopLine="670"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="558" Column="3" TopLine="528"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="2569" Column="21" TopLine="2541"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="526" Column="3" TopLine="501"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="515" TopLine="501"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="311" Column="3" TopLine="285"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="2693" Column="3" TopLine="2666"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="2744" Column="3" TopLine="2719"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="3547" Column="3" TopLine="3521"/>
       </Position>
       <Position>
         <Filename Value="dd820mainunit.pas"/>
@@ -257,47 +192,8 @@
         <Caret Line="119" Column="33" TopLine="104"/>
       </Position>
       <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="3532" Column="19" TopLine="3521"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="3538" Column="53" TopLine="3521"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="764" TopLine="1090"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="342" Column="3" TopLine="319"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="2130" Column="3" TopLine="2107"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="2131" Column="3" TopLine="2115"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="2408" Column="3" TopLine="2379"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="2505" Column="3" TopLine="2476"/>
-      </Position>
-      <Position>
         <Filename Value="dd820mainunit.pas"/>
         <Caret Line="124" Column="39" TopLine="109"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../DataXml/UserContract_820_05_01_01_Hyphen.pas"/>
-        <Caret Line="2505" Column="3" TopLine="2476"/>
       </Position>
     </JumpHistory>
     <RunParams>
