@@ -5,8 +5,9 @@ unit dd820MainUnit;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, DiadocAPI,
-  RxCloseFormValidator, RxIniPropStorage, DiadocTypes_Organization, httpsend;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
+  DiadocAPI, RxCloseFormValidator, RxIniPropStorage, DiadocTypes_Organization,
+  httpsend;
 
 type
 
@@ -27,14 +28,20 @@ type
     Label3: TLabel;
     Memo1: TMemo;
     Memo2: TMemo;
+    PageControl1: TPageControl;
     RxCloseFormValidator1: TRxCloseFormValidator;
     RxIniPropStorage1: TRxIniPropStorage;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure DiadocAPI1HttpStatus(Sender: TDiadocAPI; AHTTP: THTTPSend);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+    procedure FormCreate(Sender: TObject);
   private
+    FSaveDataXmlName:string;
+    FResultDocXmlName:string;
     FBoxID: String;
     FMyOrgs: TOrganizationList;
     procedure DoConnect;
@@ -47,7 +54,7 @@ var
 
 implementation
 
-uses ssl_openssl_lib, UserContract_820_05_01_01_Hyphen;
+uses LazFileUtils, ssl_openssl_lib, UserContract_820_05_01_01_Hyphen;
 
 {$R *.lfm}
 
@@ -64,30 +71,23 @@ var
   M, M1: TMemoryStream;
 begin
   Button3Click(nil);
+
   M:=TMemoryStream.Create;
-(*
-  //POST /GenerateTitleXml?boxId=a96be310-0982-461a-8b2a-91d198b7861c&documentTypeNamedId=Invoice&documentFunction=default&documentVersion=utd820_05_01_01&titleIndex=0 HTTP/1.1
-  M.LoadFromFile('/home/alexs/1/1/aa.xml');
-  M1:=DiadocAPI1.GenerateTitleXml(FBoxID, 'UniversalTransferDocument', 'СЧФ', 'utd820_05_01_01_hyphen', 0, M);
-  //M1:=DiadocAPI1.GenerateTitleXml(FBoxID, 'Invoice', 'default', 'utd820_05_01_01', 0, M);
-
-  //POST /GenerateSenderTitleXml?boxId=a96be310-0982-461a-8b2a-91d198b7861c&documentTypeNamedId=UniversalTransferDocument&documentFunction=ДОП&documentVersion=utd_05_01_04 HTTP/1.1
-  //M.LoadFromFile('/home/alexs/1/1/aa1.xml');
-  //M1:=DiadocAPI1.GenerateSenderTitleXml(FBoxID, 'UniversalTransferDocument', 'default', 'utd820_05_01_01_hyphen', M, '', false);
-*)
-
-//GetContent?typeNamedId=UniversalTransferDocument&function=%u0421%u0427%u0424&version=utd820_05_01_01_hyphen&titleIndex=0&contentType=UserContractXsd
-
-  M.LoadFromFile('/home/alexs/1/1/u1.xml');
+  M.LoadFromFile(FSaveDataXmlName);
   M1:=DiadocAPI1.GenerateTitleXml(FBoxID, 'UniversalTransferDocument', 'СЧФ', 'utd820_05_01_01_hyphen', 0, M);
   if Assigned(M1) then
   begin
-    M1.SaveToFile('/home/alexs/3/UniversalTransferDocument_001.xml');
+    M1.SaveToFile(FResultDocXmlName);
+    M1.Position:=0;
+    Memo2.Lines.LoadFromStream(M1, TEncoding.GetEncoding(1251));
     M1.Free;
     ShowMessage('Успех');
   end
   else
+  begin
+    Memo2.Lines.LoadFromFile(GetTempDir(false) + PathDelim + 'GenerateTitleXml.xml');
     ShowMessage('Ошибка - смотри логи');
+  end;
 
   M.Free;
 end;
@@ -111,12 +111,12 @@ begin
 
   Seler1:=U.Sellers.Seller.CreateChild;
   Seler1.OrganizationReference.OrgType:='1';
-  //Seler1.OrganizationReference.BoxId:='73B75544-B78C-408E-B88D-A044B79F644D';
+  //Seler1.OrganizationReference.BoxId:='73B75544-B78C-408E-B88D-A044B79F644D';  <--test fro error code
   Seler1.OrganizationReference.BoxId:='7c715969-e003-4816-b103-7da20541a83a';
 
   Buyer1:=U.Buyers.Buyer.CreateChild;
   Buyer1.OrganizationReference.OrgType:='1';
-  //Buyer1.OrganizationReference.BoxId:='B379AD3C-5737-46CF-88A7-A154683352B9';
+  //Buyer1.OrganizationReference.BoxId:='B379AD3C-5737-46CF-88A7-A154683352B9';  <--test fro error code
   Buyer1.OrganizationReference.BoxId:='7c715969-e003-4816-b103-7da20541a83a';
 
   Shipper1:=U.Shippers.Shipper.CreateChild;
@@ -124,10 +124,9 @@ begin
 
   Consignee1:=U.Consignees.Consignee.CreateChild;
   Consignee1.OrganizationReference.OrgType:='1';
-  //Consignee1.OrganizationReference.BoxId:='9B071EDF-1E30-43CD-9232-860C5F12F7D9';//'7c715969e0034816b1037da20541a83a@diadoc.ru';
+  //Consignee1.OrganizationReference.BoxId:='9B071EDF-1E30-43CD-9232-860C5F12F7D9'; <--test fro error code
   Consignee1.OrganizationReference.BoxId:='7c715969-e003-4816-b103-7da20541a83a';
 
-  //Signer1:=U.Signers.Signer.CreateChild;
   Signer1:=U.Signers;
   Signer1.SignerDetails.FirstName:='Подписант';
   Signer1.SignerDetails.LastName:='Подписантов';
@@ -149,7 +148,7 @@ begin
   TT.Unt:='796';
   TT.Vat:='123';
 
-  U.SaveToFile('/home/alexs/1/1/u1.xml');
+  U.SaveToFile(FSaveDataXmlName);
   U.Free;
 end;
 
@@ -163,6 +162,15 @@ procedure Tdd820MainForm.FormClose(Sender: TObject; var CloseAction: TCloseActio
 begin
   if Assigned(FMyOrgs) then
     FreeAndNil(FMyOrgs);
+end;
+
+procedure Tdd820MainForm.FormCreate(Sender: TObject);
+begin
+  FSaveDataXmlName:=AppendPathDelim(ExtractFileDir(ParamStr(0))) + 'data' + DirectorySeparator + 'UC_820_05_01_01_Hyphen.xml';
+  FResultDocXmlName:=AppendPathDelim(ExtractFileDir(ParamStr(0))) + 'data' + DirectorySeparator + 'UniversalTransferDocument_001.xml';
+  Button2.Enabled:=false;
+  Memo1.Lines.Clear;
+  Memo2.Lines.Clear;
 end;
 
 procedure Tdd820MainForm.DoConnect;
@@ -188,6 +196,7 @@ begin
       end;
     end;
     Button1.Enabled:=false;
+    Button2.Enabled:=true;
   end;
 end;
 
