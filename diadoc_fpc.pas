@@ -60,7 +60,8 @@ uses
   DiadocTypes_AutoBlockStatus, DiadocTypes_BlockStatus, 
   DiadocTypes_ManualBlockStatus, DiadocTypes_OrganizationFeatures, 
   CustomPrintFormDetection, XsdContentType, LoginPassword, Content_v3, 
-  DssSign, DetectTitleResponse, LazarusPackageIntf;
+  DssSign, DetectTitleResponse, UserContract_820_05_01_01_Hyphen, 
+  LazarusPackageIntf;
 
 implementation
 

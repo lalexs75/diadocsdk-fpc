@@ -43,9 +43,9 @@
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="unit2.pas"/>
+        <Filename Value="../../../DataXml/universaltransferdocumentwithhyphens.pas"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="Unit2"/>
+        <UnitName Value="UniversalTransferDocumentWithHyphens"/>
       </Unit>
       <Unit>
         <Filename Value="dd820mainunit.pas"/>

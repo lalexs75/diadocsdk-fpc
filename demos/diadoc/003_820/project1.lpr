@@ -7,7 +7,11 @@ uses
   cthreads,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, unit2, dd820MainUnit, ssl_openssl, ssl_openssl_lib, rxnew
+  Forms, 
+  dd820MainUnit,
+  ssl_openssl,
+  ssl_openssl_lib,
+  rxnew
   { you can add units after this };
 
 {$R *.res}

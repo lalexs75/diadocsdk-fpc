@@ -47,7 +47,7 @@ var
 
 implementation
 
-uses ssl_openssl_lib, Unit2;
+uses ssl_openssl_lib, UserContract_820_05_01_01_Hyphen;
 
 {$R *.lfm}
 
