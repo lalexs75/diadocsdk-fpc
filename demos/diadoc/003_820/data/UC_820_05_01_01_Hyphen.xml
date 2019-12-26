@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UniversalTransferDocumentWithHyphens Currency="643" Function="СЧФ" DocumentDate="01.01.2019" DocumentName="12345" DocumentNumber="12345" DocumentCreator="1" DocumentCreatorBase="1">
+  <Sellers>
+    <Seller>
+      <OrganizationReference BoxId="7c715969-e003-4816-b103-7da20541a83a" OrgType="1"/>
+    </Seller>
+  </Sellers>
+  <Buyers>
+    <Buyer>
+      <OrganizationReference BoxId="7c715969-e003-4816-b103-7da20541a83a" OrgType="1"/>
+    </Buyer>
+  </Buyers>
+  <Table Vat="123.4" Total="123.4" TotalNet="123.4" TotalWithVatExcluded="123.4">
+    <Item Vat="123" Unit="796" Product="Товар № 1" TaxRate="20%" Subtotal="123.45"/>
+  </Table>
+  <Shippers>
+    <Shipper SameAsSeller="true"/>
+  </Shippers>
+  <Consignees>
+    <Consignee>
+      <OrganizationReference BoxId="7c715969-e003-4816-b103-7da20541a83a" OrgType="1"/>
+    </Consignee>
+  </Consignees>
+  <Signers>
+    <SignerDetails LastName="Подписантов" FirstName="Подписант" MiddleName="Ивнавич" SignerType="3" SignerPowers="0" SignerStatus="1" SignerPowersBase="Должностные обязонности" RegistrationCertificate="1"/>
+  </Signers>
+</UniversalTransferDocumentWithHyphens>
