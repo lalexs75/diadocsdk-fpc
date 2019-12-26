@@ -99,6 +99,8 @@ var
   TT: TInvoiceItem;
   Shipper1: TShipper;
   Signer1: TSigner;
+  PD: TPaymentDocumentInfo;
+  TB: TTransferBase820;
 begin
   U:=TUniversalTransferDocumentWithHyphens.Create;
   U.Funct:='СЧФ';
@@ -147,6 +149,19 @@ begin
   TT.Subtotal:='123.45';
   TT.Unt:='796';
   TT.Vat:='123';
+
+  PD:=U.PaymentDocuments.Documents.CreateChild;
+  PD.Date:='01.01.2019';
+  PD.Number:='12323';
+  PD.Total:='1234.50';
+
+  TB:=U.TransferInfo.TransferBases.TransferBase.AddItem;
+  TB.BaseDocumentId:='123';
+  TB.BaseDocumentDate:='01.01.2019';
+  TB.BaseDocumentName:='Документа';
+  TB.BaseDocumentNumber:='1231';
+  TB.BaseDocumentInfo:='Примечание к транспортному документу';
+  U.TransferInfo.OperationInfo:='Примеяание';
 
   U.SaveToFile(FSaveDataXmlName);
   U.Free;

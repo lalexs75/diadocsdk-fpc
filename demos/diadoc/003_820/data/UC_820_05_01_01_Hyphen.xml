@@ -24,4 +24,12 @@
   <Signers>
     <SignerDetails LastName="Подписантов" FirstName="Подписант" MiddleName="Ивнавич" SignerType="3" SignerPowers="0" SignerStatus="1" SignerPowersBase="Должностные обязонности" RegistrationCertificate="1"/>
   </Signers>
+  <PaymentDocuments>
+    <Document Date="01.01.2019" Total="1234.50" Number="12323"/>
+  </PaymentDocuments>
+  <TransferInfo OperationInfo="Примеяание">
+    <TransferBases>
+      <TransferBase BaseDocumentId="123" BaseDocumentDate="01.01.2019" BaseDocumentInfo="Примечание к транспортному документу" BaseDocumentName="Документа" BaseDocumentNumber="1231"/>
+    </TransferBases>
+  </TransferInfo>
 </UniversalTransferDocumentWithHyphens>
