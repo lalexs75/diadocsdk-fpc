@@ -1,3 +1,37 @@
+{ Diadoc interface library for FPC and Lazarus
+
+  Copyright (C) 2018-2019 Lagunov Aleksey alexs75@yandex.ru
+
+  base on docs from http://api-docs.diadoc.ru
+
+  This library is free software; you can redistribute it and/or modify it
+  under the terms of the GNU Library General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or (at your
+  option) any later version with the following modification:
+
+  As a special exception, the copyright holders of this library give you
+  permission to link this library with independent modules to produce an
+  executable, regardless of the license terms of these independent modules,and
+  to copy and distribute the resulting executable under terms of your choice,
+  provided that you also meet, for each linked independent module, the terms
+  and conditions of the license of that module. An independent module is a
+  module which is not derived from or based on this library. If you modify
+  this library, you may extend this exception to your version of the library,
+  but you are not obligated to do so. If you do not wish to do so, delete this
+  exception statement from your version.
+
+  This program is distributed in the hope that it will be useful, but WITHOUT
+  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+  FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License
+  for more details.
+
+  You should have received a copy of the GNU Library General Public License
+  along with this library; if not, write to the Free Software Foundation,
+  Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+}
+
+{ Структуры данных базируются на информации http://api-docs.diadoc.ru/ru/latest/DataStructures.html }
+
 unit UserContract_820_05_01_01_Hyphen;
 
 {$mode objfpc}{$H+}
@@ -732,11 +766,279 @@ type
     property Consignee:TExtendedOrganizationInfoWithHyphensList read FConsignee;
   end;
 
+  { TPaymentDocumentInfo }
+
+  TPaymentDocumentInfo = class(TXmlSerializationObject)
+  private
+    FDate: string;
+    FNumber: string;
+    FTotal: string;
+    procedure SetDate(AValue: string);
+    procedure SetNumber(AValue: string);
+    procedure SetTotal(AValue: string);
+  protected
+    procedure InternalRegisterPropertys; override;
+    procedure InternalInitChilds; override;
+  public
+    destructor Destroy; override;
+  published
+    property Date:string read FDate write SetDate;
+    property Number:string read FNumber write SetNumber;
+    property Total:string read FTotal write SetTotal;
+  end;
+
+  { TPaymentDocumentInfoList }
+
+  TPaymentDocumentInfoList = class(TXmlSerializationObjectList)
+  private
+    function GetItem(AIndex: Integer): TPaymentDocumentInfo; inline;
+  public
+    constructor Create;
+    function CreateChild:TPaymentDocumentInfo;
+    property Item[AIndex:Integer]:TPaymentDocumentInfo read GetItem; default;
+  end;
+
+
+  { TPaymentDocuments }
+
+  TPaymentDocuments = class(TXmlSerializationObject)
+  private
+    FDocuments: TPaymentDocumentInfoList;
+  protected
+    procedure InternalRegisterPropertys; override;
+    procedure InternalInitChilds; override;
+  public
+    destructor Destroy; override;
+  published
+    property Documents:TPaymentDocumentInfoList read FDocuments;
+  end;
+
+  { TTransferBase }
+
+  TTransferBase = class(TXmlSerializationObject)
+  private
+    FBaseDocumentDate: string;
+    FBaseDocumentInfo: string;
+    FBaseDocumentName: string;
+    FBaseDocumentNumber: string;
+    procedure SetBaseDocumentDate(AValue: string);
+    procedure SetBaseDocumentInfo(AValue: string);
+    procedure SetBaseDocumentName(AValue: string);
+    procedure SetBaseDocumentNumber(AValue: string);
+  protected
+    procedure InternalRegisterPropertys; override;
+    procedure InternalInitChilds; override;
+  public
+    destructor Destroy; override;
+  published
+    property BaseDocumentName:string read FBaseDocumentName write SetBaseDocumentName;
+    property BaseDocumentNumber:string read FBaseDocumentNumber write SetBaseDocumentNumber;
+    property BaseDocumentDate:string read FBaseDocumentDate write SetBaseDocumentDate;
+    property BaseDocumentInfo:string read FBaseDocumentInfo write SetBaseDocumentInfo;
+  end;
+
+  { TTransferBase820 }
+
+  TTransferBase820 = class(TTransferBase)
+  private
+    FBaseDocumentId: string;
+    procedure SetBaseDocumentId(AValue: string);
+  protected
+    procedure InternalRegisterPropertys; override;
+    procedure InternalInitChilds; override;
+  public
+    destructor Destroy; override;
+  published
+    property BaseDocumentId:string read FBaseDocumentId write SetBaseDocumentId;
+  end;
+  TTransferBase820s = specialize GXMLSerializationObjectList<TTransferBase820>;
+
+  { TTransferBases }
+
+  TTransferBases = class(TXmlSerializationObject)
+  private
+    FTransferBase: TTransferBase820s;
+  protected
+    procedure InternalRegisterPropertys; override;
+    procedure InternalInitChilds; override;
+  public
+    destructor Destroy; override;
+  published
+    property TransferBase:TTransferBase820s read FTransferBase;
+  end;
+
+  { TWaybill }
+
+  TWaybill = class(TXmlSerializationObject)
+  private
+    FTransferDocumentDate: string;
+    FTransferDocumentNumber: string;
+    procedure SetTransferDocumentDate(AValue: string);
+    procedure SetTransferDocumentNumber(AValue: string);
+  protected
+    procedure InternalRegisterPropertys; override;
+    procedure InternalInitChilds; override;
+  public
+    destructor Destroy; override;
+  published
+    property TransferDocumentNumber:string read FTransferDocumentNumber write SetTransferDocumentNumber;
+    property TransferDocumentDate:string read FTransferDocumentDate write SetTransferDocumentDate;
+  end;
+  TWaybillList = specialize GXMLSerializationObjectList<TWaybill>;
+
+
+  { TWaybills }
+
+  TWaybills = class(TXmlSerializationObject)
+  private
+    FWaybill: TWaybillList;
+  protected
+    procedure InternalRegisterPropertys; override;
+    procedure InternalInitChilds; override;
+  public
+    destructor Destroy; override;
+  published
+    property Waybill:TWaybillList read FWaybill;
+  end;
+
+  { TAdditionalInfoId }
+
+  TAdditionalInfoId = class(TXmlSerializationObject)
+  private
+    FAdditionalInfo: string;
+    FInfoFileId: string;
+    procedure SetAdditionalInfo(AValue: string);
+    procedure SetInfoFileId(AValue: string);
+  protected
+    procedure InternalRegisterPropertys; override;
+    procedure InternalInitChilds; override;
+  public
+    destructor Destroy; override;
+  published
+    property AdditionalInfo:string read FAdditionalInfo write SetAdditionalInfo;
+    property InfoFileId:string read FInfoFileId write SetInfoFileId;
+  end;
+
+  { TEmployee }
+
+  TEmployee = class(TXmlSerializationObject)
+  private
+    FEmployeeBase: string;
+    FEmployeeInfo: string;
+    FFirstName: string;
+    FLastName: string;
+    FMiddleName: string;
+    FPosition: string;
+    procedure SetEmployeeBase(AValue: string);
+    procedure SetEmployeeInfo(AValue: string);
+    procedure SetFirstName(AValue: string);
+    procedure SetLastName(AValue: string);
+    procedure SetMiddleName(AValue: string);
+    procedure SetPosition(AValue: string);
+  protected
+    procedure InternalRegisterPropertys; override;
+    procedure InternalInitChilds; override;
+  public
+    destructor Destroy; override;
+  published
+    property Position:string read FPosition write SetPosition;
+    property EmployeeInfo:string read FEmployeeInfo write SetEmployeeInfo;
+    property EmployeeBase:string read FEmployeeBase write SetEmployeeBase;
+    property LastName:string read FLastName write SetLastName;
+    property FirstName:string read FFirstName write SetFirstName;
+    property MiddleName:string read FMiddleName write SetMiddleName;
+  end;
+
+  { TOtherIssuer }
+
+  TOtherIssuer = class(TXmlSerializationObject)
+  private
+    FEmployeeBase: string;
+    FEmployeeInfo: string;
+    FFirstName: string;
+    FLastName: string;
+    FMiddleName: string;
+    FOrganizationBase: string;
+    FOrganizationName: string;
+    FPosition: string;
+    procedure SetEmployeeBase(AValue: string);
+    procedure SetEmployeeInfo(AValue: string);
+    procedure SetFirstName(AValue: string);
+    procedure SetLastName(AValue: string);
+    procedure SetMiddleName(AValue: string);
+    procedure SetOrganizationBase(AValue: string);
+    procedure SetOrganizationName(AValue: string);
+    procedure SetPosition(AValue: string);
+  protected
+    procedure InternalRegisterPropertys; override;
+    procedure InternalInitChilds; override;
+  public
+    destructor Destroy; override;
+  published
+    property Position:string read FPosition write SetPosition;
+    property EmployeeInfo:string read FEmployeeInfo write SetEmployeeInfo;
+    property EmployeeBase:string read FEmployeeBase write SetEmployeeBase;
+    property OrganizationName:string read FOrganizationName write SetOrganizationName;
+    property OrganizationBase:string read FOrganizationBase write SetOrganizationBase;
+    property LastName:string read FLastName write SetLastName;
+    property FirstName:string read FFirstName write SetFirstName;
+    property MiddleName:string read FMiddleName write SetMiddleName;
+  end;
+
+  { TTransferInfo }
+
+  TTransferInfo = class(TXmlSerializationObject)
+  private
+    FAdditionalInfoId: TAdditionalInfoId;
+    FCarrier: TExtendedOrganizationInfoWithHyphens;
+    FCreatedThingInfo: string;
+    FCreatedThingTransferDate: string;
+    FEmployee: TEmployee;
+    FOperationInfo: string;
+    FOperationType: string;
+    FOtherIssuer: TOtherIssuer;
+    FTransferBases: TTransferBases;
+    FTransferDate: string;
+    FTransferEndDate: string;
+    FTransferStartDate: string;
+    FTransferTextInfo: string;
+    FWaybills: TWaybills;
+    procedure SetCreatedThingInfo(AValue: string);
+    procedure SetCreatedThingTransferDate(AValue: string);
+    procedure SetOperationInfo(AValue: string);
+    procedure SetOperationType(AValue: string);
+    procedure SetTransferDate(AValue: string);
+    procedure SetTransferEndDate(AValue: string);
+    procedure SetTransferStartDate(AValue: string);
+    procedure SetTransferTextInfo(AValue: string);
+  protected
+    procedure InternalRegisterPropertys; override;
+    procedure InternalInitChilds; override;
+  public
+    destructor Destroy; override;
+  published
+    property TransferBases:TTransferBases read FTransferBases;
+    property Waybills:TWaybills read FWaybills;
+    property AdditionalInfoId:TAdditionalInfoId read FAdditionalInfoId;
+    property Carrier:TExtendedOrganizationInfoWithHyphens read FCarrier;
+    property Employee:TEmployee read FEmployee;
+    property OtherIssuer:TOtherIssuer read FOtherIssuer;
+    property OperationInfo:string read FOperationInfo write SetOperationInfo;
+    property OperationType:string read FOperationType write SetOperationType;
+    property TransferDate:string read FTransferDate write SetTransferDate;
+    property TransferStartDate:string read FTransferStartDate write SetTransferStartDate;
+    property TransferEndDate:string read FTransferEndDate write SetTransferEndDate;
+    property TransferTextInfo:string read FTransferTextInfo write SetTransferTextInfo;
+    property CreatedThingTransferDate:string read FCreatedThingTransferDate write SetCreatedThingTransferDate;
+    property CreatedThingInfo:string read FCreatedThingInfo write SetCreatedThingInfo;
+  end;
+
 
   { TUniversalTransferDocumentWithHyphens }
 
   TUniversalTransferDocumentWithHyphens = class(TXmlSerializationObject)
   private
+    FAdditionalInfoId: TAdditionalInfoId;
     FBuyers: TBuyers;
     FCircumFormatInvoice: string;
     FConsignees: TConsignees;
@@ -747,16 +1049,19 @@ type
     FDocumentDate: string;
     FDocumentName: string;
     FDocumentNumber: string;
+    FFactorInfo: TExtendedOrganizationInfoWithHyphens;
     FFunct: string;
     FGovernmentContractInfo: string;
     FHyphenRevisionDate: string;
     FHyphenRevisionNumber: string;
+    FPaymentDocuments: TPaymentDocuments;
     FRevisionDate: string;
     FRevisionNumber: string;
     FSellers: TSellers;
     FShippers: TShippers;
     FSigners: TSigner;
     FTable: TInvoiceTable;
+    FTransferInfo: TTransferInfo;
     procedure SetCircumFormatInvoice(AValue: string);
     procedure SetCurrency(AValue: string);
     procedure SetCurrencyRate(AValue: string);
@@ -782,34 +1087,13 @@ type
     property Buyers:TBuyers read FBuyers;
     property Shippers:TShippers read FShippers;
     property Consignees:TConsignees read FConsignees;
-    //property Signers:TSigners read FSigners;
     property Signers:TSigner read FSigners;
-(*
-<xs:element name="UniversalTransferDocumentWithHyphens">
-      <xs:element minOccurs="0" name="PaymentDocuments">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" maxOccurs="unbounded" name="Document" type="PaymentDocumentInfo">
-              <xs:annotation>
-                <xs:documentation>СвПРД - платежно-расчетные документы</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element minOccurs="0" name="AdditionalInfoId" type="AdditionalInfoId">
-        <xs:annotation>
-          <xs:documentation>ИнфПолФХЖ1 - Информационное поле документа</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-*)
+    property PaymentDocuments:TPaymentDocuments read FPaymentDocuments;
+    property AdditionalInfoId:TAdditionalInfoId read FAdditionalInfoId;
     property Table:TInvoiceTable read FTable;
-(*      <xs:element minOccurs="0" name="TransferInfo" type="TransferInfo" />
-      <xs:element minOccurs="0" name="FactorInfo" type="ExtendedOrganizationInfoWithHyphens">
-        <xs:annotation>
-          <xs:documentation>СвФактор - Сведения о факторе</xs:documentation>
-        </xs:annotation>
-      </xs:element>
+    property TransferInfo:TTransferInfo read FTransferInfo;
+    property FactorInfo:TExtendedOrganizationInfoWithHyphens read FFactorInfo;
+(*
       <xs:element minOccurs="0" name="MainAssignMonetaryClaim" type="TransferBase820">
         <xs:annotation>
           <xs:documentation>ОснУстДенТреб - Основание уступки денежного требования</xs:documentation>
@@ -960,88 +1244,6 @@ type
   end;
 
 (*
-  <xs:complexType name="TransferInfo">
-    <xs:all>
-      <xs:element minOccurs="0" name="TransferBases">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element maxOccurs="unbounded" name="TransferBase" type="TransferBase820">
-              <xs:annotation>
-                <xs:documentation>ОснПер - Основание отгрузки</xs:documentation>
-              </xs:annotation>
-            </xs:element>
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element minOccurs="0" name="Waybills" type="Waybills">
-        <xs:annotation>
-          <xs:documentation>ТранНакл - Транспортная накладная</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="AdditionalInfoId" type="AdditionalInfoId">
-        <xs:annotation>
-          <xs:documentation>ИнфПолФХЖ3 - Информационное поле документа</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="Carrier" type="ExtendedOrganizationInfoWithHyphens">
-        <xs:annotation>
-          <xs:documentation>Перевозчик</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="Employee" type="Employee">
-        <xs:annotation>
-          <xs:documentation>РабОргПрод</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element minOccurs="0" name="OtherIssuer" type="OtherIssuer">
-        <xs:annotation>
-          <xs:documentation>ИнЛицо</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:all>
-    <xs:attribute name="OperationInfo" type="string255" use="required">
-      <xs:annotation>
-        <xs:documentation>СодОпер - Содержание операции</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="OperationType" type="string255" use="optional">
-      <xs:annotation>
-        <xs:documentation>ВидОпер - Вид операции</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="TransferDate" type="date" use="optional">
-      <xs:annotation>
-        <xs:documentation>ДатаПер - Дата отгрузки</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="TransferStartDate" type="date" use="optional">
-      <xs:annotation>
-        <xs:documentation>ДатаНач - Дата начала периода оказания услуг (выполнения работ, поставки товаров)
-                </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="TransferEndDate" type="date" use="optional">
-      <xs:annotation>
-        <xs:documentation>ДатаОкон - Дата окончания периода оказания услуг (выполнения работ, поставки товаров)
-                </xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="TransferTextInfo" type="string1000" use="optional">
-      <xs:annotation>
-        <xs:documentation>СвТранГруз - Сведения о транспортировке и грузе</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="CreatedThingTransferDate" type="date" use="optional">
-      <xs:annotation>
-        <xs:documentation>ДатаПерВещ - Дата передачи вещи, изготовленной по договору</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="CreatedThingInfo" type="string1000" use="optional">
-      <xs:annotation>
-        <xs:documentation>СвПерВещ - Сведения о передаче, изготовленной по договору</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
   <xs:simpleType name="inn">
     <xs:restriction base="xs:string">
       <xs:minLength value="10" />
@@ -1068,25 +1270,6 @@ type
       <xs:pattern value="(((0[1-9]{1}|[1-2]{1}[0-9]{1})\.(0[1-9]{1}|1[0-2]{1}))|((30)\.(01|0[3-9]{1}|1[0-2]{1}))|((31)\.(01|03|05|07|08|10|12)))\.(18[0-9]{2}|19[0-9]{2}|20[0-9]{2})" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:complexType name="AdditionalInfoId">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="20" name="AdditionalInfo" type="AdditionalInfo">
-        <xs:annotation>
-          <xs:documentation>ТекстИнф - Текстовая информация</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-    <xs:attribute name="InfoFileId" use="optional">
-      <xs:simpleType>
-        <xs:annotation>
-          <xs:documentation>ИдФайлИнфПол (GUID) - Идентификатор файла информационного поля</xs:documentation>
-        </xs:annotation>
-        <xs:restriction base="xs:string">
-          <xs:maxLength value="36" />
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:attribute>
-  </xs:complexType>
   <xs:complexType name="CustomsDeclaration">
     <xs:attribute name="Country" type="string1000" use="required">
       <xs:annotation>
@@ -1320,29 +1503,6 @@ type
       </xs:annotation>
     </xs:attribute>
   </xs:complexType>
-  <xs:complexType name="PaymentDocumentInfo">
-    <xs:attribute name="Date" type="date" use="required">
-      <xs:annotation>
-        <xs:documentation>ДатаПРД - Дата составления платежно-расчетного документа</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="Number" type="string30" use="required">
-      <xs:annotation>
-        <xs:documentation>НомерПРД - Номер платежно-расчетного документа</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="Total" use="optional">
-      <xs:annotation>
-        <xs:documentation>СуммаПРД - Сумма платежно-расчетного документа</xs:documentation>
-      </xs:annotation>
-      <xs:simpleType>
-        <xs:restriction base="xs:decimal">
-          <xs:totalDigits value="19" />
-          <xs:fractionDigits value="2" />
-        </xs:restriction>
-      </xs:simpleType>
-    </xs:attribute>
-  </xs:complexType>
   <xs:complexType name="GroundInfo">
     <xs:attribute name="Name" type="string255" use="required">
       <xs:annotation>
@@ -1529,112 +1689,511 @@ type
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="Employee">
-    <xs:attribute name="Position" type="string128z" use="required">
-      <xs:annotation>
-        <xs:documentation>Должность</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="EmployeeInfo" type="string255" use="optional">
-      <xs:annotation>
-        <xs:documentation>ИныеСвед - Иные сведения, идентифицирующие физическое лицо</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="EmployeeBase" type="string120" use="optional">
-      <xs:annotation>
-        <xs:documentation>ОснПолн - Основание полномочий предстваителя</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="LastName" type="string60" use="required" />
-    <xs:attribute name="FirstName" type="string60" use="required" />
-    <xs:attribute name="MiddleName" type="string60" use="optional" />
-  </xs:complexType>
-  <xs:complexType name="OtherIssuer">
-    <xs:attribute name="Position" type="string128z" use="optional">
-      <xs:annotation>
-        <xs:documentation>Должность представителя организации</xs:documentation>
-        <xs:documentation>Если заполнено - формируется структура "ПредОргПер".</xs:documentation>
-        <xs:documentation>Если не заполнено – формируется структура "ФЛПер".</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="EmployeeInfo" type="string255" use="optional">
-      <xs:annotation>
-        <xs:documentation>ИныеСвед - Иные сведения, идентифицирующие физическое лицо</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="EmployeeBase" type="string120" use="optional">
-      <xs:annotation>
-        <xs:documentation>ОснПолнПредПер (ОснДоверФЛ) - Основание полномочий представителя</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="OrganizationName" type="string128z" use="optional">
-      <xs:annotation>
-        <xs:documentation>НаимОргПер - Наименование организации, которой доверена передача</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="OrganizationBase" type="string120" use="optional">
-      <xs:annotation>
-        <xs:documentation>ОснДоверОргПер - Основание, по которому организации доверена передача</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="LastName" type="string60" use="required" />
-    <xs:attribute name="FirstName" type="string60" use="required" />
-    <xs:attribute name="MiddleName" type="string60" use="optional" />
-  </xs:complexType>
-  <xs:complexType name="Waybills">
-    <xs:sequence>
-      <xs:element maxOccurs="unbounded" name="Waybill">
-        <xs:complexType>
-          <xs:attribute name="TransferDocumentNumber" type="string255" use="required">
-            <xs:annotation>
-              <xs:documentation>НомерТранНакл - Номер транспортной накладной</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-          <xs:attribute name="TransferDocumentDate" type="date" use="required">
-            <xs:annotation>
-              <xs:documentation>ДатаТранНакл - Дата транспортной накладной</xs:documentation>
-            </xs:annotation>
-          </xs:attribute>
-        </xs:complexType>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="TransferBase">
-    <xs:attribute name="BaseDocumentName" type="string255" use="required">
-      <xs:annotation>
-        <xs:documentation>НаимОсн - Наименование документа-основания отгрузки</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="BaseDocumentNumber" type="string255" use="optional">
-      <xs:annotation>
-        <xs:documentation>НомОсн - Номер документа-основания отгрузки</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="BaseDocumentDate" type="date" use="optional">
-      <xs:annotation>
-        <xs:documentation>ДатаОсн - Дата документа-основания отгрузки</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-    <xs:attribute name="BaseDocumentInfo" type="string1000" use="optional">
-      <xs:annotation>
-        <xs:documentation>ДопСвОсн - Дополнительные сведения документа-основания отгрузки</xs:documentation>
-      </xs:annotation>
-    </xs:attribute>
-  </xs:complexType>
-  <xs:complexType name="TransferBase820">
-    <xs:complexContent mixed="false">
-      <xs:extension base="TransferBase">
-        <xs:attribute name="BaseDocumentId" type="string255" use="optional">
-          <xs:annotation>
-            <xs:documentation>ИдентОсн - Идентификатор документа – основания</xs:documentation>
-          </xs:annotation>
-        </xs:attribute>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
+
 </xs:schema>
 *)
 implementation
+
+{ TOtherIssuer }
+
+procedure TOtherIssuer.SetEmployeeBase(AValue: string);
+begin
+  if FEmployeeBase=AValue then Exit;
+  FEmployeeBase:=AValue;
+  ModifiedProperty('EmployeeBase');
+end;
+
+procedure TOtherIssuer.SetEmployeeInfo(AValue: string);
+begin
+  if FEmployeeInfo=AValue then Exit;
+  FEmployeeInfo:=AValue;
+  ModifiedProperty('EmployeeInfo');
+end;
+
+procedure TOtherIssuer.SetFirstName(AValue: string);
+begin
+  if FFirstName=AValue then Exit;
+  FFirstName:=AValue;
+  ModifiedProperty('FirstName');
+end;
+
+procedure TOtherIssuer.SetLastName(AValue: string);
+begin
+  if FLastName=AValue then Exit;
+  FLastName:=AValue;
+  ModifiedProperty('LastName');
+end;
+
+procedure TOtherIssuer.SetMiddleName(AValue: string);
+begin
+  if FMiddleName=AValue then Exit;
+  FMiddleName:=AValue;
+  ModifiedProperty('MiddleName');
+end;
+
+procedure TOtherIssuer.SetOrganizationBase(AValue: string);
+begin
+  if FOrganizationBase=AValue then Exit;
+  FOrganizationBase:=AValue;
+  ModifiedProperty('OrganizationBase');
+end;
+
+procedure TOtherIssuer.SetOrganizationName(AValue: string);
+begin
+  if FOrganizationName=AValue then Exit;
+  FOrganizationName:=AValue;
+  ModifiedProperty('OrganizationName');
+end;
+
+procedure TOtherIssuer.SetPosition(AValue: string);
+begin
+  if FPosition=AValue then Exit;
+  FPosition:=AValue;
+  ModifiedProperty('Position');
+end;
+
+procedure TOtherIssuer.InternalRegisterPropertys;
+begin
+  inherited InternalRegisterPropertys;
+  RegisterProperty('Position', 'Position', '', '', 1, 1000);
+  RegisterProperty('EmployeeInfo', 'EmployeeInfo', '', '', 1, 1000);
+  RegisterProperty('EmployeeBase', 'EmployeeBase', '', '', 1, 1000);
+  RegisterProperty('OrganizationName', 'OrganizationName', '', '', 1, 1000);
+  RegisterProperty('OrganizationBase', 'OrganizationBase', '', '', 1, 1000);
+  RegisterProperty('LastName', 'LastName', '', '', 1, 1000);
+  RegisterProperty('FirstName', 'FirstName', '', '', 1, 1000);
+  RegisterProperty('MiddleName', 'MiddleName', '', '', 1, 1000);
+end;
+
+procedure TOtherIssuer.InternalInitChilds;
+begin
+  inherited InternalInitChilds;
+end;
+
+destructor TOtherIssuer.Destroy;
+begin
+  inherited Destroy;
+end;
+
+{ TEmployee }
+
+procedure TEmployee.SetEmployeeBase(AValue: string);
+begin
+  if FEmployeeBase=AValue then Exit;
+  FEmployeeBase:=AValue;
+  ModifiedProperty('EmployeeBase');
+end;
+
+procedure TEmployee.SetEmployeeInfo(AValue: string);
+begin
+  if FEmployeeInfo=AValue then Exit;
+  FEmployeeInfo:=AValue;
+  ModifiedProperty('EmployeeInfo');
+end;
+
+procedure TEmployee.SetFirstName(AValue: string);
+begin
+  if FFirstName=AValue then Exit;
+  FFirstName:=AValue;
+  ModifiedProperty('FirstName');
+end;
+
+procedure TEmployee.SetLastName(AValue: string);
+begin
+  if FLastName=AValue then Exit;
+  FLastName:=AValue;
+  ModifiedProperty('LastName');
+end;
+
+procedure TEmployee.SetMiddleName(AValue: string);
+begin
+  if FMiddleName=AValue then Exit;
+  FMiddleName:=AValue;
+  ModifiedProperty('MiddleName');
+end;
+
+procedure TEmployee.SetPosition(AValue: string);
+begin
+  if FPosition=AValue then Exit;
+  FPosition:=AValue;
+  ModifiedProperty('Position');
+end;
+
+procedure TEmployee.InternalRegisterPropertys;
+begin
+  inherited InternalRegisterPropertys;
+  RegisterProperty('Position', 'Position', '', '', 1, 1000);
+  RegisterProperty('EmployeeInfo', 'EmployeeInfo', '', '', 1, 1000);
+  RegisterProperty('EmployeeBase', 'EmployeeBase', '', '', 1, 1000);
+  RegisterProperty('LastName', 'LastName', '', '', 1, 1000);
+  RegisterProperty('FirstName', 'FirstName', '', '', 1, 1000);
+  RegisterProperty('MiddleName', 'MiddleName', '', '', 1, 1000);
+end;
+
+procedure TEmployee.InternalInitChilds;
+begin
+  inherited InternalInitChilds;
+end;
+
+destructor TEmployee.Destroy;
+begin
+  inherited Destroy;
+end;
+
+{ TAdditionalInfoId }
+
+procedure TAdditionalInfoId.SetAdditionalInfo(AValue: string);
+begin
+  if FAdditionalInfo=AValue then Exit;
+  FAdditionalInfo:=AValue;
+  ModifiedProperty('AdditionalInfo');
+end;
+
+procedure TAdditionalInfoId.SetInfoFileId(AValue: string);
+begin
+  if FInfoFileId=AValue then Exit;
+  FInfoFileId:=AValue;
+  ModifiedProperty('InfoFileId');
+end;
+
+procedure TAdditionalInfoId.InternalRegisterPropertys;
+begin
+  inherited InternalRegisterPropertys;
+  RegisterProperty('AdditionalInfo', 'AdditionalInfo', '', '', 1, 1000);
+  RegisterProperty('InfoFileId', 'InfoFileId', '', '', 1, 1000);
+end;
+
+procedure TAdditionalInfoId.InternalInitChilds;
+begin
+  inherited InternalInitChilds;
+end;
+
+destructor TAdditionalInfoId.Destroy;
+begin
+  inherited Destroy;
+end;
+
+{ TWaybills }
+
+procedure TWaybills.InternalRegisterPropertys;
+begin
+  inherited InternalRegisterPropertys;
+  RegisterProperty('Waybill', 'Waybill', '', '', -1, -1);
+end;
+
+procedure TWaybills.InternalInitChilds;
+begin
+  inherited InternalInitChilds;
+  FWaybill:=TWaybillList.Create;
+end;
+
+destructor TWaybills.Destroy;
+begin
+  FreeAndNil(FWaybill);
+  inherited Destroy;
+end;
+
+{ TWaybill }
+
+procedure TWaybill.SetTransferDocumentDate(AValue: string);
+begin
+  if FTransferDocumentDate=AValue then Exit;
+  FTransferDocumentDate:=AValue;
+  ModifiedProperty('TransferDocumentDate');
+end;
+
+procedure TWaybill.SetTransferDocumentNumber(AValue: string);
+begin
+  if FTransferDocumentNumber=AValue then Exit;
+  FTransferDocumentNumber:=AValue;
+  ModifiedProperty('TransferDocumentNumber');
+end;
+
+procedure TWaybill.InternalRegisterPropertys;
+begin
+  inherited InternalRegisterPropertys;
+  RegisterProperty('TransferDocumentNumber', 'TransferDocumentNumber', '', '', 1, 1000);
+  RegisterProperty('TransferDocumentDate', 'TransferDocumentDate', '', '', 1, 1000);
+end;
+
+procedure TWaybill.InternalInitChilds;
+begin
+  inherited InternalInitChilds;
+end;
+
+destructor TWaybill.Destroy;
+begin
+  inherited Destroy;
+end;
+
+{ TTransferBases }
+
+procedure TTransferBases.InternalRegisterPropertys;
+begin
+  inherited InternalRegisterPropertys;
+  RegisterProperty('TransferBase', 'TransferBase', '', '', -1, -1);
+end;
+
+procedure TTransferBases.InternalInitChilds;
+begin
+  inherited InternalInitChilds;
+  FTransferBase:=TTransferBase820s.Create;
+end;
+
+destructor TTransferBases.Destroy;
+begin
+  FreeAndNil(FTransferBase);
+  inherited Destroy;
+end;
+
+{ TTransferBase820 }
+
+procedure TTransferBase820.SetBaseDocumentId(AValue: string);
+begin
+  if FBaseDocumentId=AValue then Exit;
+  FBaseDocumentId:=AValue;
+  ModifiedProperty('BaseDocumentId');
+end;
+
+procedure TTransferBase820.InternalRegisterPropertys;
+begin
+  inherited InternalRegisterPropertys;
+  RegisterProperty('BaseDocumentId', 'BaseDocumentId', '', '', 1, 1000);
+end;
+
+procedure TTransferBase820.InternalInitChilds;
+begin
+  inherited InternalInitChilds;
+end;
+
+destructor TTransferBase820.Destroy;
+begin
+  inherited Destroy;
+end;
+
+{ TTransferBase }
+
+procedure TTransferBase.SetBaseDocumentDate(AValue: string);
+begin
+  if FBaseDocumentDate=AValue then Exit;
+  FBaseDocumentDate:=AValue;
+  ModifiedProperty('BaseDocumentDate');
+end;
+
+procedure TTransferBase.SetBaseDocumentInfo(AValue: string);
+begin
+  if FBaseDocumentInfo=AValue then Exit;
+  FBaseDocumentInfo:=AValue;
+  ModifiedProperty('BaseDocumentInfo');
+end;
+
+procedure TTransferBase.SetBaseDocumentName(AValue: string);
+begin
+  if FBaseDocumentName=AValue then Exit;
+  FBaseDocumentName:=AValue;
+  ModifiedProperty('BaseDocumentName');
+end;
+
+procedure TTransferBase.SetBaseDocumentNumber(AValue: string);
+begin
+  if FBaseDocumentNumber=AValue then Exit;
+  FBaseDocumentNumber:=AValue;
+  ModifiedProperty('BaseDocumentNumber');
+end;
+
+procedure TTransferBase.InternalRegisterPropertys;
+begin
+  inherited InternalRegisterPropertys;
+  RegisterProperty('BaseDocumentName', 'BaseDocumentName', '', '', 1, 1000);
+  RegisterProperty('BaseDocumentNumber', 'BaseDocumentNumber', '', '', 1, 1000);
+  RegisterProperty('BaseDocumentDate', 'BaseDocumentDate', '', '', 1, 1000);
+  RegisterProperty('BaseDocumentInfo', 'BaseDocumentInfo', '', '', 1, 1000);
+end;
+
+procedure TTransferBase.InternalInitChilds;
+begin
+  inherited InternalInitChilds;
+end;
+
+destructor TTransferBase.Destroy;
+begin
+  inherited Destroy;
+end;
+
+{ TTransferInfo }
+
+procedure TTransferInfo.SetCreatedThingInfo(AValue: string);
+begin
+  if FCreatedThingInfo=AValue then Exit;
+  FCreatedThingInfo:=AValue;
+  ModifiedProperty('CreatedThingInfo');
+end;
+
+procedure TTransferInfo.SetCreatedThingTransferDate(AValue: string);
+begin
+  if FCreatedThingTransferDate=AValue then Exit;
+  FCreatedThingTransferDate:=AValue;
+  ModifiedProperty('CreatedThingTransferDate');
+end;
+
+procedure TTransferInfo.SetOperationInfo(AValue: string);
+begin
+  if FOperationInfo=AValue then Exit;
+  FOperationInfo:=AValue;
+  ModifiedProperty('OperationInfo');
+end;
+
+procedure TTransferInfo.SetOperationType(AValue: string);
+begin
+  if FOperationType=AValue then Exit;
+  FOperationType:=AValue;
+  ModifiedProperty('OperationType');
+end;
+
+procedure TTransferInfo.SetTransferDate(AValue: string);
+begin
+  if FTransferDate=AValue then Exit;
+  FTransferDate:=AValue;
+  ModifiedProperty('TransferDate');
+end;
+
+procedure TTransferInfo.SetTransferEndDate(AValue: string);
+begin
+  if FTransferEndDate=AValue then Exit;
+  FTransferEndDate:=AValue;
+  ModifiedProperty('TransferEndDate');
+end;
+
+procedure TTransferInfo.SetTransferStartDate(AValue: string);
+begin
+  if FTransferStartDate=AValue then Exit;
+  FTransferStartDate:=AValue;
+  ModifiedProperty('TransferStartDate');
+end;
+
+procedure TTransferInfo.SetTransferTextInfo(AValue: string);
+begin
+  if FTransferTextInfo=AValue then Exit;
+  FTransferTextInfo:=AValue;
+  ModifiedProperty('TransferTextInfo');
+end;
+
+procedure TTransferInfo.InternalRegisterPropertys;
+begin
+  inherited InternalRegisterPropertys;
+  RegisterProperty('TransferBases', 'TransferBases', '', '', -1, -1);
+  RegisterProperty('Waybills', 'Waybills', '', '', -1, -1);
+  RegisterProperty('AdditionalInfoId', 'AdditionalInfoId', '', '', -1, -1);
+  RegisterProperty('Carrier', 'Carrier', '', '', -1, -1);
+  RegisterProperty('Employee', 'Employee', '', '', -1, -1);
+  RegisterProperty('OperationInfo', 'OperationInfo', '' , '', 1, 1000);
+  RegisterProperty('OperationType', 'OperationType', '' , '', 1, 1000);
+  RegisterProperty('TransferDate', 'TransferDate', '' , '', 1, 1000);
+  RegisterProperty('TransferStartDate', 'TransferStartDate', '' , '', 1, 1000);
+  RegisterProperty('TransferEndDate', 'TransferEndDate', '' , '', 1, 1000);
+  RegisterProperty('TransferTextInfo', 'TransferTextInfo', '' , '', 1, 1000);
+  RegisterProperty('CreatedThingTransferDate', 'CreatedThingTransferDate', '' , '', 1, 1000);
+  RegisterProperty('CreatedThingInfo', 'CreatedThingInfo', '' , '', 1, 1000);
+end;
+
+procedure TTransferInfo.InternalInitChilds;
+begin
+  inherited InternalInitChilds;
+  FTransferBases:=TTransferBases.Create;
+  FWaybills:=TWaybills.Create;
+  FAdditionalInfoId:=TAdditionalInfoId.Create;
+  FCarrier:=TExtendedOrganizationInfoWithHyphens.Create;
+  FEmployee:=TEmployee.Create;
+end;
+
+destructor TTransferInfo.Destroy;
+begin
+  FreeAndNil(FEmployee);
+  FreeAndNil(FCarrier);
+  FreeAndNil(FAdditionalInfoId);
+  FreeAndNil(FWaybills);
+  FreeAndNil(FTransferBases);
+  inherited Destroy;
+end;
+
+{ TPaymentDocuments }
+
+procedure TPaymentDocuments.InternalRegisterPropertys;
+begin
+  inherited InternalRegisterPropertys;
+  RegisterProperty('Documents', 'Document', '', '', -1, -1);
+end;
+
+procedure TPaymentDocuments.InternalInitChilds;
+begin
+  inherited InternalInitChilds;
+  FDocuments:=TPaymentDocumentInfoList.Create;
+end;
+
+destructor TPaymentDocuments.Destroy;
+begin
+  FreeAndNil(FDocuments);
+  inherited Destroy;
+end;
+
+{ TPaymentDocumentInfoList }
+
+function TPaymentDocumentInfoList.GetItem(AIndex: Integer
+  ): TPaymentDocumentInfo;
+begin
+  Result:=TPaymentDocumentInfo(InternalGetItem(AIndex));
+end;
+
+constructor TPaymentDocumentInfoList.Create;
+begin
+  inherited Create(TPaymentDocumentInfo)
+end;
+
+function TPaymentDocumentInfoList.CreateChild: TPaymentDocumentInfo;
+begin
+  Result:=InternalAddObject as TPaymentDocumentInfo;
+end;
+
+{ TPaymentDocumentInfo }
+
+procedure TPaymentDocumentInfo.SetDate(AValue: string);
+begin
+  if FDate=AValue then Exit;
+  FDate:=AValue;
+  ModifiedProperty('Date');
+end;
+
+procedure TPaymentDocumentInfo.SetNumber(AValue: string);
+begin
+  if FNumber=AValue then Exit;
+  FNumber:=AValue;
+  ModifiedProperty('Number');
+end;
+
+procedure TPaymentDocumentInfo.SetTotal(AValue: string);
+begin
+  if FTotal=AValue then Exit;
+  FTotal:=AValue;
+  ModifiedProperty('Total');
+end;
+
+procedure TPaymentDocumentInfo.InternalRegisterPropertys;
+begin
+  inherited InternalRegisterPropertys;
+  RegisterProperty('Date', 'Date', '', '', 1, 1000);
+  RegisterProperty('Number', 'Number', '', '', 1, 1000);
+  RegisterProperty('Total', 'Total', '', '', 1, 1000);
+end;
+
+procedure TPaymentDocumentInfo.InternalInitChilds;
+begin
+  inherited InternalInitChilds;
+end;
+
+destructor TPaymentDocumentInfo.Destroy;
+begin
+  inherited Destroy;
+end;
 
 { TSigner }
 
@@ -3143,6 +3702,10 @@ begin
   RegisterProperty('GovernmentContractInfo', 'GovernmentContractInfo', '', '', 1, 100);
   RegisterProperty('CircumFormatInvoice', 'CircumFormatInvoice', '', '', 1, 100);
   RegisterProperty('Signers', 'Signers', '', '', -1, -1);
+  RegisterProperty('PaymentDocuments', 'PaymentDocuments', '', '', -1, -1);
+  RegisterProperty('TransferInfo', 'TransferInfo', '', '', -1, -1);
+  RegisterProperty('FactorInfo', 'FactorInfo', '', '', -1, -1);
+  RegisterProperty('AdditionalInfoId', 'AdditionalInfoId', '', '', -1, -1);
 end;
 
 procedure TUniversalTransferDocumentWithHyphens.InternalInitChilds;
@@ -3153,6 +3716,10 @@ begin
   FShippers:=TShippers.Create;
   FConsignees:=TConsignees.Create;
   FSigners:=TSigner.Create;
+  FPaymentDocuments:=TPaymentDocuments.Create;
+  FTransferInfo:=TTransferInfo.Create;
+  FFactorInfo:=TExtendedOrganizationInfoWithHyphens.Create;
+  FAdditionalInfoId:=TAdditionalInfoId.Create;
 end;
 
 function TUniversalTransferDocumentWithHyphens.RootNodeName: string;
@@ -3168,6 +3735,10 @@ begin
   FreeAndNil(FTable);
   FreeAndNil(FShippers);
   FreeAndNil(FConsignees);
+  FreeAndNil(FPaymentDocuments);
+  FreeAndNil(FTransferInfo);
+  FreeAndNil(FFactorInfo);
+  FreeAndNil(FAdditionalInfoId);
   inherited Destroy;
 end;
 
