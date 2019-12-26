@@ -1,37 +1,3 @@
-{ Diadoc interface library for FPC and Lazarus
-
-  Copyright (C) 2018-2019 Lagunov Aleksey alexs75@yandex.ru
-
-  base on docs from http://api-docs.diadoc.ru
-
-  This library is free software; you can redistribute it and/or modify it
-  under the terms of the GNU Library General Public License as published by
-  the Free Software Foundation; either version 2 of the License, or (at your
-  option) any later version with the following modification:
-
-  As a special exception, the copyright holders of this library give you
-  permission to link this library with independent modules to produce an
-  executable, regardless of the license terms of these independent modules,and
-  to copy and distribute the resulting executable under terms of your choice,
-  provided that you also meet, for each linked independent module, the terms
-  and conditions of the license of that module. An independent module is a
-  module which is not derived from or based on this library. If you modify
-  this library, you may extend this exception to your version of the library,
-  but you are not obligated to do so. If you do not wish to do so, delete this
-  exception statement from your version.
-
-  This program is distributed in the hope that it will be useful, but WITHOUT
-  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-  FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License
-  for more details.
-
-  You should have received a copy of the GNU Library General Public License
-  along with this library; if not, write to the Free Software Foundation,
-  Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-}
-
-{ Структуры данных базируются на информации http://api-docs.diadoc.ru/ru/latest/DataStructures.html }
-
 unit UserContract_820_05_01_01_Hyphen;
 
 {$mode objfpc}{$H+}
@@ -154,17 +120,7 @@ type
     property HyphenCountry:string read FHyphenCountry write SetHyphenCountry;
     property DeclarationNumber:string read FDeclarationNumber write SetDeclarationNumber;
   end;
-
-  { TCustomsDeclarations }
-
-  TCustomsDeclarations = class(TXmlSerializationObjectList)
-  private
-    function GetItem(AIndex: Integer): TCustomsDeclarationWithHyphens; inline;
-  public
-    constructor Create;
-    function CreateChild:TCustomsDeclarationWithHyphens;
-    property Item[AIndex:Integer]:TCustomsDeclarationWithHyphens read GetItem; default;
-  end;
+  TCustomsDeclarations = specialize GXMLSerializationObjectList<TCustomsDeclarationWithHyphens>;
 
   { TAdditionalInfo }
 
@@ -183,17 +139,7 @@ type
     property Id:string read FId write SetId;
     property Value:string read FValue write SetValue;
   end;
-
-  { TAdditionalInfos }
-
-  TAdditionalInfos = class(TXmlSerializationObjectList)
-  private
-    function GetItem(AIndex: Integer): TAdditionalInfo; inline;
-  public
-    constructor Create;
-    function CreateChild:TAdditionalInfo;
-    property Item[AIndex:Integer]:TAdditionalInfo read GetItem; default;
-  end;
+  TAdditionalInfos = specialize GXMLSerializationObjectList<TAdditionalInfo>;
 
   { TExtendedOrganizationDetails_ManualFilling }
 
@@ -328,17 +274,7 @@ type
     property OrganizationDetails:TExtendedOrganizationDetailsWithHyphens read FOrganizationDetails;
     property OrganizationReference:TExtendedOrganizationReference read FOrganizationReference;
   end;
-
-  { TExtendedOrganizationInfoWithHyphensList }
-
-  TExtendedOrganizationInfoWithHyphensList = class(TXmlSerializationObjectList)
-  private
-    function GetItem(AIndex: Integer): TExtendedOrganizationInfoWithHyphens; inline;
-  public
-    constructor Create;
-    function CreateChild:TExtendedOrganizationInfoWithHyphens;
-    property Item[AIndex:Integer]:TExtendedOrganizationInfoWithHyphens read GetItem; default;
-  end;
+  TExtendedOrganizationInfoWithHyphensList = specialize GXMLSerializationObjectList<TExtendedOrganizationInfoWithHyphens>;
 
   { TShipper }
 
@@ -358,18 +294,7 @@ type
     property OrganizationReference:TExtendedOrganizationReference read FOrganizationReference;
     property SameAsSeller:string read FSameAsSeller write SetSameAsSeller;
   end;
-
-  { TShipperList }
-
-  TShipperList = class(TXmlSerializationObjectList)
-  private
-    function GetItem(AIndex: Integer): TShipper; inline;
-  public
-    constructor Create;
-    function CreateChild:TShipper;
-    property Item[AIndex:Integer]:TShipper read GetItem; default;
-  end;
-
+  TShipperList = specialize GXMLSerializationObjectList<TShipper>;
 
   { TShippers }
 
@@ -451,7 +376,6 @@ type
     property SignerOrgPowersBase:string read FSignerOrgPowersBase write SetSignerOrgPowersBase;
   end;
 
-
   {  TExtendedSignerDetails  }
 
   TExtendedSignerDetails = class(TExtendedSignerDetailsBase)
@@ -495,17 +419,7 @@ type
     property SignerReference:TSignerReference read FSignerReference;
     property SignerDetails:TExtendedSignerDetails_SellerTitle read FSignerDetails;
   end;
-
-  { TSignerList }
-
-  TSignerList = class(TXmlSerializationObjectList)
-  private
-    function GetItem(AIndex: Integer): TSigner; inline;
-  public
-    constructor Create;
-    function CreateChild:TSigner;
-    property Item[AIndex:Integer]:TSigner read GetItem; default;
-  end;
+  TSignerList = specialize GXMLSerializationObjectList<TSigner>;
 
   { TSigners }
 
@@ -520,7 +434,6 @@ type
   published
     property Signer:TSignerList read FSigner;
   end;
-
 
   { TItemTracingInfo }
 
@@ -545,17 +458,7 @@ type
     property Quantity:string read FQuantity write SetQuantity;
     property ItemAddInfo:string read FItemAddInfo write SetItemAddInfo;
   end;
-
-  { TItemTracingInfos }
-
-  TItemTracingInfos = class(TXmlSerializationObjectList)
-  private
-    function GetItem(AIndex: Integer): TItemTracingInfo; inline;
-  public
-    constructor Create;
-    function CreateChild:TItemTracingInfo;
-    property Item[AIndex:Integer]:TItemTracingInfo read GetItem; default;
-  end;
+  TItemTracingInfos = specialize GXMLSerializationObjectList<TItemTracingInfo>;
 
   { TItemIdentificationNumber }
 
@@ -577,17 +480,7 @@ type
     property PackageId:string read FPackageId write SetPackageId;
     property TransPackageId:string read FTransPackageId write SetTransPackageId;
   end;
-
-  { TItemIdentificationNumbers }
-
-  TItemIdentificationNumbers = class(TXmlSerializationObjectList)
-  private
-    function GetItem(AIndex: Integer): TItemIdentificationNumber; inline;
-  public
-    constructor Create;
-    function CreateChild:TItemIdentificationNumber;
-    property Item[AIndex:Integer]:TItemIdentificationNumber read GetItem; default;
-  end;
+  TItemIdentificationNumbers = specialize GXMLSerializationObjectList<TItemIdentificationNumber>;
 
   { TInvoiceItem }
 
@@ -677,17 +570,7 @@ type
     property CatalogCode:string read FCatalogCode write SetCatalogCode;
     property ItemTypeCode:string read FItemTypeCode write SetItemTypeCode;
   end;
-
-  { TInvoiceItems }
-
-  TInvoiceItems = class(TXmlSerializationObjectList)
-  private
-    function GetItem(AIndex: Integer): TInvoiceItem; inline;
-  public
-    constructor Create;
-    function CreateChild:TInvoiceItem;
-    property Item[AIndex:Integer]:TInvoiceItem read GetItem; default;
-  end;
+  TInvoiceItems = specialize GXMLSerializationObjectList<TInvoiceItem>;
 
   { TInvoiceTable }
 
@@ -786,18 +669,7 @@ type
     property Number:string read FNumber write SetNumber;
     property Total:string read FTotal write SetTotal;
   end;
-
-  { TPaymentDocumentInfoList }
-
-  TPaymentDocumentInfoList = class(TXmlSerializationObjectList)
-  private
-    function GetItem(AIndex: Integer): TPaymentDocumentInfo; inline;
-  public
-    constructor Create;
-    function CreateChild:TPaymentDocumentInfo;
-    property Item[AIndex:Integer]:TPaymentDocumentInfo read GetItem; default;
-  end;
-
+  TPaymentDocumentInfoList = specialize GXMLSerializationObjectList<TPaymentDocumentInfo>;
 
   { TPaymentDocuments }
 
@@ -2136,24 +2008,6 @@ begin
   inherited Destroy;
 end;
 
-{ TPaymentDocumentInfoList }
-
-function TPaymentDocumentInfoList.GetItem(AIndex: Integer
-  ): TPaymentDocumentInfo;
-begin
-  Result:=TPaymentDocumentInfo(InternalGetItem(AIndex));
-end;
-
-constructor TPaymentDocumentInfoList.Create;
-begin
-  inherited Create(TPaymentDocumentInfo)
-end;
-
-function TPaymentDocumentInfoList.CreateChild: TPaymentDocumentInfo;
-begin
-  Result:=InternalAddObject as TPaymentDocumentInfo;
-end;
-
 { TPaymentDocumentInfo }
 
 procedure TPaymentDocumentInfo.SetDate(AValue: string);
@@ -2414,23 +2268,6 @@ begin
   inherited Destroy;
 end;
 
-{ TSignerList }
-
-function TSignerList.GetItem(AIndex: Integer): TSigner;
-begin
-  Result:=TSigner(InternalGetItem(AIndex));
-end;
-
-constructor TSignerList.Create;
-begin
-  inherited Create(TSigner)
-end;
-
-function TSignerList.CreateChild: TSigner;
-begin
-  Result:=InternalAddObject as TSigner;
-end;
-
 { TSigners }
 
 procedure TSigners.InternalRegisterPropertys;
@@ -2511,23 +2348,6 @@ begin
   inherited Destroy;
 end;
 
-{ TShippers }
-
-function TShipperList.GetItem(AIndex: Integer): TShipper;
-begin
-  Result:=TShipper(InternalGetItem(AIndex));
-end;
-
-constructor TShipperList.Create;
-begin
-  inherited Create(TShipper)
-end;
-
-function TShipperList.CreateChild: TShipper;
-begin
-  Result:=InternalAddObject as TShipper;
-end;
-
 procedure TShippers.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
@@ -2575,24 +2395,6 @@ begin
   FreeAndNil(FOrganizationDetails);
   FreeAndNil(FOrganizationReference);
   inherited Destroy;
-end;
-
-{ TItemIdentificationNumbers }
-
-function TItemIdentificationNumbers.GetItem(AIndex: Integer
-  ): TItemIdentificationNumber;
-begin
-  Result:=TItemIdentificationNumber(InternalGetItem(AIndex));
-end;
-
-constructor TItemIdentificationNumbers.Create;
-begin
-  inherited Create(TItemIdentificationNumber)
-end;
-
-function TItemIdentificationNumbers.CreateChild: TItemIdentificationNumber;
-begin
-  Result:=InternalAddObject as TItemIdentificationNumber;
 end;
 
 { TItemIdentificationNumber }
@@ -2685,40 +2487,6 @@ begin
   inherited Destroy;
 end;
 
-{ TItemTracingInfos }
-
-function TItemTracingInfos.GetItem(AIndex: Integer): TItemTracingInfo;
-begin
-  Result:=TItemTracingInfo(InternalGetItem(AIndex));
-end;
-
-constructor TItemTracingInfos.Create;
-begin
-  inherited Create(TItemTracingInfo)
-end;
-
-function TItemTracingInfos.CreateChild: TItemTracingInfo;
-begin
-  Result:=InternalAddObject as TItemTracingInfo;
-end;
-
-{ TAdditionalInfos }
-
-function TAdditionalInfos.GetItem(AIndex: Integer): TAdditionalInfo;
-begin
-  Result:=TAdditionalInfo(InternalGetItem(AIndex));
-end;
-
-constructor TAdditionalInfos.Create;
-begin
-  inherited Create(TAdditionalInfo)
-end;
-
-function TAdditionalInfos.CreateChild: TAdditionalInfo;
-begin
-  Result:=InternalAddObject as TAdditionalInfo;
-end;
-
 { TAdditionalInfo }
 
 procedure TAdditionalInfo.SetId(AValue: string);
@@ -2750,24 +2518,6 @@ end;
 destructor TAdditionalInfo.Destroy;
 begin
   inherited Destroy;
-end;
-
-{ TCustomsDeclarations }
-
-function TCustomsDeclarations.GetItem(AIndex: Integer
-  ): TCustomsDeclarationWithHyphens;
-begin
-  Result:=TCustomsDeclarationWithHyphens(InternalGetItem(AIndex));
-end;
-
-constructor TCustomsDeclarations.Create;
-begin
-  inherited Create(TCustomsDeclarationWithHyphens)
-end;
-
-function TCustomsDeclarations.CreateChild: TCustomsDeclarationWithHyphens;
-begin
-  Result:=InternalAddObject as TCustomsDeclarationWithHyphens;
 end;
 
 { TCustomsDeclarationWithHyphens }
@@ -3098,23 +2848,6 @@ destructor TInvoiceTable.Destroy;
 begin
   FreeAndNil(FItems);
   inherited Destroy;
-end;
-
-{ TInvoiceItems }
-
-function TInvoiceItems.GetItem(AIndex: Integer): TInvoiceItem;
-begin
-  Result:=TInvoiceItem(InternalGetItem(AIndex));
-end;
-
-constructor TInvoiceItems.Create;
-begin
-  inherited Create(TInvoiceItem)
-end;
-
-function TInvoiceItems.CreateChild: TInvoiceItem;
-begin
-  Result:=InternalAddObject as TInvoiceItem;
 end;
 
 { TExtendedOrganizationDetails }
@@ -3552,24 +3285,6 @@ begin
   FOrganizationDetails.Free;
   FOrganizationReference.Free;
   inherited Destroy;
-end;
-
-{ TExtendedOrganizationInfoWithHyphensList }
-
-function TExtendedOrganizationInfoWithHyphensList.GetItem(AIndex: Integer
-  ): TExtendedOrganizationInfoWithHyphens;
-begin
-  Result:=TExtendedOrganizationInfoWithHyphens(InternalGetItem(AIndex));
-end;
-
-constructor TExtendedOrganizationInfoWithHyphensList.Create;
-begin
-  inherited Create(TExtendedOrganizationInfoWithHyphens)
-end;
-
-function TExtendedOrganizationInfoWithHyphensList.CreateChild: TExtendedOrganizationInfoWithHyphens;
-begin
-  Result:=InternalAddObject as TExtendedOrganizationInfoWithHyphens;
 end;
 
 { TUniversalTransferDocumentWithHyphens }
