@@ -8,7 +8,7 @@
         <Filename Value="DDActualFormats.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="4"/>
-        <CursorPos X="6" Y="17"/>
+        <CursorPos Y="19"/>
         <UsageCount Value="25"/>
         <Loaded Value="True"/>
       </Unit>
@@ -20,8 +20,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="adMainUnit"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="62"/>
-        <CursorPos X="3" Y="73"/>
+        <TopLine Value="185"/>
+        <CursorPos X="13" Y="82"/>
         <UsageCount Value="25"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -188,10 +188,6 @@
     <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="../../../diadoc_src/diadocapi.pas"/>
-        <Caret Line="5746" TopLine="5727"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
         <Caret Line="5747" TopLine="5727"/>
       </Position>
       <Position>
@@ -306,21 +302,14 @@
         <Filename Value="admainunit.pas"/>
         <Caret Line="107" TopLine="96"/>
       </Position>
+      <Position>
+        <Filename Value="admainunit.pas"/>
+        <Caret Line="82" Column="13" TopLine="62"/>
+      </Position>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
       <Modes ActiveMode=""/>
     </RunParams>
   </ProjectSession>
-  <Debugging>
-    <BreakPoints>
-      <Item>
-        <Kind Value="bpkSource"/>
-        <WatchScope Value="wpsLocal"/>
-        <WatchKind Value="wpkWrite"/>
-        <Source Value="DDActualFormats.lpr"/>
-        <Line Value="19"/>
-      </Item>
-    </BreakPoints>
-  </Debugging>
 </CONFIG>
