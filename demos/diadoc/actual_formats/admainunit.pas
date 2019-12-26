@@ -34,7 +34,6 @@ type
     TreeView1: TTreeView;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
-    procedure DiadocAPI1HttpStatus(Sender: TDiadocAPI; AHTTP: THTTPSend);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure TreeView1Click(Sender: TObject);
@@ -66,10 +65,12 @@ procedure TForm1.Button2Click(Sender: TObject);
 var
   M: TMemoryStream;
 begin
+(*
   //typeNamedId=Invoice&function=default&version=utd820_05_01_01_hyphen&titleIndex=0&contentType=UserContractXsd
   M:=DiadocAPI1.GetContent('Invoice', 'default', 'utd820_05_01_01_hyphen', 0, UserContractXsd);//'UserContractXsd');
   if Assigned(M) then
   begin
+
     M.SaveToFile('/home/alexs/3/Invoice.xsd');
     M.Free;
   end
@@ -85,12 +86,7 @@ begin
   end
   else
     Memo1.Lines.Assign(DiadocAPI1.ResultText);
-end;
-
-procedure TForm1.DiadocAPI1HttpStatus(Sender: TDiadocAPI; AHTTP: THTTPSend);
-begin
-//  if Assigned(AHTTP.Document) then
-//    AHTTP.Document.SaveToFile('/home/alexs/3/aaa.xml');
+*)
 end;
 
 procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -103,9 +99,6 @@ procedure TForm1.FormCreate(Sender: TObject);
 begin
   Memo1.Lines.Clear;
 end;
-
-type
-  TDiadocAPIHack = class(TDiadocAPI);
 
 procedure TForm1.TreeView1Click(Sender: TObject);
 var
@@ -158,15 +151,6 @@ begin
               if (DTD.Name = 'UniversalTransferDocument') and (DFV.Version = 'utd820_05_01_01_hyphen') and (DF.Name = 'СЧФ') then
               begin
                 Memo1.Lines.Add('      **** ');
-(*                DiadocAPI1.OnHttpStatus:=@DiadocAPI1HttpStatus;
-                if TDiadocAPIHack(DiadocAPI1).SendCommand(hmGET, '', DFVT.UserDataXsdUrl, nil) then
-                begin
-                  Memo1.Lines.Add('+++Успех+++');
-                  ;
-                end
-                else
-                  Memo1.Lines.Add('!!Error!!');
-                DiadocAPI1.OnHttpStatus:=nil; *)
               end;
             end;
             Memo1.Lines.Add('      **** ');
