@@ -1627,14 +1627,14 @@ end;
 procedure TOtherIssuer.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('Position', 'Position', '', '', 1, 1000);
-  RegisterProperty('EmployeeInfo', 'EmployeeInfo', '', '', 1, 1000);
-  RegisterProperty('EmployeeBase', 'EmployeeBase', '', '', 1, 1000);
-  RegisterProperty('OrganizationName', 'OrganizationName', '', '', 1, 1000);
-  RegisterProperty('OrganizationBase', 'OrganizationBase', '', '', 1, 1000);
-  RegisterProperty('LastName', 'LastName', '', '', 1, 1000);
-  RegisterProperty('FirstName', 'FirstName', '', '', 1, 1000);
-  RegisterProperty('MiddleName', 'MiddleName', '', '', 1, 1000);
+  RegisterProperty('Position', 'Position', [], '', 1, 1000);
+  RegisterProperty('EmployeeInfo', 'EmployeeInfo', [], '', 1, 1000);
+  RegisterProperty('EmployeeBase', 'EmployeeBase', [], '', 1, 1000);
+  RegisterProperty('OrganizationName', 'OrganizationName', [], '', 1, 1000);
+  RegisterProperty('OrganizationBase', 'OrganizationBase', [], '', 1, 1000);
+  RegisterProperty('LastName', 'LastName', [], '', 1, 1000);
+  RegisterProperty('FirstName', 'FirstName', [], '', 1, 1000);
+  RegisterProperty('MiddleName', 'MiddleName', [], '', 1, 1000);
 end;
 
 procedure TOtherIssuer.InternalInitChilds;
@@ -1694,12 +1694,12 @@ end;
 procedure TEmployee.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('Position', 'Position', '', '', 1, 1000);
-  RegisterProperty('EmployeeInfo', 'EmployeeInfo', '', '', 1, 1000);
-  RegisterProperty('EmployeeBase', 'EmployeeBase', '', '', 1, 1000);
-  RegisterProperty('LastName', 'LastName', '', '', 1, 1000);
-  RegisterProperty('FirstName', 'FirstName', '', '', 1, 1000);
-  RegisterProperty('MiddleName', 'MiddleName', '', '', 1, 1000);
+  RegisterProperty('Position', 'Position', [], '', 1, 1000);
+  RegisterProperty('EmployeeInfo', 'EmployeeInfo', [], '', 1, 1000);
+  RegisterProperty('EmployeeBase', 'EmployeeBase', [], '', 1, 1000);
+  RegisterProperty('LastName', 'LastName', [], '', 1, 1000);
+  RegisterProperty('FirstName', 'FirstName', [], '', 1, 1000);
+  RegisterProperty('MiddleName', 'MiddleName', [], '', 1, 1000);
 end;
 
 procedure TEmployee.InternalInitChilds;
@@ -1731,8 +1731,8 @@ end;
 procedure TAdditionalInfoId.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('AdditionalInfo', 'AdditionalInfo', '', '', 1, 1000);
-  RegisterProperty('InfoFileId', 'InfoFileId', '', '', 1, 1000);
+  RegisterProperty('AdditionalInfo', 'AdditionalInfo', [], '', 1, 1000);
+  RegisterProperty('InfoFileId', 'InfoFileId', [], '', 1, 1000);
 end;
 
 procedure TAdditionalInfoId.InternalInitChilds;
@@ -1750,7 +1750,7 @@ end;
 procedure TWaybills.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('Waybill', 'Waybill', '', '', -1, -1);
+  RegisterProperty('Waybill', 'Waybill', [], '', -1, -1);
 end;
 
 procedure TWaybills.InternalInitChilds;
@@ -1784,8 +1784,8 @@ end;
 procedure TWaybill.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('TransferDocumentNumber', 'TransferDocumentNumber', '', '', 1, 1000);
-  RegisterProperty('TransferDocumentDate', 'TransferDocumentDate', '', '', 1, 1000);
+  RegisterProperty('TransferDocumentNumber', 'TransferDocumentNumber', [], '', 1, 1000);
+  RegisterProperty('TransferDocumentDate', 'TransferDocumentDate', [], '', 1, 1000);
 end;
 
 procedure TWaybill.InternalInitChilds;
@@ -1803,7 +1803,7 @@ end;
 procedure TTransferBases.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('TransferBase', 'TransferBase', '', '', -1, -1);
+  RegisterProperty('TransferBase', 'TransferBase', [], '', -1, -1);
 end;
 
 procedure TTransferBases.InternalInitChilds;
@@ -1830,7 +1830,7 @@ end;
 procedure TTransferBase820.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('BaseDocumentId', 'BaseDocumentId', '', '', 1, 1000);
+  RegisterProperty('BaseDocumentId', 'BaseDocumentId', [], '', 1, 1000);
 end;
 
 procedure TTransferBase820.InternalInitChilds;
@@ -1876,10 +1876,10 @@ end;
 procedure TTransferBase.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('BaseDocumentName', 'BaseDocumentName', '', '', 1, 1000);
-  RegisterProperty('BaseDocumentNumber', 'BaseDocumentNumber', '', '', 1, 1000);
-  RegisterProperty('BaseDocumentDate', 'BaseDocumentDate', '', '', 1, 1000);
-  RegisterProperty('BaseDocumentInfo', 'BaseDocumentInfo', '', '', 1, 1000);
+  RegisterProperty('BaseDocumentName', 'BaseDocumentName', [], '', 1, 1000);
+  RegisterProperty('BaseDocumentNumber', 'BaseDocumentNumber', [], '', 1, 1000);
+  RegisterProperty('BaseDocumentDate', 'BaseDocumentDate', [], '', 1, 1000);
+  RegisterProperty('BaseDocumentInfo', 'BaseDocumentInfo', [], '', 1, 1000);
 end;
 
 procedure TTransferBase.InternalInitChilds;
@@ -1953,19 +1953,19 @@ end;
 procedure TTransferInfo.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('TransferBases', 'TransferBases', '', '', -1, -1);
-  RegisterProperty('Waybills', 'Waybills', '', '', -1, -1);
-  RegisterProperty('AdditionalInfoId', 'AdditionalInfoId', '', '', -1, -1);
-  RegisterProperty('Carrier', 'Carrier', '', '', -1, -1);
-  RegisterProperty('Employee', 'Employee', '', '', -1, -1);
-  RegisterProperty('OperationInfo', 'OperationInfo', '' , '', 1, 1000);
-  RegisterProperty('OperationType', 'OperationType', '' , '', 1, 1000);
-  RegisterProperty('TransferDate', 'TransferDate', '' , '', 1, 1000);
-  RegisterProperty('TransferStartDate', 'TransferStartDate', '' , '', 1, 1000);
-  RegisterProperty('TransferEndDate', 'TransferEndDate', '' , '', 1, 1000);
-  RegisterProperty('TransferTextInfo', 'TransferTextInfo', '' , '', 1, 1000);
-  RegisterProperty('CreatedThingTransferDate', 'CreatedThingTransferDate', '' , '', 1, 1000);
-  RegisterProperty('CreatedThingInfo', 'CreatedThingInfo', '' , '', 1, 1000);
+  RegisterProperty('TransferBases', 'TransferBases', [], '', -1, -1);
+  RegisterProperty('Waybills', 'Waybills', [], '', -1, -1);
+  RegisterProperty('AdditionalInfoId', 'AdditionalInfoId', [], '', -1, -1);
+  RegisterProperty('Carrier', 'Carrier', [], '', -1, -1);
+  RegisterProperty('Employee', 'Employee', [], '', -1, -1);
+  RegisterProperty('OperationInfo', 'OperationInfo', [] , '', 1, 1000);
+  RegisterProperty('OperationType', 'OperationType', [], '', 1, 1000);
+  RegisterProperty('TransferDate', 'TransferDate', [], '', 1, 1000);
+  RegisterProperty('TransferStartDate', 'TransferStartDate', [], '', 1, 1000);
+  RegisterProperty('TransferEndDate', 'TransferEndDate', [], '', 1, 1000);
+  RegisterProperty('TransferTextInfo', 'TransferTextInfo', [], '', 1, 1000);
+  RegisterProperty('CreatedThingTransferDate', 'CreatedThingTransferDate', [], '', 1, 1000);
+  RegisterProperty('CreatedThingInfo', 'CreatedThingInfo', [], '', 1, 1000);
 end;
 
 procedure TTransferInfo.InternalInitChilds;
@@ -1993,7 +1993,7 @@ end;
 procedure TPaymentDocuments.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('Documents', 'Document', '', '', -1, -1);
+  RegisterProperty('Documents', 'Document', [], '', -1, -1);
 end;
 
 procedure TPaymentDocuments.InternalInitChilds;
@@ -2034,9 +2034,9 @@ end;
 procedure TPaymentDocumentInfo.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('Date', 'Date', '', '', 1, 1000);
-  RegisterProperty('Number', 'Number', '', '', 1, 1000);
-  RegisterProperty('Total', 'Total', '', '', 1, 1000);
+  RegisterProperty('Date', 'Date', [], '', 1, 1000);
+  RegisterProperty('Number', 'Number', [], '', 1, 1000);
+  RegisterProperty('Total', 'Total', [], '', 1, 1000);
 end;
 
 procedure TPaymentDocumentInfo.InternalInitChilds;
@@ -2054,8 +2054,8 @@ end;
 procedure TSigner.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('SignerDetails', 'SignerDetails', '', '', -1, -1);
-  RegisterProperty('SignerReference', 'SignerReference', '', '', -1, -1);
+  RegisterProperty('SignerDetails', 'SignerDetails', [], '', -1, -1);
+  RegisterProperty('SignerReference', 'SignerReference', [], '', -1, -1);
 end;
 
 procedure TSigner.InternalInitChilds;
@@ -2084,7 +2084,7 @@ end;
 procedure TExtendedSignerDetails_SellerTitle.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('SignerPowers', 'SignerPowers', '', '', 1, 100);
+  RegisterProperty('SignerPowers', 'SignerPowers', [], '', 1, 100);
 end;
 
 procedure TExtendedSignerDetails_SellerTitle.InternalInitChilds;
@@ -2109,7 +2109,7 @@ end;
 procedure TExtendedSignerDetails.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('SignerStatus', 'SignerStatus', '', '', 1, 100);
+  RegisterProperty('SignerStatus', 'SignerStatus', [], '', 1, 100);
 end;
 
 procedure TExtendedSignerDetails.InternalInitChilds;
@@ -2204,17 +2204,17 @@ end;
 procedure TExtendedSignerDetailsBase.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('LastName', 'LastName', '', '', 1, 100);
-  RegisterProperty('FirstName', 'FirstName', '', '', 1, 100);
-  RegisterProperty('MiddleName', 'MiddleName', '', '', 1, 100);
-  RegisterProperty('Position', 'Position', '', '', 1, 100);
-  RegisterProperty('Inn', 'Inn', '', '', 1, 100);
-  RegisterProperty('RegistrationCertificate', 'RegistrationCertificate', '', '', 1, 100);
-  RegisterProperty('SignerType', 'SignerType', '', '', 1, 100);
-  RegisterProperty('SignerOrganizationName', 'SignerOrganizationName', '', '', 1, 100);
-  RegisterProperty('SignerInfo', 'SignerInfo', '', '', 1, 100);
-  RegisterProperty('SignerPowersBase', 'SignerPowersBase', '', '', 1, 100);
-  RegisterProperty('SignerOrgPowersBase', 'SignerOrgPowersBase', '', '', 1, 100);
+  RegisterProperty('LastName', 'LastName', [], '', 1, 100);
+  RegisterProperty('FirstName', 'FirstName', [], '', 1, 100);
+  RegisterProperty('MiddleName', 'MiddleName', [], '', 1, 100);
+  RegisterProperty('Position', 'Position', [], '', 1, 100);
+  RegisterProperty('Inn', 'Inn', [], '', 1, 100);
+  RegisterProperty('RegistrationCertificate', 'RegistrationCertificate', [], '', 1, 100);
+  RegisterProperty('SignerType', 'SignerType', [], '', 1, 100);
+  RegisterProperty('SignerOrganizationName', 'SignerOrganizationName', [], '', 1, 100);
+  RegisterProperty('SignerInfo', 'SignerInfo', [], '', 1, 100);
+  RegisterProperty('SignerPowersBase', 'SignerPowersBase', [], '', 1, 100);
+  RegisterProperty('SignerOrgPowersBase', 'SignerOrgPowersBase', [], '', 1, 100);
 end;
 
 procedure TExtendedSignerDetailsBase.InternalInitChilds;
@@ -2253,9 +2253,9 @@ end;
 procedure TSignerReference.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('BoxId', 'BoxId', '', '', 1, 1000);
-  RegisterProperty('CertificateBytes', 'CertificateBytes', '', '', 1, 1000);
-  RegisterProperty('CertificateThumbprint', 'CertificateThumbprint', '', '', 1, 1000);
+  RegisterProperty('BoxId', 'BoxId', [], '', 1, 1000);
+  RegisterProperty('CertificateBytes', 'CertificateBytes', [], '', 1, 1000);
+  RegisterProperty('CertificateThumbprint', 'CertificateThumbprint', [], '', 1, 1000);
 end;
 
 procedure TSignerReference.InternalInitChilds;
@@ -2273,7 +2273,7 @@ end;
 procedure TSigners.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('Signer', 'Signer', '', '', -1, -1);
+  RegisterProperty('Signer', 'Signer', [], '', -1, -1);
 end;
 
 procedure TSigners.InternalInitChilds;
@@ -2293,7 +2293,7 @@ end;
 procedure TConsignees.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('Consignee', 'Consignee', '', '', -1, -1);
+  RegisterProperty('Consignee', 'Consignee', [], '', -1, -1);
 end;
 
 procedure TConsignees.InternalInitChilds;
@@ -2313,7 +2313,7 @@ end;
 procedure TBuyers.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('Buyer', 'Buyer', '', '', -1, -1);
+  RegisterProperty('Buyer', 'Buyer', [], '', -1, -1);
 end;
 
 procedure TBuyers.InternalInitChilds;
@@ -2333,7 +2333,7 @@ end;
 procedure TSellers.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('Seller', 'Seller', '' , '', -1, -1);
+  RegisterProperty('Seller', 'Seller', [], '', -1, -1);
 end;
 
 procedure TSellers.InternalInitChilds;
@@ -2351,7 +2351,7 @@ end;
 procedure TShippers.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('Shipper', 'Shipper', '', '', -1, -1);
+  RegisterProperty('Shipper', 'Shipper', [], '', -1, -1);
 end;
 
 procedure TShippers.InternalInitChilds;
@@ -2378,9 +2378,9 @@ end;
 procedure TShipper.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('OrganizationDetails', 'OrganizationDetails', '', '', -1, -1);
-  RegisterProperty('OrganizationReference', 'OrganizationReference', '', '', -1, -1);
-  RegisterProperty('SameAsSeller', 'SameAsSeller', '', '', 1, 1000);
+  RegisterProperty('OrganizationDetails', 'OrganizationDetails', [], '', -1, -1);
+  RegisterProperty('OrganizationReference', 'OrganizationReference', [], '', -1, -1);
+  RegisterProperty('SameAsSeller', 'SameAsSeller', [], '', 1, 1000);
 end;
 
 procedure TShipper.InternalInitChilds;
@@ -2423,9 +2423,9 @@ end;
 procedure TItemIdentificationNumber.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('Unt', 'Unit', '', '', 1, 1000);
-  RegisterProperty('PackageId', 'PackageId', '', '', 1, 1000);
-  RegisterProperty('TransPackageId', 'TransPackageId', '', '', 1, 1000);
+  RegisterProperty('Unt', 'Unit', [], '', 1, 1000);
+  RegisterProperty('PackageId', 'PackageId', [], '', 1, 1000);
+  RegisterProperty('TransPackageId', 'TransPackageId', [], '', 1, 1000);
 end;
 
 procedure TItemIdentificationNumber.InternalInitChilds;
@@ -2471,10 +2471,10 @@ end;
 procedure TItemTracingInfo.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('RegNumberUnit', 'RegNumberUnit', '', '', 1, 1000);
-  RegisterProperty('Unt', 'Unit', '', '', 1, 1000);
-  RegisterProperty('Quantity', 'Quantity', '', '', 1, 1000);
-  RegisterProperty('ItemAddInfo', 'ItemAddInfo', '', '', 1, 1000);
+  RegisterProperty('RegNumberUnit', 'RegNumberUnit', [], '', 1, 1000);
+  RegisterProperty('Unt', 'Unit', [], '', 1, 1000);
+  RegisterProperty('Quantity', 'Quantity', [], '', 1, 1000);
+  RegisterProperty('ItemAddInfo', 'ItemAddInfo', [], '', 1, 1000);
 end;
 
 procedure TItemTracingInfo.InternalInitChilds;
@@ -2506,8 +2506,8 @@ end;
 procedure TAdditionalInfo.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('Id', 'Id', '', '', 1, 1000);
-  RegisterProperty('Value', 'Value', '', '', 1, 1000);
+  RegisterProperty('Id', 'Id', [], '', 1, 1000);
+  RegisterProperty('Value', 'Value', [], '', 1, 1000);
 end;
 
 procedure TAdditionalInfo.InternalInitChilds;
@@ -2546,9 +2546,9 @@ end;
 procedure TCustomsDeclarationWithHyphens.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('Country', 'Country', '', '', 1, 1000);
-  RegisterProperty('HyphenCountry', 'HyphenCountry', '', '', 1, 1000);
-  RegisterProperty('DeclarationNumber', 'DeclarationNumber', '', '', 1, 1000);
+  RegisterProperty('Country', 'Country', [], '', 1, 1000);
+  RegisterProperty('HyphenCountry', 'HyphenCountry', [], '', 1, 1000);
+  RegisterProperty('DeclarationNumber', 'DeclarationNumber', [], '', 1, 1000);
 end;
 
 procedure TCustomsDeclarationWithHyphens.InternalInitChilds;
@@ -2727,33 +2727,33 @@ end;
 procedure TInvoiceItem.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('CustomsDeclarations', 'CustomsDeclarations', '', '', -1, -1);
-  RegisterProperty('AdditionalInfos', 'AdditionalInfos', '', '', -1, -1);
-  RegisterProperty('ItemTracingInfos', 'ItemTracingInfos', '', '', -1, -1);
-  RegisterProperty('ItemIdentificationNumbers', 'ItemIdentificationNumbers', '', '', -1, -1);
-  RegisterProperty('Product', 'Product', '', '', 1, 1000);
-  RegisterProperty('Unt', 'Unit', '', '', 1, 1000);
-  RegisterProperty('HyphenUnit', 'HyphenUnit', '', '', 1, 1000);
-  RegisterProperty('UnitName', 'UnitName', '', '', 1, 1000);
-  RegisterProperty('Quantity', 'Quantity', '', '', 1, 1000);
-  RegisterProperty('Price', 'Price', '', '', 1, 1000);
-  RegisterProperty('Excise', 'Excise', '', '', 1, 1000);
-  RegisterProperty('TaxRate', 'TaxRate', '', '', 1, 1000);
-  RegisterProperty('SubtotalWithVatExcluded', 'SubtotalWithVatExcluded', '', '', 1, 1000);
-  RegisterProperty('Vat', 'Vat', '', '', 1, 1000);
-  RegisterProperty('WithoutVat', 'WithoutVat', '', '', 1, 1000);
-  RegisterProperty('HyphenVat', 'HyphenVat', '', '', 1, 1000);
-  RegisterProperty('Subtotal', 'Subtotal', '', '', 1, 1000);
-  RegisterProperty('HyphenSubtotal', 'HyphenSubtotal', '', '', 1, 1000);
-  RegisterProperty('ItemMark', 'ItemMark', '', '', 1, 1000);
-  RegisterProperty('AdditionalProperty', 'AdditionalProperty', '', '', 1, 1000);
-  RegisterProperty('ItemVendorCode', 'ItemVendorCode', '', '', 1, 1000);
-  RegisterProperty('ItemToRelease', 'ItemToRelease', '', '', 1, 1000);
-  RegisterProperty('ItemCharact', 'ItemCharact', '', '', 1, 1000);
-  RegisterProperty('ItemArticle', 'ItemArticle', '', '', 1, 1000);
-  RegisterProperty('ItemKind', 'ItemKind', '', '', 1, 1000);
-  RegisterProperty('CatalogCode', 'CatalogCode', '', '', 1, 1000);
-  RegisterProperty('ItemTypeCode', 'ItemTypeCode', '', '', 1, 1000);
+  RegisterProperty('CustomsDeclarations', 'CustomsDeclarations', [], '', -1, -1);
+  RegisterProperty('AdditionalInfos', 'AdditionalInfos', [], '', -1, -1);
+  RegisterProperty('ItemTracingInfos', 'ItemTracingInfos', [], '', -1, -1);
+  RegisterProperty('ItemIdentificationNumbers', 'ItemIdentificationNumbers', [], '', -1, -1);
+  RegisterProperty('Product', 'Product', [], '', 1, 1000);
+  RegisterProperty('Unt', 'Unit', [], '', 1, 1000);
+  RegisterProperty('HyphenUnit', 'HyphenUnit', [], '', 1, 1000);
+  RegisterProperty('UnitName', 'UnitName', [], '', 1, 1000);
+  RegisterProperty('Quantity', 'Quantity', [], '', 1, 1000);
+  RegisterProperty('Price', 'Price', [], '', 1, 1000);
+  RegisterProperty('Excise', 'Excise', [], '', 1, 1000);
+  RegisterProperty('TaxRate', 'TaxRate', [], '', 1, 1000);
+  RegisterProperty('SubtotalWithVatExcluded', 'SubtotalWithVatExcluded', [], '', 1, 1000);
+  RegisterProperty('Vat', 'Vat', [], '', 1, 1000);
+  RegisterProperty('WithoutVat', 'WithoutVat', [], '', 1, 1000);
+  RegisterProperty('HyphenVat', 'HyphenVat', [], '', 1, 1000);
+  RegisterProperty('Subtotal', 'Subtotal', [], '', 1, 1000);
+  RegisterProperty('HyphenSubtotal', 'HyphenSubtotal', [], '', 1, 1000);
+  RegisterProperty('ItemMark', 'ItemMark', [], '', 1, 1000);
+  RegisterProperty('AdditionalProperty', 'AdditionalProperty', [], '', 1, 1000);
+  RegisterProperty('ItemVendorCode', 'ItemVendorCode', [], '', 1, 1000);
+  RegisterProperty('ItemToRelease', 'ItemToRelease', [], '', 1, 1000);
+  RegisterProperty('ItemCharact', 'ItemCharact', [], '', 1, 1000);
+  RegisterProperty('ItemArticle', 'ItemArticle', [], '', 1, 1000);
+  RegisterProperty('ItemKind', 'ItemKind', [], '', 1, 1000);
+  RegisterProperty('CatalogCode', 'CatalogCode', [], '', 1, 1000);
+  RegisterProperty('ItemTypeCode', 'ItemTypeCode', [], '', 1, 1000);
 end;
 
 procedure TInvoiceItem.InternalInitChilds;
@@ -2828,14 +2828,14 @@ end;
 procedure TInvoiceTable.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('Items', 'Item', '', '', -1, -1);
-  RegisterProperty('TotalWithVatExcluded', 'TotalWithVatExcluded', '', '', 1, 1000);
-  RegisterProperty('Vat', 'Vat', '', '', 1, 1000);
-  RegisterProperty('WithoutVat', 'WithoutVat', '', '', 1, 1000);
-  RegisterProperty('HyphenVat', 'HyphenVat', '', '', 1, 1000);
-  RegisterProperty('Total', 'Total', '', '', 1, 1000);
-  RegisterProperty('HyphenTotal', 'HyphenTotal', '', '', 1, 1000);
-  RegisterProperty('TotalNet', 'TotalNet', '', '', 1, 1000);
+  RegisterProperty('Items', 'Item', [], '', -1, -1);
+  RegisterProperty('TotalWithVatExcluded', 'TotalWithVatExcluded', [], '', 1, 1000);
+  RegisterProperty('Vat', 'Vat', [], '', 1, 1000);
+  RegisterProperty('WithoutVat', 'WithoutVat', [], '', 1, 1000);
+  RegisterProperty('HyphenVat', 'HyphenVat', [], '', 1, 1000);
+  RegisterProperty('Total', 'Total', [], '', 1, 1000);
+  RegisterProperty('HyphenTotal', 'HyphenTotal', [], '', 1, 1000);
+  RegisterProperty('TotalNet', 'TotalNet', [], '', 1, 1000);
 end;
 
 procedure TInvoiceTable.InternalInitChilds;
@@ -2883,11 +2883,11 @@ end;
 procedure TExtendedOrganizationDetails.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('Address', 'Address', '', '', -1, -1);
-  RegisterProperty('OrgName', 'OrgName', '', '', 1, 1000);
-  RegisterProperty('Inn', 'Inn', '', '', 1, 1000);
-  RegisterProperty('Kpp', 'Kpp', '', '', 1, 1000);
-  RegisterProperty('FnsParticipantId', 'FnsParticipantId', '', '', 1, 1000);
+  RegisterProperty('Address', 'Address', [], '', -1, -1);
+  RegisterProperty('OrgName', 'OrgName', [], '', 1, 1000);
+  RegisterProperty('Inn', 'Inn', [], '', 1, 1000);
+  RegisterProperty('Kpp', 'Kpp', [], '', 1, 1000);
+  RegisterProperty('FnsParticipantId', 'FnsParticipantId', [], '', 1, 1000);
 end;
 
 procedure TExtendedOrganizationDetails.InternalInitChilds;
@@ -2914,9 +2914,9 @@ end;
 procedure TAddress.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('RussianAddress', 'RussianAddress', '', '', -1, -1);
-  RegisterProperty('ForeignAddress', 'ForeignAddress', '', '', -1, -1);
-  RegisterProperty('AddressCode', 'AddressCode', '', '', 1, 100);
+  RegisterProperty('RussianAddress', 'RussianAddress', [], '', -1, -1);
+  RegisterProperty('ForeignAddress', 'ForeignAddress', [], '', -1, -1);
+  RegisterProperty('AddressCode', 'AddressCode', [], '', 1, 100);
 end;
 
 procedure TAddress.InternalInitChilds;
@@ -2952,8 +2952,8 @@ end;
 procedure TForeignAddress.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('Country', 'Country', '', '', 1, 1000);
-  RegisterProperty('Address', 'Address', '', '', 1, 1000);
+  RegisterProperty('Country', 'Country', [], '', 1, 1000);
+  RegisterProperty('Address', 'Address', [], '', 1, 1000);
 end;
 
 procedure TForeignAddress.InternalInitChilds;
@@ -3034,15 +3034,15 @@ end;
 procedure TRussianAddress.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('ZipCode', 'ZipCode', '', '', 1, 1000);
-  RegisterProperty('Region', 'Region', '', '', 1, 1000);
-  RegisterProperty('Territory', 'Territory', '', '', 1, 1000);
-  RegisterProperty('City', 'City', '', '', 1, 1000);
-  RegisterProperty('Locality', 'Locality', '', '', 1, 1000);
-  RegisterProperty('Street', 'Street', '', '', 1, 1000);
-  RegisterProperty('Building', 'Building', '', '', 1, 1000);
-  RegisterProperty('Block', 'Block', '', '', 1, 1000);
-  RegisterProperty('Apartment', 'Apartment', '', '', 1, 1000);
+  RegisterProperty('ZipCode', 'ZipCode', [], '', 1, 1000);
+  RegisterProperty('Region', 'Region', [], '', 1, 1000);
+  RegisterProperty('Territory', 'Territory', [], '', 1, 1000);
+  RegisterProperty('City', 'City', [], '', 1, 1000);
+  RegisterProperty('Locality', 'Locality', [], '', 1, 1000);
+  RegisterProperty('Street', 'Street', [], '', 1, 1000);
+  RegisterProperty('Building', 'Building', [], '', 1, 1000);
+  RegisterProperty('Block', 'Block', [], '', 1, 1000);
+  RegisterProperty('Apartment', 'Apartment', [], '', 1, 1000);
 end;
 
 procedure TRussianAddress.InternalInitChilds;
@@ -3188,23 +3188,23 @@ end;
 procedure TExtendedOrganizationDetails_ManualFilling.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('OrgType', 'OrgType', '', '', -1, 2000);
-  RegisterProperty('Okopf', 'Okopf', '', '', -1, 2000);
-  RegisterProperty('Okpo', 'Okpo', '', '', -1, 2000);
-  RegisterProperty('Okdp', 'Okdp', '', '', -1, 2000);
-  RegisterProperty('Phone', 'Phone', '', '', -1, 2000);
-  RegisterProperty('Email', 'Email', '', '', -1, 2000);
-  RegisterProperty('CorrespondentAccount', 'CorrespondentAccount', '', '', -1, 2000);
-  RegisterProperty('BankAccountNumber', 'BankAccountNumber', '', '', -1, 2000);
-  RegisterProperty('BankName', 'BankName', '', '', -1, 2000);
-  RegisterProperty('BankId', 'BankId', '', '', -1, 2000);
-  RegisterProperty('Department', 'Department', '', '', -1, 2000);
-  RegisterProperty('OrganizationAdditionalInfo', 'OrganizationAdditionalInfo', '', '', -1, 2000);
-  RegisterProperty('OrganizationOrPersonInfo', 'OrganizationOrPersonInfo', '', '', -1, 2000);
-  RegisterProperty('IndividualEntityRegistrationCertificate', 'IndividualEntityRegistrationCertificate', '', '', -1, 2000);
-  RegisterProperty('LegalEntityId', 'LegalEntityId', '', '', -1, 2000);
-  RegisterProperty('ShortOrgName', 'ShortOrgName', '', '', -1, 2000);
-  RegisterProperty('Country', 'Country', '', '', -1, 2000);
+  RegisterProperty('OrgType', 'OrgType', [], '', -1, 2000);
+  RegisterProperty('Okopf', 'Okopf', [], '', -1, 2000);
+  RegisterProperty('Okpo', 'Okpo', [], '', -1, 2000);
+  RegisterProperty('Okdp', 'Okdp', [], '', -1, 2000);
+  RegisterProperty('Phone', 'Phone', [], '', -1, 2000);
+  RegisterProperty('Email', 'Email', [], '', -1, 2000);
+  RegisterProperty('CorrespondentAccount', 'CorrespondentAccount', [], '', -1, 2000);
+  RegisterProperty('BankAccountNumber', 'BankAccountNumber', [], '', -1, 2000);
+  RegisterProperty('BankName', 'BankName', [], '', -1, 2000);
+  RegisterProperty('BankId', 'BankId', [], '', -1, 2000);
+  RegisterProperty('Department', 'Department', [], '', -1, 2000);
+  RegisterProperty('OrganizationAdditionalInfo', 'OrganizationAdditionalInfo', [], '', -1, 2000);
+  RegisterProperty('OrganizationOrPersonInfo', 'OrganizationOrPersonInfo', [], '', -1, 2000);
+  RegisterProperty('IndividualEntityRegistrationCertificate', 'IndividualEntityRegistrationCertificate', [], '', -1, 2000);
+  RegisterProperty('LegalEntityId', 'LegalEntityId', [], '', -1, 2000);
+  RegisterProperty('ShortOrgName', 'ShortOrgName', [], '', -1, 2000);
+  RegisterProperty('Country', 'Country', [], '', -1, 2000);
 end;
 
 procedure TExtendedOrganizationDetails_ManualFilling.InternalInitChilds;
@@ -3229,7 +3229,7 @@ end;
 procedure TExtendedOrganizationReference.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('BoxId', 'BoxId', '', '', 1, 1000);
+  RegisterProperty('BoxId', 'BoxId', [], '', 1, 1000);
 end;
 
 procedure TExtendedOrganizationReference.InternalInitChilds;
@@ -3254,7 +3254,7 @@ end;
 procedure TExtendedOrganizationDetailsWithHyphens.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('HyphenInn', 'HyphenInn', 'О', '', -1, -1);
+  RegisterProperty('HyphenInn', 'HyphenInn', [xsaRequared], '', -1, -1);
 end;
 
 procedure TExtendedOrganizationDetailsWithHyphens.InternalInitChilds;
@@ -3272,8 +3272,8 @@ end;
 procedure TExtendedOrganizationInfoWithHyphens.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('OrganizationDetails', 'OrganizationDetails', 'О', '', -1, -1);
-  RegisterProperty('OrganizationReference', 'OrganizationReference', 'О', '', -1, -1);
+  RegisterProperty('OrganizationDetails', 'OrganizationDetails', [xsaRequared], '', -1, -1);
+  RegisterProperty('OrganizationReference', 'OrganizationReference', [xsaRequared], '', -1, -1);
 end;
 
 procedure TExtendedOrganizationInfoWithHyphens.InternalInitChilds;
@@ -3400,30 +3400,30 @@ end;
 procedure TUniversalTransferDocumentWithHyphens.InternalRegisterPropertys;
 begin
   inherited InternalRegisterPropertys;
-  RegisterProperty('Sellers', 'Sellers', 'О', '', -1, -1);
-  RegisterProperty('Buyers', 'Buyers', 'О', '', -1, -1);
-  RegisterProperty('Table', 'Table', '', '', -1, -1);
-  RegisterProperty('Shippers', 'Shippers', '', '', -1, -1);
-  RegisterProperty('Consignees', 'Consignees', '', '', -1, -1);
-  RegisterProperty('Funct', 'Function', '', '', 1, 100);
-  RegisterProperty('DocumentName', 'DocumentName', '', '', 1, 1000);
-  RegisterProperty('DocumentDate', 'DocumentDate', '', '', 1, 1000);
-  RegisterProperty('DocumentNumber', 'DocumentNumber', '', '', 1, 1000);
-  RegisterProperty('Currency', 'Currency', '', '', 1, 1000);
-  RegisterProperty('CurrencyRate', 'CurrencyRate', '', '', 1, 1000);
-  RegisterProperty('RevisionDate', 'RevisionDate', '', '', 1, 100);
-  RegisterProperty('HyphenRevisionDate', 'HyphenRevisionDate', '', '', 1, 100);
-  RegisterProperty('RevisionNumber', 'RevisionNumber', '', '', 1, 100);
-  RegisterProperty('HyphenRevisionNumber', 'HyphenRevisionNumber', '', '', 1, 100);
-  RegisterProperty('DocumentCreator', 'DocumentCreator', '', '', 1, 100);
-  RegisterProperty('DocumentCreatorBase', 'DocumentCreatorBase', '', '', 1, 100);
-  RegisterProperty('GovernmentContractInfo', 'GovernmentContractInfo', '', '', 1, 100);
-  RegisterProperty('CircumFormatInvoice', 'CircumFormatInvoice', '', '', 1, 100);
-  RegisterProperty('Signers', 'Signers', '', '', -1, -1);
-  RegisterProperty('PaymentDocuments', 'PaymentDocuments', '', '', -1, -1);
-  RegisterProperty('TransferInfo', 'TransferInfo', '', '', -1, -1);
-  RegisterProperty('FactorInfo', 'FactorInfo', '', '', -1, -1);
-  RegisterProperty('AdditionalInfoId', 'AdditionalInfoId', '', '', -1, -1);
+  RegisterProperty('Sellers', 'Sellers', [xsaRequared], '', -1, -1);
+  RegisterProperty('Buyers', 'Buyers', [xsaRequared], '', -1, -1);
+  RegisterProperty('Table', 'Table', [], '', -1, -1);
+  RegisterProperty('Shippers', 'Shippers', [], '', -1, -1);
+  RegisterProperty('Consignees', 'Consignees', [], '', -1, -1);
+  RegisterProperty('Funct', 'Function', [], '', 1, 100);
+  RegisterProperty('DocumentName', 'DocumentName', [], '', 1, 1000);
+  RegisterProperty('DocumentDate', 'DocumentDate', [], '', 1, 1000);
+  RegisterProperty('DocumentNumber', 'DocumentNumber', [], '', 1, 1000);
+  RegisterProperty('Currency', 'Currency', [], '', 1, 1000);
+  RegisterProperty('CurrencyRate', 'CurrencyRate', [], '', 1, 1000);
+  RegisterProperty('RevisionDate', 'RevisionDate', [], '', 1, 100);
+  RegisterProperty('HyphenRevisionDate', 'HyphenRevisionDate', [], '', 1, 100);
+  RegisterProperty('RevisionNumber', 'RevisionNumber', [], '', 1, 100);
+  RegisterProperty('HyphenRevisionNumber', 'HyphenRevisionNumber', [], '', 1, 100);
+  RegisterProperty('DocumentCreator', 'DocumentCreator', [], '', 1, 100);
+  RegisterProperty('DocumentCreatorBase', 'DocumentCreatorBase', [], '', 1, 100);
+  RegisterProperty('GovernmentContractInfo', 'GovernmentContractInfo', [], '', 1, 100);
+  RegisterProperty('CircumFormatInvoice', 'CircumFormatInvoice', [], '', 1, 100);
+  RegisterProperty('Signers', 'Signers', [], '', -1, -1);
+  RegisterProperty('PaymentDocuments', 'PaymentDocuments', [], '', -1, -1);
+  RegisterProperty('TransferInfo', 'TransferInfo', [], '', -1, -1);
+  RegisterProperty('FactorInfo', 'FactorInfo', [], '', -1, -1);
+  RegisterProperty('AdditionalInfoId', 'AdditionalInfoId', [], '', -1, -1);
 end;
 
 procedure TUniversalTransferDocumentWithHyphens.InternalInitChilds;
