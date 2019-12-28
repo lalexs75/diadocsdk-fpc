@@ -101,6 +101,7 @@ var
   Signer1: TSigner;
   PD: TPaymentDocumentInfo;
   TB: TTransferBase820;
+  TTC: TCustomsDeclarationWithHyphens;
 begin
   U:=TUniversalTransferDocumentWithHyphens.Create;
   U.Funct:='СЧФ';
@@ -143,12 +144,27 @@ begin
   U.Table.TotalWithVatExcluded:='123.4';
   U.Table.Total:='123.4';
   U.Table.TotalNet:='123.4';
+
   TT:=U.Table.Items.AddItem;
   TT.Product:='Товар № 1';
   TT.TaxRate:='20%';
   TT.Subtotal:='123.45';
   TT.Unt:='796';
   TT.Vat:='123';
+  TTC:=TT.CustomsDeclarations.CustomsDeclaration.AddItem;
+  TTC.Country:='804';
+  TTC.DeclarationNumber:='10108030/170919/0000744';
+
+  TT:=U.Table.Items.AddItem;
+  TT.Product:='Товар № 2';
+  TT.TaxRate:='20%';
+  TT.Subtotal:='123.45';
+  TT.Unt:='796';
+  TT.Vat:='123';
+{  TTC:=TT.CustomsDeclarations.AddItem;
+  TTC.Country:='804';
+  TTC.DeclarationNumber:='10108030/170919/0000744';}
+
 
   PD:=U.PaymentDocuments.Documents.AddItem;
   PD.Date:='01.01.2019';

@@ -120,7 +120,21 @@ type
     property HyphenCountry:string read FHyphenCountry write SetHyphenCountry;
     property DeclarationNumber:string read FDeclarationNumber write SetDeclarationNumber;
   end;
-  TCustomsDeclarations = specialize GXMLSerializationObjectList<TCustomsDeclarationWithHyphens>;
+  TCustomsDeclarationList = specialize GXMLSerializationObjectList<TCustomsDeclarationWithHyphens>;
+
+  { TCustomsDeclarations }
+
+  TCustomsDeclarations = class(TXmlSerializationObject)
+  private
+    FCustomsDeclaration: TCustomsDeclarationList;
+  protected
+    procedure InternalRegisterPropertys; override;
+    procedure InternalInitChilds; override;
+  public
+    destructor Destroy; override;
+  published
+    property CustomsDeclaration:TCustomsDeclarationList read FCustomsDeclaration;
+  end;
 
   { TAdditionalInfo }
 
@@ -1565,6 +1579,26 @@ type
 </xs:schema>
 *)
 implementation
+
+{ TCustomsDeclarations }
+
+procedure TCustomsDeclarations.InternalRegisterPropertys;
+begin
+  inherited InternalRegisterPropertys;
+  RegisterProperty('CustomsDeclaration', 'CustomsDeclaration', [], '', -1, -1);
+end;
+
+procedure TCustomsDeclarations.InternalInitChilds;
+begin
+  inherited InternalInitChilds;
+  FCustomsDeclaration:=TCustomsDeclarationList.Create;
+end;
+
+destructor TCustomsDeclarations.Destroy;
+begin
+  FreeAndNil(FCustomsDeclaration);
+  inherited Destroy;
+end;
 
 { TOtherIssuer }
 

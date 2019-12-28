@@ -11,7 +11,12 @@
     </Buyer>
   </Buyers>
   <Table Vat="123.4" Total="123.4" TotalNet="123.4" TotalWithVatExcluded="123.4">
-    <Item Vat="123" Unit="796" Product="Товар № 1" TaxRate="20%" Subtotal="123.45"/>
+    <Item Vat="123" Unit="796" Product="Товар № 1" TaxRate="20%" Subtotal="123.45">
+      <CustomsDeclarations>
+        <CustomsDeclaration Country="804" DeclarationNumber="10108030/170919/0000744"/>
+      </CustomsDeclarations>
+    </Item>
+    <Item Vat="123" Unit="796" Product="Товар № 2" TaxRate="20%" Subtotal="123.45"/>
   </Table>
   <Shippers>
     <Shipper SameAsSeller="true"/>
