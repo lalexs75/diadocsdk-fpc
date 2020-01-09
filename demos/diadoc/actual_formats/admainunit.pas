@@ -6,15 +6,21 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  ComCtrls, Menus, ActnList, DiadocAPI, DiadocTypes_Organization,
-  ddSelectClient, DiadocTypes_DocumentTypeDescription, RxIniPropStorage,
-  RxCloseFormValidator, httpsend, SynEdit, SynHighlighterXML;
+  ComCtrls, Menus, ActnList, IniPropStorage, DiadocAPI,
+  DiadocTypes_Organization, ddSelectClient, DiadocTypes_DocumentTypeDescription,
+  httpsend, SynEdit, SynHighlighterXML, RxIniPropStorage;
 
 type
 
   { TForm1 }
 
   TForm1 = class(TForm)
+    Button2: TButton;
+    Button4: TButton;
+    Panel3: TPanel;
+    RxIniPropStorage1: TRxIniPropStorage;
+    SelectDirectoryDialog1: TSelectDirectoryDialog;
+    xsdExportAll: TAction;
     Button3: TButton;
     Edit4: TEdit;
     Label4: TLabel;
@@ -37,8 +43,6 @@ type
     PageControl1: TPageControl;
     Panel1: TPanel;
     PopupMenu1: TPopupMenu;
-    RxCloseFormValidator1: TRxCloseFormValidator;
-    RxIniPropStorage1: TRxIniPropStorage;
     Splitter1: TSplitter;
     SynEdit1: TSynEdit;
     SynXMLSyn1: TSynXMLSyn;
@@ -52,12 +56,15 @@ type
     procedure FormCreate(Sender: TObject);
     procedure TreeView1Click(Sender: TObject);
     procedure TreeView2Click(Sender: TObject);
+    procedure xsdExportAllExecute(Sender: TObject);
     procedure xsdOpenExecute(Sender: TObject);
   private
     FMyDT: TGetDocumentTypesResponse;
     FMyOrgs: TOrganizationList;
     procedure DoConnect;
     procedure FillBoxList;
+    function CheckConnectionParams:Boolean;
+    procedure DoExport(AFolderName:string; DTD:TDocumentTypeDescription; DF:TDocumentFunction; DFV:TDocumentVersion; DFVT:TDocumentTitle);
   public
 
   end;
@@ -66,14 +73,15 @@ var
   Form1: TForm1;
 
 implementation
-uses rxlogging, rxAppUtils, rxconst, Diadoc_Base, XsdContentType;
+uses LazFileUtils, Diadoc_Base, XsdContentType;
+
 {$R *.lfm}
 
 { TForm1 }
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-  if not RxCloseFormValidator1.CheckCloseForm then Exit;
+  if not CheckConnectionParams then Exit;
   DoConnect;
   FillBoxList;
 end;
@@ -90,6 +98,7 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   Memo1.Lines.Clear;
+  PageControl1.ActivePageIndex:=0;
 end;
 
 procedure TForm1.TreeView1Click(Sender: TObject);
@@ -181,7 +190,7 @@ begin
       end;
     end
     else
-      ErrorBox('Не получен список форматов документов для ящика %s', [B.Title]);
+      ShowMessageFmt('Не получен список форматов документов для ящика %s', [B.Title]);
   end
 end;
 
@@ -194,6 +203,27 @@ begin
   begin
     D:=TObject(TreeView2.Selected.Data);
     xsdOpen.Enabled:=D is TDocumentVersion;
+  end;
+end;
+
+procedure TForm1.xsdExportAllExecute(Sender: TObject);
+var
+  DTD:TDocumentTypeDescription;
+  DF:TDocumentFunction;
+  DFV:TDocumentVersion;
+  DFVT:TDocumentTitle;
+begin
+  if not Assigned(FMyDT) then Exit;
+  if not SelectDirectoryDialog1.Execute then Exit;
+
+  for DTD in FMyDT.DocumentTypes do
+  begin
+    for DF in DTD.Functions do
+    begin
+      for DFV in DF.Versions do
+        for DFVT in DFV.Titles do
+          DoExport(SelectDirectoryDialog1.FileName, DTD, DF, DFV, DFVT);
+    end;
   end;
 end;
 
@@ -241,18 +271,6 @@ begin
       PageControl1.ActivePageIndex:=0;
     end
   end
-
-(*
-  //GetContent?typeNamedId=UniversalTransferDocument&function=%u0421%u0427%u0424&version=utd820_05_01_01_hyphen&titleIndex=0&contentType=UserContractXsd
-  M:=DiadocAPI1.GetContent('UniversalTransferDocument', 'СЧФ', 'utd820_05_01_01_hyphen', 0, UserContractXsd);//'UserContractXsd');
-  if Assigned(M) then
-  begin
-    M.SaveToFile('/home/alexs/3/UniversalTransferDocument.xsd');
-    M.Free;
-  end
-  else
-    Memo1.Lines.Assign(DiadocAPI1.ResultText);
-*)
 end;
 
 procedure TForm1.DoConnect;
@@ -264,7 +282,10 @@ begin
   if not Assigned(FMyOrgs) then
     raise Exception.Create('Ошибка инициализации Diadoc (не полученна информация об организации).')
   else
+  begin
     Button1.Enabled:=false;
+    PageControl1.ActivePageIndex:=1;
+  end;
 end;
 
 procedure TForm1.FillBoxList;
@@ -299,6 +320,32 @@ begin
     TreeView1.Selected:=TreeView1.Items[0];
   TreeView1Click(nil);
 
+end;
+
+function TForm1.CheckConnectionParams: Boolean;
+begin
+  Result:=(Trim(Edit1.Text)<>'') and (Trim(Edit2.Text)<>'') and (Trim(Edit3.Text)<>'');
+  if not Result then
+    ShowMessage('Необходимо указать параметры подключения');
+end;
+
+procedure TForm1.DoExport(AFolderName: string; DTD: TDocumentTypeDescription;
+  DF: TDocumentFunction; DFV: TDocumentVersion; DFVT: TDocumentTitle);
+var
+  M: TMemoryStream;
+  S: String;
+begin
+  if (not (Assigned(DTD) and Assigned(DF) and  Assigned(DFV) and Assigned(DFVT))) or (DFVT.UserDataXsdUrl = '') then Exit;
+
+  S:=AppendPathDelim(AFolderName) + DTD.Name + '_' + DF.Name + '_' + DFV.Version + '.xsd';
+
+  M:=DiadocAPI1.GetContent(DTD.Name, DF.Name, DFV.Version, DFVT.Index, UserContractXsd);
+  if Assigned(M) then
+  begin
+    M.Position:=0;
+    M.SaveToFile(S);
+    M.Free;
+  end
 end;
 
 end.

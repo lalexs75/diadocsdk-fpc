@@ -7,10 +7,9 @@
       <Unit>
         <Filename Value="DDActualFormats.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="5"/>
-        <CursorPos Y="19"/>
-        <UsageCount Value="28"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="30" Y="23"/>
+        <UsageCount Value="29"/>
       </Unit>
       <Unit>
         <Filename Value="admainunit.pas"/>
@@ -20,11 +19,11 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="adMainUnit"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="80"/>
-        <CursorPos Y="80"/>
-        <UsageCount Value="28"/>
+        <TopLine Value="322"/>
+        <CursorPos X="65" Y="342"/>
+        <UsageCount Value="29"/>
         <Bookmarks Count="1">
-          <Item0 Y="246" ID="1"/>
+          <Item0 Y="274" ID="1"/>
         </Bookmarks>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -32,9 +31,11 @@
       <Unit>
         <Filename Value="../../../../rxnew/rxcontrols/rxapputils.pas"/>
         <UnitName Value="rxAppUtils"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="67"/>
-        <UsageCount Value="9"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="309"/>
+        <CursorPos X="3" Y="313"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../../../../lcl/forms.pp"/>
@@ -126,28 +127,28 @@
       <Unit>
         <Filename Value="../../../diadoc_src/diadoctypes_organization.pas"/>
         <UnitName Value="DiadocTypes_Organization"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="7"/>
         <TopLine Value="16"/>
         <CursorPos X="30" Y="35"/>
-        <UsageCount Value="14"/>
+        <UsageCount Value="15"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../../diadoc_src/diadocapi.pas"/>
         <UnitName Value="DiadocAPI"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="5714"/>
         <CursorPos X="23" Y="5740"/>
-        <UsageCount Value="14"/>
+        <UsageCount Value="15"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../../Documents/Types/diadoctypes_documenttypedescription.pas"/>
         <UnitName Value="DiadocTypes_DocumentTypeDescription"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="230"/>
         <CursorPos X="3" Y="236"/>
-        <UsageCount Value="11"/>
+        <UsageCount Value="12"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -173,19 +174,19 @@
       <Unit>
         <Filename Value="../../../diadoc_src/diadoc_base.pas"/>
         <UnitName Value="Diadoc_Base"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="31"/>
         <CursorPos X="17" Y="33"/>
-        <UsageCount Value="13"/>
+        <UsageCount Value="14"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../../diadoc_src/xsdcontenttype.pas"/>
         <UnitName Value="XsdContentType"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="23"/>
         <CursorPos X="5" Y="47"/>
-        <UsageCount Value="13"/>
+        <UsageCount Value="14"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -195,125 +196,143 @@
         <CursorPos Y="621"/>
         <UsageCount Value="10"/>
       </Unit>
+      <Unit>
+        <Filename Value="../../../../../lcl/inipropstorage.pas"/>
+        <UnitName Value="IniPropStorage"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="22"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../../rxnew/rxcontrols/rxinipropstorage.pas"/>
+        <UnitName Value="RxIniPropStorage"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="52"/>
+        <CursorPos X="18" Y="78"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="193" Column="34" TopLine="179"/>
+        <Caret Line="64" Column="66" TopLine="42"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="189" Column="46" TopLine="160"/>
+        <Caret Line="334" Column="18" TopLine="310"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="96" Column="111" TopLine="78"/>
+        <Caret Line="56" Column="15" TopLine="48"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
+        <Caret Line="211" TopLine="199"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="84" Column="113" TopLine="59"/>
+        <Caret Line="221" Column="13" TopLine="201"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="85" Column="114" TopLine="60"/>
+        <Caret Line="211" Column="23" TopLine="206"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="95" Column="153" TopLine="70"/>
+        <Caret Line="64" Column="137" TopLine="50"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="96" Column="131" TopLine="71"/>
+        <Caret Line="344" Column="3" TopLine="318"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="253" Column="73" TopLine="229"/>
+        <Caret Line="222" Column="65" TopLine="208"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="269" Column="153" TopLine="245"/>
+        <Caret Line="344" Column="40" TopLine="318"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="270" Column="131" TopLine="246"/>
+        <Caret Line="97" TopLine="82"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
+        <Caret Line="62" Column="15" TopLine="39"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="84" Column="113" TopLine="59"/>
+        <Caret Line="49" Column="10" TopLine="4"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../rxnew/rxcontrols/rxinipropstorage.pas"/>
+        <Caret Line="78" Column="18" TopLine="52"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../../rxnew/rxcontrols/rxapputils.pas"/>
+        <Caret Line="59" Column="10" TopLine="44"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="85" Column="114" TopLine="78"/>
+        <Caret Line="21" Column="57" TopLine="4"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="95" Column="153" TopLine="78"/>
+        <Caret Line="22" Column="57" TopLine="4"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="96" Column="131" TopLine="78"/>
+        <Caret Line="23" Column="57" TopLine="4"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="253" Column="62" TopLine="241"/>
+        <Caret Line="24" Column="57" TopLine="4"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="261" Column="52" TopLine="247"/>
+        <Caret Line="219" Column="3" TopLine="209"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="52" Column="15" TopLine="38"/>
+        <Caret Line="67" Column="15" TopLine="53"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="218" Column="3" TopLine="213"/>
+        <Caret Line="273" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="51" Column="15" TopLine="38"/>
+        <Caret Line="335" Column="60" TopLine="320"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="200" Column="28" TopLine="178"/>
+        <Caret Line="337" Column="10" TopLine="323"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="201" Column="28" TopLine="179"/>
+        <Caret Line="76" Column="19" TopLine="52"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="202" Column="28" TopLine="180"/>
+        <Caret Line="337" Column="57" TopLine="327"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="203" Column="28" TopLine="181"/>
+        <Caret Line="343" Column="7" TopLine="320"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="202" Column="17" TopLine="182"/>
+        <Caret Line="341" Column="3" TopLine="321"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="57" Column="15" TopLine="40"/>
+        <Caret Line="339" TopLine="321"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="247" Column="51" TopLine="236"/>
-      </Position>
-      <Position>
-        <Filename Value="admainunit.pas"/>
-        <Caret Line="81" TopLine="81"/>
-      </Position>
-      <Position>
-        <Filename Value="admainunit.pas"/>
-        <Caret Line="80" TopLine="80"/>
+        <Caret Line="340" Column="3" TopLine="321"/>
       </Position>
     </JumpHistory>
     <RunParams>
@@ -321,4 +340,15 @@
       <Modes ActiveMode=""/>
     </RunParams>
   </ProjectSession>
+  <Debugging>
+    <BreakPoints>
+      <Item>
+        <Kind Value="bpkSource"/>
+        <WatchScope Value="wpsLocal"/>
+        <WatchKind Value="wpkWrite"/>
+        <Source Value="admainunit.pas"/>
+        <Line Value="340"/>
+      </Item>
+    </BreakPoints>
+  </Debugging>
 </CONFIG>
