@@ -61,7 +61,9 @@ uses
   DiadocTypes_ManualBlockStatus, DiadocTypes_OrganizationFeatures, 
   CustomPrintFormDetection, XsdContentType, LoginPassword, Content_v3, 
   DssSign, DetectTitleResponse, UserContract_820_05_01_01_Hyphen, 
-  LazarusPackageIntf;
+  CertificateInfoV2, CertificateList, AttachmentV3, DocflowApiV3, DocflowV3, 
+  DocumentInfoV3, DocumentWithDocflowV3, ResolutionDocflowV3, 
+  RoamingNotification, FullVersion, TotalCountType, LazarusPackageIntf;
 
 implementation
 

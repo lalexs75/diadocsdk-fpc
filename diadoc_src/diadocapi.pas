@@ -392,6 +392,7 @@ type
     //-------------------------------------------------
     function GetTemplate(ABoxId, ATemplateId, AEntityId:string):TTemplate;
     function PostTemplate(ATemplateToPost:TTemplateToPost; AOperationId:string):TTemplate;
+    function PostTemplatePatch(const ABoxId:string; const ATemplateId:string; const APatch:TTemplatePatchToPost; const AOperationId:string = ''):TMessagePatch;
     function TransformTemplateToMessage(ATemplateTransformationToPost:TTemplateTransformationToPost; AOperationId:string):TMessage;
 
 
@@ -4465,6 +4466,28 @@ begin
       FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
   end;
   F.Free;
+end;
+
+function TDiadocAPI.PostTemplatePatch(const ABoxId: string;
+  const ATemplateId: string; const APatch: TTemplatePatchToPost;
+  const AOperationId: string): TMessagePatch;
+begin
+  Result:=nil;
+  raise ENotImplemented.Create('PostTemplatePatch');
+(*
+MessagePatch DiadocApi::PostTemplatePatch(const std::wstring& boxId, const std::wstring& templateId, const TemplatePatchToPost& patch, const std::wstring& operationId)
+{
+	WppTraceDebugOut(L"PostTemplatePatch...");
+	std::wstringstream buf;
+	buf << L"/PostTemplatePatch";
+	buf << L"?boxId=" << StringHelper::CanonicalizeUrl(boxId);
+	buf << L"&templateId=" << StringHelper::CanonicalizeUrl(templateId);
+	if (!operationId.empty())
+		buf << L"&operationId=" << StringHelper::CanonicalizeUrl(operationId);
+	return FromProtoBytes<MessagePatch>(PerformHttpRequest(buf.str(), ToProtoBytes(patch), POST));
+}
+
+*)
 end;
 
 function TDiadocAPI.TransformTemplateToMessage(

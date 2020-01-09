@@ -49,6 +49,7 @@ import "Docflow/XmlBilateralDocflow.proto";
 import "Docflow/RevocationDocflow.proto";
 import "Docflow/ResolutionDocflow.proto";
 import "Docflow/UniversalTransferDocumentDocflow.proto";
+import "Docflow/RoamingNotification.proto";
 *)
 uses
   Classes, SysUtils, protobuf_fpc,
@@ -61,7 +62,8 @@ uses
   DiadocTypes_XmlBilateralDocflow,
   DiadocTypes_RevocationDocflow,
   DiadocTypes_ResolutionDocflow,
-  DiadocTypes_UniversalTransferDocumentDocflow
+  DiadocTypes_UniversalTransferDocumentDocflow,
+  RoamingNotification
   ;
 
 type
@@ -119,7 +121,7 @@ type
     property SecondaryStatus:TDocflowStatusModel read FSecondaryStatus; //2;
   end;
 
-
+(*
   //message RoamingNotification
   //{
   //	required Entity Notification = 1;
@@ -142,7 +144,7 @@ type
     property Notification:TEntity read FNotification; //1;
     property IsSuccess:Boolean read FIsSuccess write SetIsSuccess; //2;
   end;
-
+*)
   {  TDocflow  }
   //message Docflow
   //{
@@ -244,7 +246,7 @@ begin
     Result:='';
   end;
 end;
-
+(*
 { TRoamingNotification }
 
 procedure TRoamingNotification.SetIsSuccess(AValue: Boolean);
@@ -272,7 +274,7 @@ begin
   FreeAndNil(FNotification);
   inherited Destroy;
 end;
-
+*)
 { TDocflow }
 
 procedure TDocflow.SetCanDocumentBeRevokedUnilaterallyBySender(AValue: Boolean);

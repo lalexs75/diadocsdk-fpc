@@ -42,12 +42,14 @@ interface
 
 //import "Timestamp.proto";
 //import "DocumentId.proto";
+//import "TotalCountType.proto";
 //import "TimeBasedFilter.proto";
 //import "Forwarding/ForwardedDocument.proto";
 uses
   Classes, SysUtils, protobuf_fpc_types, protobuf_fpc,
   DiadocTypes_Timestamp,
   DiadocTypes_DocumentId,
+  TotalCountType,
   DiadocTypes_TimeBasedFilter,
   DiadocTypes_ForwardedDocument
   ;
@@ -90,6 +92,8 @@ type
   private
     FEvents: TForwardedDocumentEvents;
     FTotalCount: int32;
+    FTotalCountType: TTotalCountType;
+    procedure SetTotalCountType(AValue: TTotalCountType);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
@@ -98,6 +102,7 @@ type
   published
     property TotalCount:int32 read FTotalCount write FTotalCount;//1;
     property Events:TForwardedDocumentEvents read FEvents;//2;
+    property TotalCountType:TTotalCountType read FTotalCountType write SetTotalCountType;
   end;
 
 
@@ -318,6 +323,14 @@ begin
 end;
 
 { TGetForwardedDocumentEventsResponse }
+
+procedure TGetForwardedDocumentEventsResponse.SetTotalCountType(
+  AValue: TTotalCountType);
+begin
+  if FTotalCountType=AValue then Exit;
+  FTotalCountType:=AValue;
+  Modified(3);
+end;
 
 procedure TGetForwardedDocumentEventsResponse.InternalInit;
 begin

@@ -46,6 +46,7 @@ interface
 //import "Content.proto";
 //import "DocumentId.proto";
 //import "LockMode.proto";
+//import "TotalCountType.proto";
 //import "Documents/Document.proto";
 //import "Events/CancellationInfo.proto";
 //import "Events/ResolutionInfo.proto";
@@ -57,6 +58,7 @@ uses
   protobuf_fpc,
   DiadocTypes_Content,
   DiadocTypes_LockMode,
+  TotalCountType,
   DiadocTypes_Document,
   DiadocTypes_CancellationInfo,
   DiadocTypes_ResolutionInfo,
@@ -67,6 +69,19 @@ uses
   ;
 
 type
+  { TemplateRefusalType }
+  //enum TemplateRefusalType {
+  //	UnknownTemplateRefusalType = 0;
+  //	Refusal = 1;
+  //	Withdrawal = 2;
+  //}
+  TTemplateRefusalType = (
+    UnknownTemplateRefusalType = 0,
+    Refusal = 1,
+    Withdrawal = 2
+  );
+
+
   TEntityType = (
     UnknownEntityType = 0, // Reserved type to report to legacy clients for newly introduced entity types
     Attachment = 1,
@@ -128,7 +143,8 @@ type
     Cancellation = 69,
     Edition = 71,
     DeletionRestoration = 72,
-    TemplateTransformation = 73
+    TemplateTransformation = 73,
+    TemplateRefusal = 74
     //Неизвестные типы должны обрабатываться как Title
   );
 
@@ -192,6 +208,37 @@ type
   end;
   TEntityPatchs = specialize GSerializationObjectList<TEntityPatch>;
 
+  { TemplateRefusalInfo }
+  //message TemplateRefusalInfo
+  //{
+  //	required TemplateRefusalType Type = 1 [default = UnknownTemplateRefusalType];
+  //	required string BoxId = 2;
+  //	optional string Author = 3;
+  //	optional string Comment = 4;
+  //}
+  TTemplateRefusalInfo = class(TSerializationObject)
+  private
+    FTypeField:TTemplateRefusalType;
+    FBoxId:String;
+    FAuthor:String;
+    FComment:String;
+    procedure SetTypeField(AValue:TTemplateRefusalType);
+    procedure SetBoxId(AValue:String);
+    procedure SetAuthor(AValue:String);
+    procedure SetComment(AValue:String);
+  protected
+    procedure InternalRegisterProperty; override;
+    procedure InternalInit; override;
+  public
+    destructor Destroy; override;
+  published
+    property TypeField:TTemplateRefusalType read FTypeField write SetTypeField default UnknownTemplateRefusalType;
+    property BoxId:String read FBoxId write SetBoxId;
+    property Author:String read FAuthor write SetAuthor;
+    property Comment:String read FComment write SetComment;
+  end;
+  TTemplateRefusalInfos = specialize GSerializationObjectList<TTemplateRefusalInfo>;
+
   { TEntity }
   //message Entity {
   //	optional EntityType EntityType = 1 [default = UnknownEntityType];
@@ -220,6 +267,7 @@ type
   //	repeated string Labels = 25;
   //    optional string Version = 26;
   //    optional TemplateTransformationInfo TemplateTransformationInfo = 27;
+  //    optional TemplateRefusalInfo TemplateRefusalInfo = 28;
   //}
   TEntity  = class(TSerializationObject) //message Entity
   private
@@ -247,6 +295,7 @@ type
     FResolutionRouteRemovalInfo: TResolutionRouteRemovalInfo;
     FSignerBoxId: string;
     FSignerDepartmentId: string;
+    FTemplateRefusalInfo: TTemplateRefusalInfo;
     FTemplateTransformationInfo: TTemplateTransformationInfo;
     FVersion: string;
     procedure SetAttachmentType(AValue: TAttachmentType);
@@ -297,6 +346,7 @@ type
     property Labels:TDocumentStrings read FLabels; //%25;
     property Version:string read FVersion write SetVersion;//%26;
     property TemplateTransformationInfo:TTemplateTransformationInfo read FTemplateTransformationInfo;//%27
+    property TemplateRefusalInfo:TTemplateRefusalInfo read FTemplateRefusalInfo;
   end;
   TEntitys = specialize GSerializationObjectList<TEntity>;
 
@@ -582,12 +632,15 @@ type
   //message BoxEventList {
   //	repeated BoxEvent Events = 1;
   //	optional int32 TotalCount = 2;
+  //    required TotalCountType TotalCountType = 3;
   //}
   TBoxEventList = class(TSerializationObject)
   private
     FEvents: TBoxEvents;
     FTotalCount: int32;
+    FTotalCountType: TTotalCountType;
     procedure SetTotalCount(AValue: int32);
+    procedure SetTotalCountType(AValue: TTotalCountType);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
@@ -596,6 +649,7 @@ type
   published
     property Events:TBoxEvents read FEvents;//1;
     property TotalCount:int32 read FTotalCount write SetTotalCount;//2;
+    property TotalCountType:TTotalCountType read FTotalCountType write SetTotalCountType; //3
   end;
 
 
@@ -762,6 +816,13 @@ begin
   Modified(2);
 end;
 
+procedure TBoxEventList.SetTotalCountType(AValue: TTotalCountType);
+begin
+  if FTotalCountType=AValue then Exit;
+  FTotalCountType:=AValue;
+  Modified(3);
+end;
+
 procedure TBoxEventList.InternalInit;
 begin
   inherited InternalInit;
@@ -773,6 +834,7 @@ begin
   inherited InternalRegisterProperty;
   RegisterProp('Events', 1, true);
   RegisterProp('TotalCount', 2);
+  RegisterProp('TotalCountType', 3, true);
 end;
 
 destructor TBoxEventList.Destroy;
@@ -1287,6 +1349,7 @@ begin
   RegisterProp('Labels', 25, true);
   RegisterProp('Version', 26);
   RegisterProp('TemplateTransformationInfo', 27);
+  RegisterProp('TemplateRefusalInfo', 28);
 end;
 
 procedure TEntity.InternalInit;
@@ -1302,6 +1365,16 @@ begin
   FCancellationInfo:=TCancellationInfo.Create;
   FLabels:=TDocumentStrings.Create;
   FTemplateTransformationInfo:=TTemplateTransformationInfo.Create;
+  FTemplateRefusalInfo:= TTemplateRefusalInfo.Create;
+(*
+  EntityType:= UnknownEntityType;
+  AttachmentType:= UnknownAttachmentType;
+  NeedRecipientSignature:= false;
+  RawCreationDate:= 0;
+  NeedReceipt:= false;
+  IsApprovementSignature:= false;
+  IsEncryptedContent:= false;
+*)
 end;
 
 destructor TEntity.Destroy;
@@ -1316,6 +1389,7 @@ begin
   FreeAndNil(FCancellationInfo);
   FreeAndNil(FLabels);
   FreeAndNil(FTemplateTransformationInfo);
+  FTemplateRefusalInfo.Free;
   inherited Destroy;
 end;
 
@@ -1503,6 +1577,52 @@ begin
   FreeAndNil(FDraftIsTransformedToMessageIdList);
   FreeAndNil(FTemplateToLetterTransformationInfo);
   inherited Destroy;
+end;
+
+{ TemplateRefusalInfo }
+
+procedure TTemplateRefusalInfo.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('TypeField', 1, true);
+  RegisterProp('BoxId', 2, true);
+  RegisterProp('Author', 3);
+  RegisterProp('Comment', 4);
+end;
+
+procedure TTemplateRefusalInfo.InternalInit;
+begin
+  inherited InternalInit;
+  TypeField:= UnknownTemplateRefusalType;
+end;
+
+destructor TTemplateRefusalInfo.Destroy;
+begin
+  inherited Destroy;
+end;
+
+procedure TTemplateRefusalInfo.SetTypeField(AValue:TTemplateRefusalType);
+begin
+  FTypeField:=AValue;
+  Modified(1);
+end;
+
+procedure TTemplateRefusalInfo.SetBoxId(AValue:String);
+begin
+  FBoxId:=AValue;
+  Modified(2);
+end;
+
+procedure TTemplateRefusalInfo.SetAuthor(AValue:String);
+begin
+  FAuthor:=AValue;
+  Modified(3);
+end;
+
+procedure TTemplateRefusalInfo.SetComment(AValue:String);
+begin
+  FComment:=AValue;
+  Modified(4);
 end;
 
 end.

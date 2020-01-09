@@ -40,12 +40,14 @@ interface
 
 //import "Timestamp.proto";
 //import "DocumentId.proto";
+//import "TotalCountType.proto";
 //import "TimeBasedFilter.proto";
 //import "Docflow/DocumentWithDocflow.proto";
 uses
   Classes, SysUtils, protobuf_fpc, diadoc_simple_arrays,
   DiadocTypes_Timestamp,
   DiadocTypes_DocumentId,
+  TotalCountType,
   DiadocTypes_TimeBasedFilter,
   DiadocTypes_DocumentWithDocflow;
 
@@ -104,12 +106,15 @@ type
   //{
   //	optional int32 TotalCount = 1;
   //	repeated DocflowEvent Events = 2;
+  //    required TotalCountType TotalCountType = 3;
   //}
   TGetDocflowEventsResponse = class(TSerializationObject) //message GetDocflowEventsResponse
   private
     FEvents: TDocflowEvents;
     FTotalCount: int32;
+    FTotalCountType: TTotalCountType;
     procedure SetTotalCount(AValue: int32);
+    procedure SetTotalCountType(AValue: TTotalCountType);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -118,6 +123,7 @@ type
   published
     property TotalCount:int32  read FTotalCount write SetTotalCount; //1;
     property Events:TDocflowEvents read FEvents; //2;
+    property TotalCountType:TTotalCountType read FTotalCountType write SetTotalCountType;
   end;
 
   {  TGetDocflowEventsRequest  }
@@ -682,11 +688,18 @@ begin
   Modified(1);
 end;
 
+procedure TGetDocflowEventsResponse.SetTotalCountType(AValue: TTotalCountType);
+begin
+  FTotalCountType:=AValue;
+  Modified(3);
+end;
+
 procedure TGetDocflowEventsResponse.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
   RegisterProp('TotalCount', 1);
   RegisterProp('Events', 2);
+  RegisterProp('TotalCountType', 3, true);
 end;
 
 procedure TGetDocflowEventsResponse.InternalInit;

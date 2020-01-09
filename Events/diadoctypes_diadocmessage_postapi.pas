@@ -190,6 +190,7 @@ type
   //	optional string EditingSettingId = 9;
   //	optional bool NeedRecipientSignature = 10 [default = false];
   //    optional PredefinedRecipientTitle PredefinedRecipientTitle = 11;
+  //    optional bool RefusalDisabled = 12 [default = false];
   //}
   TTemplateDocumentAttachment = class(TSerializationObject) //message TemplateDocumentAttachment
   private
@@ -200,6 +201,7 @@ type
     FMetadata: TMetadataItems;
     FNeedRecipientSignature: Boolean;
     FPredefinedRecipientTitle: TPredefinedRecipientTitle;
+    FRefusalDisabled: Boolean;
     FTypeNamedId: string;
     FUnsignedContent: TUnsignedContent;
     FVersion: string;
@@ -209,6 +211,7 @@ type
     procedure SetEditingSettingId(AValue: string);
     procedure SetFunctionType(AValue: string);
     procedure SetNeedRecipientSignature(AValue: Boolean);
+    procedure SetRefusalDisabled(AValue: Boolean);
     procedure SetTypeNamedId(AValue: string);
     procedure SetVersion(AValue: string);
     procedure SetWorkflowId(AValue: int32);
@@ -229,8 +232,52 @@ type
     property EditingSettingId:string read FEditingSettingId write SetEditingSettingId;//9;
     property NeedRecipientSignature:Boolean read FNeedRecipientSignature write SetNeedRecipientSignature;//10
     property PredefinedRecipientTitle:TPredefinedRecipientTitle read FPredefinedRecipientTitle;//11;
+    property RefusalDisabled:Boolean read FRefusalDisabled write SetRefusalDisabled default false;//12
   end;
   TTemplateDocumentAttachments = specialize GSerializationObjectList<TTemplateDocumentAttachment>;
+
+  { TemplateRefusalAttachment }
+  //message TemplateRefusalAttachment {
+  //	required string DocumentId = 1;
+  //	optional string Comment = 2;
+  //	repeated string Labels = 3;
+  //}
+  TTemplateRefusalAttachment = class(TSerializationObject)
+  private
+    FDocumentId:String;
+    FComment:String;
+    FLabels:TDocumentStrings;
+    procedure SetDocumentId(AValue:String);
+    procedure SetComment(AValue:String);
+  protected
+    procedure InternalRegisterProperty; override;
+    procedure InternalInit; override;
+  public
+    destructor Destroy; override;
+  published
+    property DocumentId:String read FDocumentId write SetDocumentId;
+    property Comment:String read FComment write SetComment;
+    property Labels:TDocumentStrings read FLabels;
+  end;
+  TTemplateRefusalAttachments = specialize GSerializationObjectList<TTemplateRefusalAttachment>;
+
+  { TemplatePatchToPost }
+  //message TemplatePatchToPost {
+  //	repeated TemplateRefusalAttachment Refusals = 1;
+  //}
+  TTemplatePatchToPost = class(TSerializationObject)
+  private
+    FRefusals:TTemplateRefusalAttachments;
+  protected
+    procedure InternalRegisterProperty; override;
+    procedure InternalInit; override;
+  public
+    destructor Destroy; override;
+  published
+    property Refusals:TTemplateRefusalAttachments read FRefusals;
+  end;
+  TTemplatePatchToPosts = specialize GSerializationObjectList<TTemplatePatchToPost>;
+
 
   {  TTemplateToPost  }
   //message TemplateToPost {
@@ -4974,6 +5021,13 @@ begin
   Modified(10);
 end;
 
+procedure TTemplateDocumentAttachment.SetRefusalDisabled(AValue: Boolean);
+begin
+  if FRefusalDisabled=AValue then Exit;
+  FRefusalDisabled:=AValue;
+  Modified(12);
+end;
+
 procedure TTemplateDocumentAttachment.SetTypeNamedId(AValue: string);
 begin
   if FTypeNamedId=AValue then Exit;
@@ -5009,6 +5063,7 @@ begin
   RegisterProp('EditingSettingId', 9);
   RegisterProp('NeedRecipientSignature', 10);
   RegisterProp('PredefinedRecipientTitle', 11);
+  RegisterProp('RefusalDisabled', 12);
 end;
 
 procedure TTemplateDocumentAttachment.InternalInit;
@@ -5024,6 +5079,62 @@ begin
   FPredefinedRecipientTitle.Free;
   FreeAndNil(FUnsignedContent);
   FreeAndNil(FMetadata);
+  inherited Destroy;
+end;
+
+{ TemplateRefusalAttachment }
+
+procedure TTemplateRefusalAttachment.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('DocumentId', 1, true);
+  RegisterProp('Comment', 2);
+  RegisterProp('Labels', 3);
+end;
+
+procedure TTemplateRefusalAttachment.InternalInit;
+begin
+  inherited InternalInit;
+  FLabels:= TDocumentStrings.Create;
+end;
+
+destructor TTemplateRefusalAttachment.Destroy;
+begin
+  FLabels.Free;
+  inherited Destroy;
+end;
+
+procedure TTemplateRefusalAttachment.SetDocumentId(AValue:String);
+begin
+  FDocumentId:=AValue;
+  Modified(1);
+end;
+
+procedure TTemplateRefusalAttachment.SetComment(AValue:String);
+begin
+  FComment:=AValue;
+  Modified(2);
+end;
+
+
+
+{ TemplatePatchToPost }
+
+procedure TTemplatePatchToPost.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('Refusals', 1);
+end;
+
+procedure TTemplatePatchToPost.InternalInit;
+begin
+  inherited InternalInit;
+  FRefusals:= TTemplateRefusalAttachments.Create;
+end;
+
+destructor TTemplatePatchToPost.Destroy;
+begin
+  FRefusals.Free;
   inherited Destroy;
 end;
 

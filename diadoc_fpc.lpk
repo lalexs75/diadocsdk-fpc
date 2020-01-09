@@ -15,7 +15,7 @@
     </CompilerOptions>
     <Description Value="Компоненты интеграции Контур ДИАДОК-API для FPC и Lazarus"/>
     <License Value="LGPL"/>
-    <Version Major="1" Minor="1" Build="2"/>
+    <Version Major="1" Minor="2" Build="3"/>
     <Files>
       <Item>
         <Filename Value="diadoc_define.inc"/>
@@ -481,6 +481,50 @@
       <Item>
         <Filename Value="DataXml\UserContract_820_05_01_01_Hyphen.pas"/>
         <UnitName Value="UserContract_820_05_01_01_Hyphen"/>
+      </Item>
+      <Item>
+        <Filename Value="diadoc_src\CertificateInfoV2.pas"/>
+        <UnitName Value="CertificateInfoV2"/>
+      </Item>
+      <Item>
+        <Filename Value="diadoc_src\CertificateList.pas"/>
+        <UnitName Value="CertificateList"/>
+      </Item>
+      <Item>
+        <Filename Value="Docflow\AttachmentV3.pas"/>
+        <UnitName Value="AttachmentV3"/>
+      </Item>
+      <Item>
+        <Filename Value="Docflow\DocflowApiV3.pas"/>
+        <UnitName Value="DocflowApiV3"/>
+      </Item>
+      <Item>
+        <Filename Value="Docflow\DocflowV3.pas"/>
+        <UnitName Value="DocflowV3"/>
+      </Item>
+      <Item>
+        <Filename Value="Docflow\DocumentInfoV3.pas"/>
+        <UnitName Value="DocumentInfoV3"/>
+      </Item>
+      <Item>
+        <Filename Value="Docflow\DocumentWithDocflowV3.pas"/>
+        <UnitName Value="DocumentWithDocflowV3"/>
+      </Item>
+      <Item>
+        <Filename Value="Docflow\ResolutionDocflowV3.pas"/>
+        <UnitName Value="ResolutionDocflowV3"/>
+      </Item>
+      <Item>
+        <Filename Value="Docflow\RoamingNotification.pas"/>
+        <UnitName Value="RoamingNotification"/>
+      </Item>
+      <Item>
+        <Filename Value="diadoc_src\FullVersion.pas"/>
+        <UnitName Value="FullVersion"/>
+      </Item>
+      <Item>
+        <Filename Value="diadoc_src\TotalCountType.pas"/>
+        <UnitName Value="TotalCountType"/>
       </Item>
     </Files>
     <LazDoc Paths="docs"/>
