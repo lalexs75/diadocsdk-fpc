@@ -6,16 +6,23 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  ComCtrls, DiadocAPI, DiadocTypes_Organization, ddSelectClient,
-  DiadocTypes_DocumentTypeDescription, RxIniPropStorage, RxCloseFormValidator, httpsend;
+  ComCtrls, Menus, ActnList, DiadocAPI, DiadocTypes_Organization,
+  ddSelectClient, DiadocTypes_DocumentTypeDescription, RxIniPropStorage,
+  RxCloseFormValidator, httpsend, SynEdit, SynHighlighterXML;
 
 type
 
   { TForm1 }
 
   TForm1 = class(TForm)
+    Button3: TButton;
+    Edit4: TEdit;
+    Label4: TLabel;
+    MenuItem1: TMenuItem;
+    Panel2: TPanel;
+    xsdOpen: TAction;
+    ActionList1: TActionList;
     Button1: TButton;
-    Button2: TButton;
     DiadocAPI1: TDiadocAPI;
     Edit1: TEdit;
     Edit2: TEdit;
@@ -27,17 +34,27 @@ type
     Label3: TLabel;
     CLabel: TLabel;
     Memo1: TMemo;
+    PageControl1: TPageControl;
     Panel1: TPanel;
+    PopupMenu1: TPopupMenu;
     RxCloseFormValidator1: TRxCloseFormValidator;
     RxIniPropStorage1: TRxIniPropStorage;
     Splitter1: TSplitter;
+    SynEdit1: TSynEdit;
+    SynXMLSyn1: TSynXMLSyn;
+    TabSheet1: TTabSheet;
+    TabSheet2: TTabSheet;
+    TabSheet3: TTabSheet;
     TreeView1: TTreeView;
+    TreeView2: TTreeView;
     procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure TreeView1Click(Sender: TObject);
+    procedure TreeView2Click(Sender: TObject);
+    procedure xsdOpenExecute(Sender: TObject);
   private
+    FMyDT: TGetDocumentTypesResponse;
     FMyOrgs: TOrganizationList;
     procedure DoConnect;
     procedure FillBoxList;
@@ -61,38 +78,13 @@ begin
   FillBoxList;
 end;
 
-procedure TForm1.Button2Click(Sender: TObject);
-var
-  M: TMemoryStream;
-begin
-(*
-  //typeNamedId=Invoice&function=default&version=utd820_05_01_01_hyphen&titleIndex=0&contentType=UserContractXsd
-  M:=DiadocAPI1.GetContent('Invoice', 'default', 'utd820_05_01_01_hyphen', 0, UserContractXsd);//'UserContractXsd');
-  if Assigned(M) then
-  begin
-
-    M.SaveToFile('/home/alexs/3/Invoice.xsd');
-    M.Free;
-  end
-  else
-    Memo1.Lines.Assign(DiadocAPI1.ResultText);
-
-  //GetContent?typeNamedId=UniversalTransferDocument&function=%u0421%u0427%u0424&version=utd820_05_01_01_hyphen&titleIndex=0&contentType=UserContractXsd
-  M:=DiadocAPI1.GetContent('UniversalTransferDocument', 'СЧФ', 'utd820_05_01_01_hyphen', 0, UserContractXsd);//'UserContractXsd');
-  if Assigned(M) then
-  begin
-    M.SaveToFile('/home/alexs/3/UniversalTransferDocument.xsd');
-    M.Free;
-  end
-  else
-    Memo1.Lines.Assign(DiadocAPI1.ResultText);
-*)
-end;
-
 procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
   if Assigned(FMyOrgs) then
     FreeAndNil(FMyOrgs);
+
+  if Assigned(FMyDT) then
+    FreeAndNil(FMyDT);
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
@@ -103,24 +95,34 @@ end;
 procedure TForm1.TreeView1Click(Sender: TObject);
 var
   B: TBox;
-  DT: TGetDocumentTypesResponse;
   DTD:TDocumentTypeDescription;
   DF:TDocumentFunction;
   DFV:TDocumentVersion;
   i: Integer;
   S: String;
   DFVT:TDocumentTitle;
+  V, V1, V2, V3: TTreeNode;
 begin
   Memo1.Lines.Clear;
+  TreeView2.Items.Clear;
+
+  if Assigned(FMyDT) then
+    FreeAndNil(FMyDT);
+
   if Assigned(TreeView1.Selected) and Assigned(TreeView1.Selected.Data) then
   begin
     B:=TBox(TreeView1.Selected.Data);
-    DT:=DiadocAPI1.GetDocumentTypes(B.BoxId);
-    if Assigned(DT) then
+    FMyDT:=DiadocAPI1.GetDocumentTypes(B.BoxId);
+    if Assigned(FMyDT) then
     begin
-
-      for DTD in DT.DocumentTypes do
+      for DTD in FMyDT.DocumentTypes do
       begin
+        V:=TreeView2.Items.Add(nil, DTD.Name);
+        V.Data:=DTD;
+        V.ImageIndex:=2;
+        V.StateIndex:=2;
+        V.SelectedIndex:=2;
+
         Memo1.Lines.Add('Наименование : ' + DTD.Name);
         Memo1.Lines.Add('  заголовок : '+DTD.Title);
         if DTD.RequiresFnsRegistration then
@@ -136,15 +138,34 @@ begin
         end;
         Memo1.Lines.Add('  виды документооборота : '+S);
 
-        Memo1.Lines.Add('  версии :');
+        Memo1.Lines.Add('  Функции :');
         for DF in DTD.Functions do
         begin
+          V1:=TreeView2.Items.AddChild(V, DF.Name);
+          V1.Data:=DF;
+          V1.ImageIndex:=3;
+          V1.StateIndex:=3;
+          V1.SelectedIndex:=3;
+
           Memo1.Lines.Add('    - '+DF.Name);
           for DFV in DF.Versions do
           begin
+            V2:=TreeView2.Items.AddChild(V1, DFV.Version);
+            V2.Data:=DFV;
+            V2.ImageIndex:=4;
+            V2.StateIndex:=4;
+            V2.SelectedIndex:=4;
+
+
             Memo1.Lines.Add('      * '+DFV.Version);
             for DFVT in DFV.Titles do
             begin
+              V3:=TreeView2.Items.AddChild(V2, IntToStr(DFVT.Index) + '.' + DFVT.UserDataXsdUrl);
+              V3.Data:=DFVT;
+              V3.ImageIndex:=5;
+              V3.StateIndex:=5;
+              V3.SelectedIndex:=5;
+
               Memo1.Lines.Add('      ** UserDataXsdUrl : '+DFVT.UserDataXsdUrl);
               Memo1.Lines.Add('      ** XsdUrl : '+DFVT.XsdUrl);
 
@@ -158,11 +179,80 @@ begin
         end;
         Memo1.Lines.Add('');
       end;
-      FreeAndNil(DT);
     end
     else
       ErrorBox('Не получен список форматов документов для ящика %s', [B.Title]);
   end
+end;
+
+procedure TForm1.TreeView2Click(Sender: TObject);
+var
+  D: TObject;
+begin
+  xsdOpen.Enabled:=false;
+  if Assigned(TreeView2.Selected) and Assigned(TreeView2.Selected.Data) then
+  begin
+    D:=TObject(TreeView2.Selected.Data);
+    xsdOpen.Enabled:=D is TDocumentVersion;
+  end;
+end;
+
+procedure TForm1.xsdOpenExecute(Sender: TObject);
+var
+  D: TObject;
+  ST: TTreeNode;
+  SVers, SFunc, STypeDesc: String;
+  M: TMemoryStream;
+begin
+  Memo1.Lines.Clear;
+  SynEdit1.Lines.Clear;
+  SVers:='';
+  STypeDesc:='';
+  SFunc:='';
+  Edit4.Text:='';
+  if not (Assigned(TreeView2.Selected) and Assigned(TreeView2.Selected.Data)) then Exit;
+
+  ST:=TreeView2.Selected;
+  D:=TObject(ST.Data);
+  if D is TDocumentVersion then
+    SVers:=TDocumentVersion(D).Version;
+
+  if TObject(ST.Parent.Data) is TDocumentFunction then
+    SFunc:=TDocumentFunction(ST.Parent.Data).Name;
+
+  if TObject(ST.Parent.Parent.Data) is TDocumentTypeDescription then
+    STypeDesc:=TDocumentTypeDescription(ST.Parent.Parent.Data).Name;
+
+  if (STypeDesc<>'') and (SFunc <> '') and (SVers <> '') then
+  begin
+    Edit4.Text:=STypeDesc + '_' + STypeDesc + '_' + SVers + '.xsd';
+
+    M:=DiadocAPI1.GetContent(STypeDesc, SFunc, SVers, 0, UserContractXsd);
+    if Assigned(M) then
+    begin
+      M.Position:=0;
+      SynEdit1.Lines.LoadFromStream(M);
+      M.Free;
+      PageControl1.ActivePageIndex:=2;
+    end
+    else
+    begin
+      Memo1.Lines.Assign(DiadocAPI1.ResultText);
+      PageControl1.ActivePageIndex:=0;
+    end
+  end
+
+(*
+  //GetContent?typeNamedId=UniversalTransferDocument&function=%u0421%u0427%u0424&version=utd820_05_01_01_hyphen&titleIndex=0&contentType=UserContractXsd
+  M:=DiadocAPI1.GetContent('UniversalTransferDocument', 'СЧФ', 'utd820_05_01_01_hyphen', 0, UserContractXsd);//'UserContractXsd');
+  if Assigned(M) then
+  begin
+    M.SaveToFile('/home/alexs/3/UniversalTransferDocument.xsd');
+    M.Free;
+  end
+  else
+    Memo1.Lines.Assign(DiadocAPI1.ResultText);
+*)
 end;
 
 procedure TForm1.DoConnect;

@@ -7,9 +7,9 @@
       <Unit>
         <Filename Value="DDActualFormats.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <CursorPos Y="19"/>
-        <UsageCount Value="25"/>
+        <UsageCount Value="28"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -20,9 +20,12 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="adMainUnit"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="185"/>
-        <CursorPos X="13" Y="82"/>
-        <UsageCount Value="25"/>
+        <TopLine Value="80"/>
+        <CursorPos Y="80"/>
+        <UsageCount Value="28"/>
+        <Bookmarks Count="1">
+          <Item0 Y="246" ID="1"/>
+        </Bookmarks>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -123,28 +126,29 @@
       <Unit>
         <Filename Value="../../../diadoc_src/diadoctypes_organization.pas"/>
         <UnitName Value="DiadocTypes_Organization"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="16"/>
         <CursorPos X="30" Y="35"/>
-        <UsageCount Value="13"/>
+        <UsageCount Value="14"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../../diadoc_src/diadocapi.pas"/>
         <UnitName Value="DiadocAPI"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <TopLine Value="5714"/>
         <CursorPos X="23" Y="5740"/>
-        <UsageCount Value="13"/>
+        <UsageCount Value="14"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../../Documents/Types/diadoctypes_documenttypedescription.pas"/>
         <UnitName Value="DiadocTypes_DocumentTypeDescription"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="190"/>
-        <CursorPos X="71" Y="206"/>
-        <UsageCount Value="10"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="230"/>
+        <CursorPos X="3" Y="236"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="/home/install/source/fpcsrc/rtl/inc/astrings.inc"/>
@@ -169,142 +173,147 @@
       <Unit>
         <Filename Value="../../../diadoc_src/diadoc_base.pas"/>
         <UnitName Value="Diadoc_Base"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="31"/>
         <CursorPos X="17" Y="33"/>
-        <UsageCount Value="12"/>
+        <UsageCount Value="13"/>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../../diadoc_src/xsdcontenttype.pas"/>
         <UnitName Value="XsdContentType"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="23"/>
-        <CursorPos X="20" Y="35"/>
-        <UsageCount Value="12"/>
+        <CursorPos X="5" Y="47"/>
+        <UsageCount Value="13"/>
         <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/home/install/source/fpcsrc/rtl/inc/objpas.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="606"/>
+        <CursorPos Y="621"/>
+        <UsageCount Value="10"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
       <Position>
-        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
-        <Caret Line="5747" TopLine="5727"/>
+        <Filename Value="admainunit.pas"/>
+        <Caret Line="193" Column="34" TopLine="179"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="77" Column="45" TopLine="54"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
-        <Caret Line="245" Column="14" TopLine="231"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
-        <Caret Line="5740" Column="23" TopLine="5714"/>
+        <Caret Line="189" Column="46" TopLine="160"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="70" TopLine="54"/>
+        <Caret Line="96" Column="111" TopLine="78"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="71" TopLine="54"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="73" TopLine="54"/>
+        <Caret Line="84" Column="113" TopLine="59"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="70" Column="94" TopLine="54"/>
+        <Caret Line="85" Column="114" TopLine="60"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="153" TopLine="148"/>
+        <Caret Line="95" Column="153" TopLine="70"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="79" TopLine="64"/>
+        <Caret Line="96" Column="131" TopLine="71"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="70" TopLine="64"/>
+        <Caret Line="253" Column="73" TopLine="229"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="71" TopLine="64"/>
+        <Caret Line="269" Column="153" TopLine="245"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="73" TopLine="64"/>
+        <Caret Line="270" Column="131" TopLine="246"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="74" TopLine="64"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="80" TopLine="64"/>
+        <Caret Line="84" Column="113" TopLine="59"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="81" TopLine="64"/>
+        <Caret Line="85" Column="114" TopLine="78"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="83" TopLine="64"/>
+        <Caret Line="95" Column="153" TopLine="78"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="84" TopLine="64"/>
+        <Caret Line="96" Column="131" TopLine="78"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="75" Column="10" TopLine="64"/>
+        <Caret Line="253" Column="62" TopLine="241"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="61" TopLine="58"/>
+        <Caret Line="261" Column="52" TopLine="247"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="43" TopLine="29"/>
+        <Caret Line="52" Column="15" TopLine="38"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="191" Column="18" TopLine="177"/>
+        <Caret Line="218" Column="3" TopLine="213"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="43" Column="15" TopLine="29"/>
+        <Caret Line="51" Column="15" TopLine="38"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="104" Column="3" TopLine="101"/>
+        <Caret Line="200" Column="28" TopLine="178"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="107" Column="55" TopLine="96"/>
+        <Caret Line="201" Column="28" TopLine="179"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="42" Column="5" TopLine="28"/>
-      </Position>
-      <Position>
-        <Filename Value="../../../diadoc_src/diadoctypes_organization.pas"/>
-        <Caret Line="219" Column="3" TopLine="204"/>
+        <Caret Line="202" Column="28" TopLine="180"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="42" Column="5" TopLine="28"/>
+        <Caret Line="203" Column="28" TopLine="181"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="107" TopLine="96"/>
+        <Caret Line="202" Column="17" TopLine="182"/>
       </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="82" Column="13" TopLine="62"/>
+        <Caret Line="57" Column="15" TopLine="40"/>
+      </Position>
+      <Position>
+        <Filename Value="admainunit.pas"/>
+        <Caret Line="247" Column="51" TopLine="236"/>
+      </Position>
+      <Position>
+        <Filename Value="admainunit.pas"/>
+        <Caret Line="81" TopLine="81"/>
+      </Position>
+      <Position>
+        <Filename Value="admainunit.pas"/>
+        <Caret Line="80" TopLine="80"/>
       </Position>
     </JumpHistory>
     <RunParams>
