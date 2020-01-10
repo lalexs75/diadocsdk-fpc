@@ -65,6 +65,7 @@ type
     procedure FillBoxList;
     function CheckConnectionParams:Boolean;
     procedure DoExport(AFolderName:string; DTD:TDocumentTypeDescription; DF:TDocumentFunction; DFV:TDocumentVersion; DFVT:TDocumentTitle);
+    function NormalazeDocFunction(ADocFunction:string):string;
   public
 
   end;
@@ -73,7 +74,7 @@ var
   Form1: TForm1;
 
 implementation
-uses LazFileUtils, Diadoc_Base, XsdContentType;
+uses LazFileUtils, Diadoc_Base, XsdContentType, LazUTF8;
 
 {$R *.lfm}
 
@@ -126,7 +127,7 @@ begin
     begin
       for DTD in FMyDT.DocumentTypes do
       begin
-        V:=TreeView2.Items.Add(nil, DTD.Name);
+        V:=TreeView2.Items.Add(nil, DTD.Name +' : ' + DTD.Title );
         V.Data:=DTD;
         V.ImageIndex:=2;
         V.StateIndex:=2;
@@ -225,6 +226,7 @@ begin
           DoExport(SelectDirectoryDialog1.FileName, DTD, DF, DFV, DFVT);
     end;
   end;
+  ShowMessage('Выгрузка успешная');
 end;
 
 procedure TForm1.xsdOpenExecute(Sender: TObject);
@@ -255,7 +257,7 @@ begin
 
   if (STypeDesc<>'') and (SFunc <> '') and (SVers <> '') then
   begin
-    Edit4.Text:=STypeDesc + '_' + STypeDesc + '_' + SVers + '.xsd';
+    Edit4.Text:=STypeDesc + '_' + NormalazeDocFunction(SFunc) + '_' + SVers + '.xsd';
 
     M:=DiadocAPI1.GetContent(STypeDesc, SFunc, SVers, 0, UserContractXsd);
     if Assigned(M) then
@@ -337,7 +339,7 @@ var
 begin
   if (not (Assigned(DTD) and Assigned(DF) and  Assigned(DFV) and Assigned(DFVT))) or (DFVT.UserDataXsdUrl = '') then Exit;
 
-  S:=AppendPathDelim(AFolderName) + DTD.Name + '_' + DF.Name + '_' + DFV.Version + '.xsd';
+  S:=AppendPathDelim(AFolderName) + DTD.Name + '_' + NormalazeDocFunction(DF.Name) + '_' + DFV.Version + '.xsd';
 
   M:=DiadocAPI1.GetContent(DTD.Name, DF.Name, DFV.Version, DFVT.Index, UserContractXsd);
   if Assigned(M) then
@@ -346,6 +348,33 @@ begin
     M.SaveToFile(S);
     M.Free;
   end
+end;
+
+function TForm1.NormalazeDocFunction(ADocFunction: string): string;
+begin
+  ADocFunction:=UTF8UpperCase(ADocFunction);
+  if ADocFunction = 'СЧФ' then
+    Result:='SCHF'
+  else
+  if ADocFunction = 'ДОП' then
+    Result:='DOP'
+  else
+  if ADocFunction = 'СЧФДОП' then
+    Result:='SCHFDOP'
+  else
+  if ADocFunction = 'КСЧФ' then
+    Result:='KSCHF'
+  else
+  if ADocFunction = 'ДИС' then
+    Result:='DIS'
+  else
+  if ADocFunction = 'КСЧФДИС' then
+    Result:='KSCHFDIS'
+  else
+  if ADocFunction = 'DEFAULT' then
+    Result:='DEFAULT'
+  else
+    raise Exception.CreateFmt('Не известная функция - %s', [ADocFunction]);
 end;
 
 end.
