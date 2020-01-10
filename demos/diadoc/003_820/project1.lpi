@@ -43,11 +43,6 @@
         <IsPartOfProject Value="True"/>
       </Unit>
       <Unit>
-        <Filename Value="../../../DataXml/universaltransferdocumentwithhyphens.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="UniversalTransferDocumentWithHyphens"/>
-      </Unit>
-      <Unit>
         <Filename Value="dd820mainunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="dd820MainForm"/>
@@ -63,6 +58,18 @@
         <Filename Value="ssl_openssl_lib.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit>
+      <Unit>
+        <Filename Value="dd820_utdwh_revision_unit.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../../DataXml/UniversalTransferDocumentRevision_schf_utd820_05_01_01_hyphen.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="dd820_utdwh_unit.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -72,9 +79,13 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
+      <OtherUnitFiles Value="../../../DataXml"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Linking>
+      <Debugging>
+        <DebugInfoType Value="dsDwarf2Set"/>
+      </Debugging>
       <Options>
         <Win32>
           <GraphicApplication Value="True"/>

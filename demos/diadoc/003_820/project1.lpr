@@ -11,7 +11,7 @@ uses
   dd820MainUnit,
   ssl_openssl,
   ssl_openssl_lib,
-  rxnew
+  rxnew, dd820_utdwh_revision_unit, dd820_utdwh_unit
   { you can add units after this };
 
 {$R *.res}

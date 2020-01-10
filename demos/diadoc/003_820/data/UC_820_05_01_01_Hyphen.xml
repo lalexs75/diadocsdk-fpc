@@ -10,14 +10,6 @@
       <OrganizationReference BoxId="7c715969-e003-4816-b103-7da20541a83a" OrgType="1"/>
     </Buyer>
   </Buyers>
-  <Table Vat="123.4" Total="123.4" TotalNet="123.4" TotalWithVatExcluded="123.4">
-    <Item Vat="123" Unit="796" Product="Товар № 1" TaxRate="20%" Subtotal="123.45">
-      <CustomsDeclarations>
-        <CustomsDeclaration Country="804" DeclarationNumber="10108030/170919/0000744"/>
-      </CustomsDeclarations>
-    </Item>
-    <Item Vat="123" Unit="796" Product="Товар № 2" TaxRate="20%" Subtotal="123.45"/>
-  </Table>
   <Shippers>
     <Shipper SameAsSeller="true"/>
   </Shippers>
@@ -32,6 +24,14 @@
   <PaymentDocuments>
     <Document Date="01.01.2019" Total="1234.50" Number="12323"/>
   </PaymentDocuments>
+  <Table Vat="123.40" Total="123.40" TotalNet="123.40000000000" TotalWithVatExcluded="123.40">
+    <Item Vat="123.00" Unit="796" Product="Товар № 1" TaxRate="20%" Subtotal="123.45">
+      <CustomsDeclarations>
+        <CustomsDeclaration Country="804" DeclarationNumber="10108030/170919/0000744"/>
+      </CustomsDeclarations>
+    </Item>
+    <Item Vat="123.00" Unit="796" Product="Товар № 2" TaxRate="20%" Subtotal="123.45"/>
+  </Table>
   <TransferInfo OperationInfo="Примеяание">
     <TransferBases>
       <TransferBase BaseDocumentId="123" BaseDocumentDate="01.01.2019" BaseDocumentInfo="Примечание к транспортному документу" BaseDocumentName="Документа" BaseDocumentNumber="1231"/>

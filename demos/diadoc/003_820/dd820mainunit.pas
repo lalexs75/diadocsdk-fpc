@@ -26,6 +26,7 @@ type
     Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
+    ListBox1: TListBox;
     Memo1: TMemo;
     Memo2: TMemo;
     PageControl1: TPageControl;
@@ -45,6 +46,9 @@ type
     FBoxID: String;
     FMyOrgs: TOrganizationList;
     procedure DoConnect;
+    procedure DoSaveUTD2;
+    procedure DoSaveUTDWHRevision;
+    procedure DoSaveUTDWH;
   public
 
   end;
@@ -54,7 +58,8 @@ var
 
 implementation
 
-uses LazFileUtils, ssl_openssl_lib, UserContract_820_05_01_01_Hyphen;
+uses LazFileUtils, ssl_openssl_lib, dd820_utdwh_revision_unit, dd820_utdwh_unit,
+  UserContract_820_05_01_01_Hyphen;
 
 {$R *.lfm}
 
@@ -93,6 +98,65 @@ begin
 end;
 
 procedure Tdd820MainForm.Button3Click(Sender: TObject);
+begin
+  case ListBox1.ItemIndex of
+    0:DoSaveUTD2;
+    1:DoSaveUTDWHRevision;
+    2:DoSaveUTDWH;
+  else
+     ShowMessage('Выберите тип документа');
+  end;
+end;
+
+procedure Tdd820MainForm.DiadocAPI1HttpStatus(Sender: TDiadocAPI;
+  AHTTP: THTTPSend);
+begin
+  Memo1.Lines.Assign(DiadocAPI1.ResultText);
+end;
+
+procedure Tdd820MainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  if Assigned(FMyOrgs) then
+    FreeAndNil(FMyOrgs);
+end;
+
+procedure Tdd820MainForm.FormCreate(Sender: TObject);
+begin
+  FSaveDataXmlName:=AppendPathDelim(ExtractFileDir(ParamStr(0))) + 'data' + DirectorySeparator + 'UC_820_05_01_01_Hyphen.xml';
+  FResultDocXmlName:=AppendPathDelim(ExtractFileDir(ParamStr(0))) + 'data' + DirectorySeparator + 'UniversalTransferDocument_001.xml';
+  Button2.Enabled:=false;
+  Memo1.Lines.Clear;
+  Memo2.Lines.Clear;
+end;
+
+procedure Tdd820MainForm.DoConnect;
+var
+  O:TOrganization;
+  B:TBox;
+begin
+  DiadocAPI1.ApiClientId:=Edit1.Text;
+  DiadocAPI1.UserName:=Edit2.Text;
+  DiadocAPI1.Password:=Edit3.Text;
+  FMyOrgs:=DiadocAPI1.GetMyOrganizations;
+  if not Assigned(FMyOrgs) then
+    raise Exception.Create('Ошибка инициализации Diadoc (не полученна информация об организации).')
+  else
+  begin
+    FBoxID:=FMyOrgs.Organizations[0].Boxes[0].BoxId;
+    for O in FMyOrgs.Organizations do
+    begin
+      Memo2.Lines.Add('FullName ' + O.FullName);
+      for B in O.Boxes do
+      begin
+        Memo2.Lines.Add(' BoxId ' + B.BoxId);
+      end;
+    end;
+    Button1.Enabled:=false;
+    Button2.Enabled:=true;
+  end;
+end;
+
+procedure Tdd820MainForm.DoSaveUTD2;
 var
   U: TUniversalTransferDocumentWithHyphens;
   Seler1, Buyer1, Consignee1: TExtendedOrganizationInfoWithHyphens;
@@ -183,52 +247,22 @@ begin
   U.Free;
 end;
 
-procedure Tdd820MainForm.DiadocAPI1HttpStatus(Sender: TDiadocAPI;
-  AHTTP: THTTPSend);
-begin
-  Memo1.Lines.Assign(DiadocAPI1.ResultText);
-end;
-
-procedure Tdd820MainForm.FormClose(Sender: TObject; var CloseAction: TCloseAction);
-begin
-  if Assigned(FMyOrgs) then
-    FreeAndNil(FMyOrgs);
-end;
-
-procedure Tdd820MainForm.FormCreate(Sender: TObject);
-begin
-  FSaveDataXmlName:=AppendPathDelim(ExtractFileDir(ParamStr(0))) + 'data' + DirectorySeparator + 'UC_820_05_01_01_Hyphen.xml';
-  FResultDocXmlName:=AppendPathDelim(ExtractFileDir(ParamStr(0))) + 'data' + DirectorySeparator + 'UniversalTransferDocument_001.xml';
-  Button2.Enabled:=false;
-  Memo1.Lines.Clear;
-  Memo2.Lines.Clear;
-end;
-
-procedure Tdd820MainForm.DoConnect;
+procedure Tdd820MainForm.DoSaveUTDWHRevision;
 var
-  O:TOrganization;
-  B:TBox;
+  M: TMemoryStream;
 begin
-  DiadocAPI1.ApiClientId:=Edit1.Text;
-  DiadocAPI1.UserName:=Edit2.Text;
-  DiadocAPI1.Password:=Edit3.Text;
-  FMyOrgs:=DiadocAPI1.GetMyOrganizations;
-  if not Assigned(FMyOrgs) then
-    raise Exception.Create('Ошибка инициализации Diadoc (не полученна информация об организации).')
-  else
-  begin
-    FBoxID:=FMyOrgs.Organizations[0].Boxes[0].BoxId;
-    for O in FMyOrgs.Organizations do
-    begin
-      Memo2.Lines.Add('FullName ' + O.FullName);
-      for B in O.Boxes do
-      begin
-        Memo2.Lines.Add(' BoxId ' + B.BoxId);
-      end;
-    end;
-    Button1.Enabled:=false;
-    Button2.Enabled:=true;
-  end;
+  M:=TestUTDWHRevision;
+  M.SaveToFile(FSaveDataXmlName);
+  M.Free;
+end;
+
+procedure Tdd820MainForm.DoSaveUTDWH;
+var
+  M: TMemoryStream;
+begin
+  M:=TestUTDWH;
+  M.SaveToFile(FSaveDataXmlName);
+  M.Free;
 end;
 
 end.
