@@ -534,6 +534,14 @@
         <Filename Value="DataXml\UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen.pas"/>
         <UnitName Value="UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen"/>
       </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_KSCHF_ucd_05_02_01.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_KSCHF_ucd_05_02_01"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_KSCHF_ucd_05_02_01.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_KSCHF_ucd_05_02_01"/>
+      </Item>
     </Files>
     <LazDoc Paths="docs"/>
     <i18n>

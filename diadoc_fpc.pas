@@ -65,7 +65,9 @@ uses
   DocumentInfoV3, DocumentWithDocflowV3, ResolutionDocflowV3, 
   RoamingNotification, FullVersion, TotalCountType, 
   UniversalTransferDocument_SCHFDOP_utd820_05_01_01_hyphen, 
-  UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen, LazarusPackageIntf;
+  UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen, 
+  UniversalCorrectionDocumentRevision_KSCHF_ucd_05_02_01, 
+  UniversalCorrectionDocument_KSCHF_ucd_05_02_01, LazarusPackageIntf;
 
 implementation
 

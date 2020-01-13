@@ -509,6 +509,15 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       BorderSpacing.Around = 6
       TabOrder = 2
     end
+    object Button6: TButton
+      Left = 9
+      Height = 25
+      Top = 328
+      Width = 75
+      Caption = 'Создать корректировочную УПД'
+      OnClick = Button6Click
+      TabOrder = 3
+    end
   end
   object dDocs: TDataSource
     DataSet = rxDocs
