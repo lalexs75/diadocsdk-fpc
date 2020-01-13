@@ -48,6 +48,7 @@ type
   Tstring60 = String;
   Tstring100 = String;
   Tstring1000 = String;
+  //Дата в формате ДД.ММ.ГГГГ (01.01.1800 - 31.12.2099)
   Tdate1 = String;
   TnewIndications = String;
 type
@@ -261,7 +262,9 @@ type
   public
     destructor Destroy; override;
   published
+    //X.509 сертификат подписанта (DER-кодировка) в формате BASE64Одно из полей CertificateBytes или CertificateThumbprint обязательно для заполнения
     property CertificateBytes:String read FCertificateBytes write SetCertificateBytes;
+    //Отпечаток сертификата подписантаОдно из полей CertificateBytes или CertificateThumbprint обязательно для заполнения
     property CertificateThumbprint:Tstring100 read FCertificateThumbprint write SetCertificateThumbprint;
   end;
 

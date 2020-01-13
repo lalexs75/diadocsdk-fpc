@@ -66,8 +66,11 @@ type
   Tstring2000z = String;
   Tinn = String;
   Tguid = String;
+  //Код из Общероссийского классификатора единиц измерения
   Tokei = String;
+  //Код из Общероссийского классификатора валют
   Tokv = String;
+  //Дата в формате ДД.ММ.ГГГГ (01.01.1800 - 31.12.2099)
   Tdate1 = String;
   TTaxRate = String;
   TTaxRateWithTaxedByAgent = String;
@@ -346,14 +349,21 @@ type
   public
     destructor Destroy; override;
   published
+    //Код организационно-правовой формы по ОКОПФ
     property Okopf:String read FOkopf write SetOkopf;
+    //Код в общероссийском классификаторе предприятий и организаций
     property Okpo:String read FOkpo write SetOkpo;
+    //Код основного вида деятельности по ОКДП
     property Okdp:String read FOkdp write SetOkdp;
     property Phone:Tstring255 read FPhone write SetPhone;
     property Fax:Tstring255 read FFax write SetFax;
+    //Номер банковского счета
     property BankAccountNumber:Tstring20 read FBankAccountNumber write SetBankAccountNumber;
+    //Название банка
     property BankName:Tstring1000 read FBankName write SetBankName;
+    //БИК
     property BankId:String read FBankId write SetBankId;
+    //Структурное подразделение
     property Department:Tstring1000 read FDepartment write SetDepartment;
   end;
 
@@ -378,10 +388,13 @@ type
     destructor Destroy; override;
   published
     property Address:TAddress read FAddress;
+    //Название
     property OrgName:Tstring1000 read FOrgName write SetOrgName;
     property Inn:Tstring20 read FInn write SetInn;
     property Kpp:Tstring20 read FKpp write SetKpp;
+    //Признак того, что Организация - это ИП
     property IsSoleProprietor:Boolean read FIsSoleProprietor write SetIsSoleProprietor;
+    //Идентификатор участника ЭДО
     property FnsParticipantId:String read FFnsParticipantId write SetFnsParticipantId;
   end;
 
@@ -406,10 +419,13 @@ type
     destructor Destroy; override;
   published
     property Address:TAddress read FAddress;
+    //Название
     property OrgName:Tstring1000 read FOrgName write SetOrgName;
     property Inn:Tstring20 read FInn write SetInn;
     property Kpp:Tstring20 read FKpp write SetKpp;
+    //Признак того, что Организация - это ИП
     property IsSoleProprietor:Boolean read FIsSoleProprietor write SetIsSoleProprietor;
+    //Идентификатор участника ЭДО
     property FnsParticipantId:String read FFnsParticipantId write SetFnsParticipantId;
   end;
 
@@ -488,14 +504,23 @@ type
   public
     destructor Destroy; override;
   published
+    //индекс
     property ZipCode:String read FZipCode write SetZipCode;
+    //регион (код)
     property Region:Tstring50 read FRegion write SetRegion;
+    //район
     property Territory:Tstring50 read FTerritory write SetTerritory;
+    //город
     property City:Tstring50 read FCity write SetCity;
+    //населенный пункт
     property Locality:Tstring50 read FLocality write SetLocality;
+    //улица
     property Street:Tstring50 read FStreet write SetStreet;
+    //дом
     property Building:Tstring20 read FBuilding write SetBuilding;
+    //корпус
     property Block:Tstring20 read FBlock write SetBlock;
+    //квартира
     property Apartment:Tstring20 read FApartment write SetApartment;
   end;
 
@@ -512,7 +537,9 @@ type
   public
     destructor Destroy; override;
   published
+    //страна (код)
     property Country:Tstring60 read FCountry write SetCountry;
+    //текст адреса
     property Address:Tstring255 read FAddress write SetAddress;
   end;
 
@@ -573,7 +600,9 @@ type
   public
     destructor Destroy; override;
   published
+    //X.509 сертификат подписанта (DER-кодировка) в формате BASE64Одно из полей CertificateBytes или CertificateThumbprint обязательно для заполнения
     property CertificateBytes:String read FCertificateBytes write SetCertificateBytes;
+    //Отпечаток сертификата подписантаОдно из полей CertificateBytes или CertificateThumbprint обязательно для заполнения
     property CertificateThumbprint:Tstring100 read FCertificateThumbprint write SetCertificateThumbprint;
   end;
 
@@ -592,8 +621,11 @@ type
   public
     destructor Destroy; override;
   published
+    //Идентификатор ящика подписанта для заполнения SignerDetails
     property BoxId:Tstring100 read FBoxId write SetBoxId;
+    //X.509 сертификат подписанта (DER-кодировка) в формате BASE64Одно из полей CertificateBytes или CertificateThumbprint обязательно для заполнения
     property CertificateBytes:String read FCertificateBytes write SetCertificateBytes;
+    //Отпечаток сертификата подписантаОдно из полей CertificateBytes или CertificateThumbprint обязательно для заполнения
     property CertificateThumbprint:Tstring100 read FCertificateThumbprint write SetCertificateThumbprint;
   end;
 
@@ -631,13 +663,23 @@ type
     property LastName:Tstring60 read FLastName write SetLastName;
     property FirstName:Tstring60 read FFirstName write SetFirstName;
     property MiddleName:Tstring60 read FMiddleName write SetMiddleName;
+    //Должность
     property Position:Tstring128z read FPosition write SetPosition;
+    //ИННОбязательно для SignerType=1 (ЮЛ) и SignerType=2 (ИП)Опционально для SignerType=3 (ФЛ)
     property Inn:String read FInn write SetInn;
+    //СвГосРегИП - Реквизиты свидетельства о государственной регистрации индивидуального предпринимателя
     property RegistrationCertificate:Tstring100 read FRegistrationCertificate write SetRegistrationCertificate;
+    //1 – Представитель юридического лица (ЮЛ)
+    //2 - Индивидуальный предприниматель (ИП)
+    //3 - Физическое лицо (ФЛ)
     property SignerType:String read FSignerType write SetSignerType;
+    //НаимОрг
     property SignerOrganizationName:Tstring1000 read FSignerOrganizationName write SetSignerOrganizationName;
+    //ИныеСвед - Иные сведения, идентифицирующие физическое лицо
     property SignerInfo:Tstring255 read FSignerInfo write SetSignerInfo;
+    //ОснПолн - Основание полномочий (доверия)
     property SignerPowersBase:Tstring255 read FSignerPowersBase write SetSignerPowersBase;
+    //ОснПолнОрг - Основание полномочий (доверия) организации
     property SignerOrgPowersBase:Tstring255 read FSignerOrgPowersBase write SetSignerOrgPowersBase;
   end;
 
@@ -652,6 +694,10 @@ type
   public
     destructor Destroy; override;
   published
+    //Статус1 - работник организации продавца товаров (работ, услуг, имущественных прав) ИЛИ работник организации покупателя;
+    //2 - работник организации - составителя информации продавца ИЛИ работник организации – составителя информации покупателя;
+    //3 - работник иной уполномоченной организации;
+    //4 - уполномоченное физическое лицо, в том числе индивидуальный предприниматель.
     property SignerStatus:Longint read FSignerStatus write SetSignerStatus;
   end;
 
@@ -666,6 +712,13 @@ type
   public
     destructor Destroy; override;
   published
+    //ОблПолн - Область полномочий0 - лицо, ответственное за подписание счетов-фактур
+    //1 - лицо, совершившее сделку, операцию
+    //2 - лицо, совершившее сделку, операцию и ответственное за ее оформление
+    //3 - лицо, ответственное за оформление свершившегося события
+    //4 - лицо, совершившее сделку, операцию и ответственное за подписание счетов-фактур
+    //5 - лицо, совершившее сделку, операцию и ответственное за её оформление и за подписание счетов-фактур
+    //6 - лицо, ответственное за оформление свершившегося события и за подписание счетов-фактур
     property SignerPowers:Longint read FSignerPowers write SetSignerPowers;
   end;
 
@@ -680,6 +733,9 @@ type
   public
     destructor Destroy; override;
   published
+    //ОблПолн - Область полномочий1 - лицо, совершившее сделку, операцию
+    //2 - лицо, совершившее сделку, операцию и ответственное за ее оформление
+    //3 - лицо, ответственное за оформление свершившегося события
     property SignerPowers:Longint read FSignerPowers write SetSignerPowers;
   end;
 
@@ -696,7 +752,14 @@ type
   public
     destructor Destroy; override;
   published
+    //ОблПолн - Область полномочий1 - лицо, совершившее сделку, операцию
+    //2 - лицо, совершившее сделку, операцию и ответственное за ее оформление
+    //3 - лицо, ответственное за оформление свершившегося события
     property SignerPowers:Longint read FSignerPowers write SetSignerPowers;
+    //Статус3 - работник иной уполномоченной организации;
+    //4 - уполномоченное физическое лицо, в том числе индивидуальный предприниматель;
+    //5 - работник организации – покупателя;
+    //6 - работник организации – составителя файла обмена информации покупателя, если составитель файла обмена информации покупателя не является покупателем.
     property SignerStatus:Longint read FSignerStatus write SetSignerStatus;
   end;
 
@@ -711,6 +774,9 @@ type
   public
     destructor Destroy; override;
   published
+    //ОблПолн - Область полномочий0 - лицо, ответственное за подписание счетов-фактур;
+    //3 – лицо, ответственное за оформление свершившегося события;
+    //6 - лицо, совершившее сделку, операцию и ответственное за подписание счетов-фактур
     property SignerPowers:Longint read FSignerPowers write SetSignerPowers;
   end;
 
@@ -725,6 +791,7 @@ type
   public
     destructor Destroy; override;
   published
+    //ОблПолн - Область полномочий3 – лицо, ответственное за оформление свершившегося события;
     property SignerPowers:Longint read FSignerPowers write SetSignerPowers;
   end;
 
@@ -739,6 +806,9 @@ type
   public
     destructor Destroy; override;
   published
+    //ОблПолн - Область полномочий1 - лицо, совершившее сделку, операцию;
+    //2 – лицо, совершившее сделку, операцию и ответственное за ее оформление;
+    //3 – лицо, ответственное за оформление свершившегося события
     property SignerPowers:Longint read FSignerPowers write SetSignerPowers;
   end;
 
@@ -754,6 +824,7 @@ type
   public
     destructor Destroy; override;
   published
+    //ТекстИнф - Текстовая информация
     property AdditionalInfo:TAdditionalInfoList read FAdditionalInfo;
     property InfoFileId:String read FInfoFileId write SetInfoFileId;
   end;
@@ -788,7 +859,11 @@ type
   public
     destructor Destroy; override;
   published
+    //КодПроисх - Код страны происхождения товара по Общероссийскому классификатору стран мира (ОКСМ) или
+    //980 - Евросоюз,
+    //981 - ЕАЭС
     property Country:Tstring1000 read FCountry write SetCountry;
+    //Номер таможенной декларации
     property DeclarationNumber:Tstring1000 read FDeclarationNumber write SetDeclarationNumber;
   end;
 
@@ -807,8 +882,13 @@ type
   public
     destructor Destroy; override;
   published
+    //КодПроисх - Код страны происхождения товара по Общероссийскому классификатору стран мира (ОКСМ) или
+    //980 - Евросоюз,
+    //981 - ЕАЭС
     property Country:Tstring1000 read FCountry write SetCountry;
+    //ДефКодПроисх - обязателен, если отсутствует КодПроисх
     property HyphenCountry:String read FHyphenCountry write SetHyphenCountry;
+    //Номер таможенной декларации
     property DeclarationNumber:Tstring1000 read FDeclarationNumber write SetDeclarationNumber;
   end;
 
@@ -827,8 +907,11 @@ type
   public
     destructor Destroy; override;
   published
+    //сумма без учета налога
     property TotalWithVatExcluded:Double read FTotalWithVatExcluded write SetTotalWithVatExcluded;
+    //сумма налога
     property Vat:Double read FVat write SetVat;
+    //сумма всего
     property Total:Double read FTotal write SetTotal;
   end;
 
@@ -849,9 +932,13 @@ type
   public
     destructor Destroy; override;
   published
+    //акциз
     property Excise:Double read FExcise write SetExcise;
+    //сумма без учета налога
     property SubtotalWithVatExcluded:Double read FSubtotalWithVatExcluded write SetSubtotalWithVatExcluded;
+    //сумма налога
     property Vat:Double read FVat write SetVat;
+    //сумма с учетом налога
     property Subtotal:Double read FSubtotal write SetSubtotal;
   end;
 
@@ -878,12 +965,19 @@ type
   public
     destructor Destroy; override;
   published
+    //единицы измерения товара (код)
     property Unit1:String read FUnit1 write SetUnit1;
+    //количество единиц товара
     property Quantity:Double read FQuantity write SetQuantity;
+    //цена за единицу товара
     property Price:Double read FPrice write SetPrice;
+    //акциз
     property Excise:Double read FExcise write SetExcise;
+    //сумма без учета налога
     property SubtotalWithVatExcluded:Double read FSubtotalWithVatExcluded write SetSubtotalWithVatExcluded;
+    //сумма налога
     property Vat:Double read FVat write SetVat;
+    //сумма с учетом налога
     property Subtotal:Double read FSubtotal write SetSubtotal;
   end;
 
@@ -898,6 +992,7 @@ type
   public
     destructor Destroy; override;
   published
+    //ставка налога
     property TaxRate:TTaxRate read FTaxRate write SetTaxRate;
   end;
 
@@ -912,6 +1007,7 @@ type
   public
     destructor Destroy; override;
   published
+    //ставка налога
     property TaxRate:TTaxRateWithTwentyPercent read FTaxRate write SetTaxRate;
   end;
 
@@ -926,6 +1022,7 @@ type
   public
     destructor Destroy; override;
   published
+    //ставка налога
     property TaxRate:TTaxRateWithTaxedByAgent read FTaxRate write SetTaxRate;
   end;
 
@@ -940,6 +1037,7 @@ type
   public
     destructor Destroy; override;
   published
+    //ставка налога
     property TaxRate:TTaxRateWithTwentyPercentAndTaxedByAgent read FTaxRate write SetTaxRate;
   end;
 
@@ -964,12 +1062,19 @@ type
   public
     destructor Destroy; override;
   published
+    //Лицо, выдавшее доверенность
     property IssuerPerson:TOfficial read FIssuerPerson;
+    //Лицо, получившее доверенность
     property RecipientPerson:TOfficial read FRecipientPerson;
+    //Дата выдачи доверенности
     property Date:Tdate1 read FDate write SetDate;
+    //Номер доверенности
     property Number:Tstring255 read FNumber write SetNumber;
+    //Организация, представитель которой выдал доверенность
     property IssuerOrganizationName:Tstring1000 read FIssuerOrganizationName write SetIssuerOrganizationName;
+    //Дополнительная информация о выдавшем доверенность
     property IssuerAdditionalInfo:Tstring1000 read FIssuerAdditionalInfo write SetIssuerAdditionalInfo;
+    //Дополнительная информация о получившем доверенность
     property RecipientAdditionalInfo:Tstring1000 read FRecipientAdditionalInfo write SetRecipientAdditionalInfo;
   end;
 
@@ -1009,8 +1114,11 @@ type
   public
     destructor Destroy; override;
   published
+    //лицо, подписывающее со стороны исполнителя / заказчика
     property Official:TOfficial read FOfficial;
+    //сведения о доверенности подписывающего со стороны исполнителя / заказчика
     property Attorney:TAttorney read FAttorney;
+    //дата подписи акта исполнителем / заказчиком
     property SignatureDate:Tdate1 read FSignatureDate write SetSignatureDate;
   end;
 
@@ -1029,8 +1137,11 @@ type
   public
     destructor Destroy; override;
   published
+    //ДатаПРД - Дата составления платежно-расчетного документа
     property Date:Tdate1 read FDate write SetDate;
+    //НомерПРД - Номер платежно-расчетного документа
     property Number:Tstring30 read FNumber write SetNumber;
+    //СуммаПРД - Сумма платежно-расчетного документа
     property Total:Double read FTotal write SetTotal;
   end;
 
@@ -1051,9 +1162,13 @@ type
   public
     destructor Destroy; override;
   published
+    //НаимОсн - Наименование документа-основания
     property Name:Tstring255 read FName write SetName;
+    //НомОсн - Номер документа-основания
     property Number:Tstring255 read FNumber write SetNumber;
+    //ДатаОсн - Дата документа-основания
     property Date:Tdate1 read FDate write SetDate;
+    //ДопСвОсн - Дополнительные сведения документа-основания
     property Info:Tstring1000 read FInfo write SetInfo;
   end;
 
