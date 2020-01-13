@@ -44,6 +44,7 @@ function TimestampTicksToDateTime(Ticks:sfixed64):TDateTime;
 function DateTimeToTimestampTicks(ADateTime:TDateTime):sfixed64;
 
 function InvoiceVersion(const AXmlDoc:TStream):string;
+procedure DocumentParams(const AXmlDoc:TStream;out RDocType, RDocFunct, RDocVers:string);
 implementation
 uses DateUtils, DOM, XMLRead;
 
@@ -62,15 +63,12 @@ begin
 
 end;
 
-function InvoiceVersion(const AXmlDoc: TStream): string;
-
 function NodeValue(ANode:TDOMNode):String;
 begin
-//  Result:='';
   Result:=ANode.NodeValue;
-//  SetCodePage();
 end;
 
+function InvoiceVersion(const AXmlDoc: TStream): string;
 var
   P: Int64;
   D: TXMLDocument;
@@ -86,6 +84,7 @@ begin
   EFunc:=nil;
 
   P:=AXmlDoc.Position;
+  AXmlDoc.Position:=0;
   try
     ReadXMLFile(D, AXmlDoc);
     if Assigned(D) then
@@ -124,12 +123,13 @@ begin
           else
           if S3 = 'СЧФДОП' then
           begin
-            Result:='utd_';
+            Result:='utd820_05_01_01';
+{            Result:='utd_';
             if S1 = '5.02' then
               Result:=Result + '05_02_01'
             else
             if S1 = '5.01' then
-              Result:=Result + '05_01_05';
+              Result:=Result + '05_01_05';}
           end;
         end;
       end;
@@ -145,7 +145,78 @@ begin
           //utd820_05_01_01
     end;
   finally
-    AXmlDoc.Position;
+    AXmlDoc.Position:=P;
+  end;
+end;
+
+procedure DocumentParams(const AXmlDoc: TStream; out RDocType, RDocFunct,
+  RDocVers: string);
+var
+  P: Int64;
+  D: TXMLDocument;
+  S: String;
+  RFile, RDoc, EVerF, EKnd, EFunc: TDOMNode;
+begin
+  P:=AXmlDoc.Position;
+  AXmlDoc.Position:=0;
+  try
+    ReadXMLFile(D, AXmlDoc);
+    if Assigned(D) then
+    begin
+      S:='Файл';
+      RFile:=D.FindNode(S);
+      S:='Документ';
+      if Assigned(RFile) then
+        RDoc:=RFile.FindNode(S);
+
+      if Assigned(RFile) and Assigned(RDoc) then
+      begin
+        S:='ВерсФорм'; //="5.02"
+        EVerF:=RFile.Attributes.GetNamedItem(S);
+        //КНД="1115125" Функция="СЧФДОП"
+        S:='КНД';
+        EKnd:=RDoc.Attributes.GetNamedItem(S);
+        S:='Функция';
+        EFunc:=RDoc.Attributes.GetNamedItem(S);
+        if Assigned(EVerF) and Assigned(EKnd) and Assigned(EFunc) then
+        begin
+          //S1:=EVerF.NodeValue;
+          //S2:=EKnd.NodeValue;
+          RDocFunct:=NodeValue(EFunc);
+
+          if RDocFunct = 'СЧФ' then
+          begin
+            RDocType:='Invoice';
+            RDocVers:='invoice_05_02_01';
+          end
+          else
+          if RDocFunct = 'СЧФДОП' then
+          begin
+            RDocType:='UniversalTransferDocument';
+            RDocVers:='utd820_05_01_01_hyphen'; //'utd820_05_01_01';
+          end
+          else
+          if RDocFunct = 'ДОП' then
+          begin
+            //RDocType:='UniversalTransferDocument';
+            //RDocVers:='utd820_05_01_01';
+            raise Exception.Create('NotImplemented');
+          end;
+        end;
+      end;
+      D.Free;
+          //invoice_05_01_01
+          //invoice_05_01_03
+          //invoice_05_02_01
+          //utd_05_01_01
+          //utd_05_01_02
+          //utd_05_01_04
+          //utd_05_01_05
+          //utd_05_02_01
+          //utd820_05_01_01
+    end;
+  finally
+    AXmlDoc.Position:=P;
   end;
 end;
 

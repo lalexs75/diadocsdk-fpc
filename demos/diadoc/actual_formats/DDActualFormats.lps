@@ -19,8 +19,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="adMainUnit"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="351"/>
-        <CursorPos Y="376"/>
+        <TopLine Value="160"/>
+        <CursorPos X="101" Y="182"/>
         <UsageCount Value="31"/>
         <Bookmarks Count="1">
           <Item0 Y="276" ID="1"/>
@@ -126,7 +126,7 @@
       <Unit>
         <Filename Value="../../../diadoc_src/diadoctypes_organization.pas"/>
         <UnitName Value="DiadocTypes_Organization"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="16"/>
         <CursorPos X="30" Y="35"/>
         <UsageCount Value="15"/>
@@ -135,7 +135,7 @@
       <Unit>
         <Filename Value="../../../diadoc_src/diadocapi.pas"/>
         <UnitName Value="DiadocAPI"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="2"/>
         <TopLine Value="5714"/>
         <CursorPos X="23" Y="5740"/>
         <UsageCount Value="15"/>
@@ -144,7 +144,7 @@
       <Unit>
         <Filename Value="../../../Documents/Types/diadoctypes_documenttypedescription.pas"/>
         <UnitName Value="DiadocTypes_DocumentTypeDescription"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="1"/>
         <TopLine Value="291"/>
         <CursorPos X="3" Y="291"/>
         <UsageCount Value="12"/>
@@ -173,7 +173,7 @@
       <Unit>
         <Filename Value="../../../diadoc_src/diadoc_base.pas"/>
         <UnitName Value="Diadoc_Base"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="31"/>
         <CursorPos X="17" Y="33"/>
         <UsageCount Value="14"/>
@@ -182,7 +182,7 @@
       <Unit>
         <Filename Value="../../../diadoc_src/xsdcontenttype.pas"/>
         <UnitName Value="XsdContentType"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="3"/>
         <TopLine Value="23"/>
         <CursorPos X="5" Y="47"/>
         <UsageCount Value="14"/>
@@ -205,26 +205,20 @@
       <Unit>
         <Filename Value="../../../../rxnew/rxcontrols/rxinipropstorage.pas"/>
         <UnitName Value="RxIniPropStorage"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="52"/>
         <CursorPos X="18" Y="78"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="../../../../rxnew/rxtools/rxstrutils.pas"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="1125"/>
         <CursorPos X="89" Y="1146"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="admainunit.pas"/>
-        <Caret Line="225" TopLine="209"/>
-      </Position>
       <Position>
         <Filename Value="admainunit.pas"/>
         <Caret Line="224" TopLine="209"/>
@@ -340,6 +334,10 @@
       <Position>
         <Filename Value="admainunit.pas"/>
         <Caret Line="375" Column="21" TopLine="349"/>
+      </Position>
+      <Position>
+        <Filename Value="admainunit.pas"/>
+        <Caret Line="376" TopLine="270"/>
       </Position>
     </JumpHistory>
     <RunParams>

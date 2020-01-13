@@ -526,6 +526,14 @@
         <Filename Value="diadoc_src\TotalCountType.pas"/>
         <UnitName Value="TotalCountType"/>
       </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHFDOP_utd820_05_01_01_hyphen.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHFDOP_utd820_05_01_01_hyphen"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen"/>
+      </Item>
     </Files>
     <LazDoc Paths="docs"/>
     <i18n>

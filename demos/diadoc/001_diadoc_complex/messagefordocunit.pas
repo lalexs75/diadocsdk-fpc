@@ -83,12 +83,13 @@ var
 
 procedure ShowInvoiceSellerTitleXml(ADiadocAPI:TDiadocAPI; AStream:TStream);
 procedure ShowTorg12Xml(ADiadocAPI:TDiadocAPI; AStream:TStream);
-procedure ShowUniversalTransferDocumentSellerTitleXml(ADiadocAPI:TDiadocAPI; AStream:TStream);
+procedure ShowUniversalTransferDocumentSellerTitleXml(ADiadocAPI:TDiadocAPI; FBoxId:string; AStream:TStream);
 procedure ShowUniversalTransferDocumentBuyerTitle(ADiadocAPI:TDiadocAPI; AStream:TStream);
 procedure ShowInvoiceConfirmation(ADiadocAPI:TDiadocAPI; AStream:TStream; AFileName:string);
 procedure ShowOtherAttach(ADiadocAPI:TDiadocAPI; AStream:TStream; AFileName:string);
 implementation
-uses LCLIntf, diadoc_utils, UniversalTransferDocumentSellerTitleInfoUnit, UniversalTransferDocumentBuyerTitleInfoUnit;
+uses LCLIntf, diadoc_utils, UniversalTransferDocumentSellerTitleInfoUnit,
+  UniversalTransferDocumentBuyerTitleInfoUnit, UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen;
 
 {$R *.lfm}
 
@@ -144,16 +145,42 @@ begin
   FreeAndNil(AStream);
 end;
 
-procedure ShowUniversalTransferDocumentSellerTitleXml(ADiadocAPI:TDiadocAPI; AStream: TStream);
+procedure ShowUniversalTransferDocumentSellerTitleXml(ADiadocAPI: TDiadocAPI;
+  FBoxId: string; AStream: TStream);
 var
   U1: TUniversalTransferDocumentSellerTitleInfo;
   I2: TInvoiceInfo;
-  S: String;
+  S, RDocType, RDocFunct, RDocVers: String;
+  U2: TUniversalTransferDocumentWithHyphens;
+  M1: TMemoryStream;
 begin
   if not Assigned(AStream) then Exit;
 
   AStream.Position:=0;
+
+  DocumentParams(AStream, RDocType, RDocFunct, RDocVers);
+
+  M1:=ADiadocAPI.ParseTitleXml(FBoxId, RDocType, RDocFunct, RDocVers, 0, AStream);
+
+  if Assigned(M1) then
+  begin
+    M1.Position:=0;
+    M1.SaveToFile('/home/alexs/1/8/aa.xml');
+    M1.Position:=0;
+    U2:=TUniversalTransferDocumentWithHyphens.Create;
+    U2.LoadFromStream(M1);
+
+    UniversalTransferDocumentSellerTitleInfoForm:=TUniversalTransferDocumentSellerTitleInfoForm.Create(Application);
+    UniversalTransferDocumentSellerTitleInfoForm.OpenInfo(U2);
+    UniversalTransferDocumentSellerTitleInfoForm.ShowModal;
+    UniversalTransferDocumentSellerTitleInfoForm.Free;
+
+    U2.Free;
+    M1.Free;
+  end;
+(*
   S:=InvoiceVersion(AStream);
+
 
   if S = '' then
     U1:=ADiadocAPI.ParseUniversalTransferDocumentSellerTitleXml(AStream)
@@ -177,6 +204,7 @@ begin
       FreeAndNil(I2);
     end;
   end;
+*)
   FreeAndNil(AStream);
 end;
 
@@ -228,11 +256,13 @@ procedure TMessageForDocForm.Button1Click(Sender: TObject);
 var
   S: TMemoryStream;
   UPD: TUniversalTransferDocumentBuyerTitleInfo;
+  C: TAttachmentType;
 begin
   if rxEntytyContent_SIZE.AsInteger > 0 then
   begin
+    C:=TAttachmentType(rxEntytyAttachmentType.AsInteger);
     case TAttachmentType(rxEntytyAttachmentType.AsInteger) of
-      UniversalTransferDocument:ShowUniversalTransferDocumentSellerTitleXml(FDiadocAPI, FDiadocAPI.GetEntityContent(FBoxId, FMessageID, rxEntytyEntityId.AsString));
+      UniversalTransferDocument:ShowUniversalTransferDocumentSellerTitleXml(FDiadocAPI, FBoxId, FDiadocAPI.GetEntityContent(FBoxId, FMessageID, rxEntytyEntityId.AsString));
       UniversalTransferDocumentBuyerTitle:ShowUniversalTransferDocumentBuyerTitle(FDiadocAPI, FDiadocAPI.GetEntityContent(FBoxId, FMessageID, rxEntytyEntityId.AsString));
       InvoiceConfirmation:ShowInvoiceConfirmation(FDiadocAPI, FDiadocAPI.GetEntityContent(FBoxId, FMessageID, rxEntytyEntityId.AsString), rxEntytyFileName.AsString);
     else

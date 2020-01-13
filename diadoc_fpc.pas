@@ -63,7 +63,9 @@ uses
   DssSign, DetectTitleResponse, UserContract_820_05_01_01_Hyphen, 
   CertificateInfoV2, CertificateList, AttachmentV3, DocflowApiV3, DocflowV3, 
   DocumentInfoV3, DocumentWithDocflowV3, ResolutionDocflowV3, 
-  RoamingNotification, FullVersion, TotalCountType, LazarusPackageIntf;
+  RoamingNotification, FullVersion, TotalCountType, 
+  UniversalTransferDocument_SCHFDOP_utd820_05_01_01_hyphen, 
+  UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen, LazarusPackageIntf;
 
 implementation
 

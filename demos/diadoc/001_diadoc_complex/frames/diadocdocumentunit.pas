@@ -154,7 +154,7 @@ begin
   M:=FDiadocAPI.GetMessage(FBox.BoxId, rxDocsMessageId.AsString, '', false, false);
   E:=FindEntitie(M, UniversalTransferDocument);
   if Assigned(E) then
-    ShowUniversalTransferDocumentSellerTitleXml(FDiadocAPI, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, E.EntityId))
+    ShowUniversalTransferDocumentSellerTitleXml(FDiadocAPI, FBox.BoxId, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, E.EntityId))
   else
   begin
     E:=FindEntitie(M, XmlTorg12);
@@ -164,7 +164,7 @@ begin
     begin
       E:=FindEntitie(M, TAttachmentType.Invoice);
       if Assigned(E) then
-        ShowUniversalTransferDocumentSellerTitleXml(FDiadocAPI, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, E.EntityId))
+        ShowUniversalTransferDocumentSellerTitleXml(FDiadocAPI, FBox.BoxId, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, E.EntityId))
       else
         ShowMessage('УПД не найдена');
     end;

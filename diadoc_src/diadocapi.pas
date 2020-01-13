@@ -252,7 +252,7 @@ type
     function ParseUniversalTransferDocumentSellerTitleXml(AXmlContent:TStream; const documentVersion:string = 'utd_05_01_05'):TUniversalTransferDocumentSellerTitleInfo; //------------Парсинг СФ---------------------------
     function ParseUniversalCorrectionDocumentSellerTitleXml(AXmlContent:TStream; const documentVersion:string = 'ucd_05_01_03'):TUniversalCorrectionDocumentSellerTitleInfo;
     function ParseUniversalCorrectionDocumentBuyerTitleXml(AXmlContent:TStream):TUniversalTransferDocumentBuyerTitleInfo;
-    function ParseTitleXml(const ABoxId:string; const ADocumentTypeNamedId:string; const ADocumentFunction:string; const ADocumentVersion:string; ATitleIndex:integer; const AContent:TStream):TStream;
+    function ParseTitleXml(const ABoxId:string; const ADocumentTypeNamedId:string; const ADocumentFunction:string; const ADocumentVersion:string; ATitleIndex:integer; const AContent:TStream):TMemoryStream;
 
     function ParseTorg12SellerTitleXml(AXmlContent:TStream):TTorg12SellerTitleInfo;
     function ParseTovTorg551SellerTitleXml(AXmlContent:TStream):TTovTorgSellerTitleInfo;
@@ -1403,7 +1403,7 @@ end;
 function TDiadocAPI.ParseTitleXml(const ABoxId: string;
   const ADocumentTypeNamedId: string; const ADocumentFunction: string;
   const ADocumentVersion: string; ATitleIndex: integer; const AContent: TStream
-  ): TStream;
+  ): TMemoryStream;
 var
   S: String;
 begin
@@ -1439,7 +1439,7 @@ begin
     if FHTTP.ResultCode = 200 then
     begin
       Result:=TMemoryStream.Create;
-      Result.CopyFrom(FHTTP.Document, -1);
+      Result.CopyFrom(FHTTP.Document, 0);
     end
     else
       FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
