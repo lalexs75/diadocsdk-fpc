@@ -19,8 +19,8 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="adMainUnit"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="160"/>
-        <CursorPos X="101" Y="182"/>
+        <TopLine Value="333"/>
+        <CursorPos X="109" Y="342"/>
         <UsageCount Value="31"/>
         <Bookmarks Count="1">
           <Item0 Y="276" ID="1"/>
@@ -221,38 +221,6 @@
     <JumpHistory HistoryIndex="29">
       <Position>
         <Filename Value="admainunit.pas"/>
-        <Caret Line="224" TopLine="209"/>
-      </Position>
-      <Position>
-        <Filename Value="admainunit.pas"/>
-        <Caret Line="225" TopLine="209"/>
-      </Position>
-      <Position>
-        <Filename Value="admainunit.pas"/>
-        <Caret Line="224" TopLine="209"/>
-      </Position>
-      <Position>
-        <Filename Value="admainunit.pas"/>
-        <Caret Line="223" TopLine="209"/>
-      </Position>
-      <Position>
-        <Filename Value="admainunit.pas"/>
-        <Caret Line="224" TopLine="209"/>
-      </Position>
-      <Position>
-        <Filename Value="admainunit.pas"/>
-        <Caret Line="225" TopLine="209"/>
-      </Position>
-      <Position>
-        <Filename Value="admainunit.pas"/>
-        <Caret Line="224" TopLine="209"/>
-      </Position>
-      <Position>
-        <Filename Value="admainunit.pas"/>
-        <Caret Line="225" TopLine="209"/>
-      </Position>
-      <Position>
-        <Filename Value="admainunit.pas"/>
         <Caret Line="228" Column="17" TopLine="209"/>
       </Position>
       <Position>
@@ -338,6 +306,38 @@
       <Position>
         <Filename Value="admainunit.pas"/>
         <Caret Line="376" TopLine="270"/>
+      </Position>
+      <Position>
+        <Filename Value="admainunit.pas"/>
+        <Caret Line="182" Column="101" TopLine="160"/>
+      </Position>
+      <Position>
+        <Filename Value="admainunit.pas"/>
+        <Caret Line="59" Column="15" TopLine="42"/>
+      </Position>
+      <Position>
+        <Filename Value="admainunit.pas"/>
+        <Caret Line="217" Column="3" TopLine="209"/>
+      </Position>
+      <Position>
+        <Filename Value="admainunit.pas"/>
+        <Caret Line="67" Column="15" TopLine="53"/>
+      </Position>
+      <Position>
+        <Filename Value="admainunit.pas"/>
+        <Caret Line="342" Column="128" TopLine="333"/>
+      </Position>
+      <Position>
+        <Filename Value="admainunit.pas"/>
+        <Caret Line="59" Column="15" TopLine="53"/>
+      </Position>
+      <Position>
+        <Filename Value="admainunit.pas"/>
+        <Caret Line="228" Column="17" TopLine="219"/>
+      </Position>
+      <Position>
+        <Filename Value="admainunit.pas"/>
+        <Caret Line="67" Column="15" TopLine="44"/>
       </Position>
     </JumpHistory>
     <RunParams>

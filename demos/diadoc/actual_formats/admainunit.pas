@@ -339,7 +339,7 @@ var
 begin
   if (not (Assigned(DTD) and Assigned(DF) and  Assigned(DFV) and Assigned(DFVT))) or (DFVT.UserDataXsdUrl = '') then Exit;
 
-  S:=AppendPathDelim(AFolderName) + DTD.Name + '_' + NormalazeDocFunction(DF.Name) + '_' + DFV.Version + '.xsd';
+  S:=AppendPathDelim(AFolderName) + DTD.Name + '_' + NormalazeDocFunction(DF.Name) + '_' + DFV.Version+'_ind'+IntToStr(DFVT.Index) + '.xsd';
 
   M:=DiadocAPI1.GetContent(DTD.Name, DF.Name, DFV.Version, DFVT.Index, UserContractXsd);
   if Assigned(M) then
