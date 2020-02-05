@@ -546,6 +546,10 @@
         <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHFDOP_utd820_05_01_01_hyphen_ind0.pas"/>
         <UnitName Value="UniversalTransferDocumentRevision_SCHFDOP_utd820_05_01_01_hyphen_ind0"/>
       </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHFDOP_utd_05_02_01_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHFDOP_utd_05_02_01_ind0"/>
+      </Item>
     </Files>
     <LazDoc Paths="docs"/>
     <i18n>

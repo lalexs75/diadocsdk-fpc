@@ -69,7 +69,7 @@ uses
   UniversalTransferDocument_SCHFDOP_utd820_05_01_01_hyphen_ind0, 
   UniversalTransferDocument_SCHFDOP_utd820_05_01_01_hyphen_ind1, 
   UniversalTransferDocumentRevision_SCHFDOP_utd820_05_01_01_hyphen_ind0, 
-  LazarusPackageIntf;
+  UniversalTransferDocument_SCHFDOP_utd_05_02_01_ind0, LazarusPackageIntf;
 
 implementation
 

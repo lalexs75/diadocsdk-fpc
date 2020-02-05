@@ -156,6 +156,7 @@ var
   D: TXMLDocument;
   S: String;
   RFile, RDoc, EVerF, EKnd, EFunc, RSchF, RSchFRev: TDOMNode;
+  sKND: DOMString;
 begin
   P:=AXmlDoc.Position;
   AXmlDoc.Position:=0;
@@ -196,7 +197,7 @@ begin
         if Assigned(EVerF) and Assigned(EKnd) and Assigned(EFunc) then
         begin
           //S1:=EVerF.NodeValue;
-          //S2:=EKnd.NodeValue;
+          sKND:=EKnd.NodeValue;
           RDocFunct:=NodeValue(EFunc);
 
           if RDocFunct = 'СЧФ' then
@@ -211,7 +212,12 @@ begin
               RDocType:='UniversalTransferDocumentRevision'
             else
               RDocType:='UniversalTransferDocument';
-            RDocVers:='utd820_05_01_01_hyphen'; //'utd820_05_01_01';
+
+            if sKND = '1115125' then
+              RDocVers:='utd_05_02_01'
+            else
+            if sKND = '1115131' then
+              RDocVers:='utd820_05_01_01_hyphen'; //'utd820_05_01_01';
           end
           else
           if RDocFunct = 'ДОП' then
