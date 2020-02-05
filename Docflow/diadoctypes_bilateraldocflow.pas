@@ -1,6 +1,6 @@
 { Diadoc interface library for FPC and Lazarus
 
-  Copyright (C) 2018-2019 Lagunov Aleksey alexs75@yandex.ru
+  Copyright (C) 2018-2020 Lagunov Aleksey alexs75@yandex.ru
 
   base on docs from http://api-docs.diadoc.ru
 
