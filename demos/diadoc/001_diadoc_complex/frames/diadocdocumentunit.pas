@@ -111,7 +111,7 @@ type
 implementation
 uses DiadocTypes_UniversalTransferDocumentInfo, diadoc_utils, ContragentFindUnit, ShowBoxInfoUnit, SelectDepartmentUnit,
   DiadocTypes_DocumentsMoveOperation, DiadocTypes_DiadocMessage_PostApi, rxAppUtils,
-  MessageForDocUnit, ddNewDocUTDUnit, rxlogging;
+  MessageForDocUnit, upd820_revision, ddNewDocUTDUnit, rxlogging;
 
 {$R *.lfm}
 
@@ -164,18 +164,23 @@ begin
     ShowUniversalTransferDocumentSellerTitleXml(FDiadocAPI, FBox.BoxId, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, E.EntityId))
   else
   begin
-    E:=FindEntitie(M, XmlTorg12);
+    E:=FindEntitie(M, UniversalTransferDocumentRevision);
     if Assigned(E) then
-      ShowTorg12Xml(FDiadocAPI, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, E.EntityId))
+      ShowUniversalTransferDocumentRevision(FDiadocAPI, FBox.BoxId, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, E.EntityId))
     else
     begin
-      E:=FindEntitie(M, TAttachmentType.Invoice);
+      E:=FindEntitie(M, XmlTorg12);
       if Assigned(E) then
-        ShowUniversalTransferDocumentSellerTitleXml(FDiadocAPI, FBox.BoxId, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, E.EntityId))
+        ShowTorg12Xml(FDiadocAPI, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, E.EntityId))
       else
-        ShowMessage('УПД не найдена');
+      begin
+        E:=FindEntitie(M, TAttachmentType.Invoice);
+        if Assigned(E) then
+          ShowUniversalTransferDocumentSellerTitleXml(FDiadocAPI, FBox.BoxId, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, E.EntityId))
+        else
+          ShowMessage('УПД не найдена');
+      end;
     end;
-
   end;
   M.Free;
 end;

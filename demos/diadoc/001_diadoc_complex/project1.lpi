@@ -58,7 +58,7 @@
         <PackageName Value="LCL"/>
       </Item9>
     </RequiredPackages>
-    <Units Count="24">
+    <Units Count="26">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -235,6 +235,14 @@
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="EmployeeUnit"/>
       </Unit23>
+      <Unit24>
+        <Filename Value="../../../DataXml/UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen_ind0.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="formats/upd820_revision.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit25>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -244,7 +252,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="$(LazarusDir)/components/synapse;frames;forms;tools;../../../DiadocVisual/frames"/>
+      <OtherUnitFiles Value="$(LazarusDir)/components/synapse;frames;forms;tools;../../../DiadocVisual/frames;../../../DataXml;formats"/>
       <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Linking>

@@ -155,7 +155,7 @@ var
   P: Int64;
   D: TXMLDocument;
   S: String;
-  RFile, RDoc, EVerF, EKnd, EFunc: TDOMNode;
+  RFile, RDoc, EVerF, EKnd, EFunc, RSchF, RSchFRev: TDOMNode;
 begin
   P:=AXmlDoc.Position;
   AXmlDoc.Position:=0;
@@ -167,7 +167,20 @@ begin
       RFile:=D.FindNode(S);
       S:='Документ';
       if Assigned(RFile) then
+      begin
         RDoc:=RFile.FindNode(S);
+        S:='СвСчФакт';
+        if Assigned(RDoc) then
+        begin
+          RSchF:=RDoc.FindNode(S);
+          if Assigned(RSchF) then
+          begin
+            S:='ИспрСчФ';
+            RSchFRev:=RSchF.FindNode(S);
+          end;
+        end;
+      end;
+
 
       if Assigned(RFile) and Assigned(RDoc) then
       begin
@@ -178,6 +191,8 @@ begin
         EKnd:=RDoc.Attributes.GetNamedItem(S);
         S:='Функция';
         EFunc:=RDoc.Attributes.GetNamedItem(S);
+
+
         if Assigned(EVerF) and Assigned(EKnd) and Assigned(EFunc) then
         begin
           //S1:=EVerF.NodeValue;
@@ -192,7 +207,10 @@ begin
           else
           if RDocFunct = 'СЧФДОП' then
           begin
-            RDocType:='UniversalTransferDocument';
+            if Assigned(RSchFRev) then
+              RDocType:='UniversalTransferDocumentRevision'
+            else
+              RDocType:='UniversalTransferDocument';
             RDocVers:='utd820_05_01_01_hyphen'; //'utd820_05_01_01';
           end
           else

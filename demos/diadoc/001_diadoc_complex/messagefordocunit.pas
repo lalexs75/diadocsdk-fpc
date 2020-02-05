@@ -88,8 +88,9 @@ procedure ShowUniversalTransferDocumentBuyerTitle(ADiadocAPI:TDiadocAPI; AStream
 procedure ShowInvoiceConfirmation(ADiadocAPI:TDiadocAPI; AStream:TStream; AFileName:string);
 procedure ShowOtherAttach(ADiadocAPI:TDiadocAPI; AStream:TStream; AFileName:string);
 implementation
-uses LCLIntf, diadoc_utils, UniversalTransferDocumentSellerTitleInfoUnit,
-  UniversalTransferDocumentBuyerTitleInfoUnit, UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen;
+uses LCLIntf, diadoc_utils, UniversalTransferDocumentSellerTitleInfoUnit, upd820_revision,
+  UniversalTransferDocumentBuyerTitleInfoUnit,
+  UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen_ind0;
 
 {$R *.lfm}
 
@@ -265,6 +266,7 @@ begin
       UniversalTransferDocument:ShowUniversalTransferDocumentSellerTitleXml(FDiadocAPI, FBoxId, FDiadocAPI.GetEntityContent(FBoxId, FMessageID, rxEntytyEntityId.AsString));
       UniversalTransferDocumentBuyerTitle:ShowUniversalTransferDocumentBuyerTitle(FDiadocAPI, FDiadocAPI.GetEntityContent(FBoxId, FMessageID, rxEntytyEntityId.AsString));
       InvoiceConfirmation:ShowInvoiceConfirmation(FDiadocAPI, FDiadocAPI.GetEntityContent(FBoxId, FMessageID, rxEntytyEntityId.AsString), rxEntytyFileName.AsString);
+      UniversalTransferDocumentRevision:ShowUniversalTransferDocumentRevision(FDiadocAPI, FBoxId, FDiadocAPI.GetEntityContent(FBoxId, FMessageID, rxEntytyEntityId.AsString));
     else
       ShowOtherAttach(FDiadocAPI, FDiadocAPI.GetEntityContent(FBoxId, FMessageID, rxEntytyEntityId.AsString), rxEntytyFileName.AsString);
     end;

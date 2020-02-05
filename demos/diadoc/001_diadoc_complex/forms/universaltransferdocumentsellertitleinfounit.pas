@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ButtonPanel, ComCtrls,
   StdCtrls, DB, rxdbgrid, rxmemds,
-  UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen,
+  UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen_ind0,
   DiadocTypes_UniversalTransferDocumentInfo,
   DiadocTypes_ExtendedSigner,
   DiadocTypes_Torg12Info,
@@ -88,7 +88,7 @@ type
     procedure FillInvoiceTable(ATableInfo:TInvoiceTable);
     procedure FillInvoiceTable(ATableInfo:TInvoiceItems);
     procedure FillTorg12Table(ATableInfo:TTorg12Items);
-    procedure FillInvoiceTable820(ATableInfo:UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen.TInvoiceTable);
+    procedure FillInvoiceTable820(ATableInfo:UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen_ind0.TInvoiceTable);
   public
     procedure OpenInfo(AInfo:TUniversalTransferDocumentSellerTitleInfo);
     procedure OpenInfo(AInfo:TInvoiceInfo);
@@ -238,12 +238,12 @@ begin
 end;
 
 procedure TUniversalTransferDocumentSellerTitleInfoForm.FillInvoiceTable820(
-    ATableInfo: UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen.TInvoiceTable
+    ATableInfo: UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen_ind0.TInvoiceTable
   );
 var
   Itm:TInvoiceTable_Item;
   CD:TCustomsDeclarationWithHyphens;
-  AI:UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen.TAdditionalInfo;
+  AI:UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen_ind0.TAdditionalInfo;
 begin
   if not Assigned(ATableInfo) then Exit;
   rxData.CloseOpen;
@@ -430,8 +430,8 @@ end;
 procedure TUniversalTransferDocumentSellerTitleInfoForm.OpenInfo(
   AInfo: TUniversalTransferDocumentWithHyphens);
 var
-  PD:UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen.TPaymentDocumentInfo;
-  AI:UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen.TAdditionalInfo;
+  PD:UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen_ind0.TPaymentDocumentInfo;
+  AI:UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen_ind0.TAdditionalInfo;
 begin
   //
 
