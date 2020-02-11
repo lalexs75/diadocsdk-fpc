@@ -180,7 +180,7 @@ begin
             RSchFRev:=RSchF.FindNode(S);
 
             S:='ДефНомИспрСчФ';
-            if Assigned(RSchFRev.Attributes.GetNamedItem(S)) then
+            if Assigned(RSchFRev) and Assigned(RSchFRev.Attributes.GetNamedItem(S)) then
               RSchFRev:=nil;
           end;
         end;
