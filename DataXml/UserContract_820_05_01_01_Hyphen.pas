@@ -494,7 +494,21 @@ type
     property PackageId:string read FPackageId write SetPackageId;
     property TransPackageId:string read FTransPackageId write SetTransPackageId;
   end;
-  TItemIdentificationNumbers = specialize GXMLSerializationObjectList<TItemIdentificationNumber>;
+  TItemIdentificationNumberList = specialize GXMLSerializationObjectList<TItemIdentificationNumber>;
+
+  { TItemIdentificationNumbers }
+
+  TItemIdentificationNumbers = class(TXmlSerializationObject)
+  private
+    FItemIdentificationNumber: TItemIdentificationNumberList;
+  protected
+    procedure InternalRegisterPropertys; override;
+    procedure InternalInitChilds; override;
+  public
+    destructor Destroy; override;
+  published
+    property ItemIdentificationNumber:TItemIdentificationNumberList read FItemIdentificationNumber;
+  end;
 
   { TInvoiceItem }
 
@@ -1579,6 +1593,26 @@ type
 </xs:schema>
 *)
 implementation
+
+{ TItemIdentificationNumbers }
+
+procedure TItemIdentificationNumbers.InternalRegisterPropertys;
+begin
+  inherited InternalRegisterPropertys;
+  RegisterProperty('ItemIdentificationNumber', 'ItemIdentificationNumber', [], '', -1, -1);
+end;
+
+procedure TItemIdentificationNumbers.InternalInitChilds;
+begin
+  inherited InternalInitChilds;
+  FItemIdentificationNumber:=TItemIdentificationNumberList.Create;
+end;
+
+destructor TItemIdentificationNumbers.Destroy;
+begin
+  FreeAndNil(FItemIdentificationNumber);
+  inherited Destroy;
+end;
 
 { TCustomsDeclarations }
 

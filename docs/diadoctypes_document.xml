@@ -162,6 +162,12 @@
       </element>
     <element name="MessageTypeToStr"><short>Представление типа сообщения в виде строки</short>
       </element>
+    <element name="TDocument.Version"><short>Version - идентификатор версии документа</short>
+      </element><element name="TDocument.LockMode"><short>LockMode - режим блокировки сообщения</short><descr><ul><li>None - блокировка не производится</li><li>Send - для документов пакета возможна только совместная отправка. Свойства залоченности работают по аналогии с закрытыми пакетами (режимом Full) и сохраняются до отправки пакета. После отправки пакета документов все ограничения на подокументную обработку снимаются.</li><li>Full - документы сообщения будут отправлены закрытым пакетом. В таком пакете любая операция применяется ко всем документам сразу.</li>
+          </ul>
+        </descr>
+      </element><element name="TDocument.EditingSettingId"><short>EditingSettingId - необязательный идентификатор настройки документа, если он был создан из шаблона с возможностью редактирования полей.</short>
+      </element>
     </module>
   </package>
 </fpdoc-descriptions>

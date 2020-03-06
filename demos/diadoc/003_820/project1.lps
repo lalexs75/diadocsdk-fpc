@@ -18,8 +18,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="dd820MainUnit"/>
-        <TopLine Value="99"/>
-        <CursorPos X="26" Y="104"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="111"/>
+        <CursorPos Y="115"/>
         <UsageCount Value="45"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -55,7 +56,6 @@
       <Unit>
         <Filename Value="dd820_utdwh_unit.pas"/>
         <IsPartOfProject Value="True"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <CursorPos X="59" Y="12"/>
         <UsageCount Value="20"/>
@@ -218,7 +218,7 @@
         <UsageCount Value="10"/>
       </Unit>
     </Units>
-    <JumpHistory HistoryIndex="14">
+    <JumpHistory HistoryIndex="19">
       <Position>
         <Filename Value="dd820mainunit.pas"/>
         <Caret Line="243" TopLine="229"/>
@@ -278,6 +278,26 @@
       <Position>
         <Filename Value="dd820_utdwh_revision_unit.pas"/>
         <Caret Line="12" Column="67"/>
+      </Position>
+      <Position>
+        <Filename Value="dd820mainunit.pas"/>
+        <Caret Line="104" Column="26" TopLine="99"/>
+      </Position>
+      <Position>
+        <Filename Value="dd820mainunit.pas"/>
+        <Caret Line="70" Column="3" TopLine="68"/>
+      </Position>
+      <Position>
+        <Filename Value="dd820mainunit.pas"/>
+        <Caret Line="79" Column="38" TopLine="67"/>
+      </Position>
+      <Position>
+        <Filename Value="dd820mainunit.pas"/>
+        <Caret Line="48" TopLine="33"/>
+      </Position>
+      <Position>
+        <Filename Value="dd820mainunit.pas"/>
+        <Caret Line="157" TopLine="131"/>
       </Position>
     </JumpHistory>
     <RunParams>

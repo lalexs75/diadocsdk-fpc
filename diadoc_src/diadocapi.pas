@@ -293,8 +293,10 @@ type
     function GenerateAcceptanceCertificate552XmlForSeller(AAcceptanceCertificateSellerInfo:TAcceptanceCertificate552SellerTitleInfo; ADisableValidation:Boolean):TStream;
     function GenerateAcceptanceCertificate552XmlForBuyer(AAcceptanceCertificateBuyerInfo:TAcceptanceCertificate552BuyerTitleInfo; ABoxId, ASellerTitleMessageId, ASellerTitleAttachmentId:string):TStream;
     function GenerateDocumentProtocol(ABoxId, AmessageId, ADocumentId:string):TDocumentProtocol;
+
     function GenerateForwardedDocumentProtocol(ABoxId:string; AForwardedDocumentId:TForwardedDocumentId):TDocumentProtocol;
     function GenerateDocumentZip(ABoxId, AMessageId, ADocumentId: string; AFullDocflow: boolean): TDocumentZipGenerationResult;
+
     function GenerateReceiptXml(const ABoxId:string; const AMessageId:string; const AAttachmentId:string; const ASigner:TSigner):TStream;
     function GenerateDocumentReceiptXml(ABoxId, AMessageId, AAttachmentId:string; ASigner:TSigner):TStream;
     function GeneratePrintForm(ABoxId, AMessageId, ADocumentId:string):TPrintFormResult;
