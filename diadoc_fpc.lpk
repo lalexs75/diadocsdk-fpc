@@ -550,6 +550,846 @@
         <Filename Value="DataXml\UniversalTransferDocument_SCHFDOP_utd_05_02_01_ind0.pas"/>
         <UnitName Value="UniversalTransferDocument_SCHFDOP_utd_05_02_01_ind0"/>
       </Item>
+      <Item>
+        <Filename Value="DataXml\ElectricityIndication_DEFAULT_pokaz_01_01_ind0.pas"/>
+        <UnitName Value="ElectricityIndication_DEFAULT_pokaz_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceCorrection_DEFAULT_invoicecor_05_01_03_ind0.pas"/>
+        <UnitName Value="InvoiceCorrection_DEFAULT_invoicecor_05_01_03_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceCorrection_DEFAULT_invoicecor_05_02_01_ind0.pas"/>
+        <UnitName Value="InvoiceCorrection_DEFAULT_invoicecor_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceCorrection_DEFAULT_invoicecor_05_02_02_ind0.pas"/>
+        <UnitName Value="InvoiceCorrection_DEFAULT_invoicecor_05_02_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceCorrection_DEFAULT_ucd_05_01_01_ind0.pas"/>
+        <UnitName Value="InvoiceCorrection_DEFAULT_ucd_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceCorrection_DEFAULT_ucd_05_01_02_ind0.pas"/>
+        <UnitName Value="InvoiceCorrection_DEFAULT_ucd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceCorrection_DEFAULT_ucd_05_01_03_ind0.pas"/>
+        <UnitName Value="InvoiceCorrection_DEFAULT_ucd_05_01_03_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceCorrection_DEFAULT_ucd_05_02_01_ind0.pas"/>
+        <UnitName Value="InvoiceCorrection_DEFAULT_ucd_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceCorrectionRevision_DEFAULT_invoicecor_05_01_03_ind0.pas"/>
+        <UnitName Value="InvoiceCorrectionRevision_DEFAULT_invoicecor_05_01_03_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceCorrectionRevision_DEFAULT_invoicecor_05_02_01_ind0.pas"/>
+        <UnitName Value="InvoiceCorrectionRevision_DEFAULT_invoicecor_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceCorrectionRevision_DEFAULT_invoicecor_05_02_02_ind0.pas"/>
+        <UnitName Value="InvoiceCorrectionRevision_DEFAULT_invoicecor_05_02_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceCorrectionRevision_DEFAULT_ucd_05_01_01_ind0.pas"/>
+        <UnitName Value="InvoiceCorrectionRevision_DEFAULT_ucd_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceCorrectionRevision_DEFAULT_ucd_05_01_02_ind0.pas"/>
+        <UnitName Value="InvoiceCorrectionRevision_DEFAULT_ucd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceCorrectionRevision_DEFAULT_ucd_05_01_03_ind0.pas"/>
+        <UnitName Value="InvoiceCorrectionRevision_DEFAULT_ucd_05_01_03_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceCorrectionRevision_DEFAULT_ucd_05_02_01_ind0.pas"/>
+        <UnitName Value="InvoiceCorrectionRevision_DEFAULT_ucd_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\Invoice_DEFAULT_invoice_05_01_03_ind0.pas"/>
+        <UnitName Value="Invoice_DEFAULT_invoice_05_01_03_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\Invoice_DEFAULT_invoice_05_02_01_ind0.pas"/>
+        <UnitName Value="Invoice_DEFAULT_invoice_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\Invoice_DEFAULT_invoice_05_02_02_ind0.pas"/>
+        <UnitName Value="Invoice_DEFAULT_invoice_05_02_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\Invoice_DEFAULT_utd820_05_01_01_hyphen_ind0.pas"/>
+        <UnitName Value="Invoice_DEFAULT_utd820_05_01_01_hyphen_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\Invoice_DEFAULT_utd820_05_01_01_ind0.pas"/>
+        <UnitName Value="Invoice_DEFAULT_utd820_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\Invoice_DEFAULT_utd_05_01_01_ind0.pas"/>
+        <UnitName Value="Invoice_DEFAULT_utd_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\Invoice_DEFAULT_utd_05_01_02_ind0.pas"/>
+        <UnitName Value="Invoice_DEFAULT_utd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\Invoice_DEFAULT_utd_05_01_04_ind0.pas"/>
+        <UnitName Value="Invoice_DEFAULT_utd_05_01_04_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\Invoice_DEFAULT_utd_05_01_05_ind0.pas"/>
+        <UnitName Value="Invoice_DEFAULT_utd_05_01_05_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\Invoice_DEFAULT_utd_05_02_01_ind0.pas"/>
+        <UnitName Value="Invoice_DEFAULT_utd_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceRevision_DEFAULT_invoice_05_01_03_ind0.pas"/>
+        <UnitName Value="InvoiceRevision_DEFAULT_invoice_05_01_03_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceRevision_DEFAULT_invoice_05_02_01_ind0.pas"/>
+        <UnitName Value="InvoiceRevision_DEFAULT_invoice_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceRevision_DEFAULT_invoice_05_02_02_ind0.pas"/>
+        <UnitName Value="InvoiceRevision_DEFAULT_invoice_05_02_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceRevision_DEFAULT_utd820_05_01_01_hyphen_ind0.pas"/>
+        <UnitName Value="InvoiceRevision_DEFAULT_utd820_05_01_01_hyphen_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceRevision_DEFAULT_utd820_05_01_01_ind0.pas"/>
+        <UnitName Value="InvoiceRevision_DEFAULT_utd820_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceRevision_DEFAULT_utd_05_01_01_ind0.pas"/>
+        <UnitName Value="InvoiceRevision_DEFAULT_utd_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceRevision_DEFAULT_utd_05_01_02_ind0.pas"/>
+        <UnitName Value="InvoiceRevision_DEFAULT_utd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceRevision_DEFAULT_utd_05_01_04_ind0.pas"/>
+        <UnitName Value="InvoiceRevision_DEFAULT_utd_05_01_04_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceRevision_DEFAULT_utd_05_01_05_ind0.pas"/>
+        <UnitName Value="InvoiceRevision_DEFAULT_utd_05_01_05_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\InvoiceRevision_DEFAULT_utd_05_02_01_ind0.pas"/>
+        <UnitName Value="InvoiceRevision_DEFAULT_utd_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\ProformaInvoice_DEFAULT_proformainvoice_01_01_ind0.pas"/>
+        <UnitName Value="ProformaInvoice_DEFAULT_proformainvoice_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\ReturnInventoryAcceptanceCertificate_DEFAULT_utd820_05_01_01_hyphen_ind0.pas"/>
+        <UnitName Value="ReturnInventoryAcceptanceCertificate_DEFAULT_utd820_05_01_01_hyphen_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\ReturnInventoryAcceptanceCertificate_DEFAULT_utd820_05_01_01_hyphen_ind1.pas"/>
+        <UnitName Value="ReturnInventoryAcceptanceCertificate_DEFAULT_utd820_05_01_01_hyphen_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\ReturnInventoryAcceptanceCertificate_DEFAULT_utd820_05_01_01_ind0.pas"/>
+        <UnitName Value="ReturnInventoryAcceptanceCertificate_DEFAULT_utd820_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\ReturnInventoryAcceptanceCertificate_DEFAULT_utd820_05_01_01_ind1.pas"/>
+        <UnitName Value="ReturnInventoryAcceptanceCertificate_DEFAULT_utd820_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\ReturnInventoryAcceptanceCertificate_DEFAULT_utd_05_01_02_ind0.pas"/>
+        <UnitName Value="ReturnInventoryAcceptanceCertificate_DEFAULT_utd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\ReturnInventoryAcceptanceCertificate_DEFAULT_utd_05_01_02_ind1.pas"/>
+        <UnitName Value="ReturnInventoryAcceptanceCertificate_DEFAULT_utd_05_01_02_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\ReturnInventoryAcceptanceCertificate_DEFAULT_utd_05_01_05_ind0.pas"/>
+        <UnitName Value="ReturnInventoryAcceptanceCertificate_DEFAULT_utd_05_01_05_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\ReturnInventoryAcceptanceCertificate_DEFAULT_utd_05_01_05_ind1.pas"/>
+        <UnitName Value="ReturnInventoryAcceptanceCertificate_DEFAULT_utd_05_01_05_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\ReturnInventoryAcceptanceCertificate_DEFAULT_utd_05_02_01_ind0.pas"/>
+        <UnitName Value="ReturnInventoryAcceptanceCertificate_DEFAULT_utd_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\ReturnInventoryAcceptanceCertificate_DEFAULT_utd_05_02_01_ind1.pas"/>
+        <UnitName Value="ReturnInventoryAcceptanceCertificate_DEFAULT_utd_05_02_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\StorageInventoryAcceptanceCertificate_DEFAULT_utd820_05_01_01_hyphen_ind0.pas"/>
+        <UnitName Value="StorageInventoryAcceptanceCertificate_DEFAULT_utd820_05_01_01_hyphen_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\StorageInventoryAcceptanceCertificate_DEFAULT_utd820_05_01_01_hyphen_ind1.pas"/>
+        <UnitName Value="StorageInventoryAcceptanceCertificate_DEFAULT_utd820_05_01_01_hyphen_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\StorageInventoryAcceptanceCertificate_DEFAULT_utd820_05_01_01_ind0.pas"/>
+        <UnitName Value="StorageInventoryAcceptanceCertificate_DEFAULT_utd820_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\StorageInventoryAcceptanceCertificate_DEFAULT_utd820_05_01_01_ind1.pas"/>
+        <UnitName Value="StorageInventoryAcceptanceCertificate_DEFAULT_utd820_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\StorageInventoryAcceptanceCertificate_DEFAULT_utd_05_01_02_ind0.pas"/>
+        <UnitName Value="StorageInventoryAcceptanceCertificate_DEFAULT_utd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\StorageInventoryAcceptanceCertificate_DEFAULT_utd_05_01_02_ind1.pas"/>
+        <UnitName Value="StorageInventoryAcceptanceCertificate_DEFAULT_utd_05_01_02_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\StorageInventoryAcceptanceCertificate_DEFAULT_utd_05_01_05_ind0.pas"/>
+        <UnitName Value="StorageInventoryAcceptanceCertificate_DEFAULT_utd_05_01_05_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\StorageInventoryAcceptanceCertificate_DEFAULT_utd_05_01_05_ind1.pas"/>
+        <UnitName Value="StorageInventoryAcceptanceCertificate_DEFAULT_utd_05_01_05_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\StorageInventoryAcceptanceCertificate_DEFAULT_utd_05_02_01_ind0.pas"/>
+        <UnitName Value="StorageInventoryAcceptanceCertificate_DEFAULT_utd_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\StorageInventoryAcceptanceCertificate_DEFAULT_utd_05_02_01_ind1.pas"/>
+        <UnitName Value="StorageInventoryAcceptanceCertificate_DEFAULT_utd_05_02_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_DIS_ucd_05_01_01_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_DIS_ucd_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_DIS_ucd_05_01_01_ind1.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_DIS_ucd_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_DIS_ucd_05_01_02_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_DIS_ucd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_DIS_ucd_05_01_02_ind1.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_DIS_ucd_05_01_02_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_DIS_ucd_05_01_03_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_DIS_ucd_05_01_03_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_DIS_ucd_05_01_03_ind1.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_DIS_ucd_05_01_03_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_DIS_ucd_05_02_01_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_DIS_ucd_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_DIS_ucd_05_02_01_ind1.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_DIS_ucd_05_02_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_KSCHFDIS_ucd_05_01_01_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_KSCHFDIS_ucd_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_KSCHFDIS_ucd_05_01_01_ind1.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_KSCHFDIS_ucd_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_KSCHFDIS_ucd_05_01_02_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_KSCHFDIS_ucd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_KSCHFDIS_ucd_05_01_02_ind1.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_KSCHFDIS_ucd_05_01_02_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_KSCHFDIS_ucd_05_01_03_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_KSCHFDIS_ucd_05_01_03_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_KSCHFDIS_ucd_05_01_03_ind1.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_KSCHFDIS_ucd_05_01_03_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_KSCHF_ucd_05_01_01_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_KSCHF_ucd_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_KSCHF_ucd_05_01_02_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_KSCHF_ucd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_KSCHF_ucd_05_01_03_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_KSCHF_ucd_05_01_03_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_KSCHF_ucd_05_02_01_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_KSCHF_ucd_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_DIS_ucd_05_01_01_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_DIS_ucd_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_DIS_ucd_05_01_01_ind1.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_DIS_ucd_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_DIS_ucd_05_01_02_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_DIS_ucd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_DIS_ucd_05_01_02_ind1.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_DIS_ucd_05_01_02_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_DIS_ucd_05_01_03_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_DIS_ucd_05_01_03_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_DIS_ucd_05_01_03_ind1.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_DIS_ucd_05_01_03_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_DIS_ucd_05_02_01_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_DIS_ucd_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_DIS_ucd_05_02_01_ind1.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_DIS_ucd_05_02_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_KSCHFDIS_ucd_05_01_01_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_KSCHFDIS_ucd_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_KSCHFDIS_ucd_05_01_01_ind1.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_KSCHFDIS_ucd_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_KSCHFDIS_ucd_05_01_02_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_KSCHFDIS_ucd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_KSCHFDIS_ucd_05_01_02_ind1.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_KSCHFDIS_ucd_05_01_02_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_KSCHFDIS_ucd_05_01_03_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_KSCHFDIS_ucd_05_01_03_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_KSCHFDIS_ucd_05_01_03_ind1.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_KSCHFDIS_ucd_05_01_03_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_KSCHFDIS_ucd_05_02_01_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_KSCHFDIS_ucd_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_KSCHFDIS_ucd_05_02_01_ind1.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_KSCHFDIS_ucd_05_02_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_KSCHF_ucd_05_01_01_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_KSCHF_ucd_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_KSCHF_ucd_05_01_02_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_KSCHF_ucd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_KSCHF_ucd_05_01_03_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_KSCHF_ucd_05_01_03_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocumentRevision_KSCHF_ucd_05_02_01_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocumentRevision_KSCHF_ucd_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_DOP_utd820_05_01_01_hyphen_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_DOP_utd820_05_01_01_hyphen_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_DOP_utd820_05_01_01_hyphen_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocument_DOP_utd820_05_01_01_hyphen_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_DOP_utd820_05_01_01_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_DOP_utd820_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_DOP_utd820_05_01_01_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocument_DOP_utd820_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_DOP_utd_05_01_01_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_DOP_utd_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_DOP_utd_05_01_01_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocument_DOP_utd_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_DOP_utd_05_01_02_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_DOP_utd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_DOP_utd_05_01_02_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocument_DOP_utd_05_01_02_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_DOP_utd_05_01_04_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_DOP_utd_05_01_04_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_DOP_utd_05_01_04_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocument_DOP_utd_05_01_04_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_DOP_utd_05_01_05_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_DOP_utd_05_01_05_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_DOP_utd_05_01_05_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocument_DOP_utd_05_01_05_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_DOP_utd_05_02_01_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_DOP_utd_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_DOP_utd_05_02_01_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocument_DOP_utd_05_02_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_DOP_utd820_05_01_01_hyphen_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_DOP_utd820_05_01_01_hyphen_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_DOP_utd820_05_01_01_hyphen_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_DOP_utd820_05_01_01_hyphen_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_DOP_utd820_05_01_01_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_DOP_utd820_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_DOP_utd820_05_01_01_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_DOP_utd820_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_DOP_utd_05_01_01_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_DOP_utd_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_DOP_utd_05_01_01_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_DOP_utd_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_DOP_utd_05_01_02_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_DOP_utd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_DOP_utd_05_01_02_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_DOP_utd_05_01_02_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_DOP_utd_05_01_04_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_DOP_utd_05_01_04_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_DOP_utd_05_01_04_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_DOP_utd_05_01_04_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_DOP_utd_05_01_05_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_DOP_utd_05_01_05_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_DOP_utd_05_01_05_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_DOP_utd_05_01_05_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_DOP_utd_05_02_01_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_DOP_utd_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_DOP_utd_05_02_01_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_DOP_utd_05_02_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHFDOP_utd820_05_01_01_hyphen_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHFDOP_utd820_05_01_01_hyphen_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHFDOP_utd820_05_01_01_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHFDOP_utd820_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHFDOP_utd820_05_01_01_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHFDOP_utd820_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHFDOP_utd_05_01_01_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHFDOP_utd_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHFDOP_utd_05_01_01_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHFDOP_utd_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHFDOP_utd_05_01_02_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHFDOP_utd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHFDOP_utd_05_01_02_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHFDOP_utd_05_01_02_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHFDOP_utd_05_01_04_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHFDOP_utd_05_01_04_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHFDOP_utd_05_01_04_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHFDOP_utd_05_01_04_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHFDOP_utd_05_01_05_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHFDOP_utd_05_01_05_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHFDOP_utd_05_01_05_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHFDOP_utd_05_01_05_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHFDOP_utd_05_02_01_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHFDOP_utd_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHFDOP_utd_05_02_01_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHFDOP_utd_05_02_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHF_utd820_05_01_01_hyphen_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHF_utd820_05_01_01_hyphen_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHF_utd820_05_01_01_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHF_utd820_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHF_utd_05_01_01_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHF_utd_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHF_utd_05_01_02_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHF_utd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHF_utd_05_01_04_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHF_utd_05_01_04_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHF_utd_05_01_05_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHF_utd_05_01_05_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocumentRevision_SCHF_utd_05_02_01_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocumentRevision_SCHF_utd_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHFDOP_utd820_05_01_01_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHFDOP_utd820_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHFDOP_utd820_05_01_01_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHFDOP_utd820_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHFDOP_utd_05_01_01_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHFDOP_utd_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHFDOP_utd_05_01_01_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHFDOP_utd_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHFDOP_utd_05_01_02_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHFDOP_utd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHFDOP_utd_05_01_02_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHFDOP_utd_05_01_02_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHFDOP_utd_05_01_04_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHFDOP_utd_05_01_04_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHFDOP_utd_05_01_04_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHFDOP_utd_05_01_04_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHFDOP_utd_05_01_05_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHFDOP_utd_05_01_05_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHFDOP_utd_05_01_05_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHFDOP_utd_05_01_05_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHFDOP_utd_05_02_01_ind1.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHFDOP_utd_05_02_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHF_utd820_05_01_01_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHF_utd820_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHF_utd_05_01_01_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHF_utd_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHF_utd_05_01_02_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHF_utd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHF_utd_05_01_04_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHF_utd_05_01_04_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHF_utd_05_01_05_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHF_utd_05_01_05_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHF_utd_05_02_01_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHF_utd_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_act_05_01_01_ind0.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_act_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_act_05_01_01_ind1.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_act_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_act_05_01_02_ind0.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_act_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_act_05_01_02_ind1.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_act_05_01_02_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_rezru_05_01_01_ind0.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_rezru_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_rezru_05_01_01_ind1.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_rezru_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_rezru_05_01_02_ind0.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_rezru_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_rezru_05_01_02_ind1.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_rezru_05_01_02_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_rezru_05_02_01_ind0.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_rezru_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_rezru_05_02_01_ind1.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_rezru_05_02_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_utd820_05_01_01_hyphen_ind0.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_utd820_05_01_01_hyphen_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_utd820_05_01_01_hyphen_ind1.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_utd820_05_01_01_hyphen_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_utd820_05_01_01_ind0.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_utd820_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_utd820_05_01_01_ind1.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_utd820_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_utd_05_01_01_ind0.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_utd_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_utd_05_01_01_ind1.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_utd_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_utd_05_01_02_ind0.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_utd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_utd_05_01_02_ind1.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_utd_05_01_02_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_utd_05_01_04_ind0.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_utd_05_01_04_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_utd_05_01_04_ind1.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_utd_05_01_04_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_utd_05_01_05_ind0.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_utd_05_01_05_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_utd_05_01_05_ind1.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_utd_05_01_05_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_utd_05_02_01_ind0.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_utd_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlAcceptanceCertificate_DEFAULT_utd_05_02_01_ind1.pas"/>
+        <UnitName Value="XmlAcceptanceCertificate_DEFAULT_utd_05_02_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_torg12_05_01_01_ind0.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_torg12_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_torg12_05_01_01_ind1.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_torg12_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_torg12_05_01_02_ind0.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_torg12_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_torg12_05_01_02_ind1.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_torg12_05_01_02_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_tovtorg_05_01_02_ind0.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_tovtorg_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_tovtorg_05_01_02_ind1.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_tovtorg_05_01_02_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_tovtorg_05_01_03_ind0.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_tovtorg_05_01_03_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_tovtorg_05_01_03_ind1.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_tovtorg_05_01_03_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_tovtorg_05_01_04_ind0.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_tovtorg_05_01_04_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_tovtorg_05_01_04_ind1.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_tovtorg_05_01_04_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_tovtorg_05_02_01_ind0.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_tovtorg_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_tovtorg_05_02_01_ind1.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_tovtorg_05_02_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_utd820_05_01_01_hyphen_ind0.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_utd820_05_01_01_hyphen_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_utd820_05_01_01_hyphen_ind1.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_utd820_05_01_01_hyphen_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_utd820_05_01_01_ind0.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_utd820_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_utd820_05_01_01_ind1.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_utd820_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_utd_05_01_01_ind0.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_utd_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_utd_05_01_01_ind1.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_utd_05_01_01_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_utd_05_01_02_ind0.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_utd_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_utd_05_01_02_ind1.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_utd_05_01_02_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_utd_05_01_04_ind0.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_utd_05_01_04_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_utd_05_01_04_ind1.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_utd_05_01_04_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_utd_05_01_05_ind0.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_utd_05_01_05_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_utd_05_01_05_ind1.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_utd_05_01_05_ind1"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_utd_05_02_01_ind0.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_utd_05_02_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\XmlTorg12_DEFAULT_utd_05_02_01_ind1.pas"/>
+        <UnitName Value="XmlTorg12_DEFAULT_utd_05_02_01_ind1"/>
+      </Item>
     </Files>
     <LazDoc Paths="docs"/>
     <i18n>
