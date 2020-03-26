@@ -204,6 +204,12 @@
       </element><element name="TMessage.MessageType"><short>MessageType - тип сообщения MessageType.</short>
       </element><element name="TMessage.LockMode"><short>LockMode - режим блокировки сообщения. Виды доступных режимы доступны в описании LockMode.</short>
       </element>
+    <element name="TAttachmentType.TemplateRefusal"><short>TemplateRefusal - информация об отклонении или отзыве шаблона</short>
+      </element><element name="TAttachmentType.TemplateTransformation"><short>TemplateTransformation - информация о трансформации</short>
+      </element><element name="TAttachmentType.DeletionRestoration"><short>DeletionRestoration - восстановление удалённого документа</short>
+      </element><element name="TAttachmentType.ResolutionRouteRemovalAttachment"><short>ResolutionRouteRemoval (информация о снятии документа с маршрута согласования)</short>
+      </element><element name="TAttachmentType.ResolutionRouteAssignmentAttachment"><short>ResolutionRouteAssignment (информация о запуске документа по маршруту согласования)</short>
+      </element>
     </module>
   </package>
 </fpdoc-descriptions>

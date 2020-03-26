@@ -532,7 +532,6 @@
       </Item>
       <Item>
         <Filename Value="DataXml\UniversalTransferDocument_SCHFDOP_utd820_05_01_01_hyphen_ind0.pas"/>
-        <AddToUsesPkgSection Value="False"/>
         <UnitName Value="UniversalTransferDocument_SCHFDOP_utd820_05_01_01_hyphen_ind0"/>
       </Item>
       <Item>

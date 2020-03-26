@@ -74,13 +74,16 @@
       </element><element name="TDocument.Title"><short>Title - название документа. Например, «Счет-фактура №123 от 26.02.18»</short>
       </element><element name="TDocument.Metadata"><short>Metadata - массив пар «ключ-значение», определямых типом документа. Примеры возможных значения ключей: «FileName», «DocumentDate», «DocumentNumber» и другие. Более подробную информацию см. MetadataItem. Набор возможных значений для конкретного типа можно узнать с помощью метода GetDocumentTypes</short>
       </element><element name="TDocument.RecipientReceiptMetadata"><short>RecipientReceiptMetadata - свойство, отвечающее за состояние извещения о получении документа со стороны получателя</short>
-      </element><element name="TDocument.ConfirmationMetadata"><short>ConfirmationMetadata - свойство, отвечающее за состояние подтверждения оператором даты отправки/получения документа. Актуально, например, для счетов-фактур и УПД/УКД с некоторыми функциями</short>
+      </element><element name="TDocument.ConfirmationMetadata"><short>ConfirmationMetadata - свойство, отвечающее за состояние подтверждения оператором даты отправки/получения документа. </short>
+      <descr>Актуально, например, для счетов-фактур и УПД/УКД с некоторыми функциями
+</descr>
       </element><element name="TDocument.RecipientResponseStatus"><short>RecipientResponseStatus - свойство, отвечающее за состояние ответного действия получателя - ответную подпись или подписание ответного титула</short>
       </element><element name="TDocument.AmendmentRequestMetadata"><short>AmendmentRequestMetadata - свойство, отвечающее за состояние уведомления об уточнении. Актуально, например, для счетов-фактур, УПД и некоторых версий актов и накладных</short>
       </element><element name="TDocument.Origin"><short>Origin - свойство, позволяющее узнать, из какой сущности был создан документ. Например, из черновика или шаблона</short>
       </element>
     <element name="TRevocationStatus"><short>Перечисление отражает статус аннулирования документа</short><descr>Возможные значения:
-<li>UnknownRevocationStatus - неизвестный статус аннулирования документа; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать статус аннулирования документа, переданный сервером;</li><li>RevocationStatusNone - документ не аннулирован, и не было предложений об аннулировании;</li><li>RevocationIsRequestedByMe - отправлено исходящее предложение об аннулировании документа;</li><li>RequestsMyRevocation - получено входящее предложение об аннулировании документа;</li><li>RevocationAccepted - документ аннулирован;</li><li>RevocationRejected - получен или отправлен отказ от предложения об аннулировании документа.</li>
+<ul><li><b>UnknownRevocationStatus</b> - неизвестный статус аннулирования документа; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать статус аннулирования документа, переданный сервером;</li><li><b>RevocationStatusNone</b> - документ не аннулирован, и не было предложений об аннулировании;</li><li><b>RevocationIsRequestedByMe</b> - отправлено исходящее предложение об аннулировании документа;</li><li><b>RequestsMyRevocation</b> - получено входящее предложение об аннулировании документа;</li><li><b>RevocationAccepted</b> - документ аннулирован;</li><li><b>RevocationRejected</b> - получен или отправлен отказ от предложения об аннулировании документа.</li>
+          </ul>
         </descr>
       </element><element name="TRevocationStatus.UnknownRevocationStatus"><short>неизвестный статус аннулирования документа; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать статус аннулирования документа, переданный сервером</short>
       </element><element name="TRevocationStatus.RevocationStatusNone"><short>документ не аннулирован, и не было предложений об аннулировании</short>
@@ -102,8 +105,16 @@
       </element><element name="TGeneralReceiptStatus.HaveToCreateReceipt"><short>HaveToCreateReceipt - нужно подписать ИОП на документ или другой технологический документ.</short>
       </element><element name="TGeneralReceiptStatus.WaitingForReceipt"><short>WaitingForReceipt - ожидание подписания ИОПа на документ или уведомление об уточнении со стороны контрагента.</short>
       </element><element name="TGeneralReceiptStatus.Finished"><short>Finished - ИОП подписано. Больше действий по нему совершать не надо.</short>
-      </element><element name="TRecipientResponseStatus"><short>Отвечает за состояние ответного действия со стороны получателя документа. Под ответным действием имеет ввиду подпись под документом либо отправка ответного титула.</short>
-      </element><element name="TRecipientResponseStatus.RecipientResponseStatusUnknown"><short>RecipientResponseStatusNotAcceptable - ответного действия не требуется. Либо это т.н. односторонний документ, например, счет, либо счет-фактура и УПД СЧФ, либо документ с опциональным запросом подписи, которая не была запрошена. Сюда также подходит однотитульный акт (XmlAcceptanceCertificate).</short>
+      </element><element name="TRecipientResponseStatus"><short>Отвечает за состояние ответного действия со стороны получателя документа.</short>
+      <descr><p/>
+Под ответным действием имеет ввиду подпись под документом либо отправка ответного титула.<p/><p>Расшифровка значений:</p><ul><li><b>RecipientResponseStatusNotAcceptable</b> - ответного действия не требуется. Либо это т.н. односторонний документ, например, счет, либо счет-фактура и УПД СЧФ, либо документ с опциональным запросом подписи, которая не была запрошена. Сюда также подходит однотитульный акт (XmlAcceptanceCertificate).</li><li><b>WaitingForRecipientSignature</b> - ожидается ответное действие получателя документа. Если документ исходящий, то не требует никаких действия. Если входящий - требуется либо подписать документ (ответный титул), либо отказать в подписи.</li><li><b>WithRecipientSignature</b> - получатель подписал документ (ответный титул).</li><li><b>RecipientSignatureRequestRejected</b> - получатель документа отказал в подписи.</li><li><b>InvalidRecipientSignature</b> — получатель подписал документ невалидной подписью. Если это незашифрованный документ, то такой статус возможен только на стороне получателя документа.</li>
+          </ul>
+        </descr>
+      </element><element name="TRecipientResponseStatus.RecipientResponseStatusUnknown"><short>RecipientResponseStatusNotAcceptable - ответного действия не требуется.</short>
+      <descr>Либо это т.н. односторонний документ, например, счет, либо счет-фактура и УПД СЧФ, либо документ с опциональным запросом подписи,
+которая не была запрошена.
+Сюда также подходит однотитульный акт (XmlAcceptanceCertificate).
+</descr>
       </element><element name="TRecipientResponseStatus.WaitingForRecipientSignature"><short>WaitingForRecipientSignature - ожидается ответное действие получателя документа. Если документ исходящий, то не требует никаких действия. Если входящий - требуется либо подписать документ (ответный титул), либо отказать в подписи.</short>
       </element><element name="TRecipientResponseStatus.WithRecipientSignature"><short>WithRecipientSignature - получатель подписал документ (ответный титул).</short>
       </element><element name="TRecipientResponseStatus.RecipientSignatureRequestRejected"><short>RecipientSignatureRequestRejected - получатель документа отказал в подписи.</short>
@@ -115,19 +126,29 @@
       </element><element name="TMessageType.MessageLetter"><short>Letter - письмо</short>
       </element><element name="TMessageType.DraftLetter"><short>Draft - черновик</short>
       </element><element name="TMessageType.TemplateLetter"><short>Template - шаблон</short>
-      </element><element name="TResolutionStatusType"><short>ResolutionStatusType - тип статуса согласования:</short>
+      </element><element name="TResolutionStatusType"><short>ResolutionStatusType - тип статуса согласования</short>
+      <descr><ul><li><b>None</b> - документ не согласовывался</li><li><b>Approved</b> - Согласован</li><li><b>Disapproved</b> - В согласовании отказано</li><li><b>ApprovementRequested</b> - Запрошено согласование</li><li><b>SignatureRequested</b> - Запрошена подпись</li><li><b>SignatureDenied</b> - В подписи отказано</li><li><b>ActionsRequested</b> - Запрошены действия в рамках запроса согласования типа Custom</li>
+          </ul>
+        </descr>
       </element><element name="TResolutionStatusType.None"><short>None - документ не согласовывался</short>
       </element><element name="TResolutionStatusType.Approved"><short>Approved - Согласован</short>
       </element><element name="TResolutionStatusType.Disapproved"><short>Disapproved - В согласовании отказано</short>
       </element><element name="TResolutionStatusType.ApprovementRequested"><short>ApprovementRequested - Запрошено согласование</short>
       </element><element name="TResolutionStatusType.SignatureRequested"><short>SignatureRequested - Запрошена подпись</short>
       </element><element name="TResolutionStatusType.SignatureDenied"><short>SignatureDenied - В подписи отказано</short>
-      </element><element name="TRoamingNotificationStatus"><short>RoamingNotificationStatus - статус доставки в роуминг. Возможные значения:</short>
+      </element><element name="TRoamingNotificationStatus"><short>RoamingNotificationStatus - статус доставки в роуминг.</short>
+      <descr>Возможные значения:
+<ul><li><b>RoamingNotificationStatusNone</b> (документ не роуминговый, или документ без подтверждения доставки в роуминг)</li><li><b>RoamingNotificationStatusSuccess</b> (документ с подтверждением успешной доставки в роуминг)</li><li><b>RoamingNotificationStatusError</b> (документ с ошибкой доставки в роуминг)</li><li><b>UnknownRoamingNotificationStatus</b> (неизвестный роуминговый статус документа; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать роуминговый статус документа, переданный сервером)</li>
+          </ul>
+        </descr>
       </element><element name="TRoamingNotificationStatus.UnknownRoamingNotificationStatus"><short>UnknownRoamingNotificationStatus (неизвестный роуминговый статус документа; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать роуминговый статус документа, переданный сервером)</short>
       </element><element name="TRoamingNotificationStatus.RoamingNotificationStatusNone"><short>RoamingNotificationStatusNone (документ не роуминговый, или документ без подтверждения доставки в роуминг)</short>
       </element><element name="TRoamingNotificationStatus.RoamingNotificationStatusSuccess"><short>RoamingNotificationStatusSuccess (документ с подтверждением успешной доставки в роуминг)</short>
       </element><element name="TRoamingNotificationStatus.RoamingNotificationStatusError"><short>RoamingNotificationStatusError (документ с ошибкой доставки в роуминг)</short>
       </element><element name="TSenderSignatureStatus"><short>Перечисление отражает статус подписи отправителя:</short>
+      <descr><ul><li><b>UnknownSenderSignatureStatus</b> - значение зарезервировано для устаревших клиентов;</li><li><b>WaitingForSenderSignature</b> - ожидается подпись отправителя;</li><li><b>SenderSignatureUnchecked</b> - подпись отправителя еще не проверена;</li><li><b>SenderSignatureCheckedAndValid</b> - подпись отправителя проверена и валидна;</li><li><b>SenderSignatureCheckedAndInvalid</b> - подпись отправителя проверена и невалидна.</li>
+          </ul>
+        </descr>
       </element><element name="TSenderSignatureStatus.UnknownSenderSignatureStatus"><short>UnknownSenderSignatureStatus - значение зарезервировано для устаревших клиентов;</short>
       </element><element name="TSenderSignatureStatus.WaitingForSenderSignature"><short>WaitingForSenderSignature - ожидается подпись отправителя;</short>
       </element><element name="TSenderSignatureStatus.SenderSignatureUnchecked"><short>SenderSignatureUnchecked - подпись отправителя еще не проверена;</short>
@@ -167,6 +188,9 @@
           </ul>
         </descr>
       </element><element name="TDocument.EditingSettingId"><short>EditingSettingId - необязательный идентификатор настройки документа, если он был создан из шаблона с возможностью редактирования полей.</short>
+      </element>
+    <element name="TResolutionStatusType.ActionsRequested"><short>ActionsRequested - Запрошены действия в рамках запроса согласования типа Custom</short>
+      </element><element name="TDocument.SenderSignatureStatus"><short>SenderSignatureStatus - статус подписи отправителя.</short>
       </element>
     </module>
   </package>

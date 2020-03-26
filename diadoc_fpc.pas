@@ -65,6 +65,7 @@ uses
   DocumentInfoV3, DocumentWithDocflowV3, ResolutionDocflowV3, 
   RoamingNotification, FullVersion, TotalCountType, 
   UniversalCorrectionDocument_KSCHFDIS_ucd_05_02_01_ind0, 
+  UniversalTransferDocument_SCHFDOP_utd820_05_01_01_hyphen_ind0, 
   UniversalTransferDocumentRevision_SCHFDOP_utd820_05_01_01_hyphen_ind0, 
   UniversalTransferDocument_SCHFDOP_utd_05_02_01_ind0, 
   ElectricityIndication_DEFAULT_pokaz_01_01_ind0, 
