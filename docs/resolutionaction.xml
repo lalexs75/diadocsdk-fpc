@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="ResolutionAction"><element name="TResolutionAction"><short>Перечисление описывает возможные действия по запросу на согласование</short><descr><ul><li><b>ApproveAction</b> - согласовать;</li><li><b>DisapproveAction</b> - отказать в согласовании;</li><li><b>SignWithApprovementSignature</b> - подписать согласующей подписью;</li><li><b>SignWithPrimarySignature</b> - подписать завершающей подписью;</li><li><b>DenySignatureRequest</b> - отказать в подписи сотруднику;</li><li><b>RejectSigning</b> - отказать в подписи контрагенту.</li>
+          </ul>
+        </descr>
+      </element><element name="TResolutionAction.ApproveAction"><short>ApproveAction - согласовать</short>
+      </element><element name="TResolutionAction.DisapproveAction"><short>DisapproveAction - отказать в согласовании</short>
+      </element><element name="TResolutionAction.SignWithApprovementSignature"><short>SignWithApprovementSignature - подписать согласующей подписью</short>
+      </element><element name="TResolutionAction.SignWithPrimarySignature"><short>SignWithPrimarySignature - подписать завершающей подписью</short>
+      </element><element name="TResolutionAction.DenySignatureRequest"><short>DenySignatureRequest - отказать в подписи сотруднику</short>
+      </element><element name="TResolutionAction.RejectSigning"><short>RejectSigning - отказать в подписи контрагенту</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>
