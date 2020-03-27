@@ -72,7 +72,7 @@ type
     property Author:string read FAuthor write SetAuthor; //2
     property Target:TResolutionTarget read FTarget; //3;
     property ResolvedWith:string read FResolvedWith write SetResolvedWith; //4;
-    property Actions:TResolutionActions read FActions write FActions;
+    property Actions:TResolutionActions read FActions write FActions; //5
   end;
 
 implementation
@@ -106,6 +106,7 @@ begin
   RegisterProp('Author', 2, true);
   RegisterProp('Target', 3);
   RegisterProp('ResolvedWith', 4);
+  RegisterProp('Actions', 5);
 end;
 
 procedure TResolutionRequestInfo.InternalInit;
