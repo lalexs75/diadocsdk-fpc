@@ -1254,12 +1254,14 @@ type
   //	repeated MetadataItem Metadata = 15;
   //	optional int32 WorkflowId = 16;
   //	optional bool IsEncrypted = 17 [default = false];
+  //    optional string EditingSettingId = 18;
   //}
   TDocumentAttachment = class(TSerializationObject) //message DocumentAttachment
   private
     FComment: string;
     FCustomData: TCustomDataItems;
     FCustomDocumentId: string;
+    FEditingSettingId: string;
     FFunctionType: string;
     FInitialDocumentIds: TDocumentIds;
     FIsEncrypted: Boolean;
@@ -1273,6 +1275,7 @@ type
     FWorkflowId: int32;
     procedure SetComment(AValue: string);
     procedure SetCustomDocumentId(AValue: string);
+    procedure SetEditingSettingId(AValue: string);
     procedure SetFunctionType(AValue: string);
     procedure SetIsEncrypted(AValue: Boolean);
     procedure SetNeedReceipt(AValue: boolean);
@@ -1303,6 +1306,7 @@ type
     property Metadata:TMetadataItems read FMetadata; //15;
     property WorkflowId:int32 read FWorkflowId write SetWorkflowId;//16;
     property IsEncrypted:Boolean read FIsEncrypted write SetIsEncrypted;//17
+    property EditingSettingId:string read FEditingSettingId write SetEditingSettingId; //18;
   end;
   TDocumentAttachments = specialize GSerializationObjectList<TDocumentAttachment>;
 
@@ -3768,6 +3772,13 @@ begin
   Modified(9);
 end;
 
+procedure TDocumentAttachment.SetEditingSettingId(AValue: string);
+begin
+  if FEditingSettingId=AValue then Exit;
+  FEditingSettingId:=AValue;
+  Modified(18);
+end;
+
 procedure TDocumentAttachment.SetFunctionType(AValue: string);
 begin
   if FFunctionType=AValue then Exit;
@@ -3837,6 +3848,7 @@ begin
   RegisterProp('Metadata', 15);
   RegisterProp('WorkflowId', 16);
   RegisterProp('IsEncrypted', 17);
+  RegisterProp('EditingSettingId', 18);
 end;
 
 procedure TDocumentAttachment.InternalInit;
