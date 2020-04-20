@@ -1,6 +1,142 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
+#: ddconsts.sdfsany
+msgid "любой документ"
+msgstr ""
+
+#: ddconsts.sdfsapproved
+msgid "согласованный документ"
+msgstr ""
+
+#: ddconsts.sdfsdisapproved
+msgid "документ с отказом согласования"
+msgstr ""
+
+#: ddconsts.sdfsfinished
+msgid "документ с завершенным документооборотом"
+msgstr ""
+
+#: ddconsts.sdfshavetocreatereceipt
+msgid "требуется подписать извещение о получении"
+msgstr ""
+
+#: ddconsts.sdfsinvalidproxysignature
+msgid "документ с невалидной подписью промежуточного получателя, требующий повторного подписания и отправки"
+msgstr ""
+
+#: ddconsts.sdfsinvalidrecipientsignature
+msgid "документ с невалидной подписью получателя, требующий повторного подписания и отправки"
+msgstr ""
+
+#: ddconsts.sdfsinvalidsendersignature
+msgid "документ с невалидной подписью отправителя, требующий повторного подписания и отправки"
+msgstr ""
+
+#: ddconsts.sdfsinvoiceamendmentrequested
+msgid "имеет смысл только для счетов-фактур; документ, по которому было запрошено уточнение"
+msgstr ""
+
+#: ddconsts.sdfsnorecipientsignaturerequest
+msgid "документ без запроса ответной подписи"
+msgstr ""
+
+#: ddconsts.sdfsnotfinished
+msgid "документ с незавершенным документооборотом"
+msgstr ""
+
+#: ddconsts.sdfsnotread
+msgid "документ не прочитан"
+msgstr ""
+
+#: ddconsts.sdfsnotrevoked
+msgid "неаннулированный документ"
+msgstr ""
+
+#: ddconsts.sdfsproxysignaturerejected
+msgid "документ с отказом от формирования подписи промежуточным получателем"
+msgstr ""
+
+#: ddconsts.sdfsrecipientsignaturerequestrejected
+msgid "документ с отказом от формирования ответной подписи"
+msgstr ""
+
+#: ddconsts.sdfsrequestsmyrevocation
+msgid "документ, по которому контрагент запросил аннулирование"
+msgstr ""
+
+#: ddconsts.sdfsrequestsmysignature
+msgid "документ, по которому контрагент запросил подпись"
+msgstr ""
+
+#: ddconsts.sdfsrevocationaccepted
+msgid "аннулированный документ"
+msgstr ""
+
+#: ddconsts.sdfsrevocationapproved
+msgid "документ, запрос на аннулирование которого был согласован"
+msgstr ""
+
+#: ddconsts.sdfsrevocationdisapproved
+msgid "документ с отказом согласования запроса на аннулирование"
+msgstr ""
+
+#: ddconsts.sdfsrevocationisrequestedbyme
+msgid "документ, по которому было запрошено аннулирование"
+msgstr ""
+
+#: ddconsts.sdfsrevocationrejected
+msgid "документ, запрос на аннулирование которого был отклонен"
+msgstr ""
+
+#: ddconsts.sdfsroamingnotificationerror
+msgid "документ, с ошибкой доставки в роуминге"
+msgstr ""
+
+#: ddconsts.sdfssignaturerequestrejected
+msgid "документ с отказом в запросе подписи сотруднику"
+msgstr ""
+
+#: ddconsts.sdfswaitingforinvoicereceipt
+msgid "документ в ожидании получения извещения о получении счета-фактуры"
+msgstr ""
+
+#: ddconsts.sdfswaitingforproxysignature
+msgid "документ в ожидании подписи промежуточного получателя"
+msgstr ""
+
+#: ddconsts.sdfswaitingforreceipt
+msgid "документ в ожидании получения извещения о получении"
+msgstr ""
+
+#: ddconsts.sdfswaitingforrecipientsignature
+msgid "документ в ожидании ответной подписи"
+msgstr ""
+
+#: ddconsts.sdfswaitingforresolution
+msgid "документ, находящийся на согласовании или подписи"
+msgstr ""
+
+#: ddconsts.sdfswaitingforrevocationapprovement
+msgid "документ, находящийся на согласовании запроса аннулирования"
+msgstr ""
+
+#: ddconsts.sdfswaitingforsendersignature
+msgid "документ, требующий подписания и отправки"
+msgstr ""
+
+#: ddconsts.sdfswithproxysignature
+msgid "документ с подписью промежуточного получателя"
+msgstr ""
+
+#: ddconsts.sdfswithrecipientsignature
+msgid "документ с ответной подписью"
+msgstr ""
+
+#: ddconsts.sdfswithsendersignature
+msgid "документ с подписью отправителя"
+msgstr ""
+
 #: ddconsts.sselectclientcaption
 msgid "Найденные контрагенты"
 msgstr ""
