@@ -415,7 +415,7 @@ procedure Register;
 
 function FindEntitie(AMessage: TMessage; AType:TAttachmentType):TEntity;
 implementation
-uses synautil, synacode, XMLRead;
+uses synautil, synacode;
 
 {$R diadoc-fpc.res}
 

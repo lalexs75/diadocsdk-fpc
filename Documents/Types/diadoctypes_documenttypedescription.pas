@@ -132,15 +132,19 @@ type
     FIsRequired: Boolean;
     FItemType: TDocumentMetadataItemType;
     FSource: TDocumentMetadataSource;
+    procedure SetId(AValue: string);
+    procedure SetIsRequired(AValue: Boolean);
+    procedure SetItemType(AValue: TDocumentMetadataItemType);
+    procedure SetSource(AValue: TDocumentMetadataSource);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
   published
-    property Id:string read FId write FId; //1
-    property ItemType:TDocumentMetadataItemType read FItemType write FItemType; //2
-    property IsRequired:Boolean read FIsRequired write FIsRequired; //3
-    property Source:TDocumentMetadataSource read FSource write FSource; //4
+    property Id:string read FId write SetId; //1
+    property ItemType:TDocumentMetadataItemType read FItemType write SetItemType; //2
+    property IsRequired:Boolean read FIsRequired write SetIsRequired; //3
+    property Source:TDocumentMetadataSource read FSource write SetSource; //4
   end;
   TDocumentMetadataItems = specialize GSerializationObjectList<TDocumentMetadataItem>;
 
@@ -159,14 +163,16 @@ type
   private
     FExtendedDocumentTitleType: TDocumentTitleType;
     FSignerType: TSignerType;
+    procedure SetExtendedDocumentTitleType(AValue: TDocumentTitleType);
+    procedure SetSignerType(AValue: TSignerType);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property SignerType:TSignerType read FSignerType write FSignerType;// = 1;
-    property ExtendedDocumentTitleType:TDocumentTitleType read FExtendedDocumentTitleType write FExtendedDocumentTitleType default Absent;//2 [];
+    property SignerType:TSignerType read FSignerType write SetSignerType;// = 1;
+    property ExtendedDocumentTitleType:TDocumentTitleType read FExtendedDocumentTitleType write SetExtendedDocumentTitleType default Absent;//2 [];
   end;
 
   { TDocumentTitle }
@@ -217,13 +223,15 @@ type
   private
     FId: Int32;
     FIsDefault: Boolean;
+    procedure SetId(AValue: Int32);
+    procedure SetIsDefault(AValue: Boolean);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
   published
-    property Id:Int32 read FId write FId; //1
-    property IsDefault:Boolean read FIsDefault write FIsDefault; //2
+    property Id:Int32 read FId write SetId; //1
+    property IsDefault:Boolean read FIsDefault write SetIsDefault; //2
   end;
 
   {  TDocumentVersion  }
@@ -280,13 +288,14 @@ type
   private
     FName: string;
     FVersions: TDocumentVersions;
+    procedure SetName(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property Name:string read FName write FName; //1;
+    property Name:string read FName write SetName; //1;
     property Versions:TDocumentVersions read FVersions; //2;
   end;
   TDocumentFunctions = specialize GSerializationObjectList<TDocumentFunction>;
@@ -306,16 +315,19 @@ type
     FRequiresFnsRegistration: Boolean;
     FSupportedDocflows: TDocumentDocflows;
     FTitle: string;
+    procedure SetName(AValue: string);
+    procedure SetRequiresFnsRegistration(AValue: Boolean);
+    procedure SetTitle(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property Name:string read FName write FName; //1;
-    property Title:string read FTitle write FTitle; //2;
+    property Name:string read FName write SetName; //1;
+    property Title:string read FTitle write SetTitle; //2;
     property SupportedDocflows:TDocumentDocflows read FSupportedDocflows; //3
-    property RequiresFnsRegistration:Boolean read FRequiresFnsRegistration write FRequiresFnsRegistration; //4;
+    property RequiresFnsRegistration:Boolean read FRequiresFnsRegistration write SetRequiresFnsRegistration; //4;
     property Functions:TDocumentFunctions read FFunctions; //9;
   end;
   TDocumentTypeDescriptions = specialize GSerializationObjectList<TDocumentTypeDescription>;
@@ -350,6 +362,20 @@ begin
 end;
 
 { TSignerInfo }
+
+procedure TSignerInfo.SetExtendedDocumentTitleType(AValue: TDocumentTitleType);
+begin
+  if FExtendedDocumentTitleType=AValue then Exit;
+  FExtendedDocumentTitleType:=AValue;
+  Modified(2);
+end;
+
+procedure TSignerInfo.SetSignerType(AValue: TSignerType);
+begin
+  if FSignerType=AValue then Exit;
+  FSignerType:=AValue;
+  Modified(1);
+end;
 
 procedure TSignerInfo.InternalInit;
 begin
@@ -430,6 +456,34 @@ begin
 end;
 
 { TDocumentMetadataItem }
+
+procedure TDocumentMetadataItem.SetId(AValue: string);
+begin
+  if FId=AValue then Exit;
+  FId:=AValue;
+  Modified(1);
+end;
+
+procedure TDocumentMetadataItem.SetIsRequired(AValue: Boolean);
+begin
+  if FIsRequired=AValue then Exit;
+  FIsRequired:=AValue;
+  Modified(3);
+end;
+
+procedure TDocumentMetadataItem.SetItemType(AValue: TDocumentMetadataItemType);
+begin
+  if FItemType=AValue then Exit;
+  FItemType:=AValue;
+  Modified(2);
+end;
+
+procedure TDocumentMetadataItem.SetSource(AValue: TDocumentMetadataSource);
+begin
+  if FSource=AValue then Exit;
+  FSource:=AValue;
+  Modified(4);
+end;
 
 procedure TDocumentMetadataItem.InternalInit;
 begin
@@ -535,6 +589,20 @@ end;
 
 { TDocumentWorkflow }
 
+procedure TDocumentWorkflow.SetId(AValue: Int32);
+begin
+  if FId=AValue then Exit;
+  FId:=AValue;
+  Modified(1);
+end;
+
+procedure TDocumentWorkflow.SetIsDefault(AValue: Boolean);
+begin
+  if FIsDefault=AValue then Exit;
+  FIsDefault:=AValue;
+  Modified(2);
+end;
+
 procedure TDocumentWorkflow.InternalInit;
 begin
   inherited InternalInit;
@@ -614,6 +682,13 @@ end;
 
 { TDocumentFunction }
 
+procedure TDocumentFunction.SetName(AValue: string);
+begin
+  if FName=AValue then Exit;
+  FName:=AValue;
+  Modified(1);
+end;
+
 procedure TDocumentFunction.InternalInit;
 begin
   inherited InternalInit;
@@ -654,6 +729,27 @@ begin
 end;
 
 { TDocumentTypeDescription }
+
+procedure TDocumentTypeDescription.SetName(AValue: string);
+begin
+  if FName=AValue then Exit;
+  FName:=AValue;
+  Modified(1);
+end;
+
+procedure TDocumentTypeDescription.SetRequiresFnsRegistration(AValue: Boolean);
+begin
+  if FRequiresFnsRegistration=AValue then Exit;
+  FRequiresFnsRegistration:=AValue;
+  Modified(4);
+end;
+
+procedure TDocumentTypeDescription.SetTitle(AValue: string);
+begin
+  if FTitle=AValue then Exit;
+  FTitle:=AValue;
+  Modified(2);
+end;
 
 procedure TDocumentTypeDescription.InternalInit;
 begin
