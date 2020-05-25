@@ -87,15 +87,18 @@ type
     FFunctionType: string;
     FTypeNamedId: string;
     FVersion: string;
+    procedure SetFunctionType(AValue: string);
+    procedure SetTypeNamedId(AValue: string);
+    procedure SetVersion(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property TypeNamedId:string read FTypeNamedId write FTypeNamedId;//1;
-    property FunctionType:string read FFunctionType write FFunctionType;//2;
-    property Version:string read FVersion write FVersion;//3;
+    property TypeNamedId:string read FTypeNamedId write SetTypeNamedId;//1;
+    property FunctionType:string read FFunctionType write SetFunctionType;//2;
+    property Version:string read FVersion write SetVersion;//3;
   end;
   TDetectedDocumentTypes = specialize GSerializationObjectList<TDetectedDocumentType>;
 
@@ -225,36 +228,44 @@ type
 
   {  TDocumentVersion  }
   //message DocumentVersion {
-  //	required string Version = 1;
-  //	required bool SupportsContentPatching = 2;
-  //	required bool SupportsEncrypting = 3;
-  //	repeated DocumentTitle Titles = 4;
-  //	required bool IsActual = 5;
-  //	repeated DocumentWorkflow Workflows = 6;
+  //    required string Version = 1;
+  //    required bool SupportsContentPatching = 2;
+  //    required bool SupportsEncrypting = 3;
   //    required bool SupportsPredefinedRecipientTitle = 7;
+  //    required bool SupportsAmendmentRequest = 8;
+  //    repeated DocumentTitle Titles = 4;
+  //    required bool IsActual = 5;
+  //    repeated DocumentWorkflow Workflows = 6;
   //}
   TDocumentVersion  = class(TSerializationObject) //message DocumentVersion
   private
     FIsActual: Boolean;
+    FSupportsAmendmentRequest: Boolean;
     FSupportsContentPatching: Boolean;
     FSupportsEncrypting: Boolean;
     FSupportsPredefinedRecipientTitle: Boolean;
     FTitles: TDocumentTitles;
     FVersion: string;
     FWorkflows: TDocumentWorkflow;
+    procedure SetSupportsAmendmentRequest(AValue: Boolean);
+    procedure SetSupportsContentPatching(AValue: Boolean);
+    procedure SetSupportsEncrypting(AValue: Boolean);
+    procedure SetSupportsPredefinedRecipientTitle(AValue: Boolean);
+    procedure SetVersion(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property Version:string read FVersion write FVersion; //1
-    property SupportsContentPatching:Boolean read FSupportsContentPatching write FSupportsContentPatching; //2
-    property SupportsEncrypting:Boolean read FSupportsEncrypting write FSupportsEncrypting; //3;
+    property Version:string read FVersion write SetVersion; //1
+    property SupportsContentPatching:Boolean read FSupportsContentPatching write SetSupportsContentPatching; //2
+    property SupportsEncrypting:Boolean read FSupportsEncrypting write SetSupportsEncrypting; //3;
+    property SupportsPredefinedRecipientTitle:Boolean read FSupportsPredefinedRecipientTitle write SetSupportsPredefinedRecipientTitle;//7;
+    property SupportsAmendmentRequest:Boolean read FSupportsAmendmentRequest write SetSupportsAmendmentRequest; //8
     property Titles:TDocumentTitles read FTitles; //4;
     property IsActual:Boolean read FIsActual write FIsActual; //5;
     property Workflows:TDocumentWorkflow read FWorkflows; //6;
-    property SupportsPredefinedRecipientTitle:Boolean read FSupportsPredefinedRecipientTitle write FSupportsPredefinedRecipientTitle;//7;
   end;
   TDocumentVersions = specialize GSerializationObjectList<TDocumentVersion>;
 
@@ -378,6 +389,27 @@ begin
 end;
 
 { TDetectedDocumentType }
+
+procedure TDetectedDocumentType.SetFunctionType(AValue: string);
+begin
+  if FFunctionType=AValue then Exit;
+  FFunctionType:=AValue;
+  Modified(2);
+end;
+
+procedure TDetectedDocumentType.SetTypeNamedId(AValue: string);
+begin
+  if FTypeNamedId=AValue then Exit;
+  FTypeNamedId:=AValue;
+  Modified(1);
+end;
+
+procedure TDetectedDocumentType.SetVersion(AValue: string);
+begin
+  if FVersion=AValue then Exit;
+  FVersion:=AValue;
+  Modified(3);
+end;
 
 procedure TDetectedDocumentType.InternalRegisterProperty;
 begin
@@ -517,6 +549,41 @@ end;
 
 { TDocumentVersion }
 
+procedure TDocumentVersion.SetSupportsAmendmentRequest(AValue: Boolean);
+begin
+  if FSupportsAmendmentRequest=AValue then Exit;
+  FSupportsAmendmentRequest:=AValue;
+  Modified(8);
+end;
+
+procedure TDocumentVersion.SetSupportsContentPatching(AValue: Boolean);
+begin
+  if FSupportsContentPatching=AValue then Exit;
+  FSupportsContentPatching:=AValue;
+  Modified(2);
+end;
+
+procedure TDocumentVersion.SetSupportsEncrypting(AValue: Boolean);
+begin
+  if FSupportsEncrypting=AValue then Exit;
+  FSupportsEncrypting:=AValue;
+  Modified(3);
+end;
+
+procedure TDocumentVersion.SetSupportsPredefinedRecipientTitle(AValue: Boolean);
+begin
+  if FSupportsPredefinedRecipientTitle=AValue then Exit;
+  FSupportsPredefinedRecipientTitle:=AValue;
+  Modified(7);
+end;
+
+procedure TDocumentVersion.SetVersion(AValue: string);
+begin
+  if FVersion=AValue then Exit;
+  FVersion:=AValue;
+  Modified(1);
+end;
+
 procedure TDocumentVersion.InternalInit;
 begin
   inherited InternalInit;
@@ -530,10 +597,11 @@ begin
   RegisterProp('Version', 1, true);
   RegisterProp('SupportsContentPatching', 2, true);
   RegisterProp('SupportsEncrypting', 3, true);
+  RegisterProp('SupportsPredefinedRecipientTitle', 7);
+  RegisterProp('SupportsAmendmentRequest', 8);
   RegisterProp('Titles', 4, true);
   RegisterProp('IsActual', 5);
   RegisterProp('Workflows', 6);
-  RegisterProp('SupportsPredefinedRecipientTitle', 7);
 end;
 
 destructor TDocumentVersion.Destroy;
