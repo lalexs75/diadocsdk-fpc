@@ -56,6 +56,15 @@
       </element><element name="TDocumentTitleType.AccCert552Buyer"><short>Данные для титула заказчика формата приказа 552</short>
       </element><element name="TDocumentTitleType.Utd820Buyer"><short>Данные для титула покупателя УПД формата приказа 820</short>
       </element>
+    <element name="TDocumentTitleType.Torg2Buyer"><short>Данные для титула покупателя приказа 423</short>
+      </element><element name="TDocumentTitleType.Torg2AdditionalInfo"><short>Данные для титула дополнительных сведений приказа 423</short>
+      </element><element name="TSignerPowers.PersonOtherPower"><short>лицо с иными полномочиями</short>
+      </element><element name="TSignerPowers.PersonAgreedOnDocument"><short>лицо, в полномочия которого входит согласование документа, оформляющего событие (факт хозяйственной жизни)</short>
+      </element><element name="TSignerPowers.PersonConfirmedDocument"><short>лицо, в полномочия которого входит подтверждение оформленного события (факта хозяйственной жизни)</short>
+      </element><element name="TSignerPowers.PersonApprovedDocument"><short>лицо, в полномочия которого входит утверждение документа, оформляющего событие (факт хозяйственной жизни)</short>
+      </element><element name="TSignerPowers.MemberCommission"><short>член комиссии</short>
+      </element><element name="TSignerPowers.ChairmanCommission"><short>председатель комиссии</short>
+      </element>
     </module>
   </package>
 </fpdoc-descriptions>
