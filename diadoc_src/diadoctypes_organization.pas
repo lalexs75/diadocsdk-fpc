@@ -71,17 +71,23 @@ type
     FInvoiceFormatVersion: TOrganizationInvoiceFormatVersion;
     FOrganization: TOrganization;
     FTitle: string;
+    procedure SetBoxId(AValue: string);
+    procedure SetEncryptedDocumentsAllowed(AValue: Boolean);
+    procedure SetInvoiceFormatVersion(AValue: TOrganizationInvoiceFormatVersion
+      );
+    procedure SetOrganization(AValue: TOrganization);
+    procedure SetTitle(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property BoxId:string read FBoxId write FBoxId;  // 1
-    property Title:string read FTitle write FTitle;  // 2
-    property Organization:TOrganization read FOrganization write FOrganization; //3
-    property InvoiceFormatVersion:TOrganizationInvoiceFormatVersion read FInvoiceFormatVersion write FInvoiceFormatVersion default v5_02; //4
-    property EncryptedDocumentsAllowed:Boolean read FEncryptedDocumentsAllowed write FEncryptedDocumentsAllowed; //5;
+    property BoxId:string read FBoxId write SetBoxId;  // 1
+    property Title:string read FTitle write SetTitle;  // 2
+    property Organization:TOrganization read FOrganization write SetOrganization; //3
+    property InvoiceFormatVersion:TOrganizationInvoiceFormatVersion read FInvoiceFormatVersion write SetInvoiceFormatVersion default v5_02; //4
+    property EncryptedDocumentsAllowed:Boolean read FEncryptedDocumentsAllowed write SetEncryptedDocumentsAllowed; //5;
   end;
   TBoxes = specialize GSerializationObjectList<TBox>;
 
@@ -104,19 +110,26 @@ type
     FKpp: string;
     FName: string;
     FParentDepartmentId: string;
+    procedure SetAbbreviation(AValue: string);
+    procedure SetAddress(AValue: TAddress);
+    procedure SetDepartmentId(AValue: string);
+    procedure SetIsDisabled(AValue: Boolean);
+    procedure SetKpp(AValue: string);
+    procedure SetName(AValue: string);
+    procedure SetParentDepartmentId(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
   published
-    property DepartmentId:string read FDepartmentId write FDepartmentId; //1
-    property ParentDepartmentId:string read FParentDepartmentId write FParentDepartmentId; //2
-    property Name:string read FName write FName;                         //3
-    property Abbreviation:string read FAbbreviation write FAbbreviation; //4
-    property Kpp:string read FKpp write FKpp;                            //5
-    property Address:TAddress read FAddress write FAddress;              //6
-    property IsDisabled:Boolean read FIsDisabled write FIsDisabled;      //optional
+    property DepartmentId:string read FDepartmentId write SetDepartmentId; //1
+    property ParentDepartmentId:string read FParentDepartmentId write SetParentDepartmentId; //2
+    property Name:string read FName write SetName;                         //3
+    property Abbreviation:string read FAbbreviation write SetAbbreviation; //4
+    property Kpp:string read FKpp write SetKpp;                            //5
+    property Address:TAddress read FAddress write SetAddress;              //6
+    property IsDisabled:Boolean read FIsDisabled write SetIsDisabled;      //7
   end;
   TDepartments = specialize GSerializationObjectList<TDepartment>;
 
@@ -177,38 +190,61 @@ type
     FSearchCount: Int32;
     FShortName: string;
     FSociability: TSociability;
+    procedure SetCertificateOfRegistryInfo(AValue: string);
+    procedure SetFnsParticipantId(AValue: string);
+    procedure SetFnsRegistrationDate(AValue: string);
+    procedure SetFullName(AValue: string);
+    procedure SetHasCertificateToSign(AValue: Boolean);
+    procedure SetIfnsCode(AValue: string);
+    procedure SetIgnor1(AValue: integer);
+    procedure SetInn(AValue: string);
+    procedure SetInvitationCount(AValue: Int32);
+    procedure SetIsActive(AValue: Boolean);
+    procedure SetIsBranch(AValue: Boolean);
+    procedure SetIsEmployee(AValue: Boolean);
+    procedure SetIsForeign(AValue: Boolean);
+    procedure SetIsPilot(AValue: Boolean);
+    procedure SetIsRoaming(AValue: Boolean);
+    procedure SetIsTest(AValue: Boolean);
+    procedure SetKpp(AValue: string);
+    procedure SetLiquidationDate(AValue: string);
+    procedure SetOgrn(AValue: string);
+    procedure SetOrgId(AValue: string);
+    procedure SetSearchCount(AValue: Int32);
+    procedure SetShortName(AValue: string);
+    procedure SetSociability(AValue: TSociability);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
   published
-    property OrgId:string read FOrgId write FOrgId;                                  // 1
-    property Inn:string read FInn write FInn;                                        // 2
-    property Kpp:string read FKpp write FKpp;                                        // 3
-    property FullName:string read FFullName write FFullName;                         // 4
-    property ShortName:string read FShortName write FShortName;                      // 5
-    property Ignor1:integer read FIgnor1 write FIgnor1;                              // 6
-    property Boxes:TBoxes read FBoxes;                                               // 7
-    property Ogrn:string read FOgrn write FOgrn;                                     // 8
-    property FnsParticipantId:string read FFnsParticipantId write FFnsParticipantId; // 9
-    property Address:TAddress read FAddress;                                         // 10
-    property FnsRegistrationDate:string read FFnsRegistrationDate write FFnsRegistrationDate; //11
+    property OrgId:string read FOrgId write SetOrgId;                                  // 1
+    property Inn:string read FInn write SetInn;                                        // 2
+    property Kpp:string read FKpp write SetKpp;                                        // 3
+    property FullName:string read FFullName write SetFullName;                         // 4
+    property ShortName:string read FShortName write SetShortName;                      // 5
+    property Ignor1:integer read FIgnor1 write SetIgnor1;                              // 6
+    property Boxes:TBoxes read FBoxes;                                                 // 7
+    property Ogrn:string read FOgrn write SetOgrn;                                     // 8
+    property FnsParticipantId:string read FFnsParticipantId write SetFnsParticipantId; // 9
+    property Address:TAddress read FAddress;                                           // 10
+    property FnsRegistrationDate:string read FFnsRegistrationDate write SetFnsRegistrationDate; //11
     property Departments:TDepartments read FDepartments;                             // 12
-    property IfnsCode:string read FIfnsCode write FIfnsCode;                         // 13
-    property IsPilot:Boolean read FIsPilot write FIsPilot;                           // 14
-    property IsActive:Boolean read FIsActive write FIsActive;                        // 15
-    property IsTest:Boolean read FIsTest write FIsTest;                              // 16
-    property IsBranch:Boolean read FIsBranch write FIsBranch;                        // 17
-    property IsRoaming:Boolean read FIsRoaming write FIsRoaming;                     // 18
-    property IsEmployee:Boolean read FIsEmployee write FIsEmployee;                  // 19
-    property InvitationCount:Int32 read FInvitationCount write FInvitationCount;     // 20
-    property SearchCount:Int32 read FSearchCount write FSearchCount;                 // 21
-    property Sociability:TSociability read FSociability write FSociability;          // 22
-    property LiquidationDate : string read FLiquidationDate write FLiquidationDate;  // 23
-    property CertificateOfRegistryInfo:string read FCertificateOfRegistryInfo write FCertificateOfRegistryInfo; //24
-    property IsForeign:Boolean read FIsForeign write FIsForeign;                     // 25
-    property HasCertificateToSign:Boolean read FHasCertificateToSign write FHasCertificateToSign; //= 26;
+    property IfnsCode:string read FIfnsCode write SetIfnsCode;                         // 13
+    property IsPilot:Boolean read FIsPilot write SetIsPilot;                           // 14
+    property IsActive:Boolean read FIsActive write SetIsActive;                        // 15
+    property IsTest:Boolean read FIsTest write SetIsTest;                              // 16
+    property IsBranch:Boolean read FIsBranch write SetIsBranch;                        // 17
+    property IsRoaming:Boolean read FIsRoaming write SetIsRoaming;                     // 18
+    property IsEmployee:Boolean read FIsEmployee write SetIsEmployee;                  // 19
+    property InvitationCount:Int32 read FInvitationCount write SetInvitationCount;     // 20
+    property SearchCount:Int32 read FSearchCount write SetSearchCount;                 // 21
+    property Sociability:TSociability read FSociability write SetSociability;          // 22
+    property LiquidationDate : string read FLiquidationDate write SetLiquidationDate;  // 23
+    property CertificateOfRegistryInfo:string read FCertificateOfRegistryInfo write SetCertificateOfRegistryInfo; //24
+    property IsForeign:Boolean read FIsForeign write SetIsForeign;                     // 25
+    property HasCertificateToSign:Boolean read FHasCertificateToSign write SetHasCertificateToSign; // 26;
   end;
   TOrganizations = specialize GSerializationObjectList<TOrganization>;
 
@@ -253,6 +289,42 @@ end;
 
 { TBox }
 
+procedure TBox.SetBoxId(AValue: string);
+begin
+  if FBoxId=AValue then Exit;
+  FBoxId:=AValue;
+  Modified(1);
+end;
+
+procedure TBox.SetEncryptedDocumentsAllowed(AValue: Boolean);
+begin
+  if FEncryptedDocumentsAllowed=AValue then Exit;
+  FEncryptedDocumentsAllowed:=AValue;
+  Modified(5);
+end;
+
+procedure TBox.SetInvoiceFormatVersion(AValue: TOrganizationInvoiceFormatVersion
+  );
+begin
+  if FInvoiceFormatVersion=AValue then Exit;
+  FInvoiceFormatVersion:=AValue;
+  Modified(4);
+end;
+
+procedure TBox.SetOrganization(AValue: TOrganization);
+begin
+  if FOrganization=AValue then Exit;
+  FOrganization:=AValue;
+  Modified(3);
+end;
+
+procedure TBox.SetTitle(AValue: string);
+begin
+  if FTitle=AValue then Exit;
+  FTitle:=AValue;
+  Modified(2);
+end;
+
 procedure TBox.InternalInit;
 begin
   InvoiceFormatVersion:=v5_02;
@@ -277,6 +349,55 @@ end;
 
 { TDepartment }
 
+procedure TDepartment.SetAbbreviation(AValue: string);
+begin
+  if FAbbreviation=AValue then Exit;
+  FAbbreviation:=AValue;
+  Modified(4);
+end;
+
+procedure TDepartment.SetAddress(AValue: TAddress);
+begin
+  if FAddress=AValue then Exit;
+  FAddress:=AValue;
+  Modified(6);
+end;
+
+procedure TDepartment.SetDepartmentId(AValue: string);
+begin
+  if FDepartmentId=AValue then Exit;
+  FDepartmentId:=AValue;
+  Modified(1);
+end;
+
+procedure TDepartment.SetIsDisabled(AValue: Boolean);
+begin
+  if FIsDisabled=AValue then Exit;
+  FIsDisabled:=AValue;
+  Modified(7);
+end;
+
+procedure TDepartment.SetKpp(AValue: string);
+begin
+  if FKpp=AValue then Exit;
+  FKpp:=AValue;
+  Modified(5);
+end;
+
+procedure TDepartment.SetName(AValue: string);
+begin
+  if FName=AValue then Exit;
+  FName:=AValue;
+  Modified(3);
+end;
+
+procedure TDepartment.SetParentDepartmentId(AValue: string);
+begin
+  if FParentDepartmentId=AValue then Exit;
+  FParentDepartmentId:=AValue;
+  Modified(2);
+end;
+
 procedure TDepartment.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
@@ -300,6 +421,167 @@ begin
 end;
 
 { TOrganization }
+
+procedure TOrganization.SetCertificateOfRegistryInfo(AValue: string);
+begin
+  if FCertificateOfRegistryInfo=AValue then Exit;
+  FCertificateOfRegistryInfo:=AValue;
+  Modified(24);
+end;
+
+procedure TOrganization.SetFnsParticipantId(AValue: string);
+begin
+  if FFnsParticipantId=AValue then Exit;
+  FFnsParticipantId:=AValue;
+  Modified(9);
+end;
+
+procedure TOrganization.SetFnsRegistrationDate(AValue: string);
+begin
+  if FFnsRegistrationDate=AValue then Exit;
+  FFnsRegistrationDate:=AValue;
+  Modified(11);
+end;
+
+procedure TOrganization.SetFullName(AValue: string);
+begin
+  if FFullName=AValue then Exit;
+  FFullName:=AValue;
+  Modified(4);
+end;
+
+procedure TOrganization.SetHasCertificateToSign(AValue: Boolean);
+begin
+  if FHasCertificateToSign=AValue then Exit;
+  FHasCertificateToSign:=AValue;
+  Modified(26);
+end;
+
+procedure TOrganization.SetIfnsCode(AValue: string);
+begin
+  if FIfnsCode=AValue then Exit;
+  FIfnsCode:=AValue;
+  Modified(13);
+end;
+
+procedure TOrganization.SetIgnor1(AValue: integer);
+begin
+  if FIgnor1=AValue then Exit;
+  FIgnor1:=AValue;
+  Modified(6);
+end;
+
+procedure TOrganization.SetInn(AValue: string);
+begin
+  if FInn=AValue then Exit;
+  FInn:=AValue;
+  Modified(2);
+end;
+
+procedure TOrganization.SetInvitationCount(AValue: Int32);
+begin
+  if FInvitationCount=AValue then Exit;
+  FInvitationCount:=AValue;
+  Modified(20);
+end;
+
+procedure TOrganization.SetIsActive(AValue: Boolean);
+begin
+  if FIsActive=AValue then Exit;
+  FIsActive:=AValue;
+  Modified(15);
+end;
+
+procedure TOrganization.SetIsBranch(AValue: Boolean);
+begin
+  if FIsBranch=AValue then Exit;
+  FIsBranch:=AValue;
+  Modified(17);
+end;
+
+procedure TOrganization.SetIsEmployee(AValue: Boolean);
+begin
+  if FIsEmployee=AValue then Exit;
+  FIsEmployee:=AValue;
+  Modified(19);
+end;
+
+procedure TOrganization.SetIsForeign(AValue: Boolean);
+begin
+  if FIsForeign=AValue then Exit;
+  FIsForeign:=AValue;
+  Modified(25);
+end;
+
+procedure TOrganization.SetIsPilot(AValue: Boolean);
+begin
+  if FIsPilot=AValue then Exit;
+  FIsPilot:=AValue;
+  Modified(14);
+end;
+
+procedure TOrganization.SetIsRoaming(AValue: Boolean);
+begin
+  if FIsRoaming=AValue then Exit;
+  FIsRoaming:=AValue;
+  Modified(18);
+end;
+
+procedure TOrganization.SetIsTest(AValue: Boolean);
+begin
+  if FIsTest=AValue then Exit;
+  FIsTest:=AValue;
+  Modified(16);
+end;
+
+procedure TOrganization.SetKpp(AValue: string);
+begin
+  if FKpp=AValue then Exit;
+  FKpp:=AValue;
+  Modified(3);
+end;
+
+procedure TOrganization.SetLiquidationDate(AValue: string);
+begin
+  if FLiquidationDate=AValue then Exit;
+  FLiquidationDate:=AValue;
+  Modified(23);
+end;
+
+procedure TOrganization.SetOgrn(AValue: string);
+begin
+  if FOgrn=AValue then Exit;
+  FOgrn:=AValue;
+  Modified(8);
+end;
+
+procedure TOrganization.SetOrgId(AValue: string);
+begin
+  if FOrgId=AValue then Exit;
+  FOrgId:=AValue;
+  Modified(1);
+end;
+
+procedure TOrganization.SetSearchCount(AValue: Int32);
+begin
+  if FSearchCount=AValue then Exit;
+  FSearchCount:=AValue;
+  Modified(21);
+end;
+
+procedure TOrganization.SetShortName(AValue: string);
+begin
+  if FShortName=AValue then Exit;
+  FShortName:=AValue;
+  Modified(5);
+end;
+
+procedure TOrganization.SetSociability(AValue: TSociability);
+begin
+  if FSociability=AValue then Exit;
+  FSociability:=AValue;
+  Modified(22);
+end;
 
 procedure TOrganization.InternalInit;
 begin
