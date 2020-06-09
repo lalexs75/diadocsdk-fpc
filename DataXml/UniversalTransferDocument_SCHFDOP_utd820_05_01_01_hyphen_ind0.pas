@@ -758,10 +758,11 @@ type
   {  TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber  }
   TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber = class(TXmlSerializationObject)
   private
-    FUnit1:Tstring255;
+    //FUnit1:Tstring255;
     FPackageId:Tstring255;
     FTransPackageId:Tstring255;
-    procedure SetUnit1( AValue:Tstring255);
+    FUnit1: TStringList;
+    //procedure SetUnit1( AValue:Tstring255);
     procedure SetPackageId( AValue:Tstring255);
     procedure SetTransPackageId( AValue:Tstring255);
   protected
@@ -771,7 +772,8 @@ type
     destructor Destroy; override;
   published
     //КИЗ - Контрольный идентификационный знак
-    property Unit1:Tstring255 read FUnit1 write SetUnit1;
+    //property Unit1:Tstring255 read FUnit1 write SetUnit1;
+    property Unit1:TStringList read FUnit1;
     //НомУпак - Уникальный идентификатор вторичной
     //(потребительской)/третичной (заводской, транспортной)
     //упаковки
@@ -2906,13 +2908,13 @@ begin
 end;
 
   {  TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber  }
-procedure TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber.SetUnit1(AValue: Tstring255);
-begin
-  FUnit1:=AValue;
-  CheckStrMinSize('Unit1', AValue);
-  CheckStrMaxSize('Unit1', AValue);
-  ModifiedProperty('Unit1');
-end;
+//procedure TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber.SetUnit1(AValue: Tstring255);
+//begin
+//  FUnit1:=AValue;
+//  CheckStrMinSize('Unit1', AValue);
+//  CheckStrMaxSize('Unit1', AValue);
+//  ModifiedProperty('Unit1');
+//end;
 
 procedure TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber.SetPackageId(AValue: Tstring255);
 begin
@@ -2943,10 +2945,12 @@ end;
 procedure TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber.InternalInitChilds;
 begin
   inherited InternalInitChilds;
+  FUnit1:=TStringList.Create;
 end;
 
 destructor TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber.Destroy;
 begin
+  FreeAndNil(FUnit1);
   inherited Destroy;
 end;
 
