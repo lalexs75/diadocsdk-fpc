@@ -38,7 +38,7 @@ unit XmlAcceptanceCertificate_DEFAULT_act_05_01_02_ind1;
 interface
 
 uses
-  Classes, SysUtils, xmlobject;
+  Classes, SysUtils, xmlobject, AbstractSerializationObjects;
 
 type
   TTaxRate = String;

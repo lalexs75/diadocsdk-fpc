@@ -38,7 +38,7 @@ unit UniversalTransferDocumentRevision_DOP_utd820_05_01_01_ind1;
 interface
 
 uses
-  Classes, SysUtils, xmlobject;
+  Classes, SysUtils, xmlobject, AbstractSerializationObjects;
 
 type
   //Код из Общероссийского классификатора территорий муниципальных образований

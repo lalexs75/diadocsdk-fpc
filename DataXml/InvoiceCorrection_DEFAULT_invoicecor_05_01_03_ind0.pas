@@ -38,7 +38,7 @@ unit InvoiceCorrection_DEFAULT_invoicecor_05_01_03_ind0;
 interface
 
 uses
-  Classes, SysUtils, xmlobject;
+  Classes, SysUtils, xmlobject, AbstractSerializationObjects;
 
 type
   TTaxRate_With20Percent = String;

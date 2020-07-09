@@ -38,7 +38,7 @@ unit UniversalTransferDocumentRevision_SCHFDOP_utd_05_01_01_ind1;
 interface
 
 uses
-  Classes, SysUtils, xmlobject;
+  Classes, SysUtils, xmlobject, AbstractSerializationObjects;
 
 type
   Tstring8 = String;

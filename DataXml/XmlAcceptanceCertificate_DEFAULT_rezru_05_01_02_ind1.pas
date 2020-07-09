@@ -38,7 +38,7 @@ unit XmlAcceptanceCertificate_DEFAULT_rezru_05_01_02_ind1;
 interface
 
 uses
-  Classes, SysUtils, xmlobject;
+  Classes, SysUtils, xmlobject, AbstractSerializationObjects;
 
 type
   Tinteger10 = Longint;

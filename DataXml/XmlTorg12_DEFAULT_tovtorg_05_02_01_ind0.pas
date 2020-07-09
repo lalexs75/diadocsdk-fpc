@@ -38,7 +38,7 @@ unit XmlTorg12_DEFAULT_tovtorg_05_02_01_ind0;
 interface
 
 uses
-  Classes, SysUtils, xmlobject;
+  Classes, SysUtils, xmlobject, AbstractSerializationObjects;
 
 type
   Tinteger10 = Longint;

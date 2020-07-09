@@ -5,7 +5,7 @@ unit UserContract_820_05_01_01_Hyphen;
 interface
 
 uses
-  Classes, SysUtils, xmlobject;
+  Classes, SysUtils, xmlobject, AbstractSerializationObjects;
 type
     //1 - Сведения о юридическом лице, состоящем на учете в налоговых органах // СвЮЛУч
     //2 - Сведения об индивидуальном предпринимателе// СвИП

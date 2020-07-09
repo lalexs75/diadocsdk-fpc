@@ -38,7 +38,7 @@ unit ElectricityIndication_DEFAULT_pokaz_01_01_ind0;
 interface
 
 uses
-  Classes, SysUtils, xmlobject;
+  Classes, SysUtils, xmlobject, AbstractSerializationObjects;
 
 type
   Tstring9 = String;

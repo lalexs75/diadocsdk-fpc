@@ -38,7 +38,7 @@ unit ProformaInvoice_DEFAULT_proformainvoice_01_01_ind0;
 interface
 
 uses
-  Classes, SysUtils, xmlobject;
+  Classes, SysUtils, xmlobject, AbstractSerializationObjects;
 
 type
   //1 - Сведения о юридическом лице, состоящем на учете в налоговых органах // СвЮЛУч

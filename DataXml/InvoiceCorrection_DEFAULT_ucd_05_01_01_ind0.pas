@@ -38,7 +38,7 @@ unit InvoiceCorrection_DEFAULT_ucd_05_01_01_ind0;
 interface
 
 uses
-  Classes, SysUtils, xmlobject;
+  Classes, SysUtils, xmlobject, AbstractSerializationObjects;
 
 type
   Tstring8 = String;

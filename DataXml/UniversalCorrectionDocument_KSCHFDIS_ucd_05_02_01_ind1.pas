@@ -38,7 +38,7 @@ unit UniversalCorrectionDocument_KSCHFDIS_ucd_05_02_01_ind1;
 interface
 
 uses
-  Classes, SysUtils, xmlobject;
+  Classes, SysUtils, xmlobject, AbstractSerializationObjects;
 
 type
   Tstring8 = String;
