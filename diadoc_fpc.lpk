@@ -1299,6 +1299,10 @@
         <AddToUsesPkgSection Value="False"/>
         <UnitName Value="XmlTorg12_DEFAULT_utd820_05_01_01_ind1"/>
       </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalCorrectionDocument_KSCHFDIS_ucd_05_01_03_ind0.pas"/>
+        <UnitName Value="UniversalCorrectionDocument_KSCHFDIS_ucd_05_01_03_ind0"/>
+      </Item>
     </Files>
     <LazDoc Paths="docs"/>
     <i18n>
