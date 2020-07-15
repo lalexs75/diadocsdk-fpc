@@ -59,6 +59,7 @@ type
   { TBox }
   //message Box {
   //	required string BoxId = 1;
+  //    required string BoxIdGuid = 6;
   //	required string Title = 2;
   //	optional Organization Organization = 3;
   //	optional OrganizationInvoiceFormatVersion InvoiceFormatVersion = 4 [default = v5_02];
@@ -67,11 +68,13 @@ type
   TBox = class(TSerializationObject)
   private
     FBoxId: string;
+    FBoxIdGuid: string;
     FEncryptedDocumentsAllowed: Boolean;
     FInvoiceFormatVersion: TOrganizationInvoiceFormatVersion;
     FOrganization: TOrganization;
     FTitle: string;
     procedure SetBoxId(AValue: string);
+    procedure SetBoxIdGuid(AValue: string);
     procedure SetEncryptedDocumentsAllowed(AValue: Boolean);
     procedure SetInvoiceFormatVersion(AValue: TOrganizationInvoiceFormatVersion
       );
@@ -84,6 +87,7 @@ type
     destructor Destroy; override;
   published
     property BoxId:string read FBoxId write SetBoxId;  // 1
+    property BoxIdGuid:string read FBoxIdGuid write SetBoxIdGuid;// = 6;
     property Title:string read FTitle write SetTitle;  // 2
     property Organization:TOrganization read FOrganization write SetOrganization; //3
     property InvoiceFormatVersion:TOrganizationInvoiceFormatVersion read FInvoiceFormatVersion write SetInvoiceFormatVersion default v5_02; //4
@@ -296,6 +300,13 @@ begin
   Modified(1);
 end;
 
+procedure TBox.SetBoxIdGuid(AValue: string);
+begin
+  if FBoxIdGuid=AValue then Exit;
+  FBoxIdGuid:=AValue;
+  Modified(6);
+end;
+
 procedure TBox.SetEncryptedDocumentsAllowed(AValue: Boolean);
 begin
   if FEncryptedDocumentsAllowed=AValue then Exit;
@@ -338,6 +349,7 @@ begin
   RegisterProp('Organization', 3, false, TOrganization);
   RegisterProp('InvoiceFormatVersion', 4);
   RegisterProp('EncryptedDocumentsAllowed', 5);
+  RegisterProp('BoxIdGuid', 6);
 end;
 
 destructor TBox.Destroy;
