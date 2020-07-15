@@ -62,6 +62,7 @@ type
   //	Timeout = 4;
   //	Crashed = 5;
   //	UserHasUnconfirmedOperation = 6;
+  //    OperationRetryRequired = 7;
   //}
   TDssOperationStatus = (
     Unknown = 0,
@@ -70,8 +71,37 @@ type
     CanceledByUser = 3,
     Timeout = 4,
     Crashed = 5,
-    UserHasUnconfirmedOperation = 6
+    UserHasUnconfirmedOperation = 6,
+    OperationRetryRequired = 7
   );
+
+
+  //enum DssConfirmType {
+  //	ConfirmTypeUnknown = -1;
+  //	None = 0;
+  //	Sms = 1;
+  //	MyDss = 2;
+  //	Applet = 3;
+  //}
+  TDssConfirmType = (
+    ConfirmTypeUnknown = -1,
+    None = 0,
+    Sms = 1,
+    MyDss = 2,
+    Applet = 3
+  );
+
+  //enum DssOperator {
+  //	OperatorUnknown = 0;
+  //	Megafon = 1;
+  //	Kontur = 2;
+  //}
+  TDssOperator = (
+    OperatorUnknown = 0,
+    Megafon = 1,
+    Kontur = 2
+  );
+
 
   TDssSignRequest = class;
   TDssSignFile = class;
@@ -146,12 +176,24 @@ type
   //{
   //	optional DssOperationStatus OperationStatus = 1 [default = Unknown];
   //	repeated DssFileSigningResult FileSigningResults = 2;
+  //    optional DssConfirmType ConfirmType = 3 [default = ConfirmTypeUnknown];
+  //    optional DssOperator Operator = 4 [default = OperatorUnknown];
+  //    optional string PhoneLastNumbers = 5;
   //}
+
+  { TDssSignResult }
+
   TDssSignResult = class(TSerializationObject)
   private
+    FAOperator: TDssOperator;
+    FConfirmType: TDssConfirmType;
     FOperationStatus:TDssOperationStatus;
     FFileSigningResults:TDssFileSigningResults;
+    FPhoneLastNumbers: string;
+    procedure SetAOperator(AValue: TDssOperator);
+    procedure SetConfirmType(AValue: TDssConfirmType);
     procedure SetOperationStatus(AValue:TDssOperationStatus);
+    procedure SetPhoneLastNumbers(AValue: string);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -160,6 +202,9 @@ type
   published
     property OperationStatus:TDssOperationStatus read FOperationStatus write SetOperationStatus default Unknown;
     property FileSigningResults:TDssFileSigningResults read FFileSigningResults;
+    property ConfirmType:TDssConfirmType read FConfirmType write SetConfirmType default ConfirmTypeUnknown; // = 3 [];
+    property AOperator:TDssOperator read FAOperator write SetAOperator default OperatorUnknown; //  = 4 [default = OperatorUnknown];
+    property PhoneLastNumbers:string read FPhoneLastNumbers write SetPhoneLastNumbers; // = 5;
   end;
   TDssSignResults = specialize GSerializationObjectList<TDssSignResult>;
 
@@ -221,6 +266,9 @@ begin
   inherited InternalRegisterProperty;
   RegisterProp('OperationStatus', 1);
   RegisterProp('FileSigningResults', 2);
+  RegisterProp('ConfirmType', 3);
+  RegisterProp('AOperator', 4);
+  RegisterProp('PhoneLastNumbers', 5);
 end;
 
 procedure TDssSignResult.InternalInit;
@@ -229,6 +277,8 @@ begin
   FFileSigningResults:= TDssFileSigningResults.Create;
 
   OperationStatus:= Unknown;
+  ConfirmType:=ConfirmTypeUnknown; // = 3 [];
+  AOperator:= OperatorUnknown; //  = 4 [default = OperatorUnknown];
 end;
 
 destructor TDssSignResult.Destroy;
@@ -241,6 +291,27 @@ procedure TDssSignResult.SetOperationStatus(AValue:TDssOperationStatus);
 begin
   FOperationStatus:=AValue;
   Modified(1);
+end;
+
+procedure TDssSignResult.SetAOperator(AValue: TDssOperator);
+begin
+  if FAOperator=AValue then Exit;
+  FAOperator:=AValue;
+  Modified(4);
+end;
+
+procedure TDssSignResult.SetConfirmType(AValue: TDssConfirmType);
+begin
+  if FConfirmType=AValue then Exit;
+  FConfirmType:=AValue;
+  Modified(3);
+end;
+
+procedure TDssSignResult.SetPhoneLastNumbers(AValue: string);
+begin
+  if FPhoneLastNumbers=AValue then Exit;
+  FPhoneLastNumbers:=AValue;
+  Modified(5);
 end;
 
 
