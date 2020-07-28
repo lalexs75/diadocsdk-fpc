@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_GetOrganizationsByInnList"><element name="TOrganizationWithCounteragentStatus.MessageFromCounteragent"><short>сообщение пришедшее от контрагента вместе с приглашением</short>
+      </element><element name="TOrganizationWithCounteragentStatus.MessageToCounteragent"><short>сообщение отправленное контрагенту вместе с приглашением</short>
+      </element><element name="TOrganizationWithCounteragentStatus.Organization"><short>содержит информацию об одной организации в Диадоке</short>
+      </element><element name="TOrganizationWithCounteragentStatus.CounteragentStatus"><short>статус контрагента для данной организации</short>
+      </element><element name="TOrganizationWithCounteragentStatus.LastEventTimestampTicks"><short> метка времени последнего события из истории взаимодействия с данным контрагентом</short>
+      </element><element name="TOrganizationWithCounteragentStatus.InvitationDocumentId"><short>идентификатор документа пришедший вместе с приглашением</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>
