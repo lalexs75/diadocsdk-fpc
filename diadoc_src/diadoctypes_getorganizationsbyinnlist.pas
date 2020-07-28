@@ -43,7 +43,8 @@ interface
 uses
   Classes, SysUtils, protobuf_fpc_types, protobuf_fpc, diadoc_simple_arrays,
   DiadocTypes_Organization,
-  DiadocTypes_Counteragent
+  DiadocTypes_Counteragent,
+  DiadocTypes_DocumentId
   ;
 
 type
@@ -52,12 +53,20 @@ type
   //        required Organization Organization = 1;
   //        optional CounteragentStatus CounteragentStatus = 2 [default = UnknownCounteragentStatus];
   //        optional sfixed64 LastEventTimestampTicks = 3;
+  //        optional string MessageFromCounteragent = 4;
+  //        optional string MessageToCounteragent = 5;
+  //        optional DocumentId InvitationDocumentId = 6;
   //}
   TOrganizationWithCounteragentStatus = class(TSerializationObject)
   private
     FCounteragentStatus: TCounteragentStatus;
+    FInvitationDocumentId: TDocumentId;
     FLastEventTimestampTicks: sfixed64;
+    FMessageFromCounteragent: string;
+    FMessageToCounteragent: string;
     FOrganization: TOrganization;
+    procedure SetMessageFromCounteragent(AValue: string);
+    procedure SetMessageToCounteragent(AValue: string);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
@@ -67,6 +76,9 @@ type
     property Organization:TOrganization read FOrganization; //1;
     property CounteragentStatus:TCounteragentStatus read FCounteragentStatus write FCounteragentStatus;//2
     property LastEventTimestampTicks:sfixed64 read FLastEventTimestampTicks write FLastEventTimestampTicks;//3;
+    property MessageFromCounteragent:string read FMessageFromCounteragent write SetMessageFromCounteragent; //4;
+    property MessageToCounteragent:string read FMessageToCounteragent write SetMessageToCounteragent;//5;
+    property InvitationDocumentId:TDocumentId read FInvitationDocumentId; // 6;
   end;
   TOrganizationWithCounteragentStatuss = specialize GSerializationObjectList<TOrganizationWithCounteragentStatus>;
 
@@ -147,10 +159,27 @@ end;
 
 { TOrganizationWithCounteragentStatus }
 
+procedure TOrganizationWithCounteragentStatus.SetMessageFromCounteragent(
+  AValue: string);
+begin
+  if FMessageFromCounteragent=AValue then Exit;
+  FMessageFromCounteragent:=AValue;
+  Modified(4);
+end;
+
+procedure TOrganizationWithCounteragentStatus.SetMessageToCounteragent(
+  AValue: string);
+begin
+  if FMessageToCounteragent=AValue then Exit;
+  FMessageToCounteragent:=AValue;
+  Modified(5);
+end;
+
 procedure TOrganizationWithCounteragentStatus.InternalInit;
 begin
   inherited InternalInit;
   FOrganization:=TOrganization.Create;
+  FInvitationDocumentId:=TDocumentId.Create;
 end;
 
 procedure TOrganizationWithCounteragentStatus.InternalRegisterProperty;
@@ -159,11 +188,15 @@ begin
   RegisterProp('Organization', 1, true);
   RegisterProp('CounteragentStatus', 2);
   RegisterProp('LastEventTimestampTicks', 3);
+  RegisterProp('MessageFromCounteragent', 4);
+  RegisterProp('MessageToCounteragent', 5);
+  RegisterProp('InvitationDocumentId', 6);
 end;
 
 destructor TOrganizationWithCounteragentStatus.Destroy;
 begin
   FreeAndNil(FOrganization);
+  FreeAndNil(FInvitationDocumentId);
   inherited Destroy;
 end;
 

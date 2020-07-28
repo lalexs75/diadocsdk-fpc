@@ -3,7 +3,7 @@
   <ProjectSession>
     <Version Value="12"/>
     <BuildModes Active="Default"/>
-    <Units Count="324">
+    <Units Count="325">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -198,7 +198,7 @@
         <UnitName Value="SelectDepartmentUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="26"/>
-        <UsageCount Value="136"/>
+        <UsageCount Value="137"/>
       </Unit18>
       <Unit19>
         <Filename Value="ddmaindataunit.pas"/>
@@ -208,14 +208,14 @@
         <UnitName Value="ddMainDataUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="26"/>
-        <UsageCount Value="135"/>
+        <UsageCount Value="136"/>
       </Unit19>
       <Unit20>
         <Filename Value="tools/ddnewdocutdunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ddNewDocUTDUnit"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="132"/>
+        <UsageCount Value="133"/>
       </Unit20>
       <Unit21>
         <Filename Value="frames/transferinfounit.pas"/>
@@ -226,7 +226,7 @@
         <UnitName Value="TransferInfoUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="26"/>
-        <UsageCount Value="121"/>
+        <UsageCount Value="122"/>
       </Unit21>
       <Unit22>
         <Filename Value="frames/extendedorganizationinfounit.pas"/>
@@ -237,7 +237,7 @@
         <UnitName Value="ExtendedOrganizationInfoUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="26"/>
-        <UsageCount Value="119"/>
+        <UsageCount Value="120"/>
       </Unit22>
       <Unit23>
         <Filename Value="frames/employeeunit.pas"/>
@@ -248,20 +248,20 @@
         <UnitName Value="EmployeeUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="26"/>
-        <UsageCount Value="118"/>
+        <UsageCount Value="119"/>
       </Unit23>
       <Unit24>
         <Filename Value="../../../DataXml/UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen_ind0.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="28"/>
+        <UsageCount Value="29"/>
       </Unit24>
       <Unit25>
         <Filename Value="formats/upd820_revision.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="25"/>
-        <UsageCount Value="26"/>
+        <UsageCount Value="27"/>
       </Unit25>
       <Unit26>
         <Filename Value="../../../DiadocVisual/frames/boxinfounit.pas"/>
@@ -2012,9 +2012,8 @@
       <Unit247>
         <Filename Value="../../../diadoc_src/diadoctypes_organization.pas"/>
         <UnitName Value="DiadocTypes_Organization"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
-        <TopLine Value="303"/>
+        <TopLine Value="297"/>
         <CursorPos X="3" Y="305"/>
         <UsageCount Value="14"/>
         <Loaded Value="True"/>
@@ -2591,122 +2590,132 @@
         <CursorPos X="3" Y="49"/>
         <UsageCount Value="12"/>
       </Unit323>
+      <Unit324>
+        <Filename Value="../../../diadoc_src/diadoctypes_getorganizationsbyinnlist.pas"/>
+        <UnitName Value="DiadocTypes_GetOrganizationsByInnList"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="4"/>
+        <TopLine Value="94"/>
+        <CursorPos X="21" Y="81"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit324>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="191" Column="15" TopLine="173"/>
+        <Caret Line="196" Column="15" TopLine="178"/>
       </Position1>
       <Position2>
         <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="300" Column="13" TopLine="289"/>
       </Position2>
       <Position3>
         <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="192" Column="15" TopLine="174"/>
+        <Caret Line="107" Column="24" TopLine="78"/>
       </Position3>
       <Position4>
         <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="307" Column="14" TopLine="296"/>
+        <Caret Line="170" Column="25" TopLine="135"/>
       </Position4>
       <Position5>
         <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="194" Column="15" TopLine="176"/>
       </Position5>
       <Position6>
         <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="307" Column="13" TopLine="303"/>
+        <Caret Line="42" Column="25" TopLine="13"/>
       </Position6>
       <Position7>
         <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="196" TopLine="176"/>
       </Position7>
       <Position8>
         <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="265" Column="3" TopLine="262"/>
+        <Caret Line="108" Column="17" TopLine="90"/>
       </Position8>
       <Position9>
         <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="196" TopLine="178"/>
+        <Caret Line="210" Column="18" TopLine="175"/>
       </Position9>
       <Position10>
         <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="279" Column="13" TopLine="262"/>
+        <Caret Line="277" Column="46" TopLine="248"/>
       </Position10>
       <Position11>
         <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="196" Column="24" TopLine="179"/>
       </Position11>
       <Position12>
         <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="267" Column="34" TopLine="262"/>
+        <Caret Line="109" Column="24" TopLine="80"/>
       </Position12>
       <Position13>
         <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="196" Column="15" TopLine="178"/>
+        <Caret Line="151" Column="25" TopLine="140"/>
       </Position13>
       <Position14>
         <Filename Value="../../../Dss/DssSign.pas"/>
+        <Caret Line="152" Column="33" TopLine="140"/>
       </Position14>
       <Position15>
-        <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="107" Column="24" TopLine="78"/>
-      </Position15>
-      <Position16>
-        <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="170" Column="25" TopLine="135"/>
-      </Position16>
-      <Position17>
-        <Filename Value="../../../Dss/DssSign.pas"/>
-      </Position17>
-      <Position18>
-        <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="42" Column="25" TopLine="13"/>
-      </Position18>
-      <Position19>
-        <Filename Value="../../../Dss/DssSign.pas"/>
-      </Position19>
-      <Position20>
-        <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="75" Column="31" TopLine="143"/>
-      </Position20>
-      <Position21>
-        <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="108" Column="17" TopLine="90"/>
-      </Position21>
-      <Position22>
-        <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="210" Column="18" TopLine="175"/>
-      </Position22>
-      <Position23>
-        <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="277" Column="46" TopLine="248"/>
-      </Position23>
-      <Position24>
-        <Filename Value="../../../Dss/DssSign.pas"/>
-      </Position24>
-      <Position25>
-        <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="109" Column="24" TopLine="80"/>
-      </Position25>
-      <Position26>
-        <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="151" Column="25" TopLine="140"/>
-      </Position26>
-      <Position27>
-        <Filename Value="../../../Dss/DssSign.pas"/>
-        <Caret Line="152" Column="33" TopLine="140"/>
-      </Position27>
-      <Position28>
         <Filename Value="../../../diadoc_src/diadoctypes_organization.pas"/>
         <Caret Line="172" Column="71" TopLine="149"/>
-      </Position28>
-      <Position29>
+      </Position15>
+      <Position16>
         <Filename Value="../../../diadoc_src/diadoctypes_organization.pas"/>
-      </Position29>
-      <Position30>
+      </Position16>
+      <Position17>
         <Filename Value="../../../diadoc_src/diadoctypes_organization.pas"/>
         <Caret Line="90" Column="66" TopLine="66"/>
+      </Position17>
+      <Position18>
+        <Filename Value="../../../diadoc_src/diadoctypes_getorganizationsbyinnlist.pas"/>
+        <Caret Line="47" Column="25" TopLine="37"/>
+      </Position18>
+      <Position19>
+        <Filename Value="../../../diadoc_src/diadoctypes_getorganizationsbyinnlist.pas"/>
+        <Caret Line="79" Column="14" TopLine="46"/>
+      </Position19>
+      <Position20>
+        <Filename Value="../../../diadoc_src/diadoctypes_getorganizationsbyinnlist.pas"/>
+        <Caret Line="165" Column="3" TopLine="162"/>
+      </Position20>
+      <Position21>
+        <Filename Value="../../../diadoc_src/diadoctypes_getorganizationsbyinnlist.pas"/>
+        <Caret Line="71" TopLine="51"/>
+      </Position21>
+      <Position22>
+        <Filename Value="../../../diadoc_src/diadoctypes_getorganizationsbyinnlist.pas"/>
+        <Caret Line="194" Column="35" TopLine="163"/>
+      </Position22>
+      <Position23>
+        <Filename Value="../../../diadoc_src/diadoctypes_getorganizationsbyinnlist.pas"/>
+        <Caret Line="72" TopLine="57"/>
+      </Position23>
+      <Position24>
+        <Filename Value="../../../diadoc_src/diadoctypes_getorganizationsbyinnlist.pas"/>
+        <Caret Line="191" Column="42" TopLine="114"/>
+      </Position24>
+      <Position25>
+        <Filename Value="../../../diadoc_src/diadoctypes_getorganizationsbyinnlist.pas"/>
+        <Caret Line="68" Column="30" TopLine="55"/>
+      </Position25>
+      <Position26>
+        <Filename Value="../../../diadoc_src/diadoctypes_getorganizationsbyinnlist.pas"/>
+        <Caret Line="167" Column="12" TopLine="162"/>
+      </Position26>
+      <Position27>
+        <Filename Value="../../../diadoc_src/diadoctypes_getorganizationsbyinnlist.pas"/>
+        <Caret Line="68" Column="15" TopLine="51"/>
+      </Position27>
+      <Position28>
+        <Filename Value="../../../diadoc_src/diadoctypes_getorganizationsbyinnlist.pas"/>
+        <Caret Line="167" Column="13" TopLine="162"/>
+      </Position28>
+      <Position29>
+        <Filename Value="../../../diadoc_src/diadoctypes_getorganizationsbyinnlist.pas"/>
+        <Caret Line="69" Column="15" TopLine="51"/>
+      </Position29>
+      <Position30>
+        <Filename Value="../../../diadoc_src/diadoctypes_getorganizationsbyinnlist.pas"/>
+        <Caret Line="175" Column="13" TopLine="160"/>
       </Position30>
     </JumpHistory>
     <RunParams>
