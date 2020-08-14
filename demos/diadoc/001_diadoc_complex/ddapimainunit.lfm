@@ -26,9 +26,9 @@ object DDAPIMainForm: TDDAPIMainForm
     Height = 666
     Top = 0
     Width = 1278
-    ActivePage = TabSheet2
+    ActivePage = TabSheet6
     Align = alClient
-    TabIndex = 4
+    TabIndex = 2
     TabOrder = 1
     object TabSheet1: TTabSheet
       Caption = 'Параметры'
@@ -559,7 +559,7 @@ object DDAPIMainForm: TDDAPIMainForm
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = Panel2
           Left = 36
-          Height = 34
+          Height = 33
           Top = 7
           Width = 112
           BorderSpacing.Around = 6
@@ -572,7 +572,7 @@ object DDAPIMainForm: TDDAPIMainForm
           AnchorSideBottom.Side = asrBottom
           Left = 6
           Height = 17
-          Top = 24
+          Top = 23
           Width = 24
           Anchors = [akLeft, akBottom]
           BorderSpacing.Left = 5
@@ -586,7 +586,7 @@ object DDAPIMainForm: TDDAPIMainForm
           AnchorSideBottom.Side = asrBottom
           Left = 154
           Height = 17
-          Top = 24
+          Top = 23
           Width = 24
           Anchors = [akLeft, akBottom]
           Caption = 'KPP'
@@ -597,7 +597,7 @@ object DDAPIMainForm: TDDAPIMainForm
           AnchorSideLeft.Side = asrBottom
           AnchorSideTop.Control = Panel2
           Left = 184
-          Height = 34
+          Height = 33
           Top = 7
           Width = 128
           BorderSpacing.Around = 6
@@ -610,7 +610,7 @@ object DDAPIMainForm: TDDAPIMainForm
           Left = 318
           Height = 33
           Top = 7
-          Width = 181
+          Width = 180
           AutoSize = True
           BorderSpacing.Around = 6
           Caption = 'GetOrganizationsByInnKpp'
@@ -929,7 +929,7 @@ object DDAPIMainForm: TDDAPIMainForm
         Left = 6
         Height = 33
         Top = 6
-        Width = 109
+        Width = 108
         AutoSize = True
         BorderSpacing.Around = 6
         Caption = 'Поиск клиента'
@@ -941,7 +941,7 @@ object DDAPIMainForm: TDDAPIMainForm
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = Button4
         AnchorSideTop.Side = asrCenter
-        Left = 121
+        Left = 120
         Height = 23
         Top = 11
         Width = 234

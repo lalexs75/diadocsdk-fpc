@@ -563,9 +563,11 @@ end;
 procedure TDDAPIMainForm.usrEmployeesListExecute(Sender: TObject);
 var
   FEmployeesList: TEmployeeList;
+  C: TBox;
 begin
   if not Assigned(CurrentOrg) then Exit;
 
+  C:=CurrentBox;
   FEmployeesList:=DiadocAPI1.GetEmployees(CurrentBox.BoxId, 0, 0);
   if Assigned(FEmployeesList) then
   begin
