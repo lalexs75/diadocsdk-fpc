@@ -758,12 +758,12 @@ type
   {  TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber  }
   TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber = class(TXmlSerializationObject)
   private
-    FUnit1:Tstring255;
+    FUnit1:TXSDStringArray;
     FPackageId:Tstring255;
-    FTransPackageId:Tstring255;
-    procedure SetUnit1( AValue:Tstring255);
+    FTransPackageId:TXSDStringArray;
+    procedure SetUnit1( AValue:TXSDStringArray);
     procedure SetPackageId( AValue:Tstring255);
-    procedure SetTransPackageId( AValue:Tstring255);
+    procedure SetTransPackageId( AValue:TXSDStringArray);
   protected
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
@@ -771,14 +771,14 @@ type
     destructor Destroy; override;
   published
     //КИЗ - Контрольный идентификационный знак
-    property Unit1:Tstring255 read FUnit1 write SetUnit1;
+    property Unit1:TXSDStringArray read FUnit1 write SetUnit1;
     //НомУпак - Уникальный идентификатор вторичной
     //(потребительской)/третичной (заводской, транспортной)
     //упаковки
     property PackageId:Tstring255 read FPackageId write SetPackageId;
     //ИдентТрансУпак - Уникальный идентификатор
     //транспортной упаковки
-    property TransPackageId:Tstring255 read FTransPackageId write SetTransPackageId;
+    property TransPackageId:TXSDStringArray read FTransPackageId write SetTransPackageId;
   end;
 
   {  TTransferInfo  }
@@ -2906,11 +2906,12 @@ begin
 end;
 
   {  TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber  }
-procedure TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber.SetUnit1(AValue: Tstring255);
+procedure TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber.SetUnit1
+  (AValue: TXSDStringArray);
 begin
   FUnit1:=AValue;
-  CheckStrMinSize('Unit1', AValue);
-  CheckStrMaxSize('Unit1', AValue);
+//  CheckStrMinSize('Unit1', AValue);
+//  CheckStrMaxSize('Unit1', AValue);
   ModifiedProperty('Unit1');
 end;
 
@@ -2922,11 +2923,11 @@ begin
   ModifiedProperty('PackageId');
 end;
 
-procedure TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber.SetTransPackageId(AValue: Tstring255);
+procedure TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber.SetTransPackageId(AValue: TXSDStringArray);
 begin
   FTransPackageId:=AValue;
-  CheckStrMinSize('TransPackageId', AValue);
-  CheckStrMaxSize('TransPackageId', AValue);
+//  CheckStrMinSize('TransPackageId', AValue);
+//  CheckStrMaxSize('TransPackageId', AValue);
   ModifiedProperty('TransPackageId');
 end;
 

@@ -758,11 +758,11 @@ type
   {  TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber  }
   TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber = class(TXmlSerializationObject)
   private
-    FUnit1:Tstring255;
-    FPackageId:Tstring255;
+    FUnit1:TXSDStringArray;
+    FPackageId:TXSDStringArray;
     FTransPackageId:Tstring255;
-    procedure SetUnit1( AValue:Tstring255);
-    procedure SetPackageId( AValue:Tstring255);
+    procedure SetUnit1( AValue:TXSDStringArray);
+    procedure SetPackageId( AValue:TXSDStringArray);
     procedure SetTransPackageId( AValue:Tstring255);
   protected
     procedure InternalRegisterPropertys; override;
@@ -771,11 +771,11 @@ type
     destructor Destroy; override;
   published
     //КИЗ - Контрольный идентификационный знак
-    property Unit1:Tstring255 read FUnit1 write SetUnit1;
+    property Unit1:TXSDStringArray read FUnit1 write SetUnit1;
     //НомУпак - Уникальный идентификатор вторичной
     //(потребительской)/третичной (заводской, транспортной)
     //упаковки
-    property PackageId:Tstring255 read FPackageId write SetPackageId;
+    property PackageId:TXSDStringArray read FPackageId write SetPackageId;
     //ИдентТрансУпак - Уникальный идентификатор
     //транспортной упаковки
     property TransPackageId:Tstring255 read FTransPackageId write SetTransPackageId;
@@ -2906,19 +2906,19 @@ begin
 end;
 
   {  TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber  }
-procedure TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber.SetUnit1(AValue: Tstring255);
+procedure TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber.SetUnit1(AValue: TXSDStringArray);
 begin
   FUnit1:=AValue;
-  CheckStrMinSize('Unit1', AValue);
-  CheckStrMaxSize('Unit1', AValue);
+//  CheckStrMinSize('Unit1', AValue);
+//  CheckStrMaxSize('Unit1', AValue);
   ModifiedProperty('Unit1');
 end;
 
-procedure TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber.SetPackageId(AValue: Tstring255);
+procedure TInvoiceTable_Item_ItemIdentificationNumbers_ItemIdentificationNumber.SetPackageId(AValue: TXSDStringArray);
 begin
   FPackageId:=AValue;
-  CheckStrMinSize('PackageId', AValue);
-  CheckStrMaxSize('PackageId', AValue);
+//  CheckStrMinSize('PackageId', AValue);
+//  CheckStrMaxSize('PackageId', AValue);
   ModifiedProperty('PackageId');
 end;
 
