@@ -440,6 +440,20 @@
     <element name="TMessageToPost.ToDepartmentId"><short>идентификатор подразделения в организации получателя, в которое будут отправлены все документы из сообщения</short><descr>может отсутствовать, в этом случае документы будут отправлены в головное подразделение
 </descr>
       </element>
+    <element name="TTemplateDocumentAttachment.RefusalDisabled"><short>RefusalDisabled - необязательный признак, управляющий возможностью отклонять шаблон на стороне получателя. Если выставить при знак в true, то у получателя шаблона не будет возможности отклонить его</short>
+      </element><element name="TTemplateDocumentAttachment.PredefinedRecipientTitle"><short>PredefinedRecipientTitle - необязательное поле для данных о титуле получателя. Предназначено для двухтитульных документов с разрешённой для действия версией</short><descr>Подробнее о функционале можно узнать здесь: <url href="https://diadoc-sdk.readthedocs.io/ru/latest/howto/example_predefined_recipient_title.html">Как работать с предопределённым титулом получателя.</url>
+        </descr>
+      </element><element name="TPredefinedRecipientTitle.UnsignedContent"><short>Структура данных UnsignedContent служит для представления подписанных ЭП данных в отправляемом сообщении.</short>
+      </element><element name="TTemplateRefusalAttachment"><short>Структура представляет отклонение или отзыв документа из шаблона.</short>
+      </element><element name="TTemplateRefusalAttachment.DocumentId"><short>DocumentId - идентификатор документа.</short>
+      </element><element name="TTemplateRefusalAttachment.Comment"><short>Comment - комментарий к отклонению или отзыву.</short>
+      </element><element name="TTemplateRefusalAttachment.Labels"><short>Labels - метки извещения о получении.</short>
+      </element><element name="TTemplatePatchToPost"><short>Структура представляет дополнение к шаблону, подлежащее отправке при помощи метода PostTemplatePatch.</short>
+      </element><element name="TTemplatePatchToPost.Refusals"><short>Refusals - список отклонений или отзывов документов шаблона.</short>
+      </element><element name="TTemplateToPost.FromDepartmentId"><short>FromDepartmentId - идентификатор подразделения отправителя сообщения.</short>
+      </element><element name="TTemplateToPost.ToDepartmentId"><short>ToDepartmentId - идентификатор подразделения в организации получателя, в которое будут отправлены все шаблоны из сообщения</short><descr>может отсутствовать, в этом случае шаблоны будут отправлены в головное подразделение
+</descr>
+      </element>
     </module>
   </package>
 </fpdoc-descriptions>
