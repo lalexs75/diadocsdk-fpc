@@ -191,10 +191,12 @@ type
   //	optional bool NeedRecipientSignature = 10 [default = false];
   //    optional PredefinedRecipientTitle PredefinedRecipientTitle = 11;
   //    optional bool RefusalDisabled = 12 [default = false];
+  //    repeated CustomDataItem CustomData = 13;
   //}
   TTemplateDocumentAttachment = class(TSerializationObject) //message TemplateDocumentAttachment
   private
     FComment: string;
+    FCustomData: TCustomDataItems;
     FCustomDocumentId: string;
     FEditingSettingId: string;
     FFunctionType: string;
@@ -233,6 +235,7 @@ type
     property NeedRecipientSignature:Boolean read FNeedRecipientSignature write SetNeedRecipientSignature;//10
     property PredefinedRecipientTitle:TPredefinedRecipientTitle read FPredefinedRecipientTitle;//11;
     property RefusalDisabled:Boolean read FRefusalDisabled write SetRefusalDisabled default false;//12
+    property CustomData:TCustomDataItems read FCustomData; //  = 13;
   end;
   TTemplateDocumentAttachments = specialize GSerializationObjectList<TTemplateDocumentAttachment>;
 
@@ -5076,6 +5079,7 @@ begin
   RegisterProp('NeedRecipientSignature', 10);
   RegisterProp('PredefinedRecipientTitle', 11);
   RegisterProp('RefusalDisabled', 12);
+  RegisterProp('CustomData', 13);
 end;
 
 procedure TTemplateDocumentAttachment.InternalInit;
@@ -5084,11 +5088,13 @@ begin
   FUnsignedContent:=TUnsignedContent.Create;
   FMetadata:=TMetadataItems.Create;
   FPredefinedRecipientTitle:=TPredefinedRecipientTitle.Create;
+  FCustomData:=TCustomDataItems.Create;
 end;
 
 destructor TTemplateDocumentAttachment.Destroy;
 begin
-  FPredefinedRecipientTitle.Free;
+  FreeAndNil(FCustomData);
+  FreeAndNil(FPredefinedRecipientTitle);
   FreeAndNil(FUnsignedContent);
   FreeAndNil(FMetadata);
   inherited Destroy;
