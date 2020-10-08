@@ -65,7 +65,8 @@ uses
   DiadocTypes_ResolutionRequestInfo,
   DiadocTypes_ResolutionRequestDenialInfo,
   DiadocTypes_ResolutionRouteInfo,
-  DiadocTypes_DocumentId
+  DiadocTypes_DocumentId,
+  OuterDocflow
   ;
 
 type
@@ -89,8 +90,68 @@ type
     //Неизвестные типы должны обрабатываться клиентом как cущность Attachment с типом вложения AttachmentType.Nonformalized
   );
 
+  { AttachmentType }
+  //enum AttachmentType {
+  //	UnknownAttachmentType = -1; // Reserved attachment type to report to legacy clients for newly introduced attachment types
+  //	Nonformalized = 0;
+  //	Invoice = 1;
+  //	InvoiceReceipt = 2;
+  //	InvoiceConfirmation = 3;
+  //	InvoiceCorrectionRequest = 4;
+  //	AttachmentComment = 5;
+  //	DeliveryFailureNotification = 6;
+  //	EancomInvoic = 7;
+  //	SignatureRequestRejection = 8;
+  //	EcrCatConformanceCertificateMetadata = 9;
+  //	SignatureVerificationReport = 10;
+  //	TrustConnectionRequest = 11;
+  //	Torg12 = 12;
+  //	InvoiceRevision = 13;
+  //	InvoiceCorrection = 14;
+  //	InvoiceCorrectionRevision = 15;
+  //	AcceptanceCertificate = 16;
+  //	StructuredData = 17;
+  //	ProformaInvoice = 18;
+  //	XmlTorg12 = 19;
+  //	XmlAcceptanceCertificate = 20;
+  //	XmlTorg12BuyerTitle = 21;
+  //	XmlAcceptanceCertificateBuyerTitle = 22;
+  //	Resolution = 23;
+  //	ResolutionRequest = 24;
+  //	ResolutionRequestDenial = 25;
+  //	PriceList = 26;
+  //	Receipt = 27;
+  //	XmlSignatureRejection = 28;
+  //	RevocationRequest = 29;
+  //	PriceListAgreement = 30;
+  //	CertificateRegistry = 34;
+  //	ReconciliationAct = 35;
+  //	Contract = 36;
+  //	Torg13 = 37;
+  //	ServiceDetails = 38;
+  //	RoamingNotification = 39;
+  //	SupplementaryAgreement = 40;
+  //	UniversalTransferDocument = 41;
+  //	UniversalTransferDocumentBuyerTitle = 42;
+  //	UniversalTransferDocumentRevision = 45;
+  //	UniversalCorrectionDocument = 49;
+  //	UniversalCorrectionDocumentRevision = 50;
+  //	UniversalCorrectionDocumentBuyerTitle = 51;
+  //	CustomData = 64;
+  //	MoveDocument = 65;
+  //	ResolutionRouteAssignmentAttachment = 66;
+  //	ResolutionRouteRemovalAttachment = 67;
+  //	Title = 68;
+  //	Cancellation = 69;
+  //	Edition = 71;
+  //	DeletionRestoration = 72;
+  //	TemplateTransformation = 73;
+  //	TemplateRefusal = 74;
+  //	OuterDocflow = 75;
+  //	//Неизвестные типы должны обрабатываться как Title
+  //}
   TAttachmentType = (
-    UnknownAttachmentType = -1, // Reserved attachment type to report to legacy clients for newly introduced attachment types
+    UnknownAttachmentType = -1,
     Nonformalized = 0,
     Invoice = 1,
     InvoiceReceipt = 2,
@@ -144,9 +205,11 @@ type
     Edition = 71,
     DeletionRestoration = 72,
     TemplateTransformation = 73,
-    TemplateRefusal = 74
+    TemplateRefusal = 74,
+    atOuterDocflow = 75
     //Неизвестные типы должны обрабатываться как Title
   );
+  TAttachmentTypeArray = array of TAttachmentType;
 
 
   {  TTemplateTransformationInfo  }
@@ -285,6 +348,7 @@ type
     FNeedReceipt: boolean;
     FNeedRecipientSignature: Boolean;
     FNotDeliveredEventId: string;
+    FOuterDocflow: TOuterDocflowInfo;
     FPacketId: string;
     FParentEntityId: string;
     FRawCreationDate: sfixed64;
@@ -346,7 +410,8 @@ type
     property Labels:TDocumentStrings read FLabels; //%25;
     property Version:string read FVersion write SetVersion;//%26;
     property TemplateTransformationInfo:TTemplateTransformationInfo read FTemplateTransformationInfo;//%27
-    property TemplateRefusalInfo:TTemplateRefusalInfo read FTemplateRefusalInfo;
+    property TemplateRefusalInfo:TTemplateRefusalInfo read FTemplateRefusalInfo; //%28
+    property OuterDocflow:TOuterDocflowInfo read FOuterDocflow; //%29
   end;
   TEntitys = specialize GSerializationObjectList<TEntity>;
 
@@ -1350,6 +1415,7 @@ begin
   RegisterProp('Version', 26);
   RegisterProp('TemplateTransformationInfo', 27);
   RegisterProp('TemplateRefusalInfo', 28);
+  RegisterProp('OuterDocflow', 29);
 end;
 
 procedure TEntity.InternalInit;
@@ -1366,6 +1432,7 @@ begin
   FLabels:=TDocumentStrings.Create;
   FTemplateTransformationInfo:=TTemplateTransformationInfo.Create;
   FTemplateRefusalInfo:= TTemplateRefusalInfo.Create;
+  FOuterDocflow:=TOuterDocflowInfo.Create;
 (*
   EntityType:= UnknownEntityType;
   AttachmentType:= UnknownAttachmentType;
@@ -1390,6 +1457,7 @@ begin
   FreeAndNil(FLabels);
   FreeAndNil(FTemplateTransformationInfo);
   FTemplateRefusalInfo.Free;
+  FOuterDocflow.Free;
   inherited Destroy;
 end;
 

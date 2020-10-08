@@ -1303,6 +1303,14 @@
         <Filename Value="DataXml\UniversalCorrectionDocument_KSCHFDIS_ucd_05_01_03_ind0.pas"/>
         <UnitName Value="UniversalCorrectionDocument_KSCHFDIS_ucd_05_01_03_ind0"/>
       </Item>
+      <Item>
+        <Filename Value="diadoc_src\OuterDocflow.pas"/>
+        <UnitName Value="OuterDocflow"/>
+      </Item>
+      <Item>
+        <Filename Value="diadoc_src\OuterDocflowStatus.pas"/>
+        <UnitName Value="OuterDocflowStatus"/>
+      </Item>
     </Files>
     <LazDoc Paths="docs"/>
     <i18n>

@@ -35,20 +35,37 @@ unit DocflowV3;
 
 interface
 
-uses Classes, SysUtils, types, protobuf_fpc, DiadocTypes_Timestamp, DiadocTypes_Document, AttachmentV3, RoamingNotification, ResolutionDocflowV3;
+uses Classes, SysUtils, types, protobuf_fpc,
+  DiadocTypes_Timestamp, DiadocTypes_Document, AttachmentV3, RoamingNotification, ResolutionDocflowV3, OuterDocflowStatus;
 
 type
 
   TDocflowV3 = class;
+  TDocflowV3s = specialize GSerializationObjectList<TDocflowV3>;
   TSenderTitleDocflow = class;
+  TSenderTitleDocflows = specialize GSerializationObjectList<TSenderTitleDocflow>;
   TConfirmationDocflow = class;
+  TConfirmationDocflows = specialize GSerializationObjectList<TConfirmationDocflow>;
   TSignatureRejectionDocflow = class;
+  TSignatureRejectionDocflows = specialize GSerializationObjectList<TSignatureRejectionDocflow>;
   TParticipantResponseDocflow = class;
+  TParticipantResponseDocflows = specialize GSerializationObjectList<TParticipantResponseDocflow>;
   TAmendmentRequestDocflow = class;
+  TAmendmentRequestDocflows = specialize GSerializationObjectList<TAmendmentRequestDocflow>;
   TRevocationDocflowV3 = class;
+  TRevocationDocflowV3s = specialize GSerializationObjectList<TRevocationDocflowV3>;
   TRevocationRequestDocflow = class;
+  TRevocationRequestDocflows = specialize GSerializationObjectList<TRevocationRequestDocflow>;
   TRevocationResponseDocflow = class;
+  TRevocationResponseDocflows = specialize GSerializationObjectList<TRevocationResponseDocflow>;
   TReceiptDocflowV3 = class;
+  TReceiptDocflowV3s = specialize GSerializationObjectList<TReceiptDocflowV3>;
+  TOuterDocflow = class;
+  TOuterDocflows = specialize GSerializationObjectList<TOuterDocflow>;
+  TOuterDocflowEntities = class;
+  TOuterDocflowEntitiess = specialize GSerializationObjectList<TOuterDocflowEntities>;
+  TStatusEntity = class;
+  TStatusEntitys = specialize GSerializationObjectList<TStatusEntity>;
 
   { DocflowV3 } 
   //message DocflowV3
@@ -63,6 +80,8 @@ type
   //	optional ReceiptDocflowV3 SenderReceipt = 8;
   //	optional ResolutionDocflowV3 Resolution = 9;
   //	optional ResolutionEntitiesV3 ResolutionEntities = 10;
+  //	repeated OuterDocflow OuterDocflows = 12;
+  //	repeated OuterDocflowEntities OuterDocflowEntities = 13;
   //}
   TDocflowV3 = class(TSerializationObject)
   private
@@ -76,6 +95,8 @@ type
     FSenderReceipt:TReceiptDocflowV3;
     FResolution:TResolutionDocflowV3;
     FResolutionEntities:TResolutionEntitiesV3;
+    FOuterDocflows:TOuterDocflows;
+    FOuterDocflowEntities:TOuterDocflowEntitiess;
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -92,8 +113,9 @@ type
     property SenderReceipt:TReceiptDocflowV3 read FSenderReceipt;
     property Resolution:TResolutionDocflowV3 read FResolution;
     property ResolutionEntities:TResolutionEntitiesV3 read FResolutionEntities;
+    property OuterDocflows:TOuterDocflows read FOuterDocflows;
+    property OuterDocflowEntities:TOuterDocflowEntitiess read FOuterDocflowEntities;
   end;
-  TDocflowV3s = specialize GSerializationObjectList<TDocflowV3>;
 
   { SenderTitleDocflow } 
   //message SenderTitleDocflow
@@ -112,8 +134,9 @@ type
     FSentAt:TTimestamp;
     FDeliveredAt:TTimestamp;
     FRoamingNotification:TRoamingNotification;
-    FSenderSignatureStatus:TSenderSignatureStatus;
+    FSenderSignatureStatus:DiadocTypes_Document.TSenderSignatureStatus;
     procedure SetIsFinished(AValue:Boolean);
+    procedure SetSenderSignatureStatus(AValue:DiadocTypes_Document.TSenderSignatureStatus);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -125,9 +148,8 @@ type
     property SentAt:TTimestamp read FSentAt;
     property DeliveredAt:TTimestamp read FDeliveredAt;
     property RoamingNotification:TRoamingNotification read FRoamingNotification;
-    property SenderSignatureStatus:TSenderSignatureStatus read FSenderSignatureStatus;
+    property SenderSignatureStatus:DiadocTypes_Document.TSenderSignatureStatus read FSenderSignatureStatus write SetSenderSignatureStatus;
   end;
-  TSenderTitleDocflows = specialize GSerializationObjectList<TSenderTitleDocflow>;
 
   { ConfirmationDocflow } 
   //message ConfirmationDocflow
@@ -155,7 +177,6 @@ type
     property ConfirmedAt:TTimestamp read FConfirmedAt;
     property Receipt:TReceiptDocflowV3 read FReceipt;
   end;
-  TConfirmationDocflows = specialize GSerializationObjectList<TConfirmationDocflow>;
 
   { SignatureRejectionDocflow } 
   //message SignatureRejectionDocflow
@@ -184,7 +205,6 @@ type
     property DeliveredAt:TTimestamp read FDeliveredAt;
     property PlainText:String read FPlainText write SetPlainText;
   end;
-  TSignatureRejectionDocflows = specialize GSerializationObjectList<TSignatureRejectionDocflow>;
 
   { ParticipantResponseDocflow } 
   //message ParticipantResponseDocflow
@@ -197,9 +217,6 @@ type
   //	optional Timestamp DeliveredAt = 6;
   //	required Documents.RecipientResponseStatus ResponseStatus = 7;
   //}
-
-  { TParticipantResponseDocflow }
-
   TParticipantResponseDocflow = class(TSerializationObject)
   private
     FIsFinished:Boolean;
@@ -208,9 +225,9 @@ type
     FRejection:TSignatureRejectionDocflow;
     FSentAt:TTimestamp;
     FDeliveredAt:TTimestamp;
-    FResponseStatus:TRecipientResponseStatus;
+    FResponseStatus:DiadocTypes_Document.TRecipientResponseStatus;
     procedure SetIsFinished(AValue:Boolean);
-    procedure SetResponseStatus(AValue: TRecipientResponseStatus);
+    procedure SetResponseStatus(AValue:DiadocTypes_Document.TRecipientResponseStatus);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -223,9 +240,8 @@ type
     property Rejection:TSignatureRejectionDocflow read FRejection;
     property SentAt:TTimestamp read FSentAt;
     property DeliveredAt:TTimestamp read FDeliveredAt;
-    property ResponseStatus:TRecipientResponseStatus read FResponseStatus write SetResponseStatus;
+    property ResponseStatus:DiadocTypes_Document.TRecipientResponseStatus read FResponseStatus write SetResponseStatus;
   end;
-  TParticipantResponseDocflows = specialize GSerializationObjectList<TParticipantResponseDocflow>;
 
   { AmendmentRequestDocflow } 
   //message AmendmentRequestDocflow
@@ -264,7 +280,6 @@ type
     property AmendmentFlags:Integer read FAmendmentFlags write SetAmendmentFlags;
     property PlainText:String read FPlainText write SetPlainText;
   end;
-  TAmendmentRequestDocflows = specialize GSerializationObjectList<TAmendmentRequestDocflow>;
 
   { RevocationDocflowV3 } 
   //message RevocationDocflowV3
@@ -275,21 +290,20 @@ type
   //	required string InitiatorBoxId = 4;
   //	required Documents.RevocationStatus RevocationStatus = 5;
   //	optional ResolutionEntitiesV3 ResolutionEntities = 6;
+  //	repeated OuterDocflowEntities OuterDocflowEntities  = 7;
   //}
-
-  { TRevocationDocflowV3 }
-
   TRevocationDocflowV3 = class(TSerializationObject)
   private
     FIsFinished:Boolean;
     FRevocationRequest:TRevocationRequestDocflow;
     FRevocationResponse:TRevocationResponseDocflow;
     FInitiatorBoxId:String;
-    FRevocationStatus:TRevocationStatus;
+    FRevocationStatus:DiadocTypes_Document.TRevocationStatus;
     FResolutionEntities:TResolutionEntitiesV3;
+    FOuterDocflowEntities:TOuterDocflowEntitiess;
     procedure SetIsFinished(AValue:Boolean);
     procedure SetInitiatorBoxId(AValue:String);
-    procedure SetRevocationStatus(AValue: TRevocationStatus);
+    procedure SetRevocationStatus(AValue:DiadocTypes_Document.TRevocationStatus);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -300,10 +314,10 @@ type
     property RevocationRequest:TRevocationRequestDocflow read FRevocationRequest;
     property RevocationResponse:TRevocationResponseDocflow read FRevocationResponse;
     property InitiatorBoxId:String read FInitiatorBoxId write SetInitiatorBoxId;
-    property RevocationStatus:TRevocationStatus read FRevocationStatus write SetRevocationStatus;
+    property RevocationStatus:DiadocTypes_Document.TRevocationStatus read FRevocationStatus write SetRevocationStatus;
     property ResolutionEntities:TResolutionEntitiesV3 read FResolutionEntities;
+    property OuterDocflowEntities:TOuterDocflowEntitiess read FOuterDocflowEntities;
   end;
-  TRevocationDocflowV3s = specialize GSerializationObjectList<TRevocationDocflowV3>;
 
   { RevocationRequestDocflow } 
   //message RevocationRequestDocflow
@@ -334,7 +348,6 @@ type
     property RoamingNotification:TRoamingNotification read FRoamingNotification;
     property PlainText:String read FPlainText write SetPlainText;
   end;
-  TRevocationRequestDocflows = specialize GSerializationObjectList<TRevocationRequestDocflow>;
 
   { RevocationResponseDocflow } 
   //message RevocationResponseDocflow
@@ -355,7 +368,6 @@ type
     property RecipientSignature:TSignatureV3 read FRecipientSignature;
     property SignatureRejection:TSignatureRejectionDocflow read FSignatureRejection;
   end;
-  TRevocationResponseDocflows = specialize GSerializationObjectList<TRevocationResponseDocflow>;
 
   { ReceiptDocflowV3 } 
   //message ReceiptDocflowV3
@@ -367,9 +379,6 @@ type
   //	optional ConfirmationDocflow Confirmation = 5;
   //	required Documents.GeneralReceiptStatus Status = 6;
   //}
-
-  { TReceiptDocflowV3 }
-
   TReceiptDocflowV3 = class(TSerializationObject)
   private
     FIsFinished:Boolean;
@@ -377,9 +386,9 @@ type
     FSentAt:TTimestamp;
     FDeliveredAt:TTimestamp;
     FConfirmation:TConfirmationDocflow;
-    FStatus:TGeneralReceiptStatus;
+    FStatus:DiadocTypes_Document.TGeneralReceiptStatus;
     procedure SetIsFinished(AValue:Boolean);
-    procedure SetStatus(AValue: TGeneralReceiptStatus);
+    procedure SetStatus(AValue:DiadocTypes_Document.TGeneralReceiptStatus);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -391,9 +400,79 @@ type
     property SentAt:TTimestamp read FSentAt;
     property DeliveredAt:TTimestamp read FDeliveredAt;
     property Confirmation:TConfirmationDocflow read FConfirmation;
-    property Status:TGeneralReceiptStatus read FStatus write SetStatus;
+    property Status:DiadocTypes_Document.TGeneralReceiptStatus read FStatus write SetStatus;
   end;
-  TReceiptDocflowV3s = specialize GSerializationObjectList<TReceiptDocflowV3>;
+
+  { OuterDocflow } 
+  //message OuterDocflow
+  //{
+  //	required string DocflowNamedId = 1;
+  //	required string ParentEntityId = 2;
+  //	required string OuterDocflowEntityId = 3;
+  //}
+  TOuterDocflow = class(TSerializationObject)
+  private
+    FDocflowNamedId:String;
+    FParentEntityId:String;
+    FOuterDocflowEntityId:String;
+    procedure SetDocflowNamedId(AValue:String);
+    procedure SetParentEntityId(AValue:String);
+    procedure SetOuterDocflowEntityId(AValue:String);
+  protected
+    procedure InternalRegisterProperty; override;
+    procedure InternalInit; override;
+  public
+    destructor Destroy; override;
+  published
+    property DocflowNamedId:String read FDocflowNamedId write SetDocflowNamedId;
+    property ParentEntityId:String read FParentEntityId write SetParentEntityId;
+    property OuterDocflowEntityId:String read FOuterDocflowEntityId write SetOuterDocflowEntityId;
+  end;
+
+  { OuterDocflowEntities } 
+  //message OuterDocflowEntities
+  //{
+  //	required string DocflowNamedId = 1;
+  //	required string DocflowFriendlyName = 2;
+  //	repeated StatusEntity StatusEntities = 3;
+  //}
+  TOuterDocflowEntities = class(TSerializationObject)
+  private
+    FDocflowNamedId:String;
+    FDocflowFriendlyName:String;
+    FStatusEntities:TStatusEntitys;
+    procedure SetDocflowNamedId(AValue:String);
+    procedure SetDocflowFriendlyName(AValue:String);
+  protected
+    procedure InternalRegisterProperty; override;
+    procedure InternalInit; override;
+  public
+    destructor Destroy; override;
+  published
+    property DocflowNamedId:String read FDocflowNamedId write SetDocflowNamedId;
+    property DocflowFriendlyName:String read FDocflowFriendlyName write SetDocflowFriendlyName;
+    property StatusEntities:TStatusEntitys read FStatusEntities;
+  end;
+
+  { StatusEntity } 
+  //message StatusEntity
+  //{
+  //	required SignedAttachmentV3 Attachment = 1;
+  //	required Status Status = 2;
+  //}
+  TStatusEntity = class(TSerializationObject)
+  private
+    FAttachment:TSignedAttachmentV3;
+    FStatus:TStatus;
+  protected
+    procedure InternalRegisterProperty; override;
+    procedure InternalInit; override;
+  public
+    destructor Destroy; override;
+  published
+    property Attachment:TSignedAttachmentV3 read FAttachment;
+    property Status:TStatus read FStatus;
+  end;
 
 implementation
 
@@ -412,6 +491,8 @@ begin
   RegisterProp('SenderReceipt', 8);
   RegisterProp('Resolution', 9);
   RegisterProp('ResolutionEntities', 10);
+  RegisterProp('OuterDocflows', 12);
+  RegisterProp('OuterDocflowEntities', 13);
 end;
 
 procedure TDocflowV3.InternalInit;
@@ -427,6 +508,8 @@ begin
   FSenderReceipt:= TReceiptDocflowV3.Create;
   FResolution:= TResolutionDocflowV3.Create;
   FResolutionEntities:= TResolutionEntitiesV3.Create;
+  FOuterDocflows:= TOuterDocflows.Create;
+  FOuterDocflowEntities:= TOuterDocflowEntitiess.Create;
 end;
 
 destructor TDocflowV3.Destroy;
@@ -441,6 +524,8 @@ begin
   FSenderReceipt.Free;
   FResolution.Free;
   FResolutionEntities.Free;
+  FOuterDocflows.Free;
+  FOuterDocflowEntities.Free;
   inherited Destroy;
 end;
 
@@ -480,6 +565,12 @@ procedure TSenderTitleDocflow.SetIsFinished(AValue:Boolean);
 begin
   FIsFinished:=AValue;
   Modified(1);
+end;
+
+procedure TSenderTitleDocflow.SetSenderSignatureStatus(AValue:DiadocTypes_Document.TSenderSignatureStatus);
+begin
+  FSenderSignatureStatus:=AValue;
+  Modified(6);
 end;
 
 
@@ -595,10 +686,8 @@ begin
   Modified(1);
 end;
 
-procedure TParticipantResponseDocflow.SetResponseStatus(
-  AValue: TRecipientResponseStatus);
+procedure TParticipantResponseDocflow.SetResponseStatus(AValue:DiadocTypes_Document.TRecipientResponseStatus);
 begin
-  if FResponseStatus=AValue then Exit;
   FResponseStatus:=AValue;
   Modified(7);
 end;
@@ -666,6 +755,7 @@ begin
   RegisterProp('InitiatorBoxId', 4, true);
   RegisterProp('RevocationStatus', 5, true);
   RegisterProp('ResolutionEntities', 6);
+  RegisterProp('OuterDocflowEntities', 7);
 end;
 
 procedure TRevocationDocflowV3.InternalInit;
@@ -674,6 +764,7 @@ begin
   FRevocationRequest:= TRevocationRequestDocflow.Create;
   FRevocationResponse:= TRevocationResponseDocflow.Create;
   FResolutionEntities:= TResolutionEntitiesV3.Create;
+  FOuterDocflowEntities:= TOuterDocflowEntitiess.Create;
 end;
 
 destructor TRevocationDocflowV3.Destroy;
@@ -681,6 +772,7 @@ begin
   FRevocationRequest.Free;
   FRevocationResponse.Free;
   FResolutionEntities.Free;
+  FOuterDocflowEntities.Free;
   inherited Destroy;
 end;
 
@@ -696,9 +788,8 @@ begin
   Modified(4);
 end;
 
-procedure TRevocationDocflowV3.SetRevocationStatus(AValue: TRevocationStatus);
+procedure TRevocationDocflowV3.SetRevocationStatus(AValue:DiadocTypes_Document.TRevocationStatus);
 begin
-  if FRevocationStatus=AValue then Exit;
   FRevocationStatus:=AValue;
   Modified(5);
 end;
@@ -802,11 +893,108 @@ begin
   Modified(1);
 end;
 
-procedure TReceiptDocflowV3.SetStatus(AValue: TGeneralReceiptStatus);
+procedure TReceiptDocflowV3.SetStatus(AValue:DiadocTypes_Document.TGeneralReceiptStatus);
 begin
-  if FStatus=AValue then Exit;
   FStatus:=AValue;
   Modified(6);
+end;
+
+
+  { OuterDocflow } 
+
+procedure TOuterDocflow.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('DocflowNamedId', 1, true);
+  RegisterProp('ParentEntityId', 2, true);
+  RegisterProp('OuterDocflowEntityId', 3, true);
+end;
+
+procedure TOuterDocflow.InternalInit;
+begin
+  inherited InternalInit;
+end;
+
+destructor TOuterDocflow.Destroy;
+begin
+  inherited Destroy;
+end;
+
+procedure TOuterDocflow.SetDocflowNamedId(AValue:String);
+begin
+  FDocflowNamedId:=AValue;
+  Modified(1);
+end;
+
+procedure TOuterDocflow.SetParentEntityId(AValue:String);
+begin
+  FParentEntityId:=AValue;
+  Modified(2);
+end;
+
+procedure TOuterDocflow.SetOuterDocflowEntityId(AValue:String);
+begin
+  FOuterDocflowEntityId:=AValue;
+  Modified(3);
+end;
+
+
+  { OuterDocflowEntities } 
+
+procedure TOuterDocflowEntities.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('DocflowNamedId', 1, true);
+  RegisterProp('DocflowFriendlyName', 2, true);
+  RegisterProp('StatusEntities', 3);
+end;
+
+procedure TOuterDocflowEntities.InternalInit;
+begin
+  inherited InternalInit;
+  FStatusEntities:= TStatusEntitys.Create;
+end;
+
+destructor TOuterDocflowEntities.Destroy;
+begin
+  FStatusEntities.Free;
+  inherited Destroy;
+end;
+
+procedure TOuterDocflowEntities.SetDocflowNamedId(AValue:String);
+begin
+  FDocflowNamedId:=AValue;
+  Modified(1);
+end;
+
+procedure TOuterDocflowEntities.SetDocflowFriendlyName(AValue:String);
+begin
+  FDocflowFriendlyName:=AValue;
+  Modified(2);
+end;
+
+
+  { StatusEntity } 
+
+procedure TStatusEntity.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('Attachment', 1, true);
+  RegisterProp('Status', 2, true);
+end;
+
+procedure TStatusEntity.InternalInit;
+begin
+  inherited InternalInit;
+  FAttachment:= TSignedAttachmentV3.Create;
+  FStatus:= TStatus.Create;
+end;
+
+destructor TStatusEntity.Destroy;
+begin
+  FAttachment.Free;
+  FStatus.Free;
+  inherited Destroy;
 end;
 
 end.

@@ -69,10 +69,13 @@ uses
   DiadocTypes_UniversalTransferDocument,
   DiadocTypes_ResolutionTarget,
   DiadocTypes_ForwardDocumentEvent,
-  DiadocTypes_DiadocMessage_PostApi
+  DiadocTypes_DiadocMessage_PostApi,
+  OuterDocflow
   ;
 
 type
+  TLastOuterDocflow = class;
+  TLastOuterDocflows = specialize GSerializationObjectList<TLastOuterDocflow>;
 
   TProxySignatureStatus = (
     UnknownProxySignatureStatus = 0,
@@ -276,6 +279,26 @@ type
   end;
 
 
+  { LastOuterDocflow }
+  //message LastOuterDocflow {
+  //	required string ParentEntityId = 1;
+  //	required OuterDocflowInfo OuterDocflow = 2;
+  //}
+  TLastOuterDocflow = class(TSerializationObject)
+  private
+    FParentEntityId:String;
+    FOuterDocflow:TOuterDocflowInfo;
+    procedure SetParentEntityId(AValue:String);
+  protected
+    procedure InternalRegisterProperty; override;
+    procedure InternalInit; override;
+  public
+    destructor Destroy; override;
+  published
+    property ParentEntityId:String read FParentEntityId write SetParentEntityId;
+    property OuterDocflow:TOuterDocflowInfo read FOuterDocflow;
+  end;
+
   { TDocument }
   //%message Document {
   //	optional string IndexKey = 1;
@@ -391,6 +414,7 @@ type
     FIsRead: Boolean;
     FIsTest: Boolean;
     FLastModificationTimestampTicks: sfixed64;
+    FLastOuterDocflows: TLastOuterDocflows;
     FLockMode: TLockMode;
     FMessageId: string;
     FMetadata: TMetadataItems;
@@ -552,6 +576,7 @@ type
     property LockMode:TLockMode read FLockMode write SetLockMode; //74;
     property SenderReceiptMetadata:TSenderReceiptMetadata read FSenderReceiptMetadata; //75;
     property Version:string read FVersion write SetVersion;//76;
+    property LastOuterDocflows:TLastOuterDocflows read FLastOuterDocflows; //77
   end;
   TDocuments = specialize GSerializationObjectList<TDocument>;
 
@@ -834,6 +859,32 @@ begin
   inherited Destroy;
 end;
 
+{ LastOuterDocflow }
+
+procedure TLastOuterDocflow.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('ParentEntityId', 1, true);
+  RegisterProp('OuterDocflow', 2, true);
+end;
+
+procedure TLastOuterDocflow.InternalInit;
+begin
+  inherited InternalInit;
+  FOuterDocflow:= TOuterDocflowInfo.Create;
+end;
+
+destructor TLastOuterDocflow.Destroy;
+begin
+  FOuterDocflow.Free;
+  inherited Destroy;
+end;
+
+procedure TLastOuterDocflow.SetParentEntityId(AValue:String);
+begin
+  FParentEntityId:=AValue;
+  Modified(1);
+end;
 
 { TDocument }
 
@@ -1149,7 +1200,7 @@ begin
   FUniversalTransferDocumentMetadata:=TUniversalTransferDocumentMetadata.Create;
   FOrigin:=TOrigin.Create;
   FSenderReceiptMetadata:=TSenderReceiptMetadata.Create;
-
+  FLastOuterDocflows:= TLastOuterDocflows.Create;
 
   DocumentDirection:=UnknownDocumentDirection;
   RevocationStatus:=UnknownRevocationStatus;
@@ -1240,6 +1291,7 @@ begin
   RegisterProp('LockMode', 74, true);
   RegisterProp('SenderReceiptMetadata', 75, true);
   RegisterProp('Version', 76, true);
+  RegisterProp('LastOuterDocflows', 77);
 end;
 
 destructor TDocument.Destroy;
@@ -1277,6 +1329,7 @@ begin
   FreeAndNil(FSubordinateDocumentIds);
   FreeAndNil(FContent);
   FreeAndNil(FInvoiceMetadata);
+  FreeAndNil(FLastOuterDocflows);
   inherited Destroy;
 end;
 
