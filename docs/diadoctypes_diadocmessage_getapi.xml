@@ -71,53 +71,10 @@
 </descr>
       </element><element name="TEntityType.Attachment"><short>Attachment (файл-вложение в сообщении),</short>
       </element><element name="TEntityType.Signature"><short>Signature (ЭП под вложением).</short>
-      </element><element name="TAttachmentType"><short>AttachmentType определяет тип вложения (имеет смысл только для сущностей типа Attachment)</short><descr>возможные варианты:
-
-    UnknownAttachmentType (неизвестный тип документа; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать тип документа, переданный сервером),
-    Nonformalized (неформализованный документ),
-    Invoice (счет-фактура),
-    InvoiceRevision (исправление счета-фактуры),
-    InvoiceCorrection (корректировочный счет-фактура),
-    InvoiceCorrectionRevision (исправление корректировочного счета-фактуры),
-    InvoiceReceipt (извещение о получении счета-фактуры, подтверждения оператора электронного документооборота или уведомления об уточнении счета-фактуры),
-    InvoiceConfirmation (подтверждение оператора электронного документооборота),
-    InvoiceCorrectionRequest (уведомление об уточнении счета-фактуры),
-    AttachmentComment (текстовый комментарий к другой сущности-вложению),
-    DeliveryFailureNotification (уведомление о невозможности доставки сообщения),
-    SignatureRequestRejection (отказ в формировании запрошенной подписи),
-    SignatureVerificationReport (протокол проверки подписи, сформированный Диадоком),
-    TrustConnectionRequest (запрос на инициацию канала обмена документами через Диадок),
-    ProformaInvoice (счет на оплату),
-    Torg12 (товарная накладная ТОРГ-12),
-    AcceptanceCertificate (акт о выполнении работ / оказании услуг),
-    XmlTorg12 (товарная накладная ТОРГ-12 в XML-формате, титул продавца),
-    XmlTorg12BuyerTitle (товарная накладная ТОРГ-12 в XML-формате, титул покупателя),
-    XmlAcceptanceCertificate (акт о выполнении работ / оказании услуг в XML-формате, титул исполнителя),
-    XmlAcceptanceCertificateBuyerTitle (акт о выполнении работ / оказании услуг в XML-формате, титул заказчика),
-    StructuredData (произвольный файл со структурированными данными, описывающими тот или иной документ, представленный в виде печатной формы),
-    Resolution (информация о статусе согласования документа),
-    ResolutionRequest (запрос согласования документа),
-    ResolutionRequestDenial (отказ в запросе подписи документа),
-    PriceList (ценовой лист),
-    PriceListAgreement (протокол согласования цены),
-    CertificateRegistry (реестр сертификатов),
-    ReconciliationAct (акт сверки),
-    Contract (договор),
-    Torg13 (накладная ТОРГ-13),
-    ServiceDetails (детализация),
-    Receipt (извещение о получении),
-    XmlSignatureRejection (формализованный отказ в подписи),
-    RevocationRequest (предложение об аннулировании).
-    RoamingNotification (роуминговая квитанция).
-    SupplementaryAgreement (дополнительное соглашение к договору).
-    CustomData (произвольные данные к документу).
-    MoveDocument (информация о перемещении документа в подразделение).
-    ResolutionRouteAssignment (информация о запуске документа по маршруту согласования).
-    ResolutionRouteRemoval (информация о снятии документа с маршрута согласования).
-    Cancellation (информация об отмене сущности, которая указана родительской по отношению к данной).
-    Edition (информация о редактировании контента документа, который указан родительским по отношению к данной сущности).
-</descr>
-      </element><element name="TAttachmentType.UnknownAttachmentType"><short>UnknownAttachmentType (неизвестный тип документа; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать тип документа, переданный сервером),</short>
+      </element><element name="TAttachmentType"><short>AttachmentType определяет тип вложения (имеет смысл только для сущностей типа Attachment)</short><descr><p>возможные варианты:</p><ul><li><b>UnknownAttachmentType</b> - неизвестный тип документа; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать тип документа, переданный сервером</li><li><b>Nonformalized</b> - неформализованный документ</li><li><b>Invoice</b> - счет-фактура</li><li><b>InvoiceRevision</b> - исправление счета-фактуры</li><li><b>InvoiceCorrection</b> - корректировочный счет-фактура</li><li><b>InvoiceCorrectionRevision</b> - исправление корректировочного счета-фактуры</li><li><b>InvoiceReceipt</b> - извещение о получении счета-фактуры, подтверждения оператора электронного документооборота или уведомления об уточнении счета-фактуры</li><li><b>InvoiceConfirmation</b> - подтверждение оператора электронного документооборота</li><li><b>InvoiceCorrectionRequest</b> - уведомление об уточнении счета-фактуры</li><li><b>AttachmentComment</b> - текстовый комментарий к другой сущности-вложению</li><li><b>DeliveryFailureNotification</b> - уведомление о невозможности доставки сообщения</li><li><b>SignatureRequestRejection</b> - отказ в формировании запрошенной подписи</li><li><b>SignatureVerificationReport</b> - протокол проверки подписи, сформированный Диадоком</li><li><b>TrustConnectionRequest</b> - запрос на инициацию канала обмена документами через Диадок</li><li><b>ProformaInvoice</b> - счет на оплату</li><li><b>Torg12</b> - товарная накладная ТОРГ-12</li><li><b>AcceptanceCertificate</b> - акт о выполнении работ / оказании услуг</li><li><b>XmlTorg12</b> - товарная накладная ТОРГ-12 в XML-формате, титул продавца</li><li><b>XmlTorg12BuyerTitle</b> - товарная накладная ТОРГ-12 в XML-формате, титул покупателя</li><li><b>XmlAcceptanceCertificate</b> - акт о выполнении работ / оказании услуг в XML-формате, титул исполнителя</li><li><b>XmlAcceptanceCertificateBuyerTitle</b> - акт о выполнении работ / оказании услуг в XML-формате, титул заказчика</li><li><b>StructuredData</b> - произвольный файл со структурированными данными, описывающими тот или иной документ, представленный в виде печатной формы</li><li><b>Resolution</b> - информация о статусе согласования документа</li><li><b>ResolutionRequest</b> - запрос согласования документа</li><li><b>ResolutionRequestDenial</b> - отказ в запросе подписи документа</li><li><b>PriceList</b> - ценовой лист</li><li><b>PriceListAgreement</b> - протокол согласования цены</li><li><b>CertificateRegistry</b> - реестр сертификатов</li><li><b>ReconciliationAct</b> - акт сверки</li><li><b>Contract</b> - договор</li><li><b>Torg13</b> - накладная ТОРГ-13</li><li><b>ServiceDetails</b> - (детализация</li><li><b>Receipt</b> - извещение о получении</li><li><b>XmlSignatureRejection</b> - формализованный отказ в подписи</li><li><b>RevocationRequest</b> - предложение об аннулировании</li><li><b>RoamingNotification</b> - роуминговая квитанция</li><li><b>SupplementaryAgreement</b> - дополнительное соглашение к договору</li><li><b>CustomData</b> - произвольные данные к документу</li><li><b>MoveDocument</b> - информация о перемещении документа в подразделение</li><li><b>ResolutionRouteAssignment</b> - информация о запуске документа по маршруту согласования</li><li><b>ResolutionRouteRemoval</b> - информация о снятии документа с маршрута согласования</li><li><b>Cancellation</b> - информация об отмене сущности, которая указана родительской по отношению к данной</li><li><b>Edition</b> - информация о редактировании контента документа, который указан родительским по отношению к данной сущности</li><li><b>DeletionRestoration</b> - восстановление удалённого документа</li><li><b>TemplateTransformation</b> - информация о трансформации</li><li><b>TemplateRefusal</b> - информация об отклонении или отзыве шаблона</li>
+          </ul>
+        </descr>
+      </element><element name="TAttachmentType.UnknownAttachmentType"><short>UnknownAttachmentType - неизвестный тип документа; может выдаваться лишь в случае, когда клиент использует устаревшую версию SDK и не может интерпретировать тип документа, переданный сервером</short>
       </element><element name="TAttachmentType.Nonformalized"><short>Nonformalized (неформализованный документ),</short>
       </element><element name="TAttachmentType.Invoice"><short>Invoice (счет-фактура),</short>
       </element><element name="TAttachmentType.InvoiceReceipt"><short>InvoiceRevision (исправление счета-фактуры),</short>
@@ -209,6 +166,8 @@
       </element><element name="TAttachmentType.DeletionRestoration"><short>DeletionRestoration - восстановление удалённого документа</short>
       </element><element name="TAttachmentType.ResolutionRouteRemovalAttachment"><short>ResolutionRouteRemoval (информация о снятии документа с маршрута согласования)</short>
       </element><element name="TAttachmentType.ResolutionRouteAssignmentAttachment"><short>ResolutionRouteAssignment (информация о запуске документа по маршруту согласования)</short>
+      </element>
+    <element name="TEntity.OuterDocflow"><short>заполняется только для вложений с типом AttachmentType.OuterDocflow</short>
       </element>
     </module>
   </package>

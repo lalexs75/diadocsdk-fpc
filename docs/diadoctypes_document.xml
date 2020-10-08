@@ -196,6 +196,13 @@
     <element name="TResolutionStatusType.ActionsRequested"><short>ActionsRequested - Запрошены действия в рамках запроса согласования типа Custom</short>
       </element><element name="TDocument.SenderSignatureStatus"><short>SenderSignatureStatus - статус подписи отправителя.</short>
       </element>
+    <element name="TLastOuterDocflow"><short>Структура содержит информацию о последнем состоянии внешнего документооборота</short><descr>Структура содержит информацию о последнем состоянии внешнего документооборота, например, последний статус, полученный от ГИС МТ «Честный ЗНАК» по обработке документов с маркированными товарами.
+</descr>
+      </element><element name="TLastOuterDocflow.ParentEntityId"><short>ParentEntityId - идентификатор сущности, по которой получено последнее состояние в рамках внешнего документооборота. Это может быть документ либо запрос на аннулирование.</short>
+      </element><element name="TLastOuterDocflow.OuterDocflow"><short>OuterDocflow - содержит подробную информацию о внешнем документообороте.</short>
+      </element><element name="TDocument.LastOuterDocflows"><short>LastOuterDocflows - информация о состоянии врешнего документооборота по документу</short><descr>LastOuterDocflows - информация о состоянии врешнего документооборота по документу, например, о статусе обработки документа с маркированными товарами в ГИС МТ "Честный ЗНАК".
+</descr>
+      </element>
     </module>
   </package>
 </fpdoc-descriptions>

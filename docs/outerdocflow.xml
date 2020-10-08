@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="OuterDocflow"><element name="TOuterDocflowInfo"><short>Структура OuterDocflowInfo содержит информацию о внешнем документообороте по документу/аннулированию</short><descr>например, о статусе обработки документа с маркированными товарами в ГИС МТ «Честный ЗНАК»
+</descr>
+      </element><element name="TOuterDocflowInfo.DocflowNamedId"><short>DocflowNamedId - именованный идентификатор внешнего документооборота.</short>
+      </element><element name="TOuterDocflowInfo.DocflowFriendlyName"><short>DocflowFriendlyName - наименование внешнего документооборота, используется для отображения в веб-интерфейсе.</short>
+      </element><element name="TOuterDocflowInfo.Status"><short>Status - информация о статусе обработки документа в рамках документооборота</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

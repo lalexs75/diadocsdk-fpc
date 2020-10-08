@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="OuterDocflowStatus"><element name="TStatus"><short>Status - информация о статусе обработки документа в рамках документооборота</short>
+      </element><element name="TStatus.NamedId"><short>NamedId - именованный идентификатор статуса,</short>
+      </element><element name="TStatus.FriendlyName"><short>FriendlyName - наименование статуса, используется для отображения в веб-интерфейсе,</short>
+      </element><element name="TStatus.TypeField"><short>Type - тип статуса</short>
+      </element><element name="TStatus.Description"><short>Description - дополнительное описание статуса.</short>
+      </element><element name="TStatus.Details"><short>Details - детализация по статусу. Здесь может быть список ошибок, которые были получены при взаимодействии с внешним сервисом в рамках документооборота</short>
+      </element><element name="TStatusDetail"><short>Details - детализация по статусу. Здесь может быть список ошибок, которые были получены при взаимодействии с внешним сервисом в рамках документооборота</short>
+      </element><element name="TStatusDetail.Code"><short>Code - код ошибки,</short>
+      </element><element name="TStatusDetail.Text"><short>Text - текст ошибки.</short>
+      </element><element name="TOuterStatusType"><short>Перечисление отражает тип статуса, полученного в рамках внешнего документооборота:</short><descr><p>Перечисление отражает тип статуса, полученного в рамках внешнего документооборота:</p><ul><li><b>UnknownType</b> - зарезервировано для устаревших клиентов.</li><li><b>Normal</b> - нормальный. Обычно такой тип присваивается промежуточним статусам, которые не требуют внимания пользователя, например «Обрабатывается в ГИС МТ «Честный ЗНАК».</li><li><b>Success</b> - успешный статус. Соответствует успешному завершению обработки документа.</li><li><b>Warning</b> - предупреждение. Обычно такой тип присваивается промежуточным статусам, на которые требуется обратить внимание пользователя.</li><li><b>Error</b> - ошибка. Соответствует ситуациям, когда в процессе внешнего документооборота возникла ошибка.</li>
+          </ul>
+        </descr>
+      </element><element name="TOuterStatusType.UnknownStatus"><short>UnknownType - зарезервировано для устаревших клиентов.</short>
+      </element><element name="TOuterStatusType.Normal"><short>Normal - нормальный. Обычно такой тип присваивается промежуточним статусам, которые не требуют внимания пользователя, например «Обрабатывается в ГИС МТ «Честный ЗНАК».</short>
+      </element><element name="TOuterStatusType.Success"><short>Success - успешный статус. Соответствует успешному завершению обработки документа.</short>
+      </element><element name="TOuterStatusType.Warning"><short>Warning - предупреждение. Обычно такой тип присваивается промежуточным статусам, на которые требуется обратить внимание пользователя.</short>
+      </element><element name="TOuterStatusType.Error"><short>Error - ошибка. Соответствует ситуациям, когда в процессе внешнего документооборота возникла ошибка.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>
