@@ -293,6 +293,8 @@ type
   //    optional LockMode LockMode = 7 [default = None];
   //    optional string FromDepartmentId = 8;
   //    optional string ToDepartmentId = 9;
+  //    optional string MessageProxyBoxId = 10;
+  //    optional string MessageProxyDepartmentId = 11;
   //}
   TTemplateToPost = class(TSerializationObject) //message TemplateToPost
   private
@@ -301,6 +303,8 @@ type
     FFromDepartmentId: string;
     FLockMode: TLockMode;
     FMessageFromBoxId: string;
+    FMessageProxyBoxId: string;
+    FMessageProxyDepartmentId: string;
     FMessageToBoxId: string;
     FMessageToDepartmentId: string;
     FToBoxId: string;
@@ -309,6 +313,8 @@ type
     procedure SetFromDepartmentId(AValue: string);
     procedure SetLockMode(AValue: TLockMode);
     procedure SetMessageFromBoxId(AValue: string);
+    procedure SetMessageProxyBoxId(AValue: string);
+    procedure SetMessageProxyDepartmentId(AValue: string);
     procedure SetMessageToBoxId(AValue: string);
     procedure SetMessageToDepartmentId(AValue: string);
     procedure SetToBoxId(AValue: string);
@@ -328,6 +334,8 @@ type
     property LockMode:TLockMode read FLockMode write SetLockMode;//7 [default = None];
     property FromDepartmentId:string read FFromDepartmentId write SetFromDepartmentId; //8;
     property ToDepartmentId:string read FToDepartmentId write SetToDepartmentId;//9;
+    property MessageProxyBoxId:string read FMessageProxyBoxId write SetMessageProxyBoxId;//10;
+    property MessageProxyDepartmentId:string read FMessageProxyDepartmentId write SetMessageProxyDepartmentId;//11;
   end;
 
   {  TResolutionRouteRemoval  }
@@ -4944,6 +4952,20 @@ begin
   Modified(3);
 end;
 
+procedure TTemplateToPost.SetMessageProxyBoxId(AValue: string);
+begin
+  if FMessageProxyBoxId=AValue then Exit;
+  FMessageProxyBoxId:=AValue;
+  Modified(10);
+end;
+
+procedure TTemplateToPost.SetMessageProxyDepartmentId(AValue: string);
+begin
+  if FMessageProxyDepartmentId=AValue then Exit;
+  FMessageProxyDepartmentId:=AValue;
+  Modified(11);
+end;
+
 procedure TTemplateToPost.SetMessageToBoxId(AValue: string);
 begin
   if FMessageToBoxId=AValue then Exit;
@@ -4984,6 +5006,8 @@ begin
   RegisterProp('LockMode', 7);
   RegisterProp('FromDepartmentId', 8);
   RegisterProp('ToDepartmentId', 9);
+  RegisterProp('MessageProxyBoxId', 10);
+  RegisterProp('MessageProxyDepartmentId', 11);
 end;
 
 procedure TTemplateToPost.InternalInit;

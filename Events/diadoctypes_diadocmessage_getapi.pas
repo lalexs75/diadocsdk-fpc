@@ -495,6 +495,8 @@ type
   //    optional bool IsDeleted = 8 [default = false];
   //    optional string MessageToDepartmentId = 9;
   //    required LockMode LockMode = 10;
+  //    optional string MessageProxyBoxId = 11;
+  //    optional string MessageProxyDepartmentId = 12;
   //}
   TTemplate = class(TSerializationObject)
   private
@@ -504,6 +506,8 @@ type
     FLockMode: TLockMode;
     FMessageFromBoxId: string;
     FMessageId: string;
+    FMessageProxyBoxId: string;
+    FMessageProxyDepartmentId: string;
     FMessageToBoxId: string;
     FMessageToDepartmentId: string;
     FTimestampTicks: sfixed64;
@@ -513,6 +517,8 @@ type
     procedure SetLockMode(AValue: TLockMode);
     procedure SetMessageFromBoxId(AValue: string);
     procedure SetMessageId(AValue: string);
+    procedure SetMessageProxyBoxId(AValue: string);
+    procedure SetMessageProxyDepartmentId(AValue: string);
     procedure SetMessageToBoxId(AValue: string);
     procedure SetMessageToDepartmentId(AValue: string);
     procedure SetTimestampTicks(AValue: sfixed64);
@@ -533,6 +539,8 @@ type
     property IsDeleted:Boolean read FIsDeleted write SetIsDeleted;//8
     property MessageToDepartmentId:string read FMessageToDepartmentId write SetMessageToDepartmentId;//9;
     property LockMode:TLockMode read FLockMode write SetLockMode; //10;
+    property MessageProxyBoxId:string read FMessageProxyBoxId write SetMessageProxyBoxId;//11;
+    property MessageProxyDepartmentId:string read FMessageProxyDepartmentId write SetMessageProxyDepartmentId;//12;
   end;
 
   { TTemplateToLetterTransformationInfo }
@@ -542,15 +550,21 @@ type
   //	required string LetterToBoxId = 2;
   //	optional string LetterFromDepartmentId = 3;
   //	optional string LetterToDepartmentId = 4;
+  //    optional string LetterProxyBoxId = 5;
+  //    optional string LetterProxyDepartmentId = 6;
   //}
   TTemplateToLetterTransformationInfo = class(TSerializationObject)
   private
     FLetterFromBoxId: string;
     FLetterFromDepartmentId: string;
+    FLetterProxyBoxId: string;
+    FLetterProxyDepartmentId: string;
     FLetterToBoxId: string;
     FLetterToDepartmentId: string;
     procedure SetLetterFromBoxId(AValue: string);
     procedure SetLetterFromDepartmentId(AValue: string);
+    procedure SetLetterProxyBoxId(AValue: string);
+    procedure SetLetterProxyDepartmentId(AValue: string);
     procedure SetLetterToBoxId(AValue: string);
     procedure SetLetterToDepartmentId(AValue: string);
   protected
@@ -563,6 +577,8 @@ type
     property LetterToBoxId:string read FLetterToBoxId write SetLetterToBoxId;//2;
     property LetterFromDepartmentId:string read FLetterFromDepartmentId write SetLetterFromDepartmentId;//3;
     property LetterToDepartmentId:string read FLetterToDepartmentId write SetLetterToDepartmentId;//4;
+    property LetterProxyBoxId:string read FLetterProxyBoxId write SetLetterProxyBoxId;//5;
+    property LetterProxyDepartmentId:string read FLetterProxyDepartmentId write SetLetterProxyDepartmentId;//6;
   end;
 
   {  TMessage  }
@@ -838,6 +854,22 @@ begin
   Modified(3);
 end;
 
+procedure TTemplateToLetterTransformationInfo.SetLetterProxyBoxId(AValue: string
+  );
+begin
+  if FLetterProxyBoxId=AValue then Exit;
+  FLetterProxyBoxId:=AValue;
+  Modified(5);
+end;
+
+procedure TTemplateToLetterTransformationInfo.SetLetterProxyDepartmentId(
+  AValue: string);
+begin
+  if FLetterProxyDepartmentId=AValue then Exit;
+  FLetterProxyDepartmentId:=AValue;
+  Modified(6);
+end;
+
 procedure TTemplateToLetterTransformationInfo.SetLetterToBoxId(AValue: string);
 begin
   if FLetterToBoxId=AValue then Exit;
@@ -865,6 +897,8 @@ begin
   RegisterProp('LetterToBoxId', 2, true);
   RegisterProp('LetterFromDepartmentId', 3);
   RegisterProp('LetterToDepartmentId', 4);
+  RegisterProp('LetterProxyBoxId', 5);
+  RegisterProp('LetterProxyDepartmentId', 6);
 end;
 
 destructor TTemplateToLetterTransformationInfo.Destroy;
@@ -976,6 +1010,20 @@ begin
   Modified(1);
 end;
 
+procedure TTemplate.SetMessageProxyBoxId(AValue: string);
+begin
+  if FMessageProxyBoxId=AValue then Exit;
+  FMessageProxyBoxId:=AValue;
+  Modified(11);
+end;
+
+procedure TTemplate.SetMessageProxyDepartmentId(AValue: string);
+begin
+  if FMessageProxyDepartmentId=AValue then Exit;
+  FMessageProxyDepartmentId:=AValue;
+  Modified(12);
+end;
+
 procedure TTemplate.SetMessageToBoxId(AValue: string);
 begin
   if FMessageToBoxId=AValue then Exit;
@@ -1023,6 +1071,8 @@ begin
   RegisterProp('IsDeleted', 8);
   RegisterProp('MessageToDepartmentId', 9);
   RegisterProp('LockMode', 10, true);
+  RegisterProp('MessageProxyBoxId', 11);
+  RegisterProp('MessageProxyDepartmentId', 12);
 end;
 
 destructor TTemplate.Destroy;
