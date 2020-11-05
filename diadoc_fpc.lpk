@@ -15,7 +15,7 @@
     </CompilerOptions>
     <Description Value="Компоненты интеграции Контур ДИАДОК-API для FPC и Lazarus"/>
     <License Value="LGPL"/>
-    <Version Major="1" Minor="3" Release="2" Build="13"/>
+    <Version Major="1" Minor="3" Release="2" Build="15"/>
     <Files>
       <Item>
         <Filename Value="diadoc_define.inc"/>
