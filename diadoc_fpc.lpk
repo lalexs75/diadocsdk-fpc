@@ -15,7 +15,7 @@
     </CompilerOptions>
     <Description Value="Компоненты интеграции Контур ДИАДОК-API для FPC и Lazarus"/>
     <License Value="LGPL"/>
-    <Version Major="1" Minor="3" Release="2" Build="15"/>
+    <Version Major="1" Minor="4" Build="18"/>
     <Files>
       <Item>
         <Filename Value="diadoc_define.inc"/>
@@ -1310,6 +1310,10 @@
       <Item>
         <Filename Value="diadoc_src\OuterDocflowStatus.pas"/>
         <UnitName Value="OuterDocflowStatus"/>
+      </Item>
+      <Item>
+        <Filename Value="Events\Events_RevocationRequestInfo.pas"/>
+        <UnitName Value="Events_RevocationRequestInfo"/>
       </Item>
     </Files>
     <LazDoc Paths="docs"/>

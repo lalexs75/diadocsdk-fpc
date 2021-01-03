@@ -94,14 +94,26 @@ type
     Finished = 4
   );
 
+  { RecipientResponseStatus }
+  //enum RecipientResponseStatus {
+  //	RecipientResponseStatusUnknown = 0;
+  //	RecipientResponseStatusNotAcceptable = 1;
+  //	WaitingForRecipientSignature = 2;
+  //	WithRecipientSignature = 3;
+  //	RecipientSignatureRequestRejected = 4;
+  //	InvalidRecipientSignature = 5;
+  //	WithRecipientPartiallySignature = 6;
+  //}
   TRecipientResponseStatus = (
     RecipientResponseStatusUnknown = 0,
     RecipientResponseStatusNotAcceptable = 1,
     WaitingForRecipientSignature = 2,
     WithRecipientSignature = 3,
     RecipientSignatureRequestRejected = 4,
-    InvalidRecipientSignature = 5
+    InvalidRecipientSignature = 5,
+    WithRecipientPartiallySignature = 6
   );
+  TRecipientResponseStatusArray = array of TRecipientResponseStatus;
 
   TMessageType = (
     Unknown = 0,

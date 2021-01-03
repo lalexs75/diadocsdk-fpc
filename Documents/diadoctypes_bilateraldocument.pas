@@ -45,24 +45,50 @@ uses
   ;
 
 type
+  { BilateralDocumentStatus }
+  //enum BilateralDocumentStatus {
+  //	UnknownBilateralDocumentStatus = 0;	// Reserved status to report to legacy clients for newly introduced statuses
+  //	OutboundWaitingForRecipientSignature = 1;
+  //	OutboundWithRecipientSignature = 2;
+  //	OutboundWithRecipientPartiallySignature = 19;
+  //	OutboundRecipientSignatureRequestRejected = 3;
+  //	OutboundWaitingForSenderSignature = 10;
+  //	OutboundInvalidSenderSignature = 11;
+  //	InboundWaitingForRecipientSignature = 4;
+  //	InboundWithRecipientSignature = 5;
+  //	InboundWithRecipientPartiallySignature = 20;
+  //	InboundRecipientSignatureRequestRejected = 6;
+  //	InboundInvalidRecipientSignature = 12;
+  //	InternalWaitingForRecipientSignature = 7;
+  //	InternalWithRecipientSignature = 8;
+  //	InternalWithRecipientPartiallySignature = 21;
+  //	InternalRecipientSignatureRequestRejected = 9;
+  //	InternalWaitingForSenderSignature = 13;
+  //	InternalInvalidSenderSignature = 14;
+  //	InternalInvalidRecipientSignature = 15;
+  //}
   TBilateralDocumentStatus = (
-    UnknownBilateralDocumentStatus = 0, // Reserved status to report to legacy clients for newly introduced statuses
+    UnknownBilateralDocumentStatus = 0,
     OutboundWaitingForRecipientSignature = 1,
     OutboundWithRecipientSignature = 2,
+    OutboundWithRecipientPartiallySignature = 19,
     OutboundRecipientSignatureRequestRejected = 3,
     OutboundWaitingForSenderSignature = 10,
     OutboundInvalidSenderSignature = 11,
     InboundWaitingForRecipientSignature = 4,
     InboundWithRecipientSignature = 5,
+    InboundWithRecipientPartiallySignature = 20,
     InboundRecipientSignatureRequestRejected = 6,
     InboundInvalidRecipientSignature = 12,
     InternalWaitingForRecipientSignature = 7,
     InternalWithRecipientSignature = 8,
+    InternalWithRecipientPartiallySignature = 21,
     InternalRecipientSignatureRequestRejected = 9,
     InternalWaitingForSenderSignature = 13,
     InternalInvalidSenderSignature = 14,
     InternalInvalidRecipientSignature = 15
   );
+  TBilateralDocumentStatusArray = array of TBilateralDocumentStatus;
 
   { TBilateralDocumentMetadata }
   //message BilateralDocumentMetadata {

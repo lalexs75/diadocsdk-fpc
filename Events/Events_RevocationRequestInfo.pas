@@ -30,3 +30,59 @@
   Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 }
 { Структуры данных базируются на информации http://api-docs.diadoc.ru/ru/latest/DataStructures.html }
+
+unit Events_RevocationRequestInfo;
+
+interface
+
+uses Classes, SysUtils, types, protobuf_fpc;
+
+type
+
+  TRevocationRequestInfo = class;
+  TRevocationRequestInfos = specialize GSerializationObjectList<TRevocationRequestInfo>;
+
+  { RevocationRequestInfo } 
+  //message RevocationRequestInfo {
+  //    required string InitiatorBoxId = 1;
+  //}
+  TRevocationRequestInfo = class(TSerializationObject)
+  private
+    FInitiatorBoxId:String;
+    procedure SetInitiatorBoxId(AValue:String);
+  protected
+    procedure InternalRegisterProperty; override;
+    procedure InternalInit; override;
+  public
+    destructor Destroy; override;
+  published
+    property InitiatorBoxId:String read FInitiatorBoxId write SetInitiatorBoxId;
+  end;
+
+implementation
+
+  { RevocationRequestInfo } 
+
+procedure TRevocationRequestInfo.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('InitiatorBoxId', 1, true);
+end;
+
+procedure TRevocationRequestInfo.InternalInit;
+begin
+  inherited InternalInit;
+end;
+
+destructor TRevocationRequestInfo.Destroy;
+begin
+  inherited Destroy;
+end;
+
+procedure TRevocationRequestInfo.SetInitiatorBoxId(AValue:String);
+begin
+  FInitiatorBoxId:=AValue;
+  Modified(1);
+end;
+
+end.

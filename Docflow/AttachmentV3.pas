@@ -1,6 +1,6 @@
 { Diadoc interface library for FPC and Lazarus
 
-  Copyright (C) 2018-2020 Lagunov Aleksey alexs75@yandex.ru
+  Copyright (C) 2018-2021 Lagunov Aleksey alexs75@yandex.ru
 
   base on docs from http://api-docs.diadoc.ru
 
@@ -35,13 +35,15 @@ unit AttachmentV3;
 
 interface
 
-uses Classes, SysUtils, types, protobuf_fpc, DiadocTypes_Attachment, DiadocTypes_Content,
-  DiadocTypes_Timestamp, DiadocTypes_SignatureVerificationResult;
+uses Classes, SysUtils, types, protobuf_fpc, DiadocTypes_Attachment, DiadocTypes_Content, DiadocTypes_Timestamp,
+  DiadocTypes_SignatureVerificationResult;
 
 type
 
   TSignatureV3 = class;
+  TSignatureV3s = specialize GSerializationObjectList<TSignatureV3>;
   TSignedAttachmentV3 = class;
+  TSignedAttachmentV3s = specialize GSerializationObjectList<TSignedAttachmentV3>;
 
   { SignatureV3 } 
   //message SignatureV3
@@ -80,7 +82,6 @@ type
     property VerificationResult:TSignatureVerificationResult read FVerificationResult;
     property DeliveredAt:TTimestamp read FDeliveredAt;
   end;
-  TSignatureV3s = specialize GSerializationObjectList<TSignatureV3>;
 
   { SignedAttachmentV3 } 
   //message SignedAttachmentV3
@@ -88,12 +89,15 @@ type
   //	required Attachment Attachment = 1;
   //	optional SignatureV3 Signature = 2;
   //	optional Entity Comment = 3;
+  //	required string ContentTypeId = 4;
   //}
   TSignedAttachmentV3 = class(TSerializationObject)
   private
     FAttachment:TAttachment;
     FSignature:TSignatureV3;
     FComment:TEntity;
+    FContentTypeId:String;
+    procedure SetContentTypeId(AValue:String);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -103,8 +107,8 @@ type
     property Attachment:TAttachment read FAttachment;
     property Signature:TSignatureV3 read FSignature;
     property Comment:TEntity read FComment;
+    property ContentTypeId:String read FContentTypeId write SetContentTypeId;
   end;
-  TSignedAttachmentV3s = specialize GSerializationObjectList<TSignedAttachmentV3>;
 
 implementation
 
@@ -167,6 +171,7 @@ begin
   RegisterProp('Attachment', 1, true);
   RegisterProp('Signature', 2);
   RegisterProp('Comment', 3);
+  RegisterProp('ContentTypeId', 4, true);
 end;
 
 procedure TSignedAttachmentV3.InternalInit;
@@ -183,6 +188,12 @@ begin
   FSignature.Free;
   FComment.Free;
   inherited Destroy;
+end;
+
+procedure TSignedAttachmentV3.SetContentTypeId(AValue:String);
+begin
+  FContentTypeId:=AValue;
+  Modified(4);
 end;
 
 end.

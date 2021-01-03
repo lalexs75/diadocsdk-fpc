@@ -66,7 +66,8 @@ uses
   DiadocTypes_ResolutionRequestDenialInfo,
   DiadocTypes_ResolutionRouteInfo,
   DiadocTypes_DocumentId,
-  OuterDocflow
+  OuterDocflow,
+  Events_RevocationRequestInfo
   ;
 
 type
@@ -331,6 +332,9 @@ type
   //    optional string Version = 26;
   //    optional TemplateTransformationInfo TemplateTransformationInfo = 27;
   //    optional TemplateRefusalInfo TemplateRefusalInfo = 28;
+  //    optional OuterDocflowInfo OuterDocflow = 29;
+  //    optional RevocationRequestInfo RevocationRequestInfo = 30;
+  //    optional string ContentTypeId = 31;
   //}
   TEntity  = class(TSerializationObject) //message Entity
   private
@@ -338,6 +342,7 @@ type
     FAttachmentVersion: string;
     FCancellationInfo: TCancellationInfo;
     FContent: TContent;
+    FContentTypeId: string;
     FDocumentInfo: TDocument;
     FEntityId: string;
     FEntityType: TEntityType;
@@ -357,6 +362,7 @@ type
     FResolutionRequestInfo: TResolutionRequestInfo;
     FResolutionRouteAssignmentInfo: TResolutionRouteAssignmentInfo;
     FResolutionRouteRemovalInfo: TResolutionRouteRemovalInfo;
+    FRevocationRequestInfo: TRevocationRequestInfo;
     FSignerBoxId: string;
     FSignerDepartmentId: string;
     FTemplateRefusalInfo: TTemplateRefusalInfo;
@@ -364,6 +370,7 @@ type
     FVersion: string;
     procedure SetAttachmentType(AValue: TAttachmentType);
     procedure SetAttachmentVersion(AValue: string);
+    procedure SetContentTypeId(AValue: string);
     procedure SetEntityId(AValue: string);
     procedure SetEntityType(AValue: TEntityType);
     procedure SetFileName(AValue: string);
@@ -412,6 +419,8 @@ type
     property TemplateTransformationInfo:TTemplateTransformationInfo read FTemplateTransformationInfo;//%27
     property TemplateRefusalInfo:TTemplateRefusalInfo read FTemplateRefusalInfo; //%28
     property OuterDocflow:TOuterDocflowInfo read FOuterDocflow; //%29
+    property RevocationRequestInfo:TRevocationRequestInfo read FRevocationRequestInfo;//%30;
+    property ContentTypeId:string read FContentTypeId write SetContentTypeId; //%31;
   end;
   TEntitys = specialize GSerializationObjectList<TEntity>;
 
@@ -1330,6 +1339,13 @@ begin
   Modified(21);
 end;
 
+procedure TEntity.SetContentTypeId(AValue: string);
+begin
+  if FContentTypeId=AValue then Exit;
+  FContentTypeId:=AValue;
+  Modified(31);
+end;
+
 procedure TEntity.SetEntityId(AValue: string);
 begin
   if FEntityId=AValue then Exit;
@@ -1466,6 +1482,8 @@ begin
   RegisterProp('TemplateTransformationInfo', 27);
   RegisterProp('TemplateRefusalInfo', 28);
   RegisterProp('OuterDocflow', 29);
+  RegisterProp('RevocationRequestInfo', 30);
+  RegisterProp('ContentTypeId', 31);
 end;
 
 procedure TEntity.InternalInit;
@@ -1483,6 +1501,7 @@ begin
   FTemplateTransformationInfo:=TTemplateTransformationInfo.Create;
   FTemplateRefusalInfo:= TTemplateRefusalInfo.Create;
   FOuterDocflow:=TOuterDocflowInfo.Create;
+  FRevocationRequestInfo:=TRevocationRequestInfo.Create;
 (*
   EntityType:= UnknownEntityType;
   AttachmentType:= UnknownAttachmentType;
@@ -1508,6 +1527,7 @@ begin
   FreeAndNil(FTemplateTransformationInfo);
   FTemplateRefusalInfo.Free;
   FOuterDocflow.Free;
+  FreeAndNil(FRevocationRequestInfo);
   inherited Destroy;
 end;
 

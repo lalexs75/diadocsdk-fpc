@@ -45,27 +45,56 @@ uses
   ;
 
 type
+  { AcceptanceCertificateDocumentStatus }
+  //enum AcceptanceCertificateDocumentStatus {
+  //	UnknownAcceptanceCertificateDocumentStatus = 0;	// Reserved status to report to legacy clients for newly introduced statuses
+  //	OutboundWaitingForRecipientSignature = 1;
+  //	OutboundWithRecipientSignature = 2;
+  //	OutboundWithRecipientPartiallySignature = 19;
+  //	OutboundRecipientSignatureRequestRejected = 3;
+  //	OutboundWaitingForSenderSignature = 10;
+  //	OutboundInvalidSenderSignature = 11;
+  //	OutboundNoRecipientSignatureRequest = 16;
+  //	InboundWaitingForRecipientSignature = 4;
+  //	InboundWithRecipientSignature = 5;
+  //	InboundWithRecipientPartiallySignature = 20;
+  //	InboundRecipientSignatureRequestRejected = 6;
+  //	InboundInvalidRecipientSignature = 12;
+  //	InboundNoRecipientSignatureRequest = 17;
+  //	InternalWaitingForRecipientSignature = 7;
+  //	InternalWithRecipientSignature = 8;
+  //	InternalWithRecipientPartiallySignature = 21;
+  //	InternalRecipientSignatureRequestRejected = 9;
+  //	InternalWaitingForSenderSignature = 13;
+  //	InternalInvalidSenderSignature = 14;
+  //	InternalInvalidRecipientSignature = 15;
+  //	InternalNoRecipientSignatureRequest = 18;
+  //}
   TAcceptanceCertificateDocumentStatus = (
-    UnknownAcceptanceCertificateDocumentStatus = 0, // Reserved status to report to legacy clients for newly introduced statuses
+    UnknownAcceptanceCertificateDocumentStatus = 0,
     OutboundWaitingForRecipientSignature = 1,
     OutboundWithRecipientSignature = 2,
+    OutboundWithRecipientPartiallySignature = 19,
     OutboundRecipientSignatureRequestRejected = 3,
     OutboundWaitingForSenderSignature = 10,
     OutboundInvalidSenderSignature = 11,
     OutboundNoRecipientSignatureRequest = 16,
     InboundWaitingForRecipientSignature = 4,
     InboundWithRecipientSignature = 5,
+    InboundWithRecipientPartiallySignature = 20,
     InboundRecipientSignatureRequestRejected = 6,
     InboundInvalidRecipientSignature = 12,
     InboundNoRecipientSignatureRequest = 17,
     InternalWaitingForRecipientSignature = 7,
     InternalWithRecipientSignature = 8,
+    InternalWithRecipientPartiallySignature = 21,
     InternalRecipientSignatureRequestRejected = 9,
     InternalWaitingForSenderSignature = 13,
     InternalInvalidSenderSignature = 14,
     InternalInvalidRecipientSignature = 15,
     InternalNoRecipientSignatureRequest = 18
   );
+  TAcceptanceCertificateDocumentStatusArray = array of TAcceptanceCertificateDocumentStatus;
 
   { TAcceptanceCertificateMetadata }
   //message AcceptanceCertificateMetadata {
