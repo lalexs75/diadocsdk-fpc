@@ -3214,8 +3214,8 @@ end;
 procedure TCustomsDeclarationWithHyphens.SetDeclarationNumber(AValue: Tstring1000);
 begin
   FDeclarationNumber:=AValue;
-  CheckStrMinSize('DeclarationNumber', AValue);
-  CheckStrMaxSize('DeclarationNumber', AValue);
+//  CheckStrMinSize('DeclarationNumber', AValue);
+//  CheckStrMaxSize('DeclarationNumber', AValue);
   ModifiedProperty('DeclarationNumber');
 end;
 
