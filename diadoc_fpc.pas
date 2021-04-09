@@ -167,7 +167,8 @@ uses
   XmlTorg12_DEFAULT_utd_05_01_02_ind0, XmlTorg12_DEFAULT_utd_05_01_04_ind0, 
   XmlTorg12_DEFAULT_utd_05_01_05_ind0, XmlTorg12_DEFAULT_utd_05_02_01_ind0, 
   UniversalCorrectionDocument_KSCHFDIS_ucd_05_01_03_ind0, OuterDocflow, 
-  OuterDocflowStatus, Events_RevocationRequestInfo, LazarusPackageIntf;
+  OuterDocflowStatus, Events_RevocationRequestInfo, 
+  UniversalCorrectionDocument_KSCHFDIS_ucd736_05_01_01_ind0, LazarusPackageIntf;
 
 implementation
 
