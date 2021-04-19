@@ -57,7 +57,6 @@ uses
   DiadocTypes_Document,
   DiadocTypes_DocumentList,
   DiadocTypes_DocumentType,
-  DiadocTypes_DocumentTypeDescription,
   DiadocTypes_DocumentZip,
   DiadocTypes_ExternalServiceAuthInfo,
   DiadocTypes_ExtendedSigner,
@@ -98,7 +97,9 @@ uses
   LoginPassword,
   Content_v3,
   DssSign,
-  DetectTitleResponse
+  DetectTitleResponse,
+  DocumentTypeDescription,
+  DocumentTypeDescriptionV2
   ;
 
 type
@@ -365,7 +366,7 @@ type
     function GetMyOrganizations(autoRegister:boolean = false):TOrganizationList;
     function GetOrganizationFeatures(const ABoxId:string):TOrganizationFeatures;
     function GetBox(const ABoxId:string):TBox;
-    function GetDocumentTypes(const ABoxId:string):TGetDocumentTypesResponse;
+    function GetDocumentTypesV2(const ABoxId:string):TGetDocumentTypesResponseV2;
 
     //$GetDocuments(const std::wstring& boxId, const std::wstring& filterCategory, const std::wstring& counteragentBoxId, __int64* timestampFrom, __int64* timestampTo, const std::wstring& fromDocumentDate, const std::wstring& toDocumentDate, const std::wstring& departmentId, bool excludeSubdepartments, const std::string& afterIndexKey, int* count = NULL);
     //$GetDocuments(const std::wstring& boxId, const std::wstring& filterCategory, const std::wstring& counteragentBoxId, __int64* timestampFrom, __int64* timestampTo, const std::wstring& fromDocumentDate, const std::wstring& toDocumentDate, const std::wstring& departmentId, bool excludeSubdepartments, const std::string& afterIndexKey, int* count = NULL);
@@ -4031,8 +4032,8 @@ begin
   end;
 end;
 
-function TDiadocAPI.GetDocumentTypes(const ABoxId: string
-  ): TGetDocumentTypesResponse;
+function TDiadocAPI.GetDocumentTypesV2(const ABoxId: string
+  ): TGetDocumentTypesResponseV2;
 var
   S: String;
 begin
@@ -4045,16 +4046,16 @@ begin
 
   if not Authenticate then exit;
 
-  if SendCommand(hmGET, 'GetDocumentTypes', S, nil) then
+  if SendCommand(hmGET, '/V2/GetDocumentTypes', S, nil) then
   begin
     {$IFDEF DIADOC_DEBUG}
-    SaveProtobuf('GetDocumentTypes');
+    SaveProtobuf('GetDocumentTypesV2');
     {$ENDIF}
     FHTTP.Document.Position:=0;
 
     if FHTTP.ResultCode = 200 then
     begin
-      Result:=TGetDocumentTypesResponse.Create;
+      Result:=TGetDocumentTypesResponseV2.Create;
       Result.LoadFromStream(FHTTP.Document);
     end
     else

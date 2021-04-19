@@ -106,10 +106,6 @@
         <UnitName Value="DiadocTypes_DocflowApi"/>
       </Item>
       <Item>
-        <Filename Value="Documents\Types\diadoctypes_documenttypedescription.pas"/>
-        <UnitName Value="DiadocTypes_DocumentTypeDescription"/>
-      </Item>
-      <Item>
         <Filename Value="Events\diadoctypes_diadocmessage_postapi.pas"/>
         <UnitName Value="DiadocTypes_DiadocMessage_PostApi"/>
       </Item>
@@ -1318,6 +1314,14 @@
       <Item>
         <Filename Value="DataXml\UniversalCorrectionDocument_KSCHFDIS_ucd736_05_01_01_ind0.pas"/>
         <UnitName Value="UniversalCorrectionDocument_KSCHFDIS_ucd736_05_01_01_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="Documents\Types\DocumentTypeDescription.pas"/>
+        <UnitName Value="DocumentTypeDescription"/>
+      </Item>
+      <Item>
+        <Filename Value="Documents\Types\DocumentTypeDescriptionV2.pas"/>
+        <UnitName Value="DocumentTypeDescriptionV2"/>
       </Item>
     </Files>
     <LazDoc Paths="docs"/>

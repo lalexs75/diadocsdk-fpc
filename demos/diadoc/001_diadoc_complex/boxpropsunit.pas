@@ -31,7 +31,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ButtonPanel, StdCtrls,
-  DiadocAPI, DiadocTypes, diadoc_consts;
+  DiadocAPI, DiadocTypes, diadoc_consts, DocumentTypeDescriptionV2;
 
 type
 
@@ -50,7 +50,7 @@ var
   BoxPropsForm: TBoxPropsForm;
 
 implementation
-uses DiadocTypes_DocumentTypeDescription;
+uses DocumentTypeDescription;
 
 {$R *.lfm}
 
@@ -58,12 +58,12 @@ uses DiadocTypes_DocumentTypeDescription;
 
 procedure TBoxPropsForm.OpenBoxProps(DiadocAPI1: TDiadocAPI; ABoxId: string);
 var
-  DocTypes: TGetDocumentTypesResponse;
-  DT: TDocumentTypeDescription;
+  DocTypes: TGetDocumentTypesResponseV2;
+  DT:TDocumentTypeDescriptionV2;
   i: Integer;
 begin
   Memo1.Lines.Clear;
-  DocTypes:=DiadocAPI1.GetDocumentTypes(ABoxId);
+  DocTypes:=DiadocAPI1.GetDocumentTypesV2(ABoxId);
   if Assigned(DocTypes) then
   begin
     for DT in DocTypes.DocumentTypes do
@@ -72,8 +72,8 @@ begin
       Memo1.Lines.Add('Name = ' + DT.Name);
       Memo1.Lines.Add('Title = ' + DT.Title);
       Memo1.Lines.Add('RequiresFnsRegistration = ' + BoolToStr(DT.RequiresFnsRegistration, true));
-      for i:=0 to DT.SupportedDocflows.Count-1 do
-        Memo1.Lines.Add('SupportedDocflows['+IntToStr(i)+'] = ' + DocumentDocflowToStr(DT.SupportedDocflows[i]));
+      for i:=0 to Length(DT.SupportedDocflows)-1 do
+        Memo1.Lines.Add( 'SupportedDocflows[%d] = %d', [i, DT.SupportedDocflows[i]]);
       //property Functions:TDocumentFunctions read FFunctions; //9;
     end;
     DocTypes.Free;

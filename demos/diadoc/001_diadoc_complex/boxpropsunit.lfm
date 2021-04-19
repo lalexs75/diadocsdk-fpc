@@ -7,11 +7,11 @@ object BoxPropsForm: TBoxPropsForm
   ClientHeight = 329
   ClientWidth = 376
   Position = poScreenCenter
-  LCLVersion = '1.9.0.0'
+  LCLVersion = '2.1.0.0'
   object ButtonPanel1: TButtonPanel
     Left = 6
-    Height = 34
-    Top = 289
+    Height = 46
+    Top = 277
     Width = 364
     OKButton.Name = 'OKButton'
     OKButton.DefaultCaption = True
@@ -26,7 +26,7 @@ object BoxPropsForm: TBoxPropsForm
   end
   object Memo1: TMemo
     Left = 0
-    Height = 283
+    Height = 271
     Top = 0
     Width = 376
     Align = alClient
