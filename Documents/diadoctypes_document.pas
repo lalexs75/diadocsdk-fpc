@@ -388,6 +388,9 @@ type
   //    required LockMode LockMode = 74 [default = None];
   //    required SenderReceiptMetadata SenderReceiptMetadata = 75;
   //    required string Version = 76;
+  //    repeated LastOuterDocflow LastOuterDocflows = 77;
+  //    optional string ProxyBoxId = 78;
+  //    optional string ProxyDepartmentId = 79;
   //}
   TDocument = class(TSerializationObject)
   private
@@ -437,6 +440,8 @@ type
     FPriceListAgreementMetadata: TNonformalizedDocumentMetadata;
     FPriceListMetadata: TPriceListMetadata;
     FProformaInvoiceMetadata: TProformaInvoiceMetadata;
+    FProxyBoxId: string;
+    FProxyDepartmentId: string;
     FProxySignatureStatus: TProxySignatureStatus;
     FRecipientReceiptMetadata: TRecipientReceiptMetadata;
     FRecipientResponseStatus: TRecipientResponseStatus;
@@ -492,6 +497,8 @@ type
     procedure SetMessageId(AValue: string);
     procedure SetPacketId(AValue: string);
     procedure SetPacketIsLocked(AValue: Boolean);
+    procedure SetProxyBoxId(AValue: string);
+    procedure SetProxyDepartmentId(AValue: string);
     procedure SetProxySignatureStatus(AValue: TProxySignatureStatus);
     procedure SetRecipientResponseStatus(AValue: TRecipientResponseStatus);
     procedure SetResolutionRouteId(AValue: string);
@@ -589,6 +596,8 @@ type
     property SenderReceiptMetadata:TSenderReceiptMetadata read FSenderReceiptMetadata; //75;
     property Version:string read FVersion write SetVersion;//76;
     property LastOuterDocflows:TLastOuterDocflows read FLastOuterDocflows; //77
+    property ProxyBoxId:string read FProxyBoxId write SetProxyBoxId; //78;
+    property ProxyDepartmentId:string read FProxyDepartmentId write SetProxyDepartmentId; //79;
   end;
   TDocuments = specialize GSerializationObjectList<TDocument>;
 
@@ -1082,6 +1091,20 @@ begin
   Modified(53);
 end;
 
+procedure TDocument.SetProxyBoxId(AValue: string);
+begin
+  if FProxyBoxId=AValue then Exit;
+  FProxyBoxId:=AValue;
+  Modified(78);
+end;
+
+procedure TDocument.SetProxyDepartmentId(AValue: string);
+begin
+  if FProxyDepartmentId=AValue then Exit;
+  FProxyDepartmentId:=AValue;
+  Modified(79);
+end;
+
 procedure TDocument.SetProxySignatureStatus(AValue: TProxySignatureStatus);
 begin
   if FProxySignatureStatus=AValue then Exit;
@@ -1304,6 +1327,8 @@ begin
   RegisterProp('SenderReceiptMetadata', 75, true);
   RegisterProp('Version', 76, true);
   RegisterProp('LastOuterDocflows', 77);
+  RegisterProp('ProxyBoxId', 78);
+  RegisterProp('ProxyDepartmentId', 79);
 end;
 
 destructor TDocument.Destroy;
