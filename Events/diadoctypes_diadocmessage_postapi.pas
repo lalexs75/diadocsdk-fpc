@@ -295,12 +295,14 @@ type
   //    optional string ToDepartmentId = 9;
   //    optional string MessageProxyBoxId = 10;
   //    optional string MessageProxyDepartmentId = 11;
+  //    optional bool IsReusable = 12 [default = false];
   //}
   TTemplateToPost = class(TSerializationObject) //message TemplateToPost
   private
     FDocumentAttachments: TTemplateDocumentAttachments;
     FFromBoxId: string;
     FFromDepartmentId: string;
+    FIsReusable: Boolean;
     FLockMode: TLockMode;
     FMessageFromBoxId: string;
     FMessageProxyBoxId: string;
@@ -311,6 +313,7 @@ type
     FToDepartmentId: string;
     procedure SetFromBoxId(AValue: string);
     procedure SetFromDepartmentId(AValue: string);
+    procedure SetIsReusable(AValue: Boolean);
     procedure SetLockMode(AValue: TLockMode);
     procedure SetMessageFromBoxId(AValue: string);
     procedure SetMessageProxyBoxId(AValue: string);
@@ -336,6 +339,7 @@ type
     property ToDepartmentId:string read FToDepartmentId write SetToDepartmentId;//9;
     property MessageProxyBoxId:string read FMessageProxyBoxId write SetMessageProxyBoxId;//10;
     property MessageProxyDepartmentId:string read FMessageProxyDepartmentId write SetMessageProxyDepartmentId;//11;
+    property IsReusable:Boolean read FIsReusable write SetIsReusable; //12 [default = false];
   end;
 
   {  TResolutionRouteRemoval  }
@@ -4938,6 +4942,13 @@ begin
   Modified(8);
 end;
 
+procedure TTemplateToPost.SetIsReusable(AValue: Boolean);
+begin
+  if FIsReusable=AValue then Exit;
+  FIsReusable:=AValue;
+  Modified(12);
+end;
+
 procedure TTemplateToPost.SetLockMode(AValue: TLockMode);
 begin
   if FLockMode=AValue then Exit;
@@ -5008,6 +5019,7 @@ begin
   RegisterProp('ToDepartmentId', 9);
   RegisterProp('MessageProxyBoxId', 10);
   RegisterProp('MessageProxyDepartmentId', 11);
+  RegisterProp('IsReusable', 12);
 end;
 
 procedure TTemplateToPost.InternalInit;

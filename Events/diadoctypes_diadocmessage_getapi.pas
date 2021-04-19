@@ -506,12 +506,14 @@ type
   //    required LockMode LockMode = 10;
   //    optional string MessageProxyBoxId = 11;
   //    optional string MessageProxyDepartmentId = 12;
+  //    optional bool IsReusable = 13 [default = false];
   //}
   TTemplate = class(TSerializationObject)
   private
     FEntities: TEntitys;
     FFromBoxId: string;
     FIsDeleted: Boolean;
+    FIsReusable: Boolean;
     FLockMode: TLockMode;
     FMessageFromBoxId: string;
     FMessageId: string;
@@ -523,6 +525,7 @@ type
     FToBoxId: string;
     procedure SetFromBoxId(AValue: string);
     procedure SetIsDeleted(AValue: Boolean);
+    procedure SetIsReusable(AValue: Boolean);
     procedure SetLockMode(AValue: TLockMode);
     procedure SetMessageFromBoxId(AValue: string);
     procedure SetMessageId(AValue: string);
@@ -550,6 +553,7 @@ type
     property LockMode:TLockMode read FLockMode write SetLockMode; //10;
     property MessageProxyBoxId:string read FMessageProxyBoxId write SetMessageProxyBoxId;//11;
     property MessageProxyDepartmentId:string read FMessageProxyDepartmentId write SetMessageProxyDepartmentId;//12;
+    property IsReusable:Boolean read FIsReusable write SetIsReusable; //13 [default = false];
   end;
 
   { TTemplateToLetterTransformationInfo }
@@ -615,6 +619,7 @@ type
   //    required LockMode LockMode = 21 [default = None];
   //    required Documents.MessageType MessageType = 22;
   //    optional TemplateToLetterTransformationInfo TemplateToLetterTransformationInfo = 23;
+  //    optional bool IsReusable = 24 [default = false];
   //}
   TMessage  = class(TSerializationObject) //message Message {
   private
@@ -629,6 +634,7 @@ type
     FIsDraft: Boolean;
     FIsInternal: Boolean;
     FIsProxified: Boolean;
+    FIsReusable: Boolean;
     FIsTest: Boolean;
     FLastPatchTimestampTicks: sfixed64;
     FLockMode: TLockMode;
@@ -650,6 +656,7 @@ type
     procedure SetIsDraft(AValue: Boolean);
     procedure SetIsInternal(AValue: Boolean);
     procedure SetIsProxified(AValue: Boolean);
+    procedure SetIsReusable(AValue: Boolean);
     procedure SetIsTest(AValue: Boolean);
     procedure SetLastPatchTimestampTicks(AValue: sfixed64);
     procedure SetLockMode(AValue: TLockMode);
@@ -690,6 +697,7 @@ type
     property LockMode:TLockMode read FLockMode write SetLockMode;//%21
     property MessageType:TMessageType read FMessageType write SetMessageType; //%22
     property TemplateToLetterTransformationInfo:TTemplateToLetterTransformationInfo read FTemplateToLetterTransformationInfo; //%23
+    property IsReusable:Boolean read FIsReusable write SetIsReusable; //24 [default = false];
   end;
 
 
@@ -998,6 +1006,13 @@ begin
   Modified(8);
 end;
 
+procedure TTemplate.SetIsReusable(AValue: Boolean);
+begin
+  if FIsReusable=AValue then Exit;
+  FIsReusable:=AValue;
+  Modified(13);
+end;
+
 procedure TTemplate.SetLockMode(AValue: TLockMode);
 begin
   if FLockMode=AValue then Exit;
@@ -1082,6 +1097,7 @@ begin
   RegisterProp('LockMode', 10, true);
   RegisterProp('MessageProxyBoxId', 11);
   RegisterProp('MessageProxyDepartmentId', 12);
+  RegisterProp('IsReusable', 13);
 end;
 
 destructor TTemplate.Destroy;
@@ -1596,6 +1612,13 @@ begin
   Modified(17);
 end;
 
+procedure TMessage.SetIsReusable(AValue: Boolean);
+begin
+  if FIsReusable=AValue then Exit;
+  FIsReusable:=AValue;
+  Modified(24);
+end;
+
 procedure TMessage.SetIsTest(AValue: Boolean);
 begin
   if FIsTest=AValue then Exit;
@@ -1699,6 +1722,7 @@ begin
   RegisterProp('LockMode', 21, true);
   RegisterProp('MessageType', 22, true);
   RegisterProp('TemplateToLetterTransformationInfo', 23);
+  RegisterProp('IsReusable', 24);
 end;
 
 procedure TMessage.InternalInit;

@@ -1,6 +1,6 @@
 { Diadoc interface library for FPC and Lazarus
 
-  Copyright (C) 2018-2020 Lagunov Aleksey alexs75@yandex.ru
+  Copyright (C) 2018-2021 Lagunov Aleksey alexs75@yandex.ru
 
   base on docs from http://api-docs.diadoc.ru
 
@@ -37,20 +37,31 @@ interface
 
 uses Classes, SysUtils, types, protobuf_fpc, FullVersion, DiadocTypes_DocumentId,
   DiadocTypes_Timestamp, DiadocTypes_Document, DiadocTypes_LockMode, DiadocTypes_ForwardDocumentEvent,
-  DiadocTypes_DocumentDirection, DiadocTypes_DiadocMessage_PostApi, DiadocTypes_CustomDataItem;
+  DiadocTypes_DocumentDirection, DiadocTypes_DiadocMessage_PostApi,
+  DiadocTypes_CustomDataItem;
 
 type
 
   TDocumentInfoV3 = class;
+  TDocumentInfoV3s = specialize GSerializationObjectList<TDocumentInfoV3>;
   TDocumentParticipants = class;
+  TDocumentParticipantss = specialize GSerializationObjectList<TDocumentParticipants>;
   TDocumentParticipant = class;
+//  TDocumentParticipants = specialize GSerializationObjectList<TDocumentParticipant>;
   TDocumentLinks = class;
+  TDocumentLinkss = specialize GSerializationObjectList<TDocumentLinks>;
   TPacketInfo = class;
+  TPacketInfos = specialize GSerializationObjectList<TPacketInfo>;
   TDocumentLetterInfo = class;
+  TDocumentLetterInfos = specialize GSerializationObjectList<TDocumentLetterInfo>;
   TDocumentDraftInfo = class;
+  TDocumentDraftInfos = specialize GSerializationObjectList<TDocumentDraftInfo>;
   TDocumentTemplateInfo = class;
+  TDocumentTemplateInfos = specialize GSerializationObjectList<TDocumentTemplateInfo>;
   TTemplateTransformationInfo = class;
+  TTemplateTransformationInfos = specialize GSerializationObjectList<TTemplateTransformationInfo>;
   TTemplateRefusalInfo = class;
+  TTemplateRefusalInfos = specialize GSerializationObjectList<TTemplateRefusalInfo>;
 
   { DocumentInfoV3 } 
   //message DocumentInfoV3
@@ -74,9 +85,6 @@ type
   //	optional DocumentTemplateInfo TemplateInfo = 17;
   //	optional Documents.Origin Origin = 18;
   //}
-
-  { TDocumentInfoV3 }
-
   TDocumentInfoV3 = class(TSerializationObject)
   private
     FFullVersion:TFullVersion;
@@ -97,7 +105,7 @@ type
     FDraftInfo:TDocumentDraftInfo;
     FTemplateInfo:TDocumentTemplateInfo;
     FOrigin:DiadocTypes_Document.TOrigin;
-    procedure SetMessageType(AValue: TMessageType);
+    procedure SetMessageType(AValue:TMessageType);
     procedure SetWorkflowId(AValue:Integer);
     procedure SetDocumentDirection(AValue:TDocumentDirection);
     procedure SetDepartmentId(AValue:String);
@@ -112,7 +120,7 @@ type
     destructor Destroy; override;
   published
     property FullVersion:TFullVersion read FFullVersion;
-    property MessageType:TMessageType read FMessageType write SetMessageType; //2
+    property MessageType:TMessageType read FMessageType write SetMessageType;
     property WorkflowId:Integer read FWorkflowId write SetWorkflowId;
     property Participants:TDocumentParticipants read FParticipants;
     property DocumentDirection:TDocumentDirection read FDocumentDirection write SetDocumentDirection;
@@ -130,7 +138,6 @@ type
     property TemplateInfo:TDocumentTemplateInfo read FTemplateInfo;
     property Origin:TOrigin read FOrigin;
   end;
-  TDocumentInfoV3s = specialize GSerializationObjectList<TDocumentInfoV3>;
 
   { DocumentParticipants } 
   //message DocumentParticipants
@@ -158,7 +165,6 @@ type
     property Recipient:TDocumentParticipant read FRecipient;
     property IsInternal:Boolean read FIsInternal write SetIsInternal;
   end;
-  TDocumentParticipantss = specialize GSerializationObjectList<TDocumentParticipants>;
 
   { DocumentParticipant } 
   //message DocumentParticipant
@@ -181,7 +187,6 @@ type
     property BoxId:String read FBoxId write SetBoxId;
     property DepartmentId:String read FDepartmentId write SetDepartmentId;
   end;
-  TDocumentParticipantList = specialize GSerializationObjectList<TDocumentParticipant>;
 
   { DocumentLinks } 
   //message DocumentLinks
@@ -202,7 +207,6 @@ type
     property InitialIds:TDocumentIds read FInitialIds;
     property SubordinateIds:TDocumentIds read FSubordinateIds;
   end;
-  TDocumentLinkss = specialize GSerializationObjectList<TDocumentLinks>;
 
   { PacketInfo } 
   //message PacketInfo
@@ -228,7 +232,6 @@ type
     property PacketId:String read FPacketId write SetPacketId;
     property AddedAt:TTimestamp read FAddedAt;
   end;
-  TPacketInfos = specialize GSerializationObjectList<TPacketInfo>;
 
   { DocumentLetterInfo } 
   //message DocumentLetterInfo
@@ -254,7 +257,6 @@ type
     property ForwardDocumentEvents:TForwardDocumentEvents read FForwardDocumentEvents;
     property IsTest:Boolean read FIsTest write SetIsTest;
   end;
-  TDocumentLetterInfos = specialize GSerializationObjectList<TDocumentLetterInfo>;
 
   { DocumentDraftInfo } 
   //message DocumentDraftInfo
@@ -280,10 +282,38 @@ type
     property IsLocked:Boolean read FIsLocked write SetIsLocked;
     property TransformedToLetterIds:TDocumentStrings read FTransformedToLetterIds;
   end;
-  TDocumentDraftInfos = specialize GSerializationObjectList<TDocumentDraftInfo>;
 
+  { DocumentTemplateInfo } 
+  //message DocumentTemplateInfo
+  //{
+  //	required DocumentParticipants LetterParticipants = 1;
+  //	repeated string TransformedToLetterIds = 2;
+  //	repeated TemplateTransformationInfo TemplateTransformationInfos = 3;
+  //	optional TemplateRefusalInfo TemplateRefusalInfo = 4;
+  //	optional bool IsReusable = 5 [default = false];
+  //}
+  TDocumentTemplateInfo = class(TSerializationObject)
+  private
+    FLetterParticipants:TDocumentParticipants;
+    FTransformedToLetterIds:TDocumentStrings;
+    FTemplateTransformationInfos:TTemplateTransformationInfos;
+    FTemplateRefusalInfo:TTemplateRefusalInfo;
+    FIsReusable:Boolean;
+    procedure SetIsReusable(AValue:Boolean);
+  protected
+    procedure InternalRegisterProperty; override;
+    procedure InternalInit; override;
+  public
+    destructor Destroy; override;
+  published
+    property LetterParticipants:TDocumentParticipants read FLetterParticipants;
+    property TransformedToLetterIds:TDocumentStrings read FTransformedToLetterIds;
+    property TemplateTransformationInfos:TTemplateTransformationInfos read FTemplateTransformationInfos;
+    property TemplateRefusalInfo:TTemplateRefusalInfo read FTemplateRefusalInfo;
+    property IsReusable:Boolean read FIsReusable write SetIsReusable default false;
+  end;
 
-  { TemplateTransformationInfo }
+  { TemplateTransformationInfo } 
   //message TemplateTransformationInfo
   //{
   //	required string TransformationId = 1;
@@ -307,36 +337,8 @@ type
     property TransformedToDocumentId:TDocumentId read FTransformedToDocumentId;
     property AuthorUserId:String read FAuthorUserId write SetAuthorUserId;
   end;
-  TTemplateTransformationInfos = specialize GSerializationObjectList<TTemplateTransformationInfo>;
 
-  { DocumentTemplateInfo } 
-  //message DocumentTemplateInfo
-  //{
-  //	required DocumentParticipants LetterParticipants = 1;
-  //	repeated string TransformedToLetterIds = 2;
-  //	repeated TemplateTransformationInfo TemplateTransformationInfos = 3;
-  //	optional TemplateRefusalInfo TemplateRefusalInfo = 4;
-  //}
-  TDocumentTemplateInfo = class(TSerializationObject)
-  private
-    FLetterParticipants:TDocumentParticipants;
-    FTransformedToLetterIds:TDocumentStrings;
-    FTemplateTransformationInfos:TTemplateTransformationInfos;
-    FTemplateRefusalInfo:TTemplateRefusalInfo;
-  protected
-    procedure InternalRegisterProperty; override;
-    procedure InternalInit; override;
-  public
-    destructor Destroy; override;
-  published
-    property LetterParticipants:TDocumentParticipants read FLetterParticipants;
-    property TransformedToLetterIds:TDocumentStrings read FTransformedToLetterIds;
-    property TemplateTransformationInfos:TTemplateTransformationInfos read FTemplateTransformationInfos;
-    property TemplateRefusalInfo:TTemplateRefusalInfo read FTemplateRefusalInfo;
-  end;
-  TDocumentTemplateInfos = specialize GSerializationObjectList<TDocumentTemplateInfo>;
-
-  { TemplateRefusalInfo }
+  { TemplateRefusalInfo } 
   //message TemplateRefusalInfo
   //{
   //	required string BoxId = 1;
@@ -361,7 +363,6 @@ type
     property AuthorUserId:String read FAuthorUserId write SetAuthorUserId;
     property Comment:String read FComment write SetComment;
   end;
-  TTemplateRefusalInfos = specialize GSerializationObjectList<TTemplateRefusalInfo>;
 
 implementation
 
@@ -394,7 +395,6 @@ procedure TDocumentInfoV3.InternalInit;
 begin
   inherited InternalInit;
   FFullVersion:= TFullVersion.Create;
-  //FMessageType:= TMessageType.Create;
   FParticipants:= TDocumentParticipants.Create;
   FMetadata:= TMetadataItems.Create;
   FCustomData:= TCustomDataItems.Create;
@@ -421,17 +421,16 @@ begin
   inherited Destroy;
 end;
 
+procedure TDocumentInfoV3.SetMessageType(AValue:TMessageType);
+begin
+  FMessageType:=AValue;
+  Modified(2);
+end;
+
 procedure TDocumentInfoV3.SetWorkflowId(AValue:Integer);
 begin
   FWorkflowId:=AValue;
   Modified(3);
-end;
-
-procedure TDocumentInfoV3.SetMessageType(AValue: TMessageType);
-begin
-  if FMessageType=AValue then Exit;
-  FMessageType:=AValue;
-  Modified(2);
 end;
 
 procedure TDocumentInfoV3.SetDocumentDirection(AValue:TDocumentDirection);
@@ -675,6 +674,7 @@ begin
   RegisterProp('TransformedToLetterIds', 2);
   RegisterProp('TemplateTransformationInfos', 3);
   RegisterProp('TemplateRefusalInfo', 4);
+  RegisterProp('IsReusable', 5);
 end;
 
 procedure TDocumentTemplateInfo.InternalInit;
@@ -684,6 +684,8 @@ begin
   FTransformedToLetterIds:= TDocumentStrings.Create;
   FTemplateTransformationInfos:= TTemplateTransformationInfos.Create;
   FTemplateRefusalInfo:= TTemplateRefusalInfo.Create;
+
+  IsReusable:= false;
 end;
 
 destructor TDocumentTemplateInfo.Destroy;
@@ -693,6 +695,12 @@ begin
   FTemplateTransformationInfos.Free;
   FTemplateRefusalInfo.Free;
   inherited Destroy;
+end;
+
+procedure TDocumentTemplateInfo.SetIsReusable(AValue:Boolean);
+begin
+  FIsReusable:=AValue;
+  Modified(5);
 end;
 
 
