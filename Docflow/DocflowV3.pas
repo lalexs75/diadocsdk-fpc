@@ -1,6 +1,6 @@
 { Diadoc interface library for FPC and Lazarus
 
-  Copyright (C) 2018-2020 Lagunov Aleksey alexs75@yandex.ru
+  Copyright (C) 2018-2021 Lagunov Aleksey alexs75@yandex.ru
 
   base on docs from http://api-docs.diadoc.ru
 
@@ -35,8 +35,8 @@ unit DocflowV3;
 
 interface
 
-uses Classes, SysUtils, types, protobuf_fpc,
-  DiadocTypes_Timestamp, DiadocTypes_Document, AttachmentV3, RoamingNotification, ResolutionDocflowV3, OuterDocflowStatus;
+uses Classes, SysUtils, types, protobuf_fpc, DiadocTypes_Timestamp, DiadocTypes_Document, AttachmentV3, RoamingNotification,
+  ResolutionDocflowV3, OuterDocflowStatus, DocflowStatusV3;
 
 type
 
@@ -82,6 +82,7 @@ type
   //	optional ResolutionEntitiesV3 ResolutionEntities = 10;
   //	repeated OuterDocflow OuterDocflows = 12;
   //	repeated OuterDocflowEntities OuterDocflowEntities = 13;
+  //	required DocflowStatusV3 DocflowStatus = 14;
   //}
   TDocflowV3 = class(TSerializationObject)
   private
@@ -97,6 +98,7 @@ type
     FResolutionEntities:TResolutionEntitiesV3;
     FOuterDocflows:TOuterDocflows;
     FOuterDocflowEntities:TOuterDocflowEntitiess;
+    FDocflowStatus:TDocflowStatusV3;
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
@@ -115,6 +117,7 @@ type
     property ResolutionEntities:TResolutionEntitiesV3 read FResolutionEntities;
     property OuterDocflows:TOuterDocflows read FOuterDocflows;
     property OuterDocflowEntities:TOuterDocflowEntitiess read FOuterDocflowEntities;
+    property DocflowStatus:TDocflowStatusV3 read FDocflowStatus;
   end;
 
   { SenderTitleDocflow } 
@@ -493,6 +496,7 @@ begin
   RegisterProp('ResolutionEntities', 10);
   RegisterProp('OuterDocflows', 12);
   RegisterProp('OuterDocflowEntities', 13);
+  RegisterProp('DocflowStatus', 14, true);
 end;
 
 procedure TDocflowV3.InternalInit;
@@ -510,6 +514,7 @@ begin
   FResolutionEntities:= TResolutionEntitiesV3.Create;
   FOuterDocflows:= TOuterDocflows.Create;
   FOuterDocflowEntities:= TOuterDocflowEntitiess.Create;
+  FDocflowStatus:= TDocflowStatusV3.Create;
 end;
 
 destructor TDocflowV3.Destroy;
@@ -526,6 +531,7 @@ begin
   FResolutionEntities.Free;
   FOuterDocflows.Free;
   FOuterDocflowEntities.Free;
+  FDocflowStatus.Free;
   inherited Destroy;
 end;
 

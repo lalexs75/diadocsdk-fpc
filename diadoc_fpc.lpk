@@ -15,7 +15,7 @@
     </CompilerOptions>
     <Description Value="Компоненты интеграции Контур ДИАДОК-API для FPC и Lazarus"/>
     <License Value="LGPL"/>
-    <Version Major="1" Minor="4" Build="18"/>
+    <Version Major="1" Minor="4" Release="1" Build="20"/>
     <Files>
       <Item>
         <Filename Value="diadoc_define.inc"/>
@@ -1322,6 +1322,10 @@
       <Item>
         <Filename Value="Documents\Types\DocumentTypeDescriptionV2.pas"/>
         <UnitName Value="DocumentTypeDescriptionV2"/>
+      </Item>
+      <Item>
+        <Filename Value="diadoc_src\DocflowStatusV3.pas"/>
+        <UnitName Value="DocflowStatusV3"/>
       </Item>
     </Files>
     <LazDoc Paths="docs"/>

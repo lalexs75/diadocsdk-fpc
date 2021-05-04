@@ -169,7 +169,8 @@ uses
   UniversalCorrectionDocument_KSCHFDIS_ucd_05_01_03_ind0, OuterDocflow, 
   OuterDocflowStatus, Events_RevocationRequestInfo, 
   UniversalCorrectionDocument_KSCHFDIS_ucd736_05_01_01_ind0, 
-  DocumentTypeDescription, DocumentTypeDescriptionV2, LazarusPackageIntf;
+  DocumentTypeDescription, DocumentTypeDescriptionV2, DocflowStatusV3, 
+  LazarusPackageIntf;
 
 implementation
 
