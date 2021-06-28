@@ -35,8 +35,7 @@ unit DocflowV3;
 
 interface
 
-uses Classes, SysUtils, types, protobuf_fpc, DiadocTypes_Timestamp, DiadocTypes_Document, AttachmentV3, RoamingNotification,
-  ResolutionDocflowV3, OuterDocflowStatus, DocflowStatusV3;
+uses Classes, SysUtils, types, protobuf_fpc, DiadocTypes_Timestamp, DiadocTypes_Document, AttachmentV3, RoamingNotification, ResolutionDocflowV3, OuterDocflowStatus, DocflowStatusV3;
 
 type
 
@@ -250,12 +249,13 @@ type
   //message AmendmentRequestDocflow
   //{
   //	required bool IsFinished = 1;
-  //	required SignedAttachmentV3 AmendmentRequest = 2;
+  //	optional SignedAttachmentV3 AmendmentRequest = 2;
   //	optional Timestamp SentAt = 3;
   //	optional Timestamp DeliveredAt = 4;
   //	optional ReceiptDocflowV3 Receipt = 5;
   //	required int32 AmendmentFlags = 6;
   //	optional string PlainText = 7;
+  //	optional ConfirmationDocflow ConfirmationDocflow = 8;
   //}
   TAmendmentRequestDocflow = class(TSerializationObject)
   private
@@ -266,6 +266,7 @@ type
     FReceipt:TReceiptDocflowV3;
     FAmendmentFlags:Integer;
     FPlainText:String;
+    FConfirmationDocflow:TConfirmationDocflow;
     procedure SetIsFinished(AValue:Boolean);
     procedure SetAmendmentFlags(AValue:Integer);
     procedure SetPlainText(AValue:String);
@@ -282,6 +283,7 @@ type
     property Receipt:TReceiptDocflowV3 read FReceipt;
     property AmendmentFlags:Integer read FAmendmentFlags write SetAmendmentFlags;
     property PlainText:String read FPlainText write SetPlainText;
+    property ConfirmationDocflow:TConfirmationDocflow read FConfirmationDocflow;
   end;
 
   { RevocationDocflowV3 } 
@@ -705,12 +707,13 @@ procedure TAmendmentRequestDocflow.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
   RegisterProp('IsFinished', 1, true);
-  RegisterProp('AmendmentRequest', 2, true);
+  RegisterProp('AmendmentRequest', 2);
   RegisterProp('SentAt', 3);
   RegisterProp('DeliveredAt', 4);
   RegisterProp('Receipt', 5);
   RegisterProp('AmendmentFlags', 6, true);
   RegisterProp('PlainText', 7);
+  RegisterProp('ConfirmationDocflow', 8);
 end;
 
 procedure TAmendmentRequestDocflow.InternalInit;
@@ -720,6 +723,7 @@ begin
   FSentAt:= TTimestamp.Create;
   FDeliveredAt:= TTimestamp.Create;
   FReceipt:= TReceiptDocflowV3.Create;
+  FConfirmationDocflow:= TConfirmationDocflow.Create;
 end;
 
 destructor TAmendmentRequestDocflow.Destroy;
@@ -728,6 +732,7 @@ begin
   FSentAt.Free;
   FDeliveredAt.Free;
   FReceipt.Free;
+  FConfirmationDocflow.Free;
   inherited Destroy;
 end;
 
