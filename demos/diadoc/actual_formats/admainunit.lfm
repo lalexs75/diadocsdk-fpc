@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 587
+  Left = 553
   Height = 520
-  Top = 299
+  Top = 208
   Width = 699
   Caption = 'Актуальные форматы документов'
   ClientHeight = 520
@@ -9,7 +9,7 @@ object Form1: TForm1
   OnClose = FormClose
   OnCreate = FormCreate
   Position = poScreenCenter
-  SessionProperties = 'Edit1.Text;Edit2.Text;Edit3.Text'
+  SessionProperties = 'Edit1.Text;Edit2.Text;Edit3.Text;DirectoryEdit1.Text'
   LCLVersion = '2.3.0.0'
   object GroupBox1: TGroupBox
     Left = 0
@@ -183,7 +183,7 @@ object Form1: TForm1
         ClientWidth = 475
         object TreeView2: TTreeView
           Left = 0
-          Height = 253
+          Height = 189
           Top = 47
           Width = 475
           Align = alClient
@@ -214,19 +214,71 @@ object Form1: TForm1
             BorderSpacing.Around = 6
             TabOrder = 0
           end
+        end
+        object Panel4: TPanel
+          Left = 0
+          Height = 64
+          Top = 236
+          Width = 475
+          Align = alBottom
+          AutoSize = True
+          ClientHeight = 64
+          ClientWidth = 475
+          TabOrder = 2
+          object Label5: TLabel
+            AnchorSideLeft.Control = Panel4
+            AnchorSideTop.Control = Panel4
+            Left = 1
+            Height = 17
+            Top = 1
+            Width = 181
+            Caption = 'Папка для выгрузки XSD схем'
+          end
+          object DirectoryEdit1: TDirectoryEdit
+            AnchorSideLeft.Control = Label5
+            AnchorSideTop.Control = Label5
+            AnchorSideTop.Side = asrBottom
+            AnchorSideRight.Control = Button5
+            Left = 7
+            Height = 33
+            Top = 24
+            Width = 257
+            ShowHidden = False
+            ButtonWidth = 23
+            NumGlyphs = 1
+            Anchors = [akTop, akLeft, akRight]
+            BorderSpacing.Around = 6
+            MaxLength = 0
+            TabOrder = 0
+          end
+          object Button5: TButton
+            AnchorSideTop.Control = Label5
+            AnchorSideTop.Side = asrBottom
+            AnchorSideRight.Control = Button4
+            Left = 270
+            Height = 33
+            Top = 24
+            Width = 80
+            Action = xsdExportCurr
+            Anchors = [akTop, akRight]
+            AutoSize = True
+            BorderSpacing.Around = 6
+            TabOrder = 1
+          end
           object Button4: TButton
-            AnchorSideTop.Control = Panel3
-            AnchorSideRight.Control = Panel3
+            AnchorSideTop.Control = Label5
+            AnchorSideTop.Side = asrBottom
+            AnchorSideRight.Control = Panel4
             AnchorSideRight.Side = asrBottom
             Left = 356
             Height = 33
-            Top = 7
+            Top = 24
             Width = 112
             Action = xsdExportAll
             Anchors = [akTop, akRight]
             AutoSize = True
             BorderSpacing.Around = 6
-            TabOrder = 1
+            TabOrder = 2
           end
         end
       end
@@ -1334,6 +1386,10 @@ object Form1: TForm1
       Caption = 'Выгрузить всё...'
       OnExecute = xsdExportAllExecute
     end
+    object xsdExportCurr: TAction
+      Caption = 'Выгрузить'
+      OnExecute = xsdExportCurrExecute
+    end
   end
   object SynXMLSyn1: TSynXMLSyn
     DefaultFilter = 'Документ XML (*.xml,*.xsd,*.xsl,*.xslt,*.dtd)|*.xml;*.xsd;*.xsl;*.xslt;*.dtd'
@@ -1341,11 +1397,6 @@ object Form1: TForm1
     WantBracesParsed = False
     Left = 383
     Top = 284
-  end
-  object SelectDirectoryDialog1: TSelectDirectoryDialog
-    Title = 'Выберите каталог для экспорта'
-    Left = 304
-    Top = 211
   end
   object RxIniPropStorage1: TRxIniPropStorage
     StoredValues = <>

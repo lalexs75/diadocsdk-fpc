@@ -1327,6 +1327,10 @@
         <Filename Value="diadoc_src\DocflowStatusV3.pas"/>
         <UnitName Value="DocflowStatusV3"/>
       </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_SCHFDOP_utd820_05_01_02_hyphen_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_SCHFDOP_utd820_05_01_02_hyphen_ind0"/>
+      </Item>
     </Files>
     <LazDoc Paths="docs"/>
     <i18n>

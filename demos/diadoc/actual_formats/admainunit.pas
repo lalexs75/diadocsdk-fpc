@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  ComCtrls, Menus, ActnList, IniPropStorage, DiadocAPI,
+  ComCtrls, Menus, ActnList, IniPropStorage, EditBtn, DiadocAPI,
   DiadocTypes_Organization, ddSelectClient, DocumentTypeDescriptionV2,
   httpsend, SynEdit, SynHighlighterXML, RxIniPropStorage;
 
@@ -15,11 +15,15 @@ type
   { TForm1 }
 
   TForm1 = class(TForm)
+    xsdExportCurr: TAction;
     Button2: TButton;
     Button4: TButton;
+    Button5: TButton;
+    DirectoryEdit1: TDirectoryEdit;
+    Label5: TLabel;
     Panel3: TPanel;
+    Panel4: TPanel;
     RxIniPropStorage1: TRxIniPropStorage;
-    SelectDirectoryDialog1: TSelectDirectoryDialog;
     xsdExportAll: TAction;
     Button3: TButton;
     Edit4: TEdit;
@@ -57,6 +61,7 @@ type
     procedure TreeView1Click(Sender: TObject);
     procedure TreeView2Click(Sender: TObject);
     procedure xsdExportAllExecute(Sender: TObject);
+    procedure xsdExportCurrExecute(Sender: TObject);
     procedure xsdOpenExecute(Sender: TObject);
   private
     FMyDT: TGetDocumentTypesResponseV2;
@@ -141,12 +146,12 @@ begin
           Memo1.Lines.Add('  заявление участника ЭДО для работы не требуется');
 
         S:='';
-        for i:=0 to DTD.SupportedDocflows.Count-1 do
+(*        for i:=0 to DTD.SupportedDocflows.Count-1 do
         begin
           if S<>'' then  S:=S+ ',';
           S:=S + DocumentDocflowToStr(DTD.SupportedDocflows[i]);
         end;
-        Memo1.Lines.Add('  виды документооборота : '+S);
+        Memo1.Lines.Add('  виды документооборота : '+S); *)
 
         Memo1.Lines.Add('  Функции :');
         for DF in DTD.Functions do
@@ -203,19 +208,19 @@ begin
   if Assigned(TreeView2.Selected) and Assigned(TreeView2.Selected.Data) then
   begin
     D:=TObject(TreeView2.Selected.Data);
-    xsdOpen.Enabled:=D is TDocumentVersion;
+    xsdOpen.Enabled:=D is TDocumentVersionV2;
   end;
+  xsdExportCurr.Enabled:=xsdOpen.Enabled;
 end;
 
 procedure TForm1.xsdExportAllExecute(Sender: TObject);
 var
-  DTD:TDocumentTypeDescription;
-  DF:TDocumentFunction;
-  DFV:TDocumentVersion;
-  DFVT:TDocumentTitle;
+  DTD:TDocumentTypeDescriptionV2;
+  DF:TDocumentFunctionV2;
+  DFV:TDocumentVersionV2;
+  DFVT:TDocumentTitleV2;
 begin
   if not Assigned(FMyDT) then Exit;
-  if not SelectDirectoryDialog1.Execute then Exit;
 
   for DTD in FMyDT.DocumentTypes do
   begin
@@ -223,10 +228,15 @@ begin
     begin
       for DFV in DF.Versions do
         for DFVT in DFV.Titles do
-          DoExport(SelectDirectoryDialog1.FileName, DTD, DF, DFV, DFVT);
+          DoExport(DirectoryEdit1.Directory, DTD, DF, DFV, DFVT);
     end;
   end;
   ShowMessage('Выгрузка успешная');
+end;
+
+procedure TForm1.xsdExportCurrExecute(Sender: TObject);
+begin
+//  DoExport(DirectoryEdit1.Directory, DTD, DF, DFV, DFVT);
 end;
 
 procedure TForm1.xsdOpenExecute(Sender: TObject);
@@ -246,14 +256,14 @@ begin
 
   ST:=TreeView2.Selected;
   D:=TObject(ST.Data);
-  if D is TDocumentVersion then
-    SVers:=TDocumentVersion(D).Version;
+  if D is TDocumentVersionV2 then
+    SVers:=TDocumentVersionV2(D).Version;
 
-  if TObject(ST.Parent.Data) is TDocumentFunction then
-    SFunc:=TDocumentFunction(ST.Parent.Data).Name;
+  if TObject(ST.Parent.Data) is TDocumentFunctionV2 then
+    SFunc:=TDocumentFunctionV2(ST.Parent.Data).Name;
 
-  if TObject(ST.Parent.Parent.Data) is TDocumentTypeDescription then
-    STypeDesc:=TDocumentTypeDescription(ST.Parent.Parent.Data).Name;
+  if TObject(ST.Parent.Parent.Data) is TDocumentTypeDescriptionV2 then
+    STypeDesc:=TDocumentTypeDescriptionV2(ST.Parent.Parent.Data).Name;
 
   if (STypeDesc<>'') and (SFunc <> '') and (SVers <> '') then
   begin
@@ -370,6 +380,18 @@ begin
   else
   if ADocFunction = 'КСЧФДИС' then
     Result:='KSCHFDIS'
+  else
+  if ADocFunction = 'СВРК' then
+    Result:='SVRK'
+  else
+  if ADocFunction = 'СВЗК' then
+    Result:='SVZK'
+  else
+  if ADocFunction = 'СВИСРК' then
+    Result:='SVISRK'
+  else
+  if ADocFunction = 'СВИСЗК' then
+    Result:='SVISZK'
   else
   if ADocFunction = 'DEFAULT' then
     Result:='DEFAULT'
