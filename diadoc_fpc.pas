@@ -170,6 +170,7 @@ uses
   OuterDocflowStatus, Events_RevocationRequestInfo, 
   UniversalCorrectionDocument_KSCHFDIS_ucd736_05_01_01_ind0, 
   DocumentTypeDescription, DocumentTypeDescriptionV2, DocflowStatusV3, 
+  UniversalTransferDocument_SCHFDOP_utd820_05_01_02_hyphen_ind0, 
   LazarusPackageIntf;
 
 implementation
