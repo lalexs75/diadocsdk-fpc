@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
   ComCtrls, Menus, ActnList, IniPropStorage, DiadocAPI,
-  DiadocTypes_Organization, ddSelectClient, DiadocTypes_DocumentTypeDescription,
+  DiadocTypes_Organization, ddSelectClient, DocumentTypeDescriptionV2,
   httpsend, SynEdit, SynHighlighterXML, RxIniPropStorage;
 
 type
@@ -59,12 +59,12 @@ type
     procedure xsdExportAllExecute(Sender: TObject);
     procedure xsdOpenExecute(Sender: TObject);
   private
-    FMyDT: TGetDocumentTypesResponse;
+    FMyDT: TGetDocumentTypesResponseV2;
     FMyOrgs: TOrganizationList;
     procedure DoConnect;
     procedure FillBoxList;
     function CheckConnectionParams:Boolean;
-    procedure DoExport(AFolderName:string; DTD:TDocumentTypeDescription; DF:TDocumentFunction; DFV:TDocumentVersion; DFVT:TDocumentTitle);
+    procedure DoExport(AFolderName:string; DTD:TDocumentTypeDescriptionV2; DF:TDocumentFunctionV2; DFV:TDocumentVersionV2; DFVT:TDocumentTitleV2);
     function NormalazeDocFunction(ADocFunction:string):string;
   public
 
@@ -105,12 +105,12 @@ end;
 procedure TForm1.TreeView1Click(Sender: TObject);
 var
   B: TBox;
-  DTD:TDocumentTypeDescription;
-  DF:TDocumentFunction;
-  DFV:TDocumentVersion;
+  DTD:TDocumentTypeDescriptionV2;
+  DF:TDocumentFunctionV2;
+  DFV:TDocumentVersionV2;
   i: Integer;
   S: String;
-  DFVT:TDocumentTitle;
+  DFVT:TDocumentTitleV2;
   V, V1, V2, V3: TTreeNode;
 begin
   Memo1.Lines.Clear;
@@ -122,7 +122,7 @@ begin
   if Assigned(TreeView1.Selected) and Assigned(TreeView1.Selected.Data) then
   begin
     B:=TBox(TreeView1.Selected.Data);
-    FMyDT:=DiadocAPI1.GetDocumentTypes(B.BoxId);
+    FMyDT:=DiadocAPI1.GetDocumentTypesV2(B.BoxId);
     if Assigned(FMyDT) then
     begin
       for DTD in FMyDT.DocumentTypes do
@@ -331,8 +331,8 @@ begin
     ShowMessage('Необходимо указать параметры подключения');
 end;
 
-procedure TForm1.DoExport(AFolderName: string; DTD: TDocumentTypeDescription;
-  DF: TDocumentFunction; DFV: TDocumentVersion; DFVT: TDocumentTitle);
+procedure TForm1.DoExport(AFolderName: string; DTD: TDocumentTypeDescriptionV2;
+  DF: TDocumentFunctionV2; DFV: TDocumentVersionV2; DFVT: TDocumentTitleV2);
 var
   M: TMemoryStream;
   S: String;

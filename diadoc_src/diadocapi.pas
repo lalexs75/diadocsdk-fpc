@@ -539,6 +539,12 @@ begin
     FHTTP.Document.Position:=0;
     FAuthToken:=ReadStrFromStream(FHTTP.Document, FHTTP.Document.Size);
     Result:=true;
+  end
+  else
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('Authenticate.bin');
+    {$ENDIF}
   end;
 end;
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DocumentTypeDescriptionV2"><element name="TDocumentTypeDescriptionV2"><short>Описывает тип документов. Возвращается методом V2/GetDocumentTypes.</short><descr><p><b>Name</b> - уникальный строковой идентификатор типа (он же TypeNamedId в других контрактах и методах)</p><p><b>Title</b> - заголовок типа, человеко-понятное название (например, «Счёт-фактура»)</p><p><b>SupportedDocflows</b> - поддерживаемые типы документооборота
+<ul><li>0 - внешний документооборот</li><li>1 - внутренний документооборот</li>
+            </ul>
+          </p><p><b>RequiresFnsRegistration</b> - для работы требуется заявление участника ЭДО</p><p><b>Functions</b> - описания функций документа</p>
+        </descr>
+      </element><element name="TDocumentFunctionV2"><short>Описывает функцию документа.</short><descr><p><b>Name</b> - строковой идентификатор функции, уникальное в рамках типа документов</p><p><b>Versions</b> - описания версий документа</p>
+        </descr>
+      </element><element name="TDocumentFunctionV2s"><short>Описывает функцию документа.</short><descr><p><b>Name</b> - строковой идентификатор функции, уникальное в рамках типа документов</p><p><b>Versions</b> - описания версий документа</p>
+        </descr>
+      </element><element name="TDocumentTypeDescriptionV2.Name"><short>Name - уникальный строковой идентификатор типа (он же TypeNamedId в других контрактах и методах)</short>
+      </element><element name="TDocumentTypeDescriptionV2.Title"><short>Title - заголовок типа, человеко-понятное название (например, «Счёт-фактура»)</short>
+      </element><element name="TDocumentTypeDescriptionV2.SupportedDocflows"><short>SupportedDocflows - поддерживаемые типы документооборота</short><descr><ul><li>0 - внешний документооборот</li><li>1 - внутренний документооборот</li>
+          </ul>
+        </descr>
+      </element><element name="TDocumentTypeDescriptionV2.RequiresFnsRegistration"><short>RequiresFnsRegistration - для работы требуется заявление участника ЭДО</short>
+      </element><element name="TDocumentTypeDescriptionV2.Functions"><short>Functions - описания функций документа</short>
+      </element><element name="TDocumentFunctionV2.Name"><short>Name - строковой идентификатор функции, уникальное в рамках типа документов</short>
+      </element><element name="TDocumentFunctionV2.Versions"><short>Versions - описания версий документа</short>
+      </element><element name="TDocumentVersionV2s"><short>Описывает версию документа.</short>
+      </element><element name="TDocumentVersionV2"><short>Описывает версию документа.</short><descr><p><b>Version</b> - строковой идентификатор версии, уникальный в рамках функции документа</p><p><b>SupportsContentPatching</b> - поддерживается патчинг</p><p><b>SupportsEncrypting</b> - поддерживается отправка зашифрованных документов</p><p><b>SupportsPredefinedRecipientTitle</b> - поддерживается отправка предопределенного титула. Подробнее здесь: Как работать с предопределённым титулом получателя.</p><p><b>SupportsAmendmentRequest</b> - поддерживается отправка запроса на уточнение.</p><p><b>Titles</b> - описания титулов документа</p><p><b>IsActual</b> - версия актуальна</p><p><b>Workflows</b> - виды документооборота</p>
+        </descr>
+      </element><element name="TDocumentVersionV2.Version"><short>Version - строковой идентификатор версии, уникальный в рамках функции документа</short>
+      </element><element name="TDocumentVersionV2.SupportsContentPatching"><short>SupportsContentPatching - поддерживается патчинг</short>
+      </element><element name="TDocumentVersionV2.SupportsEncrypting"><short>SupportsEncrypting - поддерживается отправка зашифрованных документов</short>
+      </element><element name="TDocumentVersionV2.SupportsPredefinedRecipientTitle"><short>SupportsPredefinedRecipientTitle - поддерживается отправка предопределенного титула. </short>
+      </element><element name="TDocumentVersionV2.SupportsAmendmentRequest"><short>SupportsAmendmentRequest - поддерживается отправка запроса на уточнение.</short>
+      </element><element name="TDocumentVersionV2.Titles"><short>Titles - описания титулов документа</short>
+      </element><element name="TDocumentVersionV2.IsActual"><short>IsActual - версия актуальна</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>
