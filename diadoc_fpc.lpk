@@ -15,7 +15,7 @@
     </CompilerOptions>
     <Description Value="Компоненты интеграции Контур ДИАДОК-API для FPC и Lazarus"/>
     <License Value="LGPL"/>
-    <Version Major="1" Minor="4" Release="1" Build="20"/>
+    <Version Major="1" Minor="4" Release="2" Build="20"/>
     <Files>
       <Item>
         <Filename Value="diadoc_define.inc"/>
@@ -1330,6 +1330,10 @@
       <Item>
         <Filename Value="DataXml\UniversalTransferDocument_SCHFDOP_utd820_05_01_02_hyphen_ind0.pas"/>
         <UnitName Value="UniversalTransferDocument_SCHFDOP_utd820_05_01_02_hyphen_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="DataXml\Invoice_DEFAULT_utd820_05_01_02_hyphen_ind0.pas"/>
+        <UnitName Value="Invoice_DEFAULT_utd820_05_01_02_hyphen_ind0"/>
       </Item>
     </Files>
     <LazDoc Paths="docs"/>

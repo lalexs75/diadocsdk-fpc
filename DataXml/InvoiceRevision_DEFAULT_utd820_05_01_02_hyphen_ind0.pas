@@ -312,7 +312,7 @@ type
     procedure InternalInitChilds; override;
     function RootNodeName:string; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     property Sellers:TUniversalTransferDocumentWithHyphens_Sellers read FSellers;
@@ -389,7 +389,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //СвПрод - сведения о продавце
@@ -404,7 +404,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //СвПокуп - сведения о покупателе
@@ -419,7 +419,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ГрузОт - грузоотправитель
@@ -437,7 +437,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     property OrganizationDetails:TExtendedOrganizationDetailsWithHyphens read FOrganizationDetails;
@@ -454,7 +454,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ГрузПолуч - грузополучатель
@@ -470,7 +470,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     property SignerReference:TSignerReference read FSignerReference;
@@ -485,7 +485,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //СвПРД - платежно-расчетные документы
@@ -513,7 +513,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ДатаГосКонт - Дата государственного контракта
@@ -542,7 +542,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ДокПодтвОтгр - Реквизиты документа, подтверждающего отгрузку
@@ -563,7 +563,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //НаимДокОтгр - Наименование документа об отгрузке
@@ -597,7 +597,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //СведТов - информация о товарах
@@ -675,7 +675,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     property CustomsDeclarations:TInvoiceTable_Item_CustomsDeclarations read FCustomsDeclarations;
@@ -743,7 +743,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //Цифровой код страны происхождения товара (Графа 10
@@ -759,7 +759,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //Информационное поле факта хозяйственной жизни 1
@@ -774,7 +774,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //СведПрослеж - Сведения о товаре, подлежащем
@@ -797,7 +797,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //НомТовПрослеж - Регистрационный номер партии
@@ -822,7 +822,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //НомСредИдентТов - Номер средств идентификации товаров
@@ -842,7 +842,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //КИЗ - Контрольный идентификационный знак
@@ -885,7 +885,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     property TransferBases:TTransferInfo_TransferBases read FTransferBases;
@@ -925,7 +925,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ОснПер - Основание отгрузки
@@ -942,7 +942,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ТекстИнф - текстовая информация
@@ -961,7 +961,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ТекстИнф - текстовая информация
@@ -981,7 +981,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //Идентиф - идентификатор (наименование)
@@ -1001,7 +1001,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //КодПроисх - Код страны происхождения товара по Общероссийскому классификатору стран мира (ОКСМ) или
@@ -1025,7 +1025,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //КодПроисх - Код страны происхождения товара по Общероссийскому классификатору стран мира (ОКСМ) или
@@ -1051,7 +1051,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //сумма без учета налога
@@ -1077,7 +1077,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //сумма без учета налога
@@ -1105,7 +1105,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //акциз
@@ -1139,7 +1139,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //единицы измерения товара (код)
@@ -1167,7 +1167,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ставка налога
@@ -1183,7 +1183,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ставка налога
@@ -1199,7 +1199,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ставка налога
@@ -1215,7 +1215,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ставка налога
@@ -1241,7 +1241,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //Лицо, выдавшее доверенность
@@ -1275,7 +1275,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     property LastName:Tstring60 read FLastName write SetLastName;
@@ -1295,7 +1295,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //лицо, подписывающее со стороны исполнителя / заказчика
@@ -1319,7 +1319,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ДатаПРД - Дата составления платежно-расчетного документа
@@ -1345,7 +1345,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //НаимОсн - Наименование документа-основания
@@ -1367,7 +1367,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     property OrganizationDetails:TExtendedOrganizationDetails read FOrganizationDetails;
@@ -1383,7 +1383,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     property OrganizationDetails:TExtendedOrganizationDetails_ForeignAddress1000 read FOrganizationDetails;
@@ -1399,7 +1399,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     property OrganizationDetails:TExtendedOrganizationDetails_Torg2 read FOrganizationDetails;
@@ -1447,7 +1447,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //СвИП - СвЮЛУч - СвИнНеУч
@@ -1502,7 +1502,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //Адрес
@@ -1554,7 +1554,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //СвИП - СвЮЛУч - СвИнНеУч
@@ -1598,7 +1598,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     property BoxId:Tstring100 read FBoxId write SetBoxId;
@@ -1620,7 +1620,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //Адрес
@@ -1651,7 +1651,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //Адрес
@@ -1675,7 +1675,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     property OrganizationDetails:TExtendedOrganizationDetailsWithHyphens read FOrganizationDetails;
@@ -1691,7 +1691,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ДефИННФЛ, ДефИННЮЛ
@@ -1709,7 +1709,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     property RussianAddress:TRussianAddress read FRussianAddress;
@@ -1728,7 +1728,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     property RussianAddress:TRussianAddress read FRussianAddress;
@@ -1761,7 +1761,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //индекс
@@ -1795,7 +1795,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //страна (код)
@@ -1815,7 +1815,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //страна (код)
@@ -1833,7 +1833,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     property SignerDetails:TSignerDetails read FSignerDetails;
@@ -1859,7 +1859,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     property LastName:String read FLastName write SetLastName;
@@ -1882,7 +1882,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //X.509 сертификат подписанта (DER-кодировка) в формате BASE64Одно из полей CertificateBytes или CertificateThumbprint обязательно для заполнения
@@ -1904,7 +1904,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //Идентификатор ящика подписанта для заполнения SignerDetails
@@ -1944,7 +1944,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     property LastName:Tstring60 read FLastName write SetLastName;
@@ -1999,7 +1999,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     property LastName:Tstring60 read FLastName write SetLastName;
@@ -2034,7 +2034,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //Статус1 - работник организации продавца товаров (работ, услуг, имущественных прав) ИЛИ работник организации покупателя;
@@ -2053,7 +2053,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //Статус3 - работник иной уполномоченной организации;
@@ -2072,7 +2072,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ОблПолн - Область полномочий0 - лицо, ответственное за подписание счетов-фактур
@@ -2094,7 +2094,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ОблПолн - Область полномочий1 - лицо, совершившее сделку, операцию
@@ -2114,7 +2114,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ОблПолн - Область полномочий1 - лицо, совершившее сделку, операцию
@@ -2137,7 +2137,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ОблПолн - Область полномочий0 - лицо, ответственное за подписание счетов-фактур;
@@ -2155,7 +2155,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ОблПолн - Область полномочий3 – лицо, ответственное за оформление свершившегося события;
@@ -2171,7 +2171,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ОблПолн - Область полномочий0 - лицо, ответственное за подписание счетов-фактур;
@@ -2190,7 +2190,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ОблПолн - Область полномочий1 - лицо, совершившее сделку, операцию;
@@ -2210,7 +2210,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ОблПолн - Область полномочий1 - лицо, принявшее ценности
@@ -2237,7 +2237,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ОблПолн - Область полномочий21 - лицо, в полномочия которого входит утверждение документа, оформляющего событие (факт хозяйственной жизни)
@@ -2272,7 +2272,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //Должность
@@ -2309,7 +2309,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //Должность представителя организацииЕсли заполнено - формируется структура "ПредОргПер".Если не заполнено – формируется структура "ФЛПер".
@@ -2335,7 +2335,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     property Waybill:TWaybills_WaybillList read FWaybill;
@@ -2352,7 +2352,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //НомерТранНакл - Номер транспортной накладной
@@ -2376,7 +2376,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //НаимОсн - Наименование документа-основания отгрузки
@@ -2398,7 +2398,7 @@ type
     procedure InternalRegisterPropertys; override;
     procedure InternalInitChilds; override;
   public
-    constructor Create;
+    constructor Create; override;
     destructor Destroy; override;
   published
     //ИдентОсн - Идентификатор документа – основания
@@ -2488,7 +2488,6 @@ end;
 procedure TUniversalTransferDocumentWithHyphens.SetHyphenRevisionDate(AValue: String);
 begin
   CheckLockupValue('HyphenRevisionDate', AValue);
-  CheckFixedValue('HyphenRevisionDate', AValue);
   FHyphenRevisionDate:=AValue;
   ModifiedProperty('HyphenRevisionDate');
 end;
@@ -2502,7 +2501,6 @@ end;
 procedure TUniversalTransferDocumentWithHyphens.SetHyphenRevisionNumber(AValue: String);
 begin
   CheckLockupValue('HyphenRevisionNumber', AValue);
-  CheckFixedValue('HyphenRevisionNumber', AValue);
   FHyphenRevisionNumber:=AValue;
   ModifiedProperty('HyphenRevisionNumber');
 end;
@@ -2730,7 +2728,6 @@ end;
 procedure TUniversalTransferDocumentWithHyphens_Shippers_Shipper.SetSameAsSeller(AValue: String);
 begin
   CheckLockupValue('SameAsSeller', AValue);
-  CheckFixedValue('SameAsSeller', AValue);
   FSameAsSeller:=AValue;
   ModifiedProperty('SameAsSeller');
 end;
@@ -3027,7 +3024,6 @@ end;
 procedure TInvoiceTable.SetWithoutVat(AValue: String);
 begin
   CheckLockupValue('WithoutVat', AValue);
-  CheckFixedValue('WithoutVat', AValue);
   FWithoutVat:=AValue;
   ModifiedProperty('WithoutVat');
 end;
@@ -3035,7 +3031,6 @@ end;
 procedure TInvoiceTable.SetHyphenVat(AValue: String);
 begin
   CheckLockupValue('HyphenVat', AValue);
-  CheckFixedValue('HyphenVat', AValue);
   FHyphenVat:=AValue;
   ModifiedProperty('HyphenVat');
 end;
@@ -3049,7 +3044,6 @@ end;
 procedure TInvoiceTable.SetHyphenTotal(AValue: String);
 begin
   CheckLockupValue('HyphenTotal', AValue);
-  CheckFixedValue('HyphenTotal', AValue);
   FHyphenTotal:=AValue;
   ModifiedProperty('HyphenTotal');
 end;
@@ -3132,7 +3126,6 @@ end;
 procedure TInvoiceTable_Item.SetHyphenUnit(AValue: String);
 begin
   CheckLockupValue('HyphenUnit', AValue);
-  CheckFixedValue('HyphenUnit', AValue);
   FHyphenUnit:=AValue;
   ModifiedProperty('HyphenUnit');
 end;
@@ -3185,7 +3178,6 @@ end;
 procedure TInvoiceTable_Item.SetWithoutVat(AValue: String);
 begin
   CheckLockupValue('WithoutVat', AValue);
-  CheckFixedValue('WithoutVat', AValue);
   FWithoutVat:=AValue;
   ModifiedProperty('WithoutVat');
 end;
@@ -3193,7 +3185,6 @@ end;
 procedure TInvoiceTable_Item.SetHyphenVat(AValue: String);
 begin
   CheckLockupValue('HyphenVat', AValue);
-  CheckFixedValue('HyphenVat', AValue);
   FHyphenVat:=AValue;
   ModifiedProperty('HyphenVat');
 end;
@@ -3207,7 +3198,6 @@ end;
 procedure TInvoiceTable_Item.SetHyphenSubtotal(AValue: String);
 begin
   CheckLockupValue('HyphenSubtotal', AValue);
-  CheckFixedValue('HyphenSubtotal', AValue);
   FHyphenSubtotal:=AValue;
   ModifiedProperty('HyphenSubtotal');
 end;
@@ -3908,7 +3898,6 @@ end;
 procedure TCustomsDeclarationWithHyphens.SetHyphenCountry(AValue: String);
 begin
   CheckLockupValue('HyphenCountry', AValue);
-  CheckFixedValue('HyphenCountry', AValue);
   FHyphenCountry:=AValue;
   ModifiedProperty('HyphenCountry');
 end;
@@ -5280,7 +5269,6 @@ end;
 procedure TExtendedOrganizationDetailsWithHyphens.SetHyphenInn(AValue: String);
 begin
   CheckLockupValue('HyphenInn', AValue);
-  CheckFixedValue('HyphenInn', AValue);
   FHyphenInn:=AValue;
   ModifiedProperty('HyphenInn');
 end;
