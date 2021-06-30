@@ -3920,7 +3920,7 @@ begin
     P.ValidList.Add('true');
     P.ValidList.Add('false');
     P.DefaultValue:='false';
-  P:=RegisterProperty('DeclarationNumber', 'DeclarationNumber', [], '', 1, 1000);
+  P:=RegisterProperty('DeclarationNumber', 'DeclarationNumber', [], '', 0, 1000);
 end;
 
 procedure TCustomsDeclarationWithHyphens.InternalInitChilds;
