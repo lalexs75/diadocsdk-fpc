@@ -4819,7 +4819,7 @@ var
   P: TPropertyDef;
 begin
   inherited InternalRegisterPropertys;
-  P:=RegisterProperty('OrgType', 'OrgType', [xsaRequared], '', -1, -1);
+  P:=RegisterProperty('OrgType', 'OrgType', [{xsaRequared}], '', -1, -1);
     P.ValidList.Add('1');
     P.ValidList.Add('2');
     P.ValidList.Add('3');
@@ -5297,7 +5297,7 @@ end;
 constructor TExtendedOrganizationDetailsWithHyphens.Create;
 begin
   inherited Create;
-  HyphenInn:='false';
+  FHyphenInn:='false';
 end;
 
   {  TAddress  }
