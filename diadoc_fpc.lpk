@@ -1335,6 +1335,10 @@
         <Filename Value="DataXml\Invoice_DEFAULT_utd820_05_01_02_hyphen_ind0.pas"/>
         <UnitName Value="Invoice_DEFAULT_utd820_05_01_02_hyphen_ind0"/>
       </Item>
+      <Item>
+        <Filename Value="DataXml\UniversalTransferDocument_DOP_utd820_05_01_02_hyphen_ind0.pas"/>
+        <UnitName Value="UniversalTransferDocument_DOP_utd820_05_01_02_hyphen_ind0"/>
+      </Item>
     </Files>
     <LazDoc Paths="docs"/>
     <i18n>
