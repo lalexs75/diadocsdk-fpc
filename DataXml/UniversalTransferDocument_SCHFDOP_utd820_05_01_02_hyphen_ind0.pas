@@ -2642,8 +2642,8 @@ end;
 constructor TUniversalTransferDocumentWithHyphens.Create;
 begin
   inherited Create;
-  HyphenRevisionDate:='false';
-  HyphenRevisionNumber:='false';
+  FHyphenRevisionDate:='false';
+  FHyphenRevisionNumber:='false';
 end;
 
   {  TUniversalTransferDocumentWithHyphens_Sellers  }
