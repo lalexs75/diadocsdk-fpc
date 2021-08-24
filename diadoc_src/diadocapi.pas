@@ -414,7 +414,7 @@ type
 
 procedure Register;
 
-function FindEntitie(AMessage: TMessage; AType:TAttachmentType):TEntity;
+//function FindEntitie(AMessage: TMessage; AType:TAttachmentType):TEntity;
 implementation
 uses synautil, synacode;
 
@@ -443,7 +443,7 @@ begin
   end;
 end;
 
-
+(*
 function FindEntitie(AMessage: TMessage; AType:TAttachmentType):TEntity;
 var
   E: TEntity;
@@ -455,7 +455,7 @@ begin
       Exit(E);
   end;
 end;
-
+*)
 function FindHeaderValue(AHeders:TStrings; AName:string):string;
 var
   S, S1: String;

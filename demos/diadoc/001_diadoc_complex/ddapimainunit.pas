@@ -287,7 +287,12 @@ var
   O: TOrganization;
 begin
   SetupAPI;
-  FOrgsQueryList:=DiadocAPI1.GetOrganizationsByInnKpp(edtFndINN.Text, edtFndKPP.Text, true);
+  FOrgsQueryList:=DiadocAPI1.GetOrganizationsByInnKpp(edtFndINN.Text, edtFndKPP.Text, false);
+  if not Assigned(FOrgsQueryList) then
+  begin
+    ErrorBox('Ошибка получания списка контрагентов');
+    Exit;
+  end;
   ListBox2.Items.BeginUpdate;
   ListBox2.Items.Clear;
   if Assigned(FOrganizationInfoFrame1) then

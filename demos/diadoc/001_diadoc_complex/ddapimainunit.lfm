@@ -9,7 +9,7 @@ object DDAPIMainForm: TDDAPIMainForm
   OnCreate = FormCreate
   Position = poScreenCenter
   SessionProperties = 'CheckBox1.Checked;edtINN.Text;edtProxyHost.Text;edtProxyPassword.Text;edtProxyPort.Text;edtProxyUserName.Text;edtUserName.Text;edtUserPwd.Text;edtAPIClientKey.Text'
-  LCLVersion = '2.1.0.0'
+  LCLVersion = '2.3.0.0'
   object Memo1: TMemo
     Left = 0
     Height = 192
@@ -47,7 +47,6 @@ object DDAPIMainForm: TDDAPIMainForm
         BorderSpacing.Left = 6
         BorderSpacing.Right = 6
         Caption = 'Имя пользователя'
-        ParentColor = False
       end
       object Label4: TLabel
         AnchorSideLeft.Control = TabSheet1
@@ -62,7 +61,6 @@ object DDAPIMainForm: TDDAPIMainForm
         BorderSpacing.Left = 6
         BorderSpacing.Right = 6
         Caption = 'Пароль'
-        ParentColor = False
       end
       object edtUserName: TEdit
         AnchorSideLeft.Control = Label3
@@ -117,7 +115,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Anchors = [akLeft, akBottom]
         BorderSpacing.Left = 6
         Caption = 'Proxy user name'
-        ParentColor = False
       end
       object Label6: TLabel
         AnchorSideLeft.Control = TabSheet1
@@ -130,7 +127,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Anchors = [akLeft, akBottom]
         BorderSpacing.Left = 6
         Caption = 'Proxy password'
-        ParentColor = False
       end
       object Label7: TLabel
         AnchorSideLeft.Control = Label9
@@ -143,7 +139,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Anchors = [akLeft, akBottom]
         BorderSpacing.Left = 6
         Caption = 'Proxy Port'
-        ParentColor = False
       end
       object DividerBevel1: TDividerBevel
         AnchorSideLeft.Control = TabSheet1
@@ -168,7 +163,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Height = 1
         Top = 0
         Width = 1
-        ParentColor = False
       end
       object edtProxyUserName: TEdit
         AnchorSideLeft.Control = Label5
@@ -223,7 +217,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Width = 65
         Anchors = [akLeft, akBottom]
         Caption = 'Proxy Host'
-        ParentColor = False
       end
       object edtProxyHost: TEdit
         AnchorSideLeft.Control = Label7
@@ -251,7 +244,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Anchors = [akLeft, akBottom]
         BorderSpacing.Left = 6
         Caption = 'API Client key'
-        ParentColor = False
       end
       object edtAPIClientKey: TEdit
         AnchorSideLeft.Control = Label3
@@ -309,7 +301,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Width = 40
         BorderSpacing.Around = 6
         Caption = 'UserID'
-        ParentColor = False
       end
       object Label24: TLabel
         AnchorSideLeft.Control = TabSheet1
@@ -321,7 +312,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Width = 77
         BorderSpacing.Around = 6
         Caption = 'MiddleName'
-        ParentColor = False
       end
       object Label25: TLabel
         AnchorSideLeft.Control = Label27
@@ -333,7 +323,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Width = 63
         BorderSpacing.Around = 6
         Caption = 'FirstName'
-        ParentColor = False
       end
       object Label26: TLabel
         AnchorSideLeft.Control = Label27
@@ -345,7 +334,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Width = 61
         BorderSpacing.Around = 6
         Caption = 'LastName'
-        ParentColor = False
       end
       object Edit1: TEdit
         AnchorSideLeft.Control = Label23
@@ -409,7 +397,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Height = 1
         Top = 0
         Width = 1
-        ParentColor = False
       end
     end
     object TabSheet5: TTabSheet
@@ -577,7 +564,6 @@ object DDAPIMainForm: TDDAPIMainForm
           Anchors = [akLeft, akBottom]
           BorderSpacing.Left = 5
           Caption = 'INN'
-          ParentColor = False
         end
         object Label22: TLabel
           AnchorSideLeft.Control = edtFndINN
@@ -590,7 +576,6 @@ object DDAPIMainForm: TDDAPIMainForm
           Width = 24
           Anchors = [akLeft, akBottom]
           Caption = 'KPP'
-          ParentColor = False
         end
         object edtFndKPP: TEdit
           AnchorSideLeft.Control = Label22
@@ -662,7 +647,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Anchors = [akLeft, akBottom]
         BorderSpacing.Left = 6
         Caption = 'Индекс'
-        ParentColor = False
       end
       object Label13: TLabel
         AnchorSideLeft.Control = TabSheet4
@@ -675,7 +659,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Anchors = [akLeft, akBottom]
         BorderSpacing.Left = 6
         Caption = 'Регион (код)'
-        ParentColor = False
       end
       object Label14: TLabel
         AnchorSideLeft.Control = TabSheet4
@@ -688,7 +671,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Anchors = [akLeft, akBottom]
         BorderSpacing.Left = 6
         Caption = 'Район'
-        ParentColor = False
       end
       object Label15: TLabel
         AnchorSideLeft.Control = TabSheet4
@@ -701,7 +683,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Anchors = [akLeft, akBottom]
         BorderSpacing.Left = 6
         Caption = 'Улица'
-        ParentColor = False
       end
       object Label16: TLabel
         AnchorSideLeft.Control = TabSheet4
@@ -714,7 +695,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Anchors = [akLeft, akBottom]
         BorderSpacing.Left = 6
         Caption = 'Город'
-        ParentColor = False
       end
       object Label17: TLabel
         AnchorSideLeft.Control = TabSheet4
@@ -727,7 +707,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Anchors = [akLeft, akBottom]
         BorderSpacing.Left = 6
         Caption = 'Населенный пункт'
-        ParentColor = False
       end
       object Label18: TLabel
         AnchorSideLeft.Control = TabSheet4
@@ -740,7 +719,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Anchors = [akLeft, akBottom]
         BorderSpacing.Left = 6
         Caption = 'Квартира'
-        ParentColor = False
       end
       object Label19: TLabel
         AnchorSideLeft.Control = TabSheet4
@@ -753,7 +731,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Anchors = [akLeft, akBottom]
         BorderSpacing.Left = 6
         Caption = 'Дом'
-        ParentColor = False
       end
       object Label20: TLabel
         AnchorSideLeft.Control = TabSheet4
@@ -766,7 +743,6 @@ object DDAPIMainForm: TDDAPIMainForm
         Anchors = [akLeft, akBottom]
         BorderSpacing.Left = 6
         Caption = 'Корпус'
-        ParentColor = False
       end
       object edtZipCode: TEdit
         AnchorSideLeft.Control = Label17

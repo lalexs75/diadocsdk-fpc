@@ -180,32 +180,21 @@ end;
 procedure TDiadocDocumentFrame.Button1Click(Sender: TObject);
 var
   M: TMessage;
-  E: TEntity;
+//  E: TEntity;
+  S: String;
 begin
   if rxDocs.RecordCount = 0 then Exit;
   M:=FDiadocAPI.GetMessage(FBox.BoxId, rxDocsMessageId.AsString, '', false, false);
-  E:=FindEntitie(M, UniversalTransferDocument);
-  if Assigned(E) then
-    ShowUniversalTransferDocumentSellerTitleXml(FDiadocAPI, FBox.BoxId, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, E.EntityId))
+//  E:=FindEntitie(M, UniversalTransferDocument);
+  S:=rxDocsEntityId.AsString;
+
+  case TDocumentType(rxDocsDocumentType.AsInteger) of
+    TDocumentType.UniversalTransferDocument:ShowUniversalTransferDocumentSellerTitleXml(FDiadocAPI, FBox.BoxId, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, S));
+    TDocumentType.UniversalTransferDocumentRevision:ShowUniversalTransferDocumentRevision(FDiadocAPI, FBox.BoxId, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, S));
+    TDocumentType.XmlTorg12:ShowTorg12Xml(FDiadocAPI, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, S));
+    TDocumentType.Invoice:ShowUniversalTransferDocumentSellerTitleXml(FDiadocAPI, FBox.BoxId, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, S));
   else
-  begin
-    E:=FindEntitie(M, UniversalTransferDocumentRevision);
-    if Assigned(E) then
-      ShowUniversalTransferDocumentRevision(FDiadocAPI, FBox.BoxId, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, E.EntityId))
-    else
-    begin
-      E:=FindEntitie(M, XmlTorg12);
-      if Assigned(E) then
-        ShowTorg12Xml(FDiadocAPI, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, E.EntityId))
-      else
-      begin
-        E:=FindEntitie(M, TAttachmentType.Invoice);
-        if Assigned(E) then
-          ShowUniversalTransferDocumentSellerTitleXml(FDiadocAPI, FBox.BoxId, FDiadocAPI.GetEntityContent(FBox.BoxId, rxDocsMessageId.AsString, E.EntityId))
-        else
-          ShowMessage('УПД не найдена');
-      end;
-    end;
+    ShowMessage('УПД не найдена');
   end;
   M.Free;
 end;

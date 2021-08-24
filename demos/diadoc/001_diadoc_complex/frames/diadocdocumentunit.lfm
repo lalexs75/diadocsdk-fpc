@@ -2,9 +2,9 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
   Left = 0
   Height = 516
   Top = 0
-  Width = 1207
+  Width = 1412
   ClientHeight = 516
-  ClientWidth = 1207
+  ClientWidth = 1412
   TabOrder = 0
   DesignLeft = 383
   DesignTop = 202
@@ -12,11 +12,11 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
     Left = 0
     Height = 111
     Top = 0
-    Width = 1207
+    Width = 1412
     Align = alTop
     AutoSize = True
     ClientHeight = 111
-    ClientWidth = 1207
+    ClientWidth = 1412
     TabOrder = 0
     object ComboBox1: TComboBox
       AnchorSideLeft.Control = Panel2
@@ -63,7 +63,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       Left = 706
       Height = 33
       Top = 7
-      Width = 107
+      Width = 106
       AutoSize = True
       BorderSpacing.Around = 6
       Caption = 'GetDocuments'
@@ -87,7 +87,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideLeft.Control = Button3
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = Panel2
-      Left = 819
+      Left = 818
       Height = 33
       Top = 7
       Width = 67
@@ -104,7 +104,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       Left = 7
       Height = 23
       Top = 42
-      Width = 160
+      Width = 158
       BorderSpacing.Around = 6
       Caption = 'За период документа'
       Checked = True
@@ -117,7 +117,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = CheckBox1
       AnchorSideTop.Side = asrBottom
-      Left = 58
+      Left = 57
       Height = 33
       Top = 71
       Width = 103
@@ -134,7 +134,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = CheckBox1
       AnchorSideTop.Side = asrBottom
-      Left = 219
+      Left = 217
       Height = 33
       Top = 71
       Width = 103
@@ -153,25 +153,23 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       Left = 13
       Height = 17
       Top = 87
-      Width = 39
+      Width = 38
       Anchors = [akLeft, akBottom]
       BorderSpacing.Left = 6
       Caption = 'с даты'
-      ParentColor = False
     end
     object Label3: TLabel
       AnchorSideLeft.Control = RxDateEdit1
       AnchorSideLeft.Side = asrBottom
       AnchorSideBottom.Control = RxDateEdit2
       AnchorSideBottom.Side = asrBottom
-      Left = 167
+      Left = 166
       Height = 17
       Top = 87
-      Width = 46
+      Width = 45
       Anchors = [akLeft, akBottom]
       BorderSpacing.Left = 6
       Caption = 'по дату'
-      ParentColor = False
     end
     object EditButton1: TEditButton
       AnchorSideLeft.Control = CheckBox2
@@ -179,10 +177,10 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideTop.Side = asrBottom
       AnchorSideRight.Control = Panel2
       AnchorSideRight.Side = asrBottom
-      Left = 334
+      Left = 332
       Height = 33
       Top = 71
-      Width = 866
+      Width = 1073
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Around = 6
       ButtonWidth = 23
@@ -200,10 +198,10 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = ComboBox1
       AnchorSideTop.Side = asrBottom
-      Left = 328
+      Left = 326
       Height = 23
       Top = 42
-      Width = 124
+      Width = 123
       BorderSpacing.Around = 6
       Caption = 'По контрагенту'
       OnChange = CheckBox1Change
@@ -214,7 +212,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
     Left = 0
     Height = 405
     Top = 111
-    Width = 1092
+    Width = 1298
     ColumnDefValues.BlobText = '(данные)'
     TitleButtons = True
     AutoSort = True
@@ -441,7 +439,6 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
     DrawFullLine = True
     FocusColor = clRed
     SelectedColor = clHighlight
-    GridLineStyle = psSolid
     DataSource = dDocs
     Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgHeaderPushedLook]
     PopupMenu = PopupMenu1
@@ -449,14 +446,14 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
     TabOrder = 1
   end
   object Panel1: TPanel
-    Left = 1092
+    Left = 1298
     Height = 405
     Top = 111
-    Width = 115
+    Width = 114
     Align = alRight
     AutoSize = True
     ClientHeight = 405
-    ClientWidth = 115
+    ClientWidth = 114
     TabOrder = 2
     object Button1: TButton
       AnchorSideLeft.Control = Panel1
@@ -465,7 +462,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       Left = 7
       Height = 33
       Top = 46
-      Width = 101
+      Width = 100
       AutoSize = True
       BorderSpacing.Around = 6
       Caption = 'GetDocument'
@@ -479,7 +476,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       Left = 12
       Height = 33
       Top = 7
-      Width = 91
+      Width = 90
       AutoSize = True
       BorderSpacing.Around = 6
       Caption = 'GetMessage'
@@ -492,17 +489,16 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       Top = 79
       Width = 39
       Caption = 'Label1'
-      ParentColor = False
     end
     object Button5: TButton
       AnchorSideRight.Control = Panel1
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = Panel1
       AnchorSideBottom.Side = asrBottom
-      Left = 10
+      Left = 11
       Height = 33
       Top = 365
-      Width = 98
+      Width = 96
       Action = newUPD
       Anchors = [akRight, akBottom]
       AutoSize = True
@@ -539,6 +535,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       item
         Name = 'EntityId'
         DataType = ftString
+        Size = 100
       end    
       item
         Name = 'CreationTimestampTicks'
@@ -606,20 +603,10 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       Required = False
       Size = 200
     end
-    object rxDocsEntityId: TStringField
-      FieldKind = fkData
-      FieldName = 'EntityId'
-      Index = 2
-      LookupCache = False
-      ProviderFlags = [pfInUpdate, pfInWhere]
-      ReadOnly = False
-      Required = False
-      Size = 0
-    end
     object rxDocsCreationTimestampTicks: TDateTimeField
       FieldKind = fkData
       FieldName = 'CreationTimestampTicks'
-      Index = 3
+      Index = 2
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -628,7 +615,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
     object rxDocsCounteragentBoxId: TStringField
       FieldKind = fkData
       FieldName = 'CounteragentBoxId'
-      Index = 4
+      Index = 3
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -638,7 +625,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
     object rxDocsFileName: TStringField
       FieldKind = fkData
       FieldName = 'FileName'
-      Index = 5
+      Index = 4
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -648,7 +635,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
     object rxDocsDocumentDate: TDateField
       FieldKind = fkData
       FieldName = 'DocumentDate'
-      Index = 6
+      Index = 5
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -657,7 +644,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
     object rxDocsDocumentNumber: TStringField
       FieldKind = fkData
       FieldName = 'DocumentNumber'
-      Index = 7
+      Index = 6
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -667,7 +654,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
     object rxDocsDocumentType: TLongintField
       FieldKind = fkData
       FieldName = 'DocumentType'
-      Index = 8
+      Index = 7
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -676,7 +663,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
     object rxDocsDocumentTypeStr: TStringField
       FieldKind = fkData
       FieldName = 'DocumentTypeStr'
-      Index = 9
+      Index = 8
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -686,7 +673,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
     object rxDocsSUMM: TStringField
       FieldKind = fkData
       FieldName = 'SUMM'
-      Index = 10
+      Index = 9
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
       ReadOnly = False
@@ -696,6 +683,16 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
     object rxDocsDepartmentId: TStringField
       FieldKind = fkData
       FieldName = 'DepartmentId'
+      Index = 10
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 100
+    end
+    object rxDocsEntityId: TStringField
+      FieldKind = fkData
+      FieldName = 'EntityId'
       Index = 11
       LookupCache = False
       ProviderFlags = [pfInUpdate, pfInWhere]
