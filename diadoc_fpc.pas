@@ -172,7 +172,9 @@ uses
   DocumentTypeDescription, DocumentTypeDescriptionV2, DocflowStatusV3, 
   UniversalTransferDocument_SCHFDOP_utd820_05_01_02_hyphen_ind0, 
   Invoice_DEFAULT_utd820_05_01_02_hyphen_ind0, 
-  UniversalTransferDocument_DOP_utd820_05_01_02_hyphen_ind0, LazarusPackageIntf;
+  UniversalTransferDocument_DOP_utd820_05_01_02_hyphen_ind0, 
+  UniversalTransferDocumentRevision_SCHFDOP_utd820_05_01_02_hyphen_ind0, 
+  LazarusPackageIntf;
 
 implementation
 
