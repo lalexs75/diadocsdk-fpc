@@ -302,7 +302,7 @@ type
     function GenerateDocumentReceiptXml(ABoxId, AMessageId, AAttachmentId:string; ASigner:TSigner):TStream;
     function GeneratePrintForm(ABoxId, AMessageId, ADocumentId:string):TPrintFormResult;
     //GeneratePrintFormFromAttachment
-    function GenerateRevocationRequestXml(ABoxId, AMessageId, AAttachmentId:string; ARevocationRequestInfo:TRevocationRequestInfo):TStream;
+    function GenerateRevocationRequestXml(ABoxId, AMessageId, AAttachmentId:string; ARevocationRequestInfo:TRevocationRequestInfo; contentTypeId:string = ''):TStream;
     function GenerateSignatureRejectionXml(ABoxId, AMessageId, AAttachmentId:string; ASignatureRejectionInfo:TSignatureRejectionInfo):TStream;
     function GetForwardedDocumentEvents(ABoxId:string; ARequest:TGetForwardedDocumentEventsRequest):TGetForwardedDocumentEventsResponse;
     //GenerateForwardedDocumentPrintForm
@@ -2471,26 +2471,12 @@ begin
 end;
 
 function TDiadocAPI.GenerateRevocationRequestXml(ABoxId, AMessageId,
-  AAttachmentId: string; ARevocationRequestInfo: TRevocationRequestInfo
-  ): TStream;
+  AAttachmentId: string; ARevocationRequestInfo: TRevocationRequestInfo;
+  contentTypeId: string = ''): TStream;
 var
   S: String;
   F: TStream;
 begin
-  (*
-  DiadocApi::WebFile DiadocApi::GenerateRevocationRequestXml(const std::wstring& boxId, const std::wstring& messageId, const std::wstring& attachmentId, const RevocationRequestInfo& revocationRequestInfo)
-  {
-  	WppTraceDebugOut("GenerateRevocationRequestXml...");
-  	std::wstringstream queryString;
-  	queryString << L"/GenerateRevocationRequestXml?boxId=" << StringHelper::CanonicalizeUrl(boxId) << L"&messageId=" << StringHelper::CanonicalizeUrl(messageId) << L"&attachmentId=" << StringHelper::CanonicalizeUrl(attachmentId);
-  	auto requestBody = ToProtoBytes(revocationRequestInfo);
-  	auto connect = session_.Connect(api_url_.c_str(), api_port_);
-  	auto request = connect.OpenRequest(POST.c_str(), queryString.str().c_str(), NULL, WINHTTP_NO_REFERER, WINHTTP_DEFAULT_ACCEPT_TYPES, connection_flags_);
-  	SendRequest(request, requestBody);
-  	return WebFile(request);
-  }
-  *)
-
   Result:=nil;
 
   if ABoxId = '' then
@@ -2505,6 +2491,9 @@ begin
   AddURLParam(S, 'boxId', ABoxId);//идентификатор ящика;
   AddURLParam(S, 'messageId', AMessageId); //идентификатор сообщения;
   AddURLParam(S, 'attachmentId', AAttachmentId);
+
+  if contentTypeId<>'' then
+    AddURLParam(S, 'contentTypeId', contentTypeId);
   F:=ARevocationRequestInfo.SaveToStream;
   if SendCommand(hmGET, 'GenerateRevocationRequestXml', S, F) then
   begin

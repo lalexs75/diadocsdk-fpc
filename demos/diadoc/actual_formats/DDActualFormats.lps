@@ -7,10 +7,9 @@
       <Unit>
         <Filename Value="DDActualFormats.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="30" Y="23"/>
         <UsageCount Value="33"/>
-        <Loaded Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="admainunit.pas"/>
@@ -19,13 +18,7 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="adMainUnit"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="214"/>
-        <CursorPos X="41" Y="240"/>
         <UsageCount Value="33"/>
-        <Bookmarks Count="1">
-          <Item0 Y="286" ID="1"/>
-        </Bookmarks>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit>
@@ -127,7 +120,7 @@
       <Unit>
         <Filename Value="../../../diadoc_src/diadoctypes_organization.pas"/>
         <UnitName Value="DiadocTypes_Organization"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="6"/>
         <TopLine Value="16"/>
         <CursorPos X="30" Y="35"/>
         <UsageCount Value="17"/>
@@ -136,10 +129,14 @@
       <Unit>
         <Filename Value="../../../diadoc_src/diadocapi.pas"/>
         <UnitName Value="DiadocAPI"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="357"/>
-        <CursorPos X="32" Y="369"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="2471"/>
+        <CursorPos X="29" Y="2475"/>
         <UsageCount Value="17"/>
+        <Bookmarks Count="1">
+          <Item0 X="14" Y="305" ID="1"/>
+        </Bookmarks>
         <Loaded Value="True"/>
       </Unit>
       <Unit>
@@ -173,7 +170,7 @@
       <Unit>
         <Filename Value="../../../diadoc_src/diadoc_base.pas"/>
         <UnitName Value="Diadoc_Base"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="5"/>
         <TopLine Value="31"/>
         <CursorPos X="17" Y="33"/>
         <UsageCount Value="16"/>
@@ -238,7 +235,7 @@
       </Unit>
       <Unit>
         <Filename Value="/home/alexs/install/source/diadocsdk-cpp/src/DiadocApi.cpp"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="1815"/>
         <CursorPos X="38" Y="1841"/>
         <UsageCount Value="11"/>
@@ -247,28 +244,6 @@
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="admainunit.pas"/>
-        <Caret Line="67" Column="3" TopLine="48"/>
-      </Position>
-      <Position>
-        <Filename Value="admainunit.pas"/>
-        <Caret Line="125" Column="36" TopLine="105"/>
-      </Position>
-      <Position>
-        <Filename Value="/home/alexs/install/source/diadocsdk-cpp/src/DiadocApi.cpp"/>
-      </Position>
-      <Position>
-        <Filename Value="/home/alexs/install/source/diadocsdk-cpp/src/DiadocApi.cpp"/>
-        <Caret Line="1835" Column="39" TopLine="1811"/>
-      </Position>
-      <Position>
-        <Filename Value="/home/alexs/install/source/diadocsdk-cpp/src/DiadocApi.cpp"/>
-      </Position>
-      <Position>
-        <Filename Value="/home/alexs/install/source/diadocsdk-cpp/src/DiadocApi.cpp"/>
-        <Caret Line="1835" Column="55" TopLine="1811"/>
-      </Position>
       <Position>
         <Filename Value="/home/alexs/install/source/diadocsdk-cpp/src/DiadocApi.cpp"/>
         <Caret Line="1837" Column="36" TopLine="1813"/>
@@ -364,6 +339,29 @@
       <Position>
         <Filename Value="admainunit.pas"/>
         <Caret Line="238" Column="6" TopLine="216"/>
+      </Position>
+      <Position>
+        <Filename Value="admainunit.pas"/>
+        <Caret Line="240" Column="41" TopLine="226"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Caret Line="369" Column="32" TopLine="357"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Caret Line="305" Column="152" TopLine="282"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Caret Line="2510" TopLine="2486"/>
+      </Position>
+      <Position>
+        <Filename Value="../../../diadoc_src/diadocapi.pas"/>
+        <Caret Line="305" Column="152" TopLine="291"/>
       </Position>
     </JumpHistory>
     <RunParams>
