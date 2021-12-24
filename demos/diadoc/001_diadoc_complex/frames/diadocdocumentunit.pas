@@ -46,7 +46,6 @@ type
   { TDiadocDocumentFrame }
 
   TDiadocDocumentFrame = class(TFrame)
-    Button6: TButton;
     MenuItem5: TMenuItem;
     MenuItem6: TMenuItem;
     MenuItem7: TMenuItem;
@@ -98,7 +97,6 @@ type
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
-    procedure Button6Click(Sender: TObject);
     procedure CheckBox1Change(Sender: TObject);
     procedure EditButton1ButtonClick(Sender: TObject);
     procedure msgShowExecute(Sender: TObject);
@@ -157,11 +155,6 @@ end;
 procedure TDiadocDocumentFrame.Button4Click(Sender: TObject);
 begin
   FetchDocList;
-end;
-
-procedure TDiadocDocumentFrame.Button6Click(Sender: TObject);
-begin
-  //
 end;
 
 procedure TDiadocDocumentFrame.Button2Click(Sender: TObject);
@@ -332,7 +325,7 @@ var
   D: TUniversalTransferDocumentSellerTitleInfo;
   M: TMemoryStream;
 begin
-  D:=NewUniversalTransferDocumentSellerTitleInfo;
+{  D:=NewUniversalTransferDocumentSellerTitleInfo;
   D.SaveToFile('/tmp/UniversalTransferDocumentSellerTitleInfo.protobuf');
 
 
@@ -347,7 +340,7 @@ begin
 //    DoTestSend(M);
     M.Free;
   end;
-  D.Free;
+  D.Free;}
 end;
 
 procedure TDiadocDocumentFrame.OrgBoxInfoExecute(Sender: TObject);

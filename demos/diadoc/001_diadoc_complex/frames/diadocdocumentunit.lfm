@@ -10,19 +10,19 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
   DesignTop = 202
   object Panel2: TPanel
     Left = 0
-    Height = 111
+    Height = 103
     Top = 0
     Width = 1412
     Align = alTop
     AutoSize = True
-    ClientHeight = 111
+    ClientHeight = 103
     ClientWidth = 1412
     TabOrder = 0
     object ComboBox1: TComboBox
       AnchorSideLeft.Control = Panel2
       AnchorSideTop.Control = Panel2
       Left = 7
-      Height = 29
+      Height = 25
       Top = 7
       Width = 160
       BorderSpacing.Around = 6
@@ -42,7 +42,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = Panel2
       Left = 173
-      Height = 29
+      Height = 25
       Top = 7
       Width = 273
       BorderSpacing.Around = 6
@@ -61,9 +61,9 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = Panel2
       Left = 706
-      Height = 33
+      Height = 29
       Top = 7
-      Width = 106
+      Width = 102
       AutoSize = True
       BorderSpacing.Around = 6
       Caption = 'GetDocuments'
@@ -75,7 +75,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = Panel2
       Left = 452
-      Height = 32
+      Height = 29
       Top = 7
       Width = 248
       BorderSpacing.Around = 6
@@ -87,10 +87,10 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideLeft.Control = Button3
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = Panel2
-      Left = 818
-      Height = 33
+      Left = 814
+      Height = 29
       Top = 7
-      Width = 67
+      Width = 63
       AutoSize = True
       BorderSpacing.Around = 6
       Caption = 'Ещё 100'
@@ -103,7 +103,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideTop.Side = asrBottom
       Left = 7
       Height = 23
-      Top = 42
+      Top = 38
       Width = 158
       BorderSpacing.Around = 6
       Caption = 'За период документа'
@@ -118,8 +118,8 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideTop.Control = CheckBox1
       AnchorSideTop.Side = asrBottom
       Left = 57
-      Height = 33
-      Top = 71
+      Height = 29
+      Top = 67
       Width = 103
       BorderSpacing.Around = 6
       ButtonWidth = 23
@@ -135,8 +135,8 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideTop.Control = CheckBox1
       AnchorSideTop.Side = asrBottom
       Left = 217
-      Height = 33
-      Top = 71
+      Height = 29
+      Top = 67
       Width = 103
       BorderSpacing.Around = 6
       ButtonWidth = 23
@@ -152,7 +152,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideBottom.Side = asrBottom
       Left = 13
       Height = 17
-      Top = 87
+      Top = 79
       Width = 38
       Anchors = [akLeft, akBottom]
       BorderSpacing.Left = 6
@@ -165,7 +165,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideBottom.Side = asrBottom
       Left = 166
       Height = 17
-      Top = 87
+      Top = 79
       Width = 45
       Anchors = [akLeft, akBottom]
       BorderSpacing.Left = 6
@@ -178,8 +178,8 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideRight.Control = Panel2
       AnchorSideRight.Side = asrBottom
       Left = 332
-      Height = 33
-      Top = 71
+      Height = 29
+      Top = 67
       Width = 1073
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Around = 6
@@ -200,7 +200,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideTop.Side = asrBottom
       Left = 326
       Height = 23
-      Top = 42
+      Top = 38
       Width = 123
       BorderSpacing.Around = 6
       Caption = 'По контрагенту'
@@ -210,9 +210,9 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
   end
   object RxDBGrid1: TRxDBGrid
     Left = 0
-    Height = 405
-    Top = 111
-    Width = 1298
+    Height = 413
+    Top = 103
+    Width = 1280
     ColumnDefValues.BlobText = '(данные)'
     TitleButtons = True
     AutoSort = True
@@ -446,23 +446,25 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
     TabOrder = 1
   end
   object Panel1: TPanel
-    Left = 1298
-    Height = 405
-    Top = 111
-    Width = 114
+    Left = 1280
+    Height = 413
+    Top = 103
+    Width = 132
     Align = alRight
-    AutoSize = True
-    ClientHeight = 405
-    ClientWidth = 114
+    ClientHeight = 413
+    ClientWidth = 132
     TabOrder = 2
     object Button1: TButton
       AnchorSideLeft.Control = Panel1
       AnchorSideTop.Control = Button2
       AnchorSideTop.Side = asrBottom
+      AnchorSideRight.Control = Panel1
+      AnchorSideRight.Side = asrBottom
       Left = 7
-      Height = 33
-      Top = 46
-      Width = 100
+      Height = 29
+      Top = 42
+      Width = 118
+      Anchors = [akTop, akLeft, akRight]
       AutoSize = True
       BorderSpacing.Around = 6
       Caption = 'GetDocument'
@@ -473,11 +475,13 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideLeft.Control = Panel1
       AnchorSideLeft.Side = asrCenter
       AnchorSideTop.Control = Panel1
-      Left = 12
-      Height = 33
+      AnchorSideRight.Control = Panel1
+      AnchorSideRight.Side = asrBottom
+      Left = 8
+      Height = 29
       Top = 7
-      Width = 90
-      AutoSize = True
+      Width = 117
+      Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Around = 6
       Caption = 'GetMessage'
       OnClick = Button2Click
@@ -491,28 +495,20 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       Caption = 'Label1'
     end
     object Button5: TButton
+      AnchorSideLeft.Control = Panel1
       AnchorSideRight.Control = Panel1
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = Panel1
       AnchorSideBottom.Side = asrBottom
-      Left = 11
-      Height = 33
-      Top = 365
-      Width = 96
+      Left = 7
+      Height = 29
+      Top = 377
+      Width = 118
       Action = newUPD
-      Anchors = [akRight, akBottom]
+      Anchors = [akLeft, akRight, akBottom]
       AutoSize = True
       BorderSpacing.Around = 6
       TabOrder = 2
-    end
-    object Button6: TButton
-      Left = 9
-      Height = 25
-      Top = 328
-      Width = 75
-      Caption = 'Создать корректировочную УПД'
-      OnClick = Button6Click
-      TabOrder = 3
     end
   end
   object dDocs: TDataSource

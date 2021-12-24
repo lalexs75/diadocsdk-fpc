@@ -34,7 +34,12 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, lazcontrols, anchordockpkg,
   UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen_ind0, rxAppUtils,
-  rxlogging, DDAPIMainUnit, xmliconv,
+  rxlogging, DDAPIMainUnit,
+  {$IFDEF WINDOWS}
+  xmliconv_windows,
+  {$ELSE}
+  xmliconv,
+  {$ENDIF}
   CounteragentListUnit, DocListUnit, BoxPropsUnit, MessageForDocUnit,
   UniversalTransferDocumentSellerTitleInfoUnit, DiadocDocumentUnit,
   UniversalTransferDocumentBuyerTitleInfoUnit, ContragentsListUnit,

@@ -31,10 +31,9 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, StdCtrls,
-  ButtonPanel, ComCtrls, DB, DiadocAPI, rxdbgrid, rxmemds, DiadocTypes,
-  DiadocTypes_UniversalTransferDocumentInfo,
-  DiadocTypes_InvoiceInfo,
-  DiadocTypes_Torg12Info, DiadocTypes_TovTorgInfo,
+  ButtonPanel, ComCtrls, DB, DiadocAPI, rxdbgrid, rxmemds, rxAppUtils,
+  DiadocTypes, DiadocTypes_UniversalTransferDocumentInfo,
+  DiadocTypes_InvoiceInfo, DiadocTypes_Torg12Info, DiadocTypes_TovTorgInfo,
   DiadocTypes_DiadocMessage_GetApi;
 
 type
@@ -44,6 +43,7 @@ type
   TMessageForDocForm = class(TForm)
     Button1: TButton;
     Button2: TButton;
+    Button3: TButton;
     ButtonPanel1: TButtonPanel;
     CheckBox1: TCheckBox;
     CheckBox2: TCheckBox;
@@ -87,11 +87,13 @@ type
     rxEntytyEntityType: TStringField;
     rxEntytyFileName: TStringField;
     rxEntytyParentEntityId: TStringField;
+    SaveDialog1: TSaveDialog;
     Splitter1: TSplitter;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure rxEntytyAfterScroll(DataSet: TDataSet);
   private
@@ -323,7 +325,26 @@ begin
     R.Free;
   end
   else
-    ShowMessageFmt('Error code: %d (%s)'#13'%s', [FDiadocAPI.ResultCode, FDiadocAPI.ResultString, FDiadocAPI.ResultText.Text]);
+    ShowMessageFmt('Код ошибки: %d (%s)'#13'%s', [FDiadocAPI.ResultCode, FDiadocAPI.ResultString, FDiadocAPI.ResultText.Text]);
+end;
+
+procedure TMessageForDocForm.Button3Click(Sender: TObject);
+var
+  M: TMemoryStream;
+begin
+//  if rxEntytyContent_SIZE.AsInteger > 0 then
+  begin
+    M:=FDiadocAPI.GetEntityContent(FBoxId, FMessageID, rxEntytyEntityId.AsString);
+    if Assigned(M) then
+    begin
+      SaveDialog1.FileName:=rxEntytyEntityType.AsString;
+      if SaveDialog1.Execute then
+        M.SaveToFile(SaveDialog1.FileName);
+      M.Free;
+    end
+    else
+      ErrorBox('Ошибка получения вложения');
+  end;
 end;
 
 procedure TMessageForDocForm.FormCreate(Sender: TObject);
