@@ -1,6 +1,6 @@
 { Diadoc interface library for FPC and Lazarus
 
-  Copyright (C) 2018-2020 Lagunov Aleksey alexs75@yandex.ru
+  Copyright (C) 2018-2023 Lagunov Aleksey alexs75@yandex.ru
 
   base on docs from http://api-docs.diadoc.ru
 
@@ -110,6 +110,9 @@ type
     FSignerPowersBase: string;
     FSignerStatus: TSignerStatus;
     FSignerType: TSignerType;
+    function GetSignerPowers: TSignerPowers;
+    function GetSignerStatus: TSignerStatus;
+    function GetSignerType: TSignerType;
     procedure SetJobTitle(AValue: string);
     procedure SetRegistrationCertificate(AValue: string);
     procedure SetSignerInfo(AValue: string);
@@ -123,13 +126,13 @@ type
     procedure InternalInit; override;
   public
     destructor Destroy; override;
+    property SignerType:TSignerType read GetSignerType write SetSignerType; //3
+    property SignerPowers:TSignerPowers read GetSignerPowers write SetSignerPowers; //5
+    property SignerStatus:TSignerStatus read GetSignerStatus write SetSignerStatus; //6
   published
     property JobTitle:string read FJobTitle write SetJobTitle; //1;
     property RegistrationCertificate:string read FRegistrationCertificate write SetRegistrationCertificate; //2;
-    property SignerType:TSignerType read FSignerType write SetSignerType; //3
     property SignerInfo:string read FSignerInfo write SetSignerInfo; //4
-    property SignerPowers:TSignerPowers read FSignerPowers write SetSignerPowers; //5
-    property SignerStatus:TSignerStatus read FSignerStatus write SetSignerStatus; //6
     property SignerPowersBase:string read FSignerPowersBase write SetSignerPowersBase; //7
     property SignerOrgPowersBase:string read FSignerOrgPowersBase write SetSignerOrgPowersBase; //8
   end;
@@ -165,6 +168,9 @@ type
     FSignerStatus: TSignerStatus;
     FSignerType: TSignerType;
     FSurname: string;
+    function GetSignerPowers: TSignerPowers;
+    function GetSignerStatus: TSignerStatus;
+    function GetSignerType: TSignerType;
     procedure SetFirstName(AValue: string);
     procedure SetInn(AValue: string);
     procedure SetJobTitle(AValue: string);
@@ -183,6 +189,9 @@ type
     procedure InternalInit; override;
   public
     destructor Destroy; override;
+    property SignerType:TSignerType read GetSignerType write SetSignerType default LegalEntity; //7
+    property SignerPowers:TSignerPowers read GetSignerPowers write SetSignerPowers; //10
+    property SignerStatus:TSignerStatus read GetSignerStatus write SetSignerStatus; //11
   published
     property Surname:string read FSurname write SetSurname; //1;
     property FirstName:string read FFirstName write SetFirstName; //2;
@@ -190,11 +199,8 @@ type
     property JobTitle:string read FJobTitle write SetJobTitle;//4;
     property Inn:string read FInn write SetInn;//5;
     property RegistrationCertificate:string read FRegistrationCertificate write SetRegistrationCertificate;//6;
-    property SignerType:TSignerType read FSignerType write SetSignerType default LegalEntity; //7
     property SignerOrganizationName:string read FSignerOrganizationName write SetSignerOrganizationName;//8
     property SignerInfo:string read FSignerInfo write SetSignerInfo;//9
-    property SignerPowers:TSignerPowers read FSignerPowers write SetSignerPowers; //10
-    property SignerStatus:TSignerStatus read FSignerStatus write SetSignerStatus; //11
     property SignerPowersBase:string read FSignerPowersBase write SetSignerPowersBase;//12
     property SignerOrgPowersBase:string read FSignerOrgPowersBase write SetSignerOrgPowersBase; //13
   end;
@@ -326,6 +332,21 @@ begin
   Modified(2);
 end;
 
+function TExtendedSignerDetails.GetSignerType: TSignerType;
+begin
+  Result:=FSignerType;
+end;
+
+function TExtendedSignerDetails.GetSignerPowers: TSignerPowers;
+begin
+  Result:=FSignerPowers;
+end;
+
+function TExtendedSignerDetails.GetSignerStatus: TSignerStatus;
+begin
+  Result:=FSignerStatus;
+end;
+
 procedure TExtendedSignerDetails.SetInn(AValue: string);
 begin
   if FInn=AValue then Exit;
@@ -416,11 +437,11 @@ begin
   RegisterProp('JobTitle', 4);
   RegisterProp('Inn', 5);
   RegisterProp('RegistrationCertificate', 6);
-  RegisterProp('SignerType', 7, true);
+  RegisterPropPublic('SignerType', 7, TMethod(@SetSignerType), TMethod(@GetSignerType), true);
   RegisterProp('SignerOrganizationName', 8);
   RegisterProp('SignerInfo', 9);
-  RegisterProp('SignerPowers', 10, true);
-  RegisterProp('SignerStatus', 11, true);
+  RegisterPropPublic('SignerPowers', 10, TMethod(@SetSignerPowers), TMethod(@SetSignerPowers), true);
+  RegisterPropPublic('SignerStatus', 11, TMethod(@SetSignerStatus), TMethod(@GetSignerStatus), true);
   RegisterProp('SignerPowersBase', 12);
   RegisterProp('SignerOrgPowersBase', 13);
 end;
@@ -443,6 +464,21 @@ begin
   if FJobTitle=AValue then Exit;
   FJobTitle:=AValue;
   Modified(1);
+end;
+
+function TExtendedSignerDetailsToPost.GetSignerType: TSignerType;
+begin
+  Result:=FSignerType;
+end;
+
+function TExtendedSignerDetailsToPost.GetSignerPowers: TSignerPowers;
+begin
+  Result:=FSignerPowers;
+end;
+
+function TExtendedSignerDetailsToPost.GetSignerStatus: TSignerStatus;
+begin
+  Result:=FSignerStatus;
 end;
 
 procedure TExtendedSignerDetailsToPost.SetRegistrationCertificate(AValue: string
@@ -498,10 +534,10 @@ begin
   inherited InternalRegisterProperty;
   RegisterProp('JobTitle', 1);
   RegisterProp('RegistrationCertificate', 2);
-  RegisterProp('SignerType', 3, true);
+  RegisterPropPublic('SignerType', 3, TMethod(@SetSignerType), TMethod(@GetSignerType), true);
   RegisterProp('SignerInfo', 4);
-  RegisterProp('SignerPowers', 5, true);
-  RegisterProp('SignerStatus', 6, true);
+  RegisterPropPublic('SignerPowers', 5, TMethod(@SetSignerPowers), TMethod(@GetSignerPowers), true);
+  RegisterPropPublic('SignerStatus', 6, TMethod(@SetSignerStatus), TMethod(@GetSignerStatus), true);
   RegisterProp('SignerPowersBase', 7);
   RegisterProp('SignerOrgPowersBase', 8);
 end;

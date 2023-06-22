@@ -1,6 +1,6 @@
 { Diadoc interface library for FPC and Lazarus
 
-  Copyright (C) 2018-2020 Lagunov Aleksey alexs75@yandex.ru
+  Copyright (C) 2018-2023 Lagunov Aleksey alexs75@yandex.ru
 
   base on docs from http://api-docs.diadoc.ru
 
@@ -111,6 +111,7 @@ type
     FReceiptStatus: TReceiptStatus;
     FTotal: string;
     FVat: string;
+    function GetDocumentStatus: TAcceptanceCertificateDocumentStatus;
     procedure SetDocumentStatus(AValue: TAcceptanceCertificateDocumentStatus);
     procedure SetGrounds(AValue: string);
     procedure SetReceiptStatus(AValue: TReceiptStatus);
@@ -120,8 +121,8 @@ type
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
+    property DocumentStatus:TAcceptanceCertificateDocumentStatus read GetDocumentStatus write SetDocumentStatus default UnknownAcceptanceCertificateDocumentStatus;//1
   published
-    property DocumentStatus:TAcceptanceCertificateDocumentStatus read FDocumentStatus write SetDocumentStatus default UnknownAcceptanceCertificateDocumentStatus;//1
     property Total:string read FTotal write SetTotal;       //2
     property Vat:string read FVat write SetVat;             //3
     property Grounds:string read FGrounds write SetGrounds; //4
@@ -140,6 +141,11 @@ begin
   if FDocumentStatus=AValue then Exit;
   FDocumentStatus:=AValue;
   Modified(1);
+end;
+
+function TAcceptanceCertificateMetadata.GetDocumentStatus: TAcceptanceCertificateDocumentStatus;
+begin
+  Result:=FDocumentStatus;
 end;
 
 procedure TAcceptanceCertificateMetadata.SetGrounds(AValue: string);
@@ -181,7 +187,7 @@ end;
 procedure TAcceptanceCertificateMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('DocumentStatus', 1);
+  RegisterPropPublic('DocumentStatus', 1, TMethod(@SetDocumentStatus), TMethod(@GetDocumentStatus));
   RegisterProp('Total', 2, true);
   RegisterProp('Vat', 3);
   RegisterProp('Grounds', 4);

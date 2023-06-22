@@ -1,6 +1,6 @@
 { Diadoc interface library for FPC and Lazarus
 
-  Copyright (C) 2018-2020 Lagunov Aleksey alexs75@yandex.ru
+  Copyright (C) 2018-2023 Lagunov Aleksey alexs75@yandex.ru
 
   base on docs from http://api-docs.diadoc.ru
 
@@ -86,12 +86,14 @@ type
     FTotalInc: string;
     FVatDec: string;
     FVatInc: string;
+    function GetInvoiceCorrectionRevisionStatus: TInvoiceStatus;
+    procedure SetInvoiceCorrectionRevisionStatus(AValue: TInvoiceStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
+    property InvoiceCorrectionRevisionStatus:TInvoiceStatus read GetInvoiceCorrectionRevisionStatus write SetInvoiceCorrectionRevisionStatus default UnknownInvoiceStatus; //1
   published
-    property InvoiceCorrectionRevisionStatus:TInvoiceStatus read FInvoiceCorrectionRevisionStatus write FInvoiceCorrectionRevisionStatus default UnknownInvoiceStatus; //1
     property OriginalInvoiceNumber:string read FOriginalInvoiceNumber write FOriginalInvoiceNumber;                               //2
     property OriginalInvoiceDate:string read FOriginalInvoiceDate write FOriginalInvoiceDate;                                     //3
     property OriginalInvoiceRevisionNumber:string read FOriginalInvoiceRevisionNumber write FOriginalInvoiceRevisionNumber;       //4
@@ -136,12 +138,14 @@ type
     FTotalInc: string;
     FVatDec: string;
     FVatInc: string;
+    function GetInvoiceCorrectionStatus: TInvoiceStatus;
+    procedure SetInvoiceCorrectionStatus(AValue: TInvoiceStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
+    property InvoiceCorrectionStatus:TInvoiceStatus read GetInvoiceCorrectionStatus write SetInvoiceCorrectionStatus default UnknownInvoiceStatus; //1
   published
-    property InvoiceCorrectionStatus:TInvoiceStatus read FInvoiceCorrectionStatus write FInvoiceCorrectionStatus default UnknownInvoiceStatus; //1
     property OriginalInvoiceNumber:string read FOriginalInvoiceNumber write FOriginalInvoiceNumber;                          //2
     property OriginalInvoiceDate:string read FOriginalInvoiceDate write FOriginalInvoiceDate;                                //3
     property OriginalInvoiceRevisionNumber:string read FOriginalInvoiceRevisionNumber write FOriginalInvoiceRevisionNumber;  //4
@@ -177,12 +181,14 @@ type
     FOriginalInvoiceNumber: string;
     FTotal: string;
     FVat: string;
+    function GetInvoiceRevisionStatus: TInvoiceStatus;
+    procedure SetInvoiceRevisionStatus(AValue: TInvoiceStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
+    property InvoiceRevisionStatus:TInvoiceStatus read GetInvoiceRevisionStatus write SetInvoiceRevisionStatus default UnknownInvoiceStatus; //1
   published
-    property InvoiceRevisionStatus:TInvoiceStatus read FInvoiceRevisionStatus write FInvoiceRevisionStatus default UnknownInvoiceStatus; //1
     property OriginalInvoiceNumber:string read FOriginalInvoiceNumber write FOriginalInvoiceNumber; //2;
     property OriginalInvoiceDate:string read FOriginalInvoiceDate write FOriginalInvoiceDate;       //3;
     property Total:string read FTotal write FTotal;                                                 //4;
@@ -210,12 +216,14 @@ type
     FInvoiceStatus: TInvoiceStatus;
     FTotal: string;
     FVat: string;
+    function GetInvoiceStatus: TInvoiceStatus;
+    procedure SetInvoiceStatus(AValue: TInvoiceStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
+    property InvoiceStatus:TInvoiceStatus read GetInvoiceStatus write SetInvoiceStatus default UnknownInvoiceStatus;  //1
   published
-    property InvoiceStatus:TInvoiceStatus read FInvoiceStatus write FInvoiceStatus default UnknownInvoiceStatus;  //1
     property Total:string read FTotal write FTotal;                                                               //2;
     property Vat:string read FVat write FVat;                                                                     //3;
     property Currency:int32 read FCurrency write FCurrency;                                                       //4;
@@ -256,6 +264,18 @@ end;
 
 { TInvoiceCorrectionRevisionMetadata }
 
+function TInvoiceCorrectionRevisionMetadata.GetInvoiceCorrectionRevisionStatus: TInvoiceStatus;
+begin
+  Result:=FInvoiceCorrectionRevisionStatus;
+end;
+
+procedure TInvoiceCorrectionRevisionMetadata.SetInvoiceCorrectionRevisionStatus(
+  AValue: TInvoiceStatus);
+begin
+  Modified(1);
+  FInvoiceCorrectionRevisionStatus:=AValue;
+end;
+
 procedure TInvoiceCorrectionRevisionMetadata.InternalInit;
 begin
   inherited InternalInit;
@@ -265,7 +285,7 @@ end;
 procedure TInvoiceCorrectionRevisionMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('InvoiceCorrectionRevisionStatus', 1);
+  RegisterPropPublic('InvoiceCorrectionRevisionStatus', 1, TMethod(@SetInvoiceCorrectionRevisionStatus), TMethod(@GetInvoiceCorrectionRevisionStatus));
   RegisterProp('OriginalInvoiceNumber', 2);
   RegisterProp('OriginalInvoiceDate', 3);
   RegisterProp('OriginalInvoiceRevisionNumber', 4);
@@ -283,6 +303,18 @@ end;
 
 { TInvoiceCorrectionMetadata }
 
+function TInvoiceCorrectionMetadata.GetInvoiceCorrectionStatus: TInvoiceStatus;
+begin
+  Result:=FInvoiceCorrectionStatus;
+end;
+
+procedure TInvoiceCorrectionMetadata.SetInvoiceCorrectionStatus(
+  AValue: TInvoiceStatus);
+begin
+  Modified(1);
+  FInvoiceCorrectionStatus:=AValue;
+end;
+
 procedure TInvoiceCorrectionMetadata.InternalInit;
 begin
   inherited InternalInit;
@@ -292,7 +324,7 @@ end;
 procedure TInvoiceCorrectionMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('InvoiceCorrectionStatus', 1);
+  RegisterPropPublic('InvoiceCorrectionStatus', 1, TMethod(@SetInvoiceCorrectionStatus), TMethod(@GetInvoiceCorrectionStatus));
   RegisterProp('OriginalInvoiceNumber', 2);
   RegisterProp('OriginalInvoiceDate', 3);
   RegisterProp('OriginalInvoiceRevisionNumber', 4);
@@ -309,6 +341,18 @@ end;
 
 { TInvoiceRevisionMetadata }
 
+function TInvoiceRevisionMetadata.GetInvoiceRevisionStatus: TInvoiceStatus;
+begin
+  Result:=FInvoiceRevisionStatus;
+end;
+
+procedure TInvoiceRevisionMetadata.SetInvoiceRevisionStatus(
+  AValue: TInvoiceStatus);
+begin
+  Modified(1);
+  FInvoiceRevisionStatus:=AValue;
+end;
+
 procedure TInvoiceRevisionMetadata.InternalInit;
 begin
   inherited InternalInit;
@@ -318,7 +362,7 @@ end;
 procedure TInvoiceRevisionMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('InvoiceRevisionStatus', 1);
+  RegisterPropPublic('InvoiceRevisionStatus', 1, TMethod(@SetInvoiceRevisionStatus), TMethod(@GetInvoiceRevisionStatus));
   RegisterProp('OriginalInvoiceNumber', 2);
   RegisterProp('OriginalInvoiceDate', 3);
   RegisterProp('Total', 4);
@@ -330,6 +374,17 @@ end;
 
 { TInvoiceMetadata }
 
+function TInvoiceMetadata.GetInvoiceStatus: TInvoiceStatus;
+begin
+  Result:=FInvoiceStatus;
+end;
+
+procedure TInvoiceMetadata.SetInvoiceStatus(AValue: TInvoiceStatus);
+begin
+  Modified(1);
+  FInvoiceStatus:=AValue;
+end;
+
 procedure TInvoiceMetadata.InternalInit;
 begin
   inherited InternalInit;
@@ -339,7 +394,7 @@ end;
 procedure TInvoiceMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('InvoiceStatus', 1);
+  RegisterPropPublic('InvoiceStatus', 1, TMethod(@SetInvoiceStatus), TMethod(@GetInvoiceStatus));
   RegisterProp('Total', 2);
   RegisterProp('Vat', 3);
   RegisterProp('Currency', 4);

@@ -1,6 +1,6 @@
 { Diadoc interface library for FPC and Lazarus
 
-  Copyright (C) 2018-2020 Lagunov Aleksey alexs75@yandex.ru
+  Copyright (C) 2018-2023 Lagunov Aleksey alexs75@yandex.ru
 
   base on docs from http://api-docs.diadoc.ru
 
@@ -99,13 +99,16 @@ type
   private
     FDocumentStatus: TBilateralDocumentStatus;
     FReceiptStatus: TReceiptStatus;
+    function GetDocumentStatus: TBilateralDocumentStatus;
+    procedure SetDocumentStatus(AValue: TBilateralDocumentStatus);
+    procedure SetReceiptStatus(AValue: TReceiptStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
+    property DocumentStatus:TBilateralDocumentStatus read GetDocumentStatus write SetDocumentStatus default UnknownBilateralDocumentStatus;//1
   published
-    property DocumentStatus:TBilateralDocumentStatus read FDocumentStatus write FDocumentStatus default UnknownBilateralDocumentStatus;//1
-    property ReceiptStatus:TReceiptStatus read FReceiptStatus write FReceiptStatus default UnknownReceiptStatus;//2
+    property ReceiptStatus:TReceiptStatus read FReceiptStatus write SetReceiptStatus default UnknownReceiptStatus;//2
   end;
 
   { TSupplementaryAgreementMetadata }
@@ -125,12 +128,14 @@ type
     FDocumentStatus: TBilateralDocumentStatus;
     FReceiptStatus: TReceiptStatus;
     FTotal: string;
+    function GetDocumentStatus: TBilateralDocumentStatus;
+    procedure SetDocumentStatus(AValue: TBilateralDocumentStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
+    property DocumentStatus:TBilateralDocumentStatus read GetDocumentStatus write SetDocumentStatus default UnknownBilateralDocumentStatus;//1
   published
-    property DocumentStatus:TBilateralDocumentStatus read FDocumentStatus write FDocumentStatus default UnknownBilateralDocumentStatus;//1
     property Total:string read FTotal write FTotal;                             //2;
     property ContractType:string read FContractType write FContractType;        //3;
     property ContractNumber:string read FContractNumber write FContractNumber;  //4;
@@ -151,12 +156,14 @@ type
     FContractType: string;
     FDocumentStatus: TBilateralDocumentStatus;
     FReceiptStatus: TReceiptStatus;
+    function GetDocumentStatus: TBilateralDocumentStatus;
+    procedure SetDocumentStatus(AValue: TBilateralDocumentStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
+    property DocumentStatus:TBilateralDocumentStatus read GetDocumentStatus write SetDocumentStatus default UnknownBilateralDocumentStatus;//1
   published
-    property DocumentStatus:TBilateralDocumentStatus read FDocumentStatus write FDocumentStatus default UnknownBilateralDocumentStatus;//1
     property ContractPrice:string read FContractPrice write FContractPrice;//2
     property ContractType:string read FContractType write FContractType;//3
     property ReceiptStatus:TReceiptStatus read FReceiptStatus write FReceiptStatus default UnknownReceiptStatus;//4
@@ -176,12 +183,14 @@ type
     FContractDocumentNumber: string;
     FDocumentStatus: TBilateralDocumentStatus;
     FPriceListEffectiveDate: string;
+    function GetDocumentStatus: TBilateralDocumentStatus;
+    procedure SetDocumentStatus(AValue: TBilateralDocumentStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
+    property DocumentStatus:TBilateralDocumentStatus read GetDocumentStatus write SetDocumentStatus;//1;
   published
-    property DocumentStatus:TBilateralDocumentStatus read FDocumentStatus write FDocumentStatus;//1;
     property PriceListEffectiveDate:string read FPriceListEffectiveDate write FPriceListEffectiveDate;//2;
     property ContractDocumentDate:string read FContractDocumentDate write FContractDocumentDate;//3;
     property ContractDocumentNumber:string read FContractDocumentNumber write FContractDocumentNumber;//4;
@@ -206,12 +215,14 @@ type
     FRevisionNumber: string;
     FTotal: string;
     FVat: string;
+    function GetDocumentStatus: TBilateralDocumentStatus;
+    procedure SetDocumentStatus(AValue: TBilateralDocumentStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
+    property DocumentStatus:TBilateralDocumentStatus read GetDocumentStatus write SetDocumentStatus default UnknownBilateralDocumentStatus; //1
   published
-    property DocumentStatus:TBilateralDocumentStatus read FDocumentStatus write FDocumentStatus default UnknownBilateralDocumentStatus; //1
     property Total:string read FTotal write FTotal; //2
     property Vat:string read FVat write FVat;  //3
     property Grounds:string read FGrounds write FGrounds;  //4
@@ -227,12 +238,14 @@ type
   TTrustConnectionRequestMetadata = class(TSerializationObject)  //message TrustConnectionRequestMetadata
   private
     FTrustConnectionRequestStatus: TBilateralDocumentStatus;
+    function GetTrustConnectionRequestStatus: TBilateralDocumentStatus;
+    procedure SetTrustConnectionRequestStatus(AValue: TBilateralDocumentStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
+    property TrustConnectionRequestStatus:TBilateralDocumentStatus read GetTrustConnectionRequestStatus write SetTrustConnectionRequestStatus default UnknownBilateralDocumentStatus; //1
   published
-    property TrustConnectionRequestStatus:TBilateralDocumentStatus read FTrustConnectionRequestStatus write FTrustConnectionRequestStatus default UnknownBilateralDocumentStatus; //1
   end;
 
 function BilateralDocumentStatusToStr(AStatus:TBilateralDocumentStatus):string;
@@ -263,6 +276,24 @@ end;
 
 { TBilateralDocumentMetadata }
 
+function TBilateralDocumentMetadata.GetDocumentStatus: TBilateralDocumentStatus;
+begin
+  Result:=FDocumentStatus;
+end;
+
+procedure TBilateralDocumentMetadata.SetDocumentStatus(
+  AValue: TBilateralDocumentStatus);
+begin
+  Modified(1);
+  FDocumentStatus:=AValue;
+end;
+
+procedure TBilateralDocumentMetadata.SetReceiptStatus(AValue: TReceiptStatus);
+begin
+  Modified(2);
+  FReceiptStatus:=AValue;
+end;
+
 procedure TBilateralDocumentMetadata.InternalInit;
 begin
   inherited InternalInit;
@@ -273,11 +304,23 @@ end;
 procedure TBilateralDocumentMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('DocumentStatus', 1);
+  RegisterPropPublic('DocumentStatus', 1, TMethod(@SetDocumentStatus), TMethod(@GetDocumentStatus));
   RegisterProp('ReceiptStatus', 2);
 end;
 
 { TSupplementaryAgreementMetadata }
+
+function TSupplementaryAgreementMetadata.GetDocumentStatus: TBilateralDocumentStatus;
+begin
+  Result:=FDocumentStatus;
+end;
+
+procedure TSupplementaryAgreementMetadata.SetDocumentStatus(
+  AValue: TBilateralDocumentStatus);
+begin
+  Modified(1);
+  FDocumentStatus:=AValue;
+end;
 
 procedure TSupplementaryAgreementMetadata.InternalInit;
 begin
@@ -289,7 +332,7 @@ end;
 procedure TSupplementaryAgreementMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('DocumentStatus', 1);
+  RegisterPropPublic('DocumentStatus', 1, TMethod(@SetDocumentStatus), TMethod(@GetDocumentStatus));
   RegisterProp('Total', 2);
   RegisterProp('ContractType', 3);
   RegisterProp('ContractNumber', 4);
@@ -298,6 +341,17 @@ begin
 end;
 
 { TContractMetadata }
+
+function TContractMetadata.GetDocumentStatus: TBilateralDocumentStatus;
+begin
+  Result:=FDocumentStatus;
+end;
+
+procedure TContractMetadata.SetDocumentStatus(AValue: TBilateralDocumentStatus);
+begin
+  Modified(1);
+  FDocumentStatus:=AValue;
+end;
 
 procedure TContractMetadata.InternalInit;
 begin
@@ -309,13 +363,25 @@ end;
 procedure TContractMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('DocumentStatus', 1);
+  RegisterPropPublic('DocumentStatus', 1, TMethod(@SetDocumentStatus), TMethod(@GetDocumentStatus));
   RegisterProp('ContractPrice', 2);
   RegisterProp('ContractType', 3);
   RegisterProp('ReceiptStatus', 4);
 end;
 
 { TPriceListMetadata }
+
+function TPriceListMetadata.GetDocumentStatus: TBilateralDocumentStatus;
+begin
+  Result:=FDocumentStatus;
+end;
+
+procedure TPriceListMetadata.SetDocumentStatus(AValue: TBilateralDocumentStatus
+  );
+begin
+  Modified(1);
+  FDocumentStatus:=AValue;
+end;
 
 procedure TPriceListMetadata.InternalInit;
 begin
@@ -325,13 +391,25 @@ end;
 procedure TPriceListMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('DocumentStatus', 1);
+  RegisterPropPublic('DocumentStatus', 1, TMethod(@SetDocumentStatus), TMethod(@GetDocumentStatus));
   RegisterProp('PriceListEffectiveDate', 2);
   RegisterProp('ContractDocumentDate', 3);
   RegisterProp('ContractDocumentNumber', 4);
 end;
 
 { TBasicDocumentMetadata }
+
+function TBasicDocumentMetadata.GetDocumentStatus: TBilateralDocumentStatus;
+begin
+  Result:=FDocumentStatus;
+end;
+
+procedure TBasicDocumentMetadata.SetDocumentStatus(
+  AValue: TBilateralDocumentStatus);
+begin
+  Modified(1);
+  FDocumentStatus:=AValue;
+end;
 
 procedure TBasicDocumentMetadata.InternalInit;
 begin
@@ -343,7 +421,7 @@ end;
 procedure TBasicDocumentMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('DocumentStatus', 1);
+  RegisterPropPublic('DocumentStatus', 1, TMethod(@SetDocumentStatus), TMethod(@GetDocumentStatus));
   RegisterProp('Total', 2);
   RegisterProp('Vat', 3);
   RegisterProp('Grounds', 4);
@@ -354,6 +432,18 @@ end;
 
 { TTrustConnectionRequestMetadata }
 
+function TTrustConnectionRequestMetadata.GetTrustConnectionRequestStatus: TBilateralDocumentStatus;
+begin
+  Result:=FTrustConnectionRequestStatus;
+end;
+
+procedure TTrustConnectionRequestMetadata.SetTrustConnectionRequestStatus(
+  AValue: TBilateralDocumentStatus);
+begin
+  Modified(1);
+  FTrustConnectionRequestStatus:=AValue;
+end;
+
 procedure TTrustConnectionRequestMetadata.InternalInit;
 begin
   inherited InternalInit;
@@ -363,7 +453,7 @@ end;
 procedure TTrustConnectionRequestMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('TrustConnectionRequestStatus', 1);
+  RegisterPropPublic('TrustConnectionRequestStatus', 1, TMethod(@SetTrustConnectionRequestStatus), TMethod(@GetTrustConnectionRequestStatus));
 end;
 end.
 

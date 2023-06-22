@@ -1,6 +1,6 @@
 { Diadoc interface library for FPC and Lazarus
 
-  Copyright (C) 2018-2020 Lagunov Aleksey alexs75@yandex.ru
+  Copyright (C) 2018-2023 Lagunov Aleksey alexs75@yandex.ru
 
   base on docs from http://api-docs.diadoc.ru
 
@@ -100,6 +100,7 @@ type
     FOrgName: string;
     FOrgType: TOrgType;
     FPhone: string;
+    function GetOrgType: TOrgType;
     procedure SetBankAccountNumber(AValue: string);
     procedure SetBankId(AValue: string);
     procedure SetBankName(AValue: string);
@@ -125,6 +126,7 @@ type
     procedure InternalInit; override;
   public
     destructor Destroy; override;
+    property OrgType:TOrgType read GetOrgType write SetOrgType; //7
   published
     property BoxId:string read FBoxId write SetBoxId; //1
     property OrgName:string read FOrgName write SetOrgName; //2;
@@ -132,7 +134,6 @@ type
     property Kpp:string read FKpp write SetKpp; //4;
     property Address:TAddress read FAddress; //5;
     property FnsParticipantId:string read FFnsParticipantId write SetFnsParticipantId; //6;
-    property OrgType:TOrgType read FOrgType write SetOrgType; //7
     property Okopf:string read FOkopf write SetOkopf; //8;
     property Okpo:string read FOkpo write SetOkpo; //9;
     property Okdp:string read FOkdp write SetOkdp; //10;
@@ -178,6 +179,11 @@ begin
   if FBankAccountNumber=AValue then Exit;
   FBankAccountNumber:=AValue;
   Modified(14);
+end;
+
+function TExtendedOrganizationInfo.GetOrgType: TOrgType;
+begin
+  Result:=FOrgType;
 end;
 
 procedure TExtendedOrganizationInfo.SetBankId(AValue: string);
@@ -316,7 +322,7 @@ begin
   RegisterProp('Kpp', 4);
   RegisterProp('Address', 5);
   RegisterProp('FnsParticipantId', 6);
-  RegisterProp('OrgType', 7, true);
+  RegisterPropPublic('OrgType', 7, TMethod(@SetOrgType), TMethod(@GetOrgType), true);
   RegisterProp('Okopf', 8);
   RegisterProp('Okpo', 9);
   RegisterProp('Okdp', 10);

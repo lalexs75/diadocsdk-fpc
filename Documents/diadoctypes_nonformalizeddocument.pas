@@ -1,6 +1,6 @@
 { Diadoc interface library for FPC and Lazarus
 
-  Copyright (C) 2018-2020 Lagunov Aleksey alexs75@yandex.ru
+  Copyright (C) 2018-2023 Lagunov Aleksey alexs75@yandex.ru
 
   base on docs from http://api-docs.diadoc.ru
 
@@ -75,12 +75,14 @@ type
   private
     FDocumentStatus: TNonformalizedDocumentStatus;
     FReceiptStatus: TReceiptStatus;
+    function GetDocumentStatus: TNonformalizedDocumentStatus;
+    procedure SetDocumentStatus(AValue: TNonformalizedDocumentStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
+    property DocumentStatus:TNonformalizedDocumentStatus read GetDocumentStatus write SetDocumentStatus default UnknownNonformalizedDocumentStatus;//1
   published
-    property DocumentStatus:TNonformalizedDocumentStatus read FDocumentStatus write FDocumentStatus default UnknownNonformalizedDocumentStatus;//1
     property ReceiptStatus:TReceiptStatus read FReceiptStatus write FReceiptStatus default UnknownReceiptStatus; //2
   end;
 
@@ -116,6 +118,18 @@ end;
 
 { TNonformalizedDocumentMetadata }
 
+function TNonformalizedDocumentMetadata.GetDocumentStatus: TNonformalizedDocumentStatus;
+begin
+  Result:=FDocumentStatus;
+end;
+
+procedure TNonformalizedDocumentMetadata.SetDocumentStatus(
+  AValue: TNonformalizedDocumentStatus);
+begin
+  Modified(1);
+  FDocumentStatus:=AValue;
+end;
+
 procedure TNonformalizedDocumentMetadata.InternalInit;
 begin
   inherited InternalInit;
@@ -126,7 +140,7 @@ end;
 procedure TNonformalizedDocumentMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('DocumentStatus', 1);
+  RegisterPropPublic('DocumentStatus', 1, TMethod(@SetDocumentStatus), TMethod(@GetDocumentStatus));
   RegisterProp('ReceiptStatus', 2);
 end;
 end.

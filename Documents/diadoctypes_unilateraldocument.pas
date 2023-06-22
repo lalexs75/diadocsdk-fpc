@@ -1,6 +1,6 @@
 { Diadoc interface library for FPC and Lazarus
 
-  Copyright (C) 2018-2020 Lagunov Aleksey alexs75@yandex.ru
+  Copyright (C) 2018-2023 Lagunov Aleksey alexs75@yandex.ru
 
   base on docs from http://api-docs.diadoc.ru
 
@@ -65,12 +65,14 @@ type
   private
     FDocumentStatus: TUnilateralDocumentStatus;
     FReceiptStatus: TReceiptStatus;
+    function GetDocumentStatus: TUnilateralDocumentStatus;
+    procedure SetDocumentStatus(AValue: TUnilateralDocumentStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
+    property DocumentStatus:TUnilateralDocumentStatus read GetDocumentStatus write SetDocumentStatus default UnknownUnilateralDocumentStatus; //1
   published
-    property DocumentStatus:TUnilateralDocumentStatus read FDocumentStatus write FDocumentStatus default UnknownUnilateralDocumentStatus; //1
     property ReceiptStatus:TReceiptStatus read FReceiptStatus write FReceiptStatus default UnknownReceiptStatus; //2
   end;
 
@@ -91,12 +93,14 @@ type
     FReceiptStatus: TReceiptStatus;
     FTotal: string;
     FVat: string;
+    function GetDocumentStatus: TUnilateralDocumentStatus;
+    procedure SetDocumentStatus(AValue: TUnilateralDocumentStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
+    property DocumentStatus:TUnilateralDocumentStatus read GetDocumentStatus write SetDocumentStatus default UnknownUnilateralDocumentStatus; //1
   published
-    property DocumentStatus:TUnilateralDocumentStatus read FDocumentStatus write FDocumentStatus default UnknownUnilateralDocumentStatus; //1
     property Total:string read FTotal write FTotal;//2
     property Vat:string read FVat write FVat; //3
     property Grounds:string read FGrounds write FGrounds; //4
@@ -106,6 +110,18 @@ type
 implementation
 
 { TServiceDetailsMetadata }
+
+function TServiceDetailsMetadata.GetDocumentStatus: TUnilateralDocumentStatus;
+begin
+  Result:=FDocumentStatus;
+end;
+
+procedure TServiceDetailsMetadata.SetDocumentStatus(
+  AValue: TUnilateralDocumentStatus);
+begin
+  Modified(1);
+  FDocumentStatus:=AValue;
+end;
 
 procedure TServiceDetailsMetadata.InternalInit;
 begin
@@ -117,11 +133,23 @@ end;
 procedure TServiceDetailsMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('DocumentStatus', 1);
+  RegisterPropPublic('DocumentStatus', 1, TMethod(@SetDocumentStatus), TMethod(@GetDocumentStatus));
   RegisterProp('ReceiptStatus', 2);
 end;
 
 { TProformaInvoiceMetadata }
+
+function TProformaInvoiceMetadata.GetDocumentStatus: TUnilateralDocumentStatus;
+begin
+  Result:=FDocumentStatus;
+end;
+
+procedure TProformaInvoiceMetadata.SetDocumentStatus(
+  AValue: TUnilateralDocumentStatus);
+begin
+  Modified(1);
+  FDocumentStatus:=AValue;
+end;
 
 procedure TProformaInvoiceMetadata.InternalInit;
 begin
@@ -133,7 +161,7 @@ end;
 procedure TProformaInvoiceMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('DocumentStatus', 1);
+  RegisterPropPublic('DocumentStatus', 1, TMethod(@SetDocumentStatus), TMethod(@GetDocumentStatus));
   RegisterProp('Total', 2);
   RegisterProp('Vat', 3);
   RegisterProp('Grounds', 4);
