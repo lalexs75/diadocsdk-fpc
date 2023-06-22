@@ -1,6 +1,6 @@
 { Diadoc interface library for FPC and Lazarus
 
-  Copyright (C) 2018-2020 Lagunov Aleksey alexs75@yandex.ru
+  Copyright (C) 2018-2023 Lagunov Aleksey alexs75@yandex.ru
 
   base on docs from http://api-docs.diadoc.ru
 
@@ -87,6 +87,7 @@ type
     FFileName: string;
     FInvoice: TRecognizedInvoice;
     FRecognitionId: string;
+    function GetDocumentType: TRecognizedDocumentType;
     procedure SetContent(AValue: TBytes);
     procedure SetDocumentType(AValue: TRecognizedDocumentType);
     procedure SetErrorMessage(AValue: string);
@@ -97,11 +98,11 @@ type
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
+    property DocumentType:TRecognizedDocumentType read GetDocumentType write SetDocumentType default UnknownRecognizedDocumentType;//4
   published
     property RecognitionId:string read FRecognitionId write SetRecognitionId;//1;
     property ErrorMessage:string read FErrorMessage write SetErrorMessage;//2;
     property FileName:string read FFileName write SetFileName;//3;
-    property DocumentType:TRecognizedDocumentType read FDocumentType write SetDocumentType default UnknownRecognizedDocumentType;//4
     property Content:TBytes read FContent write SetContent;// 5;
     property Invoice:TRecognizedInvoice read FInvoice;//6;
   end;
@@ -116,6 +117,11 @@ begin
   if FContent=AValue then Exit;
   FContent:=AValue;
   Modified(5);
+end;
+
+function TRecognized.GetDocumentType: TRecognizedDocumentType;
+begin
+  Result:=FDocumentType;
 end;
 
 procedure TRecognized.SetDocumentType(AValue: TRecognizedDocumentType);
@@ -159,7 +165,7 @@ begin
   RegisterProp('RecognitionId', 1, true);
   RegisterProp('ErrorMessage', 2);
   RegisterProp('FileName', 3);
-  RegisterProp('DocumentType', 4);
+  RegisterPropPublic('DocumentType', 4, TMethod(@SetDocumentType), TMethod(@GetDocumentType));
   RegisterProp('Content', 5);
   RegisterProp('Invoice', 6);
 end;

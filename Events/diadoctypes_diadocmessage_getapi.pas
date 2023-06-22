@@ -1,6 +1,6 @@
 { Diadoc interface library for FPC and Lazarus
 
-  Copyright (C) 2018-2020 Lagunov Aleksey alexs75@yandex.ru
+  Copyright (C) 2018-2023 Lagunov Aleksey alexs75@yandex.ru
 
   base on docs from http://api-docs.diadoc.ru
 
@@ -368,6 +368,7 @@ type
     FTemplateRefusalInfo: TTemplateRefusalInfo;
     FTemplateTransformationInfo: TTemplateTransformationInfo;
     FVersion: string;
+    function GetAttachmentType: TAttachmentType;
     procedure SetAttachmentType(AValue: TAttachmentType);
     procedure SetAttachmentVersion(AValue: string);
     procedure SetContentTypeId(AValue: string);
@@ -390,12 +391,12 @@ type
     procedure InternalInit; override;
   public
     destructor Destroy; override;
+    property AttachmentType:TAttachmentType read GetAttachmentType write SetAttachmentType default UnknownAttachmentType; //%5
   published
     property EntityType:TEntityType read FEntityType write SetEntityType default UnknownEntityType ;//%1
     property EntityId:string read FEntityId write SetEntityId; //%2;
     property ParentEntityId:string read FParentEntityId write SetParentEntityId; //%3;
     property Content:TContent read FContent; //%4;
-    property AttachmentType:TAttachmentType read FAttachmentType write SetAttachmentType default UnknownAttachmentType; //%5
     property FileName:string read FFileName write SetFileName; //%6;
     property NeedRecipientSignature:Boolean read FNeedRecipientSignature write SetNeedRecipientSignature; //%7
     property SignerBoxId:string read FSignerBoxId write SetSignerBoxId; //%8
@@ -1348,6 +1349,11 @@ begin
   Modified(5);
 end;
 
+function TEntity.GetAttachmentType: TAttachmentType;
+begin
+  Result:=FAttachmentType;
+end;
+
 procedure TEntity.SetAttachmentVersion(AValue: string);
 begin
   if FAttachmentVersion=AValue then Exit;
@@ -1474,7 +1480,7 @@ begin
   RegisterProp('EntityId', 2, true);
   RegisterProp('ParentEntityId', 3);
   RegisterProp('Content', 4);
-  RegisterProp('AttachmentType', 5);
+  RegisterPropPublic('AttachmentType', 5, TMethod(@SetAttachmentType), TMethod(@GetAttachmentType));
   RegisterProp('FileName', 6);
   RegisterProp('NeedRecipientSignature', 7);
   RegisterProp('SignerBoxId', 8);

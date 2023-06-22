@@ -114,12 +114,14 @@ type
     FTotalInc: string;
     FVatDec: string;
     FVatInc: string;
+    function GetDocumentStatus: TUniversalTransferDocumentStatus;
+    procedure SetDocumentStatus(AValue: TUniversalTransferDocumentStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
+    property DocumentStatus:TUniversalTransferDocumentStatus read GetDocumentStatus write SetDocumentStatus;//1;
   published
-    property DocumentStatus:TUniversalTransferDocumentStatus read FDocumentStatus write FDocumentStatus;//1;
     property TotalInc:string read FTotalInc write FTotalInc;//2;
     property TotalDec:string read FTotalDec write FTotalDec;//3;
     property VatInc:string read FVatInc write FVatInc;//4;
@@ -171,12 +173,14 @@ type
     FTotalInc: string;
     FVatDec: string;
     FVatInc: string;
+    function GetDocumentStatus: TUniversalTransferDocumentStatus;
+    procedure SetDocumentStatus(AValue: TUniversalTransferDocumentStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
+    property DocumentStatus:TUniversalTransferDocumentStatus read GetDocumentStatus write SetDocumentStatus;//1;
   published
-    property DocumentStatus:TUniversalTransferDocumentStatus read FDocumentStatus write FDocumentStatus;//1;
     property TotalInc:string read FTotalInc write FTotalInc;//2;
     property TotalDec:string read FTotalDec write FTotalDec;//3;
     property VatInc:string read FVatInc write FVatInc;//4;
@@ -217,12 +221,14 @@ type
     FOriginalInvoiceNumber: string;
     FTotal: string;
     FVat: string;
+    function GetDocumentStatus: TUniversalTransferDocumentStatus;
+    procedure SetDocumentStatus(AValue: TUniversalTransferDocumentStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
+    property DocumentStatus:TUniversalTransferDocumentStatus read GetDocumentStatus write SetDocumentStatus; //1;
   published
-    property DocumentStatus:TUniversalTransferDocumentStatus read FDocumentStatus write FDocumentStatus; //1;
     property Total:string read FTotal write FTotal;//2; // TotalSum;
     property Vat:string read FVat write FVat;//3; //TotalVat;
     property Grounds:string read FGrounds write FGrounds;//4; // DocumentGrounds
@@ -255,12 +261,14 @@ type
     FInvoiceAmendmentFlags: int32;
     FTotal: string;
     FVat: string;
+    function GetDocumentStatus: TUniversalTransferDocumentStatus;
+    procedure SetDocumentStatus(AValue: TUniversalTransferDocumentStatus);
   protected
     procedure InternalInit; override;
     procedure InternalRegisterProperty; override;
   public
+    property DocumentStatus:TUniversalTransferDocumentStatus read GetDocumentStatus write SetDocumentStatus default UnknownDocumentStatus;//1
   published
-    property DocumentStatus:TUniversalTransferDocumentStatus read FDocumentStatus write FDocumentStatus default UnknownDocumentStatus;//1
     property Total:string read FTotal write FTotal; //2 // TotalSum;
     property Vat:string read FVat  write FVat; //3; //TotalVat;
     property Grounds:string read FGrounds write FGrounds; //4; // DocumentGrounds
@@ -274,6 +282,18 @@ implementation
 
 { TUniversalCorrectionDocumentRevisionMetadata }
 
+function TUniversalCorrectionDocumentRevisionMetadata.GetDocumentStatus: TUniversalTransferDocumentStatus;
+begin
+  Result:=FDocumentStatus;
+end;
+
+procedure TUniversalCorrectionDocumentRevisionMetadata.SetDocumentStatus(
+  AValue: TUniversalTransferDocumentStatus);
+begin
+  Modified(1);
+  FDocumentStatus:=AValue;
+end;
+
 procedure TUniversalCorrectionDocumentRevisionMetadata.InternalInit;
 begin
   inherited InternalInit;
@@ -282,7 +302,7 @@ end;
 procedure TUniversalCorrectionDocumentRevisionMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('DocumentStatus', 1);
+  RegisterPropPublic('DocumentStatus', 1, TMethod(@SetDocumentStatus), TMethod(@GetDocumentStatus));
   RegisterProp('TotalInc', 2);
   RegisterProp('TotalDec', 3);
   RegisterProp('VatInc', 4);
@@ -302,6 +322,18 @@ end;
 
 { TUniversalCorrectionDocumentMetadata }
 
+function TUniversalCorrectionDocumentMetadata.GetDocumentStatus: TUniversalTransferDocumentStatus;
+begin
+  Result:=FDocumentStatus;
+end;
+
+procedure TUniversalCorrectionDocumentMetadata.SetDocumentStatus(
+  AValue: TUniversalTransferDocumentStatus);
+begin
+  Modified(1);
+  FDocumentStatus:=AValue;
+end;
+
 procedure TUniversalCorrectionDocumentMetadata.InternalInit;
 begin
   inherited InternalInit;
@@ -310,7 +342,7 @@ end;
 procedure TUniversalCorrectionDocumentMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('DocumentStatus', 1);
+  RegisterPropPublic('DocumentStatus', 1, TMethod(@SetDocumentStatus), TMethod(@GetDocumentStatus));
   RegisterProp('TotalInc', 2);
   RegisterProp('TotalDec', 3);
   RegisterProp('VatInc', 4);
@@ -328,6 +360,18 @@ end;
 
 { TUniversalTransferDocumentRevisionMetadata }
 
+function TUniversalTransferDocumentRevisionMetadata.GetDocumentStatus: TUniversalTransferDocumentStatus;
+begin
+  Result:=FDocumentStatus;
+end;
+
+procedure TUniversalTransferDocumentRevisionMetadata.SetDocumentStatus(
+  AValue: TUniversalTransferDocumentStatus);
+begin
+  Modified(1);
+  FDocumentStatus:=AValue;
+end;
+
 procedure TUniversalTransferDocumentRevisionMetadata.InternalInit;
 begin
   inherited InternalInit;
@@ -336,7 +380,7 @@ end;
 procedure TUniversalTransferDocumentRevisionMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('DocumentStatus', 1);
+  RegisterPropPublic('DocumentStatus', 1, TMethod(@SetDocumentStatus), TMethod(@GetDocumentStatus));
   RegisterProp('Total', 2);
   RegisterProp('Vat', 3);
   RegisterProp('Grounds', 4);
@@ -350,6 +394,18 @@ end;
 
 { TUniversalTransferDocumentMetadata }
 
+function TUniversalTransferDocumentMetadata.GetDocumentStatus: TUniversalTransferDocumentStatus;
+begin
+  Result:=FDocumentStatus;
+end;
+
+procedure TUniversalTransferDocumentMetadata.SetDocumentStatus(
+  AValue: TUniversalTransferDocumentStatus);
+begin
+  Modified(1);
+  FDocumentStatus:=AValue;
+end;
+
 procedure TUniversalTransferDocumentMetadata.InternalInit;
 begin
   inherited InternalInit;
@@ -359,7 +415,7 @@ end;
 procedure TUniversalTransferDocumentMetadata.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('DocumentStatus', 1);
+  RegisterPropPublic('DocumentStatus', 1, TMethod(@SetDocumentStatus), TMethod(@GetDocumentStatus));
   RegisterProp('Total', 2); // TotalSum;
   RegisterProp('Vat', 3); //TotalVat;
   RegisterProp('Grounds', 4); // DocumentGrounds

@@ -1,6 +1,6 @@
 { Diadoc interface library for FPC and Lazarus
 
-  Copyright (C) 2018-2020 Lagunov Aleksey alexs75@yandex.ru
+  Copyright (C) 2018-2023 Lagunov Aleksey alexs75@yandex.ru
 
   base on docs from http://api-docs.diadoc.ru
 
@@ -73,6 +73,7 @@ type
     FInvoiceFormatVersion: TOrganizationInvoiceFormatVersion;
     FOrganization: TOrganization;
     FTitle: string;
+    function GetInvoiceFormatVersion: TOrganizationInvoiceFormatVersion;
     procedure SetBoxId(AValue: string);
     procedure SetBoxIdGuid(AValue: string);
     procedure SetEncryptedDocumentsAllowed(AValue: Boolean);
@@ -85,12 +86,12 @@ type
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
+    property InvoiceFormatVersion:TOrganizationInvoiceFormatVersion read GetInvoiceFormatVersion write SetInvoiceFormatVersion default v5_02; //4
   published
     property BoxId:string read FBoxId write SetBoxId;  // 1
     property BoxIdGuid:string read FBoxIdGuid write SetBoxIdGuid;// = 6;
     property Title:string read FTitle write SetTitle;  // 2
     property Organization:TOrganization read FOrganization write SetOrganization; //3
-    property InvoiceFormatVersion:TOrganizationInvoiceFormatVersion read FInvoiceFormatVersion write SetInvoiceFormatVersion default v5_02; //4
     property EncryptedDocumentsAllowed:Boolean read FEncryptedDocumentsAllowed write SetEncryptedDocumentsAllowed; //5;
   end;
   TBoxes = specialize GSerializationObjectList<TBox>;
@@ -300,6 +301,11 @@ begin
   Modified(1);
 end;
 
+function TBox.GetInvoiceFormatVersion: TOrganizationInvoiceFormatVersion;
+begin
+  Result:=FInvoiceFormatVersion;
+end;
+
 procedure TBox.SetBoxIdGuid(AValue: string);
 begin
   if FBoxIdGuid=AValue then Exit;
@@ -347,7 +353,7 @@ begin
   RegisterProp('BoxId', 1, true);
   RegisterProp('Title', 2, true);
   RegisterProp('Organization', 3, false, TOrganization);
-  RegisterProp('InvoiceFormatVersion', 4);
+  RegisterPropPublic('InvoiceFormatVersion', 4, TMethod(@SetInvoiceFormatVersion), TMethod(@GetInvoiceFormatVersion));
   RegisterProp('EncryptedDocumentsAllowed', 5);
   RegisterProp('BoxIdGuid', 6);
 end;
