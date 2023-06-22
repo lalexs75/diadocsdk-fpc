@@ -1,6 +1,6 @@
 { Diadoc interface library for FPC and Lazarus
 
-  Copyright (C) 2018-2020 Lagunov Aleksey alexs75@yandex.ru
+  Copyright (C) 2018-2023 Lagunov Aleksey alexs75@yandex.ru
 
   base on docs from http://api-docs.diadoc.ru
 
@@ -65,6 +65,8 @@ type
     FMessageFromCounteragent: string;
     FMessageToCounteragent: string;
     FOrganization: TOrganization;
+    function GetCounteragentStatus: TCounteragentStatus;
+    procedure SetCounteragentStatus(AValue: TCounteragentStatus);
     procedure SetMessageFromCounteragent(AValue: string);
     procedure SetMessageToCounteragent(AValue: string);
   protected
@@ -72,9 +74,9 @@ type
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
+    property CounteragentStatus:TCounteragentStatus read GetCounteragentStatus write SetCounteragentStatus;//2
   published
     property Organization:TOrganization read FOrganization; //1;
-    property CounteragentStatus:TCounteragentStatus read FCounteragentStatus write FCounteragentStatus;//2
     property LastEventTimestampTicks:sfixed64 read FLastEventTimestampTicks write FLastEventTimestampTicks;//3;
     property MessageFromCounteragent:string read FMessageFromCounteragent write SetMessageFromCounteragent; //4;
     property MessageToCounteragent:string read FMessageToCounteragent write SetMessageToCounteragent;//5;
@@ -167,6 +169,17 @@ begin
   Modified(4);
 end;
 
+function TOrganizationWithCounteragentStatus.GetCounteragentStatus: TCounteragentStatus;
+begin
+  Result:=FCounteragentStatus;
+end;
+
+procedure TOrganizationWithCounteragentStatus.SetCounteragentStatus(
+  AValue: TCounteragentStatus);
+begin
+  Modified(2);
+end;
+
 procedure TOrganizationWithCounteragentStatus.SetMessageToCounteragent(
   AValue: string);
 begin
@@ -186,7 +199,7 @@ procedure TOrganizationWithCounteragentStatus.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
   RegisterProp('Organization', 1, true);
-  RegisterProp('CounteragentStatus', 2);
+  RegisterPropPublic('CounteragentStatus', 2, TMethod(@SetCounteragentStatus), TMethod(@GetCounteragentStatus));
   RegisterProp('LastEventTimestampTicks', 3);
   RegisterProp('MessageFromCounteragent', 4);
   RegisterProp('MessageToCounteragent', 5);

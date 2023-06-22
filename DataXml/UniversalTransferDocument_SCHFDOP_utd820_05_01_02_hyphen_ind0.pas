@@ -5503,7 +5503,7 @@ var
 begin
   inherited InternalRegisterPropertys;
   P:=RegisterProperty('Country', 'Country', [xsaRequared], '', 1, 60);
-  P:=RegisterProperty('Address', 'Address', [xsaRequared], '', 1, 255);
+  P:=RegisterProperty('Address', 'Address', [xsaRequared], '', 1, 1000);
 end;
 
 procedure TForeignAddress.InternalInitChilds;

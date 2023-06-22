@@ -1,6 +1,6 @@
 { Diadoc interface library for FPC and Lazarus
 
-  Copyright (C) 2018-2020 Lagunov Aleksey alexs75@yandex.ru
+  Copyright (C) 2018-2023 Lagunov Aleksey alexs75@yandex.ru
 
   base on docs from http://api-docs.diadoc.ru
 
@@ -109,6 +109,7 @@ type
     FMessageFromCounteragent: string;
     FMessageToCounteragent: string;
     FOrganization: TOrganization;
+    function GetCurrentStatus: TCounteragentStatus;
     procedure SetCurrentStatus(AValue: TCounteragentStatus);
     procedure SetIndexKey(AValue: string);
     procedure SetLastEventTimestampTicks(AValue: sfixed64);
@@ -120,10 +121,10 @@ type
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
+    property CurrentStatus:TCounteragentStatus read GetCurrentStatus write SetCurrentStatus; //= 3 [default = UnknownCounteragentStatus];
   published
     property IndexKey:string read FIndexKey write SetIndexKey; // = 1;
     property Organization:TOrganization read FOrganization write SetOrganization; //= 2;
-    property CurrentStatus:TCounteragentStatus read FCurrentStatus write SetCurrentStatus; //= 3 [default = UnknownCounteragentStatus];
     property LastEventTimestampTicks:sfixed64 read FLastEventTimestampTicks write SetLastEventTimestampTicks; // = 4;
     property MessageFromCounteragent:string read FMessageFromCounteragent write SetMessageFromCounteragent;// = 6;
     property MessageToCounteragent:string read FMessageToCounteragent write SetMessageToCounteragent;// = 7;
@@ -222,6 +223,11 @@ begin
   Modified(3);
 end;
 
+function TCounteragent.GetCurrentStatus: TCounteragentStatus;
+begin
+  Result:=FCurrentStatus;
+end;
+
 procedure TCounteragent.SetIndexKey(AValue: string);
 begin
   if FIndexKey=AValue then Exit;
@@ -270,7 +276,7 @@ begin
   inherited InternalRegisterProperty;
   RegisterProp('IndexKey', 1);
   RegisterProp('Organization', 2, false, TOrganization);
-  RegisterProp('CurrentStatus', 3);
+  RegisterPropPublic('CurrentStatus', 3, TMethod(@SetCurrentStatus), TMethod(@GetCurrentStatus));
   RegisterProp('LastEventTimestampTicks', 4);
   RegisterProp('MessageFromCounteragent', 6);
   RegisterProp('MessageToCounteragent', 7);
