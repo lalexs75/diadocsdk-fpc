@@ -9,7 +9,7 @@
       <Version Value="11"/>
       <PathDelim Value="\"/>
       <SearchPaths>
-        <OtherUnitFiles Value="Docflow;Invoicing;Documents\Types;Events;Documents;Recognition;KeyValueStorage;Forwarding;diadoc_src;Employees;Employees\Subscriptions;Users;Departments;Registration;Organizations;Dss;DataXml"/>
+        <OtherUnitFiles Value="Docflow;Invoicing;Documents\Types;Events;Documents;Recognition;KeyValueStorage;Forwarding;diadoc_src;Employees;Employees\Subscriptions;Users;Departments;Registration;Organizations;Dss;DataXml;Workflows"/>
         <UnitOutputDirectory Value="lib\diadoc\$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
     </CompilerOptions>
@@ -1346,6 +1346,46 @@
       <Item>
         <Filename Value="DataXml\UniversalCorrectionDocument_KSCHFDIS_ucd736_05_01_02_ind0.pas"/>
         <UnitName Value="UniversalCorrectionDocument_KSCHFDIS_ucd736_05_01_02_ind0"/>
+      </Item>
+      <Item>
+        <Filename Value="Workflows\AmendmentRequestResponseBehavior.pas"/>
+        <UnitName Value="AmendmentRequestResponseBehavior"/>
+      </Item>
+      <Item>
+        <Filename Value="Workflows\DocumentWorkflowSettings.pas"/>
+        <UnitName Value="DocumentWorkflowSettings"/>
+      </Item>
+      <Item>
+        <Filename Value="Workflows\InvitationBehavior.pas"/>
+        <UnitName Value="InvitationBehavior"/>
+      </Item>
+      <Item>
+        <Filename Value="Workflows\OperatorConfirmationBehavior.pas"/>
+        <UnitName Value="OperatorConfirmationBehavior"/>
+      </Item>
+      <Item>
+        <Filename Value="Workflows\OperatorConfirmationReceiptBehavior.pas"/>
+        <UnitName Value="OperatorConfirmationReceiptBehavior"/>
+      </Item>
+      <Item>
+        <Filename Value="Workflows\ParticipantAction.pas"/>
+        <UnitName Value="ParticipantAction"/>
+      </Item>
+      <Item>
+        <Filename Value="Workflows\ParticipantType.pas"/>
+        <UnitName Value="ParticipantType"/>
+      </Item>
+      <Item>
+        <Filename Value="Workflows\ReceiptOperatorConfirmationReceiptBehavior.pas"/>
+        <UnitName Value="ReceiptOperatorConfirmationReceiptBehavior"/>
+      </Item>
+      <Item>
+        <Filename Value="Workflows\RoamingConfirmationBehavior.pas"/>
+        <UnitName Value="RoamingConfirmationBehavior"/>
+      </Item>
+      <Item>
+        <Filename Value="Workflows\TitleReceiptBehavior.pas"/>
+        <UnitName Value="TitleReceiptBehavior"/>
       </Item>
     </Files>
     <LazDoc Paths="docs"/>

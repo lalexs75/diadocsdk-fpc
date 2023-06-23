@@ -174,7 +174,12 @@ uses
   Invoice_DEFAULT_utd820_05_01_02_hyphen_ind0, 
   UniversalTransferDocument_DOP_utd820_05_01_02_hyphen_ind0, 
   UniversalTransferDocumentRevision_SCHFDOP_utd820_05_01_02_hyphen_ind0, 
-  UniversalCorrectionDocument_KSCHFDIS_ucd736_05_01_02_ind0, LazarusPackageIntf;
+  UniversalCorrectionDocument_KSCHFDIS_ucd736_05_01_02_ind0, 
+  AmendmentRequestResponseBehavior, DocumentWorkflowSettings, 
+  InvitationBehavior, OperatorConfirmationBehavior, 
+  OperatorConfirmationReceiptBehavior, ParticipantAction, ParticipantType, 
+  ReceiptOperatorConfirmationReceiptBehavior, RoamingConfirmationBehavior, 
+  TitleReceiptBehavior, LazarusPackageIntf;
 
 implementation
 
