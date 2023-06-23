@@ -99,7 +99,8 @@ uses
   DssSign,
   DetectTitleResponse,
   DocumentTypeDescription,
-  DocumentTypeDescriptionV2
+  DocumentTypeDescriptionV2,
+  DocumentWorkflowSettings
   ;
 
 type
@@ -397,7 +398,8 @@ type
     function PostTemplate(ATemplateToPost:TTemplateToPost; AOperationId:string):TTemplate;
     function PostTemplatePatch(const ABoxId:string; const ATemplateId:string; const APatch:TTemplatePatchToPost; const AOperationId:string = ''):TMessagePatch;
     function TransformTemplateToMessage(ATemplateTransformationToPost:TTemplateTransformationToPost; AOperationId:string):TMessage;
-
+    //
+    function GetWorkflowsSettings(const ABoxId:string):TDocumentWorkflowSettingsList;
 
     //Сервисные методы и свойства
     property AuthToken: String read FAuthToken;
@@ -4531,6 +4533,40 @@ begin
       FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
   end;
   F.Free;
+end;
+
+function TDiadocAPI.GetWorkflowsSettings(const ABoxId: string
+  ): TDocumentWorkflowSettingsList;
+var
+  S: String;
+begin
+(*
+  Diadoc::Api::Proto::Workflows::DocumentWorkflowSettingsList DiadocApi::GetWorkflowsSettings(const std::wstring& boxId)
+  {
+  	std::wstringstream buf;
+  	buf << L"/GetWorkflowsSettings?boxId=" << StringHelper::CanonicalizeUrl(boxId);
+  	return FromProtoBytes<Diadoc::Api::Proto::Workflows::DocumentWorkflowSettingsList>(PerformHttpRequest(buf.str(), GET));
+  }
+*)
+  Result:=nil;
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId);
+  if SendCommand(hmGET, 'GetWorkflowsSettings', S, nil) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('GetWorkflowsSettings');
+    {$ENDIF}
+
+    FHTTP.Document.Position:=0;
+
+    if FHTTP.ResultCode = 200 then
+    begin
+      Result:=TDocumentWorkflowSettingsList.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
 end;
 
 function TDiadocAPI.GetOrganization(const AOrgId, AFNSParticipantId,
