@@ -534,7 +534,7 @@ begin
   AddURLParam(S, 'login', FUserName);
   AddURLParam(S, 'password', FPassword);
 
-  if SendCommand(hmPOST, '/V2/Authenticate', S, nil) then
+  if SendCommand(hmPOST, 'V2/Authenticate', S, nil) then
   begin
     FHTTP.Document.Position:=0;
     FAuthToken:=ReadStrFromStream(FHTTP.Document, FHTTP.Document.Size);
