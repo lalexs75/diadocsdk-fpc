@@ -91,6 +91,7 @@ type
     rxDocsFileName: TStringField;
     rxDocsIndexKey: TStringField;
     rxDocsMessageId: TStringField;
+    rxDocsRevocationStatus: TStringField;
     rxDocsSUMM: TStringField;
     procedure actMoveDocBetweenDepsExecute(Sender: TObject);
     procedure Button1Click(Sender: TObject);
@@ -470,9 +471,9 @@ begin
   property ToDepartmentId:string read FToDepartmentId write FToDepartmentId; //28;
   property PriceListMetadata:TPriceListMetadata read FPriceListMetadata; //29;
   property CustomDocumentId:string read FCustomDocumentId write FCustomDocumentId; //30;
-  property ResolutionStatus:TResolutionStatus read FResolutionStatus; //31;
-  property RevocationStatus:TRevocationStatus read FRevocationStatus write FRevocationStatus; //32
-  property SendTimestampTicks:sfixed64 read FSendTimestampTicks write FSendTimestampTicks; //33;
+  property ResolutionStatus:TResolutionStatus read FResolutionStatus; //31;*)
+  rxDocsRevocationStatus.AsString:=RevocationStatusToStr(D.RevocationStatus);
+(*  property SendTimestampTicks:sfixed64 read FSendTimestampTicks write FSendTimestampTicks; //33;
   property DeliveryTimestampTicks:sfixed64 read FDeliveryTimestampTicks write FDeliveryTimestampTicks; //34;
   property ForwardDocumentEvents:TForwardDocumentEvents read FForwardDocumentEvents; // = 35;
   property ReconciliationActMetadata:TBilateralDocumentMetadata read FReconciliationActMetadata; //38

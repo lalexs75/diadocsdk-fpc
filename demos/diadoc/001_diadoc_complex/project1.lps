@@ -7,7 +7,7 @@
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="2"/>
         <TopLine Value="28"/>
         <CursorPos X="19" Y="39"/>
         <UsageCount Value="200"/>
@@ -67,13 +67,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MessageForDocUnit"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="324"/>
-        <CursorPos X="3" Y="335"/>
+        <CursorPos X="24" Y="340"/>
         <UsageCount Value="200"/>
-        <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit5>
       <Unit6>
         <Filename Value="forms/universaltransferdocumentsellertitleinfounit.pas"/>
@@ -93,9 +90,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Frame"/>
         <UnitName Value="DiadocDocumentUnit"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="159"/>
-        <CursorPos X="3" Y="164"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="459"/>
+        <CursorPos Y="476"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -198,7 +195,7 @@
         <UnitName Value="SelectDepartmentUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="26"/>
-        <UsageCount Value="171"/>
+        <UsageCount Value="173"/>
       </Unit16>
       <Unit17>
         <Filename Value="ddmaindataunit.pas"/>
@@ -208,14 +205,14 @@
         <UnitName Value="ddMainDataUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="26"/>
-        <UsageCount Value="170"/>
+        <UsageCount Value="172"/>
       </Unit17>
       <Unit18>
         <Filename Value="tools/ddnewdocutdunit.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ddNewDocUTDUnit"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="167"/>
+        <UsageCount Value="169"/>
       </Unit18>
       <Unit19>
         <Filename Value="frames/transferinfounit.pas"/>
@@ -226,7 +223,7 @@
         <UnitName Value="TransferInfoUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="26"/>
-        <UsageCount Value="156"/>
+        <UsageCount Value="158"/>
       </Unit19>
       <Unit20>
         <Filename Value="frames/extendedorganizationinfounit.pas"/>
@@ -237,7 +234,7 @@
         <UnitName Value="ExtendedOrganizationInfoUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="26"/>
-        <UsageCount Value="154"/>
+        <UsageCount Value="156"/>
       </Unit20>
       <Unit21>
         <Filename Value="frames/employeeunit.pas"/>
@@ -248,20 +245,20 @@
         <UnitName Value="EmployeeUnit"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="26"/>
-        <UsageCount Value="153"/>
+        <UsageCount Value="155"/>
       </Unit21>
       <Unit22>
         <Filename Value="../../../DataXml/UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen_ind0.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="63"/>
+        <UsageCount Value="65"/>
       </Unit22>
       <Unit23>
         <Filename Value="formats/upd820_revision.pas"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <CursorPos Y="25"/>
-        <UsageCount Value="61"/>
+        <UsageCount Value="63"/>
       </Unit23>
       <Unit24>
         <Filename Value="ssl_openssl.pas"/>
@@ -1864,10 +1861,10 @@
       <Unit227>
         <Filename Value="../../../diadoc_src/diadoctypes_documenttype.pas"/>
         <UnitName Value="DiadocTypes_DocumentType"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="4"/>
         <TopLine Value="69"/>
         <CursorPos X="3" Y="71"/>
-        <UsageCount Value="18"/>
+        <UsageCount Value="19"/>
         <Loaded Value="True"/>
       </Unit227>
       <Unit228>
@@ -1911,12 +1908,13 @@
       <Unit233>
         <Filename Value="../../../Documents/diadoctypes_document.pas"/>
         <UnitName Value="DiadocTypes_Document"/>
-        <EditorIndex Value="5"/>
-        <TopLine Value="512"/>
-        <CursorPos X="17" Y="512"/>
-        <UsageCount Value="19"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="539"/>
+        <CursorPos X="25" Y="552"/>
+        <UsageCount Value="20"/>
         <Bookmarks Count="1">
-          <Item0 Y="294" ID="1"/>
+          <Item0 X="39" Y="551" ID="1"/>
         </Bookmarks>
         <Loaded Value="True"/>
       </Unit233>
@@ -2650,11 +2648,10 @@
       </Unit329>
       <Unit330>
         <Filename Value="../../../../synapse/ssl_openssl.pas"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="913"/>
         <CursorPos Y="942"/>
         <UsageCount Value="14"/>
-        <Loaded Value="True"/>
       </Unit330>
       <Unit331>
         <Filename Value="../../../../synapse/ssl_openssl_lib.pas"/>
@@ -2664,87 +2661,99 @@
         <UsageCount Value="13"/>
       </Unit331>
     </Units>
-    <JumpHistory Count="20" HistoryIndex="19">
+    <JumpHistory Count="23" HistoryIndex="21">
       <Position1>
-        <Filename Value="../../../../synapse/ssl_openssl.pas"/>
-        <Caret Line="942" TopLine="907"/>
+        <Filename Value="ddapimainunit.pas"/>
+        <Caret Line="211" Column="26" TopLine="191"/>
       </Position1>
       <Position2>
-        <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="188" TopLine="179"/>
+        <Filename Value="ddapimainunit.pas"/>
+        <Caret Line="293" Column="12" TopLine="269"/>
       </Position2>
       <Position3>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="160" TopLine="160"/>
+        <Caret Line="164" Column="3" TopLine="159"/>
       </Position3>
       <Position4>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="159" TopLine="159"/>
+        <Caret Line="145" Column="3" TopLine="143"/>
       </Position4>
       <Position5>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="343" Column="11" TopLine="320"/>
+        <Caret Line="127" Column="15" TopLine="111"/>
       </Position5>
       <Position6>
         <Filename Value="frames/diadocdocumentunit.pas"/>
-        <Caret Line="164" Column="3" TopLine="159"/>
+        <Caret Line="526" Column="3" TopLine="530"/>
       </Position6>
       <Position7>
-        <Filename Value="messagefordocunit.pas"/>
-        <Caret Line="44" Column="3"/>
+        <Filename Value="frames/diadocdocumentunit.pas"/>
+        <Caret Line="126" Column="15" TopLine="110"/>
       </Position7>
       <Position8>
-        <Filename Value="messagefordocunit.pas"/>
-        <Caret Line="333" Column="5" TopLine="331"/>
+        <Filename Value="frames/diadocdocumentunit.pas"/>
+        <Caret Line="402" Column="3" TopLine="398"/>
       </Position8>
       <Position9>
-        <Filename Value="messagefordocunit.pas"/>
-        <Caret Line="300" Column="3" TopLine="283"/>
+        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
+        <Caret Line="551" Column="39" TopLine="525"/>
       </Position9>
       <Position10>
-        <Filename Value="messagefordocunit.pas"/>
-        <Caret Line="294" TopLine="283"/>
+        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
+        <Caret Line="272" Column="3" TopLine="262"/>
       </Position10>
       <Position11>
-        <Filename Value="messagefordocunit.pas"/>
-        <Caret Line="96" Column="15" TopLine="80"/>
+        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
+        <Caret Line="125" Column="3" TopLine="107"/>
       </Position11>
       <Position12>
-        <Filename Value="messagefordocunit.pas"/>
-        <Caret Line="336" Column="78" TopLine="330"/>
+        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
+        <Caret Line="551" Column="39" TopLine="535"/>
       </Position12>
       <Position13>
-        <Filename Value="messagefordocunit.pas"/>
-        <Caret Line="339" Column="19" TopLine="330"/>
+        <Filename Value="frames/diadocdocumentunit.pas"/>
+        <Caret Line="412" Column="21" TopLine="405"/>
       </Position13>
       <Position14>
-        <Filename Value="ddapimainunit.pas"/>
-        <Caret Line="211" Column="26" TopLine="191"/>
+        <Filename Value="frames/diadocdocumentunit.pas"/>
+        <Caret Line="475" Column="36" TopLine="457"/>
       </Position14>
       <Position15>
-        <Filename Value="ddapimainunit.pas"/>
-        <Caret Line="293" Column="12" TopLine="269"/>
+        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
+        <Caret Line="552" Column="14" TopLine="537"/>
       </Position15>
       <Position16>
-        <Filename Value="messagefordocunit.pas"/>
-        <Caret Line="371" Column="34" TopLine="342"/>
+        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
+        <Caret Line="136" Column="20" TopLine="117"/>
       </Position16>
       <Position17>
-        <Filename Value="messagefordocunit.pas"/>
-        <Caret Line="328" Column="40" TopLine="303"/>
+        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
+        <Caret Line="451" Column="41" TopLine="423"/>
       </Position17>
       <Position18>
-        <Filename Value="messagefordocunit.pas"/>
-        <Caret Line="342" Column="56" TopLine="331"/>
+        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
+        <Caret Line="505" Column="60" TopLine="477"/>
       </Position18>
       <Position19>
-        <Filename Value="messagefordocunit.pas"/>
-        <Caret Line="337" TopLine="322"/>
+        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
+        <Caret Line="552" Column="97" TopLine="525"/>
       </Position19>
       <Position20>
-        <Filename Value="messagefordocunit.pas"/>
-        <Caret Line="335" TopLine="322"/>
+        <Filename Value="frames/diadocdocumentunit.pas"/>
+        <Caret Line="475" Column="77" TopLine="457"/>
       </Position20>
+      <Position21>
+        <Filename Value="frames/diadocdocumentunit.pas"/>
+        <Caret Line="476" TopLine="459"/>
+      </Position21>
+      <Position22>
+        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
+        <Caret Line="552" Column="25" TopLine="537"/>
+      </Position22>
+      <Position23>
+        <Filename Value="../../../Documents/diadoctypes_document.pas"/>
+        <Caret Line="136" Column="3" TopLine="117"/>
+      </Position23>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>
