@@ -1,6 +1,6 @@
 { Diadoc interface library for FPC and Lazarus
 
-  Copyright (C) 2018-2021 Lagunov Aleksey alexs75@yandex.ru
+  Copyright (C) 2018-2023 Lagunov Aleksey alexs75@yandex.ru
 
   base on docs from http://api-docs.diadoc.ru
 
@@ -54,6 +54,21 @@ type
   );
   TCertificateTypeArray = array of TCertificateType;
 
+  { CertificateSubjectType } 
+  //enum CertificateSubjectType {
+  //    UnknownCertificateSubjectType = 0;
+  //    LegalEntity = 1;
+  //    IndividualEntity = 2;
+  //    PhysicalPerson = 3;
+  //}
+  TCertificateSubjectType = (
+    UnknownCertificateSubjectType = 0,
+    LegalEntity = 1,
+    IndividualEntity = 2,
+    PhysicalPerson = 3
+  );
+  TCertificateSubjectTypeArray = array of TCertificateSubjectType;
+
   TCertificateInfoV2 = class;
   TCertificateInfoV2s = specialize GSerializationObjectList<TCertificateInfoV2>;
 
@@ -72,6 +87,7 @@ type
   //	optional string UserLastName = 11;
   //	optional string UserShortName = 12;
   //	optional bool IsDefault = 13;
+  //	optional CertificateSubjectType SubjectType = 14;
   //}
   TCertificateInfoV2 = class(TSerializationObject)
   private
@@ -88,7 +104,9 @@ type
     FUserLastName:String;
     FUserShortName:String;
     FIsDefault:Boolean;
+    FSubjectType:TCertificateSubjectType;
     procedure SetThumbprint(AValue:String);
+    function GetTypeField:TCertificateType;
     procedure SetTypeField(AValue:TCertificateType);
     procedure SetValidFrom(AValue:sfixed64);
     procedure SetValidTo(AValue:sfixed64);
@@ -101,14 +119,17 @@ type
     procedure SetUserLastName(AValue:String);
     procedure SetUserShortName(AValue:String);
     procedure SetIsDefault(AValue:Boolean);
+    function GetSubjectType:TCertificateSubjectType;
+    procedure SetSubjectType(AValue:TCertificateSubjectType);
   protected
     procedure InternalRegisterProperty; override;
     procedure InternalInit; override;
   public
     destructor Destroy; override;
+    property TypeField:TCertificateType read GetTypeField write SetTypeField;
+    property SubjectType:TCertificateSubjectType read GetSubjectType write SetSubjectType;
   published
     property Thumbprint:String read FThumbprint write SetThumbprint;
-    property TypeField:TCertificateType read FTypeField write SetTypeField;
     property ValidFrom:sfixed64 read FValidFrom write SetValidFrom;
     property ValidTo:sfixed64 read FValidTo write SetValidTo;
     property PrivateKeyValidFrom:sfixed64 read FPrivateKeyValidFrom write SetPrivateKeyValidFrom;
@@ -130,7 +151,7 @@ procedure TCertificateInfoV2.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
   RegisterProp('Thumbprint', 1, true);
-  RegisterProp('TypeField', 2, true);
+  RegisterPropPublic('TypeField', 2, TMethod(@SetTypeField), TMethod(@GetTypeField), true);
   RegisterProp('ValidFrom', 3);
   RegisterProp('ValidTo', 4);
   RegisterProp('PrivateKeyValidFrom', 5);
@@ -142,6 +163,7 @@ begin
   RegisterProp('UserLastName', 11);
   RegisterProp('UserShortName', 12);
   RegisterProp('IsDefault', 13);
+  RegisterPropPublic('SubjectType', 14, TMethod(@SetSubjectType), TMethod(@GetSubjectType));
 end;
 
 procedure TCertificateInfoV2.InternalInit;
@@ -166,6 +188,10 @@ begin
   Modified(2);
 end;
 
+function TCertificateInfoV2.GetTypeField:TCertificateType;
+begin
+  Result:=FTypeField;
+end;
 procedure TCertificateInfoV2.SetValidFrom(AValue:sfixed64);
 begin
   FValidFrom:=AValue;
@@ -232,4 +258,14 @@ begin
   Modified(13);
 end;
 
+procedure TCertificateInfoV2.SetSubjectType(AValue:TCertificateSubjectType);
+begin
+  FSubjectType:=AValue;
+  Modified(14);
+end;
+
+function TCertificateInfoV2.GetSubjectType:TCertificateSubjectType;
+begin
+  Result:=FSubjectType;
+end;
 end.
