@@ -58,7 +58,7 @@
         <PackageName Value="LCL"/>
       </Item9>
     </RequiredPackages>
-    <Units Count="24">
+    <Units Count="25">
       <Unit0>
         <Filename Value="project1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -195,6 +195,7 @@
         <Filename Value="ddmaindataunit.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="MainDM"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="ddMainDataUnit"/>
       </Unit17>
@@ -235,6 +236,14 @@
         <Filename Value="formats/upd820_revision.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit23>
+      <Unit24>
+        <Filename Value="frames/ddapitestdocfloweventsunit.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="ddapitestDocflowEventsFrame"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Frame"/>
+        <UnitName Value="ddapitestDocflowEventsUnit"/>
+      </Unit24>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -257,6 +266,11 @@
         </Win32>
       </Options>
     </Linking>
+    <Other>
+      <ConfigFile>
+        <WriteConfigFilePath Value="$(ProjOutDir)/fpclaz.cfg"/>
+      </ConfigFile>
+    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="4">

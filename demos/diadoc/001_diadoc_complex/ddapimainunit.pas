@@ -1,6 +1,7 @@
-{ Комплексный пример работы с ДИАДОК
+{
+  Комплексный пример работы с ДИАДОК
 
-  Copyright (C) 2018-2020 Lagunov Aleksey alexs75@yandex.ru
+  Copyright (C) 2018-2023 Lagunov Aleksey alexs75@yandex.ru
 
   Этот исходный код является свободно-распространяемым программынм обеспечением.
   Вы можете распространять и (или) модифицировать его при условии соблюдения
@@ -33,7 +34,7 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
   ExtCtrls, Menus, ActnList, httpsend, DividerBevel, AnchorDockPanel, DiadocAPI,
   DiadocTypes, ddOrganizationInfoUnit, RxIniPropStorage, DiadocTypes_Address,
-  rxAppUtils, LazFileUtils,
+  rxAppUtils, LazFileUtils, ddapitestDocflowEventsUnit,
   protobuf_fpc, DiadocDocumentUnit,
 
   DiadocTypes_GetOrganizationsByInnList, DiadocTypes_DocumentList,
@@ -68,6 +69,7 @@ type
     Panel2: TPanel;
     Splitter3: TSplitter;
     TabSheet2: TTabSheet;
+    TabSheet3: TTabSheet;
     usrEmployeesList: TAction;
     Button2: TButton;
     Button5: TButton;
@@ -187,6 +189,7 @@ type
     FOrganizationInfoFrame1:TOrganizationInfoFrame;
 
     FDiadocDocumentFrame:TDiadocDocumentFrame;
+    FDocflowEventsFrame:TddapitestDocflowEventsFrame;
     function GetLoggedIn: boolean;
     procedure SetupAPI;
     procedure ShowStatus;
@@ -496,6 +499,11 @@ begin
   FDiadocDocumentFrame.Align:=alClient;
   FDiadocDocumentFrame.InitFrame(DiadocAPI1, CurrentBox, CurrentOrg);
 
+  FDocflowEventsFrame:=TddapitestDocflowEventsFrame.Create(Self);
+  FDocflowEventsFrame.Parent:=TabSheet3;
+  FDocflowEventsFrame.Align:=alClient;
+  FDocflowEventsFrame.InitFrame(DiadocAPI1, CurrentBox, CurrentOrg);
+
   TreeView1Click(nil);
 
   UpdateConnectionParams;
@@ -621,7 +629,10 @@ begin
   end;
   FDiadocDocumentFrame.Visible:=Assigned(CurrentBox);
   if FDiadocDocumentFrame.Visible then
+  begin
     FDiadocDocumentFrame.InitFrame(DiadocAPI1, CurrentBox, CurrentOrg);
+    FDocflowEventsFrame.InitFrame(DiadocAPI1, CurrentBox, CurrentOrg);
+  end;
 end;
 
 procedure TDDAPIMainForm.usrCurUserPermissionExecute(Sender: TObject);
