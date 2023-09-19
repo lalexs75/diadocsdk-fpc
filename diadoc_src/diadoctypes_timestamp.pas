@@ -50,12 +50,13 @@ type
     FTicks: sfixed64;
     function GetAsDateTime: TDateTime;
     procedure SetAsDateTime(AValue: TDateTime);
+    procedure SetTicks(AValue: sfixed64);
   protected
     procedure InternalRegisterProperty; override;
   public
     property AsDateTime:TDateTime read GetAsDateTime write SetAsDateTime;
   published
-    property Ticks:sfixed64 read FTicks write FTicks; //1;
+    property Ticks:sfixed64 read FTicks write SetTicks; //1;
   end;
 
 implementation
@@ -70,7 +71,14 @@ end;
 
 procedure TTimestamp.SetAsDateTime(AValue: TDateTime);
 begin
-  FTicks:=DateTimeToTimestampTicks(AValue);
+  Ticks:=DateTimeToTimestampTicks(AValue);
+end;
+
+procedure TTimestamp.SetTicks(AValue: sfixed64);
+begin
+  if FTicks=AValue then Exit;
+  FTicks:=AValue;
+  Modified(1);
 end;
 
 procedure TTimestamp.InternalRegisterProperty;
