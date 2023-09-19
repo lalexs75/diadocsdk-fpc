@@ -389,7 +389,7 @@ type
     function GetDocflows(ABoxId: string; ARequest: TGetDocflowBatchRequest): TGetDocflowBatchResponse;
     procedure GetDocflowsByPacketId;
     procedure SearchDocflows;
-    procedure GetDocflowEvents;
+    function GetDocflowEvents(AboxId:string; Arequest:TGetDocflowEventsRequest):TGetDocflowEventsResponse;
 
     //-------------------------------------------------
     //Работа с шаблонами
@@ -4382,9 +4382,35 @@ begin
   raise ENotImplemented.Create(sNotDefindAPIKey);
 end;
 
-procedure TDiadocAPI.GetDocflowEvents;
+function TDiadocAPI.GetDocflowEvents(AboxId: string; ARequest: TGetDocflowEventsRequest): TGetDocflowEventsResponse;
+var
+  F: TStream;
+  S: String;
 begin
-  raise ENotImplemented.Create(sNotDefindAPIKey);
+//  Diadoc::Api::Proto::Docflow::GetDocflowEventsResponse GetDocflowEvents(const std::wstring& boxId, const Diadoc::Api::Proto::Docflow::GetDocflowEventsRequest& request);
+
+  Result:=nil;
+  if (not Authenticate) or (not Assigned(ARequest)) then exit;
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId);
+
+  F:=ARequest.SaveToStream;
+  F.Position:=0;
+  if SendCommand(hmPOST, '/V2/GetDocflowEvents', S, F) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('GetDocflowEvents');
+    {$ENDIF}
+    FHTTP.Document.Position:=0;
+    if FResultCode = 200 then
+    begin
+      Result:=TGetDocflowEventsResponse.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+  F.Free;
 end;
 
 function TDiadocAPI.GetTemplate(ABoxId, ATemplateId, AEntityId: string
