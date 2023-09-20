@@ -1,0 +1,31 @@
+object ddapitestDocflowEventsFrame: TddapitestDocflowEventsFrame
+  Left = 0
+  Height = 240
+  Top = 0
+  Width = 320
+  ClientHeight = 240
+  ClientWidth = 320
+  TabOrder = 0
+  DesignLeft = 665
+  DesignTop = 460
+  object Button1: TButton
+    Left = 200
+    Height = 23
+    Top = 8
+    Width = 113
+    AutoSize = True
+    Caption = 'Список событий'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object Memo1: TMemo
+    Left = 8
+    Height = 90
+    Top = 8
+    Width = 150
+    Lines.Strings = (
+      'Memo1'
+    )
+    TabOrder = 1
+  end
+end
