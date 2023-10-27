@@ -59,8 +59,11 @@ begin
 end;
 
 function DateTimeToTimestampTicks(ADateTime: TDateTime): sfixed64;
+var
+  DD: TDateTime;
 begin
-
+  DD:=ADateTime - EncodeDate(0001, 01, 01);
+  Result:=Trunc(DD * SecsPerDay) * 10000000;
 end;
 
 function NodeValue(ANode:TDOMNode):String;

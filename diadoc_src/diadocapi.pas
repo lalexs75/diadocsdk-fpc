@@ -52,7 +52,7 @@ uses
   DiadocTypes_Counteragent,
   DiadocTypes_CloudSign,
   DiadocTypes_DiadocMessage_GetApi,
-  DiadocTypes_DocflowApi,
+  DocflowApi,
   DiadocTypes_Employee,
   DiadocTypes_Document,
   DiadocTypes_DocumentList,
@@ -350,6 +350,7 @@ type
     //-------------------------------------------------
     function GetEvent(ABoxId, AEventId: string): TBoxEvent;
     function GetNewEvents(ABoxId, AAfterEventId: string):TBoxEventList;
+    function GetNewEvents7(ABoxId, AAfterEventId, ADocumentDirection, ATimestampFromTicks: string; ALimit:Integer):TBoxEventList;
 
     //-------------------------------------------------
     //Работа с организациями
@@ -3690,6 +3691,51 @@ function TDiadocAPI.GetNewEvents(ABoxId, AAfterEventId: string): TBoxEventList;
 var
   S: String;
 begin
+(*
+
+
+        boxId – идентификатор ящика организации.
+
+        afterEventId – идентификатор последнего полученного события. Параметр устарел. Рекомендуем использовать параметр afterIndexKey.
+
+        afterIndexKey – уникальный ключ, позволяющий итерироваться по списку событий. Нельзя указывать одновременно с afterEventID. Необязательный параметр.
+
+        departmentId – идентификатор подразделения, из которого производится выборка документов.
+
+        messageType –
+
+        тип cообщения. Можно указать несколько значений через запятую. Необязательный параметр. Принимает значения:
+
+            Draft — черновик,
+
+            Letter — письмо,
+
+            Template — шаблон.
+
+        typeNamedId – строковый идентификатор типа документа. Доступные типы можно получить с помощью метода GetDocumentTypes. Можно указать несколько значений через запятую. Необязательный параметр.
+
+        documentDirection –
+
+        направление документа относительно текущего ящика. Можно указать несколько значений через запятую. Необязательный параметр. Принимает значения:
+
+            Inbound — входящие,
+
+            Outbound — исходящие,
+
+            Internal — внутренние.
+
+        timestampFromTicks – метка времени, задающая начальную точку периода. Задается целое число тиков, прошедших с момента времени 00:00:00 01.01.0001. Необязательный параметр.
+
+        timestampToTicks – метка времени, задающая конечную точку периода. Задается целое число тиков, прошедших с момента времени 00:00:00 01.01.0001. Необязательный параметр.
+
+        counteragentBoxId – идентификатор ящика контрагента. Необязательный параметр.
+
+        orderBy – порядок сортировки документов в выдаче по времени возникновения события. Может принимать значения: Ascending, Descending. Необязательный параметр. По умолчанию имеет значение Ascending.
+
+        limit – максимальное количество документов в ответе. Может принимать значение от 1 до 100. Необязательный параметр. По умолчанию имеет значение 100.
+
+
+*)
   //  BoxEventList DiadocApi::GetNewEvents(const std::wstring& boxId, const std::wstring& afterEventId)
     {
     	WppTraceDebugOut(L"GetNewEvents...");
@@ -3725,6 +3771,102 @@ begin
     else
       FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
   end;
+end;
+
+function TDiadocAPI.GetNewEvents7(ABoxId, AAfterEventId, ADocumentDirection,
+  ATimestampFromTicks: string; ALimit: Integer): TBoxEventList;
+var
+  S: String;
+begin
+  (*
+
+
+          boxId – идентификатор ящика организации.
+
+          afterEventId – идентификатор последнего полученного события. Параметр устарел. Рекомендуем использовать параметр afterIndexKey.
+
+          afterIndexKey – уникальный ключ, позволяющий итерироваться по списку событий. Нельзя указывать одновременно с afterEventID. Необязательный параметр.
+
+          departmentId – идентификатор подразделения, из которого производится выборка документов.
+
+          messageType –
+
+          тип cообщения. Можно указать несколько значений через запятую. Необязательный параметр. Принимает значения:
+
+              Draft — черновик,
+
+              Letter — письмо,
+
+              Template — шаблон.
+
+          typeNamedId – строковый идентификатор типа документа. Доступные типы можно получить с помощью метода GetDocumentTypes. Можно указать несколько значений через запятую. Необязательный параметр.
+
+          documentDirection –
+
+          направление документа относительно текущего ящика. Можно указать несколько значений через запятую. Необязательный параметр. Принимает значения:
+
+              Inbound — входящие,
+
+              Outbound — исходящие,
+
+              Internal — внутренние.
+
+          timestampFromTicks – метка времени, задающая начальную точку периода. Задается целое число тиков, прошедших с момента времени 00:00:00 01.01.0001. Необязательный параметр.
+
+          timestampToTicks – метка времени, задающая конечную точку периода. Задается целое число тиков, прошедших с момента времени 00:00:00 01.01.0001. Необязательный параметр.
+
+          counteragentBoxId – идентификатор ящика контрагента. Необязательный параметр.
+
+          orderBy – порядок сортировки документов в выдаче по времени возникновения события. Может принимать значения: Ascending, Descending. Необязательный параметр. По умолчанию имеет значение Ascending.
+
+          limit – максимальное количество документов в ответе. Может принимать значение от 1 до 100. Необязательный параметр. По умолчанию имеет значение 100.
+
+
+  *)
+    //  BoxEventList DiadocApi::GetNewEvents(const std::wstring& boxId, const std::wstring& afterEventId)
+      {
+      	WppTraceDebugOut(L"GetNewEvents...");
+      	std::wstringstream queryString;
+      	queryString << L"/V6/GetNewEvents?boxId=" << StringHelper::CanonicalizeUrl(boxId);
+      	if (!afterEventId.empty())
+      		queryString << L"&afterEventId=" << StringHelper::CanonicalizeUrl(afterEventId);
+      	queryString << L"&includeDrafts";
+      	return FromProtoBytes<BoxEventList>(PerformHttpRequest(queryString.str(), GET));
+      }
+    Result:=nil;
+    if ABoxId = '' then
+      raise EDiadocException.Create(sNotDefinedBoxId);
+
+    S:='';
+    AddURLParam(S, 'boxId', ABoxId);  //boxId: идентификатор ящика
+    if AAfterEventId<>'' then
+      AddURLParam(S, 'afterEventId', AAfterEventId);  //afterEventId: идентификатор последнего полученного события (может отсутствовать);
+
+    if ADocumentDirection <> '' then
+      AddURLParam(S, 'documentDirection', ADocumentDirection);
+
+    if ATimestampFromTicks <> '' then;
+      AddURLParam(S, 'timestampFromTicks', ATimestampFromTicks);
+
+    if ALimit > 0 then
+      AddURLParam(S, 'limit', IntToStr(ALimit));
+
+    if not Authenticate then exit;
+
+    if SendCommand(hmGET, '/V7/GetNewEvents', S, nil) then
+    begin
+      {$IFDEF DIADOC_DEBUG}
+      SaveProtobuf('GetNewEvents');
+      {$ENDIF}
+      FHTTP.Document.Position:=0;
+      if FResultCode = 200 then
+      begin
+        Result:=TBoxEventList.Create;
+        Result.LoadFromStream(FHTTP.Document);
+      end
+      else
+        FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+    end;
 end;
 
 function TDiadocAPI.GetDepartment(AOrgId, ADepartmentId: string
@@ -4382,7 +4524,8 @@ begin
   raise ENotImplemented.Create(sNotDefindAPIKey);
 end;
 
-function TDiadocAPI.GetDocflowEvents(AboxId: string; ARequest: TGetDocflowEventsRequest): TGetDocflowEventsResponse;
+function TDiadocAPI.GetDocflowEvents(AboxId: string;
+  Arequest: TGetDocflowEventsRequest): TGetDocflowEventsResponse;
 var
   F: TStream;
   S: String;

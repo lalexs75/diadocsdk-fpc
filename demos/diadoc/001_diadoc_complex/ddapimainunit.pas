@@ -69,7 +69,7 @@ type
     Panel2: TPanel;
     Splitter3: TSplitter;
     TabSheet2: TTabSheet;
-    TabSheet3: TTabSheet;
+    TabSheet9: TTabSheet;
     usrEmployeesList: TAction;
     Button2: TButton;
     Button5: TButton;
@@ -325,7 +325,9 @@ procedure TDDAPIMainForm.Button1Click(Sender: TObject);
 begin
   DoLogin;
   if LoggedIn then
+  begin
     PageControl1.ActivePage:=TabSheet5;
+  end;
 end;
 
 procedure TDDAPIMainForm.Button2Click(Sender: TObject);
@@ -491,6 +493,7 @@ end;
 
 procedure TDDAPIMainForm.FormCreate(Sender: TObject);
 begin
+  TabSheet9.TabVisible:=false;
   PageControl1.ActivePageIndex:=0;
   Memo1.Lines.Clear;
 
@@ -500,9 +503,8 @@ begin
   FDiadocDocumentFrame.InitFrame(DiadocAPI1, CurrentBox, CurrentOrg);
 
   FDocflowEventsFrame:=TddapitestDocflowEventsFrame.Create(Self);
-  FDocflowEventsFrame.Parent:=TabSheet3;
+  FDocflowEventsFrame.Parent:=TabSheet9;
   FDocflowEventsFrame.Align:=alClient;
-  FDocflowEventsFrame.InitFrame(DiadocAPI1, CurrentBox, CurrentOrg);
 
   TreeView1Click(nil);
 
@@ -627,7 +629,9 @@ begin
     usrCurUserPermission.Enabled:=false;
     usrUserList.Enabled:=false;
   end;
+
   FDiadocDocumentFrame.Visible:=Assigned(CurrentBox);
+  TabSheet9.TabVisible:=Assigned(CurrentBox);
   if FDiadocDocumentFrame.Visible then
   begin
     FDiadocDocumentFrame.InitFrame(DiadocAPI1, CurrentBox, CurrentOrg);

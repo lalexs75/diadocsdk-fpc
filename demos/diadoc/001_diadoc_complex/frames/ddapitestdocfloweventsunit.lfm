@@ -10,7 +10,7 @@ object ddapitestDocflowEventsFrame: TddapitestDocflowEventsFrame
   DesignTop = 460
   object Button1: TButton
     Left = 200
-    Height = 23
+    Height = 29
     Top = 8
     Width = 113
     AutoSize = True
@@ -19,13 +19,31 @@ object ddapitestDocflowEventsFrame: TddapitestDocflowEventsFrame
     OnClick = Button1Click
   end
   object Memo1: TMemo
-    Left = 8
-    Height = 90
-    Top = 8
-    Width = 150
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Button2
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 0
+    Height = 163
+    Top = 77
+    Width = 320
+    Anchors = [akTop, akLeft, akRight, akBottom]
     Lines.Strings = (
       'Memo1'
     )
     TabOrder = 1
+  end
+  object Button2: TButton
+    Left = 193
+    Height = 29
+    Top = 48
+    Width = 120
+    AutoSize = True
+    Caption = 'Список событий7'
+    TabOrder = 2
+    OnClick = Button2Click
   end
 end

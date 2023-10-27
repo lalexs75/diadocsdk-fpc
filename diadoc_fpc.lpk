@@ -12,6 +12,11 @@
         <OtherUnitFiles Value="Docflow;Invoicing;Documents\Types;Events;Documents;Recognition;KeyValueStorage;Forwarding;diadoc_src;Employees;Employees\Subscriptions;Users;Departments;Registration;Organizations;Dss;DataXml;Workflows"/>
         <UnitOutputDirectory Value="lib\diadoc\$(TargetCPU)-$(TargetOS)"/>
       </SearchPaths>
+      <Other>
+        <ConfigFile>
+          <WriteConfigFilePath Value="$(PkgOutDir)\fpclaz.cfg"/>
+        </ConfigFile>
+      </Other>
     </CompilerOptions>
     <Description Value="Компоненты интеграции Контур ДИАДОК-API для FPC и Lazarus"/>
     <License Value="LGPL"/>
@@ -100,10 +105,6 @@
       <Item>
         <Filename Value="Invoicing\diadoctypes_extendedorganizationinfo.pas"/>
         <UnitName Value="DiadocTypes_ExtendedOrganizationInfo"/>
-      </Item>
-      <Item>
-        <Filename Value="Docflow\diadoctypes_docflowapi.pas"/>
-        <UnitName Value="DiadocTypes_DocflowApi"/>
       </Item>
       <Item>
         <Filename Value="Events\diadoctypes_diadocmessage_postapi.pas"/>
@@ -1386,6 +1387,10 @@
       <Item>
         <Filename Value="Workflows\TitleReceiptBehavior.pas"/>
         <UnitName Value="TitleReceiptBehavior"/>
+      </Item>
+      <Item>
+        <Filename Value="Docflow\DocflowApi.pas"/>
+        <UnitName Value="DocflowApi"/>
       </Item>
     </Files>
     <LazDoc Paths="docs"/>

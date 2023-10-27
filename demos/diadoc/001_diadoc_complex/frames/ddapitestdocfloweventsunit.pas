@@ -32,7 +32,8 @@ unit ddapitestDocflowEventsUnit;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, StdCtrls, DiadocAPI, DiadocTypes_Organization;
+  Classes, SysUtils, Forms, Controls, StdCtrls, DiadocAPI,
+  DiadocTypes_Organization, DiadocTypes_DiadocMessage_GetApi;
 
 type
 
@@ -40,8 +41,10 @@ type
 
   TddapitestDocflowEventsFrame = class(TFrame)
     Button1: TButton;
+    Button2: TButton;
     Memo1: TMemo;
     procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     FBox: TBox;
     FOrgs:TOrganization;
@@ -49,10 +52,11 @@ type
   public
     procedure UpdateCtrlStates;
     procedure InitFrame(ADiadocAPI: TDiadocAPI; ABox:TBox; AOrgs:TOrganization);
+    property Box: TBox read FBox;
   end;
 
 implementation
-uses DiadocTypes_DocflowApi, DiadocTypes_TimeBasedFilter, rxlogging;
+uses diadoc_utils, DocflowApi, DiadocTypes_TimeBasedFilter, rxlogging, DiadocTypes_Document;
 
 {$R *.lfm}
 
@@ -64,9 +68,11 @@ var
   R: TGetDocflowEventsResponse;
 begin
   Flt:=TGetDocflowEventsRequest.Create;
-  Flt.Filter.FromTimestamp.AsDateTime:=Now - 30;
+  Flt.Filter.FromTimestamp.AsDateTime:=Now - 100;
   Flt.Filter.ToTimestamp.AsDateTime:=Now + 7;
   Flt.Filter.SortDirection:=Ascending;
+//  Flt.Filter.
+//  Flt.AfterIndexKey:=nil;
 
   R:=FDiadocAPI.GetDocflowEvents(FBox.BoxId, Flt);
   if Assigned(R) then
@@ -80,6 +86,41 @@ begin
   if FDiadocAPI.ResultString <> '' then
     RxWriteLog(etDebug, FDiadocAPI.ResultString);
   Flt.Free;
+end;
+
+procedure TddapitestDocflowEventsFrame.Button2Click(Sender: TObject);
+var
+  R: TBoxEventList;
+  E: TBoxEvent;
+  En: TEntity;
+  S, DocDir: String;
+  L: Integer;
+begin
+  L:=0;
+  S:=IntToStr(DateTimeToTimestampTicks(now-5));
+
+  DocDir:='Inbound,Outbound'; //Internal — внутренние.
+  R:=FDiadocAPI.GetNewEvents7(FBox.BoxId, '', DocDir, S, 0);
+  if Assigned(R) then
+  begin
+    Memo1.Lines.Clear;
+    Memo1.Lines.Add('TotalCount = %d', [ R.TotalCount]);
+    Memo1.Lines.Add('TotalCountType = %d', [ Ord( R.TotalCountType) ]);
+
+    for E in R.Events do
+    begin
+      inc(L);
+      Memo1.Lines.Add('----------------');
+      Memo1.Lines.Add('%d. EventId = %s, Entities.Count=%d, MessageType=%s', [L, E.EventId, E.Message.Entities.Count, MessageTypeToStr(E.Message.MessageType)]);
+      for En in E.Message.Entities do
+      begin
+        Memo1.Lines.Add('  Entitie = %s, DocumentDate=%s', [EntityTypeToStr(En.EntityType), En.DocumentInfo.DocumentDate]);
+      end;
+    end;
+    R.Free;
+  end;
+  if FDiadocAPI.ResultString <> '' then
+    RxWriteLog(etDebug, FDiadocAPI.ResultString);
 end;
 
 procedure TddapitestDocflowEventsFrame.UpdateCtrlStates;
