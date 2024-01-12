@@ -99,6 +99,7 @@ procedure TddSelectClientForm.ListBox1Click(Sender: TObject);
 var
   O: TOrganization;
 begin
+  if ListBox1.Items.Count = 0 then Exit;
   O:=ListBox1.Items.Objects[ListBox1.ItemIndex] as TOrganization;
 
   if Assigned(FOrganizationInfoSymple) then
