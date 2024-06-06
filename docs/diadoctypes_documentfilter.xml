@@ -3,6 +3,14 @@
       </element><element name="TDocumentFilter.TimestampTo"><short>метка времени, задающая конечную точку периода, по которому требуется дополнительная фильтрация (может отсутствовать);</short>
       </element><element name="TDocumentFilter.FromDocumentDate"><short>дата документа в формате ДД.ММ.ГГГГ, задающая начальную точку периода, по которому требуется дополнительная фильтрация (может отсутствовать);</short>
       </element><element name="TDocumentFilter.ToDocumentDate"><short>дата документа в формате ДД.ММ.ГГГГ, задающая конечную точку периода, по которому требуется дополнительная фильтрация (может отсутствовать);</short>
+      </element><element name="TDocumentFilter.DepartmentId"><short>идентификатор подразделения получателя, по которому требуется дополнительная фильтрация (может отсутствовать, имеет смысл только при фильтрации внутренних документов);</short>
+      </element><element name="TDocumentFilter.ExcludeSubdepartments"><short>excludeSubdepartments: если присутствует - исключить из выборки дочерние подразделения;</short>
+      </element><element name="TDocumentFilter.SortDirection"><short>sortDirection: задает порядок сортировки документов в выдаче, принимает одно из значений «Ascending», или «Descending» (может отсутствовать, значение по умолчанию - «Ascending»);</short>
+      </element><element name="TDocumentFilter.AfterIndexKey"><short>уникальный ключ документа, позволяющий итерироваться по всему списку документов, удовлетворяющих фильтру (может отсутствовать);</short>
+      </element><element name="TDocumentFilter.Count"><short>count:максимальное количество документов в ответе (может отсутствовать, в этом случае в ответе будет не больше 100 документов). Может принимать значения от 0 до 100.</short>
+      </element><element name="TDocumentFilter.BoxId"><short>идентификатор ящика, в котором осуществляется поиск документов;</short>
+      </element><element name="TDocumentFilter.FilterCategory"><short>статус, по которому требуется отфильтровать список документов;</short>
+      </element><element name="TDocumentFilter.CounteragentBoxId"><short>идентификатор ящика контрагента, по которому требуется дополнительная фильтрация (может отсутствовать, не имеет смысла при фильтрации внутренних документов);</short>
       </element>
     </module>
   </package>

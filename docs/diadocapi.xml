@@ -219,6 +219,8 @@
 </descr>
       </element><element name="TDiadocAPI.PostMessagePatch.APatch"><short>отправляемое дополнение к сообщению</short>
       </element>
+    <element name="TDiadocAPI.GetNewEvents7.AAfterIndexKey"><short>уникальный ключ, позволяющий итерироваться по списку событий. Нельзя указывать одновременно с afterEventID. Необязательный параметр.</short>
+      </element>
     </module>
   </package>
 </fpdoc-descriptions>
