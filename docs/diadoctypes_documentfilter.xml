@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="diadoc_fpc"><module name="DiadocTypes_DocumentFilter"><element name="TDocumentFilter.TimestampFrom"><short>метка времени, задающая начальную точку периода, по которому требуется дополнительная фильтрация (может отсутствовать);</short>
+      </element><element name="TDocumentFilter.TimestampTo"><short>метка времени, задающая конечную точку периода, по которому требуется дополнительная фильтрация (может отсутствовать);</short>
+      </element><element name="TDocumentFilter.FromDocumentDate"><short>дата документа в формате ДД.ММ.ГГГГ, задающая начальную точку периода, по которому требуется дополнительная фильтрация (может отсутствовать);</short>
+      </element><element name="TDocumentFilter.ToDocumentDate"><short>дата документа в формате ДД.ММ.ГГГГ, задающая конечную точку периода, по которому требуется дополнительная фильтрация (может отсутствовать);</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>
