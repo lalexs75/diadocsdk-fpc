@@ -35,7 +35,7 @@ uses
   ExtCtrls, Menus, ActnList, httpsend, DividerBevel, AnchorDockPanel, DiadocAPI,
   DiadocTypes, ddOrganizationInfoUnit, RxIniPropStorage, DiadocTypes_Address,
   rxAppUtils, LazFileUtils, ddapitestDocflowEventsUnit,
-  protobuf_fpc, DiadocDocumentUnit,
+  protobuf_fpc, DiadocDocumentUnit, ddapitestDocumentTypesUnit,
 
   DiadocTypes_GetOrganizationsByInnList, DiadocTypes_DocumentList,
   DiadocTypes_Organization, DiadocTypes_OrganizationUser,
@@ -69,6 +69,7 @@ type
     Panel2: TPanel;
     Splitter3: TSplitter;
     TabSheet2: TTabSheet;
+    TabSheet3: TTabSheet;
     TabSheet9: TTabSheet;
     usrEmployeesList: TAction;
     Button2: TButton;
@@ -190,6 +191,7 @@ type
 
     FDiadocDocumentFrame:TDiadocDocumentFrame;
     FDocflowEventsFrame:TddapitestDocflowEventsFrame;
+    FDocumentTypesFrame:TddapitestDocumentTypesFrame;
     function GetLoggedIn: boolean;
     procedure SetupAPI;
     procedure ShowStatus;
@@ -494,6 +496,8 @@ end;
 procedure TDDAPIMainForm.FormCreate(Sender: TObject);
 begin
   TabSheet9.TabVisible:=false;
+  TabSheet3.TabVisible:=false;
+
   PageControl1.ActivePageIndex:=0;
   Memo1.Lines.Clear;
 
@@ -505,6 +509,10 @@ begin
   FDocflowEventsFrame:=TddapitestDocflowEventsFrame.Create(Self);
   FDocflowEventsFrame.Parent:=TabSheet9;
   FDocflowEventsFrame.Align:=alClient;
+
+  FDocumentTypesFrame:=TddapitestDocumentTypesFrame.Create(Self);
+  FDocumentTypesFrame.Parent:=TabSheet3;
+  FDocumentTypesFrame.Align:=alClient;
 
   TreeView1Click(nil);
 
@@ -632,10 +640,12 @@ begin
 
   FDiadocDocumentFrame.Visible:=Assigned(CurrentBox);
   TabSheet9.TabVisible:=Assigned(CurrentBox);
+  TabSheet3.TabVisible:=Assigned(CurrentBox);
   if FDiadocDocumentFrame.Visible then
   begin
     FDiadocDocumentFrame.InitFrame(DiadocAPI1, CurrentBox, CurrentOrg);
     FDocflowEventsFrame.InitFrame(DiadocAPI1, CurrentBox, CurrentOrg);
+    FDocumentTypesFrame.InitFrame(DiadocAPI1, CurrentBox, CurrentOrg);
   end;
 end;
 

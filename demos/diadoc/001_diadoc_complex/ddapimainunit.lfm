@@ -428,9 +428,9 @@ object DDAPIMainForm: TDDAPIMainForm
         Height = 635
         Top = 0
         Width = 1078
-        ActivePage = TabSheet9
+        ActivePage = TabSheet3
         Align = alClient
-        TabIndex = 2
+        TabIndex = 3
         TabOrder = 2
         object TabSheet7: TTabSheet
           Caption = 'Документы'
@@ -501,6 +501,9 @@ object DDAPIMainForm: TDDAPIMainForm
         end
         object TabSheet9: TTabSheet
           Caption = 'События в почтовом ящике'
+        end
+        object TabSheet3: TTabSheet
+          Caption = 'Типы документов'
         end
       end
     end

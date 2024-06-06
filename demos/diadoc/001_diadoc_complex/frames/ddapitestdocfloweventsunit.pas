@@ -100,7 +100,8 @@ begin
   S:=IntToStr(DateTimeToTimestampTicks(now-5));
 
   DocDir:='Inbound,Outbound'; //Internal — внутренние.
-  R:=FDiadocAPI.GetNewEvents7(FBox.BoxId, '', DocDir, S, 0);
+  R:=nil;
+//  R:=FDiadocAPI.GetNewEvents7(FBox.BoxId, '', DocDir, S, 0);
   if Assigned(R) then
   begin
     Memo1.Lines.Clear;

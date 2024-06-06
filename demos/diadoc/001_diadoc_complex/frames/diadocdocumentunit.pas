@@ -47,6 +47,9 @@ type
   { TDiadocDocumentFrame }
 
   TDiadocDocumentFrame = class(TFrame)
+    CheckBox3: TCheckBox;
+    Label4: TLabel;
+    Label5: TLabel;
     MenuItem5: TMenuItem;
     MenuItem6: TMenuItem;
     MenuItem7: TMenuItem;
@@ -79,6 +82,8 @@ type
     PopupMenu1: TPopupMenu;
     RxDateEdit1: TRxDateEdit;
     RxDateEdit2: TRxDateEdit;
+    RxDateEdit3: TRxDateEdit;
+    RxDateEdit4: TRxDateEdit;
     RxDBGrid1: TRxDBGrid;
     rxDocs: TRxMemoryData;
     rxDocsCounteragentBoxId: TStringField;
@@ -134,9 +139,11 @@ type
   end;
 
 implementation
-uses DiadocTypes_UniversalTransferDocumentInfo, diadoc_utils, ContragentFindUnit, ShowBoxInfoUnit, SelectDepartmentUnit,
-  DiadocTypes_DocumentsMoveOperation, DiadocTypes_DiadocMessage_PostApi, rxAppUtils,
-  MessageForDocUnit, upd820_revision, ddNewDocUTDUnit, rxlogging;
+uses DiadocTypes_UniversalTransferDocumentInfo, diadoc_utils,
+  DiadocTypes_DocumentFilter, ContragentFindUnit, ShowBoxInfoUnit,
+  SelectDepartmentUnit, DiadocTypes_DocumentsMoveOperation,
+  DiadocTypes_DiadocMessage_PostApi, rxAppUtils, MessageForDocUnit,
+  upd820_revision, ddNewDocUTDUnit, rxlogging;
 
 {$R *.lfm}
 
@@ -524,6 +531,7 @@ var
   D: TDocument;
   FFromDocumentDate, FToDocumentDate, FCurBoxID: String;
   Docs: TDocumentList;
+  DocFilter: TDocumentFilter;
 begin
   if CheckBox1.Checked then
   begin
@@ -540,8 +548,29 @@ begin
   if CheckBox2.Checked then
     FCurBoxID:=FCurOrgBoxID;
 
+  DocFilter.BoxId:=FBox.BoxId;
+  DocFilter.FilterCategory:=DocumentTypeFilter(FDocumentType) + '.' + DocumentClassFilter(FDocumentClass)+DocumentFilterStatusStr(dfsAny);
+  DocFilter.CounteragentBoxId:=FCurBoxID;
 
-  Docs:=FDiadocAPI.GetDocuments(FBox.BoxId, FDocumentType, FDocumentClass, dfsAny, '', FCurBoxID, FFromDocumentDate, FToDocumentDate, FLastIndex);
+  if CheckBox3.Checked then
+  begin
+    DocFilter.TimestampFrom:=DateTimeToTimestampTicks(RxDateEdit3.Date);
+    DocFilter.TimestampTo:=DateTimeToTimestampTicks(RxDateEdit4.Date);
+  end;
+  if CheckBox1.Checked then
+  begin
+    DocFilter.FromDocumentDate:=DateToStr(RxDateEdit1.Date);
+    DocFilter.ToDocumentDate:=DateToStr(RxDateEdit2.Date);
+  end;
+
+  //DocFilter.DepartmentId:string;
+  //DocFilter.ExcludeSubdepartments:Boolean;
+  //DocFilter.SortDirection:string;
+  DocFilter.AfterIndexKey:=FLastIndex;
+  //DocFilter.Count:integer;
+
+  //Docs:=FDiadocAPI.GetDocuments(FBox.BoxId, FDocumentType, FDocumentClass, dfsAny, '', FCurBoxID, FFromDocumentDate, FToDocumentDate, FLastIndex);
+  Docs:=FDiadocAPI.GetDocuments(DocFilter);
 
   if Assigned(Docs) then
   begin
