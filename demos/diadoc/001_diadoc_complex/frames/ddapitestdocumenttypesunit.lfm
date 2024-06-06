@@ -1,0 +1,206 @@
+object ddapitestDocumentTypesFrame: TddapitestDocumentTypesFrame
+  Left = 0
+  Height = 430
+  Top = 0
+  Width = 943
+  ClientHeight = 430
+  ClientWidth = 943
+  TabOrder = 0
+  DesignLeft = 594
+  DesignTop = 421
+  object Button1: TButton
+    Left = 16
+    Height = 25
+    Top = 16
+    Width = 75
+    Caption = 'Button1'
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object RxDBGrid1: TRxDBGrid
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Button1
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 6
+    Height = 377
+    Top = 47
+    Width = 931
+    ColumnDefValues.BlobText = '(данные)'
+    TitleButtons = False
+    AutoSort = True
+    Columns = <    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'ФНС'
+        Width = 60
+        FieldName = 'DocTypeRequiresFnsRegistration'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Наименование'
+        Width = 200
+        FieldName = 'DocTypeName'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end    
+      item
+        Title.Alignment = taCenter
+        Title.Orientation = toHorizontal
+        Title.Caption = 'Заголовок'
+        Width = 250
+        FieldName = 'DocTypeTitle'
+        EditButtons = <>
+        Filter.DropDownRows = 0
+        Filter.EmptyValue = '(Пусто)'
+        Filter.NotEmptyValue = '(Не пусто)'
+        Filter.AllValue = '(Все значения)'
+        Filter.EmptyFont.Style = [fsItalic]
+        Filter.ItemIndex = -1
+        Footers = <>
+      end>
+    KeyStrokes = <    
+      item
+        Command = rxgcShowFindDlg
+        ShortCut = 16454
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowColumnsDlg
+        ShortCut = 16471
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowFilterDlg
+        ShortCut = 16468
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowSortDlg
+        ShortCut = 16467
+        Enabled = True
+      end    
+      item
+        Command = rxgcShowQuickFilter
+        ShortCut = 16465
+        Enabled = True
+      end    
+      item
+        Command = rxgcHideQuickFilter
+        ShortCut = 16456
+        Enabled = True
+      end    
+      item
+        Command = rxgcSelectAll
+        ShortCut = 16449
+        Enabled = True
+      end    
+      item
+        Command = rxgcDeSelectAll
+        ShortCut = 16429
+        Enabled = True
+      end    
+      item
+        Command = rxgcInvertSelection
+        ShortCut = 16426
+        Enabled = True
+      end    
+      item
+        Command = rxgcOptimizeColumnsWidth
+        ShortCut = 16427
+        Enabled = True
+      end    
+      item
+        Command = rxgcCopyCellValue
+        ShortCut = 16451
+        Enabled = True
+      end>
+    FooterOptions.DrawFullLine = False
+    SearchOptions.QuickSearchOptions = [loCaseInsensitive, loPartialKey]
+    SearchOptions.FromStart = False
+    OptionsRx = [rdgAllowColumnsForm, rdgAllowDialogFind, rdgAllowQuickFilter]
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    BorderSpacing.Around = 6
+    Color = clWindow
+    DrawFullLine = False
+    FocusColor = clRed
+    SelectedColor = clHighlight
+    DataSource = dsDocTypes
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    TabOrder = 1
+  end
+  object rxDocTypes: TRxMemoryData
+    FieldDefs = <    
+      item
+        Name = 'DocTypeName'
+        DataType = ftString
+        Size = 500
+      end    
+      item
+        Name = 'DocTypeTitle'
+        DataType = ftString
+        Size = 500
+      end    
+      item
+        Name = 'DocTypeRequiresFnsRegistration'
+        DataType = ftBoolean
+      end>
+    PacketRecords = 0
+    Left = 176
+    Top = 112
+    object rxDocTypesDocTypeName: TStringField
+      FieldKind = fkData
+      FieldName = 'DocTypeName'
+      Index = 0
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 500
+    end
+    object rxDocTypesDocTypeTitle: TStringField
+      FieldKind = fkData
+      FieldName = 'DocTypeTitle'
+      Index = 1
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      Size = 500
+    end
+    object rxDocTypesDocTypeRequiresFnsRegistration: TBooleanField
+      FieldKind = fkData
+      FieldName = 'DocTypeRequiresFnsRegistration'
+      Index = 2
+      LookupCache = False
+      ProviderFlags = [pfInUpdate, pfInWhere]
+      ReadOnly = False
+      Required = False
+      DisplayValues = 'True;False'
+    end
+  end
+  object dsDocTypes: TDataSource
+    DataSet = rxDocTypes
+    Left = 128
+    Top = 112
+  end
+end
