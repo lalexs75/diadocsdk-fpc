@@ -32,7 +32,8 @@
 
 unit DiadocTypes_DocumentFilter;
 
-{$I diadoc_define.inc}
+{.$I diadoc_define.inc}
+{$mode delphi}
 
 interface
 
@@ -40,6 +41,9 @@ uses
   Classes, SysUtils;
 
 type
+
+  { TDocumentFilter }
+
   TDocumentFilter = record
     //DocumentFilter(const std::wstring& boxId, const std::wstring& filterCategory);
     //~DocumentFilter();
@@ -55,8 +59,17 @@ type
     SortDirection:string;
     AfterIndexKey:string;
     Count:integer;
+    class operator Initialize(var aRec: TDocumentFilter);
   end;
+
 implementation
+
+{ TDocumentFilter }
+
+class operator TDocumentFilter.Initialize(var aRec: TDocumentFilter);
+begin
+  aRec := Default(TDocumentFilter); // initialize to default
+end;
 
 end.
 

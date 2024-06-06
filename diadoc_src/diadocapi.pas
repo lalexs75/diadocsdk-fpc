@@ -350,7 +350,7 @@ type
     //-------------------------------------------------
     function GetEvent(ABoxId, AEventId: string): TBoxEvent;
     function GetNewEvents(ABoxId, AAfterEventId: string):TBoxEventList;
-    function GetNewEvents7(ABoxId, AAfterEventId, ADocumentDirection, ATimestampFromTicks: string; ALimit:Integer):TBoxEventList;
+    function GetNewEvents7(ABoxId, AAfterEventId, AAfterIndexKey, ADepartmentId, ADocumentDirection,  ATimestampFromTicks: string; ALimit:Integer):TBoxEventList;
 
     //-------------------------------------------------
     //Работа с организациями
@@ -3773,8 +3773,9 @@ begin
   end;
 end;
 
-function TDiadocAPI.GetNewEvents7(ABoxId, AAfterEventId, ADocumentDirection,
-  ATimestampFromTicks: string; ALimit: Integer): TBoxEventList;
+function TDiadocAPI.GetNewEvents7(ABoxId, AAfterEventId, AAfterIndexKey,
+  ADepartmentId, ADocumentDirection, ATimestampFromTicks: string;
+  ALimit: Integer): TBoxEventList;
 var
   S: String;
 begin
@@ -3841,7 +3842,11 @@ begin
     AddURLParam(S, 'boxId', ABoxId);  //boxId: идентификатор ящика
     if AAfterEventId<>'' then
       AddURLParam(S, 'afterEventId', AAfterEventId);  //afterEventId: идентификатор последнего полученного события (может отсутствовать);
+    if AAfterIndexKey <> '' then
+      AddURLParam(S, 'afterIndexKey', AAfterEventId);  //
 
+    if ADepartmentId <>'' then
+      AddURLParam(S, 'departmentId', ADepartmentId);
     if ADocumentDirection <> '' then
       AddURLParam(S, 'documentDirection', ADocumentDirection);
 
@@ -4267,9 +4272,79 @@ end;
 
 function TDiadocAPI.GetDocuments(ADocumentFilter: TDocumentFilter
   ): TDocumentList;
+var
+  S: String;
 begin
   Result:=nil;
-  //
+  S:='';
+  if ADocumentFilter.BoxId = '' then
+    raise EDiadocException.Create(sNotDefinedBoxId);
+  if not Authenticate then exit;
+
+//  FilterCategory:string;
+//  CounteragentBoxId:string;
+//  TimestampFrom:Int64;
+//  TimestampTo:Int64;
+//  FromDocumentDate:string;
+//  ToDocumentDate:string;
+//  DepartmentId:string;
+//  ExcludeSubdepartments:Boolean;
+//  SortDirection:string;
+//  AfterIndexKey:string;
+//  Count:integer;
+
+  S:='';
+//  FFilterCategory:=DocumentTypeFilter(ADocumentType) + '.' + DocumentClassFilter(ADocumentClass)+DocumentFilterStatusStr(ADocumentStatus);
+  AddURLParam(S, 'boxId', ADocumentFilter.BoxId); //идентификатор ящика, в котором осуществляется поиск документов;
+  AddURLParam(S, 'filterCategory', ADocumentFilter.FilterCategory); //статус, по которому требуется отфильтровать список документов;
+
+  if ADocumentFilter.CounteragentBoxId <> '' then
+    AddURLParam(S, 'counteragentBoxId', ADocumentFilter.CounteragentBoxId); //идентификатор ящика контрагента, по которому требуется дополнительная фильтрация (может отсутствовать, не имеет смысла при фильтрации внутренних документов);
+
+  if ADocumentFilter.DepartmentId<>'' then
+    AddURLParam(S, 'toDepartmentId', ADocumentFilter.DepartmentId); //идентификатор подразделения получателя, по которому требуется дополнительная фильтрация (может отсутствовать, имеет смысл только при фильтрации внутренних документов);
+
+
+  if ADocumentFilter.FromDocumentDate <> '' then
+    AddURLParam(S, 'fromDocumentDate', ADocumentFilter.FromDocumentDate); //дата документа в формате ДД.ММ.ГГГГ, задающая начальную точку периода, по которому требуется дополнительная фильтрация (может отсутствовать);
+
+  if ADocumentFilter.ToDocumentDate <> '' then
+    AddURLParam(S, 'toDocumentDate', ADocumentFilter.ToDocumentDate); //дата документа в формате ДД.ММ.ГГГГ, задающая конечную точку периода, по которому требуется дополнительная фильтрация (может отсутствовать);
+
+  if ADocumentFilter.TimestampFrom <> 0 then
+    AddURLParam(S, 'timestampFromTicks', IntToStr(ADocumentFilter.TimestampFrom )); //timestampFromTicks: метка времени, задающая начальную точку периода, по которому требуется дополнительная фильтрация (может отсутствовать);
+  if ADocumentFilter.TimestampFrom <> 0 then
+    AddURLParam(S, 'timestampToTicks', IntToStr(ADocumentFilter.TimestampTo)); //timestampToTicks: метка времени, задающая конечную точку периода, по которому требуется дополнительная фильтрация (может отсутствовать);
+
+  if ADocumentFilter.ExcludeSubdepartments then
+    AddURLParam(S, 'excludeSubdepartments'); //excludeSubdepartments: если присутствует - исключить из выборки дочерние подразделения;
+
+  if ADocumentFilter.SortDirection <> '' then
+    AddURLParam(S, 'sortDirection', ADocumentFilter.SortDirection); //sortDirection: задает порядок сортировки документов в выдаче, принимает одно из значений «Ascending», или «Descending» (может отсутствовать, значение по умолчанию - «Ascending»);
+
+  if ADocumentFilter.AfterIndexKey<>'' then
+    AddURLParam(S, 'afterIndexKey', ADocumentFilter.AfterIndexKey); //уникальный ключ документа, позволяющий итерироваться по всему списку документов, удовлетворяющих фильтру (может отсутствовать);
+
+  if ADocumentFilter.Count>0 then
+    AddURLParam(S, 'count', IntToStr(ADocumentFilter.Count)); //count:максимальное количество документов в ответе (может отсутствовать, в этом случае в ответе будет не больше 100 документов). Может принимать значения от 0 до 100.
+
+
+
+  if SendCommand(hmGET, '/V3/GetDocuments', S, nil) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('GetDocuments');
+    {$ENDIF}
+
+    FHTTP.Document.Position:=0;
+    if FHTTP.ResultCode = 200 then
+    begin
+      Result:=TDocumentList.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
 end;
 
 function TDiadocAPI.GetDocument(AboxId, AMessageId, AEntityId: string
