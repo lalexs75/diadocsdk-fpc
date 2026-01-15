@@ -423,6 +423,24 @@ begin
   if ADocFunction = 'DEFAULT' then
     Result:='DEFAULT'
   else
+  if ADocFunction = 'NOADDITIONALINFO' then
+    Result:='NOADDITIONALINFO'
+  else
+  if ADocFunction = 'WITHADDITIONALINFO' then
+    Result:='WITHADDITIONALINFO'
+  else
+  if ADocFunction = 'RECEPTION' then
+    Result:='RECEPTION'
+  else
+  if ADocFunction = 'DELIVERY' then
+    Result:='DELIVERY'
+  else
+  if ADocFunction = 'COST' then
+    Result:='COST'
+  else
+  if ADocFunction = 'CONSIGNOR_COST' then
+    Result:='CONSIGNOR_COST'
+  else
     raise Exception.CreateFmt('Не известная функция - %s', [ADocFunction]);
 end;
 
