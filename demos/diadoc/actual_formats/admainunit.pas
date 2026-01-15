@@ -235,8 +235,35 @@ begin
 end;
 
 procedure TForm1.xsdExportCurrExecute(Sender: TObject);
+var
+  ST: TTreeNode;
+  D, D1: TObject;
+  DFVT: TDocumentTitleV2;
+  DF: TDocumentFunctionV2;
+  DFV: TDocumentVersionV2;
+  DTD:TDocumentTypeDescriptionV2;
 begin
-//  DoExport(DirectoryEdit1.Directory, DTD, DF, DFV, DFVT);
+  ST:=TreeView2.Selected;
+  if not Assigned(ST) then Exit;
+  D:=TObject(ST.Data);
+  if D is TDocumentVersionV2 then
+  begin
+    DFV:=TDocumentVersionV2(D);
+
+    D:=TObject(ST.Parent.Data);
+    if D is TDocumentFunctionV2 then
+    begin
+      DF:=TDocumentFunctionV2(D);
+      D:=TObject(ST.Parent.Parent.Data);
+      if D is TDocumentTypeDescriptionV2 then
+        DTD:=TDocumentTypeDescriptionV2(D);
+    end;
+
+    for DFVT in DFV.Titles do
+      DoExport(DirectoryEdit1.Directory, DTD, DF, DFV, DFVT);
+
+
+  end;
 end;
 
 procedure TForm1.xsdOpenExecute(Sender: TObject);
