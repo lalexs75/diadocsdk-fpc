@@ -118,7 +118,8 @@ procedure ShowOtherAttach(ADiadocAPI:TDiadocAPI; AStream:TStream; AFileName:stri
 implementation
 uses LCLIntf, diadoc_utils, UniversalTransferDocumentSellerTitleInfoUnit, upd820_revision,
   UniversalTransferDocumentBuyerTitleInfoUnit,
-  UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen_ind0;
+  UniversalTransferDocument_SCHF_utd820_05_01_01_hyphen_ind0,
+  rxlogging;
 
 {$R *.lfm}
 
@@ -394,6 +395,9 @@ begin
 
   for E in FMessage.Entities do
   begin
+    RxWriteLog(etDebug, 'Assigned(E) = %s', [BoolToStr(Assigned(E))]);
+    RxWriteLog(etDebug, 'E.AttachmentType=%d', [Ord(E.AttachmentType)]);
+    RxWriteLog(etDebug, 'E.FileName = %s', [E.FileName]);
     rxEntyty.Append;
     rxEntytyEntityType.AsString:=EntityTypeToStr(E.EntityType);
     rxEntytyEntityId.AsString:=E.EntityId;
