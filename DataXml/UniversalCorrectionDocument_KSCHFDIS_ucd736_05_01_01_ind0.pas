@@ -2793,9 +2793,11 @@ begin
     P.ValidList.Add('10%');
     P.ValidList.Add('18%');
     P.ValidList.Add('20%');
+    P.ValidList.Add('22%');
     P.ValidList.Add('10/110');
     P.ValidList.Add('18/118');
     P.ValidList.Add('20/120');
+    P.ValidList.Add('22/122');
     P.ValidList.Add('НДС исчисляется налоговым агентом');
   P:=RegisterProperty('CorrectedValue', 'CorrectedValue', [xsaRequared], '', -1, -1);
     P.ValidList.Add('без НДС');
@@ -2803,9 +2805,11 @@ begin
     P.ValidList.Add('10%');
     P.ValidList.Add('18%');
     P.ValidList.Add('20%');
+    P.ValidList.Add('22%');
     P.ValidList.Add('10/110');
     P.ValidList.Add('18/118');
     P.ValidList.Add('20/120');
+    P.ValidList.Add('22/122');
     P.ValidList.Add('НДС исчисляется налоговым агентом');
 end;
 
@@ -3111,7 +3115,11 @@ begin
   P:=RegisterProperty('AmountsInc', 'AmountsInc', [xsaSimpleObject], '', -1, -1);
   P:=RegisterProperty('AmountsDec', 'AmountsDec', [xsaSimpleObject], '', -1, -1);
   P:=RegisterProperty('OriginalValue', 'OriginalValue', [], '', -1, -1);
+    P.TotalDigits := 19;
+    P.FractionDigits := 2;
   P:=RegisterProperty('CorrectedValue', 'CorrectedValue', [], '', -1, -1);
+    P.TotalDigits := 19;
+    P.FractionDigits := 2;
 end;
 
 procedure TExtendedInvoiceCorrectionItem_Vat.InternalInitChilds;
@@ -4039,8 +4047,12 @@ begin
     P.ValidList.Add('0%');
     P.ValidList.Add('10%');
     P.ValidList.Add('18%');
+    P.ValidList.Add('20%');
+    P.ValidList.Add('22%');
     P.ValidList.Add('10/110');
     P.ValidList.Add('18/118');
+    P.ValidList.Add('20/120');
+    P.ValidList.Add('22/122');
 end;
 
 procedure TCorrectableInvoiceItemFields.InternalInitChilds;
@@ -4077,9 +4089,11 @@ begin
     P.ValidList.Add('10%');
     P.ValidList.Add('18%');
     P.ValidList.Add('20%');
+    P.ValidList.Add('22%');
     P.ValidList.Add('10/110');
     P.ValidList.Add('18/118');
     P.ValidList.Add('20/120');
+    P.ValidList.Add('22/122');
 end;
 
 procedure TCorrectableInvoiceItemFields_WithTwentyPercent.InternalInitChilds;
@@ -4115,8 +4129,12 @@ begin
     P.ValidList.Add('0%');
     P.ValidList.Add('10%');
     P.ValidList.Add('18%');
+    P.ValidList.Add('20%');
+    P.ValidList.Add('22%');
     P.ValidList.Add('10/110');
     P.ValidList.Add('18/118');
+    P.ValidList.Add('20/120');
+    P.ValidList.Add('22/122');
     P.ValidList.Add('НДС исчисляется налоговым агентом');
 end;
 
@@ -4154,9 +4172,11 @@ begin
     P.ValidList.Add('10%');
     P.ValidList.Add('18%');
     P.ValidList.Add('20%');
+    P.ValidList.Add('22%');
     P.ValidList.Add('10/110');
     P.ValidList.Add('18/118');
     P.ValidList.Add('20/120');
+    P.ValidList.Add('22/122');
     P.ValidList.Add('НДС исчисляется налоговым агентом');
 end;
 

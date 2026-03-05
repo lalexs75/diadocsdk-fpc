@@ -3298,7 +3298,8 @@ begin
     P.FractionDigits := 2;
   P:=RegisterProperty('TaxRate', 'TaxRate', [xsaRequared], '', -1, -1);
     P.ValidList.Add('без НДС');
-    P.ValidList.Add('0%');
+    P.ValidList.Add(' 0%');
+//    P.ValidList.Add('5%');
     P.ValidList.Add('10%');
     P.ValidList.Add('18%');
     P.ValidList.Add('20%');

@@ -2795,9 +2795,11 @@ begin
     P.ValidList.Add('10%');
     P.ValidList.Add('18%');
     P.ValidList.Add('20%');
+    P.ValidList.Add('22%');
     P.ValidList.Add('10/110');
     P.ValidList.Add('18/118');
     P.ValidList.Add('20/120');
+    P.ValidList.Add('22/122');
     P.ValidList.Add('НДС исчисляется налоговым агентом');
   P:=RegisterProperty('CorrectedValue', 'CorrectedValue', [xsaRequared], '', -1, -1);
     P.ValidList.Add('без НДС');
@@ -2805,9 +2807,11 @@ begin
     P.ValidList.Add('10%');
     P.ValidList.Add('18%');
     P.ValidList.Add('20%');
+    P.ValidList.Add('22%');
     P.ValidList.Add('10/110');
     P.ValidList.Add('18/118');
     P.ValidList.Add('20/120');
+    P.ValidList.Add('22/122');
     P.ValidList.Add('НДС исчисляется налоговым агентом');
 end;
 
@@ -4079,9 +4083,11 @@ begin
     P.ValidList.Add('10%');
     P.ValidList.Add('18%');
     P.ValidList.Add('20%');
+    P.ValidList.Add('22%');
     P.ValidList.Add('10/110');
     P.ValidList.Add('18/118');
     P.ValidList.Add('20/120');
+    P.ValidList.Add('22/122');
 end;
 
 procedure TCorrectableInvoiceItemFields_WithTwentyPercent.InternalInitChilds;
@@ -4156,9 +4162,11 @@ begin
     P.ValidList.Add('10%');
     P.ValidList.Add('18%');
     P.ValidList.Add('20%');
+    P.ValidList.Add('22%');
     P.ValidList.Add('10/110');
     P.ValidList.Add('18/118');
     P.ValidList.Add('20/120');
+    P.ValidList.Add('22/122');
     P.ValidList.Add('НДС исчисляется налоговым агентом');
 end;
 
