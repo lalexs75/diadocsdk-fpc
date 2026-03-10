@@ -374,7 +374,7 @@ type
     //$GetDocuments(const std::wstring& boxId, const std::wstring& filterCategory, const std::wstring& counteragentBoxId, __int64* timestampFrom, __int64* timestampTo, const std::wstring& fromDocumentDate, const std::wstring& toDocumentDate, const std::wstring& departmentId, bool excludeSubdepartments, const std::string& afterIndexKey, int* count = NULL);
     //$GetDocuments(const DocumentFilter& documentFilter);
     function GetDocuments(ABoxId: string; ADocumentType: TDocumentTypeFilter; ADocumentClass: TDocumentFilterClass; ADocumentStatus: TDocumentFilterStatus; ADepartmentId: string; ACounteragentBoxId: string; AFromDocumentDate: string; AToDocumentDate: string; AAfterIndexKey: string): TDocumentList; overload;
-    function GetDocuments(ADocumentFilter:TDocumentFilter): TDocumentList; overload;
+    function GetDocuments(const ADocumentFilter:TDocumentFilter): TDocumentList; overload;
 
     function GetDocument(AboxId, AMessageId, AEntityId:string):TDocument;
     //-------------------------------------------------
@@ -419,7 +419,11 @@ procedure Register;
 
 //function FindEntitie(AMessage: TMessage; AType:TAttachmentType):TEntity;
 implementation
-uses synautil, synacode;
+uses synautil, synacode
+  {$IFDEF DIADOC_DEBUG}
+  , rxlogging
+  {$ENDIF}
+;
 
 {$R diadoc-fpc.res}
 
@@ -3586,7 +3590,8 @@ begin
 
   if not Authenticate then exit;
 
-  if SendCommand(hmGET, '/V4/GetMessage', S, nil) then
+  if SendCommand(hmGET, '/V6/GetMessage', S, nil) then
+//  if SendCommand(hmGET, '/V4/GetMessage', S, nil) then
   begin
     {$IFDEF DIADOC_DEBUG}
     SaveProtobuf('GetMessage');
@@ -4100,6 +4105,10 @@ begin
   if AParams <> '' then
     AParams:='?' + AParams;
 
+  {$IFDEF DIADOC_DEBUG}
+  RxWriteLog(etDebug, '%s : %s', [SMethod, sKonturAPI_URL + ACommand + AParams]);
+  {$ENDIF}
+
   Result := FHTTP.HTTPMethod(SMethod, sKonturAPI_URL + ACommand + AParams);
   FHTTP.Document.Position:=0;
   FResultCode := FHTTP.ResultCode;
@@ -4270,8 +4279,7 @@ begin
   end;
 end;
 
-function TDiadocAPI.GetDocuments(ADocumentFilter: TDocumentFilter
-  ): TDocumentList;
+function TDiadocAPI.GetDocuments(const ADocumentFilter: TDocumentFilter): TDocumentList;
 var
   S: String;
 begin

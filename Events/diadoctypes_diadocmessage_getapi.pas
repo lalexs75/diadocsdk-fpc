@@ -207,7 +207,13 @@ type
     DeletionRestoration = 72,
     TemplateTransformation = 73,
     TemplateRefusal = 74,
-    atOuterDocflow = 75
+    atOuterDocflow = 75,
+    RoamingConfirmation = 76,
+    PowerOfAttorney = 77,
+    PowerOfAttorneyStatus = 78,
+    UniversalMessage = 79,
+    TtGisFixationCancellationRequest = 87,
+    TemplateTransformationChange = 88
     //Неизвестные типы должны обрабатываться как Title
   );
   TAttachmentTypeArray = array of TAttachmentType;
@@ -822,6 +828,16 @@ begin
     Title:Result:='Title';
     Cancellation:Result:='Cancellation';
     Edition:Result:='Edition';
+    DeletionRestoration:Result:='DeletionRestoration';
+    TemplateTransformation:Result:='TemplateTransformation';
+    TemplateRefusal:Result:='TemplateRefusal';
+    atOuterDocflow:Result:='atOuterDocflow';
+    RoamingConfirmation:Result:='RoamingConfirmation';
+    PowerOfAttorney:Result:='PowerOfAttorney';
+    PowerOfAttorneyStatus:Result:='PowerOfAttorneyStatus';
+    UniversalMessage:Result:='UniversalMessage';
+    TtGisFixationCancellationRequest:Result:='TtGisFixationCancellationRequest';
+    TemplateTransformationChange:Result:='TemplateTransformationChange';
   else
     Result:='';
   end;
