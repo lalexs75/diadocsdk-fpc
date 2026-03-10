@@ -400,6 +400,7 @@ type
     FUniversalCorrectionDocumentInfo: TUniversalCorrectionDocumentInfo;
     FUniversalTransferDocumentInfo: TUniversalTransferDocumentInfo;
     FVersion: string;
+    function GetDocumentType:TDocumentType;
     procedure SetAttachmentVersion(AValue: string);
     procedure SetCounteragentBoxId(AValue: string);
     procedure SetCustomDocumentId(AValue: string);
@@ -414,8 +415,8 @@ type
     procedure InternalInit; override;
   public
     destructor Destroy; override;
+    property DocumentType:TDocumentType read GetDocumentType write SetDocumentType default UnknownDocumentType; //1
   published
-    property DocumentType:TDocumentType read FDocumentType write SetDocumentType default UnknownDocumentType; //1
     property DocumentDirection:TDocumentDirection read FDocumentDirection write SetDocumentDirection default UnknownDocumentDirection; //2
     property IsTest:Boolean read FIsTest write SetIsTest; //3;
     property CustomDocumentId:string read FCustomDocumentId write SetCustomDocumentId; //4;
@@ -438,6 +439,11 @@ type
 implementation
 
 { TDocumentInfo }
+
+function TDocumentInfo.GetDocumentType:TDocumentType;
+begin
+  Result:=FDocumentType
+end;
 
 procedure TDocumentInfo.SetAttachmentVersion(AValue: string);
 begin
@@ -502,7 +508,7 @@ end;
 procedure TDocumentInfo.InternalRegisterProperty;
 begin
   inherited InternalRegisterProperty;
-  RegisterProp('DocumentType', 1);
+  RegisterPropPublic('DocumentType', 1, TMethod(@SetDocumentType), TMethod(@GetDocumentType));
   RegisterProp('DocumentDirection', 2);
   RegisterProp('IsTest', 3);
   RegisterProp('CustomDocumentId', 4);

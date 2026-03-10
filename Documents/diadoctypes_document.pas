@@ -471,6 +471,7 @@ type
     FWorkflowId: int32;
     FXmlAcceptanceCertificateMetadata: TBasicDocumentMetadata;
     FXmlTorg12Metadata: TBasicDocumentMetadata;
+    function GetDocumentType:TDocumentType;
     procedure SetAttachmentVersion(AValue: string);
     procedure SetCounteragentBoxId(AValue: string);
     procedure SetCreationTimestampTicks(AValue: sfixed64);
@@ -517,13 +518,13 @@ type
     procedure InternalRegisterProperty; override;
   public
     destructor Destroy; override;
+    property DocumentType:TDocumentType read GetDocumentType write SetDocumentType default UnknownDocumentType; //6
   published
     property IndexKey:string read FIndexKey write SetIndexKey;                            //1;
     property MessageId:string read FMessageId write SetMessageId;                         //2;
     property EntityId:string read FEntityId write SetEntityId;                            //3;
     property CreationTimestampTicks:sfixed64 read FCreationTimestampTicks write SetCreationTimestampTicks; //4
     property CounteragentBoxId:string read FCounteragentBoxId write SetCounteragentBoxId; //5
-    property DocumentType:TDocumentType read FDocumentType write SetDocumentType default UnknownDocumentType; //6
     property InitialDocumentIds:TDocumentIds read FInitialDocumentIds;                  //7
     property SubordinateDocumentIds:TDocumentIds read FSubordinateDocumentIds;          //8
     property Content:TContent read FContent;                                            //9;
@@ -916,6 +917,11 @@ begin
   Modified(4);
 end;
 
+function TDocument.GetDocumentType:TDocumentType;
+begin
+  Result:=FDocumentType
+end;
+
 procedure TDocument.SetAttachmentVersion(AValue: string);
 begin
   if FAttachmentVersion=AValue then Exit;
@@ -1255,7 +1261,7 @@ begin
   RegisterProp('EntityId', 3, true);
   RegisterProp('CreationTimestampTicks', 4, true);
   RegisterProp('CounteragentBoxId', 5);
-  RegisterProp('DocumentType', 6);
+  RegisterPropPublic('DocumentType', 6, TMethod(@SetDocumentType), TMethod(@GetDocumentType));
   RegisterProp('InitialDocumentIds', 7);
   RegisterProp('SubordinateDocumentIds', 8);
   RegisterProp('Content', 9);
