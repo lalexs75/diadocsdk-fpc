@@ -331,6 +331,7 @@ type
     function ParseInvoiceXml(AXmlContent:TStream):TInvoiceInfo;
     function GenerateInvoiceDocumentReceiptXml(ABoxId, AMessageId, AAttachmentId:string; ASigner:TSigner):TStream;
     function GenerateInvoiceCorrectionRequestXml(ABoxId, AMessageId, AAttachmentId:string; ACorrectionInfo:TInvoiceCorrectionRequestInfo):TStream;
+    function GenerateUniversalMessage(ABoxId, AMessageId, AAttachmentId:string; AUserContractData: TStream):TStream;
     //------------Отправка СФ--------------------------
     //ExtendedSignerDetails
     function GetExtendedSignerDetails(AToken, ABoxId, AThumbprint: string;
@@ -3463,6 +3464,63 @@ begin
       FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
   end;
   F.Free;
+end;
+
+function TDiadocAPI.GenerateUniversalMessage(ABoxId, AMessageId,
+  AAttachmentId: string; AUserContractData: TStream): TStream;
+var
+  S: String;
+begin
+  Result:=nil;
+
+  if ABoxID='' then
+    raise EDiadocException.Create(sNotDefinedBoxId);
+  if AMessageId='' then
+    raise EDiadocException.Create(sNotDefinedMessageId);
+  if AAttachmentId='' then
+    raise EDiadocException.Create(sNotDefinedAttachmentId);
+
+  if not Authenticate then exit;
+
+  (*
+  public GeneratedFile GenerateUniversalMessage(string authToken, string boxId, string messageId, string attachmentId, byte[] userContractData)
+  {
+  	if (authToken == null) throw new ArgumentNullException(nameof(authToken));
+  	if (boxId == null) throw new ArgumentNullException(nameof(boxId));
+  	if (messageId == null) throw new ArgumentNullException(nameof(messageId));
+  	if (attachmentId == null) throw new ArgumentNullException(nameof(attachmentId));
+  	if (userContractData == null) throw new ArgumentNullException(nameof(userContractData));
+  	return diadocHttpApi.GenerateUniversalMessage(authToken, boxId, messageId, attachmentId, userContractData);
+  }
+  var queryBuilder = new PathAndQueryBuilder("/GenerateUniversalMessage");
+  queryBuilder.AddParameter("boxId", boxId);
+  queryBuilder.AddParameter("messageId", messageId);
+  queryBuilder.AddParameter("attachmentId", attachmentId);
+
+  var request = BuildHttpRequest(authToken, "POST", queryBuilder.BuildPathAndQuery(), userContractData);
+  var response = await HttpClient.PerformHttpRequestAsync(request).ConfigureAwait(false);
+  return new GeneratedFile(response.ContentDispositionFileName, response.Content);
+*)
+  S:='';
+  AddURLParam(S, 'boxId', ABoxId); //идентификатор ящика
+  AddURLParam(S, 'messageId', AMessageId); //идентификатор сообщения
+  AddURLParam(S, 'attachmentId', AAttachmentId);
+
+  if SendCommand(hmPOST, 'GenerateUniversalMessage', S, AUserContractData) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('GenerateUniversalMessage.bin');
+    {$ENDIF}
+    FHTTP.Document.Position:=0;
+
+    if FHTTP.ResultCode = 200 then
+    begin
+      Result:=TMemoryStream.Create;
+      Result.CopyFrom(FHTTP.Document, 0);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
 end;
 
 function TDiadocAPI.GetExtendedSignerDetails(AToken, ABoxId,
