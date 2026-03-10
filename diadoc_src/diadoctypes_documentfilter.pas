@@ -32,8 +32,8 @@
 
 unit DiadocTypes_DocumentFilter;
 
-{.$I diadoc_define.inc}
-{$mode delphi}
+{$I diadoc_define.inc}
+{$modeswitch advancedrecords}
 
 interface
 
