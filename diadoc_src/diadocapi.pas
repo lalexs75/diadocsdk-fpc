@@ -202,6 +202,7 @@ type
 
     function PostDiadocMessage(AMsg:TMessageToPost; AOperationId:string):TMessage;
     function PostMessagePatch(APatch:TMessagePatchToPost; AOperationId:string):TMessagePatch;
+    function PostMessagePatch4(APatch:TMessagePatchToPostV2; AOperationId:string):TMessagePatch;
     function PrepareDocumentsToSign(ARequest:TPrepareDocumentsToSignRequest):TPrepareDocumentsToSignResponse;
     function SendDraft(ARequest:TDraftToSend; AOperationId:string):TMessage;
     function RecycleDraft(ABoxId, ADraftId:string):boolean;
@@ -5218,6 +5219,48 @@ begin
 
   F:=APatch.SaveToStream;
   if SendCommand(hmPOST, '/V3/PostMessagePatch', S, F) then
+  begin
+    {$IFDEF DIADOC_DEBUG}
+    SaveProtobuf('PostMessagePatch');
+    {$ENDIF}
+
+    FHTTP.Document.Position:=0;
+    if FHTTP.ResultCode = 200 then
+    begin
+      Result:=TMessagePatch.Create;
+      Result.LoadFromStream(FHTTP.Document);
+    end
+    else
+      FResultText.LoadFromStream(FHTTP.Document, TEncoding.UTF8);
+  end;
+  F.Free;
+end;
+
+function TDiadocAPI.PostMessagePatch4(APatch: TMessagePatchToPostV2;
+  AOperationId: string): TMessagePatch;
+var
+  S: String;
+  F: TStream;
+begin
+  (*
+  MessagePatch DiadocApi::PostMessagePatch(const MessagePatchToPost& patch, const std::wstring& operationId)
+  {
+  	WppTraceDebugOut(L"PostMessagePatch...");
+  	std::wstringstream buf;
+  	buf << L"/V3/PostMessagePatch";
+  	if (!operationId.empty())
+  		buf << L"?operationId=" << StringHelper::CanonicalizeUrl(operationId);
+  	return FromProtoBytes<MessagePatch>(PerformHttpRequest(buf.str(), ToProtoBytes(patch), POST));
+  }
+  *)
+  Result:=nil;
+  if not Authenticate then exit;
+  S:='';
+  if AOperationId <> '' then
+    AddURLParam(S, 'operationId', AOperationId);
+
+  F:=APatch.SaveToStream;
+  if SendCommand(hmPOST, '/V4/PostMessagePatch', S, F) then
   begin
     {$IFDEF DIADOC_DEBUG}
     SaveProtobuf('PostMessagePatch');

@@ -446,7 +446,7 @@ type
   //	optional bool MessageIsDelivered = 11 [default = false];
   //	optional string DeliveredPatchId = 12;
   //	required string PatchId = 13;
-  //
+  //    optional string NotDeliveredEventId = 14;
   //    required Documents.MessageType MessageType = 15;
   //}
   TMessagePatch = class(TSerializationObject)
@@ -463,6 +463,7 @@ type
     FMessageIsDelivered: Boolean;
     FMessageIsRestored: Boolean;
     FMessageType: TMessageType;
+    FNotDeliveredEventId: string;
     FPatchId: string;
     FTimestampTicks: sfixed64;
     procedure SetDeliveredPatchId(AValue: string);
@@ -474,6 +475,7 @@ type
     procedure SetMessageIsDelivered(AValue: Boolean);
     procedure SetMessageIsRestored(AValue: Boolean);
     procedure SetMessageType(AValue: TMessageType);
+    procedure SetNotDeliveredEventId(AValue: string);
     procedure SetPatchId(AValue: string);
     procedure SetTimestampTicks(AValue: sfixed64);
   protected
@@ -495,6 +497,7 @@ type
     property MessageIsDelivered:Boolean read FMessageIsDelivered write SetMessageIsDelivered;//11
     property DeliveredPatchId:string read FDeliveredPatchId write SetDeliveredPatchId;//12;
     property PatchId:string read FPatchId write SetPatchId;//13;
+    property NotDeliveredEventId:string read FNotDeliveredEventId write SetNotDeliveredEventId;//14;
     property MessageType:TMessageType read FMessageType write SetMessageType;//15;
   end;
 
@@ -1188,6 +1191,13 @@ begin
   Modified(15);
 end;
 
+procedure TMessagePatch.SetNotDeliveredEventId(AValue: string);
+begin
+  if FNotDeliveredEventId=AValue then Exit;
+  FNotDeliveredEventId:=AValue;
+  Modified(14);
+end;
+
 procedure TMessagePatch.SetPatchId(AValue: string);
 begin
   if FPatchId=AValue then Exit;
@@ -1226,6 +1236,7 @@ begin
   RegisterProp('MessageIsDelivered', 11);
   RegisterProp('DeliveredPatchId', 12);
   RegisterProp('PatchId', 13, true);
+  RegisterProp('NotDeliveredEventId', 14);
   RegisterProp('MessageType', 15, true);
 end;
 

@@ -71,6 +71,20 @@ type
     cdpoRemove = 1
   );
 
+  //enum UniversalMessageCodeGroup {
+  //    UnknownCodeGroup = 0;
+  //    Receipt = 1;
+  //    AmendmentRequest = 2;
+  //    Rejection = 3;
+  //    InformationMessage = 4;
+  //}
+  TUniversalMessageCodeGroup = (
+    UnknownCodeGroup = 0,
+    Receipt = 1,
+    AmendmentRequest = 2,
+    Rejection = 3,
+    InformationMessage = 4
+  );
 
   {  TDocumentTransformation  }
   //message DocumentTransformation {
@@ -2262,6 +2276,141 @@ type
     property LockMode:TLockMode read FLockMode write SetLockMode default None;//35];
   end;
 
+
+  //message UniversalMessageAttachment {
+  //    required string ParentEntityId = 1;
+  //    required UniversalMessageCodeGroup CodeGroup = 2;
+  //    required UnsignedContent UniversalMessageContent = 3;
+  //    repeated string Labels = 4;
+  //}
+
+  { TUniversalMessageAttachment }
+
+  TUniversalMessageAttachment = class(TSerializationObject) //message UniversalMessageAttachment
+  private
+    FCodeGroup: TUniversalMessageCodeGroup;
+    FLabels: TDocumentStrings;
+    FParentEntityId: string;
+    FUniversalMessageContent: TUnsignedContent;
+    procedure SetCodeGroup(AValue: TUniversalMessageCodeGroup);
+    procedure SetParentEntityId(AValue: string);
+    procedure SetUniversalMessageContent(AValue: TUnsignedContent);
+  protected
+    procedure InternalRegisterProperty; override;
+    procedure InternalInit; override;
+  public
+    destructor Destroy; override;
+  published
+    property ParentEntityId:string read FParentEntityId write SetParentEntityId; //1;
+    property CodeGroup:TUniversalMessageCodeGroup read FCodeGroup write SetCodeGroup; //2;
+    property UniversalMessageContent:TUnsignedContent read FUniversalMessageContent write SetUniversalMessageContent; //3;
+    property Labels:TDocumentStrings read FLabels; //4
+  end;
+  TUniversalMessageAttachments = specialize GSerializationObjectList<TUniversalMessageAttachment>;
+
+  //message TtGisFixationCancellationRequestAttachment {
+  //	required string DocumentId = 1;
+  //	required SignedContent SignedContent = 2;
+  //}
+
+  { TTtGisFixationCancellationRequestAttachment }
+
+  TTtGisFixationCancellationRequestAttachment = class(TSerializationObject) //message UniversalMessageAttachment
+  private
+    FDocumentId: string;
+    FSignedContent: TSignedContent;
+    procedure SetDocumentId(AValue: string);
+  protected
+    procedure InternalRegisterProperty; override;
+    procedure InternalInit; override;
+  public
+    destructor Destroy; override;
+  published
+    property DocumentId:string read FDocumentId write SetDocumentId; //1;
+    property SignedContent:TSignedContent read FSignedContent; //2;
+  end;
+  TTtGisFixationCancellationRequestAttachments = specialize GSerializationObjectList<TTtGisFixationCancellationRequestAttachment>;
+
+  //message MessagePatchToPostV2 {
+  //    required string BoxId = 1;
+  //    required string MessageId = 2;
+  //    repeated ReceiptAttachment Receipts = 3;
+  //    repeated CorrectionRequestAttachment CorrectionRequests = 4;
+  //    repeated DocumentSignature Signatures = 5;
+  //    repeated ResolutionAttachment Resolutions = 6;
+  //    repeated ResolutionRequestAttachment ResolutionRequests = 7;
+  //    repeated ResolutionRequestCancellationAttachment ResolutionRequestCancellations = 8;
+  //    repeated ResolutionRequestDenialAttachment ResolutionRequestDenials = 9;
+  //    repeated ResolutionRequestDenialCancellationAttachment ResolutionRequestDenialCancellations = 10;
+  //    repeated RevocationRequestAttachment RevocationRequests = 11;
+  //    repeated XmlSignatureRejectionAttachment XmlSignatureRejections = 12;
+  //    repeated CustomDataPatch CustomDataPatches = 13;
+  //    repeated ResolutionRouteAssignment ResolutionRouteAssignments = 14;
+  //    repeated SignatureVerification SignatureVerifications = 15;
+  //    repeated EditDocumentPacketCommand EditDocumentPacketCommands = 16;
+  //    repeated ResolutionRouteRemoval ResolutionRouteRemovals = 17;
+  //    repeated RecipientTitleAttachment RecipientTitles = 18;
+  //    repeated EditingPatch EditingPatches = 19;
+  //    repeated UniversalMessageAttachment UniversalMessages = 20;
+  //    repeated TtGisFixationCancellationRequestAttachment TtGisFixationCancellationRequests = 21;
+  //}
+
+  { TMessagePatchToPostV2 }
+
+  TMessagePatchToPostV2 = class(TSerializationObject) //message MessagePatchToPostV2
+  private
+    FBoxId: string;
+    FCorrectionRequests: TCorrectionRequestAttachments;
+    FCustomDataPatches: TCustomDataPatchs;
+    FEditDocumentPacketCommands: TEditDocumentPacketCommands;
+    FEditingPatches: TEditingPatchs;
+    FMessageId: string;
+    FReceipts: TReceiptAttachments;
+    FRecipientTitles: TRecipientTitleAttachments;
+    FResolutionRequestCancellations: TResolutionRequestCancellationAttachments;
+    FResolutionRequestDenialCancellations: TResolutionRequestDenialCancellationAttachments;
+    FResolutionRequestDenials: TResolutionRequestDenialAttachments;
+    FResolutionRequests: TResolutionRequestAttachments;
+    FResolutionRouteAssignments: TResolutionRouteAssignments;
+    FResolutionRouteRemovals: TResolutionRouteRemovals;
+    FResolutions: TResolutionAttachments;
+    FRevocationRequests: TRevocationRequestAttachments;
+    FSignatures: TDocumentSignatures;
+    FSignatureVerifications: TSignatureVerifications;
+    FTtGisFixationCancellationRequests: TTtGisFixationCancellationRequestAttachments;
+    FUniversalMessages: TUniversalMessageAttachments;
+    FXmlSignatureRejections: TXmlSignatureRejectionAttachments;
+    procedure SetBoxId(AValue: string);
+    procedure SetMessageId(AValue: string);
+  protected
+    procedure InternalRegisterProperty; override;
+    procedure InternalInit; override;
+  public
+    destructor Destroy; override;
+  published
+    property BoxId:string read FBoxId write SetBoxId; //1;
+    property MessageId:string read FMessageId write SetMessageId; //2;
+    property Receipts:TReceiptAttachments read FReceipts; //3;
+    property CorrectionRequests:TCorrectionRequestAttachments read FCorrectionRequests; //4;
+    property Signatures:TDocumentSignatures read FSignatures; //5;
+    property Resolutions:TResolutionAttachments read FResolutions; //6;
+    property ResolutionRequests:TResolutionRequestAttachments read FResolutionRequests; //7;
+    property ResolutionRequestCancellations:TResolutionRequestCancellationAttachments read FResolutionRequestCancellations; //8;
+    property ResolutionRequestDenials:TResolutionRequestDenialAttachments read FResolutionRequestDenials; //9;
+    property ResolutionRequestDenialCancellations:TResolutionRequestDenialCancellationAttachments read FResolutionRequestDenialCancellations; // = 10;
+    property RevocationRequests:TRevocationRequestAttachments read FRevocationRequests; //11;
+    property XmlSignatureRejections:TXmlSignatureRejectionAttachments read FXmlSignatureRejections; //12;
+    property CustomDataPatches:TCustomDataPatchs read FCustomDataPatches; //13;
+    property ResolutionRouteAssignments:TResolutionRouteAssignments read FResolutionRouteAssignments; //14;
+    property SignatureVerifications:TSignatureVerifications read FSignatureVerifications; //15;
+    property EditDocumentPacketCommands:TEditDocumentPacketCommands read FEditDocumentPacketCommands; //16;
+    property ResolutionRouteRemovals:TResolutionRouteRemovals read FResolutionRouteRemovals;//17;
+    property RecipientTitles:TRecipientTitleAttachments read FRecipientTitles;//18;
+    property EditingPatches:TEditingPatchs read FEditingPatches; //19;
+    property UniversalMessages:TUniversalMessageAttachments read FUniversalMessages; //20;
+    property TtGisFixationCancellationRequests:TTtGisFixationCancellationRequestAttachments read FTtGisFixationCancellationRequests; //21;
+  end;
+
 implementation
 
 { TRecipientTitleAttachment }
@@ -2530,6 +2679,134 @@ begin
   FreeAndNil(FSupplementaryAgreements);
   FreeAndNil(FUniversalTransferDocumentSellerTitles);
   FreeAndNil(FDocumentAttachments);
+  inherited Destroy;
+end;
+
+{ TUniversalMessageAttachment }
+
+procedure TUniversalMessageAttachment.SetCodeGroup(
+  AValue: TUniversalMessageCodeGroup);
+begin
+  if FCodeGroup=AValue then Exit;
+  FCodeGroup:=AValue;
+  Modified(2);
+end;
+
+procedure TUniversalMessageAttachment.SetParentEntityId(AValue: string);
+begin
+  if FParentEntityId=AValue then Exit;
+  FParentEntityId:=AValue;
+  Modified(1);
+end;
+
+procedure TUniversalMessageAttachment.SetUniversalMessageContent(
+  AValue: TUnsignedContent);
+begin
+  if FUniversalMessageContent=AValue then Exit;
+  FUniversalMessageContent:=AValue;
+  Modified(3);
+end;
+
+procedure TUniversalMessageAttachment.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('ParentEntityId', 1, true);
+  RegisterProp('CodeGroup', 2, true);
+  RegisterProp('UniversalMessageContent', 3, true);
+  RegisterProp('Labels', 4);
+end;
+
+procedure TUniversalMessageAttachment.InternalInit;
+begin
+  inherited InternalInit;
+  FLabels:= TDocumentStrings.Create;
+end;
+
+destructor TUniversalMessageAttachment.Destroy;
+begin
+  FreeAndNil(FLabels);
+  inherited Destroy;
+end;
+
+{ TTtGisFixationCancellationRequestAttachment }
+
+procedure TTtGisFixationCancellationRequestAttachment.SetDocumentId(
+  AValue: string);
+begin
+  if FDocumentId=AValue then Exit;
+  FDocumentId:=AValue;
+  Modified(1);
+end;
+
+procedure TTtGisFixationCancellationRequestAttachment.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('DocumentId', 1, true);
+  RegisterProp('SignedContent', 2, true);
+end;
+
+procedure TTtGisFixationCancellationRequestAttachment.InternalInit;
+begin
+  inherited InternalInit;
+  FSignedContent:=TSignedContent.Create;
+end;
+
+destructor TTtGisFixationCancellationRequestAttachment.Destroy;
+begin
+  FreeAndNil(FSignedContent);
+  inherited Destroy;
+end;
+
+{ TMessagePatchToPostV2 }
+
+procedure TMessagePatchToPostV2.SetBoxId(AValue: string);
+begin
+  if FBoxId=AValue then Exit;
+  FBoxId:=AValue;
+  Modified(1);
+end;
+
+procedure TMessagePatchToPostV2.SetMessageId(AValue: string);
+begin
+  if FMessageId=AValue then Exit;
+  FMessageId:=AValue;
+  Modified(2);
+end;
+
+
+procedure TMessagePatchToPostV2.InternalRegisterProperty;
+begin
+  inherited InternalRegisterProperty;
+  RegisterProp('BoxId', 1, true);
+  RegisterProp('MessageId', 2, true);
+  RegisterProp('Receipts', 3);
+  RegisterProp('CorrectionRequests', 4);
+  RegisterProp('Signatures', 5);
+  RegisterProp('Resolutions', 6);
+  RegisterProp('ResolutionRequests', 7);
+  RegisterProp('ResolutionRequestCancellations', 8);
+  RegisterProp('ResolutionRequestDenials', 9);
+  RegisterProp('ResolutionRequestDenialCancellations', 10);
+  RegisterProp('RevocationRequests', 11);
+  RegisterProp('XmlSignatureRejections', 12);
+  RegisterProp('CustomDataPatches', 13);
+  RegisterProp('ResolutionRouteAssignments', 14);
+  RegisterProp('SignatureVerifications', 15);
+  RegisterProp('EditDocumentPacketCommands', 16);
+  RegisterProp('ResolutionRouteRemovals', 17);
+  RegisterProp('RecipientTitles', 18);
+  RegisterProp('EditingPatches', 19);
+  RegisterProp('UniversalMessages', 20);
+  RegisterProp('TtGisFixationCancellationRequests', 21);
+end;
+
+procedure TMessagePatchToPostV2.InternalInit;
+begin
+  inherited InternalInit;
+end;
+
+destructor TMessagePatchToPostV2.Destroy;
+begin
   inherited Destroy;
 end;
 
