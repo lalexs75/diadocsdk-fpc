@@ -350,6 +350,7 @@ begin
     M.Free;
   end;
   D.Free;}
+//  FDiadocAPI.PostDiadocMessage();
 end;
 
 procedure TDiadocDocumentFrame.OrgBoxInfoExecute(Sender: TObject);

@@ -66,7 +66,8 @@ uses
   ExtendedOrganizationInfoUnit,
   EmployeeUnit,
   upd820_revision,
-  ddapitestDocflowEventsUnit, ddapitestDocumentTypesUnit;
+  ddapitestDocflowEventsUnit,
+  ddapitestDocumentTypesUnit;
 
 {$R *.res}
 

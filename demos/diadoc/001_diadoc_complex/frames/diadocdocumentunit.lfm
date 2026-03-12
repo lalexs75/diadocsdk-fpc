@@ -5,6 +5,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
   Width = 1412
   ClientHeight = 516
   ClientWidth = 1412
+  LCLVersion = '4.99.0.0'
   TabOrder = 0
   DesignLeft = 392
   DesignTop = 268
@@ -21,7 +22,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideLeft.Control = Panel2
       AnchorSideTop.Control = Panel2
       Left = 7
-      Height = 25
+      Height = 23
       Top = 7
       Width = 160
       BorderSpacing.Around = 6
@@ -41,7 +42,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = Panel2
       Left = 173
-      Height = 25
+      Height = 23
       Top = 7
       Width = 273
       BorderSpacing.Around = 6
@@ -60,10 +61,10 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideRight.Control = Button4
       AnchorSideBottom.Control = Panel2
       AnchorSideBottom.Side = asrBottom
-      Left = 1234
+      Left = 1238
       Height = 29
       Top = 108
-      Width = 102
+      Width = 100
       Anchors = [akRight, akBottom]
       AutoSize = True
       BorderSpacing.Around = 6
@@ -76,7 +77,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideLeft.Side = asrBottom
       AnchorSideTop.Control = Panel2
       Left = 452
-      Height = 29
+      Height = 27
       Top = 7
       Width = 248
       BorderSpacing.Around = 6
@@ -90,10 +91,10 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideRight.Side = asrBottom
       AnchorSideBottom.Control = Panel2
       AnchorSideBottom.Side = asrBottom
-      Left = 1342
+      Left = 1344
       Height = 29
       Top = 108
-      Width = 63
+      Width = 61
       Anchors = [akRight, akBottom]
       AutoSize = True
       BorderSpacing.Around = 6
@@ -107,8 +108,8 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideBottom.Control = RxDateEdit1
       AnchorSideBottom.Side = asrBottom
       Left = 7
-      Height = 23
-      Top = 44
+      Height = 24
+      Top = 41
       Width = 158
       Anchors = [akLeft, akBottom]
       BorderSpacing.Left = 6
@@ -125,7 +126,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideTop.Side = asrBottom
       Left = 215
       Height = 29
-      Top = 38
+      Top = 36
       Width = 103
       BorderSpacing.Around = 6
       ButtonWidth = 23
@@ -142,7 +143,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideTop.Side = asrBottom
       Left = 375
       Height = 29
-      Top = 38
+      Top = 36
       Width = 103
       BorderSpacing.Around = 6
       ButtonWidth = 23
@@ -159,7 +160,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideBottom.Side = asrBottom
       Left = 171
       Height = 17
-      Top = 50
+      Top = 48
       Width = 38
       Anchors = [akLeft, akBottom]
       BorderSpacing.Left = 6
@@ -172,7 +173,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideBottom.Side = asrBottom
       Left = 324
       Height = 17
-      Top = 50
+      Top = 48
       Width = 45
       Anchors = [akLeft, akBottom]
       BorderSpacing.Left = 6
@@ -187,7 +188,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideRight.Side = asrBottom
       Left = 613
       Height = 29
-      Top = 38
+      Top = 36
       Width = 792
       Anchors = [akTop, akLeft, akRight]
       BorderSpacing.Around = 6
@@ -208,8 +209,8 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideBottom.Control = EditButton1
       AnchorSideBottom.Side = asrBottom
       Left = 484
-      Height = 23
-      Top = 44
+      Height = 24
+      Top = 41
       Width = 123
       Anchors = [akLeft, akBottom]
       BorderSpacing.Left = 6
@@ -223,8 +224,8 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideBottom.Control = RxDateEdit3
       AnchorSideBottom.Side = asrBottom
       Left = 7
-      Height = 23
-      Top = 79
+      Height = 24
+      Top = 76
       Width = 133
       Anchors = [akLeft, akBottom]
       BorderSpacing.Left = 6
@@ -239,7 +240,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideBottom.Side = asrBottom
       Left = 171
       Height = 17
-      Top = 85
+      Top = 83
       Width = 38
       Anchors = [akLeft, akBottom]
       BorderSpacing.Left = 6
@@ -252,7 +253,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideTop.Side = asrBottom
       Left = 215
       Height = 29
-      Top = 73
+      Top = 71
       Width = 103
       BorderSpacing.Around = 6
       ButtonWidth = 23
@@ -269,7 +270,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideTop.Side = asrBottom
       Left = 375
       Height = 29
-      Top = 73
+      Top = 71
       Width = 103
       BorderSpacing.Around = 6
       ButtonWidth = 23
@@ -286,7 +287,7 @@ object DiadocDocumentFrame: TDiadocDocumentFrame
       AnchorSideBottom.Side = asrBottom
       Left = 324
       Height = 17
-      Top = 85
+      Top = 83
       Width = 45
       Anchors = [akLeft, akBottom]
       BorderSpacing.Left = 6
