@@ -454,6 +454,74 @@
       </element><element name="TTemplateToPost.ToDepartmentId"><short>ToDepartmentId - идентификатор подразделения в организации получателя, в которое будут отправлены все шаблоны из сообщения</short><descr>может отсутствовать, в этом случае шаблоны будут отправлены в головное подразделение
 </descr>
       </element>
+    <element name="TUniversalMessageCodeGroup"><short>Группа кода универсального сообщения (УС)</short>
+      </element><element name="TUniversalMessageCodeGroup.UnknownCodeGroup"><short>неизвестное значение</short>
+      </element><element name="TUniversalMessageCodeGroup.Receipt"><short>извещение о получении</short>
+      </element><element name="TUniversalMessageCodeGroup.AmendmentRequest"><short>уведомление об уточнении</short>
+      </element><element name="TUniversalMessageCodeGroup.Rejection"><short>отказ в подписи</short>
+      </element><element name="TUniversalMessageCodeGroup.InformationMessage"><short>информационное сообщение</short>
+      </element><element name="TUniversalMessageAttachment"><short>Cписок универсальных сообщений</short>
+      </element><element name="TUniversalMessageAttachment.ParentEntityId"><short>Идентификатор документа, к которому относится универсальное сообщение</short><descr>Принимает значение одной из сущностей родительского сообщения (поле EntityId).
+</descr>
+      </element><element name="TUniversalMessageAttachment.CodeGroup"><short>Группа кода универсального сообщения, которая определяет его назначение — извещение о получении, уведомление об уточнении или отказ в подписи.</short><descr>Принимает значения из перечисления UniversalMessageCodeGroup.
+</descr>
+      </element><element name="TUniversalMessageAttachment.UniversalMessageContent"><short>содержимое XML-файла универсального сообщения, представленное структурой UnsignedContent.</short>
+      </element><element name="TUniversalMessageAttachment.Labels"><short>Список меток.</short>
+      </element><element name="TTtGisFixationCancellationRequestAttachment"><short>Данные документа для отмены сведений об отгрузке маркированных товаров.</short>
+      </element><element name="TTtGisFixationCancellationRequestAttachment.DocumentId"><short>идентификатор документа, содержащего маркированные товары, сведения об отгрузки которых необходимо отменить.</short>
+      </element><element name="TTtGisFixationCancellationRequestAttachment.SignedContent"><short>содержимое документа для отмены сведений об отгрузке с электронной подписью, представленный структурой SignedContent.</short>
+      </element><element name="TMessagePatchToPostV2"><short>Данные дополнения к сообщению для отправки методом PostMessagePatch (V4).</short>
+      </element><element name="TMessagePatchToPostV2.BoxId"><short>идентификатор ящика организации, в котором находится исходное сообщение.</short>
+      </element><element name="TMessagePatchToPostV2.MessageId"><short>идентификатор сообщения, к которому относится дополнение.</short>
+      </element><element name="TMessagePatchToPostV2.Receipts"><short>список извещений о получении документов, подлежащих отправке и предусмотренных порядком обмена электронными счетами-фактурами. </short><descr>Каждый элемент списка представлен структурой ReceiptAttachment.
+
+</descr>
+      </element><element name="TMessagePatchToPostV2.CorrectionRequests"><short>список уведомлений об уточнении СФ/ИСФ/КСФ/ИКСФ, подлежащих отправке и предусмотренных порядком обмена электронными счетами-фактурами.</short><descr>Каждый элемент списка представлен структурой CorrectionRequestAttachment.
+
+</descr>
+      </element><element name="TMessagePatchToPostV2.Signatures"><short>список подписей под документами.</short><descr>Каждый элемент списка представлен структурой DocumentSignature.
+
+</descr>
+      </element><element name="TMessagePatchToPostV2.Resolutions"><short>список операций согласования документов в сообщении, к которому относится дополнение. </short><descr>Каждый элемент списка представлен структурой ResolutionAttachment.
+
+</descr>
+      </element><element name="TMessagePatchToPostV2.ResolutionRequests"><short>список запросов на согласование или подпись документа. </short><descr>Каждый элемент списка представлен структурой ResolutionRequestAttachment.
+
+</descr>
+      </element><element name="TMessagePatchToPostV2.ResolutionRequestCancellations"><short>список операций, отменяющих отправленные ранее запросы на согласование документа. </short><descr>Каждый элемент списка представлен структурой ResolutionRequestCancellationAttachment.
+
+</descr>
+      </element><element name="TMessagePatchToPostV2.ResolutionRequestDenials"><short>список отказов от запроса подписи. Отказ аннулирует ошибочный отправленный запрос на подпись со стороны получателя запроса. </short><descr>Каждый элемент списка представлен структурой ResolutionRequestDenialAttachment.
+
+</descr>
+      </element><element name="TMessagePatchToPostV2.ResolutionRequestDenialCancellations"><short>список операций, отменяющих отказы от запросов подписей. При выполнении операций исходные запросы на подпись восстанавливаются. </short><descr>Каждый элемент списка представлен структурой ResolutionRequestDenialCancellationAttachment.
+
+</descr>
+      </element><element name="TMessagePatchToPostV2.RevocationRequests"><short>список предложений об аннулировании документов. </short><descr>Каждый элемент списка представлен структурой RevocationRequestAttachment.
+</descr>
+      </element><element name="TMessagePatchToPostV2.XmlSignatureRejections"><short>список отказов от подписи под документом или от предложений об аннулировании. </short><descr>Каждый элемент списка представлен структурой XmlSignatureRejectionAttachment.
+</descr>
+      </element><element name="TMessagePatchToPostV2.CustomDataPatches"><short>список операций изменения пользовательских данных документов в исходном сообщении. </short><descr><p>Каждый элемент списка представлен структурой CustomDataPatch.</p><p>Максимальное количество операций — 15.</p>
+        </descr>
+      </element><element name="TMessagePatchToPostV2.ResolutionRouteAssignments"><short>список операций постановки документов на маршрут согласования. </short><descr>Каждый элемент списка представлен структурой ResolutionRouteAssignment.
+</descr>
+      </element><element name="TMessagePatchToPostV2.SignatureVerifications"><short>список результатов проверки подписей зашифрованных документов на стороне получателя. </short><descr>Каждый элемент списка представлен структурой SignatureVerification.
+</descr>
+      </element><element name="TMessagePatchToPostV2.EditDocumentPacketCommands"><short>список операций изменения состава пакета у документов в исходном сообщении. </short><descr>Каждый элемент списка представлен структурой EditDocumentPacketCommand.
+</descr>
+      </element><element name="TMessagePatchToPostV2.ResolutionRouteRemovals"><short>список операций снятия документов с маршрута согласования. </short><descr>Каждый элемент списка представлен структурой ResolutionRouteRemoval.
+
+</descr>
+      </element><element name="TMessagePatchToPostV2.RecipientTitles"><short>список титулов получателя для любого типа документов, подлежащих отправке. </short><descr>Каждый элемент списка представлен структурой RecipientTitleAttachment.
+</descr>
+      </element><element name="TMessagePatchToPostV2.EditingPatches"><short>список операций редактирования содержимого документа. </short><descr><p>Каждый элемент списка представлен структурой EditingPatch. </p><p>Редактировать можно только документы, для которых была указана настройка редактирования EditingSettingId.</p>
+        </descr>
+      </element><element name="TMessagePatchToPostV2.UniversalMessages"><short>список универсальных сообщений. </short><descr><p>Каждый элемент списка представлен структурой UniversalMessageAttachment.</p><p>Обратите внимание, что на время переходного периода вместе с универсальным сообщением в структуре MessagePatchToPostV2 обязательно должна быть передана сущность служебного документа в текущем формате в полях Receipts, CorrectionRequests и/или XmlSignatureRejections.</p>
+        </descr>
+      </element><element name="TMessagePatchToPostV2.TtGisFixationCancellationRequests"><short>список документов для отмены сведений об отгрузке маркированных товаров. </short><descr>Каждый элемент списка представлен структурой TtGisFixationCancellationRequestAttachment.
+
+</descr>
+      </element>
     </module>
   </package>
 </fpdoc-descriptions>

@@ -203,6 +203,8 @@
       </element><element name="TDocument.LastOuterDocflows"><short>LastOuterDocflows - информация о состоянии врешнего документооборота по документу</short><descr>LastOuterDocflows - информация о состоянии врешнего документооборота по документу, например, о статусе обработки документа с маркированными товарами в ГИС МТ "Честный ЗНАК".
 </descr>
       </element>
+    <element name="TMessageType.Unknown"><short>неизвестное значение</short>
+      </element>
     </module>
   </package>
 </fpdoc-descriptions>

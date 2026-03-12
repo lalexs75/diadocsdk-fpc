@@ -169,6 +169,11 @@
       </element>
     <element name="TEntity.OuterDocflow"><short>заполняется только для вложений с типом AttachmentType.OuterDocflow</short>
       </element>
+    <element name="TMessagePatch.MessageType"><short>тип сообщения, принимает значения из перечисления MessageType.</short>
+      </element><element name="TMessagePatch.NotDeliveredEventId"><short>идентификатор дополнения, которое не удалось доставить (например, из-за некорректности одной или нескольких подписей в нем)</short><descr>Получить недоставленную часть сообщения можно с помощью метода GetEvent (V2) или GetEvent (V3), передав в качестве параметра eventId значение NotDeliveredEventId.
+
+</descr>
+      </element>
     </module>
   </package>
 </fpdoc-descriptions>
