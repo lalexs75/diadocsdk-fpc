@@ -143,7 +143,10 @@ uses DiadocTypes_UniversalTransferDocumentInfo, diadoc_utils,
   DiadocTypes_DocumentFilter, ContragentFindUnit, ShowBoxInfoUnit,
   SelectDepartmentUnit, DiadocTypes_DocumentsMoveOperation,
   DiadocTypes_DiadocMessage_PostApi, rxAppUtils, MessageForDocUnit,
-  upd820_revision, ddNewDocUTDUnit, rxlogging;
+  upd820_revision,
+  ddNewDocUTDUnit,
+  rxlogging,
+  DP_UNISOOBSCH_1_982_02_05_01_01.UserContract;
 
 {$R *.lfm}
 
