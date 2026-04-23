@@ -10,13 +10,8 @@
       <PathDelim Value="\"/>
       <SearchPaths>
         <OtherUnitFiles Value="Docflow;Invoicing;Documents\Types;Events;Documents;Recognition;KeyValueStorage;Forwarding;diadoc_src;Employees;Employees\Subscriptions;Users;Departments;Registration;Organizations;Dss;DataXml;Workflows"/>
-        <UnitOutputDirectory Value="lib\diadoc\$(TargetCPU)-$(TargetOS)"/>
+        <UnitOutputDirectory Value="lib\diadoc\$(TargetCPU)-$(TargetOS)\$(LCLWidgetType)"/>
       </SearchPaths>
-      <Other>
-        <ConfigFile>
-          <WriteConfigFilePath Value="$(PkgOutDir)\fpclaz.cfg"/>
-        </ConfigFile>
-      </Other>
     </CompilerOptions>
     <Description Value="Компоненты интеграции Контур ДИАДОК-API для FPC и Lazarus"/>
     <License Value="LGPL"/>

@@ -143,10 +143,9 @@ uses DiadocTypes_UniversalTransferDocumentInfo, diadoc_utils,
   DiadocTypes_DocumentFilter, ContragentFindUnit, ShowBoxInfoUnit,
   SelectDepartmentUnit, DiadocTypes_DocumentsMoveOperation,
   DiadocTypes_DiadocMessage_PostApi, rxAppUtils, MessageForDocUnit,
-  upd820_revision,
-  ddNewDocUTDUnit,
-  rxlogging,
-  DP_UNISOOBSCH_1_982_02_05_01_01.UserContract;
+  upd820_revision, ddNewDocUTDUnit, rxlogging,
+  DP_UNISOOBSCH_1_982_02_05_01_01.UserContract, AbstractSerializationObjects,
+  LazFileUtils;
 
 {$R *.lfm}
 
@@ -336,6 +335,8 @@ end;
 var
   D: TUniversalTransferDocumentSellerTitleInfo;
   M: TMemoryStream;
+  UM:TUniversalMessage;
+  UMI: TUniversalMessageInfo;
 begin
 {  D:=NewUniversalTransferDocumentSellerTitleInfo;
   D.SaveToFile('/tmp/UniversalTransferDocumentSellerTitleInfo.protobuf');
@@ -354,6 +355,31 @@ begin
   end;
   D.Free;}
 //  FDiadocAPI.PostDiadocMessage();
+  UM:=TUniversalMessage.Create;
+  UM.Sender.UseDefaultPersonInfo:='false';
+  UM.Sender.Fio.FirstName:='Иван';
+  UM.Sender.Fio.MiddleName:='Иванович';
+  UM.Sender.Fio.LastName:='Иванов';
+  UM.Sender.Contacts.OtherContactInfo:='OtherContactInfo';
+  UM.Sender.Contacts.Phones.Phone:=TXSDStringArray.Create('12-334-44');
+  UM.Sender.Contacts.Emails.Email:=TXSDStringArray.Create('aaa@aa.com', 'bbb@ddd.org');
+
+  UM.Recipient.UseDefaultPersonInfo:='false';
+  UM.Recipient.Fio.FirstName:='Пётр';
+  UM.Recipient.Fio.MiddleName:='Петрович';
+  UM.Recipient.Fio.LastName:='Петров';
+  UM.Recipient.UseDefaultPersonInfo:='false';
+  UM.Recipient.Contacts.OtherContactInfo:='OtherContactInfo';
+  UM.Recipient.Contacts.Phones.Phone:=TXSDStringArray.Create('8-343-123-4567');
+  UM.Recipient.Contacts.Emails.Email:=TXSDStringArray.Create('email@sample.com', 'aaa@aa.com', 'bbb@ddd.org');
+  UMI:=UM.UniversalMessageInfos.UniversalMessageInfo.AddItem;
+  UMI.StatusCode:=1999;
+  UMI.PlainText:='Сообщение';
+
+  UM.SaveToFile(AppendPathDelim(GetTempDir) + 'um.xml');
+
+//  S:=FDiadocAPI.GenerateUniversalMessage();
+  UM.Free;
 end;
 
 procedure TDiadocDocumentFrame.OrgBoxInfoExecute(Sender: TObject);
